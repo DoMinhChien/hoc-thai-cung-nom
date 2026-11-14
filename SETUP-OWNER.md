@@ -1,0 +1,112 @@
+# SETUP-OWNER — Việc owner (John) làm tay
+
+> Agent **không** làm các bước này (cần đăng nhập tài khoản cá nhân, thanh toán, hoặc secret).
+> Làm xong bước nào → tick ✅ và điền mục **"Đầu ra cho agent"** (giá trị không bí mật) hoặc ghi chỗ lưu (giá trị bí mật).
+> Giao diện các trang quản trị (Azure, Firebase, Meta, Google) có thể thay đổi; tên menu dưới đây là gần đúng.
+
+## Tổng quan
+
+| # | Việc | Cần trước | Thời gian ước tính | Trạng thái |
+|---|---|---|---|---|
+| S0 | Cài công cụ trên máy | M0 | 20 phút | ☐ |
+| S1 | Tạo GitHub repo | M0 (deploy) | 5 phút | ◐ Đã tạo repo — còn: đẩy code, bảo vệ `main` |
+| S2 | Azure: resource group + Static Web App | M0 (deploy) | 15 phút | ☐ |
+| S3 | Azure Budget alert | M0 | 5 phút | ☐ |
+| S4 | Firebase project + Authentication | M1 | 15 phút | ☐ |
+| S5 | Google sign-in + OAuth consent screen | M1 (bật), M12 (publish) | 15 phút | ☐ |
+| S6 | Facebook App + Facebook Login | M1 (bật), M12 (Live) | 30 phút + thời gian Meta duyệt | ☐ |
+| S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ☐ |
+| S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
+| S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
+| S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ☐ |
+| S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ☐ |
+
+---
+
+## S0 — Cài công cụ trên máy (trước khi giao M0)
+| Công cụ | Ghi chú |
+|---|---|
+| **Node.js LTS** | Kiểm tra: `node -v` |
+| **pnpm** | `npm i -g pnpm` (hoặc `corepack enable`) |
+| **Git** | Kiểm tra: `git --version` |
+| **Java JDK 11+** | **Bắt buộc** cho Firebase Auth Emulator. Kiểm tra: `java -version` |
+| **Firebase CLI** | `npm i -g firebase-tools` |
+| **GitHub CLI `gh`** (tùy chọn) | Để agent tự tạo PR: `gh auth login` |
+| **Python 3.12 + uv** | Chỉ cần trước **M4** (pipeline PDF) |
+
+> Trình duyệt cho Playwright do agent tự cài ở M0 (`pnpm exec playwright install`).
+
+## S1 — GitHub repo
+1. Tạo repo **private** (vd. `hoc-thai-cung-nom`) trên tài khoản cá nhân.
+2. Đẩy nội dung thư mục này lên (`AGENTS.md`, `ROADMAP.md`, `SETUP-OWNER.md`, plan).
+3. Settings → Branches: bảo vệ `main` (bắt buộc PR, bắt buộc CI pass).
+
+**Đầu ra cho agent:** URL repo: https://github.com/DoMinhChien/hoc-thai-cung-nom
+
+- [x] 1. Tạo repo
+- [ ] 2. Đẩy nội dung thư mục lên (agent làm được ở M0 nếu máy owner đã `gh auth login` / có quyền push)
+- [ ] 3. Bảo vệ `main` (làm sau khi CI ở M0 chạy được, để chọn đúng check bắt buộc)
+
+## S2 — Azure Static Web Apps
+1. Tạo Resource Group, vd. `rg-hoc-thai-nom` (region gần: Southeast Asia / East Asia).
+2. Tạo **Static Web App**, plan **Free**, nguồn: GitHub repo ở S1, nhánh `main`, build preset **Vite** hoặc Custom (app location `apps/web`, output `dist`).
+3. Azure tự tạo workflow GitHub Actions + secret `AZURE_STATIC_WEB_APPS_API_TOKEN_*` trong repo.
+
+**Đầu ra cho agent:** domain production `https://<tên>.azurestaticapps.net`: `__________`
+
+## S3 — Azure Budget alert
+Cost Management → Budgets → tạo budget cho subscription/resource group: ngưỡng cảnh báo **$5** và **$20**/tháng, gửi email cho owner.
+
+## S4 — Firebase project
+1. https://console.firebase.google.com → tạo project bằng **tài khoản Google cá nhân**, gói **Spark** (không cần thẻ). Có thể tắt Google Analytics.
+2. Project settings → **Add app → Web** → lấy config (`apiKey`, `authDomain`, `projectId`, `appId`…). *Các giá trị này không phải secret.*
+3. Authentication → **Get started**.
+4. Authentication → Settings → **User account linking**: chọn *"Link accounts that use the same email"* (một tài khoản cho mỗi email).
+5. Authentication → Settings → **Authorized domains**: thêm domain SWA ở S2 (giữ `localhost`).
+
+**Đầu ra cho agent:** điền vào GitHub Variables (S7) và `.env.local` của owner:
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=<project>.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+## S5 — Google sign-in
+1. Firebase → Authentication → Sign-in method → **Google** → Enable (Firebase tự tạo OAuth client trong Google Cloud).
+2. Google Cloud Console (cùng project) → **OAuth consent screen**: tên app "Học Thai cùng Nôm", email hỗ trợ, scope mặc định (`openid`, `email`, `profile`). **Không upload logo** ở Phase 1.
+3. **Ở M12 (go-live):** điền link `/privacy`, `/terms` → chuyển trạng thái **In production**.
+
+## S6 — Facebook Login
+1. https://developers.facebook.com → **Create App** bằng tài khoản Facebook cá nhân, chọn use case liên quan **Facebook Login / xác thực người dùng**.
+2. Lấy **App ID** và **App Secret** → Firebase → Sign-in method → **Facebook** → Enable, dán App ID/Secret.
+3. Copy **OAuth redirect URI** Firebase hiển thị (`https://<project>.firebaseapp.com/__/auth/handler`) → Facebook Login → Settings → **Valid OAuth Redirect URIs**.
+4. Quyền chỉ cần `public_profile`, `email`.
+5. **Sau khi M1 deploy:** App settings → Basic: điền **Privacy Policy URL** (`/privacy`), **Terms of Service URL** (`/terms`), **User data deletion → Data deletion instructions URL** (`/account/delete-instructions`), icon app (có thể dùng logo placeholder).
+6. **Ở M12:** chuyển app sang **Live**. Nếu Meta yêu cầu xác minh (business/app verification) → làm theo hướng dẫn; việc này có thể mất vài ngày, nên **bắt đầu sớm**.
+7. Trong lúc app ở chế độ Development: thêm tài khoản test trong **App roles → Testers** để thử đăng nhập thật.
+
+> App Secret là **bí mật**: chỉ nhập vào Firebase console, **không** đưa vào repo hay gửi cho agent.
+
+## S7 — GitHub Variables / Secrets
+Repo → Settings → Secrets and variables → Actions:
+- **Variables:** `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID` (từ S4).
+- **Secrets:** `AZURE_STATIC_WEB_APPS_API_TOKEN_*` (Azure tự tạo ở S2).
+
+## S8 — Giới hạn Firebase API key (M12)
+Google Cloud Console → APIs & Services → Credentials → API key của Firebase → **Application restrictions: HTTP referrers**: domain SWA + `localhost`.
+
+## S9 — Anthropic API key (trước M4)
+1. https://console.anthropic.com → tạo API key.
+2. Đặt **giới hạn chi tiêu hằng tháng** trong console.
+3. Lưu key trong `tools/pdf-pipeline/.env` **trên máy owner** (`ANTHROPIC_API_KEY=`). Không commit, không gửi vào chat.
+
+## S10 — Nội dung
+- [ ] Gửi **1–2 trang PDF giáo trình mẫu** (trước M4) → đặt vào `sources/` (thư mục bị `.gitignore`).
+- [ ] Duyệt **content mẫu** agent tạo ở M3 (các mục `draft: true`).
+- [ ] Duyệt **mẹo nhớ & hình** cho 44 phụ âm (trước M10.5).
+
+## S11 — Duyệt thiết kế
+- [ ] Đợt M0.5a: brief, flows, tokens, SCR-00/01/02, wireframe.
+- [ ] Đợt M0.5b: các màn còn lại (theo từng milestone).
+Ghi ngày duyệt vào `docs/design/README.md`.
