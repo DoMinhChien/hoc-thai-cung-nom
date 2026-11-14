@@ -1,0 +1,118 @@
+name: CI / Deploy
+
+# lint → typecheck → test → content:check → e2e → build → deploy Azure SWA (plan 8.3).
+# PR → preview environment; push main → production.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check:
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm content:check
+
+  e2e:
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      # Firebase Auth Emulator cần Java.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @nom/web exec playwright install --with-deps chromium firefox webkit
+      # `missing`: baseline Linux chưa có thì ghi mới (upload bên dưới để owner xem rồi commit).
+      - run: pnpm test:e2e --update-snapshots=missing
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report
+          retention-days: 14
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-baselines-linux
+          path: apps/web/e2e/**/*-linux.png
+          if-no-files-found: ignore
+          retention-days: 14
+
+  deploy:
+    needs: [check, e2e]
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    env:
+      SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+    steps:
+      - if: env.SWA_TOKEN == ''
+        run: echo "::warning::Chưa có secret AZURE_STATIC_WEB_APPS_API_TOKEN (SETUP-OWNER S2/S7) — bỏ qua deploy."
+      - if: env.SWA_TOKEN != ''
+        uses: actions/checkout@v4
+      - if: env.SWA_TOKEN != ''
+        uses: pnpm/action-setup@v4
+      - if: env.SWA_TOKEN != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - if: env.SWA_TOKEN != ''
+        run: pnpm install --frozen-lockfile
+      - if: env.SWA_TOKEN != ''
+        run: pnpm build
+        env:
+          VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ vars.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_APP_ID: ${{ vars.VITE_FIREBASE_APP_ID }}
+          VITE_USE_AUTH_EMULATOR: 'false'
+      - if: env.SWA_TOKEN != ''
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ env.SWA_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: apps/web/dist
+          skip_app_build: true
+
+  close-preview:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    env:
+      SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+    steps:
+      - if: env.SWA_TOKEN != ''
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ env.SWA_TOKEN }}
+          action: close
