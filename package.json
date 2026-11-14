@@ -11,10 +11,12 @@
     "build": "pnpm --filter @nom/web build",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
-    "test:e2e": "pnpm --filter @nom/web test:e2e"
+    "test:e2e": "pnpm --filter @nom/web test:e2e",
+    "emulators": "firebase emulators:start --only auth --project demo-hoc-thai-nom"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "firebase-tools": "^15.36.0",
     "typescript": "~6.0.3"
   }
 }

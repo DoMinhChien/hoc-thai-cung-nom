@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 4173;
+const AUTH_EMULATOR_PORT = 9099; // khớp firebase.json
 const VIEWPORTS = [
   { name: '1280', viewport: { width: 1280, height: 800 } },
   { name: '1024', viewport: { width: 1024, height: 768 } },
@@ -31,10 +32,20 @@ export default defineConfig({
       use: { ...b.device, viewport: v.viewport },
     })),
   ),
-  webServer: {
-    command: `pnpm build && pnpm preview --port ${PORT} --strictPort`,
-    url: `http://localhost:${PORT}`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  webServer: [
+    {
+      // Firebase Auth Emulator (cần Java). Sẵn sàng cho E2E đăng nhập ở M1.
+      command: 'pnpm --dir ../.. emulators',
+      url: `http://127.0.0.1:${AUTH_EMULATOR_PORT}`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+    {
+      command: `pnpm build && pnpm preview --port ${PORT} --strictPort`,
+      url: `http://localhost:${PORT}`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+      env: { VITE_USE_AUTH_EMULATOR: 'true' },
+    },
+  ],
 });
