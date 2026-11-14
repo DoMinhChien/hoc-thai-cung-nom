@@ -57,7 +57,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Mục tiêu:** repo chạy được, có đủ khung test & CI/CD, deploy được trang trống lên Azure SWA.
 
 **Task**
-- [ ] T0.0 Git: nếu thư mục chưa là repo → `git init -b main`, `git remote add origin https://github.com/DoMinhChien/hoc-thai-cung-nom.git`; commit tài liệu hiện có lên `main` (commit đầu tiên, `docs: initial plan`), sau đó làm M0 trên nhánh `m0-scaffold`.
+- [x] T0.0 Git: nếu thư mục chưa là repo → `git init -b main`, `git remote add origin https://github.com/DoMinhChien/hoc-thai-cung-nom.git`; commit tài liệu hiện có lên `main` (commit đầu tiên, `docs: initial plan`), sau đó làm M0 trên nhánh `m0-scaffold`.
 - [ ] T0.1 Khởi tạo monorepo pnpm: `apps/web` (Vite + React + TS strict), `packages/core`, `scripts/`, `tools/pdf-pipeline/` (chỉ README, Python làm ở M4).
 - [ ] T0.2 Tailwind + shadcn/ui; file token tạm `apps/web/src/styles/tokens.css` (màu trung tính + 1 accent placeholder, chờ `tokens.json` từ M0.5a).
 - [ ] T0.3 React Router với các route rỗng của Phase 1 (mục 9 plan) + layout desktop (sidebar + vùng nội dung) + `<AppLogo />` đọc `public/brand/logo.svg` (placeholder chữ "Nôm").
