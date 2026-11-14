@@ -1,0 +1,23 @@
+/*
+ * Design tokens TẠM (M0). Sẽ thay bằng giá trị từ docs/design/tokens.json (M0.5a, D0.3).
+ * Đặt tên theo NGHĨA (D9) để thêm dark mode sau không phải sửa component.
+ * Quy tắc: không dùng màu nào ngoài file này (AGENTS.md mục 7).
+ */
+:root {
+  /* Nền & chữ — trung tính (D1) */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f7f7f8;
+  --color-fg: #1f2328;
+  --color-fg-muted: #656d76;
+  --color-border: #e4e4e7;
+
+  /* 1 màu nhấn — PLACEHOLDER, chờ tokens.json */
+  --color-accent: #3b5bdb;
+  --color-accent-fg: #ffffff;
+
+  /* Đúng / sai (D2) — nhạt, luôn kèm icon + chữ */
+  --color-success: #2f9e44;
+  --color-danger: #e03131;
+
+  --radius: 0.5rem;
+}
