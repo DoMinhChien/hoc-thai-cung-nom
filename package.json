@@ -10,7 +10,8 @@
     "dev": "pnpm --filter @nom/web dev",
     "build": "pnpm --filter @nom/web build",
     "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "test:e2e": "pnpm --filter @nom/web test:e2e"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

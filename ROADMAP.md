@@ -63,7 +63,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T0.3 React Router với các route rỗng của Phase 1 (mục 9 plan) + layout desktop (sidebar + vùng nội dung) + `<AppLogo />` đọc `public/brand/logo.svg` (placeholder chữ "Nôm").
 - [x] T0.4 Font self-host: Inter (hoặc Be Vietnam Pro) + Noto Sans Thai; trang `/dev/typography` hiển thị mẫu chữ Thái có dấu chồng để kiểm tra.
 - [x] T0.5 i18n: `apps/web/src/i18n/vi.ts` + helper `t()`.
-- [ ] T0.6 Test: Vitest + React Testing Library + `fake-indexeddb`; Playwright (Chromium/Firefox/WebKit, viewport 1280×800 & 1024×768) + `@axe-core/playwright`; 1 test mẫu mỗi loại.
+- [x] T0.6 Test: Vitest + React Testing Library + `fake-indexeddb`; Playwright (Chromium/Firefox/WebKit, viewport 1280×800 & 1024×768) + `@axe-core/playwright`; 1 test mẫu mỗi loại.
 - [ ] T0.7 Firebase Auth Emulator: `firebase.json`, script `pnpm emulators`; Playwright tự khởi động emulator (chưa dùng ở M0, chỉ sẵn sàng).
 - [ ] T0.8 Mock `AudioProvider` + interface (mục 7.2 plan), chưa cần implement thật.
 - [ ] T0.9 ESLint + Prettier + `pnpm typecheck`; script `pnpm content:check` (tạm thời no-op, có thật ở M3).
