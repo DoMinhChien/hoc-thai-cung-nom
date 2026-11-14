@@ -11,9 +11,9 @@ test('/dev/typography: font Thái tự host đã tải và dấu không bị c�
   expect(loadedFaces).toContain('Noto Sans Thai Variable');
 
   // Dấu chồng không bị cắt: mỗi dòng chữ Thái không tràn theo chiều dọc.
-  const clipped = await page.getByTestId('typography-th').evaluateAll((els) =>
-    els.filter((el) => el.scrollHeight > el.clientHeight + 1).length,
-  );
+  const clipped = await page
+    .getByTestId('typography-th')
+    .evaluateAll((els) => els.filter((el) => el.scrollHeight > el.clientHeight + 1).length);
   expect(clipped).toBe(0);
 
   await expect(page).toHaveScreenshot('typography.png', { fullPage: true });

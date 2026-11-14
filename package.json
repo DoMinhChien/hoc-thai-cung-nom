@@ -12,11 +12,22 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "test:e2e": "pnpm --filter @nom/web test:e2e",
-    "emulators": "firebase emulators:start --only auth --project demo-hoc-thai-nom"
+    "emulators": "firebase emulators:start --only auth --project demo-hoc-thai-nom",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "content:check": "pnpm --filter @nom/scripts content:check"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.6",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
     "firebase-tools": "^15.36.0",
-    "typescript": "~6.0.3"
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.2"
   }
 }

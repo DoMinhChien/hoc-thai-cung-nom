@@ -1,7 +1,6 @@
 import type { AudioProvider } from '@nom/core';
-import { createContext, useContext, type ReactNode } from 'react';
-
-const AudioContext = createContext<AudioProvider | null>(null);
+import type { ReactNode } from 'react';
+import { AudioContext } from './audio-context';
 
 /** Cung cấp AudioProvider cho cây component. Test truyền `MockAudioProvider`. */
 export function AudioProviderBoundary({
@@ -12,10 +11,4 @@ export function AudioProviderBoundary({
   children: ReactNode;
 }) {
   return <AudioContext value={provider}>{children}</AudioContext>;
-}
-
-export function useAudio(): AudioProvider {
-  const provider = useContext(AudioContext);
-  if (!provider) throw new Error('useAudio() phải nằm trong <AudioProviderBoundary>');
-  return provider;
 }

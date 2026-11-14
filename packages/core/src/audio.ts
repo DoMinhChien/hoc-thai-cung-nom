@@ -13,8 +13,7 @@ export type SpeakOptions = {
 };
 
 export type AudioCall =
-  | { kind: 'speak'; text: string; opts?: SpeakOptions }
-  | { kind: 'playById'; id: string };
+  { kind: 'speak'; text: string; opts?: SpeakOptions } | { kind: 'playById'; id: string };
 
 /**
  * Bản giả dùng trong test (Web Speech không ổn định trên CI).

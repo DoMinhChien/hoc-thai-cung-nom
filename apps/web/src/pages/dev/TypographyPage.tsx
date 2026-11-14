@@ -22,7 +22,9 @@ export function TypographyPage() {
       </header>
       {SIZES.map((size) => (
         <div key={size} className="flex flex-col gap-1 border-t pt-4">
-          <span className="text-sm text-muted-foreground">{t('typography.sizeLabel', { size })}</span>
+          <span className="text-sm text-muted-foreground">
+            {t('typography.sizeLabel', { size })}
+          </span>
           {THAI_SAMPLES.map((sample) => (
             <p key={sample} lang="th" data-testid="typography-th" style={{ fontSize: size }}>
               {sample}

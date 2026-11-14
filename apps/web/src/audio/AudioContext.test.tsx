@@ -2,7 +2,8 @@ import { MockAudioProvider } from '@nom/core';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { AudioProviderBoundary, useAudio } from './AudioContext';
+import { AudioProviderBoundary } from './AudioContext';
+import { useAudio } from './useAudio';
 
 function SpeakButton() {
   const audio = useAudio();
