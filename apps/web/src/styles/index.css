@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+/* Font self-host (D8): Inter cho tiếng Việt, Noto Sans Thai cho chữ Thái — đóng gói vào build. */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/noto-sans-thai';
 @import './tokens.css';
 
 /*
@@ -51,6 +54,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-vi);
+  --font-thai: var(--font-th);
 }
 
 @layer base {
@@ -59,5 +64,11 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: var(--font-vi);
+  }
+  /* Chữ Thái: ưu tiên font Thái, line-height cao để dấu trên/dưới không bị cắt (D8). */
+  :lang(th) {
+    font-family: var(--font-th);
+    line-height: var(--leading-thai);
   }
 }

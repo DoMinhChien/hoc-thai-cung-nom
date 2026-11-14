@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router';
 import { AppLayout, BareLayout } from '@/components/layout/AppLayout';
 import type { MessageKey } from '@/i18n';
+import { TypographyPage } from '@/pages/dev/TypographyPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 
@@ -18,6 +19,7 @@ export const routes: RouteObject[] = [
       page('/privacy', 'pages.privacy', 'privacy'),
       page('/terms', 'pages.terms', 'terms'),
       page('/account/delete-instructions', 'pages.deleteInstructions', 'delete-instructions'),
+      { path: '/dev/typography', element: <TypographyPage /> },
     ],
   },
   {

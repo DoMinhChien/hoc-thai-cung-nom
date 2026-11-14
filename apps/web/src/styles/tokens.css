@@ -20,4 +20,9 @@
   --color-danger: #e03131;
 
   --radius: 0.5rem;
+
+  /* Typography (D8) */
+  --font-vi: 'Inter Variable', 'Noto Sans Thai Variable', system-ui, sans-serif;
+  --font-th: 'Noto Sans Thai Variable', 'Inter Variable', system-ui, sans-serif;
+  --leading-thai: 1.75;
 }
