@@ -3,3 +3,4 @@
  * Không phụ thuộc React / DOM.
  */
 export const APP_NAME = 'Học Thai cùng Nôm';
+export * from './audio';
