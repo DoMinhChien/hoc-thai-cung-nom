@@ -19,7 +19,8 @@
 | S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
 | S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
 | S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ☐ |
-| S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ☐ |
+| S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ◐ M0.5a ✅ duyệt 2026-11-15 — còn M0.5b |
+| S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ☐ |
 
 ---
 
@@ -107,6 +108,11 @@ Google Cloud Console → APIs & Services → Credentials → API key của Fireb
 - [ ] Duyệt **mẹo nhớ & hình** cho 44 phụ âm (trước M10.5).
 
 ## S11 — Duyệt thiết kế
-- [ ] Đợt M0.5a: brief, flows, tokens, SCR-00/01/02, wireframe.
+- [x] Đợt M0.5a: brief, flows, tokens, SCR-00/01/02, wireframe — duyệt 2026-11-15.
 - [ ] Đợt M0.5b: các màn còn lại (theo từng milestone).
 Ghi ngày duyệt vào `docs/design/README.md`.
+
+## S12 — Email liên hệ (trước M1)
+Một email **cá nhân** (không dùng email công ty) hiển thị trên `/privacy`, `/terms`, `/account/delete-instructions`, đồng thời khai báo ở Google OAuth consent screen (S5) và Facebook App (S6).
+
+**Đầu ra cho agent:** email: `__________`
