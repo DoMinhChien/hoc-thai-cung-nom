@@ -49,6 +49,20 @@ export default tseslint.config(
     },
   },
   {
+    // AGENTS.md mục 7: logic thuần, không React (DOM đã bị chặn bằng tsconfig lib).
+    files: ['packages/core/src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['react', 'react-*', 'react/*'], message: 'packages/core không dùng React.' },
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ['apps/web/src/auth/**/*.{ts,tsx}'],
     rules: { 'no-restricted-imports': 'off' },
   },

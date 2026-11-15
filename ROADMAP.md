@@ -103,7 +103,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Requirement:** plan mục **5.5** (schema), **5.6** (validator), **6** (Tone Engine), **G-06** phần chuẩn hoá Unicode. Logic thuần trong `packages/core`, không phụ thuộc UI.
 
 **Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
-- [ ] T2.0 Hạ tầng `packages/core`: thêm `zod` (v4), `@vitest/coverage-v8` với ngưỡng ≥ 90% cho `tone/` + `thai/normalize`; ESLint chặn import `react`/`react-dom` trong `packages/core` (lib không có DOM sẵn từ M0).
+- [x] T2.0 Hạ tầng `packages/core`: thêm `zod` (v4), `@vitest/coverage-v8` với ngưỡng ≥ 90% cho `tone/` + `thai/normalize`; ESLint chặn import `react`/`react-dom` trong `packages/core` (lib không có DOM sẵn từ M0).
 - [ ] T2.1 Zod schema (`packages/core/src/schema/`), theo plan 5.5:
   - enum dùng chung: `Tone` (mid/low/falling/high/rising), `ToneMark` (ek/tho/tri/chattawa), `ConsonantClass` (mid/high/low), `id` ascii kebab, `image` (`noto:<hex>` hoặc `img/…`), `mnemonic_vi`, `draft` (mặc định `false`).
   - `Consonant`, `Vowel` (dạng có placeholder `–`, ngắn/dài), `ToneMarkEntry`, `ToneEntry`, `SyllableAnalysis` (tone-drills), `WordRow` (CSV: tách `|` / `;`, `syllables` và `tones` cùng độ dài), `Deck`, `Reading` (level 1–5), `MinimalPair` (2–4 từ, thanh khác nhau).
