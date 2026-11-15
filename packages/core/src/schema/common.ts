@@ -35,11 +35,15 @@ export const ImageSchema = z
 /** Chuỗi tiếng Việt/Thái bắt buộc, không rỗng. */
 export const TextSchema = z.string().trim().min(1, 'không được để trống');
 
-/** Phụ âm Thái đơn (U+0E01–U+0E2E). */
+/** Phụ âm Thái đơn: ก (U+0E01) … ฮ (U+0E2E). */
 export const ThaiConsonantCharSchema = z.string().regex(/^[ก-ฮ]$/, 'phải là đúng 1 phụ âm Thái');
 
 /** Chữ Thái có thể kèm `|` (ranh giới từ/âm tiết do owner đặt). */
-export const ThaiTextSchema = z.string().trim().min(1).regex(/[฀-๿]/, 'phải chứa chữ Thái');
+export const ThaiTextSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .regex(/\p{Script=Thai}/u, 'phải chứa chữ Thái');
 
 /** Trường dùng chung cho mọi mục nội dung (V-07, AGENTS.md mục 4). */
 export const contentMeta = {
