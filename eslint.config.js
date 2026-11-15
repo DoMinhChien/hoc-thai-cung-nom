@@ -24,7 +24,10 @@ export default tseslint.config(
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', ignoreRestSiblings: true },
+      ],
     },
   },
   {
@@ -45,6 +48,20 @@ export default tseslint.config(
       'no-restricted-globals': [
         'error',
         { name: 'localStorage', message: 'Dữ liệu người dùng chỉ qua repository (Dexie).' },
+      ],
+    },
+  },
+  {
+    // AGENTS.md mục 7: logic thuần, không React (DOM đã bị chặn bằng tsconfig lib).
+    files: ['packages/core/src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['react', 'react-*', 'react/*'], message: 'packages/core không dùng React.' },
+          ],
+        },
       ],
     },
   },

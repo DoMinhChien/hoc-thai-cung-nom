@@ -3,3 +3,5 @@ dist
 playwright-report
 test-results
 *.md
+docs
+packages/core/json-schema

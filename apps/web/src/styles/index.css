@@ -10,26 +10,29 @@
  * Component chỉ dùng các utility này (bg-background, text-primary…), không dùng màu thô.
  */
 :root {
-  --background: var(--color-bg);
-  --foreground: var(--color-fg);
-  --card: var(--color-bg);
-  --card-foreground: var(--color-fg);
-  --popover: var(--color-bg);
-  --popover-foreground: var(--color-fg);
-  --primary: var(--color-accent);
-  --primary-foreground: var(--color-accent-fg);
-  --secondary: var(--color-bg-subtle);
-  --secondary-foreground: var(--color-fg);
-  --muted: var(--color-bg-subtle);
-  --muted-foreground: var(--color-fg-muted);
-  --accent: var(--color-bg-subtle);
-  --accent-foreground: var(--color-fg);
-  --destructive: var(--color-danger);
-  --border: var(--color-border);
-  --input: var(--color-border);
-  --ring: var(--color-accent);
+  --background: var(--nom-bg);
+  --foreground: var(--nom-fg);
+  --card: var(--nom-surface);
+  --card-foreground: var(--nom-fg);
+  --popover: var(--nom-surface);
+  --popover-foreground: var(--nom-fg);
+  --primary: var(--nom-accent);
+  --primary-foreground: var(--nom-accent-fg);
+  --secondary: var(--nom-bg-subtle);
+  --secondary-foreground: var(--nom-fg);
+  --muted: var(--nom-bg-subtle);
+  --muted-foreground: var(--nom-fg-muted);
+  /* shadcn "accent" = nền hover/chọn nhẹ, KHÔNG phải màu nhấn chàm (dùng primary). */
+  --accent: var(--nom-accent-subtle);
+  --accent-foreground: var(--nom-accent);
+  --destructive: var(--nom-danger);
+  --border: var(--nom-border);
+  --input: var(--nom-border-strong);
+  --ring: var(--nom-accent);
+  --radius: var(--nom-radius-md);
 }
 
+/* Utility Tailwind sinh từ token, vd. `bg-tone-low`, `bg-mastery-known`, `text-th-lg`. */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -38,24 +41,55 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--nom-accent-hover);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--nom-fg-subtle);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-success: var(--color-success);
+  --color-destructive-subtle: var(--nom-danger-subtle);
+  --color-positive: var(--nom-success);
+  --color-positive-subtle: var(--nom-success-subtle);
+  --color-caution: var(--nom-warning);
+  --color-caution-subtle: var(--nom-warning-subtle);
   --color-border: var(--border);
+  --color-border-strong: var(--nom-border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-vi);
-  --font-thai: var(--font-th);
+
+  --color-mastery-none: var(--nom-mastery-none);
+  --color-mastery-learning: var(--nom-mastery-learning);
+  --color-mastery-known: var(--nom-mastery-known);
+  --color-mastery-mastered: var(--nom-mastery-mastered);
+
+  --color-tone-mid: var(--nom-tone-mid);
+  --color-tone-mid-subtle: var(--nom-tone-mid-subtle);
+  --color-tone-low: var(--nom-tone-low);
+  --color-tone-low-subtle: var(--nom-tone-low-subtle);
+  --color-tone-falling: var(--nom-tone-falling);
+  --color-tone-falling-subtle: var(--nom-tone-falling-subtle);
+  --color-tone-high: var(--nom-tone-high);
+  --color-tone-high-subtle: var(--nom-tone-high-subtle);
+  --color-tone-rising: var(--nom-tone-rising);
+  --color-tone-rising-subtle: var(--nom-tone-rising-subtle);
+
+  --radius-sm: var(--nom-radius-sm);
+  --radius-md: var(--nom-radius-md);
+  --radius-lg: var(--nom-radius-lg);
+  --radius-xl: var(--nom-radius-lg);
+  --shadow-sm: var(--nom-shadow-sm);
+  --shadow-md: var(--nom-shadow-md);
+
+  --font-sans: var(--nom-font-vi);
+  --font-thai: var(--nom-font-th);
+  --text-th-sm: var(--nom-text-th-sm);
+  --text-th-md: var(--nom-text-th-md);
+  --text-th-lg: var(--nom-text-th-lg);
+  --text-th-xl: var(--nom-text-th-xl);
 }
 
 @layer base {
@@ -64,11 +98,12 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-vi);
+    font-family: var(--nom-font-vi);
+    line-height: var(--nom-leading-vi);
   }
   /* Chữ Thái: ưu tiên font Thái, line-height cao để dấu trên/dưới không bị cắt (D8). */
   :lang(th) {
-    font-family: var(--font-th);
-    line-height: var(--leading-thai);
+    font-family: var(--nom-font-th);
+    line-height: var(--nom-leading-th);
   }
 }

@@ -10,3 +10,4 @@ blob-report/
 firebase-debug.log
 firebase-debug.*.log
 .firebase/
+coverage/

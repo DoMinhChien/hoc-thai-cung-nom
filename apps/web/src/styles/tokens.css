@@ -1,28 +1,90 @@
 /*
- * Design tokens TẠM (M0). Sẽ thay bằng giá trị từ docs/design/tokens.json (M0.5a, D0.3).
+ * Design tokens — nguồn: docs/design/tokens.json (M0.5a · D0.3, owner duyệt 2026-11-15).
  * Đặt tên theo NGHĨA (D9) để thêm dark mode sau không phải sửa component.
  * Quy tắc: không dùng màu nào ngoài file này (AGENTS.md mục 7).
+ * Prefix `--nom-` tách khỏi namespace `--color-*`/`--text-*` của Tailwind.
+ * Sửa token: sửa tokens.json trước → cập nhật file này (test tokens.test.ts kiểm tra khớp).
  */
 :root {
   /* Nền & chữ — trung tính (D1) */
-  --color-bg: #ffffff;
-  --color-bg-subtle: #f7f7f8;
-  --color-fg: #1f2328;
-  --color-fg-muted: #656d76;
-  --color-border: #e4e4e7;
+  --nom-bg: #ffffff;
+  --nom-bg-subtle: #f7f7f8;
+  --nom-surface: #ffffff;
+  --nom-border: #e4e4e7;
+  --nom-border-strong: #c9cbd1;
+  --nom-fg: #1f2328;
+  --nom-fg-muted: #656d76;
+  --nom-fg-subtle: #8b929a;
 
-  /* 1 màu nhấn — PLACEHOLDER, chờ tokens.json */
-  --color-accent: #3b5bdb;
-  --color-accent-fg: #ffffff;
+  /* Màu nhấn duy nhất — chàm */
+  --nom-accent: #3f4aa8;
+  --nom-accent-hover: #343e8f;
+  --nom-accent-fg: #ffffff;
+  --nom-accent-subtle: #eef0fa;
 
-  /* Đúng / sai (D2) — nhạt, luôn kèm icon + chữ */
-  --color-success: #2f9e44;
-  --color-danger: #e03131;
+  /* Trạng thái (D2) — luôn kèm icon + chữ */
+  --nom-success: #1a7f37;
+  --nom-success-subtle: #e6f4ea;
+  --nom-danger: #cf222e;
+  --nom-danger-subtle: #fdecec;
+  --nom-warning: #9a6700;
+  --nom-warning-subtle: #fff4d6;
 
-  --radius: 0.5rem;
+  /* Mức thuộc (P-xx) — sắc độ của accent */
+  --nom-mastery-none: #ffffff;
+  --nom-mastery-none-border: #e4e4e7;
+  --nom-mastery-learning: #e3e6f6;
+  --nom-mastery-known: #a3aadc;
+  --nom-mastery-mastered: #3f4aa8;
+  --nom-mastery-mastered-fg: #ffffff;
+
+  /* 5 thanh điệu (D2, D10 — luôn kèm mini contour + tên) */
+  --nom-tone-mid: #6b7280;
+  --nom-tone-mid-subtle: #f1f2f4;
+  --nom-tone-low: #0e7490;
+  --nom-tone-low-subtle: #e3f3f7;
+  --nom-tone-falling: #b42318;
+  --nom-tone-falling-subtle: #fbe9e7;
+  --nom-tone-high: #2f7d32;
+  --nom-tone-high-subtle: #e7f3e8;
+  --nom-tone-rising: #b26a00;
+  --nom-tone-rising-subtle: #fbf0de;
+
+  /* Nút đăng nhập theo guideline của hãng (ngoại lệ duy nhất ngoài bảng màu) */
+  --nom-google-bg: #ffffff;
+  --nom-google-border: #747775;
+  --nom-google-fg: #1f1f1f;
+  --nom-facebook-bg: #1877f2;
+  --nom-facebook-fg: #ffffff;
 
   /* Typography (D8) */
-  --font-vi: 'Inter Variable', 'Noto Sans Thai Variable', system-ui, sans-serif;
-  --font-th: 'Noto Sans Thai Variable', 'Inter Variable', system-ui, sans-serif;
-  --leading-thai: 1.75;
+  --nom-font-vi: 'Inter Variable', 'Noto Sans Thai Variable', system-ui, sans-serif;
+  --nom-font-th: 'Noto Sans Thai Variable', 'Inter Variable', system-ui, sans-serif;
+  --nom-text-th-sm: 20px;
+  --nom-text-th-md: 32px;
+  --nom-text-th-lg: 64px;
+  --nom-text-th-xl: 96px;
+  --nom-leading-vi: 1.5;
+  --nom-leading-th: 1.75;
+  --nom-leading-heading: 1.25;
+
+  /* Radius */
+  --nom-radius-sm: 4px;
+  --nom-radius-md: 8px;
+  --nom-radius-lg: 12px;
+
+  /* Shadow */
+  --nom-shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.06);
+  --nom-shadow-md: 0 4px 16px rgba(31, 35, 40, 0.1);
+
+  /* Layout */
+  --nom-layout-sidebar-width: 240px;
+  --nom-layout-content-max: 1040px;
+  --nom-layout-bare-max: 720px;
+  --nom-layout-reading-max: 680px;
+
+  /* Motion */
+  --nom-motion-fast: 120ms;
+  --nom-motion-base: 200ms;
+  --nom-motion-easing: cubic-bezier(0.2, 0, 0, 1);
 }

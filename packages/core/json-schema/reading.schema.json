@@ -1,0 +1,66 @@
+{
+  "title": "reading",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "sentences": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "th": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[\\u0E00-\\u0E7F]"
+          },
+          "vi": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "th",
+          "vi"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "image": {
+      "type": "string",
+      "pattern": "^(noto:[0-9a-f]{4,6}(-[0-9a-f]{4,6})*|img\\/[a-z0-9][a-z0-9/_-]*\\.(svg|png|webp|jpg))$"
+    },
+    "mnemonic_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "title_vi",
+    "level",
+    "sentences"
+  ],
+  "additionalProperties": false
+}

@@ -7,7 +7,11 @@
 
 ## Milestone đang mở
 
-> **🟢 M0 — Khung dự án** (13/13, chờ owner duyệt & merge PR #1) *(và song song: M0.5a — Thiết kế cho đăng nhập, chưa bắt đầu)*
+> **🔵 M3 — Content pipeline TS + content mẫu** (task bên dưới — owner xem lại trong PR #3).
+> **🟢 M2 — Core** xong — PR #3 (xếp chồng trên PR #2 → PR #1).
+> **🟠 M1 — Đăng nhập** sẵn sàng về thiết kế (M0.5a 🟢) — **chỉ còn chờ SETUP S4–S6** + email liên hệ (S12).
+> TD.1, TD.2 xong — PR #2.
+> M0 🟢 — chờ owner merge PR #1.
 
 ---
 
@@ -30,10 +34,10 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M | Tên | Trạng thái | Cần trước (spec / setup) |
 |---|---|---|---|
 | M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
-| M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🔵 | Owner duyệt (S11) |
-| M1 | Đăng nhập Google/Facebook | ⚪ | M0, M0.5a, S4–S6 |
-| M2 | Core: schema, normalize, Tone Engine | ⚪ | M0 |
-| M3 | Content pipeline TS + content mẫu | ⚪ | M2; owner duyệt content mẫu (S10) |
+| M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🟢 | ✅ Owner duyệt 2026-11-15 |
+| M1 | Đăng nhập Google/Facebook | 🟠 | M0 ✅, M0.5a ✅ — **chờ S4, S5, S6, S12** |
+| M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
+| M3 | Content pipeline TS + content mẫu | 🔵 | M2; owner duyệt content mẫu (S10) |
 | M4 | PDF pipeline Python | ⚪ | M3, S9, PDF mẫu (S10) |
 | M0.5b | Design các màn còn lại | ⚪ | Làm dần trước M5–M11 |
 | M5 | Data layer + SRS + progress components | ⚪ | M2 |
@@ -78,22 +82,62 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - PR tạo preview URL trên Azure SWA; merge `main` deploy production.
 - Trang `/dev/typography` hiển thị chữ Thái không bị cắt dấu ở 3 trình duyệt.
 
-### M0.5a — Thiết kế tối thiểu cho đăng nhập 🔵
+### M0.5a — Thiết kế tối thiểu cho đăng nhập 🟢
 
 **Thực hiện:** Claude (design) + owner duyệt. Theo mục 7.6.2 plan.
 
-- [ ] D0.1 `docs/design/brief.md` (đối tượng, định hướng tối giản D1–D10, tham khảo).
-- [ ] D0.2 `docs/design/flows.md`: sitemap Phase 1 + luồng đăng nhập / Guest / chuyển tiến độ / xóa tài khoản (Mermaid).
-- [ ] D0.3 `tokens.json` cơ bản: màu trung tính, accent, 5 màu thanh, 3 sắc độ mức thuộc, font, spacing, radius.
-- [ ] D0.4 Screen spec: `SCR-00-layout.md` (khung chung, header, sidebar), `SCR-01-login.md`, `SCR-02-account.md` (kèm `/privacy`, `/terms`, `/account/delete-instructions`).
-- [ ] D0.5 Wireframe trắng đen 3 màn trên (Figma) → xuất PNG vào `docs/design/screens/`.
-- [ ] D0.6 Owner duyệt → ghi ngày duyệt vào `docs/design/README.md`.
+- [x] D0.1 `docs/design/brief.md` (đối tượng, định hướng tối giản D1–D10, tham khảo).
+- [x] D0.2 `docs/design/flows.md`: sitemap Phase 1 + luồng đăng nhập / Guest / chuyển tiến độ / xóa tài khoản (Mermaid).
+- [x] D0.3 `tokens.json` cơ bản: màu trung tính, accent, 5 màu thanh, 3 sắc độ mức thuộc, font, spacing, radius.
+- [x] D0.4 Screen spec: `SCR-00-layout.md` (khung chung, header, sidebar), `SCR-01-login.md`, `SCR-02-account.md` (kèm `/privacy`, `/terms`, `/account/delete-instructions`).
+- [x] D0.5 Wireframe trắng đen 3 màn trên (Figma) → xuất PNG vào `docs/design/screens/`.
+- [x] D0.6 Owner duyệt → ghi ngày duyệt vào `docs/design/README.md`.
 
 ---
 
+### TD — Dọn dẹp sau M0.5a 🟢
+- [x] TD.1 Thư mục `docs/design/` (brief, flows, tokens.json, 3 spec, 7 PNG) đang **chưa commit** trên working tree. Tạo nhánh `m0.5a-design` (từ `main` nếu PR #1 đã merge, nếu chưa thì từ `m0-scaffold`), commit `docs(design): M0.5a brief, flows, tokens, SCR-00/01/02 + wireframes`, push, mở PR. Cập nhật `ROADMAP.md` cùng PR.
+- [x] TD.2 Thay token tạm `apps/web/src/styles/tokens.css` bằng giá trị từ `docs/design/tokens.json` (accent chàm `#3F4AA8`, màu thanh, mức thuộc…) — giữ tên biến theo nghĩa; cập nhật visual baseline nếu đổi. *(Có thể gộp vào đầu M1.)*
+
+### M2 — Core: schema, normalize, Tone Engine 🟢
+
+**Requirement:** plan mục **5.5** (schema), **5.6** (validator), **6** (Tone Engine), **G-06** phần chuẩn hoá Unicode. Logic thuần trong `packages/core`, không phụ thuộc UI.
+
+**Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
+- [x] T2.0 Hạ tầng `packages/core`: thêm `zod` (v4), `@vitest/coverage-v8` với ngưỡng ≥ 90% cho `tone/` + `thai/normalize`; ESLint chặn import `react`/`react-dom` trong `packages/core` (lib không có DOM sẵn từ M0).
+- [x] T2.1 Zod schema (`packages/core/src/schema/`), theo plan 5.5:
+  - enum dùng chung: `Tone` (mid/low/falling/high/rising), `ToneMark` (ek/tho/tri/chattawa), `ConsonantClass` (mid/high/low), `id` ascii kebab, `image` (`noto:<hex>` hoặc `img/…`), `mnemonic_vi`, `draft` (mặc định `false`).
+  - `Consonant`, `Vowel` (dạng có placeholder `–`, ngắn/dài), `ToneMarkEntry`, `ToneEntry`, `SyllableAnalysis` (tone-drills), `WordRow` (CSV: tách `|` / `;`, `syllables` và `tones` cùng độ dài), `Deck`, `Reading` (level 1–5), `MinimalPair` (2–4 từ, thanh khác nhau).
+  - Test: mẫu hợp lệ trong plan 5.5 parse được; từng lỗi (id sai, thiếu trường, độ dài lệch, thanh/level ngoài miền) bị bắt. Dữ liệu test chỉ là mẫu tối thiểu từ plan.
+- [x] T2.2 JSON Schema từ Zod (`z.toJSONSchema`, dạng input) → `packages/core/json-schema/*.schema.json` qua `pnpm --filter @nom/core schema:export`; test kiểm tra file đã commit khớp schema hiện tại (CI bắt quên export).
+- [x] T2.3 `normalizeThai()` (`packages/core/src/thai/normalize.ts`, phần chuẩn hóa của G-06): NFC; bỏ ký tự vô hình (ZWSP, ZWJ, ZWNJ, BOM); `ํ` + (dấu thanh) + `า` → (dấu thanh) + `ำ`; sắp xếp lại cụm dấu sau mỗi phụ âm: nguyên âm trên/dưới → dấu thanh → `์`. Idempotent. Chấm điểm gõ (diff) **để M8**.
+- [x] T2.4 Tone Engine (`packages/core/src/tone/`): `consonantClass(char)` (44 phụ âm, 6.1); `computeTone(syllable)` → `{ ok: true, tone, steps }` | `{ ok: false, error, steps }`; `steps` = 4 bước A-21 (lớp — có xét ห นำ/อ นำ, sống/chết — kèm lý do, dấu thanh, kết quả) để Tone Trainer (A-22) so từng bước. Lỗi: ô "—" của bảng 6.3, ห/อ นำ không hợp lệ, phụ âm không có.
+- [x] T2.5 Unit test Tone Engine: mỗi ô bảng 6.3 ≥ 2 case (gồm 4 ô "—" → lỗi), ห นำ, อ นำ (4 từ), nguyên âm ngắn + âm cuối vang (วัน), âm cuối tắc với nguyên âm dài; đủ 44 phụ âm đúng lớp. Coverage ≥ 90%.
+
+**Tiêu chí nghiệm thu**
+- `pnpm test` pass, coverage `packages/core` ≥ 90% cho tone engine & normalize.
+- Không có import React / DOM trong `packages/core`.
+
+### M3 — Content pipeline TS + content mẫu 🔵
+
+**Requirement:** plan **5.4** (thư mục content), **5.5** (schema — đã có ở M2), **5.6** (validator), bước 5 của **5.3** (`content:check --input staging/...`). Học theo cách tổ chức loader/export/validate của **LibreLingo** (7.5). **Cần owner:** duyệt content mẫu `draft: true` (S10).
+
+**Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
+- [ ] T3.1 Loader `scripts/content/load.ts`: đọc YAML (`yaml`) + CSV (`csv-parse`) theo cấu trúc 5.4, chuẩn hóa chữ Thái bằng `normalizeThai`, parse bằng schema M2; lỗi kèm **file + dòng/vị trí + trường**.
+- [ ] T3.2 `pnpm content:check` thật (5.6): schema; id duy nhất (theo loại); `deck` tồn tại; `syllables`/`tones` cùng độ dài; `computeTone()` khớp `expected_tone` (tone-drills); lớp phụ âm trong consonants.yaml khớp `consonantClass()`; **cảnh báo**: ký tự ngoài U+0E00–U+0E7F trong trường Thái, từ trong bài đọc chưa có trong lexicon (tách bằng `|` / `Intl.Segmenter`), mục `draft: true`. Lỗi → exit 1; cảnh báo → exit 0.
+- [ ] T3.3 `--input <file|thư mục>` để validate file staging của pipeline Python (M4); output JSON tùy chọn (`--json`) cho Python đọc.
+- [ ] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
+- [ ] T3.5 Content mẫu **tối thiểu, `draft: true`** (AGENTS mục 4): vài phụ âm (đủ 3 lớp), vài nguyên âm, 4 dấu thanh, 5 thanh, ~5 tone-drills, 1 deck ~5 từ, 1 bài đọc ngắn, 1 cặp tối thiểu — **chỉ để chạy pipeline; owner thay/duyệt (S10)**.
+- [ ] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
+
+**Tiêu chí nghiệm thu**
+- `pnpm content:check` pass trên content mẫu; mỗi loại lỗi trong 5.6 có fixture làm fail với thông báo chỉ rõ file/dòng/trường.
+- `pnpm content:build` sinh JSON ổn định (chạy 2 lần không đổi); web build dùng được.
+- Content mẫu đều `draft: true`, owner đã xem (S10).
+
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
-### M1 — Đăng nhập Google/Facebook ⚪
+### M1 — Đăng nhập Google/Facebook 🟠 (chờ S4–S6, S12)
 
 **Cần trước:** M0 🟢, M0.5a 🟢, SETUP **S4, S5, S6** (S6 phần URL pháp lý có thể bổ sung sau khi deploy trang). Requirement: **L-01..L-10**, mục 4.0 plan.
 
@@ -126,6 +170,10 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-15 | TD, M2 | TD.1 (PR #2 design), TD.2 (tokens.css theo tokens.json + test đồng bộ); M2 T2.0–T2.5: Zod schema + JSON Schema, normalizeThai, Tone Engine (161 test, coverage 100%) → M2 🟢; chi tiết hóa M3 → 🔵 | — | M1 chờ S4–S6, S12; M3 cần owner duyệt content mẫu (S10) | `m0.5a-design` PR #2, `m2-core` PR #3 |
+| 2026-11-15 | M0.5a | **Owner duyệt** flows, tokens, SCR-00/01/02, wireframe → M0.5a 🟢. Mở M2 song song; M1 🟠 chờ S4–S6, S12 | TD.1 commit `docs/design/` | — | `m0.5a-design` (chưa tạo) |
+| 2026-11-15 | M0.5a | D0.5 wireframe Figma (SCR-00/01/02 + 4 dialog + trang pháp lý) → PNG trong `docs/design/screens/`; https://www.figma.com/design/iYEX3wxXphmrjDCxtiSuPD | — | D0.6 owner duyệt; email liên hệ | chưa commit (đề xuất `m0.5a-design`) |
+| 2026-11-15 | M0.5a | D0.1 brief (chốt accent chàm + màn Chào mừng), D0.2 flows, D0.3 tokens.json, D0.4 SCR-00/01/02 (draft) — làm ở Claude Desktop | D0.5 wireframe Figma | Owner duyệt flows/tokens/spec; email liên hệ cho trang pháp lý | chưa commit (đề xuất nhánh `m0.5a-design`) |
 | 2026-11-15 | M0 | Owner xong S1.2/S2/S7 → push, PR #1, CI xanh, preview chạy, commit baseline Linux; T0.10 ✅ | — | S1.3 (bảo vệ `main`) làm sau merge | `m0-scaffold` / https://github.com/DoMinhChien/hoc-thai-cung-nom/pull/1 |
 | 2026-11-15 | M0 | T0.0–T0.9, T0.11, T0.12 (lint/typecheck/test/content:check/E2E 138 pass trên Windows) | T0.10 CI viết xong, chưa chạy | Push GitHub (S1.2), S2, S7; pnpm chưa cài toàn cục (S0) | `m0-scaffold` (local) / chưa mở PR |
 | 2026-11-14 | — | Owner tạo GitHub repo https://github.com/DoMinhChien/hoc-thai-cung-nom (S1) | — | — | — |
