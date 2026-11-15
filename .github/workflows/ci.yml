@@ -6,9 +6,9 @@ name: CI / Deploy
 on:
   push:
     branches: [main]
+  # Mọi PR (kể cả PR xếp chồng nhắm vào nhánh milestone khác) đều chạy CI + preview.
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [main]
 
 concurrency:
   group: ci-${{ github.ref }}
