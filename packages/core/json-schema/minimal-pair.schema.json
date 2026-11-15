@@ -1,0 +1,69 @@
+{
+  "title": "minimal-pair",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "words": {
+      "minItems": 2,
+      "maxItems": 4,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "thai": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "[\\u0E00-\\u0E7F]"
+          },
+          "tone": {
+            "type": "string",
+            "enum": [
+              "mid",
+              "low",
+              "falling",
+              "high",
+              "rising"
+            ]
+          },
+          "phonetic": {
+            "type": "string"
+          },
+          "meaning_vi": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "thai",
+          "tone"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "image": {
+      "type": "string",
+      "pattern": "^(noto:[0-9a-f]{4,6}(-[0-9a-f]{4,6})*|img\\/[a-z0-9][a-z0-9/_-]*\\.(svg|png|webp|jpg))$"
+    },
+    "mnemonic_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "words"
+  ],
+  "additionalProperties": false
+}
