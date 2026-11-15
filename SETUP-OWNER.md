@@ -9,13 +9,13 @@
 | # | Việc | Cần trước | Thời gian ước tính | Trạng thái |
 |---|---|---|---|---|
 | S0 | Cài công cụ trên máy | M0 | 20 phút | ☐ |
-| S1 | Tạo GitHub repo | M0 (deploy) | 5 phút | ◐ Đã tạo repo — còn: đẩy code, bảo vệ `main` |
-| S2 | Azure: resource group + Static Web App | M0 (deploy) | 15 phút | ☐ |
+| S1 | Tạo GitHub repo | M0 (deploy) | 5 phút | ◐ Đã tạo repo + đẩy code — còn: bảo vệ `main` |
+| S2 | Azure: resource group + Static Web App | M0 (deploy) | 15 phút | ✅ |
 | S3 | Azure Budget alert | M0 | 5 phút | ☐ |
 | S4 | Firebase project + Authentication | M1 | 15 phút | ☐ |
 | S5 | Google sign-in + OAuth consent screen | M1 (bật), M12 (publish) | 15 phút | ☐ |
 | S6 | Facebook App + Facebook Login | M1 (bật), M12 (Live) | 30 phút + thời gian Meta duyệt | ☐ |
-| S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ☐ |
+| S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ◐ Secret SWA ✅ — còn Variables Firebase (sau S4) |
 | S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
 | S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
 | S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ☐ |
@@ -44,15 +44,15 @@
 **Đầu ra cho agent:** URL repo: https://github.com/DoMinhChien/hoc-thai-cung-nom
 
 - [x] 1. Tạo repo
-- [ ] 2. Đẩy nội dung thư mục lên (agent làm được ở M0 nếu máy owner đã `gh auth login` / có quyền push)
+- [x] 2. Đẩy nội dung thư mục lên (agent làm được ở M0 nếu máy owner đã `gh auth login` / có quyền push)
 - [ ] 3. Bảo vệ `main` (làm sau khi CI ở M0 chạy được, để chọn đúng check bắt buộc)
 
 ## S2 — Azure Static Web Apps
 1. Tạo Resource Group, vd. `rg-hoc-thai-nom` (region gần: Southeast Asia / East Asia).
-2. Tạo **Static Web App**, plan **Free**, nguồn: GitHub repo ở S1, nhánh `main`, build preset **Vite** hoặc Custom (app location `apps/web`, output `dist`).
-3. Azure tự tạo workflow GitHub Actions + secret `AZURE_STATIC_WEB_APPS_API_TOKEN_*` trong repo.
+2. Tạo **Static Web App**, plan **Free**, **Deployment source: Other** (repo đã có workflow riêng `.github/workflows/ci.yml`; chọn GitHub sẽ sinh thêm workflow trùng).
+3. Overview → **Manage deployment token** → copy → dán vào GitHub secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (S7).
 
-**Đầu ra cho agent:** domain production `https://<tên>.azurestaticapps.net`: `__________`
+**Đầu ra cho agent:** domain production `https://<tên>.azurestaticapps.net`: **https://ashy-tree-0524a9b03.6.azurestaticapps.net**
 
 ## S3 — Azure Budget alert
 Cost Management → Budgets → tạo budget cho subscription/resource group: ngưỡng cảnh báo **$5** và **$20**/tháng, gửi email cho owner.
@@ -91,7 +91,7 @@ VITE_FIREBASE_APP_ID=
 ## S7 — GitHub Variables / Secrets
 Repo → Settings → Secrets and variables → Actions:
 - **Variables:** `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID` (từ S4).
-- **Secrets:** `AZURE_STATIC_WEB_APPS_API_TOKEN_*` (Azure tự tạo ở S2).
+- **Secrets:** `AZURE_STATIC_WEB_APPS_API_TOKEN` (deployment token từ S2, đúng tên này) ✅
 
 ## S8 — Giới hạn Firebase API key (M12)
 Google Cloud Console → APIs & Services → Credentials → API key của Firebase → **Application restrictions: HTTP referrers**: domain SWA + `localhost`.

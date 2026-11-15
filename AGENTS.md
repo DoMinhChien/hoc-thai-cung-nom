@@ -106,20 +106,24 @@ CI:        <xanh/đỏ/chưa chạy>
 - [ ] Deploy preview chạy được.
 - [ ] `ROADMAP.md` cập nhật trạng thái + nhật ký.
 
-## 10. Lệnh (sẽ được tạo ở M0)
+## 10. Lệnh
 
 | Lệnh | Tác dụng |
 |---|---|
 | `pnpm install` | Cài dependency |
-| `pnpm dev` | Chạy web app local |
-| `pnpm emulators` | Chạy Firebase Auth Emulator |
-| `pnpm lint` / `pnpm typecheck` | Kiểm tra code |
-| `pnpm test` | Unit + component test (Vitest) |
-| `pnpm test:e2e` | E2E (Playwright, tự bật emulator) |
-| `pnpm content:check` | Validate nội dung trong `content/` |
-| `pnpm build` | Build production |
+| `pnpm dev` | Chạy web app local (http://localhost:5173) |
+| `pnpm emulators` | Chạy Firebase Auth Emulator (127.0.0.1:9099, project `demo-hoc-thai-nom`, cần Java) |
+| `pnpm lint` | ESLint + `prettier --check` |
+| `pnpm format` | Prettier sửa định dạng |
+| `pnpm typecheck` | `tsc --noEmit` mọi package |
+| `pnpm test` | Unit + component test (Vitest, mọi package) |
+| `pnpm test:e2e` | E2E Playwright (3 trình duyệt × 2 viewport) + axe; tự build, tự bật preview + emulator |
+| `pnpm content:check` | Validate nội dung trong `content/` (M0: no-op, thật ở M3) |
+| `pnpm build` | Build production `apps/web/dist` |
 
-> Khi M0 xong, agent cập nhật bảng này cho khớp thực tế.
+- Lần đầu chạy E2E: `pnpm --filter @nom/web exec playwright install`.
+- Screenshot baseline theo hệ điều hành (`*-win32.png`, `*-linux.png`). CI ghi baseline Linux còn thiếu và upload artifact `screenshot-baselines-linux` → owner xem rồi commit.
+- Cập nhật baseline sau khi đổi UI có chủ đích: `pnpm test:e2e --update-snapshots`.
 
 ## 11. Báo cáo cuối mỗi phiên làm việc
 

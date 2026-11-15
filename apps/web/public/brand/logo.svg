@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" role="img" aria-label="Nôm">
+  <!-- PLACEHOLDER: thay logo thật = chỉ thay file trong public/brand/ -->
+  <circle cx="24" cy="24" r="22" fill="#e4e4e7"/>
+  <text x="24" y="29" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1f2328">Nôm</text>
+  <text x="56" y="30" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1f2328">Học Thai</text>
+</svg>

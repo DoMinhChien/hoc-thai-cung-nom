@@ -1,0 +1,17 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/assets/*",
+      "/brand/*",
+      "*.{css,js,mjs,map,png,jpg,svg,ico,webp,woff2,json,mp3,txt}"
+    ]
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
+  "mimeTypes": {
+    "woff2": "font/woff2"
+  }
+}

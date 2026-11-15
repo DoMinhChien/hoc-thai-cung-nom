@@ -7,7 +7,7 @@
 
 ## Milestone đang mở
 
-> **🔵 M0 — Khung dự án** *(và song song: M0.5a — Thiết kế cho đăng nhập)*
+> **🟢 M0 — Khung dự án** (13/13, chờ owner duyệt & merge PR #1) *(và song song: M0.5a — Thiết kế cho đăng nhập, chưa bắt đầu)*
 
 ---
 
@@ -29,7 +29,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 
 | M | Tên | Trạng thái | Cần trước (spec / setup) |
 |---|---|---|---|
-| M0 | Khung dự án | 🔵 | S0 (máy owner); S1 ✅ repo đã tạo; S2 (chỉ cho bước deploy T0.10) |
+| M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
 | M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🔵 | Owner duyệt (S11) |
 | M1 | Đăng nhập Google/Facebook | ⚪ | M0, M0.5a, S4–S6 |
 | M2 | Core: schema, normalize, Tone Engine | ⚪ | M0 |
@@ -52,24 +52,25 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 ## 3. Chi tiết milestone đang mở
 
-### M0 — Khung dự án 🔵
+### M0 — Khung dự án 🟢
 
 **Mục tiêu:** repo chạy được, có đủ khung test & CI/CD, deploy được trang trống lên Azure SWA.
 
 **Task**
-- [ ] T0.0 Git: nếu thư mục chưa là repo → `git init -b main`, `git remote add origin https://github.com/DoMinhChien/hoc-thai-cung-nom.git`; commit tài liệu hiện có lên `main` (commit đầu tiên, `docs: initial plan`), sau đó làm M0 trên nhánh `m0-scaffold`.
-- [ ] T0.1 Khởi tạo monorepo pnpm: `apps/web` (Vite + React + TS strict), `packages/core`, `scripts/`, `tools/pdf-pipeline/` (chỉ README, Python làm ở M4).
-- [ ] T0.2 Tailwind + shadcn/ui; file token tạm `apps/web/src/styles/tokens.css` (màu trung tính + 1 accent placeholder, chờ `tokens.json` từ M0.5a).
-- [ ] T0.3 React Router với các route rỗng của Phase 1 (mục 9 plan) + layout desktop (sidebar + vùng nội dung) + `<AppLogo />` đọc `public/brand/logo.svg` (placeholder chữ "Nôm").
-- [ ] T0.4 Font self-host: Inter (hoặc Be Vietnam Pro) + Noto Sans Thai; trang `/dev/typography` hiển thị mẫu chữ Thái có dấu chồng để kiểm tra.
-- [ ] T0.5 i18n: `apps/web/src/i18n/vi.ts` + helper `t()`.
-- [ ] T0.6 Test: Vitest + React Testing Library + `fake-indexeddb`; Playwright (Chromium/Firefox/WebKit, viewport 1280×800 & 1024×768) + `@axe-core/playwright`; 1 test mẫu mỗi loại.
-- [ ] T0.7 Firebase Auth Emulator: `firebase.json`, script `pnpm emulators`; Playwright tự khởi động emulator (chưa dùng ở M0, chỉ sẵn sàng).
-- [ ] T0.8 Mock `AudioProvider` + interface (mục 7.2 plan), chưa cần implement thật.
-- [ ] T0.9 ESLint + Prettier + `pnpm typecheck`; script `pnpm content:check` (tạm thời no-op, có thật ở M3).
-- [ ] T0.10 GitHub Actions: lint → typecheck → test → e2e → build → deploy SWA (dùng workflow SWA sinh ra ở bước S2). PR → preview environment.
-- [ ] T0.11 `.gitignore`, `.env.example` (liệt kê `VITE_FIREBASE_*`, `VITE_USE_AUTH_EMULATOR`), `README.md` ngắn; cập nhật bảng lệnh trong `AGENTS.md`.
-- [ ] T0.12 `staticwebapp.config.json`: SPA fallback.
+- [x] T0.0 Git: nếu thư mục chưa là repo → `git init -b main`, `git remote add origin https://github.com/DoMinhChien/hoc-thai-cung-nom.git`; commit tài liệu hiện có lên `main` (commit đầu tiên, `docs: initial plan`), sau đó làm M0 trên nhánh `m0-scaffold`.
+- [x] T0.1 Khởi tạo monorepo pnpm: `apps/web` (Vite + React + TS strict), `packages/core`, `scripts/`, `tools/pdf-pipeline/` (chỉ README, Python làm ở M4).
+- [x] T0.2 Tailwind + shadcn/ui; file token tạm `apps/web/src/styles/tokens.css` (màu trung tính + 1 accent placeholder, chờ `tokens.json` từ M0.5a).
+- [x] T0.3 React Router với các route rỗng của Phase 1 (mục 9 plan) + layout desktop (sidebar + vùng nội dung) + `<AppLogo />` đọc `public/brand/logo.svg` (placeholder chữ "Nôm").
+- [x] T0.4 Font self-host: Inter (hoặc Be Vietnam Pro) + Noto Sans Thai; trang `/dev/typography` hiển thị mẫu chữ Thái có dấu chồng để kiểm tra.
+- [x] T0.5 i18n: `apps/web/src/i18n/vi.ts` + helper `t()`.
+- [x] T0.6 Test: Vitest + React Testing Library + `fake-indexeddb`; Playwright (Chromium/Firefox/WebKit, viewport 1280×800 & 1024×768) + `@axe-core/playwright`; 1 test mẫu mỗi loại.
+- [x] T0.7 Firebase Auth Emulator: `firebase.json`, script `pnpm emulators`; Playwright tự khởi động emulator (chưa dùng ở M0, chỉ sẵn sàng).
+- [x] T0.8 Mock `AudioProvider` + interface (mục 7.2 plan), chưa cần implement thật.
+- [x] T0.9 ESLint + Prettier + `pnpm typecheck`; script `pnpm content:check` (tạm thời no-op, có thật ở M3).
+- [x] T0.10 GitHub Actions: lint → typecheck → test → e2e → build → deploy SWA (dùng workflow SWA sinh ra ở bước S2). PR → preview environment.
+  - ✅ `.github/workflows/ci.yml` chạy xanh trên PR #1 (check, e2e, deploy); preview https://ashy-tree-0524a9b03-1.westeurope.6.azurestaticapps.net. Production deploy khi merge `main`.
+- [x] T0.11 `.gitignore`, `.env.example` (liệt kê `VITE_FIREBASE_*`, `VITE_USE_AUTH_EMULATOR`), `README.md` ngắn; cập nhật bảng lệnh trong `AGENTS.md`.
+- [x] T0.12 `staticwebapp.config.json`: SPA fallback.
 
 **Tiêu chí nghiệm thu**
 - `pnpm install && pnpm dev` mở được app, điều hướng qua các route rỗng.
@@ -125,5 +126,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-15 | M0 | Owner xong S1.2/S2/S7 → push, PR #1, CI xanh, preview chạy, commit baseline Linux; T0.10 ✅ | — | S1.3 (bảo vệ `main`) làm sau merge | `m0-scaffold` / https://github.com/DoMinhChien/hoc-thai-cung-nom/pull/1 |
+| 2026-11-15 | M0 | T0.0–T0.9, T0.11, T0.12 (lint/typecheck/test/content:check/E2E 138 pass trên Windows) | T0.10 CI viết xong, chưa chạy | Push GitHub (S1.2), S2, S7; pnpm chưa cài toàn cục (S0) | `m0-scaffold` (local) / chưa mở PR |
 | 2026-11-14 | — | Owner tạo GitHub repo https://github.com/DoMinhChien/hoc-thai-cung-nom (S1) | — | — | — |
 | 2026-11-14 | — | Tạo ROADMAP, AGENTS, SETUP-OWNER, CLAUDE.md; plan v6.3; mở M0 + M0.5a | — | — | — |
