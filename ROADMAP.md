@@ -102,12 +102,16 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Requirement:** plan mục **5.5** (schema), **5.6** (validator), **6** (Tone Engine), **G-06** phần chuẩn hoá Unicode. Logic thuần trong `packages/core`, không phụ thuộc UI.
 
-**Task** — agent tự chi tiết hóa theo `AGENTS.md` mục 5 bước 8 rồi ghi vào đây trước khi làm. Gợi ý khung:
-- [ ] T2.1 Zod schema: consonant, vowel, tone-mark, tone, syllable analysis, word (CSV row), deck, reading, minimal pair (+ trường `image`, `mnemonic_vi`, `draft`).
-- [ ] T2.2 Xuất JSON Schema từ Zod (cho pipeline Python ở M4).
-- [ ] T2.3 Unicode normalize tiếng Thái (NFC, `ํ+า`↔`ำ`, thứ tự dấu/nguyên âm trên-dưới).
-- [ ] T2.4 Tone Engine `computeTone()` → `{ tone, steps }` theo bảng 6.1–6.3 (ห นำ, อ นำ, sống/chết).
-- [ ] T2.5 Unit test: mỗi ô bảng quy tắc ≥ 2 case + case đặc biệt (mục 6.3).
+**Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
+- [ ] T2.0 Hạ tầng `packages/core`: thêm `zod` (v4), `@vitest/coverage-v8` với ngưỡng ≥ 90% cho `tone/` + `thai/normalize`; ESLint chặn import `react`/`react-dom` trong `packages/core` (lib không có DOM sẵn từ M0).
+- [ ] T2.1 Zod schema (`packages/core/src/schema/`), theo plan 5.5:
+  - enum dùng chung: `Tone` (mid/low/falling/high/rising), `ToneMark` (ek/tho/tri/chattawa), `ConsonantClass` (mid/high/low), `id` ascii kebab, `image` (`noto:<hex>` hoặc `img/…`), `mnemonic_vi`, `draft` (mặc định `false`).
+  - `Consonant`, `Vowel` (dạng có placeholder `–`, ngắn/dài), `ToneMarkEntry`, `ToneEntry`, `SyllableAnalysis` (tone-drills), `WordRow` (CSV: tách `|` / `;`, `syllables` và `tones` cùng độ dài), `Deck`, `Reading` (level 1–5), `MinimalPair` (2–4 từ, thanh khác nhau).
+  - Test: mẫu hợp lệ trong plan 5.5 parse được; từng lỗi (id sai, thiếu trường, độ dài lệch, thanh/level ngoài miền) bị bắt. Dữ liệu test chỉ là mẫu tối thiểu từ plan.
+- [ ] T2.2 JSON Schema từ Zod (`z.toJSONSchema`, dạng input) → `packages/core/json-schema/*.schema.json` qua `pnpm --filter @nom/core schema:export`; test kiểm tra file đã commit khớp schema hiện tại (CI bắt quên export).
+- [ ] T2.3 `normalizeThai()` (`packages/core/src/thai/normalize.ts`, phần chuẩn hóa của G-06): NFC; bỏ ký tự vô hình (ZWSP, ZWJ, ZWNJ, BOM); `ํ` + (dấu thanh) + `า` → (dấu thanh) + `ำ`; sắp xếp lại cụm dấu sau mỗi phụ âm: nguyên âm trên/dưới → dấu thanh → `์`. Idempotent. Chấm điểm gõ (diff) **để M8**.
+- [ ] T2.4 Tone Engine (`packages/core/src/tone/`): `consonantClass(char)` (44 phụ âm, 6.1); `computeTone(syllable)` → `{ ok: true, tone, steps }` | `{ ok: false, error, steps }`; `steps` = 4 bước A-21 (lớp — có xét ห นำ/อ นำ, sống/chết — kèm lý do, dấu thanh, kết quả) để Tone Trainer (A-22) so từng bước. Lỗi: ô "—" của bảng 6.3, ห/อ นำ không hợp lệ, phụ âm không có.
+- [ ] T2.5 Unit test Tone Engine: mỗi ô bảng 6.3 ≥ 2 case (gồm 4 ô "—" → lỗi), ห นำ, อ นำ (4 từ), nguyên âm ngắn + âm cuối vang (วัน), âm cuối tắc với nguyên âm dài; đủ 44 phụ âm đúng lớp. Coverage ≥ 90%.
 
 **Tiêu chí nghiệm thu**
 - `pnpm test` pass, coverage `packages/core` ≥ 90% cho tone engine & normalize.
