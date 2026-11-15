@@ -15,6 +15,7 @@ const BROWSERS = [
 /** E2E trên bản build (plan 7.4): 3 trình duyệt × 2 viewport desktop. */
 export default defineConfig({
   testDir: './e2e',
+  globalSetup: './e2e/global-setup.ts',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

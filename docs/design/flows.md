@@ -70,7 +70,7 @@ flowchart TD
   T -- Không --> D
 ```
 
-## 4. Liên kết tài khoản cùng email (L-04)
+## 4. Liên kết tài khoản cùng email (L-04) — **Phase 2 (M12.5)**, cần Facebook
 
 ```mermaid
 flowchart TD

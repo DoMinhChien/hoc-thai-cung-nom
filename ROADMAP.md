@@ -7,11 +7,10 @@
 
 ## Milestone đang mở
 
-> **🔵 M3 — Content pipeline TS + content mẫu** (task bên dưới — owner xem lại trong PR #3).
-> **🟢 M2 — Core** xong — PR #3 (xếp chồng trên PR #2 → PR #1).
-> **🟠 M1 — Đăng nhập** sẵn sàng về thiết kế (M0.5a 🟢) — **chỉ còn chờ SETUP S4–S6** + email liên hệ (S12).
-> TD.1, TD.2 xong — PR #2.
-> M0 🟢 — chờ owner merge PR #1.
+> **🔵 M1 — Đăng nhập Google — ƯU TIÊN SỐ 1.** Đã đủ điều kiện: M0.5a 🟢, S4 ✅, S5 ✅ (Testing), S7 ✅, S12 ✅. **Facebook dời sang Phase 2 (M12.5)** — owner quyết định 2026-11-15.
+> **🔵 M3 — Content pipeline** đang mở: nếu đang dở task thì hoàn tất task đó, commit, rồi chuyển sang M1; quay lại M3 sau khi M1 xong.
+> 🟢 M0, M0.5a/TD, M2 xong — PR #1 đã vào `main`. **PR #2, #3 là PR xếp chồng nên đã merge vào nhánh nền, chưa vào `main`** → PR #4 (`m0.5a-design` → `main`) đưa phần còn thiếu vào `main`; merge #4 trước PR M1.
+> M1: code + test xong trên `m1-auth` (PR #5) — chờ owner smoke test đăng nhập Google thật trên production sau khi merge.
 
 ---
 
@@ -35,7 +34,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 |---|---|---|---|
 | M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
 | M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🟢 | ✅ Owner duyệt 2026-11-15 |
-| M1 | Đăng nhập Google/Facebook | 🟠 | M0 ✅, M0.5a ✅ — **chờ S4, S5, S6, S12** |
+| M1 | Đăng nhập Google (Facebook → Phase 2) | 🔵 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🔵 | M2; owner duyệt content mẫu (S10) |
 | M4 | PDF pipeline Python | ⚪ | M3, S9, PDF mẫu (S10) |
@@ -48,7 +47,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M10 | Quiz nghe (+P-07) | ⚪ | M5, SCR Quiz nghe |
 | M10.5 | Hình & mẹo nhớ + 4 trò chơi (+P-09) | ⚪ | M6, M7, SCR Trò chơi; owner duyệt mẹo nhớ |
 | M11 | Báo cáo cá nhân `/progress` | ⚪ | M6–M10.5 |
-| M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5/S6 go-live, S8 |
+| M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
 
 Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không làm cho tới khi Phase 1 xong.**
 
@@ -137,24 +136,27 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
-### M1 — Đăng nhập Google/Facebook 🟠 (chờ S4–S6, S12)
+### M1 — Đăng nhập Google 🔵
 
-**Cần trước:** M0 🟢, M0.5a 🟢, SETUP **S4, S5, S6** (S6 phần URL pháp lý có thể bổ sung sau khi deploy trang). Requirement: **L-01..L-10**, mục 4.0 plan.
+> **Phạm vi đã đổi (2026-11-15):** chỉ Google + Guest. Facebook, liên kết tài khoản (L-04) và dialog D3 → **Phase 2, M12.5**. Nút Facebook ẩn sau flag `VITE_ENABLE_FACEBOOK_LOGIN=false`. Viết `AuthService` provider-agnostic để Phase 2 chỉ cần thêm provider.
+
+**Cần trước:** M0 🟢, M0.5a 🟢, SETUP **S4 ✅, S5 ✅, S7 ✅, S12 ✅**. Requirement: **L-01, L-02, L-03, L-05..L-10** (L-04 → Phase 2), mục 4.0 plan.
 
 **Task**
-- [ ] T1.1 `packages/core` (hoặc `apps/web/src/auth`): interface `AuthService` + `FirebaseAuthService` (popup), `onUserChanged`, `updateDisplayName`, `deleteAccount`, `link/unlink`.
-- [ ] T1.2 Kết nối Auth Emulator khi `VITE_USE_AUTH_EMULATOR=true`.
-- [ ] T1.3 `/login` theo SCR-01: nút Google, Facebook, "Học không cần đăng nhập".
-- [ ] T1.4 Lần đầu đăng nhập: hộp thoại xác nhận **tên hiển thị** (L-03).
-- [ ] T1.5 Liên kết tài khoản cùng email (L-04): xử lý lỗi `auth/account-exists-with-different-credential` → hướng dẫn đăng nhập provider cũ rồi `link`.
-- [ ] T1.6 Header avatar + tên + menu (L-06); giữ phiên (L-05); offline vẫn vào được (L-09).
-- [ ] T1.7 IndexedDB đặt tên theo `uid` / `guest`; hộp thoại "Chuyển tiến độ hiện tại vào tài khoản này?" (L-07).
-- [ ] T1.8 `/account` theo SCR-02: đổi tên, liên kết/hủy liên kết provider, xóa tài khoản (đăng nhập lại nếu cần) + xóa IndexedDB (L-08).
-- [ ] T1.9 Trang `/privacy`, `/terms`, `/account/delete-instructions` (nội dung bản nháp, owner duyệt).
-- [ ] T1.10 E2E **luồng 0** (mục 7.4 plan) trên Auth Emulator; unit test `AuthService` (mock).
+- [x] T1.1 `packages/core` (hoặc `apps/web/src/auth`): interface `AuthService` **provider-agnostic** (`signIn(provider)`, danh sách provider bật theo config) + `FirebaseAuthService` (popup, Phase 1 chỉ Google), `onUserChanged`, `updateDisplayName`, `deleteAccount`, `link/unlink`.
+- [x] T1.2 Kết nối Auth Emulator khi `VITE_USE_AUTH_EMULATOR=true`.
+- [x] T1.3 `/login` theo SCR-01: nút Google, "Học không cần đăng nhập"; nút Facebook render chỉ khi `VITE_ENABLE_FACEBOOK_LOGIN=true` (Phase 1 = false).
+- [x] T1.4 Lần đầu đăng nhập: hộp thoại xác nhận **tên hiển thị** (L-03).
+- [x] ~~T1.5 Liên kết tài khoản cùng email (L-04)~~ → **dời sang Phase 2 (M12.5)**.
+- [x] T1.6 Header avatar + tên + menu (L-06); giữ phiên (L-05); offline vẫn vào được (L-09).
+- [x] T1.7 IndexedDB đặt tên theo `uid` / `guest`; hộp thoại "Chuyển tiến độ hiện tại vào tài khoản này?" (L-07).
+- [x] T1.8 `/account` theo SCR-02: đổi tên, khối "Phương thức đăng nhập" **chỉ hiển thị Google (không có nút liên kết/huỷ ở Phase 1)**, xóa tài khoản (đăng nhập lại nếu cần) + xóa IndexedDB (L-08).
+- [x] T1.9 Trang `/privacy`, `/terms`, `/account/delete-instructions` (nội dung bản nháp theo SCR-02 mục B, email liên hệ `dominhchien206@gmail.com`, owner duyệt).
+- [x] T1.10 E2E **luồng 0** (mục 7.4 plan) trên Auth Emulator; unit test `AuthService` (mock).
 
 **Tiêu chí nghiệm thu**
-- Đăng nhập Google & Facebook chạy trên **emulator** (CI) và **thật** trên production (owner smoke test).
+- Đăng nhập **Google** chạy trên **emulator** (CI) và **thật** trên production (owner smoke test bằng tài khoản trong Test users).
+- Không có nút Facebook khi flag = false.
 - Guest → đăng nhập → chuyển tiến độ → đăng xuất → đăng nhập lại: dữ liệu đúng như luồng 0.
 - Xóa tài khoản: user biến mất ở Firebase, IndexedDB của user bị xóa.
 - Không component nào import trực tiếp `firebase/auth`.
@@ -170,6 +172,8 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M1 | T1.1–T1.4, T1.6–T1.10: `AuthService` provider-agnostic + Firebase (popup), emulator, `/login` (Google + Guest, D1, D2), khối tài khoản + menu + đăng xuất, offline, IndexedDB theo uid + chuyển tiến độ, `/account` (đổi tên, xoá tài khoản), 3 trang pháp lý; E2E luồng 0 xanh 3 trình duyệt × 2 viewport. M3 chưa có task dở → làm M1 trước | — | Owner: merge PR #4 rồi #5; smoke test Google thật trên production; kiểm tra Firebase Authorized domains có domain production; duyệt nội dung pháp lý (bản nháp) | `m1-auth` PR #5 |
+| 2026-11-15 | M1 | Owner: S4 ✅, S5 ✅ (Testing + test user), S7 ✅, S12 ✅ email. **Quyết định: Facebook → Phase 2 (M12.5)**. M1 mở 🔵 (chỉ Google) | — | — | — |
 | 2026-11-15 | TD, M2 | TD.1 (PR #2 design), TD.2 (tokens.css theo tokens.json + test đồng bộ); M2 T2.0–T2.5: Zod schema + JSON Schema, normalizeThai, Tone Engine (161 test, coverage 100%) → M2 🟢; chi tiết hóa M3 → 🔵 | — | M1 chờ S4–S6, S12; M3 cần owner duyệt content mẫu (S10) | `m0.5a-design` PR #2, `m2-core` PR #3 |
 | 2026-11-15 | M0.5a | **Owner duyệt** flows, tokens, SCR-00/01/02, wireframe → M0.5a 🟢. Mở M2 song song; M1 🟠 chờ S4–S6, S12 | TD.1 commit `docs/design/` | — | `m0.5a-design` (chưa tạo) |
 | 2026-11-15 | M0.5a | D0.5 wireframe Figma (SCR-00/01/02 + 4 dialog + trang pháp lý) → PNG trong `docs/design/screens/`; https://www.figma.com/design/iYEX3wxXphmrjDCxtiSuPD | — | D0.6 owner duyệt; email liên hệ | chưa commit (đề xuất `m0.5a-design`) |

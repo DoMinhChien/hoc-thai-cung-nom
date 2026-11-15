@@ -12,15 +12,15 @@
 | S1 | Tạo GitHub repo | M0 (deploy) | 5 phút | ◐ Đã tạo repo + đẩy code — còn: bảo vệ `main` |
 | S2 | Azure: resource group + Static Web App | M0 (deploy) | 15 phút | ✅ |
 | S3 | Azure Budget alert | M0 | 5 phút | ☐ |
-| S4 | Firebase project + Authentication | M1 | 15 phút | ☐ |
-| S5 | Google sign-in + OAuth consent screen | M1 (bật), M12 (publish) | 15 phút | ☐ |
-| S6 | Facebook App + Facebook Login | M1 (bật), M12 (Live) | 30 phút + thời gian Meta duyệt | ☐ |
-| S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ◐ Secret SWA ✅ — còn Variables Firebase (sau S4) |
+| S4 | Firebase project + Authentication | M1 | 15 phút | ✅ project `hoc-thai-cung-nom` (2026-11-15) |
+| S5 | Google sign-in + OAuth consent screen | M1 (bật), M12 (publish) | 15 phút | ◐ Bật Google, Branding, Audience (Testing) + test user ✅ — còn: publish ở M12 |
+| S6 | Facebook App + Facebook Login | **Phase 2 — M12.5** | 30 phút + thời gian Meta duyệt | ⏸ Dời sang Phase 2 (2026-11-15) |
+| S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ✅ Secret SWA + 4 Variables Firebase (2026-11-15) |
 | S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
 | S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
 | S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ☐ |
 | S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ◐ M0.5a ✅ duyệt 2026-11-15 — còn M0.5b |
-| S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ☐ |
+| S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ✅ `dominhchien206@gmail.com` |
 
 ---
 
@@ -78,7 +78,7 @@ VITE_FIREBASE_APP_ID=
 2. Google Cloud Console (cùng project) → **OAuth consent screen**: tên app "Học Thai cùng Nôm", email hỗ trợ, scope mặc định (`openid`, `email`, `profile`). **Không upload logo** ở Phase 1.
 3. **Ở M12 (go-live):** điền link `/privacy`, `/terms` → chuyển trạng thái **In production**.
 
-## S6 — Facebook Login
+## S6 — Facebook Login  ⏸ **Phase 2 (M12.5)** — không làm ở Phase 1
 1. https://developers.facebook.com → **Create App** bằng tài khoản Facebook cá nhân, chọn use case liên quan **Facebook Login / xác thực người dùng**.
 2. Lấy **App ID** và **App Secret** → Firebase → Sign-in method → **Facebook** → Enable, dán App ID/Secret.
 3. Copy **OAuth redirect URI** Firebase hiển thị (`https://<project>.firebaseapp.com/__/auth/handler`) → Facebook Login → Settings → **Valid OAuth Redirect URIs**.
@@ -115,4 +115,4 @@ Ghi ngày duyệt vào `docs/design/README.md`.
 ## S12 — Email liên hệ (trước M1)
 Một email **cá nhân** (không dùng email công ty) hiển thị trên `/privacy`, `/terms`, `/account/delete-instructions`, đồng thời khai báo ở Google OAuth consent screen (S5) và Facebook App (S6).
 
-**Đầu ra cho agent:** email: `__________`
+**Đầu ra cho agent:** email: `dominhchien206@gmail.com`

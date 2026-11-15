@@ -1,6 +1,8 @@
 # SCR-01 Chào mừng & Đăng nhập  (route: /login)  — Requirements: L-01, L-02, L-03, L-04, L-07, L-09
 
 > Trạng thái: **✅ Owner duyệt 2026-11-15** (M0.5a · D0.4). Luồng: `../flows.md` §2–§4.
+>
+> **Phase 1 (2026-11-15): chỉ nút Google.** Nút Facebook và dialog **D3 (liên kết tài khoản)** thuộc **Phase 2 (M12.5)** — ẩn sau flag `VITE_ENABLE_FACEBOOK_LOGIN`. Khi ẩn, card chỉ còn: tiêu đề → nút Google → "hoặc" → nút Guest.
 
 ## Mục đích
 Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và chọn **đăng nhập** hoặc **học ngay không cần tài khoản**.
@@ -67,7 +69,7 @@ Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và c
 - Nút: "Bắt đầu mới" (phụ) · **"Chuyển tiến độ"** (chính).
 - Sau khi chuyển: toast "Đã chuyển tiến độ vào tài khoản."
 
-**D3 — Liên kết tài khoản (L-04)**
+**D3 — Liên kết tài khoản (L-04) — Phase 2**
 - Tiêu đề: "Email này đã được dùng" · Nội dung: "**{email}** đã đăng nhập bằng **{provider cũ}**. Đăng nhập bằng {provider cũ} để liên kết {provider mới} vào cùng tài khoản."
 - Nút: "Huỷ" · **"Đăng nhập bằng {provider cũ}"**.
 - Thành công: toast "Đã liên kết {provider mới}."
