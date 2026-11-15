@@ -7,7 +7,7 @@
 
 ## Milestone đang mở
 
-> **🟠 M0 — Khung dự án** (12/13 task; còn T0.10 bị chặn bởi S1.2 + S2 + S7) *(và song song: M0.5a — Thiết kế cho đăng nhập, chưa bắt đầu)*
+> **🟢 M0 — Khung dự án** (13/13, chờ owner duyệt & merge PR #1) *(và song song: M0.5a — Thiết kế cho đăng nhập, chưa bắt đầu)*
 
 ---
 
@@ -29,7 +29,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 
 | M | Tên | Trạng thái | Cần trước (spec / setup) |
 |---|---|---|---|
-| M0 | Khung dự án | 🟠 | S0 (máy owner); S1 ✅ repo đã tạo; S2 (chỉ cho bước deploy T0.10) |
+| M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
 | M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🔵 | Owner duyệt (S11) |
 | M1 | Đăng nhập Google/Facebook | ⚪ | M0, M0.5a, S4–S6 |
 | M2 | Core: schema, normalize, Tone Engine | ⚪ | M0 |
@@ -52,7 +52,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 ## 3. Chi tiết milestone đang mở
 
-### M0 — Khung dự án 🟠
+### M0 — Khung dự án 🟢
 
 **Mục tiêu:** repo chạy được, có đủ khung test & CI/CD, deploy được trang trống lên Azure SWA.
 
@@ -67,8 +67,8 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T0.7 Firebase Auth Emulator: `firebase.json`, script `pnpm emulators`; Playwright tự khởi động emulator (chưa dùng ở M0, chỉ sẵn sàng).
 - [x] T0.8 Mock `AudioProvider` + interface (mục 7.2 plan), chưa cần implement thật.
 - [x] T0.9 ESLint + Prettier + `pnpm typecheck`; script `pnpm content:check` (tạm thời no-op, có thật ở M3).
-- [ ] T0.10 GitHub Actions: lint → typecheck → test → e2e → build → deploy SWA (dùng workflow SWA sinh ra ở bước S2). PR → preview environment.
-  - ◐ Đã có `.github/workflows/ci.yml` (check + e2e + deploy SWA/preview, deploy tự bỏ qua khi thiếu token). **Chưa chạy được:** cần push lên GitHub (S1 bước 2 — máy chưa có quyền push/`gh`), SWA + secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (S2, S7). Nếu Azure tự sinh workflow ở S2 → xoá file đó, chỉ copy secret sang tên `AZURE_STATIC_WEB_APPS_API_TOKEN`.
+- [x] T0.10 GitHub Actions: lint → typecheck → test → e2e → build → deploy SWA (dùng workflow SWA sinh ra ở bước S2). PR → preview environment.
+  - ✅ `.github/workflows/ci.yml` chạy xanh trên PR #1 (check, e2e, deploy); preview https://ashy-tree-0524a9b03-1.westeurope.6.azurestaticapps.net. Production deploy khi merge `main`.
 - [x] T0.11 `.gitignore`, `.env.example` (liệt kê `VITE_FIREBASE_*`, `VITE_USE_AUTH_EMULATOR`), `README.md` ngắn; cập nhật bảng lệnh trong `AGENTS.md`.
 - [x] T0.12 `staticwebapp.config.json`: SPA fallback.
 
@@ -126,6 +126,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-15 | M0 | Owner xong S1.2/S2/S7 → push, PR #1, CI xanh, preview chạy, commit baseline Linux; T0.10 ✅ | — | S1.3 (bảo vệ `main`) làm sau merge | `m0-scaffold` / https://github.com/DoMinhChien/hoc-thai-cung-nom/pull/1 |
 | 2026-11-15 | M0 | T0.0–T0.9, T0.11, T0.12 (lint/typecheck/test/content:check/E2E 138 pass trên Windows) | T0.10 CI viết xong, chưa chạy | Push GitHub (S1.2), S2, S7; pnpm chưa cài toàn cục (S0) | `m0-scaffold` (local) / chưa mở PR |
 | 2026-11-14 | — | Owner tạo GitHub repo https://github.com/DoMinhChien/hoc-thai-cung-nom (S1) | — | — | — |
 | 2026-11-14 | — | Tạo ROADMAP, AGENTS, SETUP-OWNER, CLAUDE.md; plan v6.3; mở M0 + M0.5a | — | — | — |
