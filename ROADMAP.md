@@ -96,7 +96,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 ### TD — Dọn dẹp sau M0.5a 🔵
 - [x] TD.1 Thư mục `docs/design/` (brief, flows, tokens.json, 3 spec, 7 PNG) đang **chưa commit** trên working tree. Tạo nhánh `m0.5a-design` (từ `main` nếu PR #1 đã merge, nếu chưa thì từ `m0-scaffold`), commit `docs(design): M0.5a brief, flows, tokens, SCR-00/01/02 + wireframes`, push, mở PR. Cập nhật `ROADMAP.md` cùng PR.
-- [ ] TD.2 Thay token tạm `apps/web/src/styles/tokens.css` bằng giá trị từ `docs/design/tokens.json` (accent chàm `#3F4AA8`, màu thanh, mức thuộc…) — giữ tên biến theo nghĩa; cập nhật visual baseline nếu đổi. *(Có thể gộp vào đầu M1.)*
+- [x] TD.2 Thay token tạm `apps/web/src/styles/tokens.css` bằng giá trị từ `docs/design/tokens.json` (accent chàm `#3F4AA8`, màu thanh, mức thuộc…) — giữ tên biến theo nghĩa; cập nhật visual baseline nếu đổi. *(Có thể gộp vào đầu M1.)*
 
 ### M2 — Core: schema, normalize, Tone Engine 🔵
 
