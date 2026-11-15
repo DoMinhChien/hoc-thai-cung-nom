@@ -63,7 +63,7 @@ describe('normalizeThai', () => {
   });
 
   it('NFC cho chữ Latin/Việt đi kèm', () => {
-    expect(normalizeThai('á')).toBe('á');
+    expect(normalizeThai('a' + s(0x0301))).toBe(s(0x00e1)); // a + dấu sắc rời → á
   });
 
   it('không đụng ký tự ngoài cụm dấu', () => {
