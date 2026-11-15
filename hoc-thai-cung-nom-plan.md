@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft v6.3 — ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft v6.4 — ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-14
 
@@ -29,8 +29,8 @@
 
 | Phase | Chủ đề | Backend | Nội dung chính |
 |---|---|---|---|
-| **1** | **Đăng nhập** + MVP học | **Không backend**: Static Web Apps + Firebase Auth | **Đăng nhập Google/Facebook (làm đầu tiên)**, Bảng chữ cái, Tone Trainer, Từ vựng + SRS, Đọc + tra từ, Quiz nghe, **Hình ảnh & mẹo nhớ, 4 trò chơi lõi**, Gõ chữ Thái, Progress visualization, Báo cáo cá nhân, Pipeline PDF → nội dung. Tiến độ học vẫn lưu local |
-| **2** | Mở rộng học & quản trị | Azure đầy đủ | Đồng bộ tiến độ, phân quyền Editor/Admin, Import từ vựng, Báo cáo admin, **Leaderboard**, XP & huy hiệu, nhắc học, TTS Azure, chấm phát âm, AI tutor, parse âm tiết tự động |
+| **1** | **Đăng nhập** + MVP học | **Không backend**: Static Web Apps + Firebase Auth | **Đăng nhập Google (làm đầu tiên)**, Bảng chữ cái, Tone Trainer, Từ vựng + SRS, Đọc + tra từ, Quiz nghe, **Hình ảnh & mẹo nhớ, 4 trò chơi lõi**, Gõ chữ Thái, Progress visualization, Báo cáo cá nhân, Pipeline PDF → nội dung. Tiến độ học vẫn lưu local |
+| **2** | Mở rộng học & quản trị | Azure đầy đủ | **Đăng nhập Facebook**, Đồng bộ tiến độ, phân quyền Editor/Admin, Import từ vựng, Báo cáo admin, **Leaderboard**, XP & huy hiệu, nhắc học, TTS Azure, chấm phát âm, AI tutor, parse âm tiết tự động |
 | **3** | Lớp học / nhóm | Azure | Giáo viên tạo lớp, mời học viên, giao bài, báo cáo & leaderboard theo lớp (mục 4.12) |
 
 > Thứ tự milestone từng phase xem mục 10.
@@ -42,7 +42,7 @@
 | Vai trò | Có từ phase | Mô tả | Quyền |
 |---|---|---|---|
 | **Guest** | 1 | Chưa đăng nhập | Học & ôn, tiến độ chỉ ở trình duyệt hiện tại |
-| **Learner** | 1 | Đã đăng nhập Google/Facebook | Như Guest + hồ sơ cá nhân; Phase 2: đồng bộ, leaderboard |
+| **Learner** | 1 | Đã đăng nhập Google (Facebook từ Phase 2) | Như Guest + hồ sơ cá nhân; Phase 2: đồng bộ, leaderboard |
 | **Content Owner** | 1 | Owner (John Do) | Chạy pipeline PDF → content, commit vào repo |
 | **Editor** | 2 | Giáo viên / người được cấp quyền | Import & chỉnh sửa từ vựng, gửi duyệt |
 | **Admin** | 2 | Quản trị | Duyệt & publish nội dung, quản lý user/role, xem báo cáo admin |
@@ -58,10 +58,10 @@
 | Tên app | **Học Thai cùng Nôm** — logo: **placeholder** (owner bổ sung sau, mục 7.6) |
 | Nền tảng UI | **Web desktop trước** (Phase 1–3). Chưa làm giao diện mobile; layout không vỡ trên màn hình nhỏ nhưng không tối ưu |
 | Đối tượng | Người Việt, UI tiếng Việt |
-| Kiến trúc Phase 1 | Static site (PWA) trên Azure SWA + **Firebase Auth** (Google/Facebook). **Không database, không Azure Functions.** Tiến độ học **local-first** (ADR-01, ADR-02) |
+| Kiến trúc Phase 1 | Static site (PWA) trên Azure SWA + **Firebase Auth** (Google; Facebook ở Phase 2). **Không database, không Azure Functions.** Tiến độ học **local-first** (ADR-01, ADR-02) |
 | Database | **Phase 2** mới có; chọn ở đầu Phase 2 giữa Neon Postgres và Azure SQL (ADR-03) |
 | LLM | **Claude API** (trích xuất PDF, AI tutor), qua interface `LlmProvider` |
-| Đăng nhập | **Google + Facebook**, là **milestone đầu tiên** sau khung dự án (mục 4.0) |
+| Đăng nhập | **Phase 1: Google** (milestone đầu tiên, mục 4.0). **Facebook chuyển sang Phase 2** (quyết định owner 2026-11-15) |
 | Leaderboard | **Phase 2** |
 | Số phase | **3** — Phase 3 chỉ gồm Lớp học / nhóm |
 | Giáo trình | **Đã có sự đồng ý của giáo viên** để dùng trong app |
@@ -122,7 +122,7 @@ Dữ liệu Phase 2–3 có nhiều quan hệ: user ↔ role; user ↔ thẻ ↔
 | **Khác** | 100% Azure | 100% Azure | Ngoài Azure (Google) — chấp nhận |
 
 - **Nguyên tắc:** Firebase **chỉ xác thực danh tính**. Từ Phase 2, **role, lớp học, quyền** lưu trong database của app (key = Firebase `uid`), không lưu trong custom claims → có thể đổi auth provider sau này.
-- Người học **không cần tài khoản Google**: đăng nhập bằng Google **hoặc** Facebook. Chỉ owner cần tài khoản Google để quản lý Firebase project.
+- Phase 1 chỉ có Google; Guest mode cho người không muốn đăng nhập. Từ Phase 2 thêm Facebook → người học không bắt buộc có tài khoản Google. Chỉ owner cần tài khoản Google để quản lý Firebase project.
 
 #### ADR-04 — LLM: ✅ ĐÃ CHỐT — Claude API
 
@@ -136,13 +136,15 @@ Dữ liệu Phase 2–3 có nhiều quan hệ: user ↔ role; user ↔ thẻ ↔
 
 Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc phase đang làm.
 
-### 4.0 Module L — Đăng nhập Google / Facebook (Phase 1, **ưu tiên số 1**)
+### 4.0 Module L — Đăng nhập (Phase 1: **Google**, ưu tiên số 1 · Phase 2: **Facebook**)
+
+> **Quyết định 2026-11-15:** Facebook Login (và việc tạo Facebook App — SETUP S6) **chuyển sang Phase 2**. Code vẫn viết theo `AuthService` provider-agnostic để thêm Facebook không phải sửa UI/luồng. Các requirement chỉ liên quan Facebook ghi **(Phase 2)**.
 
 #### Chức năng
-- **L-01** Màn hình đăng nhập với 2 nút **"Tiếp tục với Google"** và **"Tiếp tục với Facebook"** (theo branding guideline của từng bên).
+- **L-01** Màn hình đăng nhập với nút **"Tiếp tục với Google"** (theo branding guideline Google). Nút **"Tiếp tục với Facebook"** thêm ở **Phase 2**, bật bằng feature flag `VITE_ENABLE_FACEBOOK_LOGIN` (Phase 1 = `false`, nút ẩn hoàn toàn).
 - **L-02** Nút **"Học không cần đăng nhập"** (chế độ Guest) — không bắt buộc đăng nhập để học.
 - **L-03** Lần đăng nhập đầu tiên Firebase tự tạo tài khoản (`name`, `email`, `photoURL` từ provider); người dùng xác nhận **tên hiển thị** → lưu bằng `updateProfile({ displayName })` (dùng cho leaderboard Phase 2).
-- **L-04** **Liên kết tài khoản:** bật chế độ Firebase *"One account per email address"* → Google và Facebook cùng email được gộp (Firebase yêu cầu đăng nhập provider cũ để liên kết — UI hướng dẫn người dùng). `/account` cho liên kết / hủy liên kết provider (`linkWithPopup`, `unlink`). Facebook không trả email → vẫn tạo được tài khoản.
+- **L-04** **(Phase 2 — cần ≥ 2 provider)** **Liên kết tài khoản:** bật chế độ Firebase *"One account per email address"* → Google và Facebook cùng email được gộp (Firebase yêu cầu đăng nhập provider cũ để liên kết — UI hướng dẫn người dùng). `/account` cho liên kết / hủy liên kết provider (`linkWithPopup`, `unlink`). Facebook không trả email → vẫn tạo được tài khoản.
 - **L-05** Phiên đăng nhập duy trì giữa các lần mở app (`browserLocalPersistence`); nút **Đăng xuất**.
 - **L-06** Header hiển thị avatar + tên; menu: Tài khoản, Đăng xuất.
 - **L-07** **Dữ liệu local tách theo user:** IndexedDB đặt tên theo Firebase `uid` (Guest dùng `guest`). Khi Guest đăng nhập lần đầu → hỏi "Chuyển tiến độ hiện tại vào tài khoản này?" → copy dữ liệu `guest` sang DB của user.
@@ -152,14 +154,14 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 
 #### Yêu cầu bắt buộc từ Google / Facebook (phải làm trước khi go-live)
 - **Trang Chính sách quyền riêng tư** (`/privacy`) và **Điều khoản** (`/terms`) public.
-- **Facebook:** khai báo **Data Deletion Instructions URL** → trang `/account/delete-instructions` (Phase 1 không có backend nên dùng trang hướng dẫn, không dùng callback); App phải chuyển sang chế độ **Live**; chỉ xin quyền `public_profile`, `email` (không cần App Review cho 2 quyền này, nhưng cần **Business/App verification** theo yêu cầu hiện hành của Meta — kiểm tra khi đăng ký).
+- **Facebook (Phase 2):** khai báo **Data Deletion Instructions URL** → trang `/account/delete-instructions` (Phase 1 không có backend nên dùng trang hướng dẫn, không dùng callback); App phải chuyển sang chế độ **Live**; chỉ xin quyền `public_profile`, `email` (không cần App Review cho 2 quyền này, nhưng cần **Business/App verification** theo yêu cầu hiện hành của Meta — kiểm tra khi đăng ký).
 - **Google:** cấu hình **OAuth consent screen**, scope chỉ `openid email profile`; publish ở trạng thái *In production*.
 - **Redirect URI** khai báo với Google & Facebook: `https://<firebase-project>.firebaseapp.com/__/auth/handler` (domain của Google → **chưa cần domain riêng**).
 - **Phase 1** dùng domain mặc định `*.azurestaticapps.net`; consent screen Google **không upload logo** (tránh bắt buộc brand verification với domain không sở hữu); chỉ dùng scope cơ bản `openid email profile`. **Phase 2** mua domain riêng → cập nhật redirect URI, authorized domains, URL privacy/terms trên Google & Meta.
 - Facebook App và Google Cloud project đứng tên **tài khoản cá nhân** của owner.
 
 #### Kỹ thuật
-- **Auth:** **Firebase Authentication** (gói Spark), bật provider **Google** và **Facebook** (nhập App ID/Secret của Facebook App vào Firebase console).
+- **Auth:** **Firebase Authentication** (gói Spark). Phase 1 bật provider **Google**; **Facebook** bật ở Phase 2 (nhập App ID/Secret của Facebook App vào Firebase console).
 - **Frontend:** Firebase JS SDK v9+ (modular, `firebase/auth`); bọc trong `AuthService` interface (`signInWithGoogle`, `signInWithFacebook`, `signOut`, `onUserChanged`, `updateDisplayName`, `deleteAccount`, `link/unlink`) → UI không gọi Firebase trực tiếp, đổi provider sau này chỉ sửa 1 chỗ.
 - **Kiểu đăng nhập:** **`signInWithPopup`** ở Phase 1 (luồng redirect dễ lỗi trên trình duyệt chặn third-party storage khi app và `firebaseapp.com` khác domain). Phase 2 có domain riêng → cân nhắc **tự host file helper `/__/auth/`** trên SWA rồi chuyển sang redirect.
 - **Authorized domains (Firebase):** domain production `*.azurestaticapps.net` của app + `localhost`. Preview theo PR có domain thay đổi → **không** đăng nhập thật trên preview; dùng Auth Emulator.
@@ -743,7 +745,7 @@ docs/design/
 | Service | Phase | Dùng cho | Ghi chú |
 |---|---|---|---|
 | **Azure Static Web Apps** (Free) | 1 | Host frontend (PWA), preview theo PR | Đủ cho Phase 1–2 |
-| **Firebase Authentication** (Spark, Google) | 1 | Đăng nhập Google + Facebook | $0 tới 50.000 MAU (ADR-02) |
+| **Firebase Authentication** (Spark, Google) | 1 | Đăng nhập Google (Facebook thêm ở Phase 2) | $0 tới 50.000 MAU (ADR-02) |
 | **Anthropic Claude API** | 1 | Trích xuất PDF (chạy ở máy owner); Phase 2: AI tutor, pipeline trên Azure | Trả theo token; có giới hạn chi phí (ADR-04) |
 | **Azure AI Document Intelligence** | 1–2 | (Tùy chọn) Trích bảng/OCR từ PDF scan | Tier F0 miễn phí số trang giới hạn |
 | **Azure Functions** (Consumption / Flex) | 2 | API: sync, leaderboard, import, báo cáo, proxy Claude | Pipeline PDF (Python) tách Function App riêng |
@@ -758,7 +760,7 @@ docs/design/
 
 ### 8.0 Kiến trúc Phase 1
 ```
-[Web app - Azure Static Web Apps] ──popup──► [Firebase Auth] ──► Google / Facebook
+[Web app - Azure Static Web Apps] ──popup──► [Firebase Auth] ──► Google (Facebook: Phase 2)
         │
         └── Tiến độ học: IndexedDB trên trình duyệt (theo Firebase uid)
 Không có backend / database.
@@ -792,7 +794,7 @@ Máy owner: [tools/pdf-pipeline (Python)] ──► [Claude API] ──► stagi
 
 | Route | Màn hình | Phase | Requirement |
 |---|---|---|---|
-| `/login` | Đăng nhập Google / Facebook / Học không cần đăng nhập | 1 | L-01..L-03 |
+| `/login` | Đăng nhập Google / Học không cần đăng nhập (Facebook: Phase 2) | 1 | L-01..L-03 |
 | `/account` | Hồ sơ, provider liên kết, tên hiển thị, xóa tài khoản | 1 | L-04, L-08 |
 | `/privacy`, `/terms`, `/account/delete-instructions` | Trang pháp lý bắt buộc cho Google/Facebook | 1 | 4.0 |
 | `/` | Dashboard | 1 | B-06 |
@@ -828,7 +830,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 | **M0.5a** | Design tối thiểu cho đăng nhập: brief, flows, tokens cơ bản, SCR-00 Layout, SCR-01 Đăng nhập, SCR-02 Tài khoản + wireframe; owner duyệt |
 | **M0.5b** | Design các màn còn lại (theo 7.6.2), làm dần — mỗi màn xong **trước** milestone dùng nó |
 | **M0** | Monorepo, Vite + React + TS + Tailwind + Router, ESLint/Prettier; **khung test**: Vitest, RTL, fake-indexeddb, Playwright + axe, mock AudioProvider, **Firebase Auth Emulator**; layout desktop-first, logo placeholder, font Thái, i18n, design token; GitHub Actions + Azure SWA (Free) |
-| **M1** | **Đăng nhập Google/Facebook (ưu tiên số 1)**: tạo Firebase project, bật Google + Facebook (Facebook App cá nhân), authorized domains; `AuthService` + Firebase SDK (popup); `/login`, `/account` (tên hiển thị, liên kết/hủy liên kết, xóa tài khoản); Guest mode; IndexedDB theo `uid` + chuyển tiến độ Guest; trang `/privacy`, `/terms`, `/account/delete-instructions`; E2E luồng 0 trên Auth Emulator |
+| **M1** | **Đăng nhập Google (ưu tiên số 1)**: `AuthService` provider-agnostic + Firebase SDK (popup); `/login` (nút Google + Guest; nút Facebook ẩn sau flag); `/account` (tên hiển thị, phương thức đăng nhập chỉ đọc, xoá tài khoản); Guest mode; IndexedDB theo `uid` + chuyển tiến độ Guest; trang `/privacy`, `/terms`, `/account/delete-instructions`; E2E luồng 0 trên Auth Emulator |
 | **M2** | `packages/core`: Zod schema (+ xuất JSON Schema), Unicode normalize, Tone Engine + test đầy đủ |
 | **M3** | Content pipeline TS: `build-content`, `content:check`; bộ content mẫu tối thiểu |
 | **M4** | **PDF pipeline Python** (`tools/pdf-pipeline`, mục 5.3) trên 1 PDF mẫu → staging CSV → `content:check`; pytest golden test |
@@ -840,11 +842,12 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 | **M10** | Module D: Quiz nghe + P-07 |
 | **M10.5** | **Module V + F**: hình & mẹo nhớ trên flashcard và bảng chữ (V-01..V-07), 4 trò chơi lõi F-01..F-04 + interface `Game` |
 | **M11** | Module R1: `/progress` (R-01..R-07) |
-| **M12** | Settings, export/import, PWA offline; đủ luồng E2E (mục 7.4) + visual baseline; **go-live checklist đăng nhập** (Google consent screen *In production*, Facebook app *Live*, trang privacy/terms/xóa dữ liệu trên domain `*.azurestaticapps.net`, smoke test đăng nhập thật) |
+| **M12** | Settings, export/import, PWA offline; đủ luồng E2E (mục 7.4) + visual baseline; **go-live checklist đăng nhập** (Google consent screen *In production*, trang privacy/terms/xóa dữ liệu trên domain `*.azurestaticapps.net`, smoke test đăng nhập thật) |
 
 ### Phase 2 (toàn bộ phần còn lại — theo thứ tự ưu tiên)
 | M | Nội dung |
 |---|---|
+| **M12.5** | **Đăng nhập Facebook** (đầu Phase 2): owner làm SETUP S6 (Facebook App, Firebase provider, Valid OAuth Redirect URIs, URL pháp lý, chuyển app *Live*); bật `VITE_ENABLE_FACEBOOK_LOGIN`; nút Facebook trên `/login`; **liên kết tài khoản cùng email (L-04)** + dialog D3; liên kết/huỷ liên kết ở `/account`; E2E trên Auth Emulator |
 | **M13** | **Chốt ADR-03 (database)**; dựng Azure Functions (TS) + DB + Key Vault + Bicep; xác thực `verifyIdToken`; **Mua & gắn domain riêng**, cập nhật cấu hình OAuth Google/Meta; roles Learner/Editor/Admin (U-02), `/admin/users` |
 | **M14** | **Sync tiến độ** (`SyncedRepository`, U-03, U-04) — tiền đề cho leaderboard |
 | **M15** | **XP + Leaderboard** tuần/toàn thời gian, opt-out, chống gian lận (E-01..E-05) |
@@ -875,7 +878,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 |---|---|---|
 | 1 | **John sẽ gửi sau** 1–2 trang PDF mẫu để xác định PDF text hay scan, font Unicode hay không, và chốt prompt trích xuất | Giả định PDF text-based; pipeline vẫn hỗ trợ scan qua Document Intelligence |
 | 2 | ~~LLM~~ | **Đã chốt:** Claude API (ADR-04) |
-| 3 | ~~Provider đăng nhập~~ | **Đã chốt:** Google + Facebook, Phase 1. qua **Firebase Auth** (ADR-02) |
+| 3 | ~~Provider đăng nhập~~ | **Đã chốt:** Firebase Auth (ADR-02). **Phase 1: Google. Phase 2: Facebook** (M12.5) |
 | 4 | Báo cáo admin có cần **xem chi tiết từng học viên** (tên, email, tiến độ cá nhân) hay chỉ số liệu tổng hợp? | Chỉ tổng hợp ở v2; chi tiết từng học viên để sau, cần chính sách quyền riêng tư |
 | 5 | ~~Sự đồng ý của giáo viên~~ | **Đã chốt:** có sự đồng ý |
 | 6 | Logo & màu chủ đạo | **Đã chốt tạm:** dùng logo placeholder; owner bổ sung logo sau. Màu chủ đạo trung tính cho tới khi có logo |
@@ -889,6 +892,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v6.4 (2026-11-15):** **Facebook Login chuyển sang Phase 2** (M12.5): Phase 1 chỉ Google + Guest; L-04 (liên kết tài khoản) sang Phase 2; feature flag `VITE_ENABLE_FACEBOOK_LOGIN`; SETUP S6 dời sang Phase 2.
 - **v6.3 (2026-11-14):** Thêm bộ tài liệu cho agent: `AGENTS.md`, `ROADMAP.md`, `SETUP-OWNER.md`. Tách M0.5 thành M0.5a (trước M1) và M0.5b (làm dần); M0 làm ngay không chờ thiết kế.
 - **v6.2 (2026-11-14):** Ý tưởng cốt lõi: học bằng **flashcard + trò chơi**, tiêu chí **tượng hình** (mục 1). Thêm Module V Hình ảnh & mẹo nhớ (4.13) và Module F Trò chơi (4.14, 4 trò lõi Phase 1); schema thêm `image`, `mnemonic_vi`; nguyên tắc D2a; route `/games`; M10.5.
 - **v6.1 (2026-11-14):** Định hướng UI **tối giản** (mục 7.6.1: nguyên tắc D1–D10, tham khảo WaniKani / Mochi / Anki / LingQ / Duolingo); quy trình thiết kế 7 nấc + template screen spec (7.6.2–7.6.3); màu mức thuộc đổi thành sắc độ của màu accent; tách M0.5 thành các bước.

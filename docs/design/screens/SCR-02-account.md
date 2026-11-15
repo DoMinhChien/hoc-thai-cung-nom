@@ -1,6 +1,8 @@
 # SCR-02 Tài khoản & trang pháp lý  — Requirements: L-04, L-05, L-08, L-10; mục 4.0 (yêu cầu Google/Facebook)
 
 > Trạng thái: **✅ Owner duyệt 2026-11-15** (M0.5a · D0.4). Luồng: `../flows.md` §5–§6.
+>
+> **Phase 1 (2026-11-15):** khối "Phương thức đăng nhập" chỉ có dòng **Google · Đã liên kết** (không nút). Dòng Facebook + nút Liên kết / Huỷ liên kết thuộc **Phase 2 (M12.5)**.
 
 ---
 
@@ -96,11 +98,11 @@ Các mục: Giới thiệu dịch vụ · Tài khoản · Nội dung học (giá
 1. Đăng nhập vào Học Thai cùng Nôm.
 2. Vào **Tài khoản** → **Vùng nguy hiểm** → **Xoá tài khoản**.
 3. Gõ **XOÁ** để xác nhận.
-- Nếu không đăng nhập được: liên hệ {email liên hệ} kèm email tài khoản, xử lý trong 30 ngày.
+- Nếu không đăng nhập được: liên hệ **dominhchien206@gmail.com** kèm email tài khoản, xử lý trong 30 ngày.
 - Gỡ quyền app khỏi Facebook: Cài đặt Facebook → Ứng dụng và trang web → gỡ "Học Thai cùng Nôm".
 
-### Cần owner cung cấp
-- **Email liên hệ** hiển thị trên trang pháp lý (dùng cho cả Google consent screen và Facebook App).
+### Thông tin từ owner
+- ✅ **Email liên hệ:** `dominhchien206@gmail.com` — dùng ở mục "Liên hệ" của `/privacy`, `/terms` và hướng dẫn xoá dữ liệu.
 
 ## Lưu ý chữ Thái
 Không có chữ Thái trên các màn này.

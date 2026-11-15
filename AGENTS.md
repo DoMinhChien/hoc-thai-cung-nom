@@ -9,7 +9,7 @@
 
 - Web app học tiếng Thái cho **người Việt**, UI **tiếng Việt**, **web desktop-first**.
 - Học bằng **flashcard + trò chơi**, mỗi chữ/từ có **hình ảnh + mẹo nhớ**; UI **tối giản**.
-- Phase 1: **không backend** — Azure Static Web Apps + **Firebase Auth** (Google/Facebook); tiến độ học lưu **IndexedDB** (local-first).
+- Phase 1: **không backend** — Azure Static Web Apps + **Firebase Auth** (Google; Facebook ở Phase 2); tiến độ học lưu **IndexedDB** (local-first).
 - Thư mục này là **root của repo**: https://github.com/DoMinhChien/hoc-thai-cung-nom (nhánh chính `main`).
 
 ## 2. Thứ tự đọc tài liệu
