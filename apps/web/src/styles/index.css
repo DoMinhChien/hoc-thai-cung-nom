@@ -61,6 +61,12 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --color-google-bg: var(--nom-google-bg);
+  --color-google-border: var(--nom-google-border);
+  --color-google-fg: var(--nom-google-fg);
+  --color-facebook-bg: var(--nom-facebook-bg);
+  --color-facebook-fg: var(--nom-facebook-fg);
+
   --color-mastery-none: var(--nom-mastery-none);
   --color-mastery-learning: var(--nom-mastery-learning);
   --color-mastery-known: var(--nom-mastery-known);

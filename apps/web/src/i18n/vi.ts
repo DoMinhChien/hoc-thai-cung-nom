@@ -23,7 +23,6 @@ export const vi = {
     games: 'Trò chơi',
     progress: 'Tiến độ',
     settings: 'Cài đặt',
-    account: 'Tài khoản',
   },
   account: {
     guestName: 'Khách',

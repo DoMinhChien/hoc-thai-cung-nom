@@ -1,8 +1,11 @@
-/** Các URL mẫu của mọi route Phase 1 — dùng cho test điều hướng & axe. */
+/**
+ * Các URL mẫu của mọi route Phase 1 — dùng cho test điều hướng & axe (với Guest đã chọn "học không
+ * cần đăng nhập"). `/account` cần đăng nhập → Guest thấy trang đăng nhập.
+ */
 export const ROUTE_SAMPLES: { path: string; testId: string }[] = [
   { path: '/', testId: 'dashboard' },
   { path: '/login', testId: 'login' },
-  { path: '/account', testId: 'account' },
+  { path: '/account', testId: 'login' },
   { path: '/privacy', testId: 'privacy' },
   { path: '/terms', testId: 'terms' },
   { path: '/account/delete-instructions', testId: 'delete-instructions' },
