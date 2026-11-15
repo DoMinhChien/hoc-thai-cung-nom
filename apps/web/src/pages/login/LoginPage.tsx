@@ -100,6 +100,7 @@ export function LoginPage() {
                 <Button
                   key={provider}
                   data-testid={`sign-in-${provider}`}
+                  aria-busy={pending || undefined}
                   className={cn('h-11 w-full', PROVIDER_STYLE[provider])}
                   disabled={!online || busy}
                   onClick={() => void signIn(provider)}

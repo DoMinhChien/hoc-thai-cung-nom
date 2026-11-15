@@ -28,7 +28,6 @@ export const vi = {
     guestName: 'Khách',
     guestHint: 'Tiến độ chỉ lưu trên trình duyệt này',
     signIn: 'Đăng nhập',
-    menuLabel: 'Menu tài khoản',
     menuAccount: 'Tài khoản',
     menuSignOut: 'Đăng xuất',
     loading: 'Đang tải tài khoản',

@@ -88,7 +88,6 @@ export function AccountBlock() {
           <button
             type="button"
             data-testid="account-menu-trigger"
-            aria-label={t('account.menuLabel')}
             className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-left outline-none hover:bg-background focus-visible:ring-2 focus-visible:ring-ring"
           >
             <UserAvatar user={user} />

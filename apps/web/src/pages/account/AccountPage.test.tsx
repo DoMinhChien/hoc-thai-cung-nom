@@ -69,6 +69,7 @@ describe('AccountPage (SCR-02 A)', () => {
     await userEvent.click(await screen.findByTestId('sign-out-confirm'));
     await screen.findByTestId('page-login');
     expect(router.state.location.pathname).toBe('/login');
+    expect(router.state.location.search).toBe('');
     expect(auth.currentUser).toBeNull();
   });
 
@@ -89,6 +90,7 @@ describe('AccountPage (SCR-02 A)', () => {
 
     expect(await screen.findByText(t('deleteDialog.done'))).toBeInTheDocument();
     expect(router.state.location.pathname).toBe('/login');
+    expect(router.state.location.search).toBe('');
     expect(auth.calls).toContain('deleteAccount');
     expect(await Dexie.exists('hoc-thai-nom-u1')).toBe(false);
     expect(await Dexie.exists('hoc-thai-nom-guest')).toBe(true);
