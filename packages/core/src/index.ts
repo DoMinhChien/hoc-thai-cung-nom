@@ -4,3 +4,4 @@
  */
 export const APP_NAME = 'Học Thai cùng Nôm';
 export * from './audio';
+export * from './schema';

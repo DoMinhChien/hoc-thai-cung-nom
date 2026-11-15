@@ -104,7 +104,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
 - [x] T2.0 Hạ tầng `packages/core`: thêm `zod` (v4), `@vitest/coverage-v8` với ngưỡng ≥ 90% cho `tone/` + `thai/normalize`; ESLint chặn import `react`/`react-dom` trong `packages/core` (lib không có DOM sẵn từ M0).
-- [ ] T2.1 Zod schema (`packages/core/src/schema/`), theo plan 5.5:
+- [x] T2.1 Zod schema (`packages/core/src/schema/`), theo plan 5.5:
   - enum dùng chung: `Tone` (mid/low/falling/high/rising), `ToneMark` (ek/tho/tri/chattawa), `ConsonantClass` (mid/high/low), `id` ascii kebab, `image` (`noto:<hex>` hoặc `img/…`), `mnemonic_vi`, `draft` (mặc định `false`).
   - `Consonant`, `Vowel` (dạng có placeholder `–`, ngắn/dài), `ToneMarkEntry`, `ToneEntry`, `SyllableAnalysis` (tone-drills), `WordRow` (CSV: tách `|` / `;`, `syllables` và `tones` cùng độ dài), `Deck`, `Reading` (level 1–5), `MinimalPair` (2–4 từ, thanh khác nhau).
   - Test: mẫu hợp lệ trong plan 5.5 parse được; từng lỗi (id sai, thiếu trường, độ dài lệch, thanh/level ngoài miền) bị bắt. Dữ liệu test chỉ là mẫu tối thiểu từ plan.
