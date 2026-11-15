@@ -43,7 +43,8 @@ export const ThaiTextSchema = z
   .string()
   .trim()
   .min(1)
-  .regex(/\p{Script=Thai}/u, 'phải chứa chữ Thái');
+  // Chuỗi `\u` thay vì `\p{Script=Thai}`: JSON Schema xuất ra phải chạy được với `re` của Python (M4).
+  .regex(new RegExp('[\\u0E00-\\u0E7F]'), 'phải chứa chữ Thái');
 
 /** Trường dùng chung cho mọi mục nội dung (V-07, AGENTS.md mục 4). */
 export const contentMeta = {
