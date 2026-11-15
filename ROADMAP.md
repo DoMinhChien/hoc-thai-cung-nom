@@ -111,7 +111,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T2.2 JSON Schema từ Zod (`z.toJSONSchema`, dạng input) → `packages/core/json-schema/*.schema.json` qua `pnpm --filter @nom/core schema:export`; test kiểm tra file đã commit khớp schema hiện tại (CI bắt quên export).
 - [x] T2.3 `normalizeThai()` (`packages/core/src/thai/normalize.ts`, phần chuẩn hóa của G-06): NFC; bỏ ký tự vô hình (ZWSP, ZWJ, ZWNJ, BOM); `ํ` + (dấu thanh) + `า` → (dấu thanh) + `ำ`; sắp xếp lại cụm dấu sau mỗi phụ âm: nguyên âm trên/dưới → dấu thanh → `์`. Idempotent. Chấm điểm gõ (diff) **để M8**.
 - [x] T2.4 Tone Engine (`packages/core/src/tone/`): `consonantClass(char)` (44 phụ âm, 6.1); `computeTone(syllable)` → `{ ok: true, tone, steps }` | `{ ok: false, error, steps }`; `steps` = 4 bước A-21 (lớp — có xét ห นำ/อ นำ, sống/chết — kèm lý do, dấu thanh, kết quả) để Tone Trainer (A-22) so từng bước. Lỗi: ô "—" của bảng 6.3, ห/อ นำ không hợp lệ, phụ âm không có.
-- [ ] T2.5 Unit test Tone Engine: mỗi ô bảng 6.3 ≥ 2 case (gồm 4 ô "—" → lỗi), ห นำ, อ นำ (4 từ), nguyên âm ngắn + âm cuối vang (วัน), âm cuối tắc với nguyên âm dài; đủ 44 phụ âm đúng lớp. Coverage ≥ 90%.
+- [x] T2.5 Unit test Tone Engine: mỗi ô bảng 6.3 ≥ 2 case (gồm 4 ô "—" → lỗi), ห นำ, อ นำ (4 từ), nguyên âm ngắn + âm cuối vang (วัน), âm cuối tắc với nguyên âm dài; đủ 44 phụ âm đúng lớp. Coverage ≥ 90%.
 
 **Tiêu chí nghiệm thu**
 - `pnpm test` pass, coverage `packages/core` ≥ 90% cho tone engine & normalize.
