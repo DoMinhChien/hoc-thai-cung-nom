@@ -8,9 +8,9 @@
 ## Milestone đang mở
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
-> **🔵 M5.5 — Dọn phạm vi v7** (nhánh `m5.5-scope-v7`). Bắt đầu từ T5.5.1.
-> ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code. Nhánh `m6-alphabet-tones` nếu đã tạo thì bỏ.
-> 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1 xong (Tone Engine giữ nhưng đóng băng).
+> **🔵 M6 — Content model v7** (nhánh `m6-content-v7`, chưa bắt đầu). Bắt đầu từ T6.1 — owner xem danh sách task trong PR của M5.5.
+> ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
+> 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5 xong (Tone Engine giữ nhưng đóng băng).
 > ⚪ M0.5b (SCR-03..09 v7) làm song song: Claude Desktop soạn spec + wireframe → owner duyệt. ⚪ M4 chờ S9 + PDF/biểu mẫu giáo viên.
 
 ---
@@ -42,9 +42,9 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | ⚪ | Làm dần, mỗi màn trước milestone dùng nó |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
-| M5.5 | **Dọn phạm vi v7**: gỡ chữ cái/thanh điệu khỏi UI, nav mới, schema tùy chọn | 🔵 | M2.1 ✅; plan mục 0 |
+| M5.5 | **Dọn phạm vi v7**: gỡ chữ cái/thanh điệu khỏi UI, nav mới, schema tùy chọn | 🟢 | M2.1 ✅; plan mục 0 — PR #11 |
 | ~~M6 cũ~~ | ~~Bảng chữ cái + Tone Trainer~~ | ⛔ Hủy (v7) | — |
-| M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | ⚪ | M5.5 |
+| M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | 🔵 | M5.5 ✅; không có UI → không cần spec |
 | M7 | Bài học: `/units`, chi tiết unit, bài học 4 bước, AudioProvider | ⚪ | M6, SCR-04/05 |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (E-07) | ⚪ | M5.5 |
 | M9 | Bài tập: E-01..E-13, `/practice`, SRS cho câu | ⚪ | M7, M8, SCR-06 |
@@ -173,7 +173,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - `steps` của วัส trong สวัสดี có bước giải thích phụ âm dẫn ส.
 - ✅ Kết quả: bước `class` của วัส = `{ value: high, reason: leading, leading: ส, ownClass: low }`; ไ/ใ/ำ/เา cho bước `liveness` lý do `inherent-final`; `content:check` 43 mục, 0 lỗi, không cảnh báo plan 6.2; coverage core 100% lines.
 
-### M5.5 — Dọn phạm vi v7 🔵
+### M5.5 — Dọn phạm vi v7 🟢
 
 **Requirement:** plan **mục 0.2** (danh sách bỏ), **0.7** (nav), **0.9** (schema tùy chọn). Không thêm tính năng mới.
 
@@ -186,15 +186,39 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T5.5.4 `/login`: thẻ ví dụ từ vựng + câu chữ mới theo SCR-01 v7; cập nhật baseline.
 - [x] T5.5.5 Schema core: `syllables`/`tones` của Word → tùy chọn; `content:check` không bắt buộc thanh; xóa content mẫu chữ cái/thanh (`consonants`, `vowels`, `tone-*`, `tones`, `minimal-pairs`, `readings`); xuất lại JSON Schema.
 - [x] T5.5.6 Tone Engine đóng băng: thêm ghi chú trong README của `packages/core/tone`; ESLint `no-restricted-imports` cấm `apps/web` import module tone.
-- [ ] T5.5.7 E2E luồng 0 + axe + baseline cập nhật; CI xanh.
+- [x] T5.5.7 E2E luồng 0 + axe + baseline cập nhật; CI xanh.
 
 **Tiêu chí nghiệm thu**
 - Không còn chữ "Bảng chữ cái", "Thanh điệu", "Ôn tập", "Nghe" trên UI; nav khớp SCR-00 v7.
 - Không còn file/import của 5 component đã xóa; `grep -ri tone apps/web/src` chỉ còn kết quả không liên quan (hoặc rỗng).
 - `pnpm test`, `pnpm e2e`, `content:check` pass.
+- ✅ Kết quả: nav 7 mục đúng thứ tự SCR-00 v7 (test); URL cũ `/alphabet`, `/tones`, `/vocab*`, `/reading*` → `/units`, `/review`, `/listening` → `/practice`; `grep -ri tone apps/web/src` chỉ còn redirect `/tones` và `Notice.tone` (cảnh báo/lỗi Login, không liên quan); ESLint chặn import Tone Engine (đã thử); `content:check` 6 mục, 0 lỗi; E2E 162/162 local (win32), baseline mới `/login` + `/dev/progress` (owner xem).
+
+### M6 — Content model v7 🔵
+
+**Requirement:** plan **mục 0.9** (mẫu nhập liệu), 0.3 (16 chủ đề, cấp A1/A2), 0.4 (cấu trúc bài học: 8–12 từ, 1–2 mẫu câu, 4–8 câu thoại), 0.5 (E-04, E-06, E-07 cần `tokens`, `distractors`, `th_alt`), 5.4–5.6 (loader/validator/build — giữ cách làm M3).
+
+**Cần trước:** M5.5 ✅. Không có UI → không cần screen spec. Nội dung thật: owner/giáo viên (S10); agent chỉ tạo content mẫu tối thiểu `draft: true`.
+
+**Bố cục `content/` mới** (khớp `content/templates/`): `units.csv`, `lessons.csv`, `words.csv`, `sentences.csv`, `grammar.yaml`, `dialogues.yaml`. File cũ `vocab/decks.yaml` + `vocab/words.csv` (deck) chuyển sang mẫu mới rồi xóa.
+
+**Task**
+- [ ] T6.1 Schema Zod (`packages/core/src/schema/`): `Unit` (`unit_id`, `level` A1/A2, `order`, `title_vi`, `title_th`, `can_do` tách `|`), `Lesson` (`grammar_ids` tách `|`), `Word` v7 (`unit_id`, `lesson_id`, `phonetic` tùy chọn, không còn `syllables`/`tones`/`deck`), `Sentence` (`th_alt`, `tokens`, `distractors` tách `|`, `grammar_id`, `audio`), `Grammar` (`pattern`, `explain_vi`, `examples[{th, vi}]`), `Dialogue` (`lines[{speaker, th, vi}]`); `draft`. Xóa `Deck`, `WordRow` cũ, `Reading`, `MinimalPair` khỏi export (schema chữ cái giữ cho Tone Engine đóng băng). Unit test + xuất JSON Schema.
+- [ ] T6.2 `content/templates/`: 4 CSV (chỉ header + 1 dòng ví dụ) + 2 YAML có chú thích từng trường + `README.md` hướng dẫn giáo viên (mở bằng Excel/Google Sheets, UTF-8, ký tự `|`/`;`, cách đặt id). Test: header template khớp schema.
+- [ ] T6.3 Loader v7 (`scripts/content/load.ts`): đọc 6 file mới, lỗi kèm file:dòng:cột [trường]; `--input` nhận diện loại theo tên (`words.<nguồn>.csv`, `sentences.<nguồn>.csv`…) cho M4.
+- [ ] T6.4 `content:check` v7: id duy nhất theo loại; khóa ngoại (`lesson.unit_id`, `word.unit_id/lesson_id`, `sentence.grammar_id`, `lesson.grammar_ids`, `dialogue.lesson_id`, `grammar.unit_id`); `tokens` ghép lại = `th` (sau `normalizeThai`, bỏ khoảng trắng); `distractors` không trùng `tokens`; `th_alt` khác `th`; ký tự ngoài bảng Thái ở trường Thái. Cảnh báo: lesson ngoài 8–12 từ, unit ngoài 3–4 bài, câu thoại ngoài 4–8, `draft: true`. Bỏ kiểm tra tone-drills/lexicon bài đọc.
+- [ ] T6.5 `content:build` v7: `units.json` (lộ trình: unit + lesson + số từ/câu) + `unit-<id>.json` (lesson, words, sentences, grammar, dialogues của unit) + `manifest.json` (hash, idempotent); xóa output cũ (consonants, tones, readings…).
+- [ ] T6.6 Content mẫu **Unit 1 (A1 Chào hỏi) + Unit 2 (A1 Gia đình)**, mỗi unit 1 lesson, tối thiểu đủ chạy mọi kiểm tra (vài từ, vài câu có `tokens`/`distractors`, 1 grammar, 1 dialogue), tất cả `draft: true` — owner/giáo viên thay (S10).
+- [ ] T6.7 Tài liệu: AGENTS.md mục 10 (lệnh content), plan 5.4 trỏ sang 0.9, SETUP-OWNER S10 (dùng `content/templates/`).
+
+**Tiêu chí nghiệm thu**
+- Mở `content/templates/*.csv` bằng Excel ra đúng cột của plan 0.9; điền theo mẫu → `pnpm content:check --input <file>` báo lỗi đúng dòng/cột.
+- `content:check` bắt được: khóa ngoại sai, `tokens` không ghép ra `th`, id trùng.
+- `content:build` sinh `units.json` + `unit-*.json` ổn định (chạy 2 lần cùng hash); content mẫu 0 lỗi.
+- Coverage core 100% lines giữ nguyên; `pnpm test`, `content:check`, CI pass.
 
 ### ~~M6 cũ — Bảng chữ cái + Tone Trainer~~ ⛔ Hủy 2026-11-16 (v7)
-T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (plan mục 10), agent chi tiết hóa khi M5.5 xong.
+T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi tiết ở trên).
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
@@ -235,6 +259,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M5.5 → M6 | Commit docs v7. T5.5.1–T5.5.7: nav + route v7 (`/units`, `/practice`, `/words`; URL cũ redirect), xóa `MasteryGrid`/`HeatmapTable`/`ToneBarChart`/`ToneContour`/`ToneTag` + selector `ruleAccuracy`/`toneAccuracy`, xóa `color.tone` (tokens.json, CSS, Tailwind), `/login` thẻ từ vựng ก๋วยเตี๋ยว + câu chữ v7, Word `syllables`/`tones` tùy chọn + xóa content chữ cái/thanh/bài đọc/minimal pairs (JSON Schema xuất lại), Tone Engine đóng băng (README + ESLint), sitemap flows.md v7; E2E 162/162 + baseline mới. Đóng M5.5 → 🟢, mở M6 🔵 (T6.1–T6.7) | — | Owner: xem baseline `/login`, `/dev/progress`; duyệt task M6 | `m5.5-scope-v7` PR #11 |
 | 2026-11-16 | v7 (plan) | Owner chốt đổi phạm vi theo phản hồi demo: A1–A2, bỏ chữ cái + thanh điệu, Ôn tập → Bài tập, bỏ MasteryGrid/HeatmapTable; plan v7 mục 0 (16 chủ đề, bài học 4 bước, Module E bài tập dịch câu, mẫu content); hủy M6 cũ, mở **M5.5** 🔵; milestone M6–M10.5 định nghĩa lại | — | — | — |
 | 2026-11-16 | M2.1 → M6 | T2.1.1–T2.1.6: schema `leading` mọi phụ âm cao/trung + `tone_override`/`note`, vowel `inherent_final` (JSON Schema xuất lại); Tone Engine อักษรนำ tổng quát (bước `class` ghi phụ âm dẫn + lớp riêng) và ไ/ใ/ำ/เา → sống (`inherent-final`); validator cảnh báo ไ/ใ/ำ/เา ghi `long`/thiếu âm cuối, bỏ qua `tone_override`; content mẫu sửa + thêm (43 mục, draft); test plan 6.3 bổ sung. Đóng M2.1 → 🟢, mở M6 🔵 (T6.1–T6.9) | — | M6 UI chờ owner duyệt SCR-03/04/05 (T6.1) | `m2.1-tone-rules` PR #10 |
 | 2026-11-16 | M5 → M2.1 | Owner duyệt `/dev/progress` + 2 sửa: `ToneContour`/`ToneTag` SVG theo số Chao (D10; thay ký hiệu Chao ở ToneBarChart, heatmap, thẻ ví dụ Login), heatmap tách Thấp × Chết thành ngắn (high) / dài (falling) + `TONE_RULES` trong core. Đóng M5 → 🟢, mở M2.1 🔵 | — | — | `m5-followup` PR #9 |
