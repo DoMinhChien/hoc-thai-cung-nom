@@ -5,3 +5,5 @@ test-results
 *.md
 docs
 packages/core/json-schema
+# Dữ liệu owner soạn — định dạng do content:check kiểm tra (giữ mỗi mục 1 dòng).
+content/
