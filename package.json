@@ -15,7 +15,8 @@
     "emulators": "firebase emulators:start --only auth --project demo-hoc-thai-nom",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "content:check": "pnpm --filter @nom/scripts content:check"
+    "content:check": "pnpm --filter @nom/scripts content:check",
+    "content:build": "pnpm --filter @nom/scripts content:build"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

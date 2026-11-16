@@ -15,3 +15,6 @@ coverage/
 # Plan 5.4: PDF gốc và output pipeline chờ review không vào repo.
 sources/
 staging/
+
+# Sinh bởi pnpm content:build (T3.4).
+apps/web/public/content/

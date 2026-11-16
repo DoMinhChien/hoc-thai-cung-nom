@@ -123,7 +123,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T3.1 Loader `scripts/content/load.ts`: đọc YAML (`yaml`) + CSV (`csv-parse`) theo cấu trúc 5.4, chuẩn hóa chữ Thái bằng `normalizeThai`, parse bằng schema M2; lỗi kèm **file + dòng/vị trí + trường**.
 - [x] T3.2 `pnpm content:check` thật (5.6): schema; id duy nhất (theo loại); `deck` tồn tại; `syllables`/`tones` cùng độ dài; `computeTone()` khớp `expected_tone` (tone-drills); lớp phụ âm trong consonants.yaml khớp `consonantClass()`; **cảnh báo**: ký tự ngoài U+0E00–U+0E7F trong trường Thái, từ trong bài đọc chưa có trong lexicon (tách bằng `|` / `Intl.Segmenter`), mục `draft: true`. Lỗi → exit 1; cảnh báo → exit 0.
 - [x] T3.3 `--input <file|thư mục>` để validate file staging của pipeline Python (M4); output JSON tùy chọn (`--json`) cho Python đọc.
-- [ ] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
+- [x] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
 - [x] T3.5 Content mẫu **tối thiểu, `draft: true`** (AGENTS mục 4): vài phụ âm (đủ 3 lớp), vài nguyên âm, 4 dấu thanh, 5 thanh, ~5 tone-drills, 1 deck ~5 từ, 1 bài đọc ngắn, 1 cặp tối thiểu — **chỉ để chạy pipeline; owner thay/duyệt (S10)**.
 - [ ] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
 

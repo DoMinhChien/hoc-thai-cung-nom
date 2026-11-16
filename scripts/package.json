@@ -6,7 +6,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
-    "content:check": "tsx content-check.ts"
+    "content:check": "tsx content-check.ts",
+    "content:build": "tsx content-build.ts"
   },
   "dependencies": {
     "@nom/core": "workspace:*",
