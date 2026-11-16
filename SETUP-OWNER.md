@@ -18,7 +18,7 @@
 | S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ✅ Secret SWA + 4 Variables Firebase (2026-11-15) |
 | S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
 | S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
-| S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ☐ |
+| S10 | Nội dung: PDF mẫu, duyệt content mẫu & mẹo nhớ | M3, M4, M10.5 | — | ◐ content mẫu M3 ✅ — còn PDF mẫu, mẹo nhớ |
 | S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ◐ M0.5a ✅ duyệt 2026-11-15 — còn M0.5b |
 | S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ✅ `dominhchien206@gmail.com` |
 
@@ -104,7 +104,7 @@ Google Cloud Console → APIs & Services → Credentials → API key của Fireb
 
 ## S10 — Nội dung
 - [ ] Gửi **1–2 trang PDF giáo trình mẫu** (trước M4) → đặt vào `sources/` (thư mục bị `.gitignore`).
-- [ ] Duyệt **content mẫu** agent tạo ở M3 (các mục `draft: true`).
+- [x] Duyệt **content mẫu** agent tạo ở M3 (các mục `draft: true`) — owner cho đóng M3 2026-11-16.
 - [ ] Duyệt **mẹo nhớ & hình** cho 44 phụ âm (trước M10.5).
 
 ## S11 — Duyệt thiết kế
