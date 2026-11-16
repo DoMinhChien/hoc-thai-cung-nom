@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { FinalSound, Tone, ToneMark, VowelLength } from '../schema/common';
 import { consonantClass, HIGH_CONSONANTS, LOW_CONSONANTS, MID_CONSONANTS } from './classes';
-import { computeTone, type ToneInput } from './engine';
+import { computeTone, TONE_RULES, type ToneInput } from './engine';
 
 /** Ví dụ ngữ pháp chuẩn (sách giáo khoa) để kiểm tra quy tắc — không phải nội dung học. */
 type Case = [
@@ -176,6 +176,10 @@ describe('computeTone — bảng quy tắc 6.3', () => {
       }
     });
   }
+
+  it('TONE_RULES liệt kê đúng các ô hợp lệ của bảng (không ô "—")', () => {
+    expect(TONE_RULES).toEqual(Object.fromEntries(TABLE.map(([rule, tone]) => [rule, tone])));
+  });
 
   it.each(INVALID.map((c) => [c[0], c] as const))('ô "—": %s → lỗi invalid-tone-mark', (_w, c) => {
     const result = computeTone(input(c));

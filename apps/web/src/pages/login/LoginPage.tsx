@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import { ProviderIcon } from '@/components/account/ProviderIcon';
+import { ToneTag } from '@/components/tone';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAuth } from '@/auth/useAuth';
@@ -187,7 +188,7 @@ function ExampleCard() {
         ก
       </span>
       <span className="text-sm">{t('login.examplePhonetic')}</span>
-      <span className="text-sm font-medium text-tone-mid">{t('login.exampleTone')}</span>
+      <ToneTag tone="mid" className="text-sm font-medium text-tone-mid" />
     </figure>
   );
 }

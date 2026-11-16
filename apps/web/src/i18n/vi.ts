@@ -48,7 +48,6 @@ export const vi = {
       'Mỗi chữ cái gắn với một hình ảnh và mẹo nhớ. Học bằng flashcard và trò chơi ngắn mỗi ngày.',
     exampleCardLabel: 'Thẻ ví dụ',
     examplePhonetic: 'ko kai · con gà',
-    exampleTone: '˧ Ngang',
     cardTitle: 'Bắt đầu học',
     continueWith: 'Tiếp tục với {provider}',
     opening: 'Đang mở…',
@@ -147,19 +146,19 @@ export const vi = {
     close: 'Đóng',
     retry: 'Thử lại',
   },
+  toneName: {
+    mid: 'Ngang',
+    low: 'Thấp',
+    falling: 'Xuống',
+    high: 'Cao',
+    rising: 'Lên',
+  },
   progress: {
     level: {
       none: 'Chưa học',
       learning: 'Đang học',
       known: 'Đang nhớ',
       mastered: 'Đã thuộc',
-    },
-    tone: {
-      mid: 'Ngang',
-      low: 'Thấp',
-      falling: 'Xuống',
-      high: 'Cao',
-      rising: 'Lên',
     },
     ringLabel: '{label}: hoàn thành {percent}%',
     barLabel:
@@ -189,6 +188,8 @@ export const vi = {
     classLow: 'Thấp',
     colLive: 'Sống',
     colDead: 'Chết',
+    colDeadShort: 'ngắn',
+    colDeadLong: 'dài',
     mark: {
       ek: 'Mai ek',
       tho: 'Mai tho',

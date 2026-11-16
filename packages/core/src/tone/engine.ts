@@ -45,6 +45,25 @@ const MARKED: Record<ConsonantClass, Record<ToneMark, Tone | null>> = {
 
 const UNMARKED_LIVE: Record<ConsonantClass, Tone> = { mid: 'mid', high: 'rising', low: 'mid' };
 
+/**
+ * Mọi ô hợp lệ của bảng 6.3: `rule` (như `ToneResult.rule`) → thanh. Dùng cho heatmap P-03
+ * (vd. tách ô Thấp × chết thành `low:dead-short` → high và `low:dead-long` → falling).
+ */
+export const TONE_RULES: Readonly<Record<string, Tone>> = Object.fromEntries(
+  (['mid', 'high', 'low'] as const).flatMap((cls) => [
+    [`${cls}:live`, UNMARKED_LIVE[cls]],
+    ...(cls === 'low'
+      ? [
+          ['low:dead-short', 'high'],
+          ['low:dead-long', 'falling'],
+        ]
+      : [[`${cls}:dead`, 'low']]),
+    ...Object.entries(MARKED[cls])
+      .filter(([, tone]) => tone)
+      .map(([mark, tone]) => [`${cls}:${mark}`, tone]),
+  ]),
+);
+
 function classStep(input: ToneInput): Extract<ToneStep, { step: 'class' }> | ToneError {
   const base = consonantClass(input.initial_char);
   if (!base) return 'unknown-consonant';
