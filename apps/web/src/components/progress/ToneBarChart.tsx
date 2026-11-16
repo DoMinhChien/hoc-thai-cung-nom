@@ -1,7 +1,7 @@
 import type { Accuracy, Tone } from '@nom/core';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
-import { TONE_BG, TONE_GLYPH, TONES } from './levels';
+import { TONE_BG, TONES, ToneTag } from '@/components/tone';
 
 const valueText = (a: Accuracy) =>
   a.ratio === null
@@ -9,7 +9,7 @@ const valueText = (a: Accuracy) =>
     : t('progress.percent', { percent: Math.round(a.ratio * 100) });
 
 /**
- * P-07: biểu đồ cột tỉ lệ đúng theo 5 thanh (màu theo thanh). Mỗi cột có tên + ký hiệu thanh
+ * P-07: biểu đồ cột tỉ lệ đúng theo 5 thanh (màu theo thanh). Mỗi cột có tên + contour thanh
  * và số % (D10) — trình đọc màn hình đọc danh sách thay cho hình.
  */
 export function ToneBarChart({
@@ -37,7 +37,7 @@ export function ToneBarChart({
               data-testid={`tone-bar-${tone}`}
             >
               <span className="sr-only">
-                {t('progress.toneBar', { tone: t(`progress.tone.${tone}`), value: valueText(a) })}
+                {t('progress.toneBar', { tone: t(`toneName.${tone}`), value: valueText(a) })}
               </span>
               <span className="text-xs font-semibold tabular-nums" aria-hidden="true">
                 {valueText(a)}
@@ -52,9 +52,8 @@ export function ToneBarChart({
                   style={{ height: `${pct}%` }}
                 />
               </div>
-              <span className="flex items-center gap-1 text-xs" aria-hidden="true">
-                <span className="text-sm leading-none">{TONE_GLYPH[tone]}</span>
-                {t(`progress.tone.${tone}`)}
+              <span aria-hidden="true">
+                <ToneTag tone={tone} className="text-xs" />
               </span>
             </li>
           );

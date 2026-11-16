@@ -2,6 +2,7 @@ import {
   accuracyBy,
   completionPercent,
   MASTERY_LEVELS,
+  TONE_RULES,
   type Accuracy,
   type MasteryCounts,
   type Tone,
@@ -54,6 +55,7 @@ const RULES: Record<string, Accuracy> = {
   'high:ek': acc(5, 6),
   'high:tho': acc(4, 7),
   'low:live': acc(14, 14),
+  'low:dead-short': acc(7, 8),
   'low:dead-long': acc(4, 10),
   'low:ek': acc(6, 8),
   'low:tho': acc(8, 9),
@@ -66,10 +68,13 @@ const VALID_MARKS: Record<string, readonly string[]> = {
   low: ['ek', 'tho'],
 };
 
-function ruleFor(row: string, col: string): string | null {
-  if (col === 'live') return `${row}:live`;
-  if (col === 'dead') return row === 'low' ? 'low:dead-long' : `${row}:dead`;
-  return VALID_MARKS[row]!.includes(col) ? `${row}:${col}` : null;
+/** Ô bảng 6.3 → rule; Trung/Cao × chết chỉ một quy tắc nên phủ cả cột "ngắn" lẫn "dài". */
+function ruleFor(row: string, col: string): { rule: string; colSpan?: number } | null {
+  if (col === 'live') return { rule: `${row}:live` };
+  if (col === 'dead-short' || col === 'dead-long') {
+    return row === 'low' ? { rule: `low:${col}` } : { rule: `${row}:dead`, colSpan: 2 };
+  }
+  return VALID_MARKS[row]!.includes(col) ? { rule: `${row}:${col}` } : null;
 }
 
 const TONE_DATA = accuracyBy<Tone>(
@@ -127,12 +132,23 @@ export function ProgressDemoPage() {
           ]}
           columns={[
             { key: 'live', label: t('devProgress.colLive') },
-            { key: 'dead', label: t('devProgress.colDead') },
+            {
+              key: 'dead-short',
+              label: t('devProgress.colDeadShort'),
+              group: t('devProgress.colDead'),
+            },
+            {
+              key: 'dead-long',
+              label: t('devProgress.colDeadLong'),
+              group: t('devProgress.colDead'),
+            },
             ...MARKS.map((m) => ({ key: m, label: t(`devProgress.mark.${m}`) })),
           ]}
           getCell={(row, col) => {
-            const rule = ruleFor(row, col);
-            return rule ? { rule, accuracy: RULES[rule] ?? acc(0, 0) } : null;
+            const cell = ruleFor(row, col);
+            return cell
+              ? { ...cell, accuracy: RULES[cell.rule] ?? acc(0, 0), tone: TONE_RULES[cell.rule] }
+              : null;
           }}
           onPractice={() => {}}
         />
