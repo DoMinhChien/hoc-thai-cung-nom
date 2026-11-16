@@ -180,7 +180,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Cần trước:** M2.1 ✅. Spec: `docs/design/screens/SCR-00-layout.md`, `SCR-01-login.md` (đã sửa v7), `brief.md`.
 
 **Task**
-- [ ] T5.5.1 Nav + routes theo SCR-00 v7: "Tổng quan · Bài học · Bài tập · Sổ từ · Trò chơi · Tiến độ · Cài đặt"; route `/units`, `/practice`, `/words` là trang trống "Sắp có"; gỡ `/alphabet`, `/tones`, `/review`, `/vocab`, `/reading`, `/listening` (nếu đã có), redirect cũ → mới.
+- [x] T5.5.1 Nav + routes theo SCR-00 v7: "Tổng quan · Bài học · Bài tập · Sổ từ · Trò chơi · Tiến độ · Cài đặt"; route `/units`, `/practice`, `/words` là trang trống "Sắp có"; gỡ `/alphabet`, `/tones`, `/review`, `/vocab`, `/reading`, `/listening` (nếu đã có), redirect cũ → mới.
 - [ ] T5.5.2 Xóa `MasteryGrid`, `HeatmapTable`, `ToneBarChart`, `ToneContour`, `ToneTag` + test/visual baseline; xóa phần tương ứng trên `/dev/progress`; xóa selector chỉ phục vụ chúng (theo quy tắc/thanh) trong `packages/core/progress`. Giữ `ProgressRing`, `StackedProgressBar`.
 - [ ] T5.5.3 Xóa `color.tone` trong `docs/design/tokens.json` và mọi nơi sinh/dùng token đó (CSS vars, Tailwind).
 - [ ] T5.5.4 `/login`: thẻ ví dụ từ vựng + câu chữ mới theo SCR-01 v7; cập nhật baseline.

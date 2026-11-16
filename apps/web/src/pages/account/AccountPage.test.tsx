@@ -115,14 +115,14 @@ describe('AccountPage (SCR-02 A)', () => {
 
 describe('Khối tài khoản & khung (SCR-00, L-06, L-09)', () => {
   it('Guest: "Khách" + nút Đăng nhập', async () => {
-    renderApp('/alphabet');
+    renderApp('/units');
     const block = await screen.findByTestId('account-block-guest');
     expect(within(block).getByTestId('account-sign-in')).toHaveAttribute('href', '/login');
   });
 
   it('đã đăng nhập: tên hiển thị; menu → Tài khoản / Đăng xuất', async () => {
     const auth = signedIn({ displayName: 'An' });
-    const { router } = renderApp('/alphabet', auth);
+    const { router } = renderApp('/units', auth);
     expect(await screen.findByTestId('account-display-name')).toHaveTextContent('An');
 
     await userEvent.click(screen.getByTestId('account-menu-trigger'));
@@ -137,7 +137,7 @@ describe('Khối tài khoản & khung (SCR-00, L-06, L-09)', () => {
   });
 
   it('offline: badge "Ngoại tuyến", nút Đăng nhập vô hiệu', async () => {
-    renderApp('/alphabet');
+    renderApp('/units');
     await screen.findByTestId('account-block-guest');
     expect(screen.queryByTestId('offline-badge')).not.toBeInTheDocument();
     setOnline(false);

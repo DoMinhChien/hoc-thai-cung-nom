@@ -1,4 +1,4 @@
-import type { RouteObject } from 'react-router';
+import { Navigate, type RouteObject } from 'react-router';
 import { FirstVisitGate, RequireAuth } from '@/app/guards';
 import { AppLayout, BareLayout, DevLayout } from '@/components/layout/AppLayout';
 import type { MessageKey } from '@/i18n';
@@ -16,7 +16,20 @@ const page = (path: string, title: MessageKey, testId: string): RouteObject => (
   element: <PlaceholderPage title={title} testId={testId} />,
 });
 
-/** Route Phase 1 — plan mục 9, quy tắc truy cập theo flows §1. */
+/** URL cũ trước v7 (plan mục 0.2, 0.7) → màn mới tương ứng, để link/bookmark cũ không 404. */
+export const LEGACY_REDIRECTS: Record<string, string> = {
+  '/alphabet': '/units',
+  '/alphabet/practice': '/units',
+  '/tones': '/units',
+  '/vocab': '/units',
+  '/vocab/:deckId': '/units',
+  '/reading': '/units',
+  '/reading/:id': '/units',
+  '/listening': '/practice',
+  '/review': '/practice',
+};
+
+/** Route Phase 1 — plan mục 0.7 (v7), quy tắc truy cập theo flows §1. */
 export const routes: RouteObject[] = [
   {
     element: <BareLayout wide />,
@@ -59,19 +72,17 @@ export const routes: RouteObject[] = [
           </RequireAuth>
         ),
       },
-      page('/alphabet', 'pages.alphabet', 'alphabet'),
-      page('/alphabet/practice', 'pages.alphabetPractice', 'alphabet-practice'),
-      page('/tones', 'pages.tones', 'tones'),
-      page('/vocab', 'pages.vocab', 'vocab'),
-      page('/vocab/:deckId', 'pages.vocabDeck', 'vocab-deck'),
-      page('/review', 'pages.review', 'review'),
-      page('/reading', 'pages.reading', 'reading'),
-      page('/reading/:id', 'pages.readingDetail', 'reading-detail'),
-      page('/listening', 'pages.listening', 'listening'),
+      page('/units', 'pages.units', 'units'),
+      page('/practice', 'pages.practice', 'practice'),
+      page('/words', 'pages.words', 'words'),
       page('/games', 'pages.games', 'games'),
       page('/games/:id', 'pages.game', 'game'),
       page('/progress', 'pages.progress', 'progress'),
       page('/settings', 'pages.settings', 'settings'),
+      ...Object.entries(LEGACY_REDIRECTS).map(([path, to]) => ({
+        path,
+        element: <Navigate to={to} replace />,
+      })),
       { path: '*', element: <NotFoundPage /> },
     ],
   },

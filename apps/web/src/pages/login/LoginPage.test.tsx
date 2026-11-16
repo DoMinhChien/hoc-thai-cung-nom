@@ -78,7 +78,7 @@ describe('LoginPage (SCR-01)', () => {
   it('lần đầu đăng nhập, không có tiến độ Guest: D1 tên hiển thị → Dashboard (L-03)', async () => {
     const auth = new MockAuthService();
     auth.nextSignIn = { isNewUser: true, user: { displayName: 'Minh Chiến' } };
-    const { router } = renderApp('/login?next=/alphabet', auth);
+    const { router } = renderApp('/login?next=/units', auth);
     await userEvent.click(await screen.findByTestId('sign-in-google'));
 
     const dialog = await screen.findByTestId('display-name-dialog');
@@ -96,8 +96,8 @@ describe('LoginPage (SCR-01)', () => {
     await userEvent.type(input, '  Lan  ');
     await userEvent.click(within(dialog).getByTestId('display-name-submit'));
 
-    await screen.findByTestId('page-alphabet');
-    expect(router.state.location.pathname).toBe('/alphabet');
+    await screen.findByTestId('page-units');
+    expect(router.state.location.pathname).toBe('/units');
     expect(auth.calls).toContain('updateDisplayName:Lan');
     expect(screen.queryByTestId('transfer-dialog')).not.toBeInTheDocument();
   });
