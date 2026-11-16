@@ -4,8 +4,8 @@ import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
 import { afterEach, describe, expect, it } from 'vitest';
 import { GUEST_KEY } from '@/data';
-import { NomDatabase } from '@/data/db';
 import { t } from '@/i18n';
+import { seedCards } from '@/test/cards';
 import { renderApp, setOnline } from '@/test/render-app';
 
 afterEach(async () => {
@@ -14,12 +14,6 @@ afterEach(async () => {
 });
 
 const signedIn = (patch = {}) => new MockAuthService({ user: mockUser({ uid: 'u1', ...patch }) });
-
-async function seedCards(userKey: string, n: number) {
-  const db = new NomDatabase(userKey);
-  await db.cards.bulkPut(Array.from({ length: n }, (_, i) => ({ id: `c${i}` })));
-  db.close();
-}
 
 describe('AccountPage (SCR-02 A)', () => {
   it('hồ sơ: tên, email, ngày tham gia từ user.metadata (L-10)', async () => {

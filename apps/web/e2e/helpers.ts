@@ -60,7 +60,7 @@ export async function lookupEmulatorUser(email: string): Promise<{ localId: stri
   return body.users?.[0] ?? null;
 }
 
-/** Ghi thẻ giả vào store `cards` của DB (DB phải đã được app tạo). Thay cho "học 3 thẻ" tới M5. */
+/** Ghi thẻ giả vào store `cards` của DB (DB phải đã được app tạo). Thay cho "học 3 thẻ" tới khi có màn học. */
 export async function seedCards(page: Page, dbName: string, count: number) {
   await page.evaluate(
     async ({ dbName, count }) => {
@@ -75,6 +75,9 @@ export async function seedCards(page: Page, dbName: string, count: number) {
           id: `e2e-card-${i}`,
           itemType: 'consonant',
           itemId: `c${i}`,
+          cardType: 'th-vi',
+          createdAt: '2026-03-01T08:00:00.000Z',
+          updatedAt: '2026-03-01T08:00:00.000Z',
         });
       }
       await new Promise((resolve, reject) => {

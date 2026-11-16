@@ -1,3 +1,4 @@
+import type { CardRecord } from '@nom/core';
 import Dexie from 'dexie';
 import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES } from './db';
 
@@ -10,6 +11,29 @@ async function withDb<T>(userKey: string, work: (db: NomDatabase) => Promise<T>)
     return await work(db);
   } finally {
     db.close();
+  }
+}
+
+/**
+ * Thẻ Guest vào DB user: cùng mục + loại thẻ đã có ở user thì giữ bản cập nhật sau
+ * (một mục chỉ một thẻ mỗi loại). Log ôn của cả hai vẫn giữ.
+ */
+async function mergeCards(user: NomDatabase, guestCards: CardRecord[]) {
+  for (const card of guestCards) {
+    // Bản ghi thiếu khóa (dữ liệu cũ/hỏng) không tra được index → chuyển nguyên trạng.
+    if (!card.itemType || !card.itemId || !card.cardType) {
+      await user.cards.put(card);
+      continue;
+    }
+    const existing = await user.cards
+      .where('[itemType+itemId+cardType]')
+      .equals([card.itemType, card.itemId, card.cardType])
+      .first();
+    if (existing && existing.id !== card.id) {
+      if (existing.updatedAt >= card.updatedAt) continue;
+      await user.cards.delete(existing.id);
+    }
+    await user.cards.put(card);
   }
 }
 
@@ -37,7 +61,10 @@ export class AccountDataRepository {
     );
     await withDb(uid, (user) =>
       user.transaction('rw', [...PROGRESS_TABLES], async () => {
-        for (const [i, name] of PROGRESS_TABLES.entries()) await user.table(name).bulkPut(rows[i]!);
+        for (const [i, name] of PROGRESS_TABLES.entries()) {
+          if (name === 'cards') await mergeCards(user, rows[i] as CardRecord[]);
+          else await user.table(name).bulkPut(rows[i]!);
+        }
       }),
     );
     await withDb(GUEST_KEY, (guest) =>

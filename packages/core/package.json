@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./testing": "./src/data/contract.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
@@ -19,6 +20,7 @@
     "vitest": "^5.1.0"
   },
   "dependencies": {
+    "ts-fsrs": "^6.0.0",
     "zod": "^4.6.7"
   }
 }

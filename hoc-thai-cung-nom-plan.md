@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft v6.4 — ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft v6.5 — ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-14
 
@@ -454,8 +454,10 @@ tools/pdf-pipeline/   (Python) extract.py  normalize.py  prompts/  tests/
 - { id: ko-kai, char: ก, name: ก ไก่, class: mid, initial: k, final: k, phonetic: "k", keyword_vi: "con gà", image: "noto:1f414", mnemonic_vi: "ก giống cổ con gà cong xuống", order: 1 }
 
 # syllable analysis (tone-drills.yaml)
-- { id: mai-1, thai: ไม่, initial_char: ม, leading: null, vowel_length: long,
-    final_sound: null, tone_mark: ek, expected_tone: falling }
+- { id: mai-1, thai: ไม่, initial_char: ม, leading: null, vowel_length: short,
+    final_sound: y, tone_mark: ek, expected_tone: falling }   # ไ– = a ngắn + y (6.2)
+- { id: sawat-2, thai: วัส, initial_char: ว, leading: ส, vowel_length: short,
+    final_sound: t, tone_mark: null, expected_tone: low }      # อักษรนำ: ว theo lớp của ส (6.1)
 
 # reading
 id: lvl1-001
@@ -481,9 +483,22 @@ Pure TypeScript, dùng chung frontend, scripts và (Phase 2) Azure Functions.
 - **High (11):** ข ฃ ฉ ฐ ถ ผ ฝ ศ ษ ส ห
 - **Low (24):** còn lại
 - **ห นำ** (ห + ง ญ น ม ย ร ล ว) → **High**. **อ นำ** (อย่า, อยู่, อย่าง, อยาก) → **Mid**.
+- **อักษรนำ tổng quát** *(bổ sung 2026-11-16)*: phụ âm **cao hoặc trung** (vd. ส ข ต จ ก ป ผ ฉ ถ) đứng trước phụ âm **thấp đơn** (ง ญ ณ น ม ย ร ล ว ฬ) và **giữa hai chữ có nguyên âm อะ ẩn** → đọc thành 2 âm tiết:
+  1. Âm tiết 1 = phụ âm dẫn + อะ ẩn → âm tiết **chết, ngắn** → thanh theo lớp phụ âm dẫn (thường **low**).
+  2. Âm tiết 2 (bắt đầu bằng phụ âm thấp đơn) **tính thanh theo lớp của phụ âm dẫn**, không theo lớp thấp của chính nó.
+  - Ví dụ: สวัสดี *sà-wàt-dii* (วัส theo ส → high, chết ngắn → **low**); สนุก *sà-nùk* (→ **low**); ขนม *khà-nǒm* (นม theo ข → high, sống → **rising**); ตลาด *tà-làat* (ลาด theo ต → mid, chết → **low**); อร่อย *à-ròi* (ร่อย theo อ → mid + ่ → **low**).
+  - ห นำ và อ นำ là **trường hợp đặc biệt** của quy tắc này (không tách thành âm tiết riêng).
+  - **Ngoại lệ** (từ mượn, đọc tách thường): content ghi `leading: null` và có thể kèm `note`; validator không gắn cờ khi có `tone_override: true`.
 
 ### 6.2 Sống / chết
 - **Sống:** nguyên âm dài, hoặc âm cuối vang (m, n, ng, y, w).
+- **Nguyên âm có âm cuối sẵn** *(bổ sung 2026-11-16)*: các nguyên âm sau là **ngắn** nhưng mang sẵn âm cuối vang → âm tiết **sống**:
+  | Nguyên âm | Phân tích | Ví dụ |
+  |---|---|---|
+  | ไ– , ใ– | a ngắn + **y** | ไม่ (falling), ใหม่ (low), ไหม (rising) |
+  | –ำ | a ngắn + **m** | ทำ (mid), น้ำ* |
+  | เ–า | a ngắn + **w** | เขา (rising) |
+  Content ghi `vowel_length: short` + `final_sound: y|m|w` (**không** ghi `long` để "lách" quy tắc — Tone Trainer bước 2 sẽ giải thích sai). *น้ำ đọc nguyên âm dài trong thực tế — để làm ví dụ ngoại lệ phát âm, không ảnh hưởng thanh.
 - **Chết:** nguyên âm ngắn không âm cuối, hoặc âm cuối tắc (k, t, p).
 
 ### 6.3 Bảng quy tắc
@@ -496,6 +511,7 @@ Pure TypeScript, dùng chung frontend, scripts và (Phase 2) Azure Functions.
 
 - "—" = không hợp lệ → trả lỗi. Output `{ tone, steps }`.
 - Test: mỗi ô ≥ 2 case, thêm case ห นำ, อ นำ, nguyên âm ngắn + âm cuối vang (วัน).
+- Test bổ sung (M2.1): **สวัสดี** (low·low·mid), **สนุก** (low·low), **ขนม** (low·rising), **ตลาด** (low·low), **อร่อย** (low·low), **ไม่** (falling), **ใหม่** (low), **ไหม** (rising), **ทำ** (mid), **เขา** (rising).
 
 ---
 
@@ -835,6 +851,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 | **M3** | Content pipeline TS: `build-content`, `content:check`; bộ content mẫu tối thiểu |
 | **M4** | **PDF pipeline Python** (`tools/pdf-pipeline`, mục 5.3) trên 1 PDF mẫu → staging CSV → `content:check`; pytest golden test |
 | **M5** | Data layer (Dexie, repositories, migration) + SRS wrapper + progress selectors & component dùng chung (mục 4.9) |
+| **M2.1** | **Bổ sung quy tắc Tone Engine** (sau M5, trước M6 & M4): อักษรนำ tổng quát (6.1), nguyên âm có âm cuối sẵn (6.2), schema `leading`/`tone_override`, validator cảnh báo ไ/ใ/ำ/เา ghi `long`, sửa content mẫu, test bổ sung |
 | **M6** | Module A: AudioProvider, `/alphabet`, `/alphabet/practice`, `/tones` + P-02, P-03 |
 | **M7** | Module B: `/vocab`, `/review`, Dashboard + P-04, P-05, P-08 |
 | **M8** | Bàn phím ảo Thái + chấm điểm gõ (G-06) |
@@ -892,6 +909,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v6.5 (2026-11-16):** Tone Engine: thêm quy tắc **อักษรนำ tổng quát** (6.1) và **nguyên âm có âm cuối sẵn** ไ– ใ– –ำ เ–า (6.2); `leading` nhận mọi phụ âm cao/trung; test bổ sung; milestone **M2.1** (sau M5, trước M6 & M4).
 - **v6.4 (2026-11-15):** **Facebook Login chuyển sang Phase 2** (M12.5): Phase 1 chỉ Google + Guest; L-04 (liên kết tài khoản) sang Phase 2; feature flag `VITE_ENABLE_FACEBOOK_LOGIN`; SETUP S6 dời sang Phase 2.
 - **v6.3 (2026-11-14):** Thêm bộ tài liệu cho agent: `AGENTS.md`, `ROADMAP.md`, `SETUP-OWNER.md`. Tách M0.5 thành M0.5a (trước M1) và M0.5b (làm dần); M0 làm ngay không chờ thiết kế.
 - **v6.2 (2026-11-14):** Ý tưởng cốt lõi: học bằng **flashcard + trò chơi**, tiêu chí **tượng hình** (mục 1). Thêm Module V Hình ảnh & mẹo nhớ (4.13) và Module F Trò chơi (4.14, 4 trò lõi Phase 1); schema thêm `image`, `mnemonic_vi`; nguyên tắc D2a; route `/games`; M10.5.

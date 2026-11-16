@@ -4,27 +4,14 @@ import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
 import { afterEach, describe, expect, it } from 'vitest';
 import { accountData, GUEST_KEY } from '@/data';
-import { NomDatabase } from '@/data/db';
 import { t } from '@/i18n';
+import { countCards, seedCards } from '@/test/cards';
 import { renderApp, setOnline } from '@/test/render-app';
 
 afterEach(async () => {
   setOnline(true);
   for (const name of await Dexie.getDatabaseNames()) await Dexie.delete(name);
 });
-
-async function seedGuestCards(n: number) {
-  const db = new NomDatabase(GUEST_KEY);
-  await db.cards.bulkPut(Array.from({ length: n }, (_, i) => ({ id: `c${i}` })));
-  db.close();
-}
-
-async function countCards(userKey: string) {
-  const db = new NomDatabase(userKey);
-  const n = await db.cards.count();
-  db.close();
-  return n;
-}
 
 describe('LoginPage (SCR-01)', () => {
   it('Phase 1: chỉ có nút Google + Guest, không có nút Facebook (L-01)', async () => {
@@ -117,7 +104,7 @@ describe('LoginPage (SCR-01)', () => {
 
   it('lần đầu đăng nhập, có tiến độ Guest: D1 → D2 → chuyển tiến độ (L-07)', async () => {
     await accountData.setGuestChosen();
-    await seedGuestCards(3);
+    await seedCards(GUEST_KEY, 3);
     const auth = new MockAuthService();
     auth.nextSignIn = { isNewUser: true, user: { uid: 'u-new' } };
     renderApp('/login', auth);
@@ -133,7 +120,7 @@ describe('LoginPage (SCR-01)', () => {
   });
 
   it('không phải lần đầu, có tiến độ Guest: chỉ D2; "Bắt đầu mới" giữ nguyên Guest', async () => {
-    await seedGuestCards(2);
+    await seedCards(GUEST_KEY, 2);
     const auth = new MockAuthService();
     auth.nextSignIn = { isNewUser: false, user: { uid: 'u-old' } };
     renderApp('/login', auth);

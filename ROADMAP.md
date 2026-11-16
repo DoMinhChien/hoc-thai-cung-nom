@@ -7,7 +7,7 @@
 
 ## Milestone đang mở
 
-> **🔵 M5 — Data layer + SRS + progress components** (nhánh `m5-data-srs`). Bắt đầu từ T5.1. Task chi tiết hóa 2026-11-16 — owner xem lại trong PR.
+> **🔵 M5 — Data layer + SRS + progress components** (nhánh `m5-data-srs`, PR #8). T5.1–T5.7 xong — **chờ owner duyệt screenshot `/dev/progress`** rồi đóng M5. Kế tiếp: **M2.1** (owner thêm 2026-11-16, chặn M6 và M4).
 > 🟢 M0, M0.5a/TD, M1, M2, M3 xong. M3: PR #7, owner cho đóng 2026-11-16 (content mẫu vẫn `draft: true`, thay dần khi có nội dung thật).
 > ⚪ M4 (PDF pipeline) chờ S9 (Anthropic API key) + PDF mẫu (S10) — làm khi owner sẵn sàng.
 
@@ -36,10 +36,11 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M1 | Đăng nhập Google (Facebook → Phase 2) | 🟢 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ — PR #5; smoke test production OK |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
-| M4 | PDF pipeline Python | ⚪ | M3, S9, PDF mẫu (S10) |
+| M4 | PDF pipeline Python | ⚪ | M3, **M2.1**, S9, PDF mẫu (S10) |
 | M0.5b | Design các màn còn lại | ⚪ | Làm dần trước M5–M11 |
 | M5 | Data layer + SRS + progress components | 🔵 | M2 ✅, M3 ✅ |
-| M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | ⚪ | M5, SCR bảng chữ / Tone Trainer |
+| M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | ⚪ | **Làm ngay sau M5**; chặn M6 và M4 |
+| M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | ⚪ | M5, **M2.1**, SCR bảng chữ / Tone Trainer |
 | M7 | Từ vựng + Ôn SRS + Dashboard (+P-04, P-05, P-08) | ⚪ | M5, SCR liên quan |
 | M8 | Bàn phím ảo Thái + chấm gõ | ⚪ | M5 |
 | M9 | Đọc + tra từ (+P-06) | ⚪ | M7, SCR Đọc |
@@ -138,13 +139,13 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Requirement:** plan **7.3** (data layer), **B-04** (FSRS `ts-fsrs`, 4 nút), **4.9** (định nghĩa mức thuộc + yêu cầu kỹ thuật progress), **L-07** (DB theo `uid`/`guest` — đã có từ M1), 7.4 (unit SRS/selectors với đồng hồ giả lập; component test với `fake-indexeddb`). Màn hình dùng các phần này làm ở M6+.
 
 **Task** (chi tiết hóa 2026-11-16 — owner xem lại trong PR)
-- [ ] T5.1 Schema IndexedDB đầy đủ theo 7.3 (`cards`, `reviewLogs`, `listeningStats`, `sessions`, `settings`, `meta`): mọi record có UUID + `updatedAt`; `schemaVersion` trong `meta`; khung migration Dexie (`version(n).upgrade`) + test nâng cấp từ DB v1 của M1 không mất dữ liệu.
-- [ ] T5.2 `packages/core`: type record + **interface** `ProgressRepository`, `ReviewRepository`, `SettingsRepository`, `SessionRepository` (không phụ thuộc Dexie) + bản in-memory cho test.
-- [ ] T5.3 `apps/web/src/data`: bản Dexie của 4 repository, mở DB theo người dùng hiện tại (`uid`/`guest`, nối với `AccountDataRepository` của M1); test với `fake-indexeddb`.
-- [ ] T5.4 SRS wrapper `packages/core/srs` trên `ts-fsrs`: tạo card, `review(card, rating, now)` → card mới + log, danh sách đến hạn, thẻ mới/ngày (B-03, mặc định 10); test bằng đồng hồ giả lập.
-- [ ] T5.5 `packages/core/progress`: `masteryLevel(card)` theo bảng 4.9 (ngưỡng 21 ngày cấu hình được) + selector thuần: đếm 4 mức theo module/deck, % hoàn thành, tỉ lệ đúng theo quy tắc thanh (P-03), theo 5 thanh (P-07); unit test.
-- [ ] T5.6 Hook React đọc dữ liệu realtime (Dexie `liveQuery`) cho cards/selectors; component test cập nhật sau một lượt ôn.
-- [ ] T5.7 Component dùng chung `apps/web/src/components/progress/`: `ProgressRing`, `StackedProgressBar`, `MasteryGrid`, `HeatmapTable`, `ToneBarChart` — màu chỉ từ token (`mastery-*`, `tone-*`), có nhãn/ký hiệu ngoài màu (người mù màu), component test + axe; trang `/dev/progress` để xem. **Cần:** owner duyệt screenshot (chưa có screen spec riêng cho component — làm theo brief D2 + tokens).
+- [x] T5.1 Schema IndexedDB đầy đủ theo 7.3 (`cards`, `reviewLogs`, `listeningStats`, `sessions`, `settings`, `meta`): mọi record có UUID + `updatedAt`; `schemaVersion` trong `meta`; khung migration Dexie (`version(n).upgrade`) + test nâng cấp từ DB v1 của M1 không mất dữ liệu.
+- [x] T5.2 `packages/core`: type record + **interface** `ProgressRepository`, `ReviewRepository`, `SettingsRepository`, `SessionRepository` (không phụ thuộc Dexie) + bản in-memory cho test.
+- [x] T5.3 `apps/web/src/data`: bản Dexie của 4 repository, mở DB theo người dùng hiện tại (`uid`/`guest`, nối với `AccountDataRepository` của M1); test với `fake-indexeddb`.
+- [x] T5.4 SRS wrapper `packages/core/srs` trên `ts-fsrs`: tạo card, `review(card, rating, now)` → card mới + log, danh sách đến hạn, thẻ mới/ngày (B-03, mặc định 10); test bằng đồng hồ giả lập.
+- [x] T5.5 `packages/core/progress`: `masteryLevel(card)` theo bảng 4.9 (ngưỡng 21 ngày cấu hình được) + selector thuần: đếm 4 mức theo module/deck, % hoàn thành, tỉ lệ đúng theo quy tắc thanh (P-03), theo 5 thanh (P-07); unit test.
+- [x] T5.6 Hook React đọc dữ liệu realtime (Dexie `liveQuery`) cho cards/selectors; component test cập nhật sau một lượt ôn.
+- [x] T5.7 Component dùng chung `apps/web/src/components/progress/`: `ProgressRing`, `StackedProgressBar`, `MasteryGrid`, `HeatmapTable`, `ToneBarChart` — màu chỉ từ token (`mastery-*`, `tone-*`), có nhãn/ký hiệu ngoài màu (người mù màu), component test + axe; trang `/dev/progress` để xem. **Cần:** owner duyệt screenshot (chưa có screen spec riêng cho component — làm theo brief D2 + tokens).
 
 **Tiêu chí nghiệm thu**
 - Component không truy cập Dexie trực tiếp — chỉ qua repository/hook.
@@ -153,6 +154,23 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Component progress không có lỗi axe serious/critical; phân biệt được mức/thanh không chỉ bằng màu.
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
+
+### M2.1 — Bổ sung quy tắc Tone Engine ⚪ (làm ngay sau M5, trước M6 & M4)
+
+**Bối cảnh:** owner review content mẫu 2026-11-16 phát hiện 2 lỗ hổng spec (không phải lỗi code): thiếu quy tắc **อักษรนำ tổng quát** và mô hình sai **ไ– ใ– –ำ เ–า** (đang ghi `long` để lách quy tắc). Spec mới: plan **6.1, 6.2, 6.3 (test bổ sung), 5.5** (ví dụ `sawat-2`).
+
+**Task**
+- [ ] T2.1.1 Schema syllable analysis: `leading` nhận **mọi phụ âm cao/trung** (không chỉ ห/อ); thêm `tone_override?: boolean`, `note?: string`; xuất lại JSON Schema.
+- [ ] T2.1.2 Tone Engine: áp lớp của phụ âm dẫn cho âm tiết sau (อักษรนำ); `steps` ghi rõ bước "phụ âm dẫn X → tính theo lớp Y" (để Tone Trainer giải thích).
+- [ ] T2.1.3 Nguyên âm có âm cuối sẵn: vowel content có `inherent_final: y|m|w`; engine coi ไ/ใ/ำ/เา là ngắn + âm cuối vang → sống.
+- [ ] T2.1.4 Validator (`content:check`): **cảnh báo** khi âm tiết dùng ไ/ใ/ำ/เา mà ghi `vowel_length: long` hoặc thiếu `final_sound`; bỏ qua khi `tone_override: true`.
+- [ ] T2.1.5 Sửa content mẫu: `tone-drills.yaml` (ไม่, ไม้ → short + y; thêm วัส của สวัสดี, ใหม่, ไหม, ทำ, เขา, ขนม/นม), `vowels.yaml` (thêm ไ– ใ– –ำ เ–า với `inherent_final`). Vẫn `draft: true`.
+- [ ] T2.1.6 Test bổ sung đúng danh sách plan 6.3 (สวัสดี, สนุก, ขนม, ตลาด, อร่อย, ไม่, ใหม่, ไหม, ทำ, เขา); giữ coverage ≥ 90%.
+
+**Tiêu chí nghiệm thu**
+- Toàn bộ test plan 6.3 (cũ + bổ sung) pass; `content:check` content mẫu không lỗi, không còn âm tiết ไ/ใ ghi `long`.
+- `steps` của วัส trong สวัสดี có bước giải thích phụ âm dẫn ส.
+
 
 ### M1 — Đăng nhập Google 🟢
 
@@ -191,6 +209,8 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M5 | T5.1–T5.7: core — record + interface 4 repository + bản bộ nhớ + contract test, SRS wrapper `ts-fsrs` (đồng hồ giả lập), selector 4.9 (mức thuộc, %, tỉ lệ đúng theo quy tắc/thanh/ngày; coverage 100% lines); web — IndexedDB v2 + migration từ v1, repository Dexie qua cùng contract test, `RepositoriesProvider` theo uid/guest, hook `liveQuery` (cập nhật sau một lượt ôn), chuyển tiến độ gộp thẻ trùng; 5 component progress + `/dev/progress` (axe sạch, baseline) | — | Owner: duyệt screenshot `/dev/progress` | `m5-data-srs` PR #8 |
+| 2026-11-16 | M2.1 (plan) | Owner duyệt: thêm **M2.1 — bổ sung quy tắc Tone Engine** (อักษรนำ tổng quát, ไ/ใ/ำ/เา) — làm ngay sau M5; chặn M6, M4. Plan v6.5 mục 6.1/6.2/6.3/5.5 | — | — | — |
 | 2026-11-16 | M3 → M5 | Owner cho đóng M3 → 🟢. Mở M5 🔵, chi tiết hóa T5.1–T5.7 | — | — | `m3-content` PR #7 |
 | 2026-11-16 | M3 | Đóng M1 (owner smoke test Google thật OK). M3: T3.1–T3.6 — loader YAML/CSV (lỗi file:dòng:cột [trường]), `content:check` thật (id, deck, Tone Engine, lớp phụ âm; cảnh báo ký tự ngoài Thái, lexicon, draft), `--input`/`--json`, `content:build` + manifest (idempotent, chạy trước web build), content mẫu 33 mục `draft: true` | — | Owner: xem content mẫu (S10) | `m3-content` PR #7 |
 | 2026-11-16 | — (CI) | Sửa CI: sự kiện PR `closed` có `github.ref` = `main` nên trùng nhóm concurrency và huỷ mọi run deploy production (production chưa từng deploy). Concurrency theo số PR. Preview `-5` 404 là do PR #5 đã merge (môi trường preview được đóng) | — | Owner: merge PR #6 → production deploy M0.5a+M2+M1 | `fix-ci-prod-deploy` PR #6 |
