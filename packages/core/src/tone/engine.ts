@@ -1,9 +1,12 @@
 import type { SyllableAnalysis } from '../schema/alphabet';
 import type { ConsonantClass, Tone, ToneMark } from '../schema/common';
-import { consonantClass, HO_NAM_FOLLOWERS, O_NAM_FOLLOWERS } from './classes';
+import { consonantClass, HO_NAM_FOLLOWERS, LEADING_FOLLOWERS, O_NAM_FOLLOWERS } from './classes';
+import { inherentFinal } from './inherent-final';
 
 /** Âm tiết đã phân tích sẵn (A-20) — cùng tên trường với `tone-drills.yaml`. */
 export type ToneInput = Pick<SyllableAnalysis, 'initial_char' | 'vowel_length'> & {
+  /** Chữ của âm tiết — để nhận ra nguyên âm ไ– ใ– –ำ เ–า (âm cuối sẵn, plan 6.2). */
+  thai?: string | undefined;
   leading?: SyllableAnalysis['leading'] | undefined;
   final_sound?: SyllableAnalysis['final_sound'] | undefined;
   tone_mark?: SyllableAnalysis['tone_mark'] | undefined;
@@ -13,11 +16,21 @@ export type Liveness = 'live' | 'dead';
 
 /** 4 bước hiển thị trong Tone Trainer (A-21); người học trả lời từng bước (A-22). */
 export type ToneStep =
-  | { step: 'class'; value: ConsonantClass; reason: 'consonant' | 'leading-ho' | 'leading-o' }
+  | { step: 'class'; value: ConsonantClass; reason: 'consonant' }
+  | {
+      step: 'class';
+      value: ConsonantClass;
+      /** ห นำ / อ นำ (không tách âm tiết) hoặc อักษรนำ tổng quát (plan 6.1). */
+      reason: 'leading-ho' | 'leading-o' | 'leading';
+      /** Phụ âm dẫn, vd. `ส` trong วัส của สวัสดี. */
+      leading: string;
+      /** Lớp riêng của phụ âm đầu (bị thay bằng lớp của phụ âm dẫn), vd. `low` của ว. */
+      ownClass: ConsonantClass;
+    }
   | {
       step: 'liveness';
       value: Liveness;
-      reason: 'long-vowel' | 'sonorant-final' | 'stop-final' | 'short-open';
+      reason: 'long-vowel' | 'sonorant-final' | 'inherent-final' | 'stop-final' | 'short-open';
     }
   | { step: 'tone-mark'; value: ToneMark | 'none' }
   | { step: 'tone'; value: Tone };
@@ -67,18 +80,29 @@ export const TONE_RULES: Readonly<Record<string, Tone>> = Object.fromEntries(
 function classStep(input: ToneInput): Extract<ToneStep, { step: 'class' }> | ToneError {
   const base = consonantClass(input.initial_char);
   if (!base) return 'unknown-consonant';
-  if (!input.leading) return { step: 'class', value: base, reason: 'consonant' };
-  if (input.leading === 'ห' && HO_NAM_FOLLOWERS.includes(input.initial_char)) {
-    return { step: 'class', value: 'high', reason: 'leading-ho' };
+  const leading = input.leading;
+  if (!leading) return { step: 'class', value: base, reason: 'consonant' };
+  const leadingClass = consonantClass(leading);
+  // อักษรนำ: phụ âm dẫn cao/trung + phụ âm thấp đơn → âm tiết tính theo lớp phụ âm dẫn.
+  if (!leadingClass || leadingClass === 'low' || !LEADING_FOLLOWERS.includes(input.initial_char)) {
+    return 'invalid-leading';
   }
-  if (input.leading === 'อ' && O_NAM_FOLLOWERS.includes(input.initial_char)) {
-    return { step: 'class', value: 'mid', reason: 'leading-o' };
-  }
-  return 'invalid-leading';
+  const reason =
+    leading === 'ห' && HO_NAM_FOLLOWERS.includes(input.initial_char)
+      ? 'leading-ho'
+      : leading === 'อ' && O_NAM_FOLLOWERS.includes(input.initial_char)
+        ? 'leading-o'
+        : 'leading';
+  return { step: 'class', value: leadingClass, reason, leading, ownClass: base };
 }
 
 function livenessStep(input: ToneInput): Extract<ToneStep, { step: 'liveness' }> {
   const final = input.final_sound;
+  // ไ– ใ– –ำ เ–า: nguyên âm ngắn nhưng mang sẵn âm cuối vang → sống (plan 6.2).
+  const inherent = input.thai ? inherentFinal(input.thai) : null;
+  if (inherent && (!final || final === inherent)) {
+    return { step: 'liveness', value: 'live', reason: 'inherent-final' };
+  }
   if (final && STOP_FINALS.has(final))
     return { step: 'liveness', value: 'dead', reason: 'stop-final' };
   if (final) return { step: 'liveness', value: 'live', reason: 'sonorant-final' };
@@ -89,7 +113,8 @@ function livenessStep(input: ToneInput): Extract<ToneStep, { step: 'liveness' }>
 
 /**
  * Tính thanh của âm tiết theo plan mục 6 (pure function).
- * Bước: lớp phụ âm (xét ห นำ / อ นำ) → sống/chết → dấu thanh → kết quả.
+ * Bước: lớp phụ âm (xét phụ âm dẫn — อักษรนำ, ห นำ, อ นำ) → sống/chết (xét nguyên âm có âm cuối
+ * sẵn) → dấu thanh → kết quả.
  */
 export function computeTone(input: ToneInput): ToneResult {
   const cls = classStep(input);

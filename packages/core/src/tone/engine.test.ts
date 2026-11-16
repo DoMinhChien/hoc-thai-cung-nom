@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { FinalSound, Tone, ToneMark, VowelLength } from '../schema/common';
 import { consonantClass, HIGH_CONSONANTS, LOW_CONSONANTS, MID_CONSONANTS } from './classes';
 import { computeTone, TONE_RULES, type ToneInput } from './engine';
+import { inherentFinal } from './inherent-final';
 
 /** Ví dụ ngữ pháp chuẩn (sách giáo khoa) để kiểm tra quy tắc — không phải nội dung học. */
 type Case = [
@@ -10,10 +11,11 @@ type Case = [
   length: VowelLength,
   final: FinalSound | null,
   mark: ToneMark | null,
-  leading?: 'ห' | 'อ',
+  leading?: string,
 ];
 
-const input = ([, initial, length, final, mark, leading]: Case): ToneInput => ({
+const input = ([thai, initial, length, final, mark, leading]: Case): ToneInput => ({
+  thai,
   initial_char: initial,
   vowel_length: length,
   final_sound: final,
@@ -199,7 +201,7 @@ describe('computeTone — ห นำ / อ นำ', () => {
   ])('ห นำ: %s', (c, tone, rule) => {
     const result = computeTone(input(c));
     expect(result).toMatchObject({ ok: true, tone, rule });
-    expect(result.steps[0]).toEqual({ step: 'class', value: 'high', reason: 'leading-ho' });
+    expect(result.steps[0]).toMatchObject({ step: 'class', value: 'high', reason: 'leading-ho' });
   });
 
   it.each<[Case, Tone]>([
@@ -210,15 +212,142 @@ describe('computeTone — ห นำ / อ นำ', () => {
   ])('อ นำ: %s', (c, tone) => {
     const result = computeTone(input(c));
     expect(result).toMatchObject({ ok: true, tone });
-    expect(result.steps[0]).toEqual({ step: 'class', value: 'mid', reason: 'leading-o' });
+    expect(result.steps[0]).toEqual({
+      step: 'class',
+      value: 'mid',
+      reason: 'leading-o',
+      leading: 'อ',
+      ownClass: 'low',
+    });
   });
 
   it.each<Case>([
     ['หก', 'ก', 'short', 'k', null, 'ห'],
     ['หข', 'ข', 'long', null, null, 'ห'],
-    ['อม', 'ม', 'long', null, null, 'อ'],
+    ['ตค', 'ค', 'long', null, null, 'ต'],
+    ['คน', 'น', 'long', null, null, 'ค'],
+    ['xน', 'น', 'long', null, null, 'x'],
   ])('dẫn không hợp lệ: %s → invalid-leading', (...c) => {
     expect(computeTone(input(c))).toEqual({ ok: false, error: 'invalid-leading', steps: [] });
+  });
+});
+
+/** Plan 6.1 + test bổ sung 6.3 (M2.1): mỗi từ = các âm tiết đã phân tích. */
+describe('computeTone — อักษรนำ tổng quát (plan 6.1)', () => {
+  it.each<[word: string, syllables: Case[], tones: Tone[]]>([
+    [
+      'สวัสดี',
+      [
+        ['ส', 'ส', 'short', null, null],
+        ['วัส', 'ว', 'short', 't', null, 'ส'],
+        ['ดี', 'ด', 'long', null, null],
+      ],
+      ['low', 'low', 'mid'],
+    ],
+    [
+      'สนุก',
+      [
+        ['ส', 'ส', 'short', null, null],
+        ['นุก', 'น', 'short', 'k', null, 'ส'],
+      ],
+      ['low', 'low'],
+    ],
+    [
+      'ขนม',
+      [
+        ['ข', 'ข', 'short', null, null],
+        ['นม', 'น', 'short', 'm', null, 'ข'],
+      ],
+      ['low', 'rising'],
+    ],
+    [
+      'ตลาด',
+      [
+        ['ต', 'ต', 'short', null, null],
+        ['ลาด', 'ล', 'long', 't', null, 'ต'],
+      ],
+      ['low', 'low'],
+    ],
+    [
+      'อร่อย',
+      [
+        ['อ', 'อ', 'short', null, null],
+        ['ร่อย', 'ร', 'long', 'y', 'ek', 'อ'],
+      ],
+      ['low', 'low'],
+    ],
+  ])('%s', (_word, syllables, tones) => {
+    expect(syllables.map((c) => computeTone(input(c)))).toMatchObject(
+      tones.map((tone) => ({ ok: true, tone })),
+    );
+  });
+
+  it('steps của วัส (สวัสดี) ghi rõ: phụ âm dẫn ส → tính theo lớp cao, không theo lớp thấp của ว', () => {
+    const result = computeTone(input(['วัส', 'ว', 'short', 't', null, 'ส']));
+    expect(result).toEqual({
+      ok: true,
+      tone: 'low',
+      rule: 'high:dead',
+      steps: [
+        { step: 'class', value: 'high', reason: 'leading', leading: 'ส', ownClass: 'low' },
+        { step: 'liveness', value: 'dead', reason: 'stop-final' },
+        { step: 'tone-mark', value: 'none' },
+        { step: 'tone', value: 'low' },
+      ],
+    });
+  });
+
+  it('ห + phụ âm thấp đơn ngoài ห นำ (ณ, ฬ) vẫn theo lớp cao — lý do "leading"', () => {
+    expect(computeTone(input(['หฬา', 'ฬ', 'long', null, null, 'ห'])).steps[0]).toMatchObject({
+      value: 'high',
+      reason: 'leading',
+    });
+  });
+});
+
+describe('computeTone — nguyên âm có âm cuối sẵn ไ– ใ– –ำ เ–า (plan 6.2)', () => {
+  it.each<[Case, Tone, string]>([
+    [['ไม่', 'ม', 'short', 'y', 'ek'], 'falling', 'low:ek'],
+    [['ใหม่', 'ม', 'short', 'y', 'ek', 'ห'], 'low', 'high:ek'],
+    [['ไหม', 'ม', 'short', 'y', null, 'ห'], 'rising', 'high:live'],
+    [['ทำ', 'ท', 'short', 'm', null], 'mid', 'low:live'],
+    [['เขา', 'ข', 'short', 'w', null], 'rising', 'high:live'],
+  ])('%s → sống (âm cuối sẵn)', (c, tone, rule) => {
+    const result = computeTone(input(c));
+    expect(result).toMatchObject({ ok: true, tone, rule });
+    expect(result.steps[1]).toEqual({ step: 'liveness', value: 'live', reason: 'inherent-final' });
+  });
+
+  it('thiếu final_sound vẫn tính là sống nhờ nguyên âm (ไป, ใจ)', () => {
+    for (const c of [
+      ['ไป', 'ป', 'short', null, null],
+      ['ใจ', 'จ', 'short', null, null],
+    ] as Case[]) {
+      expect(computeTone(input(c))).toMatchObject({ ok: true, tone: 'mid', rule: 'mid:live' });
+    }
+  });
+
+  it('không có chữ âm tiết → dùng final_sound như thường', () => {
+    const { thai: _t, ...noThai } = input(['ไม่', 'ม', 'short', 'y', 'ek']);
+    expect(computeTone(noThai).steps[1]).toMatchObject({ reason: 'sonorant-final' });
+  });
+});
+
+describe('inherentFinal', () => {
+  it.each([
+    ['ไป', 'y'],
+    ['ใจ', 'y'],
+    ['ไม่', 'y'],
+    ['ทำ', 'm'],
+    ['น้ำ', 'm'],
+    ['เขา', 'w'],
+    ['เหงา', 'w'],
+    ['เก้า', 'w'],
+    ['เกาะ', null],
+    ['กา', null],
+    ['เก', null],
+  ])('%s → %s', (syllable, expected) => {
+    expect(inherentFinal(syllable)).toBe(expected);
   });
 });
 
@@ -243,13 +372,13 @@ describe('computeTone — sống/chết & các bước', () => {
   });
 
   it('đủ 4 bước theo thứ tự A-21 (ไม่ trong plan 5.5)', () => {
-    expect(computeTone(input(['ไม่', 'ม', 'long', null, 'ek']))).toEqual({
+    expect(computeTone(input(['ไม่', 'ม', 'short', 'y', 'ek']))).toEqual({
       ok: true,
       tone: 'falling',
       rule: 'low:ek',
       steps: [
         { step: 'class', value: 'low', reason: 'consonant' },
-        { step: 'liveness', value: 'live', reason: 'long-vowel' },
+        { step: 'liveness', value: 'live', reason: 'inherent-final' },
         { step: 'tone-mark', value: 'ek' },
         { step: 'tone', value: 'falling' },
       ],

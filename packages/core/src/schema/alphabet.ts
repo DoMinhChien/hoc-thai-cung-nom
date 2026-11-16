@@ -1,9 +1,11 @@
+import { HIGH_CONSONANTS, MID_CONSONANTS } from '../tone/classes';
 import { z } from 'zod';
 import {
   ConsonantClassSchema,
   contentMeta,
   FinalSoundSchema,
   IdSchema,
+  InherentFinalSchema,
   TextSchema,
   ThaiConsonantCharSchema,
   ThaiTextSchema,
@@ -40,6 +42,8 @@ export const VowelSchema = z.strictObject({
   id: IdSchema,
   form: z.string().regex(/^[^–]*–[^–]*$/, 'form phải có đúng 1 placeholder –'),
   length: VowelLengthSchema,
+  /** ไ– ใ– –ำ เ–า: nguyên âm ngắn mang sẵn âm cuối vang → âm tiết sống (plan 6.2). */
+  inherent_final: InherentFinalSchema.optional(),
   phonetic: PhoneticSchema,
   order: z.int().positive(),
   ...contentMeta,
@@ -74,12 +78,26 @@ export const SyllableAnalysisSchema = z.strictObject({
   id: IdSchema,
   thai: ThaiTextSchema,
   initial_char: ThaiConsonantCharSchema,
-  /** Phụ âm dẫn ห นำ / อ นำ; `null` nếu không có. */
-  leading: z.enum(['ห', 'อ']).nullable().default(null),
+  /**
+   * Phụ âm dẫn (อักษรนำ, plan 6.1): mọi phụ âm cao/trung đứng trước phụ âm thấp đơn — gồm cả
+   * ห นำ / อ นำ. `null` nếu không có (kể cả từ mượn đọc tách, khi đó dùng `tone_override`).
+   */
+  leading: z
+    .string()
+    .regex(
+      new RegExp(`^[${MID_CONSONANTS}${HIGH_CONSONANTS}]$`),
+      'phụ âm dẫn phải là 1 phụ âm cao hoặc trung',
+    )
+    .nullable()
+    .default(null),
   vowel_length: VowelLengthSchema,
   final_sound: FinalSoundSchema.nullable().default(null),
   tone_mark: ToneMarkSchema.nullable().default(null),
   expected_tone: ToneSchema,
+  /** Ngoại lệ đã biết (từ mượn…): tin `expected_tone`, validator không đối chiếu Tone Engine. */
+  tone_override: z.boolean().optional(),
+  /** Ghi chú cho ngoại lệ, vd. lý do đọc tách. */
+  note: TextSchema.optional(),
   ...contentMeta,
 });
 export type SyllableAnalysis = z.output<typeof SyllableAnalysisSchema>;

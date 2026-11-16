@@ -21,10 +21,7 @@
       "anyOf": [
         {
           "type": "string",
-          "enum": [
-            "ห",
-            "อ"
-          ]
+          "pattern": "^[กจฎฏดตบปอขฃฉฐถผฝศษสห]$"
         },
         {
           "type": "null"
@@ -85,6 +82,13 @@
         "high",
         "rising"
       ]
+    },
+    "tone_override": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
     },
     "image": {
       "type": "string",

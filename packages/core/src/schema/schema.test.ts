@@ -115,8 +115,25 @@ describe('SyllableAnalysisSchema', () => {
     });
   });
 
+  it('leading nhận mọi phụ âm cao/trung (อักษรนำ, plan 5.5 sawat-2); tone_override + note', () => {
+    for (const leading of ['ห', 'อ', 'ส', 'ข', 'ต', 'ก']) {
+      expect(SyllableAnalysisSchema.safeParse({ ...drill, leading }).success, leading).toBe(true);
+    }
+    expect(
+      SyllableAnalysisSchema.parse({
+        ...drill,
+        thai: 'วัส',
+        initial_char: 'ว',
+        leading: 'ส',
+        tone_override: true,
+        note: 'ví dụ',
+      }),
+    ).toMatchObject({ leading: 'ส', tone_override: true, note: 'ví dụ' });
+  });
+
   it.each([
-    ['leading', { leading: 'ก' }],
+    ['leading', { leading: 'ม' }],
+    ['leading', { leading: 'สม' }],
     ['final_sound', { final_sound: 'x' }],
     ['expected_tone', { expected_tone: 'sac' }],
     ['vowel_length', { vowel_length: 'medium' }],
@@ -223,6 +240,14 @@ describe('các schema còn lại', () => {
     expect(VowelSchema.safeParse(vowel).success).toBe(true);
     expect(VowelSchema.safeParse({ ...vowel, form: 'ะ' }).success).toBe(false);
     expect(VowelSchema.safeParse({ ...vowel, form: '–ะ–' }).success).toBe(false);
+  });
+
+  it('Vowel: inherent_final y|m|w cho ไ– ใ– –ำ เ–า (plan 6.2)', () => {
+    const ai = { id: 'sara-ai', form: 'ไ–', length: 'short', phonetic: 'ai', order: 5 };
+    expect(VowelSchema.parse({ ...ai, inherent_final: 'y' })).toMatchObject({
+      inherent_final: 'y',
+    });
+    expect(VowelSchema.safeParse({ ...ai, inherent_final: 'n' }).success).toBe(false);
   });
 
   it('ToneMarkEntry chỉ nhận 4 dấu thanh', () => {

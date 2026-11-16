@@ -18,6 +18,14 @@
         "long"
       ]
     },
+    "inherent_final": {
+      "type": "string",
+      "enum": [
+        "y",
+        "m",
+        "w"
+      ]
+    },
     "phonetic": {
       "type": "string",
       "pattern": "^[a-z]+([- ][a-z]+)*$"

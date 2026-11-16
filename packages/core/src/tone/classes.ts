@@ -7,6 +7,12 @@ export const HIGH_CONSONANTS = 'ขฃฉฐถผฝศษสห';
 /** Plan 6.1 — 24 phụ âm thấp. */
 export const LOW_CONSONANTS = 'คฅฆงชซฌญฑฒณทธนพฟภมยรลวฬฮ';
 
+/**
+ * Phụ âm thấp đơn (vang) — đứng sau phụ âm cao/trung có อะ ẩn thì tính thanh theo lớp của phụ âm
+ * dẫn (อักษรนำ tổng quát, plan 6.1).
+ */
+export const LEADING_FOLLOWERS = 'งญณนมยรลวฬ';
+
 /** Phụ âm thấp đơn (vang) có thể đứng sau ห นำ: ง ญ น ม ย ร ล ว. */
 export const HO_NAM_FOLLOWERS = 'งญนมยรลว';
 /** อ นำ chỉ đi với ย (อย่า, อยู่, อย่าง, อยาก). */
