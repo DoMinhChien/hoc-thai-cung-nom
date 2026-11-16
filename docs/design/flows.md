@@ -4,6 +4,8 @@
 
 ## 1. Sitemap Phase 1
 
+> *v7 (2026-11-16, plan mục 0.7): bỏ `/alphabet`, `/tones`, `/vocab`, `/review`, `/reading`, `/listening`; URL cũ chuyển hướng sang `/units` (học) hoặc `/practice` (ôn/nghe).*
+
 ```mermaid
 flowchart LR
   subgraph Bare["Bare layout (không sidebar)"]
@@ -14,19 +16,16 @@ flowchart LR
   end
   subgraph App["App layout (sidebar)"]
     DASH["/ Dashboard"]
-    ALPHA["/alphabet"] --> ALPHAP["/alphabet/practice"]
-    TONES["/tones"]
-    VOCAB["/vocab"] --> DECK["/vocab/:deckId"]
-    REVIEW["/review (focus)"]
-    READ["/reading"] --> READD["/reading/:id"]
-    LISTEN["/listening"]
+    UNITS["/units"] --> UNIT["/units/:unitId"] --> LESSON["/units/:unitId/:lessonId (focus)"]
+    PRACTICE["/practice"] --> SESSION["/practice/session (focus)"]
+    WORDS["/words"]
     GAMES["/games"] --> GAME["/games/:id (focus)"]
     PROG["/progress"]
     SET["/settings"]
     ACC["/account (cần đăng nhập)"]
   end
   LOGIN --> DASH
-  DASH --- ALPHA & TONES & VOCAB & REVIEW & READ & LISTEN & GAMES & PROG & SET & ACC
+  DASH --- UNITS & PRACTICE & WORDS & GAMES & PROG & SET & ACC
   LOGIN -.link chân trang.- PRIV & TERMS
   ACC -.-> DEL
 ```
@@ -35,7 +34,7 @@ flowchart LR
 | Route | Guest | Đã đăng nhập |
 |---|---|---|
 | `/login` | ✅ | Chuyển về `/` |
-| Mọi route học (`/`, `/alphabet`…) | ✅ (dữ liệu lưu trên trình duyệt này) | ✅ |
+| Mọi route học (`/`, `/units`…) | ✅ (dữ liệu lưu trên trình duyệt này) | ✅ |
 | `/account` | Chuyển về `/login?next=/account` | ✅ |
 | `/privacy`, `/terms`, `/account/delete-instructions` | ✅ public | ✅ |
 

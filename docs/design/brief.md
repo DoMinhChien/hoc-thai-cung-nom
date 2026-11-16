@@ -59,6 +59,6 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 2. **Lần đầu mở app:** hiện màn **Chào mừng / Đăng nhập** (`/login`) với 3 lựa chọn; người đã chọn "Học không cần đăng nhập" lần sau vào thẳng Dashboard.
 
 ## 9. Màu nhấn
-- *(v7)* Bỏ 5 màu thanh điệu; `color.tone` trong `tokens.json` sẽ xóa ở M5.5.
+- *(v7)* Bỏ 5 màu thanh điệu; `color.tone` đã xóa khỏi `tokens.json` (M5.5).
 - Mức thuộc dùng **3 sắc độ của màu chàm** (nhạt → đậm), không thêm màu mới.
 - Màu nút Google/Facebook theo **branding guideline của từng hãng** — ngoại lệ duy nhất ngoài tokens.
