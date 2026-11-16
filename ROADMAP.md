@@ -7,7 +7,7 @@
 
 ## Milestone đang mở
 
-> **🔵 M3 — Content pipeline TS + content mẫu** (nhánh `m3-content`). Bắt đầu từ T3.1.
+> **🔵 M3 — Content pipeline TS + content mẫu** (nhánh `m3-content`, PR #7). T3.1–T3.6 xong — **chờ owner xem content mẫu `draft: true` (S10)** rồi đóng M3.
 > 🟢 M0, M0.5a/TD, M1, M2 xong và đã vào `main` (PR #1, #4, #5); production deploy được từ PR #6. M1: owner smoke test đăng nhập Google thật trên production OK 2026-11-16.
 
 ---
@@ -125,7 +125,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T3.3 `--input <file|thư mục>` để validate file staging của pipeline Python (M4); output JSON tùy chọn (`--json`) cho Python đọc.
 - [x] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
 - [x] T3.5 Content mẫu **tối thiểu, `draft: true`** (AGENTS mục 4): vài phụ âm (đủ 3 lớp), vài nguyên âm, 4 dấu thanh, 5 thanh, ~5 tone-drills, 1 deck ~5 từ, 1 bài đọc ngắn, 1 cặp tối thiểu — **chỉ để chạy pipeline; owner thay/duyệt (S10)**.
-- [ ] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
+- [x] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
 
 **Tiêu chí nghiệm thu**
 - `pnpm content:check` pass trên content mẫu; mỗi loại lỗi trong 5.6 có fixture làm fail với thông báo chỉ rõ file/dòng/trường.
@@ -171,6 +171,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M3 | Đóng M1 (owner smoke test Google thật OK). M3: T3.1–T3.6 — loader YAML/CSV (lỗi file:dòng:cột [trường]), `content:check` thật (id, deck, Tone Engine, lớp phụ âm; cảnh báo ký tự ngoài Thái, lexicon, draft), `--input`/`--json`, `content:build` + manifest (idempotent, chạy trước web build), content mẫu 33 mục `draft: true` | — | Owner: xem content mẫu (S10) | `m3-content` PR #7 |
 | 2026-11-16 | — (CI) | Sửa CI: sự kiện PR `closed` có `github.ref` = `main` nên trùng nhóm concurrency và huỷ mọi run deploy production (production chưa từng deploy). Concurrency theo số PR. Preview `-5` 404 là do PR #5 đã merge (môi trường preview được đóng) | — | Owner: merge PR #6 → production deploy M0.5a+M2+M1 | `fix-ci-prod-deploy` PR #6 |
 | 2026-11-16 | M1 | T1.1–T1.4, T1.6–T1.10: `AuthService` provider-agnostic + Firebase (popup), emulator, `/login` (Google + Guest, D1, D2), khối tài khoản + menu + đăng xuất, offline, IndexedDB theo uid + chuyển tiến độ, `/account` (đổi tên, xoá tài khoản), 3 trang pháp lý; E2E luồng 0 xanh 3 trình duyệt × 2 viewport. M3 chưa có task dở → làm M1 trước | — | Owner: merge PR #4 rồi #5; smoke test Google thật trên production; kiểm tra Firebase Authorized domains có domain production; duyệt nội dung pháp lý (bản nháp) | `m1-auth` PR #5 |
 | 2026-11-15 | M1 | Owner: S4 ✅, S5 ✅ (Testing + test user), S7 ✅, S12 ✅ email. **Quyết định: Facebook → Phase 2 (M12.5)**. M1 mở 🔵 (chỉ Google) | — | — | — |

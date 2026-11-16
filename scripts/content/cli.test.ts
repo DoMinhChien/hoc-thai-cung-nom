@@ -125,3 +125,16 @@ describe('--input (file staging của pipeline Python)', () => {
     ]);
   });
 });
+
+describe('content/ thật của repo', () => {
+  it('không có lỗi (chỉ cảnh báo draft) — chặn content hỏng lọt vào main', async () => {
+    const repo = path.resolve(import.meta.dirname, '../..');
+    const result = await runCheck(['--json'], {
+      cwd: repo,
+      contentRoot: path.join(repo, 'content'),
+    });
+    const report = json(result.stdout);
+    expect(report.issues.filter((i) => i.severity === 'error')).toEqual([]);
+    expect(report.items).toBeGreaterThan(0);
+  });
+});
