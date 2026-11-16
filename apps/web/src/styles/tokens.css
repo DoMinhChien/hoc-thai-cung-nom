@@ -38,18 +38,6 @@
   --nom-mastery-mastered: #3f4aa8;
   --nom-mastery-mastered-fg: #ffffff;
 
-  /* 5 thanh điệu (D2, D10 — luôn kèm mini contour + tên) */
-  --nom-tone-mid: #6b7280;
-  --nom-tone-mid-subtle: #f1f2f4;
-  --nom-tone-low: #0e7490;
-  --nom-tone-low-subtle: #e3f3f7;
-  --nom-tone-falling: #b42318;
-  --nom-tone-falling-subtle: #fbe9e7;
-  --nom-tone-high: #2f7d32;
-  --nom-tone-high-subtle: #e7f3e8;
-  --nom-tone-rising: #b26a00;
-  --nom-tone-rising-subtle: #fbf0de;
-
   /* Nút đăng nhập theo guideline của hãng (ngoại lệ duy nhất ngoài bảng màu) */
   --nom-google-bg: #ffffff;
   --nom-google-border: #747775;

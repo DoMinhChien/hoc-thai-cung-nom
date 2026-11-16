@@ -101,8 +101,8 @@ test('offline (L-09): badge Ngoại tuyến, nút đăng nhập vô hiệu, Gues
   await context.setOffline(true);
   await expect(page.getByTestId('offline-badge')).toBeVisible();
   await expect(page.getByTestId('account-sign-in')).toBeDisabled();
-  await page.getByTestId('nav-alphabet').click();
-  await expect(page.getByTestId('page-alphabet')).toBeVisible();
+  await page.getByTestId('nav-units').click();
+  await expect(page.getByTestId('page-units')).toBeVisible();
   await context.setOffline(false);
   await expect(page.getByTestId('offline-badge')).toHaveCount(0);
 });

@@ -5,7 +5,9 @@ import Dexie from 'dexie';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { accountData } from '@/data';
 import { renderApp } from '@/test/render-app';
+import { t } from '@/i18n';
 import { ROUTE_SAMPLES } from './route-samples';
+import { LEGACY_REDIRECTS } from './routes';
 
 beforeEach(async () => {
   await accountData.setGuestChosen();
@@ -24,10 +26,33 @@ describe('routes', () => {
   it('điều hướng qua sidebar', async () => {
     const { router } = renderApp('/');
     await screen.findByTestId('page-dashboard');
-    await userEvent.click(screen.getByTestId('nav-alphabet'));
-    expect(router.state.location.pathname).toBe('/alphabet');
-    expect(screen.getByTestId('page-alphabet')).toBeInTheDocument();
-    expect(screen.getByTestId('nav-alphabet')).toHaveAttribute('aria-current', 'page');
+    await userEvent.click(screen.getByTestId('nav-units'));
+    expect(router.state.location.pathname).toBe('/units');
+    expect(screen.getByTestId('page-units')).toBeInTheDocument();
+    expect(screen.getByTestId('nav-units')).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('sidebar đúng thứ tự SCR-00 v7', async () => {
+    renderApp('/');
+    await screen.findByTestId('page-dashboard');
+    const ids = screen
+      .getByRole('navigation', { name: t('nav.label') })
+      .querySelectorAll('[data-testid^="nav-"]');
+    expect([...ids].map((el) => el.getAttribute('data-testid'))).toEqual([
+      'nav-dashboard',
+      'nav-units',
+      'nav-practice',
+      'nav-words',
+      'nav-games',
+      'nav-progress',
+      'nav-settings',
+    ]);
+  });
+
+  it.each(Object.entries(LEGACY_REDIRECTS))('URL cũ %s → %s', async (from, to) => {
+    const { router } = renderApp(from.replace(/:\w+$/, 'demo'));
+    expect(await screen.findByTestId(`page-${to.slice(1)}`)).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe(to);
   });
 
   it('route lạ → trang 404', () => {
@@ -53,8 +78,8 @@ describe('quy tắc truy cập (flows §1–§2)', () => {
 
   it('deep link vào màn học vẫn mở khi chưa chọn Guest', async () => {
     await Dexie.delete('hoc-thai-nom-guest');
-    renderApp('/alphabet');
-    expect(await screen.findByTestId('page-alphabet')).toBeInTheDocument();
+    renderApp('/units');
+    expect(await screen.findByTestId('page-units')).toBeInTheDocument();
   });
 
   it('Guest vào /account → /login?next=/account', async () => {
@@ -81,7 +106,7 @@ describe('quy tắc truy cập (flows §1–§2)', () => {
     const auth = new MockAuthService();
     // Không gọi callback → mô phỏng Firebase chưa khôi phục xong phiên.
     auth.onUserChanged = () => () => {};
-    renderApp('/alphabet', auth);
+    renderApp('/units', auth);
     expect(screen.getByTestId('account-block-loading')).toBeInTheDocument();
     expect(screen.queryByTestId('account-block-guest')).not.toBeInTheDocument();
   });

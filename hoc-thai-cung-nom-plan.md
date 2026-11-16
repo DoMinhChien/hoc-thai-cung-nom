@@ -4,13 +4,132 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft v6.5 — ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7** — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
-> **Cập nhật:** 2026-11-14
+> **Cập nhật:** 2026-11-16
+
+---
+
+## 0. Thay đổi phạm vi v7 (2026-11-16): **có hiệu lực cao nhất**
+
+> **Agent đọc mục này trước.** Phần nào ở mục 1–12 mâu thuẫn với mục 0 thì **mục 0 thắng**. Các requirement bị bỏ vẫn giữ trong tài liệu (gạch tên, gắn ⛔) để truy vết, **không implement**.
+
+### 0.1 Lý do & người học mục tiêu
+- Phản hồi từ demo khách hàng (2026-11-16). **Người học đã đọc thành thạo chữ Thái**, trình độ **A1–A2 (CEFR)**, tương đương *Novice* theo khung CU-TFL. Mục tiêu hiện tại: **từ vựng theo chủ đề** và **dịch câu, nâng dần độ khó**.
+- Định vị mới: app **từ vựng + mẫu câu + dịch câu theo chủ đề A1–A2**. Không dạy chữ cái, **không dạy và không hiển thị thanh điệu** (bỏ hẳn).
+
+### 0.2 Bỏ khỏi Phase 1 (⛔)
+| Bỏ | Ghi chú |
+|---|---|
+| Module A: Bảng chữ cái & Tone Trainer (A-01..A-24), routes `/alphabet`, `/tones` | Người học đã đọc được |
+| Module D: Quiz nghe thanh điệu (D-01..D-04), route `/listening` | Thay bằng bài tập nghe hiểu câu (E-08) |
+| P-02 `MasteryGrid`, P-03 `HeatmapTable`, P-07 `ToneBarChart`, `ToneContour`, `ToneTag`, màu 5 thanh trong tokens, nguyên tắc D10 | Theo yêu cầu khách hàng |
+| R-04 thống kê thanh điệu | Thay bằng R-04' "lỗi hay gặp theo mẫu câu" |
+| F-02 Phân loại lớp phụ âm, F-03 Ghép âm tiết, F-04 Săn thanh điệu | Thay bằng trò chơi từ & câu (0.6) |
+| V-01 mẹo nhớ hình dạng phụ âm, V-06 pitch contour; minh họa 44 phụ âm (Phase 2) | — |
+| B-07 "học chữ cái trước"; phiên âm hiện mặc định | **Phiên âm ẩn mặc định**, bật được trong Cài đặt / từng thẻ |
+| M24 Tone Trainer văn bản tự do (Phase 2) | — |
+
+**Tone Engine (`packages/core/tone`)**: giữ nguyên code và test (đã xong, không tốn chi phí) nhưng **đóng băng**: không UI nào import, không phát triển thêm. Trong schema, `syllables`/`tones` chuyển thành **tùy chọn**; `content:check` không bắt buộc nữa.
+
+### 0.3 Khung nội dung: 16 chủ đề A1–A2
+Tham chiếu: chỉ báo *can-do* CEFR A1/A2, chủ đề trong giáo trình tiếng Thái cơ bản (CU-TFL, các khóa Thai 1–2 đại học). Owner/giáo viên có thể đổi tên, thứ tự, thêm bớt chủ đề trong content, **không cần sửa code**.
+
+| # | Cấp | Chủ đề (Unit) | Mẫu câu trọng tâm (gợi ý) | Can-do (ví dụ) |
+|---|---|---|---|---|
+| 1 | A1 | Chào hỏi & giới thiệu | ครับ/ค่ะ, ชื่อ…, เป็นคน… | Giới thiệu tên, quốc tịch, nghề |
+| 2 | A1 | Gia đình & con người | มี…, …กี่คน | Nói về thành viên gia đình |
+| 3 | A1 | Số, giờ, ngày tháng | กี่โมง, วันที่… | Hỏi/nói giờ, ngày, tuổi |
+| 4 | A1 | Ăn uống & gọi món | ขอ…, เอา…, …ไหม | Gọi món, hỏi có/không |
+| 5 | A1 | Mua sắm & giá cả | …เท่าไร, ลดได้ไหม | Hỏi giá, mặc cả đơn giản |
+| 6 | A1 | Nhà cửa & sinh hoạt hằng ngày | ตื่น/กิน/ไป… + เวลา | Kể lịch sinh hoạt một ngày |
+| 7 | A1 | Hỏi đường & phương tiện | …อยู่ที่ไหน, ไป…ยังไง | Hỏi đường, đi taxi/tàu |
+| 8 | A1 | Sở thích & cuối tuần | ชอบ…, ไม่ค่อย… | Nói thích/không thích |
+| 9 | A2 | Công việc & học tập | ทำงานที่…, ต้อง… | Mô tả công việc, nghĩa vụ |
+| 10 | A2 | Sức khỏe & cơ thể | เจ็บ…, ควร… | Mô tả triệu chứng, lời khuyên |
+| 11 | A2 | Thời tiết & mùa | …กว่า…, …ที่สุด | So sánh, mô tả thời tiết |
+| 12 | A2 | Du lịch & khách sạn | อยากจะ…, จองได้ไหม | Đặt phòng, hỏi dịch vụ |
+| 13 | A2 | Dịch vụ: ngân hàng, bưu điện, sửa chữa | ช่วย…หน่อย, ได้ไหม | Nhờ vả, yêu cầu lịch sự |
+| 14 | A2 | Hẹn gặp & điện thoại | ว่างไหม, …แล้วจะ… | Hẹn, đổi lịch, gọi điện |
+| 15 | A2 | Kể chuyện đã qua | เคย…, …แล้ว, เมื่อ… | Kể trải nghiệm, việc đã làm |
+| 16 | A2 | Kế hoạch & ý kiến | จะ…, ถ้า…ก็…, เพราะ… | Nói dự định, lý do, điều kiện |
+
+### 0.4 Cấu trúc một bài học
+Mỗi Unit có **3–4 bài (Lesson)**, mỗi bài **10–15 phút**, gồm 4 bước theo thứ tự, mở khóa mềm (được bỏ qua):
+1. **Từ vựng**: 8–12 từ, flashcard Thái → Việt (chữ Thái là chính, hình nếu có, phiên âm ẩn). Từ mới vào SRS.
+2. **Mẫu câu**: 1–2 điểm ngữ pháp (`pattern` + giải thích tiếng Việt + 3–5 ví dụ có audio).
+3. **Hội thoại**: 4–8 câu thoại ngắn; chạm từ để tra (giữ C-02, C-03); bật/tắt bản dịch.
+4. **Bài tập**: 8–12 câu, độ khó tăng dần (0.5). Đạt ≥ 80% → bài hoàn thành.
+
+Unit có **checklist can-do**: tự tick khi mọi bài của unit hoàn thành; người học tự tick bổ sung được.
+
+### 0.5 Module E — Bài tập (thay "Ôn tập")
+Mọi loại bài tập là module độc lập theo interface `Exercise` (`generate(item, ctx)`, `check(answer)`, `grade()` → Again/Hard/Good cho FSRS), cùng nguyên tắc với `Game` (F-14).
+
+| ID | Loại | Bậc dịch | Phase |
+|---|---|---|---|
+| E-01 | Chọn nghĩa Việt cho từ Thái | 1 – từ | 1 |
+| E-02 | Chọn từ Thái cho nghĩa Việt | 1 – từ | 1 |
+| E-03 | Ghép cặp từ ↔ nghĩa (5 cặp) | 1 – từ | 1 |
+| E-04 | Điền từ vào chỗ trống (chọn từ) | 2 – cụm/câu | 1 |
+| E-05 | Chọn bản dịch Việt đúng cho câu Thái | 2 – câu | 1 |
+| E-06 | Sắp xếp thẻ từ thành câu Thái (Việt → Thái); bậc 3 có **thẻ nhiễu** | 2–3 – câu | 1 |
+| E-07 | **Gõ bản dịch Thái** cho câu Việt; chấm theo danh sách đáp án chấp nhận (`th` + `th_alt`) sau chuẩn hóa (NFC, bỏ khoảng trắng, ครับ/ค่ะ/คะ tùy chọn), bàn phím ảo G-06 | 4 – câu tự do | 1 |
+| E-08 | Nghe câu (TTS) → chọn nghĩa / sắp xếp câu nghe được | 2–3 – nghe hiểu | 1 |
+| E-09 | Ghép câu hỏi ↔ câu trả lời (từ hội thoại) | 2 – hội thoại | 1 |
+| E-20 | Dịch tự do Việt ↔ Thái, **Claude chấm** + giải thích lỗi tiếng Việt | 5 | 2 |
+
+- **E-10 "Bài tập hôm nay"**: trộn thẻ đến hạn FSRS (từ **và** câu) + mục sai gần đây; mặc định 20 câu, chỉnh trong Cài đặt.
+- **E-11** Bậc dịch tăng theo độ thuộc: câu mới bắt đầu ở bậc 2, đúng 2 lần liên tiếp → lên bậc kế tiếp, sai → lùi 1 bậc (lưu theo câu).
+- **E-12** Sai → hiện đáp án đúng + diff (với E-07) + mẫu câu liên quan; cuối phiên: tóm tắt + "Luyện lại câu sai".
+- **E-13** Trò chơi vẫn **không** đổi lịch FSRS (F-12 giữ nguyên).
+
+### 0.6 Trò chơi Phase 1 (thay F-02..F-04)
+F-01 **Ghép cặp** từ ↔ nghĩa/hình · F-02' **Đúng hay sai?** (từ/câu + nghĩa, 60 giây, combo) · F-03' **Xếp câu tốc độ** (E-06 có giờ). F-05..F-07 giữ ở Phase 2.
+
+### 0.7 Điều hướng & màn hình
+Sidebar (nhóm Học): **Tổng quan · Bài học · Bài tập · Sổ từ · Trò chơi · Tiến độ**; cuối: **Cài đặt**, menu tài khoản.
+
+| Route | Màn hình | Spec |
+|---|---|---|
+| `/` | Tổng quan: "Học tiếp" (bài dở), "Bài tập hôm nay" (số câu đến hạn), streak + mục tiêu ngày, vị trí trên lộ trình A1 → A2 | SCR-03 |
+| `/units` | Bài học: lộ trình 16 unit chia A1/A2, mỗi unit có `ProgressRing` + số bài xong | SCR-04 |
+| `/units/:unitId` | Chi tiết unit: danh sách bài, checklist can-do, từ vựng của unit | SCR-04 |
+| `/units/:unitId/:lessonId` | Bài học 4 bước (stepper), focus layout | SCR-05 |
+| `/practice` | Bài tập: "Bài tập hôm nay", luyện theo unit, luyện câu sai | SCR-06 |
+| `/practice/session` | Phiên làm bài (focus layout) + màn kết quả | SCR-06 |
+| `/words` | Sổ từ: mọi từ đã học, lọc theo unit/mức thuộc, tìm kiếm, phát âm | SCR-07 |
+| `/games`, `/games/:id` | Trò chơi | SCR-08 |
+| `/progress` | Tiến độ & báo cáo cá nhân | SCR-09 |
+| `/settings`, `/account`, `/login`, trang pháp lý | Giữ nguyên | SCR-00..02 |
+
+### 0.8 Tiến độ (thay 4.9 phần bị bỏ)
+- Giữ: 4 mức thuộc FSRS, `ProgressRing`, `StackedProgressBar`, P-01, P-04 (theo unit), P-05, P-08.
+- Mới: **P-10 Lộ trình A1 → A2** (`UnitPath`: 16 unit, trạng thái chưa học/đang học/xong), **P-11 Checklist can-do** (`CanDoList`), **P-12 Kỹ năng** (4 thanh: Từ vựng = % từ đã thuộc; Dịch Thái → Việt; Dịch Việt → Thái; Nghe hiểu = tỉ lệ đúng 30 ngày theo nhóm bài tập).
+- `/progress`: R-01' (từ đã thuộc, câu đã luyện, unit/bài xong), R-02' (streak + **biểu đồ cột** lượt học 30 ngày, không dùng heatmap), R-03, R-04' (**lỗi hay gặp theo mẫu câu** và theo loại bài tập), R-05, R-06 (thêm "câu khó"), R-07 (theo unit).
+
+### 0.9 Content: mẫu nhập liệu
+Đặt trong `content/templates/` (CSV mở bằng Excel/Google Sheets; giáo viên có biểu mẫu riêng thì pipeline map sang các cột này).
+
+| File | Cột |
+|---|---|
+| `units.csv` | `unit_id, level (A1/A2), order, title_vi, title_th, can_do` (nhiều mục tách bằng `|`) |
+| `lessons.csv` | `lesson_id, unit_id, order, title_vi, grammar_ids` |
+| `words.csv` | `id, unit_id, lesson_id, thai, meaning_vi, pos, phonetic` (tùy chọn)`, example_th, example_vi, image, tags, source` |
+| `sentences.csv` | `id, unit_id, lesson_id, vi, th, th_alt` (bản dịch chấp nhận khác, `|`)`, tokens` (tách từ cho E-06, `|`)`, distractors` (thẻ nhiễu, `|`)`, grammar_id, audio, source` |
+| `grammar.yaml` | `id, unit_id, title_vi, pattern, explain_vi, examples[{th, vi}]` |
+| `dialogues.yaml` | `id, lesson_id, lines[{speaker, th, vi}]` |
+
+Schema Zod mới: `Unit`, `Lesson`, `Word` (bỏ bắt buộc `syllables`), `Sentence`, `Grammar`, `Dialogue`. M4 (PDF pipeline) xuất ra đúng các file này.
+
+### 0.10 Milestone Phase 1 sau thay đổi
+Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
 
 ---
 
 ## 1. Tổng quan
+
+> ⚠️ **v7:** định vị mới ở mục 0.1 (A1–A2, từ vựng theo chủ đề + dịch câu, không chữ cái, không thanh điệu). Mô tả bên dưới là bản v6, giữ để tham khảo.
 
 **Học Thai cùng Nôm** là web app học tiếng Thái **dành cho người Việt**, giao diện **tiếng Việt**. Tập trung vào 3 điểm khó nhất của tiếng Thái: **chữ viết, thanh điệu, đọc văn bản viết liền**. Nội dung gốc lấy từ **giáo trình PDF do giáo viên biên soạn**.
 
@@ -169,7 +288,9 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 - **Phase 2 (API):** Azure Functions xác thực request bằng `firebase-admin` `verifyIdToken()` (chỉ cần `projectId`); bảng `users` dùng Firebase `uid` làm khóa.
 - **Firebase project & Google Cloud project:** đứng tên tài khoản Google **cá nhân** của owner.
 
-### 4.1 Module A — Bảng chữ cái & Tone Trainer (Phase 1)
+### 4.1 ⛔ Module A — Bảng chữ cái & Tone Trainer (BỎ ở v7, xem 0.2)
+
+> ⛔ **Không implement.** Giữ để truy vết.
 
 #### Học chữ
 - **A-01** 44 phụ âm, nhóm theo lớp (Trung / Cao / Thấp); mỗi chữ: chữ Thái, tên chữ (vd. ก ไก่), âm đầu, âm cuối, phiên âm, nghĩa từ khóa, audio.
@@ -191,6 +312,8 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 - **A-24** Engine là pure function, unit test đầy đủ (mục 6).
 
 ### 4.2 Module B — Từ vựng & SRS (Phase 1)
+
+> **v7:** bộ từ = từ của Unit/Lesson (0.3, 0.4); bỏ trường thanh/âm tiết bắt buộc; "Ôn tập" đổi thành **Bài tập** (Module E, 0.5) — thẻ gồm cả **từ và câu**; B-07 bỏ; phiên âm ẩn mặc định.
 - **B-01** Bộ từ theo chủ đề / theo bài của giáo trình, thứ tự do owner định nghĩa.
 - **B-02** Mỗi từ: chữ Thái, phiên âm, âm tiết, thanh từng âm tiết, nghĩa Việt, loại từ, câu ví dụ (tùy chọn), audio, tags, `source` (bài/trang trong giáo trình).
 - **B-03** Học N từ mới/ngày (mặc định 10).
@@ -204,6 +327,8 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 - **B-07** Mở khóa mềm: gợi ý học chữ cái trước, nhưng cho phép mở thủ công.
 
 ### 4.3 Module C — Đọc & tra từ (Phase 1)
+
+> **v7:** không có route `/reading` riêng ở Phase 1; tra từ (C-02, C-03, C-04, C-06, C-07) dùng trong bước **Hội thoại** của bài học. Bài đọc dài theo cấp độ → Phase 2.
 - **C-01** Bài đọc theo cấp độ (1–5).
 - **C-02** Tách từ bằng `Intl.Segmenter('th', { granularity: 'word' })`; override bằng `|` trong content.
 - **C-03** Click từ → **panel bên phải** (desktop, không che văn bản): chữ Thái, phiên âm, nghĩa, thanh, audio, "Thêm vào SRS". Giới hạn số từ mới thêm vào SRS từ mỗi bài (mặc định 10, chỉnh trong Settings) để hàng đợi ôn không phình to.
@@ -212,7 +337,9 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 - **C-06** Toggle phiên âm, toggle bản dịch câu.
 - **C-07** Phát audio cả câu.
 
-### 4.4 Module D — Quiz nghe thanh điệu (Phase 1)
+### 4.4 ⛔ Module D — Quiz nghe thanh điệu (BỎ ở v7; nghe hiểu câu = E-08)
+
+> ⛔ **Không implement.**
 - **D-01** Nghe 1 âm tiết → chọn 1 trong 5 thanh.
 - **D-02** Cặp tối thiểu: nghe → chọn từ đúng trong 2–4 từ chỉ khác thanh.
 - **D-03** Chính tả: nghe → chọn chữ đúng, hoặc **gõ** (G-06).
@@ -221,6 +348,8 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 ### 4.5 Module R — Reporting
 
 #### R1. Báo cáo cá nhân cho Learner (Phase 1, dữ liệu local)
+
+> **v7:** dùng R-01', R-02', R-04' theo mục 0.8; ⛔ R-04 thanh điệu bỏ.
 - **R-01** Tổng quan: số chữ cái đã thuộc / 44, số từ đã học / tổng, số bài đọc đã hoàn thành.
 - **R-02** Hoạt động: heatmap số lượt ôn theo ngày (kiểu GitHub contribution), streak hiện tại & dài nhất, tổng thời gian học (ước tính theo phiên).
 - **R-03** Trí nhớ: tỉ lệ nhớ đúng (retention) 7/30 ngày, phân bố thẻ theo trạng thái FSRS (New / Learning / Review / Relearning).
@@ -285,6 +414,8 @@ Mỗi requirement có ID và phase. Agent chỉ implement requirement thuộc ph
 
 ### 4.13 Module V — Hình ảnh & mẹo nhớ (Phase 1)
 
+> **v7:** ⛔ V-01, V-06 và minh họa 44 phụ âm (V-05 Phase 2) bị bỏ. V-02..V-04, V-07 giữ cho **từ vựng**.
+
 Nguyên tắc: **mọi thẻ học đều có hình** (khi có thể) và **mẹo nhớ**. Hình là phần "tượng hình" chính của app.
 
 - **V-01** Mỗi phụ âm hiển thị: chữ, **hình từ khóa** (vd. ก ไก่ → con gà, ข ไข่ → quả trứng, ค ควาย → con trâu), **mẹo nhớ hình dạng** bằng tiếng Việt (vd. "ก giống cổ con gà cong xuống").
@@ -297,7 +428,9 @@ Nguyên tắc: **mọi thẻ học đều có hình** (khi có thể) và **mẹ
 - **V-06** Thanh điệu cũng "tượng hình": **đường cao độ (pitch contour)** cho từng thanh, kèm ví dụ liên tưởng tiếng Việt (A-04).
 - **V-07** Nội dung hình & mẹo nhớ do owner soạn trong content (mục 5.5: trường `image`, `mnemonic_vi`); Claude có thể **đề xuất mẹo nhớ** để owner duyệt (script tùy chọn, dùng Claude API).
 
-### 4.14 Module F — Trò chơi (Phase 1: 4 trò lõi; Phase 2: thêm)
+### 4.14 Module F — Trò chơi (Phase 1: 3 trò lõi; Phase 2: thêm)
+
+> **v7:** ⛔ F-02, F-03, F-04 bỏ; Phase 1 = F-01 + F-02' + F-03' (mục 0.6). F-10..F-14 giữ nguyên, nguồn câu hỏi là từ **và câu** đã học.
 
 Mục tiêu: **vui nhờ cơ chế chơi** (thời gian, combo, âm thanh phản hồi, kỷ lục cá nhân), không nhờ hoạt hình/mascot. Mỗi lượt chơi **1–3 phút**, chơi được bằng bàn phím.
 
@@ -330,6 +463,8 @@ Mục tiêu: **vui nhờ cơ chế chơi** (thời gian, combo, âm thanh phản
   - Chấm điểm: đúng hoàn toàn / sai dấu thanh / sai chữ — hiển thị chỗ sai (diff theo ký tự).
 
 ### 4.9 Module P — Progress visualization theo module (Phase 1)
+
+> **v7:** ⛔ P-02 `MasteryGrid`, P-03 `HeatmapTable`, P-07 `ToneBarChart`, màu 5 thanh bị bỏ. P-06 chuyển Phase 2. Thêm P-10..P-12 (mục 0.8). Component còn dùng: `ProgressRing`, `StackedProgressBar`, + mới `UnitPath`, `CanDoList`, `SkillBars`.
 
 Mỗi module hiển thị tiến độ **ngay trong module** (không chỉ ở trang `/progress`). Dùng chung bộ component và một định nghĩa mức độ thuộc.
 
@@ -475,6 +610,8 @@ sentences:
 ---
 
 ## 6. Tone Engine — Spec
+
+> **v7: đóng băng.** Code + test giữ nguyên trong `packages/core`, không UI nào dùng, không phát triển thêm (mục 0.2).
 
 Pure TypeScript, dùng chung frontend, scripts và (Phase 2) Azure Functions.
 
@@ -649,6 +786,8 @@ Nguyên tắc cho agent: **mỗi thành phần phải bám theo một tham chi�
 
 ### 7.6 UI & Design (nguồn thiết kế cho agent)
 
+> **v7:** bỏ 5 màu thanh điệu và nguyên tắc D10; màu chỉ còn accent + sắc độ mức thuộc + màu trạng thái đúng/sai. Màn hình mới theo mục 0.7.
+
 #### 7.6.1 Định hướng: tối giản, tập trung học
 
 Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Không mascot, không confetti, không hiệu ứng thừa. Màu chỉ dùng khi **mang nghĩa**.
@@ -808,6 +947,8 @@ Máy owner: [tools/pdf-pipeline (Python)] ──► [Claude API] ──► stagi
 
 ## 9. Màn hình
 
+> **v7:** route Phase 1 theo **mục 0.7** (bảng dưới là bản v6; các dòng `/alphabet`, `/tones`, `/review`, `/vocab`, `/reading`, `/listening` ⛔ thay thế). Phase 2 giữ nguyên.
+
 | Route | Màn hình | Phase | Requirement |
 |---|---|---|---|
 | `/login` | Đăng nhập Google / Học không cần đăng nhập (Facebook: Phase 2) | 1 | L-01..L-03 |
@@ -840,26 +981,22 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 
 **Thứ tự khởi động:** M0 (khung, không cần thiết kế) làm ngay, song song **M0.5a** (brief, flows, tokens cơ bản, spec Layout/Đăng nhập/Tài khoản). M1 mở khi M0 + M0.5a xong và owner hoàn tất SETUP S4–S6. **M0.5b** (thiết kế các màn còn lại) làm dần, mỗi màn xong trước milestone dùng nó. M2 (logic thuần) có thể làm song song nếu M1 bị chặn.
 
-### Phase 1
+### Phase 1 (v7)
 | M | Nội dung |
 |---|---|
-| **M0.5a** | Design tối thiểu cho đăng nhập: brief, flows, tokens cơ bản, SCR-00 Layout, SCR-01 Đăng nhập, SCR-02 Tài khoản + wireframe; owner duyệt |
-| **M0.5b** | Design các màn còn lại (theo 7.6.2), làm dần — mỗi màn xong **trước** milestone dùng nó |
-| **M0** | Monorepo, Vite + React + TS + Tailwind + Router, ESLint/Prettier; **khung test**: Vitest, RTL, fake-indexeddb, Playwright + axe, mock AudioProvider, **Firebase Auth Emulator**; layout desktop-first, logo placeholder, font Thái, i18n, design token; GitHub Actions + Azure SWA (Free) |
-| **M1** | **Đăng nhập Google (ưu tiên số 1)**: `AuthService` provider-agnostic + Firebase SDK (popup); `/login` (nút Google + Guest; nút Facebook ẩn sau flag); `/account` (tên hiển thị, phương thức đăng nhập chỉ đọc, xoá tài khoản); Guest mode; IndexedDB theo `uid` + chuyển tiến độ Guest; trang `/privacy`, `/terms`, `/account/delete-instructions`; E2E luồng 0 trên Auth Emulator |
-| **M2** | `packages/core`: Zod schema (+ xuất JSON Schema), Unicode normalize, Tone Engine + test đầy đủ |
-| **M3** | Content pipeline TS: `build-content`, `content:check`; bộ content mẫu tối thiểu |
-| **M4** | **PDF pipeline Python** (`tools/pdf-pipeline`, mục 5.3) trên 1 PDF mẫu → staging CSV → `content:check`; pytest golden test |
-| **M5** | Data layer (Dexie, repositories, migration) + SRS wrapper + progress selectors & component dùng chung (mục 4.9) |
-| **M2.1** | **Bổ sung quy tắc Tone Engine** (sau M5, trước M6 & M4): อักษรนำ tổng quát (6.1), nguyên âm có âm cuối sẵn (6.2), schema `leading`/`tone_override`, validator cảnh báo ไ/ใ/ำ/เา ghi `long`, sửa content mẫu, test bổ sung |
-| **M6** | Module A: AudioProvider, `/alphabet`, `/alphabet/practice`, `/tones` + P-02, P-03 |
-| **M7** | Module B: `/vocab`, `/review`, Dashboard + P-04, P-05, P-08 |
-| **M8** | Bàn phím ảo Thái + chấm điểm gõ (G-06) |
-| **M9** | Module C: Đọc + tra từ + P-06 |
-| **M10** | Module D: Quiz nghe + P-07 |
-| **M10.5** | **Module V + F**: hình & mẹo nhớ trên flashcard và bảng chữ (V-01..V-07), 4 trò chơi lõi F-01..F-04 + interface `Game` |
-| **M11** | Module R1: `/progress` (R-01..R-07) |
-| **M12** | Settings, export/import, PWA offline; đủ luồng E2E (mục 7.4) + visual baseline; **go-live checklist đăng nhập** (Google consent screen *In production*, trang privacy/terms/xóa dữ liệu trên domain `*.azurestaticapps.net`, smoke test đăng nhập thật) |
+| **M0, M0.5a, M1, M2, M3, M5, M2.1** | 🟢 Xong (giữ nguyên; Tone Engine đóng băng theo 0.2) |
+| **M5.5** | **Dọn phạm vi v7**: gỡ route/nav/màn Bảng chữ cái, Thanh điệu, Nghe; xóa component `MasteryGrid`, `HeatmapTable`, `ToneBarChart`, `ToneContour`, `ToneTag` (+ `/dev/progress` phần liên quan), màu thanh trong tokens; nav mới (0.7, "Ôn tập" → "Bài tập"); schema: `syllables`/`tones` tùy chọn; gỡ content mẫu chữ cái/thanh; thẻ ví dụ trang Login đổi sang thẻ từ vựng |
+| **M0.5b** | Design v7: SCR-03 Tổng quan, SCR-04 Bài học (lộ trình + chi tiết unit), SCR-05 Bài học 4 bước, SCR-06 Bài tập (hub + phiên + kết quả), SCR-07 Sổ từ, SCR-08 Trò chơi, SCR-09 Tiến độ; owner duyệt (làm dần, mỗi màn trước milestone dùng nó) |
+| **M6** | **Content model v7** (0.9): schema `Unit/Lesson/Word/Sentence/Grammar/Dialogue` + JSON Schema, `build-content`/`content:check` mới, `content/templates/`, content mẫu Unit 1–2 (draft) |
+| **M7** | **Bài học**: AudioProvider (TTS), `/units`, `/units/:unitId`, bài học 4 bước (Từ vựng, Mẫu câu, Hội thoại + tra từ), hoàn thành bài, can-do |
+| **M8** | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07: chuẩn hóa, đáp án chấp nhận, diff) |
+| **M9** | **Bài tập**: interface `Exercise`, E-01..E-09, E-10..E-13, bước 4 của bài học, `/practice` + phiên + kết quả, SRS cho câu |
+| **M10** | **Tổng quan + Sổ từ + Tiến độ**: `/`, `/words`, `/progress` (P-08, P-10..P-12, R-01'..R-07) |
+| **M10.5** | Trò chơi F-01, F-02', F-03' + interface `Game`; hình & mẹo nhớ cho từ (V-02..V-04) |
+| **M4** | PDF pipeline Python → xuất đúng mẫu 0.9 (chờ S9 + PDF/biểu mẫu của giáo viên) |
+| **M12** | Settings (phiên âm mặc định ẩn, số câu bài tập/ngày), export/import, PWA offline; E2E đủ (luồng 1–2 viết lại theo bài học/bài tập) + visual baseline; go-live checklist đăng nhập |
+
+> M11 cũ (báo cáo `/progress`) gộp vào M10.
 
 ### Phase 2 (toàn bộ phần còn lại — theo thứ tự ưu tiên)
 | M | Nội dung |
@@ -872,11 +1009,11 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 | **M17** | Import CSV/XLSX + review + duyệt + audit + rollback (M-01, M-03..M-08) |
 | **M18** | Import PDF trên Azure (Queue + Python Function App + Document Intelligence + LLM) (M-02) |
 | **M19** | Báo cáo admin (`daily_stats` + `/admin/reports`, R-20..R-25) |
-| **M20** | Trò chơi F-05..F-07; minh họa riêng 44 phụ âm (V-05 Phase 2); Huy hiệu + nhắc học Web Push (E-06, E-07) |
+| **M20** | Trò chơi F-05..F-07; bài đọc dài theo cấp độ (Module C, P-06); Huy hiệu + nhắc học Web Push (E-06, E-07) |
 | **M21** | Azure TTS mp3 sinh sẵn (S-01) |
 | **M22** | Chấm phát âm `th-TH` (S-02) |
-| **M23** | AI tutor + sinh bài đọc theo vốn từ (S-03, S-04) |
-| **M24** | Tone Trainer văn bản tự do — parse âm tiết tự động (S-05) |
+| **M23** | AI tutor + sinh bài đọc theo vốn từ (S-03, S-04) + **E-20 dịch tự do Claude chấm** |
+| ~~M24~~ | ⛔ Bỏ ở v7 (Tone Trainer văn bản tự do) |
 
 ### Phase 3 — Lớp học / nhóm
 | M | Nội dung |
@@ -909,6 +1046,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7 (2026-11-16):** **Đổi phạm vi theo phản hồi demo khách hàng** (mục 0): người học A1–A2 đã đọc được → bỏ Module A (chữ cái, Tone Trainer), Module D (quiz thanh), thanh điệu khỏi UI (Tone Engine đóng băng), `MasteryGrid`, `HeatmapTable`, `ToneBarChart`; "Ôn tập" → **Bài tập** (Module E, dịch câu nâng dần bậc); 16 chủ đề A1–A2 + bài học 4 bước; nav, routes, tiến độ (P-10..P-12), mẫu content (0.9); milestone Phase 1 mới M5.5, M6–M10.5.
 - **v6.5 (2026-11-16):** Tone Engine: thêm quy tắc **อักษรนำ tổng quát** (6.1) và **nguyên âm có âm cuối sẵn** ไ– ใ– –ำ เ–า (6.2); `leading` nhận mọi phụ âm cao/trung; test bổ sung; milestone **M2.1** (sau M5, trước M6 & M4).
 - **v6.4 (2026-11-15):** **Facebook Login chuyển sang Phase 2** (M12.5): Phase 1 chỉ Google + Guest; L-04 (liên kết tài khoản) sang Phase 2; feature flag `VITE_ENABLE_FACEBOOK_LOGIN`; SETUP S6 dời sang Phase 2.
 - **v6.3 (2026-11-14):** Thêm bộ tài liệu cho agent: `AGENTS.md`, `ROADMAP.md`, `SETUP-OWNER.md`. Tách M0.5 thành M0.5a (trước M1) và M0.5b (làm dần); M0 làm ngay không chờ thiết kế.

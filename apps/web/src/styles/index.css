@@ -32,7 +32,7 @@
   --radius: var(--nom-radius-md);
 }
 
-/* Utility Tailwind sinh từ token, vd. `bg-tone-low`, `bg-mastery-known`, `text-th-lg`. */
+/* Utility Tailwind sinh từ token, vd. `bg-mastery-known`, `text-th-lg`. */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -71,17 +71,6 @@
   --color-mastery-learning: var(--nom-mastery-learning);
   --color-mastery-known: var(--nom-mastery-known);
   --color-mastery-mastered: var(--nom-mastery-mastered);
-
-  --color-tone-mid: var(--nom-tone-mid);
-  --color-tone-mid-subtle: var(--nom-tone-mid-subtle);
-  --color-tone-low: var(--nom-tone-low);
-  --color-tone-low-subtle: var(--nom-tone-low-subtle);
-  --color-tone-falling: var(--nom-tone-falling);
-  --color-tone-falling-subtle: var(--nom-tone-falling-subtle);
-  --color-tone-high: var(--nom-tone-high);
-  --color-tone-high-subtle: var(--nom-tone-high-subtle);
-  --color-tone-rising: var(--nom-tone-rising);
-  --color-tone-rising-subtle: var(--nom-tone-rising-subtle);
 
   --radius-sm: var(--nom-radius-sm);
   --radius-md: var(--nom-radius-md);

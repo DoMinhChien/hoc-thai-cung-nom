@@ -26,10 +26,13 @@ describe('LoginPage (SCR-01)', () => {
     expect(await screen.findByTestId('sign-in-facebook')).toBeInTheDocument();
   });
 
-  it('thẻ ví dụ: chữ Thái có lang="th"', async () => {
+  it('thẻ ví dụ v7: từ vựng có lang="th", nghĩa + bài, không có thanh điệu', async () => {
     renderApp('/login');
-    await screen.findByTestId('page-login');
-    expect(screen.getByText('ก')).toHaveAttribute('lang', 'th');
+    const card = await screen.findByTestId('login-example-card');
+    expect(within(card).getByText('ก๋วยเตี๋ยว')).toHaveAttribute('lang', 'th');
+    expect(within(card).getByText(t('login.exampleMeaning'))).toBeInTheDocument();
+    expect(within(card).getByText(t('login.exampleUnit'))).toBeInTheDocument();
+    expect(card.querySelector('[data-tone], svg')).toBeNull();
   });
 
   it('"Học không cần đăng nhập" → ghi nhớ Guest, vào Dashboard (L-02)', async () => {
@@ -78,7 +81,7 @@ describe('LoginPage (SCR-01)', () => {
   it('lần đầu đăng nhập, không có tiến độ Guest: D1 tên hiển thị → Dashboard (L-03)', async () => {
     const auth = new MockAuthService();
     auth.nextSignIn = { isNewUser: true, user: { displayName: 'Minh Chiến' } };
-    const { router } = renderApp('/login?next=/alphabet', auth);
+    const { router } = renderApp('/login?next=/units', auth);
     await userEvent.click(await screen.findByTestId('sign-in-google'));
 
     const dialog = await screen.findByTestId('display-name-dialog');
@@ -96,8 +99,8 @@ describe('LoginPage (SCR-01)', () => {
     await userEvent.type(input, '  Lan  ');
     await userEvent.click(within(dialog).getByTestId('display-name-submit'));
 
-    await screen.findByTestId('page-alphabet');
-    expect(router.state.location.pathname).toBe('/alphabet');
+    await screen.findByTestId('page-units');
+    expect(router.state.location.pathname).toBe('/units');
     expect(auth.calls).toContain('updateDisplayName:Lan');
     expect(screen.queryByTestId('transfer-dialog')).not.toBeInTheDocument();
   });

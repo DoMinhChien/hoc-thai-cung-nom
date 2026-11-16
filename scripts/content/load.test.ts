@@ -178,8 +178,10 @@ describe('CSV', () => {
     const root = await tree({ 'vocab/words.csv': 'id,thai\nx,ดี\n' });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues.map((i) => i.field)).toEqual(
-      expect.arrayContaining(['phonetic', 'syllables', 'tones', 'meaning_vi', 'deck']),
+      expect.arrayContaining(['phonetic', 'meaning_vi', 'deck']),
     );
+    // v7: syllables/tones tùy chọn.
+    expect(issues.map((i) => i.field)).not.toContain('tones');
     expect(issues.every((i) => i.line === 2)).toBe(true);
   });
 

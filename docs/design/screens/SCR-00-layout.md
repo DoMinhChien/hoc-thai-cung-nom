@@ -13,13 +13,13 @@ Khung dùng lại cho mọi màn hình: điều hướng, khối tài khoản, v
 │              │                                                          │
 │ HỌC          │   Tiêu đề trang (H1, 30px)              [Hành động chính] │
 │ ▸ Tổng quan  │   Mô tả ngắn (fg-muted, 16px)                            │
-│   Bảng chữ cái│                                                          │
-│   Thanh điệu │   ┌──────────────────────────────────────────────────┐   │
-│   Từ vựng    │   │                                                  │   │
-│   Ôn tập (12)│   │            Nội dung trang (max 1040px)           │   │
-│   Đọc        │   │                                                  │   │
-│   Nghe       │   └──────────────────────────────────────────────────┘   │
-│   Trò chơi   │                                                          │
+│   Bài học    │                                                          │
+│   Bài tập (12)│   ┌──────────────────────────────────────────────────┐   │
+│   Sổ từ      │   │                                                  │   │
+│   Trò chơi   │   │            Nội dung trang (max 1040px)           │   │
+│              │   │                                                  │   │
+│              │   └──────────────────────────────────────────────────┘   │
+│              │                                                          │
 │              │                                                          │
 │ CỦA BẠN      │                                                          │
 │   Tiến độ    │                                                          │
@@ -34,9 +34,9 @@ Khung dùng lại cho mọi màn hình: điều hướng, khối tài khoản, v
 
 **Sidebar (240px, nền `bg-subtle`, viền phải `border`)**
 - Trên cùng: `<AppLogo />` → link `/`.
-- Nhóm **"Học"**: Tổng quan (`/`), Bảng chữ cái, Thanh điệu, Từ vựng, Ôn tập, Đọc, Nghe, Trò chơi.
+- Nhóm **"Học"**: Tổng quan (`/`), Bài học (`/units`), Bài tập (`/practice`), Sổ từ (`/words`), Trò chơi (`/games`). *(v7 — 2026-11-16: bỏ Bảng chữ cái, Thanh điệu, Đọc, Nghe; "Ôn tập" → "Bài tập".)*
 - Nhóm **"Của bạn"**: Tiến độ, Cài đặt.
-- Mục **Ôn tập** có badge số thẻ đến hạn (ẩn khi = 0). *(Số liệu có từ M7; ở M1 ẩn badge.)*
+- Mục **Bài tập** có badge số câu đến hạn (ẩn khi = 0). *(Số liệu có từ M7; ở M1 ẩn badge.)*
 - Mục đang chọn: nền `accent-subtle`, chữ `accent`, font medium. Hover: nền `bg`.
 - Mỗi mục có icon outline 18px (thư viện `lucide-react`) + nhãn 14px.
 - **Không** còn mục "Tài khoản" trong danh sách — chuyển xuống **khối tài khoản** ở đáy.
@@ -59,7 +59,7 @@ Khung dùng lại cho mọi màn hình: điều hướng, khối tài khoản, v
 - Chân trang: "Chính sách quyền riêng tư · Điều khoản sử dụng" (14px, `fg-muted`).
 
 ## 3. Focus layout (dành chỗ, thiết kế ở M0.5b)
-Cho `/review`, `/games/:id`: ẩn sidebar, thanh trên cùng gồm nút **Thoát (Esc)** + thanh tiến độ mảnh.
+Cho `/practice/session`, `/units/:unitId/:lessonId`, `/games/:id`: ẩn sidebar, thanh trên cùng gồm nút **Thoát (Esc)** + thanh tiến độ mảnh.
 
 ## 4. Thành phần dùng chung trong khung
 | Thành phần | Quy định |
@@ -90,7 +90,7 @@ Cho `/review`, `/games/:id`: ẩn sidebar, thanh trên cùng gồm nút **Thoát
 
 ## Câu chữ (tiếng Việt)
 - Nhóm nav: "Học", "Của bạn".
-- Nav: "Tổng quan", "Bảng chữ cái", "Thanh điệu", "Từ vựng", "Ôn tập", "Đọc", "Nghe", "Trò chơi", "Tiến độ", "Cài đặt".
+- Nav: "Tổng quan", "Bài học", "Bài tập", "Sổ từ", "Trò chơi", "Tiến độ", "Cài đặt".
 - Khối tài khoản: "Khách", "Tiến độ chỉ lưu trên trình duyệt này", "Đăng nhập", "Tài khoản", "Đăng xuất".
 - Dialog đăng xuất: tiêu đề "Đăng xuất?", nội dung "Tiến độ của bạn vẫn được giữ trên máy này và sẽ hiện lại khi bạn đăng nhập lại.", nút "Huỷ" / "Đăng xuất".
 - Badge: "Ngoại tuyến".

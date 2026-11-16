@@ -1,7 +1,0 @@
-# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M3. Owner thay/duyệt (SETUP-OWNER S10).
-- id: mai
-  draft: true
-  words:
-    - { thai: ไม่, tone: falling, phonetic: mai, meaning_vi: không }
-    - { thai: ไม้, tone: high, phonetic: mai, meaning_vi: gỗ }
-    - { thai: ใหม่, tone: low, phonetic: mai, meaning_vi: mới }

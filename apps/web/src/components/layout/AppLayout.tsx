@@ -1,13 +1,10 @@
 import {
-  ALargeSmall,
-  AudioWaveform,
   BookOpen,
-  BookText,
   ChartLine,
   Gamepad2,
-  Headphones,
   LayoutDashboard,
-  RotateCcw,
+  NotebookText,
+  PencilLine,
   Settings,
   type LucideIcon,
 } from 'lucide-react';
@@ -25,13 +22,10 @@ const NAV_GROUPS: { label: MessageKey; items: NavItem[] }[] = [
     label: 'nav.groupLearn',
     items: [
       { to: '/', label: 'nav.dashboard', testId: 'nav-dashboard', icon: LayoutDashboard },
-      { to: '/alphabet', label: 'nav.alphabet', testId: 'nav-alphabet', icon: ALargeSmall },
-      { to: '/tones', label: 'nav.tones', testId: 'nav-tones', icon: AudioWaveform },
-      { to: '/vocab', label: 'nav.vocab', testId: 'nav-vocab', icon: BookOpen },
-      // Badge số thẻ đến hạn có từ M7 (SCR-00).
-      { to: '/review', label: 'nav.review', testId: 'nav-review', icon: RotateCcw },
-      { to: '/reading', label: 'nav.reading', testId: 'nav-reading', icon: BookText },
-      { to: '/listening', label: 'nav.listening', testId: 'nav-listening', icon: Headphones },
+      { to: '/units', label: 'nav.units', testId: 'nav-units', icon: BookOpen },
+      // Badge số câu đến hạn có từ M9 (SCR-00).
+      { to: '/practice', label: 'nav.practice', testId: 'nav-practice', icon: PencilLine },
+      { to: '/words', label: 'nav.words', testId: 'nav-words', icon: NotebookText },
       { to: '/games', label: 'nav.games', testId: 'nav-games', icon: Gamepad2 },
     ],
   },
