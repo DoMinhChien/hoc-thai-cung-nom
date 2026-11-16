@@ -7,7 +7,8 @@
 
 ## Milestone đang mở
 
-> **🔵 M2.1 — Bổ sung quy tắc Tone Engine** (nhánh `m2.1-tone-rules`) — chặn M6 và M4.
+> **🔵 M6 — Bảng chữ cái + Tone Trainer (+P-02, P-03)** (nhánh `m6-alphabet-tones`, chưa bắt đầu). Việc đầu tiên: **T6.1 soạn screen spec SCR-03/04/05** → owner duyệt; phần UI chờ spec, phần logic làm song song.
+> 🟢 M2.1 xong (nhánh `m2.1-tone-rules`, PR #10 — chờ owner review/merge sau PR #9).
 > 🟢 M0, M0.5a/TD, M1, M2, M3, M5 xong. M5: PR #8 + PR #9 (2 sửa sau duyệt: `ToneContour` SVG, tách ô Thấp × Chết). M3: PR #7, owner cho đóng 2026-11-16 (content mẫu vẫn `draft: true`, thay dần khi có nội dung thật).
 > ⚪ M4 (PDF pipeline) chờ S9 (Anthropic API key) + PDF mẫu (S10) — làm khi owner sẵn sàng.
 
@@ -36,11 +37,11 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M1 | Đăng nhập Google (Facebook → Phase 2) | 🟢 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ — PR #5; smoke test production OK |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
-| M4 | PDF pipeline Python | ⚪ | M3, **M2.1**, S9, PDF mẫu (S10) |
+| M4 | PDF pipeline Python | ⚪ | M3 ✅, M2.1 ✅, S9, PDF mẫu (S10) |
 | M0.5b | Design các màn còn lại | ⚪ | Làm dần trước M5–M11 |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
-| M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🔵 | M5 ✅; chặn M6 và M4 |
-| M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | ⚪ | M5, **M2.1**, SCR bảng chữ / Tone Trainer |
+| M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
+| M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | 🔵 | M5 ✅, M2.1 ✅; SCR-03/04/05 (T6.1, owner duyệt) |
 | M7 | Từ vựng + Ôn SRS + Dashboard (+P-04, P-05, P-08) | ⚪ | M5, SCR liên quan |
 | M8 | Bàn phím ảo Thái + chấm gõ | ⚪ | M5 |
 | M9 | Đọc + tra từ (+P-06) | ⚪ | M7, SCR Đọc |
@@ -153,21 +154,45 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - SRS và selector có unit test với thời gian giả lập; coverage `packages/core` srs/progress ≥ 90%.
 - Component progress không có lỗi axe serious/critical; phân biệt được mức/thanh không chỉ bằng màu.
 
-### M2.1 — Bổ sung quy tắc Tone Engine 🔵 (trước M6 & M4)
+### M2.1 — Bổ sung quy tắc Tone Engine 🟢
 
 **Bối cảnh:** owner review content mẫu 2026-11-16 phát hiện 2 lỗ hổng spec (không phải lỗi code): thiếu quy tắc **อักษรนำ tổng quát** và mô hình sai **ไ– ใ– –ำ เ–า** (đang ghi `long` để lách quy tắc). Spec mới: plan **6.1, 6.2, 6.3 (test bổ sung), 5.5** (ví dụ `sawat-2`).
 
 **Task**
-- [ ] T2.1.1 Schema syllable analysis: `leading` nhận **mọi phụ âm cao/trung** (không chỉ ห/อ); thêm `tone_override?: boolean`, `note?: string`; xuất lại JSON Schema.
-- [ ] T2.1.2 Tone Engine: áp lớp của phụ âm dẫn cho âm tiết sau (อักษรนำ); `steps` ghi rõ bước "phụ âm dẫn X → tính theo lớp Y" (để Tone Trainer giải thích).
-- [ ] T2.1.3 Nguyên âm có âm cuối sẵn: vowel content có `inherent_final: y|m|w`; engine coi ไ/ใ/ำ/เา là ngắn + âm cuối vang → sống.
-- [ ] T2.1.4 Validator (`content:check`): **cảnh báo** khi âm tiết dùng ไ/ใ/ำ/เา mà ghi `vowel_length: long` hoặc thiếu `final_sound`; bỏ qua khi `tone_override: true`.
-- [ ] T2.1.5 Sửa content mẫu: `tone-drills.yaml` (ไม่, ไม้ → short + y; thêm วัส của สวัสดี, ใหม่, ไหม, ทำ, เขา, ขนม/นม), `vowels.yaml` (thêm ไ– ใ– –ำ เ–า với `inherent_final`). Vẫn `draft: true`.
-- [ ] T2.1.6 Test bổ sung đúng danh sách plan 6.3 (สวัสดี, สนุก, ขนม, ตลาด, อร่อย, ไม่, ใหม่, ไหม, ทำ, เขา); giữ coverage ≥ 90%.
+- [x] T2.1.1 Schema syllable analysis: `leading` nhận **mọi phụ âm cao/trung** (không chỉ ห/อ); thêm `tone_override?: boolean`, `note?: string`; xuất lại JSON Schema.
+- [x] T2.1.2 Tone Engine: áp lớp của phụ âm dẫn cho âm tiết sau (อักษรนำ); `steps` ghi rõ bước "phụ âm dẫn X → tính theo lớp Y" (để Tone Trainer giải thích).
+- [x] T2.1.3 Nguyên âm có âm cuối sẵn: vowel content có `inherent_final: y|m|w`; engine coi ไ/ใ/ำ/เา là ngắn + âm cuối vang → sống.
+- [x] T2.1.4 Validator (`content:check`): **cảnh báo** khi âm tiết dùng ไ/ใ/ำ/เา mà ghi `vowel_length: long` hoặc thiếu `final_sound`; bỏ qua khi `tone_override: true`.
+- [x] T2.1.5 Sửa content mẫu: `tone-drills.yaml` (ไม่, ไม้ → short + y; thêm วัส của สวัสดี, ใหม่, ไหม, ทำ, เขา, ขนม/นม), `vowels.yaml` (thêm ไ– ใ– –ำ เ–า với `inherent_final`). Vẫn `draft: true`.
+- [x] T2.1.6 Test bổ sung đúng danh sách plan 6.3 (สวัสดี, สนุก, ขนม, ตลาด, อร่อย, ไม่, ใหม่, ไหม, ทำ, เขา); giữ coverage ≥ 90%.
 
 **Tiêu chí nghiệm thu**
 - Toàn bộ test plan 6.3 (cũ + bổ sung) pass; `content:check` content mẫu không lỗi, không còn âm tiết ไ/ใ ghi `long`.
 - `steps` của วัส trong สวัสดี có bước giải thích phụ âm dẫn ส.
+- ✅ Kết quả: bước `class` của วัส = `{ value: high, reason: leading, leading: ส, ownClass: low }`; ไ/ใ/ำ/เา cho bước `liveness` lý do `inherent-final`; `content:check` 43 mục, 0 lỗi, không cảnh báo plan 6.2; coverage core 100% lines.
+
+### M6 — Bảng chữ cái + Tone Trainer (+P-02, P-03) 🔵
+
+**Requirement:** plan **A-01..A-05, A-10..A-12, A-20..A-24** (4.1), **V-01, V-03, V-06** (4.13 — phần hiển thị hình/mẹo nhớ có sẵn trong content; nút "Viết mẹo nhớ của tôi" V-04 để M10.5), **P-01, P-02, P-03** (4.9), **7.2** (audio), **7.4** luồng E2E **1** và **2**, visual baseline bảng chữ cái / Tone Trainer. UI theo 7.6.1 (Bảng chữ cái: lưới + panel phải; Tone Trainer: stepper 4 bước + heatmap cột phải, D4 phím tắt).
+
+**Cần trước:** M5 ✅, M2.1 ✅. **Screen spec chưa có** → T6.1 (Claude soạn theo 7.6.3 → owner duyệt). Task UI (T6.6–T6.8) chỉ làm sau khi spec được duyệt; T6.2–T6.5 không phụ thuộc UI.
+
+**Task** (chi tiết hóa 2026-11-16 — owner xem lại trong PR)
+- [ ] T6.1 Screen spec (M0.5b): `SCR-03-alphabet.md` (`/alphabet`: lưới phụ âm theo lớp / nguyên âm / dấu + panel chi tiết, P-01, P-02), `SCR-04-alphabet-practice.md` (`/alphabet/practice`: flashcard A-10, quiz lớp A-11, focus mode D6), `SCR-05-tones.md` (`/tones`: stepper A-21, chế độ luyện A-22, bảng quy tắc A-23, heatmap P-03). **Owner duyệt.**
+- [ ] T6.2 Audio (7.2): `WebSpeechProvider` (`th-TH`, ưu tiên `audio/<id>.mp3` nếu có), `AudioProvider` qua React context; không có giọng Thái → thông báo hướng dẫn cài; test bằng `MockAudioProvider`.
+- [ ] T6.3 Nạp content trên web: hook đọc `public/content/*.json` qua `manifest.json` (cache theo hash), parse bằng schema core; nhóm phụ âm theo lớp, nguyên âm theo độ dài (A-01, A-02).
+- [ ] T6.4 `packages/core` luyện chữ: sinh câu hỏi flashcard chữ → âm/lớp, âm → chữ (A-10) và quiz phân loại lớp (A-11) — RNG có seed để test; chữ cái vào SRS chung qua `introduceCard`/`recordReview` (A-12).
+- [ ] T6.5 `packages/core` Tone Trainer: chế độ luyện từng bước (A-22) — đáp án đúng mỗi bước từ `computeTone().steps`, chấm từng bước, trả **bước sai đầu tiên**; lời giải thích tiếng Việt theo `reason` (gồm `leading`, `inherent-final`); ghi kết quả theo `rule` để heatmap P-03 dùng `ruleAccuracy`.
+- [ ] T6.6 `/alphabet` theo SCR-03: `MasteryGrid` theo lớp, panel chi tiết (chữ, tên, âm đầu/cuối, hình + mẹo nhớ V-01, nút phát âm A-05), `ProgressRing` P-01, chạm ô → lịch sử ôn (P-02).
+- [ ] T6.7 `/alphabet/practice` theo SCR-04: flashcard + quiz lớp, phím tắt hiện trên nút (D4), cập nhật P-02 realtime.
+- [ ] T6.8 `/tones` theo SCR-05: stepper 4 bước dùng `ToneTag`, chế độ luyện báo bước sai, bảng quy tắc tham chiếu (A-23, `TONE_RULES`), heatmap P-03 + "Luyện quy tắc này".
+- [ ] T6.9 E2E luồng **1** (học 5 phụ âm → ôn → P-02 đổi màu) và **2** (Tone Trainer sai bước 2 → báo đúng bước → P-03 cập nhật); axe các route mới; baseline `/alphabet`, `/tones`.
+
+**Tiêu chí nghiệm thu**
+- Luồng E2E 1, 2 pass trên 3 trình duyệt × 2 viewport; axe không lỗi serious/critical.
+- Tone Trainer giải thích đúng các ca M2.1 (อักษรนำ, ไ/ใ/ำ/เา) — dùng chung `steps` của Tone Engine, không tính lại ở UI.
+- Mọi phát âm qua `AudioProvider`; test dùng mock.
+- Thanh luôn hiển thị bằng `ToneTag`/`ToneContour` + tên (D10).
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
@@ -197,7 +222,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Không component nào import trực tiếp `firebase/auth`.
 - ✅ Owner smoke test Google thật trên production 2026-11-16.
 
-### M6 → M12
+### M7 → M12
 Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
 ---
@@ -208,6 +233,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M2.1 → M6 | T2.1.1–T2.1.6: schema `leading` mọi phụ âm cao/trung + `tone_override`/`note`, vowel `inherent_final` (JSON Schema xuất lại); Tone Engine อักษรนำ tổng quát (bước `class` ghi phụ âm dẫn + lớp riêng) và ไ/ใ/ำ/เา → sống (`inherent-final`); validator cảnh báo ไ/ใ/ำ/เา ghi `long`/thiếu âm cuối, bỏ qua `tone_override`; content mẫu sửa + thêm (43 mục, draft); test plan 6.3 bổ sung. Đóng M2.1 → 🟢, mở M6 🔵 (T6.1–T6.9) | — | M6 UI chờ owner duyệt SCR-03/04/05 (T6.1) | `m2.1-tone-rules` PR #10 |
 | 2026-11-16 | M5 → M2.1 | Owner duyệt `/dev/progress` + 2 sửa: `ToneContour`/`ToneTag` SVG theo số Chao (D10; thay ký hiệu Chao ở ToneBarChart, heatmap, thẻ ví dụ Login), heatmap tách Thấp × Chết thành ngắn (high) / dài (falling) + `TONE_RULES` trong core. Đóng M5 → 🟢, mở M2.1 🔵 | — | — | `m5-followup` PR #9 |
 | 2026-11-16 | M5 | T5.1–T5.7: core — record + interface 4 repository + bản bộ nhớ + contract test, SRS wrapper `ts-fsrs` (đồng hồ giả lập), selector 4.9 (mức thuộc, %, tỉ lệ đúng theo quy tắc/thanh/ngày; coverage 100% lines); web — IndexedDB v2 + migration từ v1, repository Dexie qua cùng contract test, `RepositoriesProvider` theo uid/guest, hook `liveQuery` (cập nhật sau một lượt ôn), chuyển tiến độ gộp thẻ trùng; 5 component progress + `/dev/progress` (axe sạch, baseline) | — | Owner: duyệt screenshot `/dev/progress` | `m5-data-srs` PR #8 |
 | 2026-11-16 | M2.1 (plan) | Owner duyệt: thêm **M2.1 — bổ sung quy tắc Tone Engine** (อักษรนำ tổng quát, ไ/ใ/ำ/เา) — làm ngay sau M5; chặn M6, M4. Plan v6.5 mục 6.1/6.2/6.3/5.5 | — | — | — |
