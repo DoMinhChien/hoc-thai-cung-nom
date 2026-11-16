@@ -174,6 +174,19 @@ describe('WordRowSchema', () => {
     expect(row.draft).toBe(true);
   });
 
+  it('v7: syllables/tones tùy chọn — vắng hoặc ô trống → []', () => {
+    const { syllables: _s, tones: _t, ...rest } = wordRow;
+    expect(WordRowSchema.parse(rest)).toMatchObject({ syllables: [], tones: [] });
+    expect(WordRowSchema.parse({ ...wordRow, syllables: '', tones: '' })).toMatchObject({
+      syllables: [],
+      tones: [],
+    });
+  });
+
+  it('chỉ có syllables, không có tones → hợp lệ', () => {
+    expect(WordRowSchema.parse({ ...wordRow, tones: '' }).syllables).toHaveLength(3);
+  });
+
   it('syllables và tones lệch độ dài → lỗi ở tones', () => {
     expect(issuePaths(WordRowSchema.safeParse({ ...wordRow, tones: 'low|mid' }))).toContain(
       'tones',

@@ -1,8 +1,0 @@
-# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M3. Owner thay/duyệt (SETUP-OWNER S10).
-id: lvl1-001
-title_vi: Chào hỏi
-level: 1
-draft: true
-sentences:
-  - { th: 'สวัสดี|ครับ', vi: 'Xin chào (nam nói)' }
-  - { th: 'ดี|มาก', vi: 'Rất tốt' }

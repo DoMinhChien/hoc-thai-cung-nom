@@ -1,6 +1,0 @@
-# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M3. Owner thay/duyệt (SETUP-OWNER S10).
-- { id: mid, label_vi: Ngang, chao: '33', order: 1, draft: true }
-- { id: low, label_vi: Thấp, chao: '21', order: 2, draft: true }
-- { id: falling, label_vi: Xuống, chao: '41', order: 3, draft: true }
-- { id: high, label_vi: Cao, chao: '45', order: 4, draft: true }
-- { id: rising, label_vi: Lên, chao: '14', order: 5, draft: true }

@@ -24,15 +24,10 @@ describe('json-schema/ đã commit khớp schema Zod', () => {
     };
     expect(schema.properties.tones?.type).toBe('string');
     expect(schema.required).toEqual(
-      expect.arrayContaining([
-        'id',
-        'thai',
-        'phonetic',
-        'syllables',
-        'tones',
-        'meaning_vi',
-        'deck',
-      ]),
+      expect.arrayContaining(['id', 'thai', 'phonetic', 'meaning_vi', 'deck']),
     );
+    // v7 (plan 0.2): syllables/tones tùy chọn.
+    expect(schema.required).not.toContain('syllables');
+    expect(schema.required).not.toContain('tones');
   });
 });
