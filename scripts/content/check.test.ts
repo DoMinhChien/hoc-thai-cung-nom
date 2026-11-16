@@ -48,7 +48,8 @@ const drill = (patch: object) => ({
   id: 'mai-1',
   thai: 'ไม่',
   initial_char: 'ม',
-  vowel_length: 'long',
+  vowel_length: 'short',
+  final_sound: 'y',
   tone_mark: 'ek',
   expected_tone: 'falling',
   ...patch,
@@ -120,11 +121,52 @@ describe('checkContent', () => {
   });
 
   it.each([
-    [{ initial_char: 'ม', leading: 'อ' }, 'leading'],
+    [{ thai: 'สข', initial_char: 'ข', leading: 'ส' }, 'leading'],
     [{ initial_char: 'ข', tone_mark: 'tri', expected_tone: 'high' }, 'tone_mark'],
   ])('Tone Engine không tính được → lỗi ở trường gây ra (%o)', (patch, field) => {
     const [issue] = checkContent(setOf({ toneDrills: [drill(patch)] }));
     expect(issue).toMatchObject({ severity: 'error', field });
+  });
+
+  it('อักษรนำ: วัส (สวัสดี) theo lớp của ส → khớp expected_tone low', () => {
+    const wat = { thai: 'วัส', initial_char: 'ว', leading: 'ส', final_sound: 't', tone_mark: null };
+    expect(summary(setOf({ toneDrills: [drill({ ...wat, expected_tone: 'low' })] }))).toEqual([]);
+  });
+
+  it('ไ/ใ/ำ/เา ghi vowel_length long hoặc thiếu final_sound → cảnh báo (T2.1.4)', () => {
+    const set = setOf({
+      toneDrills: [
+        drill({ vowel_length: 'long', final_sound: null }),
+        drill({ id: 'khao', thai: 'เขา', initial_char: 'ข', final_sound: 'm', tone_mark: null, expected_tone: 'rising' }),
+      ],
+    });
+    const rule = (f: string) =>
+      `ไ– ใ– –ำ เ–า là nguyên âm ngắn + âm cuối vang (plan 6.2): ghi vowel_length: short, final_sound: ${f}`;
+    expect(summary(set)).toEqual([
+      `warning toneDrills.file:1 [vowel_length] ${rule('y')}`,
+      `warning toneDrills.file:1 [final_sound] ${rule('y')}`,
+      `warning toneDrills.file:2 [final_sound] ${rule('w')}`,
+    ]);
+  });
+
+  it('tone_override: không đối chiếu Tone Engine, không cảnh báo', () => {
+    const exception = drill({ vowel_length: 'long', expected_tone: 'mid', tone_override: true });
+    expect(checkContent(setOf({ toneDrills: [exception] }))).toEqual([]);
+  });
+
+  it('cảnh báo kèm lỗi khi Tone Engine không tính được', () => {
+    const set = setOf({ toneDrills: [drill({ final_sound: null, tone_mark: 'tri', initial_char: 'ข', thai: 'ไข๊' })] });
+    expect(checkContent(set).map((i) => [i.severity, i.field])).toEqual([
+      ['error', 'tone_mark'],
+      ['warning', 'final_sound'],
+    ]);
+  });
+
+  it('nguyên âm inherent_final phải ngắn', () => {
+    const ai = { id: 'sara-ai', form: 'ไ–', length: 'long', inherent_final: 'y', phonetic: 'ai', order: 1 };
+    expect(summary(setOf({ vowels: [ai] }))).toEqual([
+      'error vowels.file:1 [length] nguyên âm có âm cuối sẵn (inherent_final) là nguyên âm ngắn (plan 6.2)',
+    ]);
   });
 
   it('cảnh báo ký tự ngoài bảng Thái (kể cả trong từng âm tiết, câu, cặp tối thiểu)', () => {

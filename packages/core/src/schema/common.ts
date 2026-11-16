@@ -19,6 +19,10 @@ export type VowelLength = z.infer<typeof VowelLengthSchema>;
 export const FinalSoundSchema = z.enum(['m', 'n', 'ng', 'y', 'w', 'k', 't', 'p']);
 export type FinalSound = z.infer<typeof FinalSoundSchema>;
 
+/** Âm cuối vang có sẵn trong nguyên âm ไ– ใ– (y), –ำ (m), เ–า (w) — plan 6.2. */
+export const InherentFinalSchema = z.enum(['y', 'm', 'w']);
+export type InherentFinal = z.infer<typeof InherentFinalSchema>;
+
 /** id duy nhất, ascii kebab, vd. `ko-kai`, `bai-01`. */
 export const IdSchema = z
   .string()

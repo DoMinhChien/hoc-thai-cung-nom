@@ -1,11 +1,8 @@
 import type { Accuracy, MasteryCounts, Tone } from '@nom/core';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
 import { HeatmapTable } from './HeatmapTable';
-import { TONE_GLYPH } from './levels';
 import { MasteryGrid } from './MasteryGrid';
 import { ProgressRing } from './ProgressRing';
 import { StackedProgressBar } from './StackedProgressBar';
@@ -137,6 +134,42 @@ describe('HeatmapTable (P-03)', () => {
     expect(onPractice).toHaveBeenCalledWith('mid:ek');
   });
 
+  it('cột nhóm: tiêu đề "Chết" phủ ngắn/dài; ô colSpan phủ cột kế; ô có contour thanh', () => {
+    render(
+      <HeatmapTable
+        caption="Quy tắc"
+        rows={[
+          { key: 'mid', label: 'Trung' },
+          { key: 'low', label: 'Thấp' },
+        ]}
+        columns={[
+          { key: 'live', label: 'Sống' },
+          { key: 'dead-short', label: 'ngắn', group: 'Chết' },
+          { key: 'dead-long', label: 'dài', group: 'Chết' },
+        ]}
+        getCell={(row, col) => {
+          if (col === 'live') return null;
+          if (row === 'mid') return { rule: 'mid:dead', accuracy: acc(1, 1), colSpan: 2 };
+          const tone = col === 'dead-short' ? 'high' : 'falling';
+          return { rule: `low:${col}`, accuracy: acc(1, 2), tone };
+        }}
+      />,
+    );
+    const group = screen.getByRole('columnheader', { name: 'Chết' });
+    expect(group).toHaveAttribute('colspan', '2');
+    expect(screen.getByRole('columnheader', { name: 'Sống' })).toHaveAttribute('rowspan', '2');
+    expect(screen.getByRole('columnheader', { name: 'ngắn' })).toBeInTheDocument();
+
+    expect(screen.getByTestId('heatmap-cell-mid-dead-short')).toHaveAttribute('colspan', '2');
+    expect(screen.queryByTestId('heatmap-cell-mid-dead-long')).not.toBeInTheDocument();
+
+    const short = screen.getByTestId('heatmap-cell-low-dead-short');
+    expect(short).toHaveAttribute('data-rule', 'low:dead-short');
+    expect(short).toHaveTextContent('Cao');
+    expect(within(short).getByTestId('tone-contour-high')).toBeInTheDocument();
+    expect(screen.getByTestId('heatmap-cell-low-dead-long')).toHaveTextContent('Xuống');
+  });
+
   it('không có onPractice → không có nút', () => {
     render(<HeatmapTable {...props} />);
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
@@ -152,7 +185,7 @@ describe('ToneBarChart (P-07)', () => {
     rising: acc(0, 5),
   };
 
-  it('5 cột theo thứ tự, mỗi cột có tên + ký hiệu thanh + % (D10)', () => {
+  it('5 cột theo thứ tự, mỗi cột có tên + contour thanh + % (D10)', () => {
     render(<ToneBarChart data={data} />);
     const bars = screen.getAllByTestId(/^tone-bar-(?!chart)/);
     expect(bars.map((b) => b.dataset.testid)).toEqual([
@@ -164,16 +197,8 @@ describe('ToneBarChart (P-07)', () => {
     ]);
     expect(screen.getByTestId('tone-bar-mid')).toHaveTextContent('Ngang: 90%');
     expect(screen.getByTestId('tone-bar-falling')).toHaveTextContent('Xuống: Chưa có lượt');
-    expect(screen.getByTestId('tone-bar-high')).toHaveTextContent(`${TONE_GLYPH.high}Cao`);
-  });
-
-  it('ký hiệu thanh khớp tokens.json (nguồn duy nhất)', () => {
-    const tokens = JSON.parse(
-      // Vitest chạy trong apps/web.
-      readFileSync(path.resolve('../../docs/design/tokens.json'), 'utf8'),
-    ) as { color: { tone: Record<Tone, { glyph: string }> } };
-    for (const [tone, glyph] of Object.entries(TONE_GLYPH)) {
-      expect(glyph).toBe(tokens.color.tone[tone as Tone].glyph);
-    }
+    const high = screen.getByTestId('tone-bar-high');
+    expect(high).toHaveTextContent('Cao');
+    expect(within(high).getByTestId('tone-contour-high')).toBeInTheDocument();
   });
 });

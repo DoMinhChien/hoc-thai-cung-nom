@@ -3,3 +3,7 @@
 - { id: sara-aa, form: –า, length: long, phonetic: aa, order: 2, draft: true }
 - { id: sara-i, form: –ิ, length: short, phonetic: i, order: 3, draft: true }
 - { id: sara-ii, form: –ี, length: long, phonetic: ii, order: 4, draft: true }
+- { id: sara-ai-mai-malai, form: ไ–, length: short, inherent_final: y, phonetic: ai, order: 5, draft: true }
+- { id: sara-ai-mai-muan, form: ใ–, length: short, inherent_final: y, phonetic: ai, order: 6, draft: true }
+- { id: sara-am, form: –ำ, length: short, inherent_final: m, phonetic: am, order: 7, draft: true }
+- { id: sara-ao, form: เ–า, length: short, inherent_final: w, phonetic: ao, order: 8, draft: true }

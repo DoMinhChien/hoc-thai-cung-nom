@@ -37,7 +37,7 @@ Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và c
    Cột trái ~55%                         Cột phải: card 400px, viền border
 ```
 
-- **Cột trái:** H1 40px semibold, đoạn mô tả 18px `fg-muted` (tối đa 2 dòng), **thẻ ví dụ** tĩnh: emoji Noto 🐔 (48px), chữ ก (`th-lg` 64px), dòng "ko kai · con gà", nhãn thanh "˧ Ngang" màu `tone.mid`. Thẻ chỉ để minh họa, không tương tác.
+- **Cột trái:** H1 40px semibold, đoạn mô tả 18px `fg-muted` (tối đa 2 dòng), **thẻ ví dụ** tĩnh: emoji Noto 🐔 (48px), chữ ก (`th-lg` 64px), dòng "ko kai · con gà", nhãn thanh `<ToneTag tone="mid">` (contour SVG + "Ngang", D10) màu `tone.mid`. Thẻ chỉ để minh họa, không tương tác.
 - **Cột phải:** card nền `surface`, viền `border`, radius `lg`, padding 32px:
   - Tiêu đề "Bắt đầu học" (20px semibold).
   - Nút **Google** (theo branding Google: nền trắng, viền `#747775`, logo G màu), cao 44px, full-width.

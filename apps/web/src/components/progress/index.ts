@@ -1,4 +1,4 @@
-export { HeatmapTable, WEAK_THRESHOLD, type HeatmapCell } from './HeatmapTable';
+export { HeatmapTable, WEAK_THRESHOLD, type HeatmapCell, type HeatmapColumn } from './HeatmapTable';
 export { MasteryGrid, type MasteryGridItem } from './MasteryGrid';
 export { MasteryLegend } from './MasteryLegend';
 export { ProgressRing } from './ProgressRing';

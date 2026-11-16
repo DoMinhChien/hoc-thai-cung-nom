@@ -135,6 +135,8 @@ describe('content/ thật của repo', () => {
     });
     const report = json(result.stdout);
     expect(report.issues.filter((i) => i.severity === 'error')).toEqual([]);
+    // M2.1: không còn âm tiết ไ/ใ/ำ/เา ghi long / thiếu âm cuối.
+    expect(report.issues.filter((i) => i.message.includes('plan 6.2'))).toEqual([]);
     expect(report.items).toBeGreaterThan(0);
   });
 });

@@ -15,3 +15,4 @@ export * from './srs/srs';
 export * from './thai/normalize';
 export * from './tone/classes';
 export * from './tone/engine';
+export * from './tone/inherent-final';
