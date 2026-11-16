@@ -19,17 +19,17 @@ Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và c
 │ [Logo Nôm]                                                            │
 │                                                                       │
 │   Học tiếng Thái,                     ┌───────────────────────────┐   │
-│   nhìn là nhớ.            (H1 40px)   │  Bắt đầu học              │   │
+│   mỗi ngày một chủ đề.    (H1 40px)   │  Bắt đầu học              │   │
 │                                       │                           │   │
-│   Mỗi chữ cái gắn với một hình ảnh    │  [G  Tiếp tục với Google ]│   │
-│   và mẹo nhớ. Học bằng flashcard và   │  [f  Tiếp tục với Facebook]│   │
-│   trò chơi ngắn mỗi ngày.             │                           │   │
+│   Từ vựng và mẫu câu theo chủ đề,     │  [G  Tiếp tục với Google ]│   │
+│   luyện dịch câu từ dễ đến khó, mỗi  │  [f  Tiếp tục với Facebook]│   │
+│   ngày vài phút.                      │                           │   │
 │                                       │  ───────── hoặc ─────────  │   │
 │   ┌────────────────┐                  │                           │   │
-│   │  🐔            │  ← thẻ ví dụ     │  [ Học không cần đăng nhập ]│  │
-│   │  ก             │    (tĩnh,        │  Tiến độ chỉ lưu trên      │   │
-│   │  ko kai · con gà│    minh họa)    │  trình duyệt này.          │   │
-│   │  ˧ Ngang       │                  │                           │   │
+│   │  🍜            │  ← thẻ ví dụ     │  [ Học không cần đăng nhập ]│  │
+│   │  ก๋วยเตี๋ยว      │    (tĩnh,        │  Tiến độ chỉ lưu trên      │   │
+│   │  hủ tiếu       │    minh họa)    │  trình duyệt này.          │   │
+│   │  Bài 4 · Ăn uống│                  │                           │   │
 │   └────────────────┘                  └───────────────────────────┘   │
 │                                                                       │
 │              Chính sách quyền riêng tư · Điều khoản sử dụng           │
@@ -37,7 +37,7 @@ Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và c
    Cột trái ~55%                         Cột phải: card 400px, viền border
 ```
 
-- **Cột trái:** H1 40px semibold, đoạn mô tả 18px `fg-muted` (tối đa 2 dòng), **thẻ ví dụ** tĩnh: emoji Noto 🐔 (48px), chữ ก (`th-lg` 64px), dòng "ko kai · con gà", nhãn thanh `<ToneTag tone="mid">` (contour SVG + "Ngang", D10) màu `tone.mid`. Thẻ chỉ để minh họa, không tương tác.
+- **Cột trái:** H1 40px semibold, đoạn mô tả 18px `fg-muted` (tối đa 2 dòng), **thẻ ví dụ** tĩnh *(v7: thẻ từ vựng, không còn chữ cái/thanh điệu)*: emoji Noto 🍜 (48px), từ ก๋วยเตี๋ยว (`th-lg`), nghĩa "hủ tiếu", nhãn nhỏ `fg-muted` "Bài 4 · Ăn uống". Thẻ chỉ để minh họa, không tương tác.
 - **Cột phải:** card nền `surface`, viền `border`, radius `lg`, padding 32px:
   - Tiêu đề "Bắt đầu học" (20px semibold).
   - Nút **Google** (theo branding Google: nền trắng, viền `#747775`, logo G màu), cao 44px, full-width.
@@ -87,13 +87,13 @@ Màn đầu tiên người mới thấy: hiểu app làm gì trong 5 giây và c
 | Đã đăng nhập | Không hiển thị màn này → chuyển `/` (hoặc `next`) |
 
 ## Câu chữ (tiếng Việt)
-- H1: "Học tiếng Thái, nhìn là nhớ."
-- Mô tả: "Mỗi chữ cái gắn với một hình ảnh và mẹo nhớ. Học bằng flashcard và trò chơi ngắn mỗi ngày."
+- H1: "Học tiếng Thái, mỗi ngày một chủ đề." *(v7)*
+- Mô tả: "Từ vựng và mẫu câu theo chủ đề, luyện dịch câu từ dễ đến khó, mỗi ngày vài phút." *(v7)*
 - Card: "Bắt đầu học" · "Tiếp tục với Google" · "Tiếp tục với Facebook" · "hoặc" · "Học không cần đăng nhập" · "Tiến độ chỉ lưu trên trình duyệt này."
 - Chân trang: "Chính sách quyền riêng tư" · "Điều khoản sử dụng".
 
 ## Lưu ý chữ Thái
-- Thẻ ví dụ: ก cỡ 64px, `font.family.th`, `line-height.th`, `lang="th"`.
+- Thẻ ví dụ: ก๋วยเตี๋ยว cỡ `th-lg`, `font.family.th`, `line-height.th`, `lang="th"`.
 - Phiên âm "ko kai" dùng font Việt, không dấu (quy ước plan mục 3).
 
 ## Ngoài phạm vi

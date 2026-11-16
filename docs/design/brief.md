@@ -22,7 +22,7 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 | # | Nguyên tắc |
 |---|---|
 | D1 | Nền trung tính, **1 màu nhấn** |
-| D2 | Màu chỉ để mang nghĩa: 5 màu thanh điệu + sắc độ mức thuộc |
+| D2 | Màu chỉ để mang nghĩa: sắc độ mức thuộc + đúng/sai *(v7: bỏ 5 màu thanh điệu)* |
 | D2a | Hình minh họa nội dung là ngoại lệ có chủ đích, một phong cách thống nhất |
 | D3 | Nội dung là trung tâm, mỗi màn hình **1 hành động chính** |
 | D4 | Keyboard-first, phím tắt hiện trên nút |
@@ -31,7 +31,7 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 | D7 | Không giấu thông tin vì thẩm mỹ |
 | D8 | Typography là "trang trí" chính (Inter + Noto Sans Thai, line-height Thái 1.75) |
 | D9 | Light mode trước, token đặt theo nghĩa |
-| D10 | Thanh điệu luôn có ký hiệu + tên, không chỉ màu |
+| ~~D10~~ | ⛔ Bỏ ở v7 (không còn hiển thị thanh điệu) |
 
 ## 5. Khung giao diện (áp dụng mọi màn)
 - **Desktop-first:** thiết kế ở 1440×900, kiểm tra ở 1280 và 1024. Chưa làm mobile.
@@ -58,7 +58,7 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 1. **Màu nhấn:** **Chàm (indigo) `#3F4AA8`** — xem `tokens.json`.
 2. **Lần đầu mở app:** hiện màn **Chào mừng / Đăng nhập** (`/login`) với 3 lựa chọn; người đã chọn "Học không cần đăng nhập" lần sau vào thẳng Dashboard.
 
-## 9. Màu nhấn và 5 màu thanh điệu
-- Màu nhấn chàm **không trùng** với 5 màu thanh (xám, xanh lơ, đỏ, xanh lá, hổ phách).
+## 9. Màu nhấn
+- *(v7)* Bỏ 5 màu thanh điệu; `color.tone` trong `tokens.json` sẽ xóa ở M5.5.
 - Mức thuộc dùng **3 sắc độ của màu chàm** (nhạt → đậm), không thêm màu mới.
 - Màu nút Google/Facebook theo **branding guideline của từng hãng** — ngoại lệ duy nhất ngoài tokens.

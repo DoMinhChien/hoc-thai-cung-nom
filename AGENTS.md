@@ -16,7 +16,7 @@
 
 1. `AGENTS.md` (file này) — quy tắc làm việc.
 2. `ROADMAP.md` — **milestone đang mở**, task, tiêu chí nghiệm thu, trạng thái.
-3. `hoc-thai-cung-nom-plan.md` — spec đầy đủ. **Chỉ đọc các mục mà milestone tham chiếu** (theo mã requirement như `L-01`, `A-20`, `F-02`…). Các mục luôn áp dụng: **3 (quyết định & ADR)**, **7.1 (stack)**, **7.3 (data layer)**, **7.4 (testing)**, **7.5 (tham chiếu)**, **7.6 (UI & design)**.
+3. `hoc-thai-cung-nom-plan.md` — spec đầy đủ. **Chỉ đọc các mục mà milestone tham chiếu** (theo mã requirement như `L-01`, `E-06`, `P-10`…). Các mục luôn áp dụng: **0 (thay đổi phạm vi v7 — thắng mọi mục khác; requirement gắn ⛔ không implement)**, **3 (quyết định & ADR)**, **7.1 (stack)**, **7.3 (data layer)**, **7.4 (testing)**, **7.5 (tham chiếu)**, **7.6 (UI & design)**.
 4. `docs/design/` — brief, tokens, **screen spec `SCR-xx`** cho màn hình liên quan.
 5. `SETUP-OWNER.md` — việc owner làm tay (tài khoản, secrets). **Agent không tự làm các việc này.**
 
