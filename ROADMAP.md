@@ -185,7 +185,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T5.5.3 Xóa `color.tone` trong `docs/design/tokens.json` và mọi nơi sinh/dùng token đó (CSS vars, Tailwind).
 - [x] T5.5.4 `/login`: thẻ ví dụ từ vựng + câu chữ mới theo SCR-01 v7; cập nhật baseline.
 - [x] T5.5.5 Schema core: `syllables`/`tones` của Word → tùy chọn; `content:check` không bắt buộc thanh; xóa content mẫu chữ cái/thanh (`consonants`, `vowels`, `tone-*`, `tones`, `minimal-pairs`, `readings`); xuất lại JSON Schema.
-- [ ] T5.5.6 Tone Engine đóng băng: thêm ghi chú trong README của `packages/core/tone`; ESLint `no-restricted-imports` cấm `apps/web` import module tone.
+- [x] T5.5.6 Tone Engine đóng băng: thêm ghi chú trong README của `packages/core/tone`; ESLint `no-restricted-imports` cấm `apps/web` import module tone.
 - [ ] T5.5.7 E2E luồng 0 + axe + baseline cập nhật; CI xanh.
 
 **Tiêu chí nghiệm thu**

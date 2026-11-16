@@ -5,6 +5,37 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+/**
+ * Plan mục 0.2 (v7): Tone Engine đóng băng — không UI nào dùng. `@nom/core` vẫn re-export cho
+ * script content, nên chặn theo tên export + chặn import thẳng vào thư mục `tone/`.
+ */
+const FROZEN_TONE = {
+  paths: [
+    {
+      name: '@nom/core',
+      importNames: [
+        'computeTone',
+        'TONE_RULES',
+        'inherentFinal',
+        'consonantClass',
+        'MID_CONSONANTS',
+        'HIGH_CONSONANTS',
+        'LOW_CONSONANTS',
+        'LEADING_FOLLOWERS',
+        'HO_NAM_FOLLOWERS',
+        'O_NAM_FOLLOWERS',
+      ],
+      message: 'Tone Engine đóng băng ở v7 (plan mục 0.2) — apps/web không dùng.',
+    },
+  ],
+  patterns: [
+    {
+      group: ['@nom/core/src/**', '**/core/src/tone', '**/core/src/tone/**'],
+      message: 'Chỉ import @nom/core; Tone Engine đóng băng ở v7 (plan mục 0.2).',
+    },
+  ],
+};
+
 export default tseslint.config(
   {
     ignores: [
@@ -42,7 +73,9 @@ export default tseslint.config(
         {
           paths: [
             { name: 'firebase/auth', message: 'Chỉ gọi Firebase qua AuthService (src/auth).' },
+            ...FROZEN_TONE.paths,
           ],
+          patterns: FROZEN_TONE.patterns,
         },
       ],
       'no-restricted-globals': [
@@ -67,7 +100,11 @@ export default tseslint.config(
   },
   {
     files: ['apps/web/src/auth/**/*.{ts,tsx}'],
-    rules: { 'no-restricted-imports': 'off' },
+    rules: { 'no-restricted-imports': ['error', FROZEN_TONE] },
+  },
+  {
+    files: ['apps/web/e2e/**/*.ts', 'apps/web/*.ts'],
+    rules: { 'no-restricted-imports': ['error', FROZEN_TONE] },
   },
   {
     // shadcn/ui sinh ra — giữ nguyên để dễ cập nhật.
