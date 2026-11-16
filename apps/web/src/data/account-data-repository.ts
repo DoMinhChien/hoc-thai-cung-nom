@@ -20,6 +20,11 @@ async function withDb<T>(userKey: string, work: (db: NomDatabase) => Promise<T>)
  */
 async function mergeCards(user: NomDatabase, guestCards: CardRecord[]) {
   for (const card of guestCards) {
+    // Bản ghi thiếu khóa (dữ liệu cũ/hỏng) không tra được index → chuyển nguyên trạng.
+    if (!card.itemType || !card.itemId || !card.cardType) {
+      await user.cards.put(card);
+      continue;
+    }
     const existing = await user.cards
       .where('[itemType+itemId+cardType]')
       .equals([card.itemType, card.itemId, card.cardType])

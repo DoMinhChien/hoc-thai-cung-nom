@@ -1,4 +1,5 @@
 import Dexie from 'dexie';
+import type { CardRecord } from '@nom/core';
 import { afterEach, describe, expect, it } from 'vitest';
 import { AccountDataRepository } from './account-data-repository';
 import { countCards, seedCards, testCard } from '@/test/cards';
@@ -61,6 +62,15 @@ describe('AccountDataRepository', () => {
     const db = new NomDatabase('u1');
     expect((await db.cards.toArray()).map((c) => c.id).sort()).toEqual(['g-ko', 'u-kho']);
     db.close();
+  });
+
+  it('transferGuestProgress: thẻ thiếu khóa (dữ liệu cũ) vẫn được chuyển, không lỗi', async () => {
+    const guest = new NomDatabase(GUEST_KEY);
+    await guest.cards.put({ id: 'cu', itemType: 'consonant' } as CardRecord);
+    guest.close();
+    await repo.transferGuestProgress('u1');
+    expect(await countCards('u1')).toBe(1);
+    expect(await countCards(GUEST_KEY)).toBe(0);
   });
 
   it('deleteUserData: xoá DB của user, không đụng Guest (L-08)', async () => {
