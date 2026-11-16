@@ -26,10 +26,13 @@ describe('LoginPage (SCR-01)', () => {
     expect(await screen.findByTestId('sign-in-facebook')).toBeInTheDocument();
   });
 
-  it('thẻ ví dụ: chữ Thái có lang="th"', async () => {
+  it('thẻ ví dụ v7: từ vựng có lang="th", nghĩa + bài, không có thanh điệu', async () => {
     renderApp('/login');
-    await screen.findByTestId('page-login');
-    expect(screen.getByText('ก')).toHaveAttribute('lang', 'th');
+    const card = await screen.findByTestId('login-example-card');
+    expect(within(card).getByText('ก๋วยเตี๋ยว')).toHaveAttribute('lang', 'th');
+    expect(within(card).getByText(t('login.exampleMeaning'))).toBeInTheDocument();
+    expect(within(card).getByText(t('login.exampleUnit'))).toBeInTheDocument();
+    expect(card.querySelector('[data-tone], svg')).toBeNull();
   });
 
   it('"Học không cần đăng nhập" → ghi nhớ Guest, vào Dashboard (L-02)', async () => {

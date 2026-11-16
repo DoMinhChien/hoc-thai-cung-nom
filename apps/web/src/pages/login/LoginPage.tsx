@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import { ProviderIcon } from '@/components/account/ProviderIcon';
-import { ToneTag } from '@/components/tone';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAuth } from '@/auth/useAuth';
@@ -179,16 +178,17 @@ function ExampleCard() {
   return (
     <figure
       aria-label={t('login.exampleCardLabel')}
-      className="flex w-56 flex-col items-center gap-1 rounded-lg border bg-card p-6 shadow-sm"
+      data-testid="login-example-card"
+      className="flex w-fit min-w-56 flex-col items-center gap-1 rounded-lg border bg-card p-6 shadow-sm"
     >
       <span className="text-5xl" aria-hidden>
-        🐔
+        🍜
       </span>
       <span lang="th" className="font-thai text-th-lg leading-[1.75]">
-        ก
+        ก๋วยเตี๋ยว
       </span>
-      <span className="text-sm">{t('login.examplePhonetic')}</span>
-      <ToneTag tone="mid" className="text-sm font-medium text-tone-mid" />
+      <span className="text-base font-medium">{t('login.exampleMeaning')}</span>
+      <span className="text-sm text-muted-foreground">{t('login.exampleUnit')}</span>
     </figure>
   );
 }

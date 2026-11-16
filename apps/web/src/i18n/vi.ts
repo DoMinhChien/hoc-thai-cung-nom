@@ -40,11 +40,11 @@ export const vi = {
     facebook: 'Facebook',
   },
   login: {
-    heading: 'Học tiếng Thái, nhìn là nhớ.',
-    intro:
-      'Mỗi chữ cái gắn với một hình ảnh và mẹo nhớ. Học bằng flashcard và trò chơi ngắn mỗi ngày.',
+    heading: 'Học tiếng Thái, mỗi ngày một chủ đề.',
+    intro: 'Từ vựng và mẫu câu theo chủ đề, luyện dịch câu từ dễ đến khó, mỗi ngày vài phút.',
     exampleCardLabel: 'Thẻ ví dụ',
-    examplePhonetic: 'ko kai · con gà',
+    exampleMeaning: 'hủ tiếu',
+    exampleUnit: 'Bài 4 · Ăn uống',
     cardTitle: 'Bắt đầu học',
     continueWith: 'Tiếp tục với {provider}',
     opening: 'Đang mở…',
