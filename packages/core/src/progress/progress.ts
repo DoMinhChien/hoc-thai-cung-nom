@@ -2,8 +2,6 @@
  * Selector tiến độ thuần (plan 4.9): input cards/logs/content → số liệu cho component progress.
  * Không phụ thuộc React/Dexie; mọi hàm có `now` nhận đồng hồ từ ngoài.
  */
-import type { ListeningStatRecord } from '../data/records';
-import { ToneSchema, type Tone } from '../schema/common';
 import type { SrsState } from '../srs/srs';
 
 /** 4 mức thuộc dùng thống nhất toàn app (bảng 4.9). */
@@ -107,29 +105,10 @@ export function accuracyBy<K extends string>(
   ) as Record<K, Accuracy>;
 }
 
-/** P-03: tỉ lệ đúng theo ô quy tắc bảng 6.3 (`rule` của Tone Engine, vd. `low:dead-long`). */
-export function ruleAccuracy(
-  attempts: readonly { rule: string; correct: boolean }[],
-  rules: readonly string[],
-): Record<string, Accuracy> {
-  return accuracyBy(
-    attempts.map((a) => ({ key: a.rule, correct: a.correct })),
-    rules,
-  );
-}
-
-/** P-07: tỉ lệ đúng theo 5 thanh (theo thanh được hỏi). */
-export function toneAccuracy(stats: readonly ListeningStatRecord[]): Record<Tone, Accuracy> {
-  return accuracyBy(
-    stats.map((s) => ({ key: s.expectedTone, correct: s.correct })),
-    ToneSchema.options,
-  );
-}
-
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
- * P-07: xu hướng 7 ngày — tỉ lệ đúng mỗi ngày (cũ → mới, ngày cuối là hôm nay).
+ * Xu hướng theo ngày — tỉ lệ đúng mỗi ngày (cũ → mới, ngày cuối là hôm nay).
  * Ngày tính theo múi giờ của `utcOffsetMinutes` (mặc định UTC; UI truyền offset của trình duyệt).
  */
 export function dailyAccuracy(

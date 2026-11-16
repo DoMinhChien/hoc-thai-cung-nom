@@ -9,8 +9,6 @@ import {
   itemMastery,
   MASTERY_THRESHOLD_DAYS,
   masteryLevel,
-  ruleAccuracy,
-  toneAccuracy,
 } from './progress';
 
 const T0 = new Date('2026-03-01T08:00:00.000Z');
@@ -95,20 +93,6 @@ describe('accuracy', () => {
     expect(result.y).toEqual({ correct: 0, total: 0, ratio: null });
   });
 
-  it('ruleAccuracy (P-03) theo ô quy tắc của Tone Engine', () => {
-    const r = ruleAccuracy(
-      [
-        { rule: 'low:ek', correct: true },
-        { rule: 'low:ek', correct: true },
-        { rule: 'mid:live', correct: false },
-      ],
-      ['mid:live', 'low:ek', 'high:live'],
-    );
-    expect(r['low:ek']!.ratio).toBe(1);
-    expect(r['mid:live']!.ratio).toBe(0);
-    expect(r['high:live']!.ratio).toBeNull();
-  });
-
   const stat = (expectedTone: ListeningStatRecord['expectedTone'], correct: boolean, ts: string) =>
     ({
       id: ts,
@@ -118,18 +102,6 @@ describe('accuracy', () => {
       ts,
       updatedAt: ts,
     }) satisfies ListeningStatRecord;
-
-  it('toneAccuracy (P-07): đủ 5 thanh theo thứ tự', () => {
-    const result = toneAccuracy([
-      stat('high', true, '2026-03-01T01:00:00Z'),
-      stat('high', false, '2026-03-01T02:00:00Z'),
-      stat('rising', true, '2026-03-01T03:00:00Z'),
-    ]);
-    expect(Object.keys(result)).toEqual(['mid', 'low', 'falling', 'high', 'rising']);
-    expect(result.high.ratio).toBe(0.5);
-    expect(result.rising.ratio).toBe(1);
-    expect(result.mid.ratio).toBeNull();
-  });
 
   it('dailyAccuracy: 7 ngày cũ → mới, bỏ lượt ngoài khoảng, theo múi giờ', () => {
     const stats = [
