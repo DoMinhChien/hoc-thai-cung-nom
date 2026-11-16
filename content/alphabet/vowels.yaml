@@ -1,0 +1,5 @@
+# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M3. Owner thay/duyệt (SETUP-OWNER S10).
+- { id: sara-a, form: –ะ, length: short, phonetic: a, order: 1, draft: true }
+- { id: sara-aa, form: –า, length: long, phonetic: aa, order: 2, draft: true }
+- { id: sara-i, form: –ิ, length: short, phonetic: i, order: 3, draft: true }
+- { id: sara-ii, form: –ี, length: long, phonetic: ii, order: 4, draft: true }

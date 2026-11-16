@@ -11,3 +11,7 @@ firebase-debug.log
 firebase-debug.*.log
 .firebase/
 coverage/
+
+# Plan 5.4: PDF gốc và output pipeline chờ review không vào repo.
+sources/
+staging/
