@@ -8,7 +8,7 @@
 ## Milestone đang mở
 
 > **🔵 M2.1 — Bổ sung quy tắc Tone Engine** (nhánh `m2.1-tone-rules`) — chặn M6 và M4.
-> 🟢 M0, M0.5a/TD, M1, M2, M3, M5 xong. M5: PR #8, owner duyệt `/dev/progress` 2026-11-16 (kèm 2 sửa: `ToneContour` SVG, tách ô Thấp × Chết). M3: PR #7, owner cho đóng 2026-11-16 (content mẫu vẫn `draft: true`, thay dần khi có nội dung thật).
+> 🟢 M0, M0.5a/TD, M1, M2, M3, M5 xong. M5: PR #8 + PR #9 (2 sửa sau duyệt: `ToneContour` SVG, tách ô Thấp × Chết). M3: PR #7, owner cho đóng 2026-11-16 (content mẫu vẫn `draft: true`, thay dần khi có nội dung thật).
 > ⚪ M4 (PDF pipeline) chờ S9 (Anthropic API key) + PDF mẫu (S10) — làm khi owner sẵn sàng.
 
 ---
@@ -38,7 +38,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
 | M4 | PDF pipeline Python | ⚪ | M3, **M2.1**, S9, PDF mẫu (S10) |
 | M0.5b | Design các màn còn lại | ⚪ | Làm dần trước M5–M11 |
-| M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8 |
+| M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🔵 | M5 ✅; chặn M6 và M4 |
 | M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | ⚪ | M5, **M2.1**, SCR bảng chữ / Tone Trainer |
 | M7 | Từ vựng + Ôn SRS + Dashboard (+P-04, P-05, P-08) | ⚪ | M5, SCR liên quan |
@@ -208,7 +208,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
-| 2026-11-16 | M5 → M2.1 | Owner duyệt `/dev/progress` + 2 sửa: `ToneContour`/`ToneTag` SVG theo số Chao (D10; thay ký hiệu Chao ở ToneBarChart, heatmap, thẻ ví dụ Login), heatmap tách Thấp × Chết thành ngắn (high) / dài (falling) + `TONE_RULES` trong core. Đóng M5 → 🟢, mở M2.1 🔵 | — | — | `m5-data-srs` PR #8 |
+| 2026-11-16 | M5 → M2.1 | Owner duyệt `/dev/progress` + 2 sửa: `ToneContour`/`ToneTag` SVG theo số Chao (D10; thay ký hiệu Chao ở ToneBarChart, heatmap, thẻ ví dụ Login), heatmap tách Thấp × Chết thành ngắn (high) / dài (falling) + `TONE_RULES` trong core. Đóng M5 → 🟢, mở M2.1 🔵 | — | — | `m5-followup` PR #9 |
 | 2026-11-16 | M5 | T5.1–T5.7: core — record + interface 4 repository + bản bộ nhớ + contract test, SRS wrapper `ts-fsrs` (đồng hồ giả lập), selector 4.9 (mức thuộc, %, tỉ lệ đúng theo quy tắc/thanh/ngày; coverage 100% lines); web — IndexedDB v2 + migration từ v1, repository Dexie qua cùng contract test, `RepositoriesProvider` theo uid/guest, hook `liveQuery` (cập nhật sau một lượt ôn), chuyển tiến độ gộp thẻ trùng; 5 component progress + `/dev/progress` (axe sạch, baseline) | — | Owner: duyệt screenshot `/dev/progress` | `m5-data-srs` PR #8 |
 | 2026-11-16 | M2.1 (plan) | Owner duyệt: thêm **M2.1 — bổ sung quy tắc Tone Engine** (อักษรนำ tổng quát, ไ/ใ/ำ/เา) — làm ngay sau M5; chặn M6, M4. Plan v6.5 mục 6.1/6.2/6.3/5.5 | — | — | — |
 | 2026-11-16 | M3 → M5 | Owner cho đóng M3 → 🟢. Mở M5 🔵, chi tiết hóa T5.1–T5.7 | — | — | `m3-content` PR #7 |
