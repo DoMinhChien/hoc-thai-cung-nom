@@ -1,7 +1,15 @@
 # DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M3. Owner thay/duyệt (SETUP-OWNER S10).
-- { id: mai-ek, thai: ไม่, initial_char: ม, vowel_length: long, tone_mark: ek, expected_tone: falling, draft: true }
-- { id: mai-tho, thai: ไม้, initial_char: ม, vowel_length: long, tone_mark: tho, expected_tone: high, draft: true }
+# ไ– ใ– –ำ เ–า: nguyên âm ngắn + âm cuối vang sẵn (plan 6.2) → vowel_length: short + final_sound y|m|w.
+# อักษรนำ (plan 6.1): âm tiết sau tính theo lớp của phụ âm dẫn → ghi `leading`.
+- { id: mai-ek, thai: ไม่, initial_char: ม, vowel_length: short, final_sound: y, tone_mark: ek, expected_tone: falling, draft: true }
+- { id: mai-tho, thai: ไม้, initial_char: ม, vowel_length: short, final_sound: y, tone_mark: tho, expected_tone: high, draft: true }
 - { id: kha, thai: ขา, initial_char: ข, vowel_length: long, expected_tone: rising, draft: true }
 - { id: kin, thai: กิน, initial_char: ก, vowel_length: short, final_sound: n, expected_tone: mid, draft: true }
 - { id: ma-ho-nam, thai: หมา, initial_char: ม, leading: ห, vowel_length: long, expected_tone: rising, draft: true }
 - { id: mak, thai: มาก, initial_char: ม, vowel_length: long, final_sound: k, expected_tone: falling, draft: true }
+- { id: sawat-2, thai: วัส, initial_char: ว, leading: ส, vowel_length: short, final_sound: t, expected_tone: low, draft: true }
+- { id: khanom-2, thai: นม, initial_char: น, leading: ข, vowel_length: short, final_sound: m, expected_tone: rising, draft: true }
+- { id: mai-new, thai: ใหม่, initial_char: ม, leading: ห, vowel_length: short, final_sound: y, tone_mark: ek, expected_tone: low, draft: true }
+- { id: mai-question, thai: ไหม, initial_char: ม, leading: ห, vowel_length: short, final_sound: y, expected_tone: rising, draft: true }
+- { id: tham, thai: ทำ, initial_char: ท, vowel_length: short, final_sound: m, expected_tone: mid, draft: true }
+- { id: khao, thai: เขา, initial_char: ข, vowel_length: short, final_sound: w, expected_tone: rising, draft: true }

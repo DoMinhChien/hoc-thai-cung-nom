@@ -1,9 +1,16 @@
 /**
  * Kiểm tra chéo sau khi loader đã parse schema (plan 5.6): id duy nhất, deck tồn tại,
- * Tone Engine khớp tone-drills, lớp phụ âm khớp `consonantClass()`; cảnh báo ký tự ngoài
- * bảng Thái, từ trong bài đọc chưa có trong lexicon, mục `draft: true`.
+ * Tone Engine khớp tone-drills (trừ `tone_override`), lớp phụ âm khớp `consonantClass()`,
+ * nguyên âm có âm cuối sẵn phải ngắn; cảnh báo âm tiết ไ/ใ/ำ/เา ghi sai độ dài/âm cuối, ký tự
+ * ngoài bảng Thái, từ trong bài đọc chưa có trong lexicon, mục `draft: true`.
  */
-import { computeTone, consonantClass, normalizeThai, type ToneError } from '@nom/core';
+import {
+  computeTone,
+  consonantClass,
+  inherentFinal,
+  normalizeThai,
+  type ToneError,
+} from '@nom/core';
 import type { ContentIssue, ContentKind, ContentSet, Located } from './load';
 
 /** Tên file hiển thị khi báo lỗi theo loại (id trùng giữa các file bài đọc…). */
@@ -24,6 +31,7 @@ export function checkContent(content: ContentSet): ContentIssue[] {
     ...checkUniqueIds(content),
     ...checkDecks(content),
     ...checkConsonantClasses(content),
+    ...checkInherentFinalVowels(content),
     ...checkToneDrills(content),
     ...checkThaiCharacters(content),
     ...checkReadingLexicon(content),
@@ -88,18 +96,46 @@ const TONE_ERROR_FIELD: Record<ToneError, string> = {
 };
 const TONE_ERROR_MESSAGE: Record<ToneError, string> = {
   'unknown-consonant': 'Tone Engine không nhận ra phụ âm đầu',
-  'invalid-leading': 'phụ âm dẫn không hợp lệ với phụ âm đầu này (ห นำ / อ นำ)',
+  'invalid-leading':
+    'phụ âm dẫn không hợp lệ: phải là phụ âm cao/trung đứng trước phụ âm thấp đơn (ง ญ ณ น ม ย ร ล ว ฬ) — ngoại lệ đọc tách: leading: null + tone_override',
   'invalid-tone-mark': 'dấu thanh này không dùng được với lớp phụ âm (ô "—" bảng 6.3)',
 };
 
+/** Vowel ไ– ใ– –ำ เ–า (`inherent_final`) là nguyên âm ngắn (plan 6.2). */
+function checkInherentFinalVowels(content: ContentSet): ContentIssue[] {
+  return content.vowels
+    .filter((v) => v.value.inherent_final && v.value.length !== 'short')
+    .map((v) =>
+      error(v, 'length', 'nguyên âm có âm cuối sẵn (inherent_final) là nguyên âm ngắn (plan 6.2)'),
+    );
+}
+
+/** T2.1.4: âm tiết ไ/ใ/ำ/เา ghi `long` hoặc thiếu/sai `final_sound` → Tone Trainer giải thích sai. */
+function inherentFinalWarnings(d: ContentSet['toneDrills'][number]): ContentIssue[] {
+  const inherent = inherentFinal(d.value.thai);
+  if (!inherent) return [];
+  const rule = `ไ– ใ– –ำ เ–า là nguyên âm ngắn + âm cuối vang (plan 6.2): ghi vowel_length: short, final_sound: ${inherent}`;
+  const issues: ContentIssue[] = [];
+  if (d.value.vowel_length === 'long') issues.push(warning(d, 'vowel_length', rule));
+  if (d.value.final_sound !== inherent) issues.push(warning(d, 'final_sound', rule));
+  return issues;
+}
+
 function checkToneDrills(content: ContentSet): ContentIssue[] {
   return content.toneDrills.flatMap((d) => {
+    // Ngoại lệ đã biết (từ mượn…): tin expected_tone, không đối chiếu Tone Engine.
+    if (d.value.tone_override) return [];
+    const warnings = inherentFinalWarnings(d);
     const result = computeTone(d.value);
     if (!result.ok) {
-      return [error(d, TONE_ERROR_FIELD[result.error], TONE_ERROR_MESSAGE[result.error])];
+      return [
+        error(d, TONE_ERROR_FIELD[result.error], TONE_ERROR_MESSAGE[result.error]),
+        ...warnings,
+      ];
     }
-    if (result.tone === d.value.expected_tone) return [];
+    if (result.tone === d.value.expected_tone) return warnings;
     return [
+      ...warnings,
       error(
         d,
         'expected_tone',
