@@ -7,10 +7,8 @@
 
 ## Milestone đang mở
 
-> **🔵 M1 — Đăng nhập Google — ƯU TIÊN SỐ 1.** Đã đủ điều kiện: M0.5a 🟢, S4 ✅, S5 ✅ (Testing), S7 ✅, S12 ✅. **Facebook dời sang Phase 2 (M12.5)** — owner quyết định 2026-11-15.
-> **🔵 M3 — Content pipeline** đang mở: nếu đang dở task thì hoàn tất task đó, commit, rồi chuyển sang M1; quay lại M3 sau khi M1 xong.
-> 🟢 M0, M0.5a/TD, M2 xong — PR #1 đã vào `main`. **PR #2, #3 là PR xếp chồng nên đã merge vào nhánh nền, chưa vào `main`** → PR #4 (`m0.5a-design` → `main`) đưa phần còn thiếu vào `main`; merge #4 trước PR M1.
-> M1: code + test xong trên `m1-auth` (PR #5) — chờ owner smoke test đăng nhập Google thật trên production sau khi merge.
+> **🔵 M3 — Content pipeline TS + content mẫu** (nhánh `m3-content`). Bắt đầu từ T3.1.
+> 🟢 M0, M0.5a/TD, M1, M2 xong và đã vào `main` (PR #1, #4, #5); production deploy được từ PR #6. M1: owner smoke test đăng nhập Google thật trên production OK 2026-11-16.
 
 ---
 
@@ -34,7 +32,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 |---|---|---|---|
 | M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
 | M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🟢 | ✅ Owner duyệt 2026-11-15 |
-| M1 | Đăng nhập Google (Facebook → Phase 2) | 🔵 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ |
+| M1 | Đăng nhập Google (Facebook → Phase 2) | 🟢 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ — PR #5; smoke test production OK |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🔵 | M2; owner duyệt content mẫu (S10) |
 | M4 | PDF pipeline Python | ⚪ | M3, S9, PDF mẫu (S10) |
@@ -136,7 +134,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
-### M1 — Đăng nhập Google 🔵
+### M1 — Đăng nhập Google 🟢
 
 > **Phạm vi đã đổi (2026-11-15):** chỉ Google + Guest. Facebook, liên kết tài khoản (L-04) và dialog D3 → **Phase 2, M12.5**. Nút Facebook ẩn sau flag `VITE_ENABLE_FACEBOOK_LOGIN=false`. Viết `AuthService` provider-agnostic để Phase 2 chỉ cần thêm provider.
 
@@ -160,6 +158,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Guest → đăng nhập → chuyển tiến độ → đăng xuất → đăng nhập lại: dữ liệu đúng như luồng 0.
 - Xóa tài khoản: user biến mất ở Firebase, IndexedDB của user bị xóa.
 - Không component nào import trực tiếp `firebase/auth`.
+- ✅ Owner smoke test Google thật trên production 2026-11-16.
 
 ### M2 → M12
 Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
