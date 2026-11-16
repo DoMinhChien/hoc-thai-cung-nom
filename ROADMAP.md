@@ -139,12 +139,12 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Requirement:** plan **7.3** (data layer), **B-04** (FSRS `ts-fsrs`, 4 nút), **4.9** (định nghĩa mức thuộc + yêu cầu kỹ thuật progress), **L-07** (DB theo `uid`/`guest` — đã có từ M1), 7.4 (unit SRS/selectors với đồng hồ giả lập; component test với `fake-indexeddb`). Màn hình dùng các phần này làm ở M6+.
 
 **Task** (chi tiết hóa 2026-11-16 — owner xem lại trong PR)
-- [ ] T5.1 Schema IndexedDB đầy đủ theo 7.3 (`cards`, `reviewLogs`, `listeningStats`, `sessions`, `settings`, `meta`): mọi record có UUID + `updatedAt`; `schemaVersion` trong `meta`; khung migration Dexie (`version(n).upgrade`) + test nâng cấp từ DB v1 của M1 không mất dữ liệu.
+- [x] T5.1 Schema IndexedDB đầy đủ theo 7.3 (`cards`, `reviewLogs`, `listeningStats`, `sessions`, `settings`, `meta`): mọi record có UUID + `updatedAt`; `schemaVersion` trong `meta`; khung migration Dexie (`version(n).upgrade`) + test nâng cấp từ DB v1 của M1 không mất dữ liệu.
 - [x] T5.2 `packages/core`: type record + **interface** `ProgressRepository`, `ReviewRepository`, `SettingsRepository`, `SessionRepository` (không phụ thuộc Dexie) + bản in-memory cho test.
-- [ ] T5.3 `apps/web/src/data`: bản Dexie của 4 repository, mở DB theo người dùng hiện tại (`uid`/`guest`, nối với `AccountDataRepository` của M1); test với `fake-indexeddb`.
+- [x] T5.3 `apps/web/src/data`: bản Dexie của 4 repository, mở DB theo người dùng hiện tại (`uid`/`guest`, nối với `AccountDataRepository` của M1); test với `fake-indexeddb`.
 - [x] T5.4 SRS wrapper `packages/core/srs` trên `ts-fsrs`: tạo card, `review(card, rating, now)` → card mới + log, danh sách đến hạn, thẻ mới/ngày (B-03, mặc định 10); test bằng đồng hồ giả lập.
 - [x] T5.5 `packages/core/progress`: `masteryLevel(card)` theo bảng 4.9 (ngưỡng 21 ngày cấu hình được) + selector thuần: đếm 4 mức theo module/deck, % hoàn thành, tỉ lệ đúng theo quy tắc thanh (P-03), theo 5 thanh (P-07); unit test.
-- [ ] T5.6 Hook React đọc dữ liệu realtime (Dexie `liveQuery`) cho cards/selectors; component test cập nhật sau một lượt ôn.
+- [x] T5.6 Hook React đọc dữ liệu realtime (Dexie `liveQuery`) cho cards/selectors; component test cập nhật sau một lượt ôn.
 - [ ] T5.7 Component dùng chung `apps/web/src/components/progress/`: `ProgressRing`, `StackedProgressBar`, `MasteryGrid`, `HeatmapTable`, `ToneBarChart` — màu chỉ từ token (`mastery-*`, `tone-*`), có nhãn/ký hiệu ngoài màu (người mù màu), component test + axe; trang `/dev/progress` để xem. **Cần:** owner duyệt screenshot (chưa có screen spec riêng cho component — làm theo brief D2 + tokens).
 
 **Tiêu chí nghiệm thu**
