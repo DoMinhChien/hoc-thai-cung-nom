@@ -7,10 +7,9 @@
 
 ## Milestone đang mở
 
-> **🔵 M1 — Đăng nhập Google — ƯU TIÊN SỐ 1.** Đã đủ điều kiện: M0.5a 🟢, S4 ✅, S5 ✅ (Testing), S7 ✅, S12 ✅. **Facebook dời sang Phase 2 (M12.5)** — owner quyết định 2026-11-15.
-> **🔵 M3 — Content pipeline** đang mở: nếu đang dở task thì hoàn tất task đó, commit, rồi chuyển sang M1; quay lại M3 sau khi M1 xong.
-> 🟢 M0, M0.5a/TD, M2 xong — PR #1 đã vào `main`. **PR #2, #3 là PR xếp chồng nên đã merge vào nhánh nền, chưa vào `main`** → PR #4 (`m0.5a-design` → `main`) đưa phần còn thiếu vào `main`; merge #4 trước PR M1.
-> M1: code + test xong trên `m1-auth` (PR #5) — chờ owner smoke test đăng nhập Google thật trên production sau khi merge.
+> **🔵 M5 — Data layer + SRS + progress components** (nhánh `m5-data-srs`). Bắt đầu từ T5.1. Task chi tiết hóa 2026-11-16 — owner xem lại trong PR.
+> 🟢 M0, M0.5a/TD, M1, M2, M3 xong. M3: PR #7, owner cho đóng 2026-11-16 (content mẫu vẫn `draft: true`, thay dần khi có nội dung thật).
+> ⚪ M4 (PDF pipeline) chờ S9 (Anthropic API key) + PDF mẫu (S10) — làm khi owner sẵn sàng.
 
 ---
 
@@ -34,12 +33,12 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 |---|---|---|---|
 | M0 | Khung dự án | 🟢 | S1.2 ✅, S2 ✅, S7 (secret) ✅ — PR #1 |
 | M0.5a | Design: brief, flows, tokens cơ bản, SCR-00/01/02 | 🟢 | ✅ Owner duyệt 2026-11-15 |
-| M1 | Đăng nhập Google (Facebook → Phase 2) | 🔵 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ |
+| M1 | Đăng nhập Google (Facebook → Phase 2) | 🟢 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ — PR #5; smoke test production OK |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
-| M3 | Content pipeline TS + content mẫu | 🔵 | M2; owner duyệt content mẫu (S10) |
+| M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
 | M4 | PDF pipeline Python | ⚪ | M3, S9, PDF mẫu (S10) |
 | M0.5b | Design các màn còn lại | ⚪ | Làm dần trước M5–M11 |
-| M5 | Data layer + SRS + progress components | ⚪ | M2 |
+| M5 | Data layer + SRS + progress components | 🔵 | M2 ✅, M3 ✅ |
 | M6 | Bảng chữ cái + Tone Trainer (+P-02, P-03) | ⚪ | M5, SCR bảng chữ / Tone Trainer |
 | M7 | Từ vựng + Ôn SRS + Dashboard (+P-04, P-05, P-08) | ⚪ | M5, SCR liên quan |
 | M8 | Bàn phím ảo Thái + chấm gõ | ⚪ | M5 |
@@ -117,26 +116,45 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - `pnpm test` pass, coverage `packages/core` ≥ 90% cho tone engine & normalize.
 - Không có import React / DOM trong `packages/core`.
 
-### M3 — Content pipeline TS + content mẫu 🔵
+### M3 — Content pipeline TS + content mẫu 🟢
 
 **Requirement:** plan **5.4** (thư mục content), **5.5** (schema — đã có ở M2), **5.6** (validator), bước 5 của **5.3** (`content:check --input staging/...`). Học theo cách tổ chức loader/export/validate của **LibreLingo** (7.5). **Cần owner:** duyệt content mẫu `draft: true` (S10).
 
 **Task** (chi tiết hóa 2026-11-15 — owner xem lại trong PR)
-- [ ] T3.1 Loader `scripts/content/load.ts`: đọc YAML (`yaml`) + CSV (`csv-parse`) theo cấu trúc 5.4, chuẩn hóa chữ Thái bằng `normalizeThai`, parse bằng schema M2; lỗi kèm **file + dòng/vị trí + trường**.
-- [ ] T3.2 `pnpm content:check` thật (5.6): schema; id duy nhất (theo loại); `deck` tồn tại; `syllables`/`tones` cùng độ dài; `computeTone()` khớp `expected_tone` (tone-drills); lớp phụ âm trong consonants.yaml khớp `consonantClass()`; **cảnh báo**: ký tự ngoài U+0E00–U+0E7F trong trường Thái, từ trong bài đọc chưa có trong lexicon (tách bằng `|` / `Intl.Segmenter`), mục `draft: true`. Lỗi → exit 1; cảnh báo → exit 0.
-- [ ] T3.3 `--input <file|thư mục>` để validate file staging của pipeline Python (M4); output JSON tùy chọn (`--json`) cho Python đọc.
-- [ ] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
-- [ ] T3.5 Content mẫu **tối thiểu, `draft: true`** (AGENTS mục 4): vài phụ âm (đủ 3 lớp), vài nguyên âm, 4 dấu thanh, 5 thanh, ~5 tone-drills, 1 deck ~5 từ, 1 bài đọc ngắn, 1 cặp tối thiểu — **chỉ để chạy pipeline; owner thay/duyệt (S10)**.
-- [ ] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
+- [x] T3.1 Loader `scripts/content/load.ts`: đọc YAML (`yaml`) + CSV (`csv-parse`) theo cấu trúc 5.4, chuẩn hóa chữ Thái bằng `normalizeThai`, parse bằng schema M2; lỗi kèm **file + dòng/vị trí + trường**.
+- [x] T3.2 `pnpm content:check` thật (5.6): schema; id duy nhất (theo loại); `deck` tồn tại; `syllables`/`tones` cùng độ dài; `computeTone()` khớp `expected_tone` (tone-drills); lớp phụ âm trong consonants.yaml khớp `consonantClass()`; **cảnh báo**: ký tự ngoài U+0E00–U+0E7F trong trường Thái, từ trong bài đọc chưa có trong lexicon (tách bằng `|` / `Intl.Segmenter`), mục `draft: true`. Lỗi → exit 1; cảnh báo → exit 0.
+- [x] T3.3 `--input <file|thư mục>` để validate file staging của pipeline Python (M4); output JSON tùy chọn (`--json`) cho Python đọc.
+- [x] T3.4 `pnpm content:build` → `apps/web/public/content/*.json` (hoặc module import) + `manifest.json` có hash; build web chạy `content:build` trước.
+- [x] T3.5 Content mẫu **tối thiểu, `draft: true`** (AGENTS mục 4): vài phụ âm (đủ 3 lớp), vài nguyên âm, 4 dấu thanh, 5 thanh, ~5 tone-drills, 1 deck ~5 từ, 1 bài đọc ngắn, 1 cặp tối thiểu — **chỉ để chạy pipeline; owner thay/duyệt (S10)**.
+- [x] T3.6 Test: fixture hợp lệ/không hợp lệ cho từng quy tắc 5.6 (thông báo lỗi có file/dòng), `--input`, `--json`, build idempotent; CI chạy `content:check` (đã có).
 
 **Tiêu chí nghiệm thu**
 - `pnpm content:check` pass trên content mẫu; mỗi loại lỗi trong 5.6 có fixture làm fail với thông báo chỉ rõ file/dòng/trường.
 - `pnpm content:build` sinh JSON ổn định (chạy 2 lần không đổi); web build dùng được.
-- Content mẫu đều `draft: true`, owner đã xem (S10).
+- Content mẫu đều `draft: true`, owner đã xem (S10). ✅ Owner cho đóng M3 2026-11-16.
+
+### M5 — Data layer + SRS + progress components 🔵
+
+**Requirement:** plan **7.3** (data layer), **B-04** (FSRS `ts-fsrs`, 4 nút), **4.9** (định nghĩa mức thuộc + yêu cầu kỹ thuật progress), **L-07** (DB theo `uid`/`guest` — đã có từ M1), 7.4 (unit SRS/selectors với đồng hồ giả lập; component test với `fake-indexeddb`). Màn hình dùng các phần này làm ở M6+.
+
+**Task** (chi tiết hóa 2026-11-16 — owner xem lại trong PR)
+- [ ] T5.1 Schema IndexedDB đầy đủ theo 7.3 (`cards`, `reviewLogs`, `listeningStats`, `sessions`, `settings`, `meta`): mọi record có UUID + `updatedAt`; `schemaVersion` trong `meta`; khung migration Dexie (`version(n).upgrade`) + test nâng cấp từ DB v1 của M1 không mất dữ liệu.
+- [ ] T5.2 `packages/core`: type record + **interface** `ProgressRepository`, `ReviewRepository`, `SettingsRepository`, `SessionRepository` (không phụ thuộc Dexie) + bản in-memory cho test.
+- [ ] T5.3 `apps/web/src/data`: bản Dexie của 4 repository, mở DB theo người dùng hiện tại (`uid`/`guest`, nối với `AccountDataRepository` của M1); test với `fake-indexeddb`.
+- [ ] T5.4 SRS wrapper `packages/core/srs` trên `ts-fsrs`: tạo card, `review(card, rating, now)` → card mới + log, danh sách đến hạn, thẻ mới/ngày (B-03, mặc định 10); test bằng đồng hồ giả lập.
+- [ ] T5.5 `packages/core/progress`: `masteryLevel(card)` theo bảng 4.9 (ngưỡng 21 ngày cấu hình được) + selector thuần: đếm 4 mức theo module/deck, % hoàn thành, tỉ lệ đúng theo quy tắc thanh (P-03), theo 5 thanh (P-07); unit test.
+- [ ] T5.6 Hook React đọc dữ liệu realtime (Dexie `liveQuery`) cho cards/selectors; component test cập nhật sau một lượt ôn.
+- [ ] T5.7 Component dùng chung `apps/web/src/components/progress/`: `ProgressRing`, `StackedProgressBar`, `MasteryGrid`, `HeatmapTable`, `ToneBarChart` — màu chỉ từ token (`mastery-*`, `tone-*`), có nhãn/ký hiệu ngoài màu (người mù màu), component test + axe; trang `/dev/progress` để xem. **Cần:** owner duyệt screenshot (chưa có screen spec riêng cho component — làm theo brief D2 + tokens).
+
+**Tiêu chí nghiệm thu**
+- Component không truy cập Dexie trực tiếp — chỉ qua repository/hook.
+- DB của M1 nâng cấp lên schema mới không mất dữ liệu; chuyển tiến độ Guest → user (L-07) vẫn đúng với store mới.
+- SRS và selector có unit test với thời gian giả lập; coverage `packages/core` srs/progress ≥ 90%.
+- Component progress không có lỗi axe serious/critical; phân biệt được mức/thanh không chỉ bằng màu.
 
 ## 4. Milestone kế tiếp (chuẩn bị sẵn)
 
-### M1 — Đăng nhập Google 🔵
+### M1 — Đăng nhập Google 🟢
 
 > **Phạm vi đã đổi (2026-11-15):** chỉ Google + Guest. Facebook, liên kết tài khoản (L-04) và dialog D3 → **Phase 2, M12.5**. Nút Facebook ẩn sau flag `VITE_ENABLE_FACEBOOK_LOGIN=false`. Viết `AuthService` provider-agnostic để Phase 2 chỉ cần thêm provider.
 
@@ -160,8 +178,9 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Guest → đăng nhập → chuyển tiến độ → đăng xuất → đăng nhập lại: dữ liệu đúng như luồng 0.
 - Xóa tài khoản: user biến mất ở Firebase, IndexedDB của user bị xóa.
 - Không component nào import trực tiếp `firebase/auth`.
+- ✅ Owner smoke test Google thật trên production 2026-11-16.
 
-### M2 → M12
+### M6 → M12
 Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
 ---
@@ -172,6 +191,8 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | M3 → M5 | Owner cho đóng M3 → 🟢. Mở M5 🔵, chi tiết hóa T5.1–T5.7 | — | — | `m3-content` PR #7 |
+| 2026-11-16 | M3 | Đóng M1 (owner smoke test Google thật OK). M3: T3.1–T3.6 — loader YAML/CSV (lỗi file:dòng:cột [trường]), `content:check` thật (id, deck, Tone Engine, lớp phụ âm; cảnh báo ký tự ngoài Thái, lexicon, draft), `--input`/`--json`, `content:build` + manifest (idempotent, chạy trước web build), content mẫu 33 mục `draft: true` | — | Owner: xem content mẫu (S10) | `m3-content` PR #7 |
 | 2026-11-16 | — (CI) | Sửa CI: sự kiện PR `closed` có `github.ref` = `main` nên trùng nhóm concurrency và huỷ mọi run deploy production (production chưa từng deploy). Concurrency theo số PR. Preview `-5` 404 là do PR #5 đã merge (môi trường preview được đóng) | — | Owner: merge PR #6 → production deploy M0.5a+M2+M1 | `fix-ci-prod-deploy` PR #6 |
 | 2026-11-16 | M1 | T1.1–T1.4, T1.6–T1.10: `AuthService` provider-agnostic + Firebase (popup), emulator, `/login` (Google + Guest, D1, D2), khối tài khoản + menu + đăng xuất, offline, IndexedDB theo uid + chuyển tiến độ, `/account` (đổi tên, xoá tài khoản), 3 trang pháp lý; E2E luồng 0 xanh 3 trình duyệt × 2 viewport. M3 chưa có task dở → làm M1 trước | — | Owner: merge PR #4 rồi #5; smoke test Google thật trên production; kiểm tra Firebase Authorized domains có domain production; duyệt nội dung pháp lý (bản nháp) | `m1-auth` PR #5 |
 | 2026-11-15 | M1 | Owner: S4 ✅, S5 ✅ (Testing + test user), S7 ✅, S12 ✅ email. **Quyết định: Facebook → Phase 2 (M12.5)**. M1 mở 🔵 (chỉ Google) | — | — | — |

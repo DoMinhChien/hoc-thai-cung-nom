@@ -1,0 +1,6 @@
+id,thai,phonetic,syllables,tones,meaning_vi,pos,deck,example_th,example_vi,tags,source,image,mnemonic_vi,draft
+sawatdee,สวัสดี,sa-wat-di,ส|วัส|ดี,low|low|mid,xin chào; tạm biệt,interj,bai-01,,,polite;common,,noto:1f44b,,true
+khrap,ครับ,khrap,ครับ,high,vâng (nam); từ lịch sự cuối câu (nam),particle,bai-01,,,polite,,,,true
+di,ดี,di,ดี,mid,tốt,adj,bai-01,,,common,,,,true
+mak,มาก,mak,มาก,falling,nhiều; rất,adv,bai-01,,,common,,,,true
+kin,กิน,kin,กิน,mid,ăn,verb,bai-01,,,common,,,,true

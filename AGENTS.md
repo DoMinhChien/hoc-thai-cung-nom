@@ -118,7 +118,8 @@ CI:        <xanh/đỏ/chưa chạy>
 | `pnpm typecheck` | `tsc --noEmit` mọi package |
 | `pnpm test` | Unit + component test (Vitest, mọi package) |
 | `pnpm test:e2e` | E2E Playwright (3 trình duyệt × 2 viewport) + axe; tự build, tự bật preview + emulator |
-| `pnpm content:check` | Validate nội dung trong `content/` (M0: no-op, thật ở M3) |
+| `pnpm content:check` | Validate `content/` (plan 5.6): lỗi → exit 1, cảnh báo → exit 0. `--input <file\|thư mục>` validate file staging (M4), `--json` cho Python (dùng `pnpm -s`) |
+| `pnpm content:build` | `content/` → `apps/web/public/content/*.json` + `manifest.json` (tự chạy trước `pnpm dev`/`pnpm build`) |
 | `pnpm build` | Build production `apps/web/dist` |
 
 - Lần đầu chạy E2E: `pnpm --filter @nom/web exec playwright install`.
