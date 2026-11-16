@@ -172,6 +172,7 @@ Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuấ
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-16 | — (CI) | Sửa CI: sự kiện PR `closed` có `github.ref` = `main` nên trùng nhóm concurrency và huỷ mọi run deploy production (production chưa từng deploy). Concurrency theo số PR. Preview `-5` 404 là do PR #5 đã merge (môi trường preview được đóng) | — | Owner: merge PR #6 → production deploy M0.5a+M2+M1 | `fix-ci-prod-deploy` PR #6 |
 | 2026-11-16 | M1 | T1.1–T1.4, T1.6–T1.10: `AuthService` provider-agnostic + Firebase (popup), emulator, `/login` (Google + Guest, D1, D2), khối tài khoản + menu + đăng xuất, offline, IndexedDB theo uid + chuyển tiến độ, `/account` (đổi tên, xoá tài khoản), 3 trang pháp lý; E2E luồng 0 xanh 3 trình duyệt × 2 viewport. M3 chưa có task dở → làm M1 trước | — | Owner: merge PR #4 rồi #5; smoke test Google thật trên production; kiểm tra Firebase Authorized domains có domain production; duyệt nội dung pháp lý (bản nháp) | `m1-auth` PR #5 |
 | 2026-11-15 | M1 | Owner: S4 ✅, S5 ✅ (Testing + test user), S7 ✅, S12 ✅ email. **Quyết định: Facebook → Phase 2 (M12.5)**. M1 mở 🔵 (chỉ Google) | — | — | — |
 | 2026-11-15 | TD, M2 | TD.1 (PR #2 design), TD.2 (tokens.css theo tokens.json + test đồng bộ); M2 T2.0–T2.5: Zod schema + JSON Schema, normalizeThai, Tone Engine (161 test, coverage 100%) → M2 🟢; chi tiết hóa M3 → 🔵 | — | M1 chờ S4–S6, S12; M3 cần owner duyệt content mẫu (S10) | `m0.5a-design` PR #2, `m2-core` PR #3 |

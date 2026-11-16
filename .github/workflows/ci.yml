@@ -10,8 +10,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
 
+# Theo số PR (không theo github.ref): khi PR được merge, sự kiện `closed` có github.ref = nhánh base
+# (refs/heads/main) → trùng nhóm với lần push main và huỷ luôn deploy production.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.event.pull_request.number && format('pr-{0}', github.event.pull_request.number) || github.ref }}
   cancel-in-progress: true
 
 permissions:
