@@ -1,0 +1,17 @@
+# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M6. Owner/giáo viên thay (SETUP-OWNER S10).
+- id: d-u01-l1
+  lesson_id: u01-l1
+  lines:
+    - { speaker: A, th: สวัสดีครับ, vi: Xin chào. }
+    - { speaker: B, th: สวัสดีค่ะ, vi: Xin chào. }
+    - { speaker: A, th: คุณชื่ออะไรครับ, vi: Bạn tên là gì? }
+    - { speaker: B, th: ฉันชื่อมะลิค่ะ, vi: Tôi tên là Mali. }
+  draft: true
+- id: d-u02-l1
+  lesson_id: u02-l1
+  lines:
+    - { speaker: A, th: บ้านคุณมีกี่คนครับ, vi: Nhà bạn có mấy người? }
+    - { speaker: B, th: สี่คนค่ะ, vi: Bốn người. }
+    - { speaker: A, th: คุณมีพี่ไหมครับ, vi: Bạn có anh chị không? }
+    - { speaker: B, th: มีค่ะ พี่สาวหนึ่งคน, vi: Có. Một chị gái. }
+  draft: true

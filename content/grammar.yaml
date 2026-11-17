@@ -1,0 +1,19 @@
+# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M6. Owner/giáo viên thay (SETUP-OWNER S10).
+- id: g-u01-chue
+  unit_id: u01
+  title_vi: Nói tên
+  pattern: ผม/ฉัน + ชื่อ + tên
+  explain_vi: Dùng ชื่อ (tên là) sau đại từ để nói tên. Nam nói ผม, nữ nói ฉัน. Hỏi tên dùng คุณชื่ออะไร.
+  examples:
+    - { th: ผมชื่อสมชาย, vi: Tôi tên là Somchai. }
+    - { th: คุณชื่ออะไร, vi: Bạn tên là gì? }
+  draft: true
+- id: g-u02-mi
+  unit_id: u02
+  title_vi: Có … / mấy người
+  pattern: มี + danh từ · … มีกี่คน
+  explain_vi: มี nghĩa là "có". Hỏi số người dùng มีกี่คน (có mấy người).
+  examples:
+    - { th: ผมมีพี่ชายหนึ่งคน, vi: Tôi có một anh trai. }
+    - { th: บ้านคุณมีกี่คน, vi: Nhà bạn có mấy người? }
+  draft: true

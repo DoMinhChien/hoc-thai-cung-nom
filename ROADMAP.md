@@ -208,7 +208,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T6.3 Loader v7 (`scripts/content/load.ts`): đọc 6 file mới, lỗi kèm file:dòng:cột [trường]; `--input` nhận diện loại theo tên (`words.<nguồn>.csv`, `sentences.<nguồn>.csv`…) cho M4.
 - [x] T6.4 `content:check` v7: id duy nhất theo loại; khóa ngoại (`lesson.unit_id`, `word.unit_id/lesson_id`, `sentence.grammar_id`, `lesson.grammar_ids`, `dialogue.lesson_id`, `grammar.unit_id`); `tokens` ghép lại = `th` (sau `normalizeThai`, bỏ khoảng trắng); `distractors` không trùng `tokens`; `th_alt` khác `th`; ký tự ngoài bảng Thái ở trường Thái. Cảnh báo: lesson ngoài 8–12 từ, unit ngoài 3–4 bài, câu thoại ngoài 4–8, `draft: true`. Bỏ kiểm tra tone-drills/lexicon bài đọc.
 - [x] T6.5 `content:build` v7: `units.json` (lộ trình: unit + lesson + số từ/câu) + `unit-<id>.json` (lesson, words, sentences, grammar, dialogues của unit) + `manifest.json` (hash, idempotent); xóa output cũ (consonants, tones, readings…).
-- [ ] T6.6 Content mẫu **Unit 1 (A1 Chào hỏi) + Unit 2 (A1 Gia đình)**, mỗi unit 1 lesson, tối thiểu đủ chạy mọi kiểm tra (vài từ, vài câu có `tokens`/`distractors`, 1 grammar, 1 dialogue), tất cả `draft: true` — owner/giáo viên thay (S10).
+- [x] T6.6 Content mẫu **Unit 1 (A1 Chào hỏi) + Unit 2 (A1 Gia đình)**, mỗi unit 1 lesson, tối thiểu đủ chạy mọi kiểm tra (vài từ, vài câu có `tokens`/`distractors`, 1 grammar, 1 dialogue), tất cả `draft: true` — owner/giáo viên thay (S10).
 - [ ] T6.7 Tài liệu: AGENTS.md mục 10 (lệnh content), plan 5.4 trỏ sang 0.9, SETUP-OWNER S10 (dùng `content/templates/`).
 
 **Tiêu chí nghiệm thu**
