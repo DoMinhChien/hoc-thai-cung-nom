@@ -1,0 +1,41 @@
+{
+  "title": "lesson",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "lesson_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "unit_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "order": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "title_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "grammar_ids": {
+      "type": "string"
+    },
+    "draft": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "lesson_id",
+    "unit_id",
+    "order",
+    "title_vi"
+  ],
+  "additionalProperties": false
+}

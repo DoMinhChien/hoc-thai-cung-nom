@@ -1,5 +1,5 @@
 {
-  "title": "minimal-pair",
+  "title": "dialogue",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
@@ -7,50 +7,37 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
-    "words": {
-      "minItems": 2,
-      "maxItems": 4,
+    "lesson_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "lines": {
+      "minItems": 1,
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "thai": {
+          "speaker": {
+            "type": "string",
+            "minLength": 1
+          },
+          "th": {
             "type": "string",
             "minLength": 1,
             "pattern": "[\\u0E00-\\u0E7F]"
           },
-          "tone": {
-            "type": "string",
-            "enum": [
-              "mid",
-              "low",
-              "falling",
-              "high",
-              "rising"
-            ]
-          },
-          "phonetic": {
-            "type": "string"
-          },
-          "meaning_vi": {
+          "vi": {
             "type": "string",
             "minLength": 1
           }
         },
         "required": [
-          "thai",
-          "tone"
+          "speaker",
+          "th",
+          "vi"
         ],
         "additionalProperties": false
       }
-    },
-    "image": {
-      "type": "string",
-      "pattern": "^(noto:[0-9a-f]{4,6}(-[0-9a-f]{4,6})*|img\\/[a-z0-9][a-z0-9/_-]*\\.(svg|png|webp|jpg))$"
-    },
-    "mnemonic_vi": {
-      "type": "string",
-      "minLength": 1
     },
     "source": {
       "type": "string",
@@ -63,7 +50,8 @@
   },
   "required": [
     "id",
-    "words"
+    "lesson_id",
+    "lines"
   ],
   "additionalProperties": false
 }

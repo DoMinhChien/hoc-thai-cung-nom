@@ -1,0 +1,63 @@
+{
+  "title": "sentence",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "unit_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "lesson_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "th": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "[\\u0E00-\\u0E7F]"
+    },
+    "th_alt": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "string"
+    },
+    "distractors": {
+      "type": "string"
+    },
+    "grammar_id": {
+      "type": "string"
+    },
+    "audio": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "draft": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "unit_id",
+    "lesson_id",
+    "vi",
+    "th",
+    "tokens"
+  ],
+  "additionalProperties": false
+}

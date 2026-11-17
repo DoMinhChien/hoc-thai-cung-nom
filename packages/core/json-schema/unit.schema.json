@@ -1,0 +1,48 @@
+{
+  "title": "unit",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "unit_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "A1",
+        "A2"
+      ]
+    },
+    "order": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "title_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title_th": {
+      "type": "string"
+    },
+    "can_do": {
+      "type": "string"
+    },
+    "draft": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "unit_id",
+    "level",
+    "order",
+    "title_vi",
+    "can_do"
+  ],
+  "additionalProperties": false
+}

@@ -23,6 +23,10 @@ export type FinalSound = z.infer<typeof FinalSoundSchema>;
 export const InherentFinalSchema = z.enum(['y', 'm', 'w']);
 export type InherentFinal = z.infer<typeof InherentFinalSchema>;
 
+/** Cấp CEFR của unit (plan 0.3). */
+export const LevelSchema = z.enum(['A1', 'A2']);
+export type Level = z.infer<typeof LevelSchema>;
+
 /** id duy nhất, ascii kebab, vd. `ko-kai`, `bai-01`. */
 export const IdSchema = z
   .string()
@@ -35,6 +39,11 @@ export const ImageSchema = z
     /^(noto:[0-9a-f]{4,6}(-[0-9a-f]{4,6})*|img\/[a-z0-9][a-z0-9/_-]*\.(svg|png|webp|jpg))$/,
     'image phải dạng noto:<mã hex> hoặc img/<tên>.svg|png|webp|jpg',
   );
+
+/** File audio trong `content/audio/` (tùy chọn; không có thì TTS). */
+export const AudioSchema = z
+  .string()
+  .regex(/^audio\/[a-z0-9][a-z0-9/_-]*\.(mp3|m4a|ogg)$/, 'audio phải dạng audio/<tên>.mp3|m4a|ogg');
 
 /** Chuỗi tiếng Việt/Thái bắt buộc, không rỗng. */
 export const TextSchema = z.string().trim().min(1, 'không được để trống');

@@ -1,5 +1,5 @@
 {
-  "title": "reading",
+  "title": "grammar",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
@@ -7,16 +7,23 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
+    "unit_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
     "title_vi": {
       "type": "string",
       "minLength": 1
     },
-    "level": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 5
+    "pattern": {
+      "type": "string",
+      "minLength": 1
     },
-    "sentences": {
+    "explain_vi": {
+      "type": "string",
+      "minLength": 1
+    },
+    "examples": {
       "minItems": 1,
       "type": "array",
       "items": {
@@ -39,14 +46,6 @@
         "additionalProperties": false
       }
     },
-    "image": {
-      "type": "string",
-      "pattern": "^(noto:[0-9a-f]{4,6}(-[0-9a-f]{4,6})*|img\\/[a-z0-9][a-z0-9/_-]*\\.(svg|png|webp|jpg))$"
-    },
-    "mnemonic_vi": {
-      "type": "string",
-      "minLength": 1
-    },
     "source": {
       "type": "string",
       "minLength": 1
@@ -58,9 +57,11 @@
   },
   "required": [
     "id",
+    "unit_id",
     "title_vi",
-    "level",
-    "sentences"
+    "pattern",
+    "explain_vi",
+    "examples"
   ],
   "additionalProperties": false
 }

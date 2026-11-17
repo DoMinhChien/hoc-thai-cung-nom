@@ -1,15 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import {
+  AudioSchema,
   ConsonantSchema,
-  DeckSchema,
+  DialogueSchema,
+  GrammarSchema,
   ImageSchema,
-  MinimalPairSchema,
-  ReadingSchema,
+  LessonSchema,
+  SentenceSchema,
   SyllableAnalysisSchema,
   ToneEntrySchema,
   ToneMarkEntrySchema,
+  UnitSchema,
   VowelSchema,
-  WordRowSchema,
+  WordSchema,
 } from './index';
 
 // Mẫu tối thiểu lấy từ plan mục 5.5 — chỉ để test cấu trúc, không phải nội dung học.
@@ -36,30 +39,6 @@ const drill = {
   final_sound: null,
   tone_mark: 'ek',
   expected_tone: 'falling',
-};
-
-const wordRow = {
-  id: 'sawatdee',
-  thai: 'สวัสดี',
-  phonetic: 'sa-wat-di',
-  syllables: 'ส|วัส|ดี',
-  tones: 'low|low|mid',
-  meaning_vi: 'xin chào',
-  pos: 'interj',
-  deck: 'bai-01',
-  example_th: '',
-  example_vi: '',
-  tags: 'polite;common',
-  source: 'giao-trinh-a.pdf#p12',
-  image: 'noto:1f44b',
-  mnemonic_vi: '',
-};
-
-const reading = {
-  id: 'lvl1-001',
-  title_vi: 'Chào hỏi',
-  level: 1,
-  sentences: [{ th: 'สวัสดี|ครับ', vi: 'Xin chào (nam nói)' }],
 };
 
 const issuePaths = (result: { success: boolean; error?: { issues: { path: PropertyKey[] }[] } }) =>
@@ -142,111 +121,6 @@ describe('SyllableAnalysisSchema', () => {
   });
 });
 
-describe('WordRowSchema', () => {
-  it('parse mẫu plan 5.5: tách |, ;, ô trống → undefined', () => {
-    const row = WordRowSchema.parse(wordRow);
-    expect(row.syllables).toEqual(['ส', 'วัส', 'ดี']);
-    expect(row.tones).toEqual(['low', 'low', 'mid']);
-    expect(row.meaning_vi).toEqual(['xin chào']);
-    expect(row.tags).toEqual(['polite', 'common']);
-    expect(row.example_th).toBeUndefined();
-    expect(row.mnemonic_vi).toBeUndefined();
-    expect(row.draft).toBe(false);
-  });
-
-  it('nhiều nghĩa ngăn bằng ;', () => {
-    const row = WordRowSchema.parse({ ...wordRow, meaning_vi: 'xin chào; tạm biệt' });
-    expect(row.meaning_vi).toEqual(['xin chào', 'tạm biệt']);
-  });
-
-  it('cột tùy chọn có thể vắng mặt; draft=true', () => {
-    const row = WordRowSchema.parse({
-      id: 'x',
-      thai: 'ดี',
-      phonetic: 'di',
-      syllables: 'ดี',
-      tones: 'mid',
-      meaning_vi: 'tốt',
-      deck: 'bai-01',
-      draft: 'true',
-    });
-    expect(row.tags).toEqual([]);
-    expect(row.draft).toBe(true);
-  });
-
-  it('v7: syllables/tones tùy chọn — vắng hoặc ô trống → []', () => {
-    const { syllables: _s, tones: _t, ...rest } = wordRow;
-    expect(WordRowSchema.parse(rest)).toMatchObject({ syllables: [], tones: [] });
-    expect(WordRowSchema.parse({ ...wordRow, syllables: '', tones: '' })).toMatchObject({
-      syllables: [],
-      tones: [],
-    });
-  });
-
-  it('chỉ có syllables, không có tones → hợp lệ', () => {
-    expect(WordRowSchema.parse({ ...wordRow, tones: '' }).syllables).toHaveLength(3);
-  });
-
-  it('syllables và tones lệch độ dài → lỗi ở tones', () => {
-    expect(issuePaths(WordRowSchema.safeParse({ ...wordRow, tones: 'low|mid' }))).toContain(
-      'tones',
-    );
-  });
-
-  it.each([
-    ['tones.1', { tones: 'low|ngang|mid' }],
-    ['meaning_vi', { meaning_vi: ' ; ' }],
-    ['deck', { deck: 'Bài 1' }],
-    ['thai', { thai: 'sawatdee' }],
-    ['phonetic', { phonetic: 'sà-wàt-dii' }],
-    ['image', { image: 'http://x/y.png' }],
-  ])('bắt lỗi %s', (path, patch) => {
-    expect(issuePaths(WordRowSchema.safeParse({ ...wordRow, ...patch }))).toContain(path);
-  });
-});
-
-describe('ReadingSchema', () => {
-  it('parse mẫu plan 5.5', () => {
-    expect(ReadingSchema.parse(reading).sentences).toHaveLength(1);
-  });
-
-  it.each([
-    ['level', { level: 6 }],
-    ['level', { level: 1.5 }],
-    ['sentences', { sentences: [] }],
-  ])('bắt lỗi %s', (path, patch) => {
-    expect(issuePaths(ReadingSchema.safeParse({ ...reading, ...patch }))).toContain(path);
-  });
-});
-
-describe('MinimalPairSchema', () => {
-  const pair = {
-    id: 'pair-1',
-    words: [
-      { thai: 'ไม้', tone: 'high' },
-      { thai: 'ไม่', tone: 'falling' },
-    ],
-  };
-
-  it('2 từ khác thanh hợp lệ', () => {
-    expect(MinimalPairSchema.parse(pair).words).toHaveLength(2);
-  });
-
-  it('trùng thanh → lỗi', () => {
-    const result = MinimalPairSchema.safeParse({
-      ...pair,
-      words: [pair.words[0], { thai: 'ไม', tone: 'high' }],
-    });
-    expect(issuePaths(result)).toContain('words');
-  });
-
-  it('ít hơn 2 hoặc nhiều hơn 4 từ → lỗi', () => {
-    expect(MinimalPairSchema.safeParse({ ...pair, words: [pair.words[0]] }).success).toBe(false);
-    const five = ['mid', 'low', 'falling', 'high', 'rising'].map((tone) => ({ thai: 'มา', tone }));
-    expect(MinimalPairSchema.safeParse({ ...pair, words: five }).success).toBe(false);
-  });
-});
-
 describe('các schema còn lại', () => {
   it('Vowel cần đúng 1 placeholder –', () => {
     const vowel = { id: 'sara-a', form: '–ะ', length: 'short', phonetic: 'a', order: 1 };
@@ -275,16 +149,217 @@ describe('các schema còn lại', () => {
     expect(ToneEntrySchema.safeParse({ ...tone, chao: '36' }).success).toBe(false);
   });
 
-  it('Deck', () => {
-    const deck = { id: 'bai-01', title_vi: 'Bài 1', order: 1 };
-    expect(DeckSchema.parse(deck).draft).toBe(false);
-    expect(DeckSchema.safeParse({ ...deck, title_vi: '  ' }).success).toBe(false);
-  });
-
   it.each(['noto:1f414', 'noto:1f1fb-1f1f3', 'img/sawatdee.svg', 'img/con-ga/1.png'])(
     'image hợp lệ: %s',
     (value) => {
       expect(ImageSchema.safeParse(value).success).toBe(true);
     },
   );
+});
+
+// v7 (plan 0.9): một dòng mỗi file mẫu, ô CSV là chuỗi.
+const unit = {
+  unit_id: 'u01',
+  level: 'A1',
+  order: '1',
+  title_vi: 'Chào hỏi',
+  title_th: 'ทักทาย',
+  can_do: 'Chào hỏi | Giới thiệu tên',
+  draft: 'true',
+};
+const lesson = {
+  lesson_id: 'u01-l1',
+  unit_id: 'u01',
+  order: '1',
+  title_vi: 'Xin chào',
+  grammar_ids: 'g-khrap|g-chue',
+};
+const word = {
+  id: 'sawatdee',
+  unit_id: 'u01',
+  lesson_id: 'u01-l1',
+  thai: 'สวัสดี',
+  meaning_vi: 'xin chào; tạm biệt',
+  pos: 'interj',
+  phonetic: 'sa-wat-di',
+  example_th: '',
+  example_vi: '',
+  image: 'noto:1f44b',
+  tags: 'polite;common',
+  source: 'giao-trinh-a.pdf#p12',
+};
+const sentence = {
+  id: 's-u01-001',
+  unit_id: 'u01',
+  lesson_id: 'u01-l1',
+  vi: 'Tôi tên là Nam.',
+  th: 'ผมชื่อนาม',
+  th_alt: 'ผมชื่อนามครับ',
+  tokens: 'ผม|ชื่อ|นาม',
+  distractors: 'คุณ',
+  grammar_id: 'g-chue',
+  audio: '',
+  source: '',
+};
+
+describe('UnitSchema', () => {
+  it('parse: order → số, can_do tách |, draft', () => {
+    expect(UnitSchema.parse(unit)).toEqual({
+      unit_id: 'u01',
+      level: 'A1',
+      order: 1,
+      title_vi: 'Chào hỏi',
+      title_th: 'ทักทาย',
+      can_do: ['Chào hỏi', 'Giới thiệu tên'],
+      draft: true,
+    });
+  });
+
+  it('title_th tùy chọn; draft trống = false', () => {
+    expect(UnitSchema.parse({ ...unit, title_th: '', draft: '' })).toMatchObject({
+      title_th: undefined,
+      draft: false,
+    });
+  });
+
+  it.each([
+    ['level', { level: 'B1' }],
+    ['order', { order: '0' }],
+    ['order', { order: '1.5' }],
+    ['title_th', { title_th: 'Chao' }],
+    ['can_do', { can_do: ' | ' }],
+    ['draft', { draft: 'yes' }],
+    ['', { deck: 'x' }],
+  ])('bắt lỗi %s', (path, patch) => {
+    expect(issuePaths(UnitSchema.safeParse({ ...unit, ...patch }))).toContain(path);
+  });
+});
+
+describe('LessonSchema', () => {
+  it('grammar_ids tách |, trống → []', () => {
+    expect(LessonSchema.parse(lesson).grammar_ids).toEqual(['g-khrap', 'g-chue']);
+    expect(LessonSchema.parse({ ...lesson, grammar_ids: '' }).grammar_ids).toEqual([]);
+  });
+
+  it('grammar_ids sai dạng id → lỗi', () => {
+    expect(issuePaths(LessonSchema.safeParse({ ...lesson, grammar_ids: 'G 1' }))).toContain(
+      'grammar_ids.0',
+    );
+  });
+});
+
+describe('WordSchema', () => {
+  it('parse: nghĩa/tags tách ;, ô trống → undefined', () => {
+    const w = WordSchema.parse(word);
+    expect(w.meaning_vi).toEqual(['xin chào', 'tạm biệt']);
+    expect(w.tags).toEqual(['polite', 'common']);
+    expect(w.example_th).toBeUndefined();
+    expect(w.draft).toBe(false);
+  });
+
+  it('phonetic và cột tùy chọn có thể vắng', () => {
+    const w = WordSchema.parse({
+      id: 'di',
+      unit_id: 'u01',
+      lesson_id: 'u01-l1',
+      thai: 'ดี',
+      meaning_vi: 'tốt',
+    });
+    expect(w.phonetic).toBeUndefined();
+    expect(w.image).toBeUndefined();
+    expect(w.tags).toEqual([]);
+  });
+
+  it.each([
+    ['meaning_vi', { meaning_vi: ' ; ' }],
+    ['thai', { thai: 'sawatdee' }],
+    ['phonetic', { phonetic: 'sà-wàt-dii' }],
+    ['image', { image: 'http://x/y.png' }],
+    ['example_th', { example_th: 'hello' }],
+    ['unit_id', { unit_id: 'Unit 1' }],
+  ])('bắt lỗi %s', (path, patch) => {
+    expect(issuePaths(WordSchema.safeParse({ ...word, ...patch }))).toContain(path);
+  });
+
+  it('v7: cột cũ deck/syllables/tones không còn hợp lệ', () => {
+    const result = WordSchema.safeParse({ ...word, deck: 'bai-01', tones: 'mid' });
+    expect(result.error?.issues[0]).toMatchObject({
+      code: 'unrecognized_keys',
+      keys: ['deck', 'tones'],
+    });
+  });
+});
+
+describe('SentenceSchema', () => {
+  it('parse: th_alt/tokens/distractors tách |', () => {
+    expect(SentenceSchema.parse(sentence)).toMatchObject({
+      th_alt: ['ผมชื่อนามครับ'],
+      tokens: ['ผม', 'ชื่อ', 'นาม'],
+      distractors: ['คุณ'],
+      grammar_id: 'g-chue',
+      audio: undefined,
+      draft: false,
+    });
+  });
+
+  it('th_alt/distractors/grammar_id tùy chọn', () => {
+    expect(
+      SentenceSchema.parse({ ...sentence, th_alt: '', distractors: '', grammar_id: '' }),
+    ).toMatchObject({ th_alt: [], distractors: [], grammar_id: undefined });
+  });
+
+  it.each([
+    ['tokens', { tokens: '' }],
+    ['tokens.1', { tokens: 'ผม|name' }],
+    ['th', { th: 'Toi ten la Nam' }],
+    ['th_alt.0', { th_alt: 'abc' }],
+    ['audio', { audio: 'x.mp3' }],
+    ['vi', { vi: ' ' }],
+  ])('bắt lỗi %s', (path, patch) => {
+    expect(issuePaths(SentenceSchema.safeParse({ ...sentence, ...patch }))).toContain(path);
+  });
+
+  it.each(['audio/s-u01-001.mp3', 'audio/u01/a.m4a'])('audio hợp lệ: %s', (value) => {
+    expect(AudioSchema.safeParse(value).success).toBe(true);
+  });
+});
+
+describe('GrammarSchema / DialogueSchema', () => {
+  const grammar = {
+    id: 'g-chue',
+    unit_id: 'u01',
+    title_vi: 'Nói tên',
+    pattern: 'ชื่อ + tên',
+    explain_vi: 'Dùng ชื่อ để nói tên.',
+    examples: [{ th: 'ผมชื่อนาม', vi: 'Tôi tên là Nam.' }],
+  };
+  const dialogue = {
+    id: 'd-u01-l1',
+    lesson_id: 'u01-l1',
+    lines: [
+      { speaker: 'A', th: 'สวัสดีครับ', vi: 'Xin chào.' },
+      { speaker: 'B', th: 'สวัสดีค่ะ', vi: 'Xin chào.' },
+    ],
+  };
+
+  it('parse mẫu, draft mặc định false', () => {
+    expect(GrammarSchema.parse(grammar).draft).toBe(false);
+    expect(DialogueSchema.parse({ ...dialogue, draft: true }).lines).toHaveLength(2);
+  });
+
+  it.each([
+    ['examples', { examples: [] }],
+    ['examples.0.th', { examples: [{ th: 'abc', vi: 'x' }] }],
+    ['pattern', { pattern: '' }],
+  ])('Grammar bắt lỗi %s', (path, patch) => {
+    expect(issuePaths(GrammarSchema.safeParse({ ...grammar, ...patch }))).toContain(path);
+  });
+
+  it.each([
+    ['lines', { lines: [] }],
+    ['lines.0.speaker', { lines: [{ speaker: '', th: 'ดี', vi: 'tốt' }] }],
+    ['lines.0', { lines: [{ speaker: 'A', th: 'ดี', vi: 'tốt', note: 'x' }] }],
+  ])('Dialogue bắt lỗi %s', (path, patch) => {
+    expect(issuePaths(DialogueSchema.safeParse({ ...dialogue, ...patch }))).toContain(path);
+  });
 });

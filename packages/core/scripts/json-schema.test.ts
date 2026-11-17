@@ -17,17 +17,22 @@ describe('json-schema/ đã commit khớp schema Zod', () => {
     },
   );
 
-  it('word-row ở dạng input: các ô là chuỗi', () => {
-    const schema = JSON.parse(expected['word-row.schema.json']!) as {
+  it('word ở dạng input: các ô là chuỗi, v7 không còn deck/syllables/tones', () => {
+    const schema = JSON.parse(expected['word.schema.json']!) as {
       properties: Record<string, { type?: string }>;
       required: string[];
     };
-    expect(schema.properties.tones?.type).toBe('string');
-    expect(schema.required).toEqual(
-      expect.arrayContaining(['id', 'thai', 'phonetic', 'meaning_vi', 'deck']),
+    expect(schema.properties.meaning_vi?.type).toBe('string');
+    expect(schema.required.sort()).toEqual(
+      ['id', 'lesson_id', 'meaning_vi', 'thai', 'unit_id'].sort(),
     );
-    // v7 (plan 0.2): syllables/tones tùy chọn.
-    expect(schema.required).not.toContain('syllables');
-    expect(schema.required).not.toContain('tones');
+    expect(Object.keys(schema.properties)).not.toContain('tones');
+  });
+
+  it('sentence: tokens bắt buộc, th_alt/distractors tùy chọn', () => {
+    const schema = JSON.parse(expected['sentence.schema.json']!) as { required: string[] };
+    expect(schema.required).toContain('tokens');
+    expect(schema.required).not.toContain('th_alt');
+    expect(schema.required).not.toContain('distractors');
   });
 });
