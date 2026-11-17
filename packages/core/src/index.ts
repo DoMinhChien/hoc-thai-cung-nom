@@ -5,6 +5,7 @@
 export const APP_NAME = 'Học Thai cùng Nôm';
 export * from './audio';
 export * from './auth';
+export * from './content/bundle';
 export * from './data/memory';
 export * from './data/records';
 export * from './data/repositories';

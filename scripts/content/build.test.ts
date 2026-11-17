@@ -3,13 +3,12 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
-  buildContent,
-  segmentThai,
-  withTokens,
-  type Manifest,
+  ManifestSchema,
+  UnitBundleSchema,
+  UnitsFileSchema,
   type UnitBundle,
-  type UnitSummary,
-} from './build';
+} from '@nom/core';
+import { buildContent, segmentThai, withTokens } from './build';
 import { loadContent } from './load';
 
 // Mẫu tối thiểu chỉ để test build — không phải nội dung học.
@@ -27,6 +26,8 @@ const FILES = {
   'dialogues.yaml': '- { id: d1, lesson_id: u02-l1, lines: [{ speaker: A, th: ดี, vi: tốt }] }\n',
 };
 
+const REPO = path.resolve(import.meta.dirname, '../..');
+
 let dir: string;
 async function setup(files: Record<string, string> = FILES) {
   dir = await mkdtemp(path.join(tmpdir(), 'nom-build-'));
@@ -42,7 +43,8 @@ afterEach(async () => {
   if (dir) await rm(dir, { recursive: true, force: true });
 });
 
-const readJson = async <T>(file: string) => JSON.parse(await readFile(file, 'utf8')) as T;
+const readJson = async <T = unknown>(file: string) =>
+  JSON.parse(await readFile(file, 'utf8')) as T;
 
 describe('buildContent', () => {
   it('units.json (lộ trình) + unit-<id>.json + manifest', async () => {
@@ -57,7 +59,8 @@ describe('buildContent', () => {
     ]);
     expect(written).toHaveLength(4);
 
-    const units = await readJson<UnitSummary[]>(path.join(out, 'units.json'));
+    // Web đọc lại bằng chính schema core (T7.1) → output phải hợp lệ.
+    const units = UnitsFileSchema.parse(await readJson(path.join(out, 'units.json')));
     expect(units.map((u) => u.unit_id)).toEqual(['u01', 'u02']);
     expect(units[0]).toMatchObject({ order: 1, words: 2, sentences: 1, can_do: ['Chào hỏi'] });
     expect(units[0]!.lessons.map((l) => [l.lesson_id, l.words, l.sentences])).toEqual([
@@ -65,7 +68,7 @@ describe('buildContent', () => {
       ['u01-l2', 1, 0],
     ]);
 
-    const u01 = await readJson<UnitBundle>(path.join(out, 'unit-u01.json'));
+    const u01 = UnitBundleSchema.parse(await readJson(path.join(out, 'unit-u01.json')));
     expect(u01.unit.unit_id).toBe('u01');
     expect(u01.words.map((w) => w.id)).toEqual(['di', 'ma']);
     expect(u01.words[0]!.meaning_vi).toEqual(['tốt', 'hay']);
@@ -75,7 +78,7 @@ describe('buildContent', () => {
     expect(u02.dialogues.map((d) => d.id)).toEqual(['d1']);
     expect(u02.words[0]).not.toHaveProperty('file');
 
-    expect(await readJson<Manifest>(path.join(out, 'manifest.json'))).toEqual(manifest);
+    expect(ManifestSchema.parse(await readJson(path.join(out, 'manifest.json')))).toEqual(manifest);
     expect(manifest.files['units.json']!.count).toBe(2);
     // unit + 2 bài + 2 từ + 1 câu + 1 mẫu câu.
     expect(manifest.files['unit-u01.json']!.count).toBe(7);
@@ -122,7 +125,8 @@ describe('buildContent', () => {
       'units.csv': 'unit_id,level,order,title_vi,can_do\nu02,A1,1,B,x\nu01,A1,1,A,x\n',
     });
     await buildContent(content, out);
-    const units = await readJson<UnitSummary[]>(path.join(out, 'units.json'));
+    // Web đọc lại bằng chính schema core (T7.1) → output phải hợp lệ.
+    const units = UnitsFileSchema.parse(await readJson(path.join(out, 'units.json')));
     expect(units.map((u) => u.unit_id)).toEqual(['u01', 'u02']);
   });
 });
@@ -149,7 +153,8 @@ describe('v7.1 (plan 0.11)', () => {
       ),
     });
     await buildContent(content, out);
-    const units = await readJson<UnitSummary[]>(path.join(out, 'units.json'));
+    // Web đọc lại bằng chính schema core (T7.1) → output phải hợp lệ.
+    const units = UnitsFileSchema.parse(await readJson(path.join(out, 'units.json')));
     expect(units.map((u) => [u.unit_id, u.kind, u.level])).toEqual([
       ['u01', 'theme', 'A1'],
       ['u02', 'grammar', undefined],
@@ -187,5 +192,16 @@ describe('v7.1 (plan 0.11)', () => {
 
   it('segmentThai bỏ khoảng trắng và dấu câu', () => {
     expect(segmentThai('มีค่ะ พี่สาว').join('')).toBe('มีค่ะพี่สาว');
+  });
+
+  it('content thật của repo build ra JSON hợp lệ theo schema web', async () => {
+    const { content, issues } = await loadContent(path.join(REPO, 'content'));
+    expect(issues.filter((i) => i.severity === 'error')).toEqual([]);
+    dir = await mkdtemp(path.join(tmpdir(), 'nom-build-'));
+    const { manifest } = await buildContent(content, dir);
+    for (const file of Object.keys(manifest.files)) {
+      const schema = file === 'units.json' ? UnitsFileSchema : UnitBundleSchema;
+      expect(schema.safeParse(await readJson(path.join(dir, file))).error).toBeUndefined();
+    }
   });
 });
