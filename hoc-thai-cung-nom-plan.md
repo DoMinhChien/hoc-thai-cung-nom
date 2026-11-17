@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7** — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.1** (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -77,6 +77,7 @@ Mọi loại bài tập là module độc lập theo interface `Exercise` (`gene
 | E-07 | **Gõ bản dịch Thái** cho câu Việt; chấm theo danh sách đáp án chấp nhận (`th` + `th_alt`) sau chuẩn hóa (NFC, bỏ khoảng trắng, ครับ/ค่ะ/คะ tùy chọn), bàn phím ảo G-06 | 4 – câu tự do | 1 |
 | E-08 | Nghe câu (TTS) → chọn nghĩa / sắp xếp câu nghe được | 2–3 – nghe hiểu | 1 |
 | E-09 | Ghép câu hỏi ↔ câu trả lời (từ hội thoại) | 2 – hội thoại | 1 |
+| E-14 | **Loại từ (ลักษณนาม)**: danh từ → chọn/gõ loại từ; điền `danh từ + số + ___` (0.11) | 1 / 4 | 1 |
 | E-20 | Dịch tự do Việt ↔ Thái, **Claude chấm** + giải thích lỗi tiếng Việt | 5 | 2 |
 
 - **E-10 "Bài tập hôm nay"**: trộn thẻ đến hạn FSRS (từ **và** câu) + mục sai gần đây; mặc định 20 câu, chỉnh trong Cài đặt.
@@ -113,14 +114,35 @@ Sidebar (nhóm Học): **Tổng quan · Bài học · Bài tập · Sổ từ ·
 
 | File | Cột |
 |---|---|
-| `units.csv` | `unit_id, level (A1/A2), order, title_vi, title_th, can_do` (nhiều mục tách bằng `|`) |
+| `units.csv` | `unit_id, level (A1/A2/B1), kind (theme/grammar), order, title_vi, title_th, can_do` (nhiều mục tách bằng `|`) *(v7.1: thêm `kind`, B1)* |
 | `lessons.csv` | `lesson_id, unit_id, order, title_vi, grammar_ids` |
-| `words.csv` | `id, unit_id, lesson_id, thai, meaning_vi, pos, phonetic` (tùy chọn)`, example_th, example_vi, image, tags, source` |
+| `words.csv` | `id, unit_id, lesson_id, thai, thai_alt, meaning_vi, note_vi, classifier, pos, phonetic` (tùy chọn)`, example_th, example_vi, image, tags, source` *(v7.1: thêm `thai_alt`, `note_vi`, `classifier`)* |
 | `sentences.csv` | `id, unit_id, lesson_id, vi, th, th_alt` (bản dịch chấp nhận khác, `|`)`, tokens` (tách từ cho E-06, `|`)`, distractors` (thẻ nhiễu, `|`)`, grammar_id, audio, source` |
 | `grammar.yaml` | `id, unit_id, title_vi, pattern, explain_vi, examples[{th, vi}]` |
 | `dialogues.yaml` | `id, lesson_id, lines[{speaker, th, vi}]` |
 
 Schema Zod mới: `Unit`, `Lesson`, `Word` (bỏ bắt buộc `syllables`), `Sentence`, `Grammar`, `Dialogue`. M4 (PDF pipeline) xuất ra đúng các file này.
+
+### 0.11 Tài liệu giáo viên: đã nhận mẫu (2026-11-17)
+
+Nguồn: giáo trình **"Tiếng Thái Thạc Sĩ Plern-Pin"**, chia theo **chuyên đề đánh số**. Mẫu đã nhận (lưu ở `sources/`, **không commit**; có bản quyền, giáo viên đã đồng ý cho dùng, Open Q #5):
+
+| File | Trang | Dạng | Nội dung |
+|---|---|---|---|
+| `sources/03-loai-tu.pdf` | 13 | **Bảng 2 cột**: cột trái = danh từ Thái, *có khi* kèm `: nghĩa Việt`; cột phải **để trống** cho người học điền **loại từ (ลักษณนาม)** | ~300 danh từ, chỉ ~45% có nghĩa Việt; không có đáp án loại từ |
+| `sources/11-cac-truong-hop-cua-na.pdf` | 6 | **Danh sách** `thai: nghĩa Việt` của một **điểm ngữ pháp** (น่า + động từ), sau đó **"Bài tập vận dụng"**: 34 câu tiếng Việt, dòng `=>` để trống cho người học dịch sang Thái | 29 cụm từ có nghĩa; 34 câu dịch **chưa có đáp án Thái** |
+
+**Đặc điểm kỹ thuật:** PDF **không có lớp text** (ảnh trang, xuất bằng iLovePDF), có **watermark chéo** (logo, số Zalo) và header/footer lặp lại ở mọi trang → bắt buộc nhận dạng bằng ảnh; bỏ watermark/header/footer khi trích xuất.
+
+**Quyết định (v7.1):**
+1. **Lộ trình = chuyên đề của giáo viên** theo số thứ tự (vd. Unit 3 "Loại từ", Unit 11 "Các trường hợp của น่า"). 16 chủ đề ở 0.3 chỉ còn là **khung gợi ý** khi giáo viên chưa có chuyên đề tương ứng; không bắt buộc.
+2. `Unit.kind`: `theme` (từ vựng theo chủ đề) | `grammar` (điểm ngữ pháp / cách dùng). `Unit.level`: `A1 | A2 | B1` (tài liệu thật trải rộng hơn A2, vd. กระทรวง, ราชวงศ์), tùy chọn.
+3. Bài học **bỏ qua bước không có nội dung**: unit `grammar` thường là Mẫu câu → Từ vựng → Bài tập (không có Hội thoại).
+4. `Word` thêm: `classifier` (ลักษณนาม, tùy chọn), `thai_alt` (biến thể, `|`; vd. ภาษิต = สุภาษิต, ไม้แจว / ไม้พาย), `note_vi` (ghi chú dùng, vd. "dùng cho thuyền lớn", "trong quân sự"). `meaning_vi` **được trống khi `draft: true`**, bắt buộc khi publish.
+5. `Sentence`: `th` **được trống khi `draft: true`** (bài tập giáo viên chưa có đáp án); `tokens` để trống thì build tự tách bằng `Intl.Segmenter` và gắn cảnh báo cần duyệt.
+6. Bài tập mới **E-14 Loại từ**: cho danh từ → chọn (bậc 1) hoặc gõ (bậc 4) ลักษณนาม đúng; mở rộng: điền vào cụm `danh từ + số + loại từ` (vd. แมว 2 ___ → ตัว). Implement ở M9.
+7. **Phần còn thiếu** (đáp án loại từ, nghĩa Việt còn trống, bản dịch Thái của 34 câu): pipeline M4 có bước **`--suggest`**: Claude đề xuất, ghi `suggested_by: claude`, `confidence`, giữ `draft: true` → **giáo viên/owner duyệt** trước khi publish. Ưu tiên đáp án gốc nếu giáo viên cung cấp (SETUP S10).
+8. Ghi nguồn: `source = "plernpin-03#p<trang>"`; hiển thị dòng ghi công giáo trình ở chi tiết unit (câu chữ do owner duyệt).
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -522,6 +544,9 @@ Theo thứ tự hiệu quả giảm dần:
 > **Bước tiếp theo:** owner gửi 1–2 trang PDF mẫu để đánh giá loại PDF (text hay scan, font) và chốt prompt trích xuất.
 
 ### 5.3 Pipeline trích xuất PDF → content
+
+> **v7.1 (theo PDF mẫu, 0.11):** PDF giáo viên là **ảnh, không có text** → luôn đi nhánh 2b: render trang PNG 200 dpi (`pypdfium2`) → **Claude vision** trích xuất theo schema v7 (prompt nêu rõ: bỏ watermark chéo, logo, header/footer "Tiếng Thái Thạc Sĩ Plern-Pin / ZALO…"; giữ nguyên chữ Thái; tách `thai: nghĩa`; nhận diện 2 bố cục `table-classifier` và `list-grammar+exercise`). **Không cần Document Intelligence** (C1). Bước 5 **bỏ Tone Engine** (đóng băng), chỉ `content:check`. Output: `staging/words.<nguồn>.csv`, `staging/sentences.<nguồn>.csv`, `staging/grammar.<nguồn>.yaml` + report. Bước tùy chọn `--suggest` (0.11 #7) điền nghĩa/loại từ/bản dịch còn thiếu, đánh dấu `suggested_by: claude`. Chi phí ước tính: 19 trang mẫu ~ vài chục cent (Sonnet). Golden test: chạy local trên `sources/` (CI không có PDF) + CI dùng **response Claude ghi sẵn** cho 1 trang mỗi bố cục.
+
 
 **Phase 1 — chạy local bằng script Python (owner chạy), thư mục `tools/pdf-pipeline/`**
 ```
@@ -1036,7 +1061,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 
 | # | Câu hỏi | Default |
 |---|---|---|
-| 1 | **John sẽ gửi sau** 1–2 trang PDF mẫu để xác định PDF text hay scan, font Unicode hay không, và chốt prompt trích xuất | Giả định PDF text-based; pipeline vẫn hỗ trợ scan qua Document Intelligence |
+| 1 | ~~PDF mẫu~~ | **Đã nhận 2026-11-17** (mục 0.11): PDF **ảnh, không có text**, có watermark → Claude vision; 2 dạng bố cục (bảng loại từ, danh sách + bài tập dịch) |
 | 2 | ~~LLM~~ | **Đã chốt:** Claude API (ADR-04) |
 | 3 | ~~Provider đăng nhập~~ | **Đã chốt:** Firebase Auth (ADR-02). **Phase 1: Google. Phase 2: Facebook** (M12.5) |
 | 4 | Báo cáo admin có cần **xem chi tiết từng học viên** (tên, email, tiến độ cá nhân) hay chỉ số liệu tổng hợp? | Chỉ tổng hợp ở v2; chi tiết từng học viên để sau, cần chính sách quyền riêng tư |
@@ -1052,6 +1077,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.1 (2026-11-17):** Nhận 2 PDF mẫu của giáo viên (mục 0.11): lộ trình theo **chuyên đề giáo viên**, `Unit.kind`/`level` B1, `Word.classifier`/`thai_alt`/`note_vi`, `meaning_vi`/`Sentence.th` được trống khi draft, bài tập **E-14 Loại từ**, pipeline M4 dùng Claude vision + `--suggest`; Open Q #1 đóng; milestone **M6.1**.
 - **v7 (2026-11-16):** **Đổi phạm vi theo phản hồi demo khách hàng** (mục 0): người học A1–A2 đã đọc được → bỏ Module A (chữ cái, Tone Trainer), Module D (quiz thanh), thanh điệu khỏi UI (Tone Engine đóng băng), `MasteryGrid`, `HeatmapTable`, `ToneBarChart`; "Ôn tập" → **Bài tập** (Module E, dịch câu nâng dần bậc); 16 chủ đề A1–A2 + bài học 4 bước; nav, routes, tiến độ (P-10..P-12), mẫu content (0.9); milestone Phase 1 mới M5.5, M6–M10.5.
 - **v6.5 (2026-11-16):** Tone Engine: thêm quy tắc **อักษรนำ tổng quát** (6.1) và **nguyên âm có âm cuối sẵn** ไ– ใ– –ำ เ–า (6.2); `leading` nhận mọi phụ âm cao/trung; test bổ sung; milestone **M2.1** (sau M5, trước M6 & M4).
 - **v6.4 (2026-11-15):** **Facebook Login chuyển sang Phase 2** (M12.5): Phase 1 chỉ Google + Guest; L-04 (liên kết tài khoản) sang Phase 2; feature flag `VITE_ENABLE_FACEBOOK_LOGIN`; SETUP S6 dời sang Phase 2.
