@@ -1,9 +1,11 @@
 import {
   matchesFilter,
   newId,
+  type CanDoRecord,
   type CardFilter,
   type CardType,
   type ItemType,
+  type LessonProgressRecord,
   type ListeningStatRecord,
   type ProgressRepository,
   type Repositories,
@@ -51,6 +53,31 @@ class DexieProgressRepository implements ProgressRepository {
   }
   async putCard(card: CardRecord) {
     await this.db.cards.put(card);
+  }
+
+  getLessonProgress(lessonId: string) {
+    return this.db.lessons.where('lessonId').equals(lessonId).first();
+  }
+  listLessonProgress(unitId?: string) {
+    return unitId === undefined
+      ? this.db.lessons.toArray()
+      : this.db.lessons.where('unitId').equals(unitId).toArray();
+  }
+  async putLessonProgress(record: LessonProgressRecord) {
+    // `lessonId` unique: bản cũ khác id (vd. từ Guest) bị thay.
+    await this.db.transaction('rw', this.db.lessons, async () => {
+      await this.db.lessons.where('lessonId').equals(record.lessonId).delete();
+      await this.db.lessons.put(record);
+    });
+  }
+  listCanDo(unitId: string) {
+    return this.db.canDos.where('unitId').equals(unitId).toArray();
+  }
+  async putCanDo(record: CanDoRecord) {
+    await this.db.transaction('rw', this.db.canDos, async () => {
+      await this.db.canDos.where('[unitId+canDo]').equals([record.unitId, record.canDo]).delete();
+      await this.db.canDos.put(record);
+    });
   }
 }
 

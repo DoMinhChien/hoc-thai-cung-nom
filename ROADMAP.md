@@ -245,7 +245,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Task**
 - [x] T7.1 Types bundle content (`UnitSummary`, `UnitBundle`, `BuiltLesson` + `steps`, `BuiltSentence` + `auto_tokens`, `Manifest`) chuyển từ `scripts/content/build.ts` vào `packages/core` (web và script dùng chung) + content client trong `apps/web` (`fetch` `manifest.json` → `units.json` / `unit-<id>.json`, cache theo `manifest.version`, validate bằng Zod) + hook `useUnits()`, `useUnit(id)`. Unit test (fetch giả).
-- [ ] T7.2 Tiến độ bài học: record `LessonProgressRecord` (bước đã xong 1–4, điểm bài tập, hoàn thành khi ≥ 80%) + `CanDoRecord` (tick tay); Dexie store mới + migration `schemaVersion`; `ProgressRepository` mở rộng (Dexie + memory, contract test); selector core: trạng thái unit chưa học/đang học/xong (P-10), can-do tự tick khi mọi bài xong (P-11), % theo unit (P-04). `ITEM_TYPES` thêm `sentence` (chuẩn bị M9).
+- [x] T7.2 Tiến độ bài học: record `LessonProgressRecord` (bước đã xong 1–4, điểm bài tập, hoàn thành khi ≥ 80%) + `CanDoRecord` (tick tay); Dexie store mới + migration `schemaVersion`; `ProgressRepository` mở rộng (Dexie + memory, contract test); selector core: trạng thái unit chưa học/đang học/xong (P-10), can-do tự tick khi mọi bài xong (P-11), % theo unit (P-04). `ITEM_TYPES` thêm `sentence` (chuẩn bị M9).
 - [ ] T7.3 `WebSpeechProvider` (`th-TH`) + ưu tiên file `audio/<id>` khi câu có `audio`; không có giọng Thái → trạng thái để UI hướng dẫn cài. Unit test với mock `speechSynthesis`/`Audio`.
 - [ ] T7.4 🟠 `/units` lộ trình theo **chuyên đề giáo viên** (thứ tự `order`, nhãn `level` + `kind`; plan 0.11 #1), `UnitPath` + `ProgressRing` mỗi unit (SCR-04).
 - [ ] T7.5 🟠 `/units/:unitId`: danh sách bài, `CanDoList`, từ vựng của unit (SCR-04).

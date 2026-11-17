@@ -4,9 +4,9 @@
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { newSrsState, reviewSrs } from '../srs/srs';
-import type { CardRecord } from './records';
+import type { CardRecord, LessonProgressRecord } from './records';
 import type { Repositories } from './repositories';
-import { introduceCard, recordReview } from './study';
+import { completeLessonStep, introduceCard, recordReview, setCanDo } from './study';
 
 const T0 = new Date('2026-03-01T08:00:00.000Z');
 const at = (minutes: number) => new Date(T0.getTime() + minutes * 60_000);
@@ -78,6 +78,72 @@ export function describeRepositories(
         await repos.progress.putCard(card('b', { createdAt: at(DAY).toISOString() }));
         expect(await repos.progress.countCreatedBetween(at(0), at(DAY))).toBe(1);
         expect(await repos.progress.countCreatedBetween(at(0), at(DAY + 1))).toBe(2);
+      });
+    });
+
+    describe('ProgressRepository — bài học, can-do (M7)', () => {
+      const lesson = (
+        lessonId: string,
+        unitId: string,
+        patch: Partial<LessonProgressRecord> = {},
+      ) => ({
+        id: `id-${lessonId}`,
+        lessonId,
+        unitId,
+        stepsDone: [],
+        bestScore: null,
+        completedAt: null,
+        updatedAt: T0.toISOString(),
+        ...patch,
+      });
+
+      it('put/get/list theo unit; ghi lại cùng lessonId thì thay bản cũ', async () => {
+        await repos.progress.putLessonProgress(lesson('u01-l1', 'u01'));
+        await repos.progress.putLessonProgress(lesson('u01-l2', 'u01'));
+        await repos.progress.putLessonProgress(lesson('u02-l1', 'u02'));
+        await repos.progress.putLessonProgress(
+          lesson('u01-l1', 'u01', { id: 'id-khac', stepsDone: ['vocab'] }),
+        );
+        expect(await repos.progress.getLessonProgress('u01-l1')).toEqual(
+          lesson('u01-l1', 'u01', { id: 'id-khac', stepsDone: ['vocab'] }),
+        );
+        expect(await repos.progress.getLessonProgress('khong-co')).toBeUndefined();
+        const ids = async (unitId?: string) =>
+          (await repos.progress.listLessonProgress(unitId)).map((l) => l.lessonId).sort();
+        expect(await ids('u01')).toEqual(['u01-l1', 'u01-l2']);
+        expect(await ids()).toEqual(['u01-l1', 'u01-l2', 'u02-l1']);
+      });
+
+      it('completeLessonStep: bước xong, bài tập < 80% chưa xong, ≥ 80% → hoàn thành', async () => {
+        const ref = { lesson_id: 'u01-l1', unit_id: 'u01', steps: ['vocab', 'exercise'] as const };
+        let r = await completeLessonStep(repos.progress, ref, 'vocab', at(0));
+        expect(r).toMatchObject({ stepsDone: ['vocab'], completedAt: null, bestScore: null });
+        r = await completeLessonStep(repos.progress, ref, 'exercise', at(5), 0.7);
+        expect(r).toMatchObject({ stepsDone: ['vocab'], bestScore: 0.7, completedAt: null });
+        r = await completeLessonStep(repos.progress, ref, 'exercise', at(10), 0.9);
+        expect(r).toMatchObject({ stepsDone: ['vocab', 'exercise'], bestScore: 0.9 });
+        expect(r.completedAt).toBe(at(10).toISOString());
+        r = await completeLessonStep(repos.progress, ref, 'exercise', at(20), 0.5);
+        expect(r).toMatchObject({ bestScore: 0.9, completedAt: at(10).toISOString() });
+        expect(await repos.progress.getLessonProgress('u01-l1')).toEqual(r);
+        expect((await repos.progress.listLessonProgress('u01')).length).toBe(1);
+        await expect(completeLessonStep(repos.progress, ref, 'exercise', at(30))).rejects.toThrow();
+      });
+
+      it('setCanDo: tick / bỏ tick, một bản ghi mỗi mục, theo unit', async () => {
+        const first = await setCanDo(repos.progress, 'u01', 'Chào hỏi', true, at(0));
+        await setCanDo(repos.progress, 'u01', 'Giới thiệu tên', true, at(1));
+        await setCanDo(repos.progress, 'u02', 'Chào hỏi', true, at(1));
+        const again = await setCanDo(repos.progress, 'u01', 'Chào hỏi', false, at(2));
+        expect(again.id).toBe(first.id);
+        const list = (await repos.progress.listCanDo('u01')).sort((a, b) =>
+          a.canDo.localeCompare(b.canDo),
+        );
+        expect(list.map((c) => [c.canDo, c.checked])).toEqual([
+          ['Chào hỏi', false],
+          ['Giới thiệu tên', true],
+        ]);
+        expect(list[0]!.updatedAt).toBe(at(2).toISOString());
       });
     });
 

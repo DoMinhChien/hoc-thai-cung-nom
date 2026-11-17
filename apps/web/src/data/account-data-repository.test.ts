@@ -64,6 +64,43 @@ describe('AccountDataRepository', () => {
     db.close();
   });
 
+  it('transferGuestProgress: tiến độ bài học + can-do cùng khóa → giữ bản cập nhật sau', async () => {
+    const older = '2026-03-01T00:00:00.000Z';
+    const newer = '2026-03-02T00:00:00.000Z';
+    const lesson = (id: string, lessonId: string, updatedAt: string) => ({
+      id,
+      lessonId,
+      unitId: 'u01',
+      stepsDone: [],
+      bestScore: null,
+      completedAt: null,
+      updatedAt,
+    });
+    const canDo = (id: string, updatedAt: string) => ({
+      id,
+      unitId: 'u01',
+      canDo: 'Chào hỏi',
+      checked: true,
+      updatedAt,
+    });
+    const guest = new NomDatabase(GUEST_KEY);
+    await guest.lessons.bulkPut([lesson('g-l1', 'u01-l1', newer), lesson('g-l2', 'u01-l2', older)]);
+    await guest.canDos.put(canDo('g-c', older));
+    guest.close();
+    const user = new NomDatabase('u1');
+    await user.lessons.bulkPut([lesson('u-l1', 'u01-l1', older), lesson('u-l2', 'u01-l2', newer)]);
+    await user.canDos.put(canDo('u-c', newer));
+    user.close();
+
+    await repo.transferGuestProgress('u1');
+
+    const db = new NomDatabase('u1');
+    expect((await db.lessons.toArray()).map((l) => l.id).sort()).toEqual(['g-l1', 'u-l2']);
+    expect((await db.canDos.toArray()).map((c) => c.id)).toEqual(['u-c']);
+    db.close();
+    expect(await repo.hasProgress(GUEST_KEY)).toBe(false);
+  });
+
   it('transferGuestProgress: thẻ thiếu khóa (dữ liệu cũ) vẫn được chuyển, không lỗi', async () => {
     const guest = new NomDatabase(GUEST_KEY);
     await guest.cards.put({ id: 'cu', itemType: 'consonant' } as CardRecord);

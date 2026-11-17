@@ -1,6 +1,8 @@
 import {
   newSrsState,
+  type CanDoRecord,
   type CardRecord,
+  type LessonProgressRecord,
   type ListeningStatRecord,
   type ReviewLogRecord,
   type SessionRecord,
@@ -13,7 +15,7 @@ export const GUEST_KEY = 'guest';
 export const dbName = (userKey: string) => `hoc-thai-nom-${userKey}`;
 
 /** Phiên bản schema hiện tại — cũng ghi vào `meta.schemaVersion` (plan 7.3). */
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 export const SCHEMA_VERSION_KEY = 'schemaVersion';
 
 export type KeyValueRecord = { key: string; value: unknown };
@@ -25,6 +27,8 @@ export const PROGRESS_TABLES = [
   'listeningStats',
   'sessions',
   'settings',
+  'lessons',
+  'canDos',
 ] as const;
 
 /** v1 (M1): khung store, bản ghi chỉ có vài trường. */
@@ -45,6 +49,13 @@ const STORES_V2 = {
   sessions: 'id, startedAt',
   settings: 'key',
   meta: 'key',
+};
+
+/** v3 (M7): tiến độ bài học (một bản ghi mỗi bài) + tick can-do (một bản ghi mỗi mục). */
+const STORES_V3 = {
+  ...STORES_V2,
+  lessons: 'id, &lessonId, unitId, updatedAt',
+  canDos: 'id, &[unitId+canDo], unitId',
 };
 
 /** v1 → v2: thẻ cũ thiếu trường thì bổ sung mặc định (thẻ mới, loại Thai → Việt). */
@@ -75,12 +86,18 @@ export class NomDatabase extends Dexie {
   listeningStats!: EntityTable<ListeningStatRecord, 'id'>;
   sessions!: EntityTable<SessionRecord, 'id'>;
   settings!: EntityTable<SettingRecord, 'key'>;
+  lessons!: EntityTable<LessonProgressRecord, 'id'>;
+  canDos!: EntityTable<CanDoRecord, 'id'>;
   meta!: EntityTable<KeyValueRecord, 'key'>;
 
   constructor(userKey: string) {
     super(dbName(userKey));
     this.version(1).stores(STORES_V1);
     this.version(2).stores(STORES_V2).upgrade(upgradeToV2);
+    // v2 → v3 chỉ thêm store rỗng.
+    this.version(3)
+      .stores(STORES_V3)
+      .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 3 }));
     this.on('populate', (tx) => {
       void tx.table('meta').add({ key: SCHEMA_VERSION_KEY, value: SCHEMA_VERSION });
     });

@@ -3,9 +3,11 @@
  * Phase 1: bản Dexie (`apps/web/src/data`). Phase 2: thêm `SyncedRepository`, UI không đổi.
  */
 import type {
+  CanDoRecord,
   CardRecord,
   CardType,
   ItemType,
+  LessonProgressRecord,
   ListeningStatRecord,
   ReviewLogRecord,
   SessionRecord,
@@ -16,7 +18,7 @@ export interface CardFilter {
   itemIds?: string[];
 }
 
-/** Thẻ SRS. */
+/** Thẻ SRS + tiến độ bài học, can-do (M7). */
 export interface ProgressRepository {
   getCard(id: string): Promise<CardRecord | undefined>;
   findCard(itemType: ItemType, itemId: string, cardType: CardType): Promise<CardRecord | undefined>;
@@ -26,6 +28,15 @@ export interface ProgressRepository {
   /** Số thẻ được đưa vào học trong khoảng [from, to) — B-03. */
   countCreatedBetween(from: Date, to: Date): Promise<number>;
   putCard(card: CardRecord): Promise<void>;
+
+  getLessonProgress(lessonId: string): Promise<LessonProgressRecord | undefined>;
+  /** Tiến độ các bài (của một unit nếu có `unitId`). */
+  listLessonProgress(unitId?: string): Promise<LessonProgressRecord[]>;
+  /** Ghi theo `lessonId` (một bản ghi mỗi bài). */
+  putLessonProgress(record: LessonProgressRecord): Promise<void>;
+  listCanDo(unitId: string): Promise<CanDoRecord[]>;
+  /** Ghi theo `unitId` + `canDo` (một bản ghi mỗi mục). */
+  putCanDo(record: CanDoRecord): Promise<void>;
 }
 
 /** Log ôn thẻ + thống kê quiz nghe. */

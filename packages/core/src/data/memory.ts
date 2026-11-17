@@ -4,9 +4,11 @@
  */
 import { selectDue } from '../srs/srs';
 import type {
+  CanDoRecord,
   CardRecord,
   CardType,
   ItemType,
+  LessonProgressRecord,
   ListeningStatRecord,
   ReviewLogRecord,
   SessionRecord,
@@ -66,6 +68,29 @@ export class MemoryProgressRepository implements ProgressRepository {
   }
   async putCard(card: CardRecord) {
     this.cards.set(card.id, clone(card));
+  }
+
+  /** Khóa theo `lessonId` / `unitId + canDo` (như index unique bên Dexie). */
+  readonly lessons = new Map<string, LessonProgressRecord>();
+  readonly canDos = new Map<string, CanDoRecord>();
+
+  async getLessonProgress(lessonId: string) {
+    const record = this.lessons.get(lessonId);
+    return record && clone(record);
+  }
+  async listLessonProgress(unitId?: string) {
+    return [...this.lessons.values()]
+      .filter((l) => unitId === undefined || l.unitId === unitId)
+      .map(clone);
+  }
+  async putLessonProgress(record: LessonProgressRecord) {
+    this.lessons.set(record.lessonId, clone(record));
+  }
+  async listCanDo(unitId: string) {
+    return [...this.canDos.values()].filter((c) => c.unitId === unitId).map(clone);
+  }
+  async putCanDo(record: CanDoRecord) {
+    this.canDos.set(JSON.stringify([record.unitId, record.canDo]), clone(record));
   }
 }
 
