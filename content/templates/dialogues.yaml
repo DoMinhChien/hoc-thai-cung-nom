@@ -1,0 +1,13 @@
+# MẪU dialogues.yaml — mỗi hội thoại là một mục bắt đầu bằng "- ".
+# Lưu file dạng UTF-8. Dòng bắt đầu bằng # là chú thích, app bỏ qua.
+- id: d-u01-l1              # bắt buộc · id duy nhất: chữ thường a-z, số, gạch nối
+  lesson_id: u01-l1         # bắt buộc · lesson_id trong lessons.csv
+  lines:                    # bắt buộc · khuyến nghị 4–8 câu; mỗi câu có speaker + th + vi
+    - speaker: A            # tên/nhãn người nói
+      th: สวัสดีครับ         # câu tiếng Thái
+      vi: Xin chào.         # bản dịch tiếng Việt
+    - speaker: B
+      th: สวัสดีค่ะ
+      vi: Xin chào.
+  source: giao-trinh-a.pdf#p14   # tùy chọn
+  draft: true               # tùy chọn · true = chưa duyệt (mặc định false)
