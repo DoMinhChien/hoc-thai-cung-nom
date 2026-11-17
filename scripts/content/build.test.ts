@@ -172,6 +172,7 @@ describe('v7.1 (plan 0.11)', () => {
       vi: 'x',
       th_alt: [],
       distractors: [],
+      source: undefined,
       draft: true,
     };
     const auto = withTokens({ ...base, th: 'ผมชื่อสมชาย', tokens: [] });

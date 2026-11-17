@@ -1,16 +1,26 @@
-id,unit_id,lesson_id,thai,meaning_vi,pos,phonetic,example_th,example_vi,image,tags,source,draft
-sawatdee,u01,u01-l1,สวัสดี,xin chào; tạm biệt,interj,sa-wat-di,สวัสดีครับ,Xin chào (nam nói).,noto:1f44b,polite;common,,true
-khrap,u01,u01-l1,ครับ,từ lịch sự cuối câu (nam),particle,khrap,,,,polite,,true
-kha,u01,u01-l1,ค่ะ,từ lịch sự cuối câu (nữ),particle,kha,,,,polite,,true
-phom,u01,u01-l1,ผม,tôi (nam),pron,phom,,,,common,,true
-chan,u01,u01-l1,ฉัน,tôi (nữ),pron,chan,,,,common,,true
-khun,u01,u01-l1,คุณ,bạn; anh; chị,pron,khun,,,,common,,true
-chue,u01,u01-l1,ชื่อ,tên; tên là,noun,chue,ผมชื่อสมชาย,Tôi tên là Somchai.,,common,,true
-arai,u01,u01-l1,อะไร,gì; cái gì,pron,a-rai,,,,question,,true
-pho,u02,u02-l1,พ่อ,bố,noun,pho,,,,family,,true
-mae,u02,u02-l1,แม่,mẹ,noun,mae,,,,family,,true
-phi,u02,u02-l1,พี่,anh; chị,noun,phi,,,,family,,true
-nong,u02,u02-l1,น้อง,em,noun,nong,,,,family,,true
-mi,u02,u02-l1,มี,có,verb,mi,,,,common,,true
-ki,u02,u02-l1,กี่,mấy; bao nhiêu,adj,ki,,,,question,,true
-khon,u02,u02-l1,คน,người,noun,khon,,,,common,,true
+id,unit_id,lesson_id,thai,thai_alt,meaning_vi,note_vi,classifier,pos,phonetic,example_th,example_vi,image,tags,source,draft
+sawatdee,u01,u01-l1,สวัสดี,,xin chào; tạm biệt,,,interj,sa-wat-di,สวัสดีครับ,Xin chào (nam nói).,noto:1f44b,polite;common,,true
+khrap,u01,u01-l1,ครับ,,từ lịch sự cuối câu (nam),,,particle,khrap,,,,polite,,true
+kha,u01,u01-l1,ค่ะ,,từ lịch sự cuối câu (nữ),,,particle,kha,,,,polite,,true
+phom,u01,u01-l1,ผม,,tôi (nam),,,pron,phom,,,,common,,true
+chan,u01,u01-l1,ฉัน,,tôi (nữ),,,pron,chan,,,,common,,true
+khun,u01,u01-l1,คุณ,,bạn; anh; chị,,,pron,khun,,,,common,,true
+chue,u01,u01-l1,ชื่อ,,tên; tên là,,,noun,chue,ผมชื่อสมชาย,Tôi tên là Somchai.,,common,,true
+arai,u01,u01-l1,อะไร,,gì; cái gì,,,pron,a-rai,,,,question,,true
+pho,u02,u02-l1,พ่อ,,bố,,,noun,pho,,,,family,,true
+mae,u02,u02-l1,แม่,,mẹ,,,noun,mae,,,,family,,true
+phi,u02,u02-l1,พี่,,anh; chị,,,noun,phi,,,,family,,true
+nong,u02,u02-l1,น้อง,,em,,,noun,nong,,,,family,,true
+mi,u02,u02-l1,มี,,có,,,verb,mi,,,,common,,true
+ki,u02,u02-l1,กี่,,mấy; bao nhiêu,,,adj,ki,,,,question,,true
+khon,u02,u02-l1,คน,,người,,,noun,khon,,,,common,,true
+tukkata,u03,u03-l1,ตุ๊กตา,,búp bê,,,noun,,,,,,plernpin-03#p1,true
+thung-thao,u03,u03-l1,ถุงเท้า,,tất,,,noun,,,,,,plernpin-03#p1,true
+rong-thao,u03,u03-l1,รองเท้า,,giày,,,noun,,,,,,plernpin-03#p1,true
+takiap,u03,u03-l1,ตะเกียบ,,đũa,,,noun,,,,,,plernpin-03#p1,true
+chon,u03,u03-l1,ช้อน,,,,,noun,,,,,,plernpin-03#p1,true
+na-kin,u11,u11-l1,น่ากิน,,trông ngon,rất đáng để ăn,,adj,,,,,,plernpin-11#p1,true
+na-rak,u11,u11-l1,น่ารัก,,đáng yêu; dễ thương,,,adj,,,,,,plernpin-11#p1,true
+na-du,u11,u11-l1,น่าดู,,đáng xem; nên xem,,,adj,,,,,,plernpin-11#p1,true
+na-klua,u11,u11-l1,น่ากลัว,,đáng sợ,,,adj,,,,,,plernpin-11#p1,true
+na-buea,u11,u11-l1,น่าเบื่อ,,nhàm chán; trông nhàm chán,,,adj,,,,,,plernpin-11#p1,true
