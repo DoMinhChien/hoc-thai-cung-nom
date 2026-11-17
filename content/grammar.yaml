@@ -17,3 +17,13 @@
     - { th: ผมมีพี่ชายหนึ่งคน, vi: Tôi có một anh trai. }
     - { th: บ้านคุณมีกี่คน, vi: Nhà bạn có mấy người? }
   draft: true
+- id: g-u11-na
+  unit_id: u11
+  title_vi: น่า + động từ
+  pattern: น่า + động từ
+  explain_vi: น่า đứng trước động từ tạo nghĩa "đáng …" hoặc "trông …" (đáng để làm việc đó).
+  examples:
+    - { th: น่ากิน, vi: Trông ngon (rất đáng để ăn). }
+    - { th: น่ารัก, vi: "Đáng yêu, dễ thương." }
+  source: plernpin-11#p1
+  draft: true

@@ -23,8 +23,8 @@ export type FinalSound = z.infer<typeof FinalSoundSchema>;
 export const InherentFinalSchema = z.enum(['y', 'm', 'w']);
 export type InherentFinal = z.infer<typeof InherentFinalSchema>;
 
-/** Cấp CEFR của unit (plan 0.3). */
-export const LevelSchema = z.enum(['A1', 'A2']);
+/** Cấp CEFR của unit (plan 0.3; v7.1 thêm B1 — 0.11 #2). */
+export const LevelSchema = z.enum(['A1', 'A2', 'B1']);
 export type Level = z.infer<typeof LevelSchema>;
 
 /** id duy nhất, ascii kebab, vd. `ko-kai`, `bai-01`. */

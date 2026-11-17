@@ -1,11 +1,19 @@
 import { z } from 'zod';
-import { draftCell, optionalCell, optionalListCell, orderCell, listCell } from './csv';
+import { draftCell, listCell, optionalCell, optionalListCell, orderCell } from './csv';
 import { IdSchema, LevelSchema, TextSchema, ThaiTextSchema } from './common';
 
-/** Một dòng `content/units.csv` (plan 0.3, 0.9): chủ đề A1/A2, `can_do` ngăn bằng `|`. */
+/** Loại unit (plan 0.11 #2): từ vựng theo chủ đề hoặc điểm ngữ pháp / cách dùng. */
+export const UnitKindSchema = z.enum(['theme', 'grammar']);
+export type UnitKind = z.infer<typeof UnitKindSchema>;
+
+/**
+ * Một dòng `content/units.csv` (plan 0.9, 0.11): chuyên đề của giáo viên, `can_do` ngăn bằng `|`.
+ * `level` tùy chọn (A1/A2/B1); `kind` trống = `theme`.
+ */
 export const UnitSchema = z.strictObject({
   unit_id: IdSchema,
-  level: LevelSchema,
+  level: optionalCell.pipe(LevelSchema.optional()),
+  kind: optionalCell.pipe(UnitKindSchema.optional()).transform((v) => v ?? 'theme'),
   order: orderCell,
   title_vi: TextSchema,
   title_th: optionalCell.pipe(ThaiTextSchema.optional()),

@@ -1,2 +1,2 @@
-unit_id,level,order,title_vi,title_th,can_do,draft
-u01,A1,1,Chào hỏi & giới thiệu,ทักทายและแนะนำตัว,Chào hỏi lịch sự|Giới thiệu tên,true
+unit_id,level,kind,order,title_vi,title_th,can_do,draft
+u01,A1,theme,1,Chào hỏi & giới thiệu,ทักทายและแนะนำตัว,Chào hỏi lịch sự|Giới thiệu tên,true

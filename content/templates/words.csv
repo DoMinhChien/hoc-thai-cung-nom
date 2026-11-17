@@ -1,2 +1,2 @@
-id,unit_id,lesson_id,thai,meaning_vi,pos,phonetic,example_th,example_vi,image,tags,source,draft
-sawatdee,u01,u01-l1,สวัสดี,xin chào; tạm biệt,interj,sa-wat-di,สวัสดีครับ,Xin chào (nam nói).,noto:1f44b,polite;common,giao-trinh-a.pdf#p12,true
+id,unit_id,lesson_id,thai,thai_alt,meaning_vi,note_vi,classifier,pos,phonetic,example_th,example_vi,image,tags,source,draft
+sawatdee,u01,u01-l1,สวัสดี,,xin chào; tạm biệt,dùng cả khi gặp và khi chia tay,,interj,sa-wat-di,สวัสดีครับ,Xin chào (nam nói).,noto:1f44b,polite;common,giao-trinh-a.pdf#p12,true

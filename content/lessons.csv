@@ -1,3 +1,5 @@
 lesson_id,unit_id,order,title_vi,grammar_ids,draft
 u01-l1,u01,1,Xin chào - tôi tên là…,g-u01-chue,true
 u02-l1,u02,1,Nhà tôi có mấy người,g-u02-mi,true
+u03-l1,u03,1,Loại từ của đồ vật,,true
+u11-l1,u11,1,น่า + động từ,g-u11-na,true

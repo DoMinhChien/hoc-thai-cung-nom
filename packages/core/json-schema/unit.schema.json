@@ -8,11 +8,10 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
     "level": {
-      "type": "string",
-      "enum": [
-        "A1",
-        "A2"
-      ]
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
     },
     "order": {
       "type": "string",
@@ -39,7 +38,6 @@
   },
   "required": [
     "unit_id",
-    "level",
     "order",
     "title_vi",
     "can_do"

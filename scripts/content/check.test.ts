@@ -114,9 +114,7 @@ describe('id duy nhất', () => {
   });
 
   it('cùng id khác loại không tính là trùng', () => {
-    expect(relevant(valid({ grammar: [grammar('s1')], sentences: [sentence('s1')] }))).toEqual(
-      [],
-    );
+    expect(relevant(valid({ grammar: [grammar('s1')], sentences: [sentence('s1')] }))).toEqual([]);
   });
 });
 
@@ -274,5 +272,65 @@ describe('cảnh báo cấu trúc bài học (plan 0.4)', () => {
         message: '2 mục draft: true — chưa được owner duyệt',
       }),
     ]);
+  });
+});
+
+describe('v7.1 — tài liệu giáo viên (plan 0.11)', () => {
+  const messages = (content: ContentSet) =>
+    relevant(content).map((i) => [i.severity, i.field, i.message]);
+
+  it('từ draft thiếu nghĩa → cảnh báo từng mục', () => {
+    const content = valid({ words: [word('w', 'ดี', { meaning_vi: '', draft: 'true' })] });
+    expect(messages(content)).toEqual(
+      expect.arrayContaining([
+        ['warning', 'meaning_vi', 'thiếu nghĩa — cần điền trước khi bỏ draft'],
+      ]),
+    );
+  });
+
+  it('câu draft thiếu th → cảnh báo, không đối chiếu tokens', () => {
+    const content = valid({
+      sentences: [sentence('s1', { th: '', tokens: 'ผม', draft: 'true' })],
+    });
+    expect(messages(content).filter(([sev]) => sev === 'error')).toEqual([]);
+    expect(messages(content)).toEqual(
+      expect.arrayContaining([
+        ['warning', 'th', 'thiếu đáp án tiếng Thái — cần điền trước khi bỏ draft'],
+      ]),
+    );
+  });
+
+  it('câu có th nhưng tokens trống → cảnh báo tự tách', () => {
+    expect(messages(valid({ sentences: [sentence('s1', { tokens: '' })] }))).toEqual([
+      ['warning', 'tokens', 'tokens tự tách khi build (Intl.Segmenter) — cần duyệt'],
+    ]);
+  });
+
+  it('classifier / thai_alt chỉ chứa chữ Thái', () => {
+    const content = valid({
+      words: [word('w', 'เรือ', { classifier: 'ลำx', thai_alt: 'นาวา|เรือboat' })],
+    });
+    expect(
+      relevant(content)
+        .filter((i) => i.severity === 'error')
+        .map((i) => i.field),
+    ).toEqual(['thai_alt.1', 'classifier']);
+  });
+
+  it('unit grammar: không áp 8–12 từ/bài, chỉ cảnh báo khi > 40 từ', () => {
+    const shape = (n: number) =>
+      checkContent(
+        setOf({
+          units: [unit('u11', { kind: 'grammar' })],
+          lessons: ['l1', 'l2', 'l3'].map((id) => lesson(id, 'u11')),
+          words: Array.from({ length: n }, (_, i) =>
+            word(`w${i}`, 'ดี', { unit_id: 'u11', lesson_id: 'l1' }),
+          ),
+        }),
+      )
+        .filter((i) => i.file === 'lessons.file')
+        .map((i) => [i.line, i.message]);
+    expect(shape(2)).toEqual([]);
+    expect(shape(41)).toEqual([[2, 'bài có 41 từ (unit ngữ pháp: tối đa 40, nên chia bài)']]);
   });
 });

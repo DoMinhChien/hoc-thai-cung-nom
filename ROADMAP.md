@@ -8,10 +8,10 @@
 ## Milestone đang mở
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
-> **🔵 M7 — Bài học** (nhánh `m7-lessons`, chưa bắt đầu). Phần logic (T7.1–T7.3) làm được ngay; phần UI (T7.4–T7.6) **🟠 chờ SCR-04/05** (M0.5b). Owner xem danh sách task trong PR của M6.
+> **🔵 M7 — Bài học** (nhánh `m7-lessons`, chưa bắt đầu). Phần logic (T7.1–T7.3) làm được ngay; phần UI (T7.4–T7.6) **🟠 chờ SCR-04/05** (M0.5b).
 > ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
-> 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6 xong (Tone Engine giữ nhưng đóng băng).
-> ⚪ M0.5b (SCR-03..09 v7) làm song song: Claude Desktop soạn spec + wireframe → owner duyệt. ⚪ M4 chờ S9 + PDF/biểu mẫu giáo viên.
+> 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6, M6.1 xong (Tone Engine giữ nhưng đóng băng).
+> ⚪ M0.5b (SCR-03..09 v7) làm song song: Claude Desktop soạn spec + wireframe → owner duyệt. ⚪ M4: PDF mẫu ✅ (`sources/`, plan 0.11 + 5.3 v7.1), còn chờ **S9** (Anthropic key).
 
 ---
 
@@ -38,16 +38,17 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M1 | Đăng nhập Google (Facebook → Phase 2) | 🟢 | M0 ✅, M0.5a ✅, S4 ✅, S5 ✅, S7 ✅, S12 ✅ — PR #5; smoke test production OK |
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
-| M4 | PDF pipeline Python | ⚪ | M3 ✅, M2.1 ✅, S9, PDF mẫu (S10) |
+| M4 | PDF pipeline Python (Claude vision, `--suggest`) | ⚪ | M6.1, **S9**; PDF mẫu ✅ (`sources/`) |
 | M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | ⚪ | Làm dần, mỗi màn trước milestone dùng nó |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
 | M5.5 | **Dọn phạm vi v7**: gỡ chữ cái/thanh điệu khỏi UI, nav mới, schema tùy chọn | 🟢 | M2.1 ✅; plan mục 0 — PR #11 |
 | ~~M6 cũ~~ | ~~Bảng chữ cái + Tone Trainer~~ | ⛔ Hủy (v7) | — |
 | M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | 🟢 | M5.5 ✅ — PR #12 |
-| M7 | Bài học: `/units`, chi tiết unit, bài học 4 bước, AudioProvider | 🔵 | M6 ✅; UI chờ SCR-04/05 (M0.5b) |
+| M6.1 | Content model theo tài liệu giáo viên (plan 0.11): `kind`, B1, `classifier`, `thai_alt`, `note_vi`, draft được thiếu nghĩa/đáp án | 🟢 | M6 ✅; PDF mẫu ✅ — PR #13 |
+| M7 | Bài học: `/units`, chi tiết unit, bài học (bỏ qua bước trống), AudioProvider | 🔵 | M6.1 ✅; UI chờ SCR-04/05 (M0.5b) |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (E-07) | ⚪ | M5.5 |
-| M9 | Bài tập: E-01..E-13, `/practice`, SRS cho câu | ⚪ | M7, M8, SCR-06 |
+| M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu | ⚪ | M7, M8, SCR-06 |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-10..P-12, R1 v7) | ⚪ | M9, SCR-03/07/09 |
 | M10.5 | Trò chơi F-01, F-02', F-03' + hình/mẹo nhớ cho từ | ⚪ | M9, SCR-08 |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
@@ -194,6 +195,26 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - `pnpm test`, `pnpm e2e`, `content:check` pass.
 - ✅ Kết quả: nav 7 mục đúng thứ tự SCR-00 v7 (test); URL cũ `/alphabet`, `/tones`, `/vocab*`, `/reading*` → `/units`, `/review`, `/listening` → `/practice`; `grep -ri tone apps/web/src` chỉ còn redirect `/tones` và `Notice.tone` (cảnh báo/lỗi Login, không liên quan); ESLint chặn import Tone Engine (đã thử); `content:check` 6 mục, 0 lỗi; E2E 162/162 local (win32), baseline mới `/login` + `/dev/progress` (owner xem).
 
+### M6.1 — Content model theo tài liệu giáo viên 🟢
+
+**Requirement:** plan **0.11** (quyết định 2–6, 8), 0.9 (cột mới). Không có UI.
+
+**Cần trước:** M6 ✅. PDF mẫu ở `sources/` (gitignored) — **chỉ đọc để hiểu bố cục**, không chép nội dung vào repo ngoài vài dòng content mẫu `draft: true`.
+
+**Task**
+- [x] T6.1.1 Schema: `Unit.kind` (`theme`|`grammar`, mặc định `theme`), `Unit.level` thêm `B1`; `Word.classifier`, `Word.thai_alt` (`|`), `Word.note_vi`; `meaning_vi` và `Sentence.th` cho phép rỗng **chỉ khi** `draft: true`; xuất lại JSON Schema; unit test.
+- [x] T6.1.2 `content:check`: `classifier`/`thai_alt` chỉ chứa chữ Thái; lỗi khi item không draft thiếu `meaning_vi`/`th`; cảnh báo "thiếu nghĩa", "thiếu đáp án", "tokens tự tách — cần duyệt"; unit `grammar` không áp cảnh báo 8–12 từ/bài (thay bằng cảnh báo > 40 từ/bài).
+- [x] T6.1.3 `content:build`: `tokens` rỗng → tách bằng `Intl.Segmenter('th')`, ghi cờ `auto_tokens`; bundle unit có `kind`, `level`; lesson có `steps` = các bước có dữ liệu (`vocab`, `grammar`, `dialogue`, `exercise`).
+- [x] T6.1.4 `content/templates/`: cột mới + README thêm mục **"Ánh xạ tài liệu Plern-Pin"** (bảng loại từ → `words.csv` + `classifier`; danh sách น่า → `grammar.yaml` + `words.csv`; "Bài tập vận dụng" → `sentences.csv` với `vi`, `th` trống, `draft: true`).
+- [x] T6.1.5 Content mẫu: thêm **Unit 3 "Loại từ"** (`theme`) và **Unit 11 "Các trường hợp của น่า"** (`grammar`), mỗi unit ≤ 5 từ + ≤ 3 câu, gồm 1 từ thiếu nghĩa và 1 câu thiếu `th` (draft) để chạy đủ kiểm tra; `source` theo 0.11 #8.
+
+**Tiêu chí nghiệm thu**
+- `content:check` báo lỗi khi bỏ `draft` ở item thiếu nghĩa/đáp án; cảnh báo đúng loại khi còn draft.
+- Build ổn định 2 lần cùng hash; bundle có `kind`, `steps`.
+- Coverage core giữ nguyên; CI pass.
+
+**Kết quả (2026-11-17):** schema + JSON Schema v7.1; `content:check` 48 mục, 0 lỗi, 18 cảnh báo (1 từ thiếu nghĩa, 3 câu thiếu đáp án, 2 câu tokens tự tách — đúng thiết kế); `content:build` thêm `unit-u03.json`, `unit-u11.json`, `steps` (u11 `grammar`: Mẫu câu → Từ vựng → Bài tập), chạy lại "không đổi". Tests: core 258 (coverage lines 100%), scripts 72, web 156. Content mẫu lấy vài dòng từ trang 1/4 của 2 PDF; 2 câu (s-u03-001, bản dịch s-u11-017) do agent soạn — cần duyệt.
+
 ### M7 — Bài học 🔵
 
 **Requirement:** plan **0.4** (bài học 4 bước, mở khóa mềm, checklist can-do), **0.7** (`/units`, `/units/:unitId`, `/units/:unitId/:lessonId`), **0.8** (P-10 `UnitPath`, P-11 `CanDoList`, P-04 theo unit), **7.2** (AudioProvider), **B-03/B-04** (từ mới vào SRS), **C-02/C-03/C-04/C-06/C-07** (tra từ, toggle bản dịch, phát câu trong bước Hội thoại), 7.3–7.4.
@@ -201,12 +222,12 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Cần trước:** M6 ✅. **SCR-04** (lộ trình + chi tiết unit) và **SCR-05** (bài học 4 bước) chưa có → T7.4–T7.6 🟠 chờ M0.5b (AGENTS.md mục 4: làm logic/test trước, báo owner).
 
 **Task**
-- [ ] T7.1 Types bundle content (`UnitSummary`, `UnitBundle`, `Manifest`) chuyển từ `scripts/content/build.ts` vào `packages/core` (web và script dùng chung) + content client trong `apps/web` (`fetch` `manifest.json` → `units.json` / `unit-<id>.json`, cache theo `manifest.version`, validate bằng Zod) + hook `useUnits()`, `useUnit(id)`. Unit test (fetch giả).
+- [ ] T7.1 Types bundle content (`UnitSummary`, `UnitBundle`, `BuiltLesson` + `steps`, `BuiltSentence` + `auto_tokens`, `Manifest`) chuyển từ `scripts/content/build.ts` vào `packages/core` (web và script dùng chung) + content client trong `apps/web` (`fetch` `manifest.json` → `units.json` / `unit-<id>.json`, cache theo `manifest.version`, validate bằng Zod) + hook `useUnits()`, `useUnit(id)`. Unit test (fetch giả).
 - [ ] T7.2 Tiến độ bài học: record `LessonProgressRecord` (bước đã xong 1–4, điểm bài tập, hoàn thành khi ≥ 80%) + `CanDoRecord` (tick tay); Dexie store mới + migration `schemaVersion`; `ProgressRepository` mở rộng (Dexie + memory, contract test); selector core: trạng thái unit chưa học/đang học/xong (P-10), can-do tự tick khi mọi bài xong (P-11), % theo unit (P-04). `ITEM_TYPES` thêm `sentence` (chuẩn bị M9).
 - [ ] T7.3 `WebSpeechProvider` (`th-TH`) + ưu tiên file `audio/<id>` khi câu có `audio`; không có giọng Thái → trạng thái để UI hướng dẫn cài. Unit test với mock `speechSynthesis`/`Audio`.
-- [ ] T7.4 🟠 `/units` lộ trình 16 unit chia A1/A2, `UnitPath` + `ProgressRing` mỗi unit (SCR-04).
+- [ ] T7.4 🟠 `/units` lộ trình theo **chuyên đề giáo viên** (thứ tự `order`, nhãn `level` + `kind`; plan 0.11 #1), `UnitPath` + `ProgressRing` mỗi unit (SCR-04).
 - [ ] T7.5 🟠 `/units/:unitId`: danh sách bài, `CanDoList`, từ vựng của unit (SCR-04).
-- [ ] T7.6 🟠 `/units/:unitId/:lessonId` focus layout, stepper 4 bước mở khóa mềm: Từ vựng (flashcard Thái → Việt, phiên âm ẩn, từ mới vào SRS), Mẫu câu, Hội thoại (tra từ panel phải, toggle bản dịch, phát câu), Bài tập (khung + chấm ≥ 80% — loại bài tập thật ở M9) (SCR-05).
+- [ ] T7.6 🟠 `/units/:unitId/:lessonId` focus layout, stepper theo `lesson.steps` (bỏ qua bước không có dữ liệu, plan 0.11 #3), mở khóa mềm: Từ vựng (flashcard Thái → Việt, phiên âm ẩn, từ mới vào SRS), Mẫu câu, Hội thoại (tra từ panel phải, toggle bản dịch, phát câu), Bài tập (khung + chấm ≥ 80% — loại bài tập thật ở M9) (SCR-05).
 - [ ] T7.7 E2E luồng học 1 bài (Unit 1 mẫu) + axe + screenshot baseline 3 route mới.
 
 **Tiêu chí nghiệm thu**
@@ -283,6 +304,8 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-17 | M6.1 → M7 | Commit docs v7.1 (plan 0.11). T6.1.1–T6.1.5: `Unit.kind` + level B1/tùy chọn, `Word.classifier`/`thai_alt`/`note_vi`, nghĩa/đáp án được trống khi draft (JSON Schema xuất lại); `content:check` cảnh báo thiếu nghĩa/đáp án/tokens tự tách, unit `grammar` ≤ 40 từ/bài; build tự tách `tokens` (`auto_tokens`) + `lesson.steps`; templates + README ánh xạ Plern-Pin; content mẫu Unit 3 + Unit 11 (draft). Đóng M6.1 → 🟢, M7 🔵 | — | M7 UI chờ SCR-04/05; owner duyệt content mẫu Unit 3/11 | `m6.1-teacher-content` PR #13 |
+| 2026-11-17 | M6.1 (plan) | Owner gửi 2 PDF mẫu giáo viên (`sources/03-loai-tu.pdf`, `sources/11-cac-truong-hop-cua-na.pdf`, gitignored). Plan v7.1 mục 0.11: PDF ảnh + watermark → Claude vision; lộ trình theo chuyên đề giáo viên; schema thêm `kind`, B1, `classifier`, `thai_alt`, `note_vi`; E-14 Loại từ. Mở **M6.1** 🔵 trước M7 | — | M4 chờ S9 | — |
 | 2026-11-17 | M6 → M7 | T6.1–T6.7: schema `Unit`/`Lesson`/`Word` v7/`Sentence`/`Grammar`/`Dialogue` (bỏ `Deck`/`WordRow`/`Reading`/`MinimalPair`, JSON Schema 6 file), loader 6 file + `--input` theo tên, `content:check` v7 (khóa ngoại, `tokens` = `th`, `distractors`, `th_alt`, ký tự Thái; cảnh báo 3–4 bài/8–12 từ/4–8 câu thoại), `content:build` `units.json` + `unit-<id>.json`, `content/templates/` + README, content mẫu Unit 1–2 (draft), docs (AGENTS 10, plan 5.4–5.6, SETUP S10). Đóng M6 → 🟢, mở M7 🔵 (T7.1–T7.7) | — | M7 UI (T7.4–T7.6) chờ SCR-04/05; owner duyệt content mẫu Unit 1–2 + task M7 | `m6-content-v7` PR #12 |
 | 2026-11-16 | M5.5 → M6 | Commit docs v7. T5.5.1–T5.5.7: nav + route v7 (`/units`, `/practice`, `/words`; URL cũ redirect), xóa `MasteryGrid`/`HeatmapTable`/`ToneBarChart`/`ToneContour`/`ToneTag` + selector `ruleAccuracy`/`toneAccuracy`, xóa `color.tone` (tokens.json, CSS, Tailwind), `/login` thẻ từ vựng ก๋วยเตี๋ยว + câu chữ v7, Word `syllables`/`tones` tùy chọn + xóa content chữ cái/thanh/bài đọc/minimal pairs (JSON Schema xuất lại), Tone Engine đóng băng (README + ESLint), sitemap flows.md v7; E2E 162/162 + baseline mới. Đóng M5.5 → 🟢, mở M6 🔵 (T6.1–T6.7) | — | Owner: xem baseline `/login`, `/dev/progress`; duyệt task M6 | `m5.5-scope-v7` PR #11 |
 | 2026-11-16 | v7 (plan) | Owner chốt đổi phạm vi theo phản hồi demo: A1–A2, bỏ chữ cái + thanh điệu, Ôn tập → Bài tập, bỏ MasteryGrid/HeatmapTable; plan v7 mục 0 (16 chủ đề, bài học 4 bước, Module E bài tập dịch câu, mẫu content); hủy M6 cũ, mở **M5.5** 🔵; milestone M6–M10.5 định nghĩa lại | — | — | — |
