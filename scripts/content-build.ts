@@ -1,5 +1,5 @@
 /**
- * `pnpm content:build` — validate rồi xuất `content/` → `apps/web/public/content/*.json` + manifest.
+ * `pnpm content:build` — validate rồi xuất `content/` → `apps/web/public/content/` (`units.json`, `unit-<id>.json`, manifest).
  * Có lỗi validate → exit 1, không ghi gì. Web build/dev chạy lệnh này trước.
  */
 import path from 'node:path';
