@@ -1,5 +1,5 @@
 /**
- * `pnpm content:check [--input <file|thư mục>] [--json]` — validate nội dung (plan 5.6, 5.3 bước 5).
+ * `pnpm content:check [--input <file|thư mục>] [--json]` — validate nội dung (plan 0.9, 5.3 bước 5).
  * Chi tiết tham số: `content/cli.ts`.
  */
 import path from 'node:path';
