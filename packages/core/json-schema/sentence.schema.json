@@ -20,9 +20,7 @@
       "minLength": 1
     },
     "th": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "[\\u0E00-\\u0E7F]"
+      "type": "string"
     },
     "th_alt": {
       "type": "string"
@@ -55,9 +53,7 @@
     "id",
     "unit_id",
     "lesson_id",
-    "vi",
-    "th",
-    "tokens"
+    "vi"
   ],
   "additionalProperties": false
 }

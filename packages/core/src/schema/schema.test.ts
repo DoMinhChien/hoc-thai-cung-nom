@@ -207,12 +207,21 @@ describe('UnitSchema', () => {
     expect(UnitSchema.parse(unit)).toEqual({
       unit_id: 'u01',
       level: 'A1',
+      kind: 'theme',
       order: 1,
       title_vi: 'Chào hỏi',
       title_th: 'ทักทาย',
       can_do: ['Chào hỏi', 'Giới thiệu tên'],
       draft: true,
     });
+  });
+
+  it('v7.1: level B1 hoặc trống; kind grammar', () => {
+    expect(UnitSchema.parse({ ...unit, level: 'B1', kind: 'grammar' })).toMatchObject({
+      level: 'B1',
+      kind: 'grammar',
+    });
+    expect(UnitSchema.parse({ ...unit, level: '' }).level).toBeUndefined();
   });
 
   it('title_th tùy chọn; draft trống = false', () => {
@@ -223,7 +232,8 @@ describe('UnitSchema', () => {
   });
 
   it.each([
-    ['level', { level: 'B1' }],
+    ['level', { level: 'C1' }],
+    ['kind', { kind: 'topic' }],
     ['order', { order: '0' }],
     ['order', { order: '1.5' }],
     ['title_th', { title_th: 'Chao' }],
@@ -281,6 +291,28 @@ describe('WordSchema', () => {
     expect(issuePaths(WordSchema.safeParse({ ...word, ...patch }))).toContain(path);
   });
 
+  it('v7.1: thai_alt tách |, note_vi, classifier', () => {
+    const w = WordSchema.parse({
+      ...word,
+      thai_alt: 'ไม้แจว | ไม้พาย',
+      note_vi: 'dùng cho thuyền lớn',
+      classifier: 'ลำ',
+    });
+    expect(w).toMatchObject({
+      thai_alt: ['ไม้แจว', 'ไม้พาย'],
+      note_vi: 'dùng cho thuyền lớn',
+      classifier: 'ลำ',
+    });
+    expect(issuePaths(WordSchema.safeParse({ ...word, classifier: 'tua' }))).toContain(
+      'classifier',
+    );
+  });
+
+  it('v7.1: meaning_vi được trống chỉ khi draft: true', () => {
+    expect(WordSchema.parse({ ...word, meaning_vi: '', draft: 'true' }).meaning_vi).toEqual([]);
+    expect(issuePaths(WordSchema.safeParse({ ...word, meaning_vi: '' }))).toEqual(['meaning_vi']);
+  });
+
   it('v7: cột cũ deck/syllables/tones không còn hợp lệ', () => {
     const result = WordSchema.safeParse({ ...word, deck: 'bai-01', tones: 'mid' });
     expect(result.error?.issues[0]).toMatchObject({
@@ -302,6 +334,19 @@ describe('SentenceSchema', () => {
     });
   });
 
+  it('v7.1: draft được thiếu th (chưa có đáp án); tokens trống → []', () => {
+    expect(
+      SentenceSchema.parse({
+        ...sentence,
+        th: '',
+        th_alt: '',
+        tokens: '',
+        distractors: '',
+        draft: 'true',
+      }),
+    ).toMatchObject({ th: undefined, tokens: [], draft: true });
+  });
+
   it('th_alt/distractors/grammar_id tùy chọn', () => {
     expect(
       SentenceSchema.parse({ ...sentence, th_alt: '', distractors: '', grammar_id: '' }),
@@ -309,7 +354,7 @@ describe('SentenceSchema', () => {
   });
 
   it.each([
-    ['tokens', { tokens: '' }],
+    ['th', { th: '' }],
     ['tokens.1', { tokens: 'ผม|name' }],
     ['th', { th: 'Toi ten la Nam' }],
     ['th_alt.0', { th_alt: 'abc' }],

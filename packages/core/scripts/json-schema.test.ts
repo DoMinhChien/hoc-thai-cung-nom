@@ -23,15 +23,16 @@ describe('json-schema/ đã commit khớp schema Zod', () => {
       required: string[];
     };
     expect(schema.properties.meaning_vi?.type).toBe('string');
-    expect(schema.required.sort()).toEqual(
-      ['id', 'lesson_id', 'meaning_vi', 'thai', 'unit_id'].sort(),
-    );
+    // v7.1: meaning_vi được trống khi draft — ràng buộc chéo chỉ ở validator TS.
+    expect(schema.required.sort()).toEqual(['id', 'lesson_id', 'thai', 'unit_id'].sort());
     expect(Object.keys(schema.properties)).not.toContain('tones');
   });
 
-  it('sentence: tokens bắt buộc, th_alt/distractors tùy chọn', () => {
+  it('sentence: v7.1 th/tokens tùy chọn (draft, tự tách), vi bắt buộc', () => {
     const schema = JSON.parse(expected['sentence.schema.json']!) as { required: string[] };
-    expect(schema.required).toContain('tokens');
+    expect(schema.required).toContain('vi');
+    expect(schema.required).not.toContain('th');
+    expect(schema.required).not.toContain('tokens');
     expect(schema.required).not.toContain('th_alt');
     expect(schema.required).not.toContain('distractors');
   });

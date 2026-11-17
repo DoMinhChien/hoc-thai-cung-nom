@@ -7,9 +7,9 @@
 - Còn dùng ở: schema `SyllableAnalysis` (regex phụ âm dẫn). `content:check` v7 (M6) không còn đọc file chữ cái/tone-drills.
 - Muốn dùng lại (vd. Phase 2) → owner quyết định, viết ADR mới, gỡ quy tắc ESLint.
 
-| File | Nội dung |
-|---|---|
-| `classes.ts` | Lớp phụ âm trung/cao/thấp, phụ âm theo sau อักษรนำ |
-| `engine.ts` | `computeTone` 4 bước (plan 6.1), `TONE_RULES` (bảng 6.3) |
-| `inherent-final.ts` | ไ– ใ– –ำ เ–า có âm cuối sẵn (plan 6.2) |
-| `engine.test.ts` | Bộ test plan 6.3 |
+| File                | Nội dung                                                 |
+| ------------------- | -------------------------------------------------------- |
+| `classes.ts`        | Lớp phụ âm trung/cao/thấp, phụ âm theo sau อักษรนำ        |
+| `engine.ts`         | `computeTone` 4 bước (plan 6.1), `TONE_RULES` (bảng 6.3) |
+| `inherent-final.ts` | ไ– ใ– –ำ เ–า có âm cuối sẵn (plan 6.2)                   |
+| `engine.test.ts`    | Bộ test plan 6.3                                         |
