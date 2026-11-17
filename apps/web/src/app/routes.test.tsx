@@ -1,5 +1,5 @@
 import { MockAuthService, mockUser } from '@nom/core';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -65,6 +65,15 @@ describe('routes', () => {
     for (const el of screen.getAllByTestId('typography-th')) {
       expect(el).toHaveAttribute('lang', 'th');
     }
+  });
+
+  it('/dev/typing: gõ câu mẫu rồi kiểm tra → hiện kết quả', async () => {
+    renderApp('/dev/typing');
+    fireEvent.change(screen.getByTestId('thai-input'), { target: { value: 'ผมมีพี่ชายหนึ่งคน' } });
+    fireEvent.click(screen.getByTestId('typing-check'));
+    expect(await screen.findByTestId('typing-feedback')).toHaveAttribute('data-verdict', 'correct');
+    fireEvent.change(screen.getByTestId('thai-input'), { target: { value: 'ผม' } });
+    expect(screen.queryByTestId('typing-feedback')).toBeNull();
   });
 });
 

@@ -8,7 +8,7 @@
 ## Milestone đang mở
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
-> **🔵 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`) — mở **song song** vì UI M7 chờ SCR-04/05 (owner chốt 2026-11-17).
+> **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong, chờ owner xem baseline `/dev/typing`. M9 kế tiếp chờ M7 + SCR-06.
 > **🔵 M7 — Bài học** (nhánh `m7-lessons`, chưa bắt đầu). Phần logic (T7.1–T7.3) làm được ngay; phần UI (T7.4–T7.6) **🟠 chờ SCR-04/05** (M0.5b).
 > ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
 > 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6, M6.1 xong (Tone Engine giữ nhưng đóng băng).
@@ -48,7 +48,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | 🟢 | M5.5 ✅ — PR #12 |
 | M6.1 | Content model theo tài liệu giáo viên (plan 0.11): `kind`, B1, `classifier`, `thai_alt`, `note_vi`, draft được thiếu nghĩa/đáp án | 🟢 | M6 ✅; PDF mẫu ✅ — PR #13 |
 | M7 | Bài học: `/units`, chi tiết unit, bài học (bỏ qua bước trống), AudioProvider | 🔵 | M6.1 ✅; UI chờ SCR-04/05 (M0.5b) |
-| M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🔵 | M5.5 ✅; song song M7 (owner chốt) |
+| M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu | ⚪ | M7, M8, SCR-06 |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-10..P-12, R1 v7) | ⚪ | M9, SCR-03/07/09 |
 | M10.5 | Trò chơi F-01, F-02', F-03' + hình/mẹo nhớ cho từ | ⚪ | M9, SCR-08 |
@@ -216,7 +216,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Kết quả (2026-11-17):** schema + JSON Schema v7.1; `content:check` 48 mục, 0 lỗi, 18 cảnh báo (1 từ thiếu nghĩa, 3 câu thiếu đáp án, 2 câu tokens tự tách — đúng thiết kế); `content:build` thêm `unit-u03.json`, `unit-u11.json`, `steps` (u11 `grammar`: Mẫu câu → Từ vựng → Bài tập), chạy lại "không đổi". Tests: core 258 (coverage lines 100%), scripts 72, web 156. Content mẫu lấy vài dòng từ trang 1/4 của 2 PDF; 2 câu (s-u03-001, bản dịch s-u11-017) do agent soạn — cần duyệt.
 
-### M8 — Bàn phím ảo Thái + chấm gõ câu 🔵
+### M8 — Bàn phím ảo Thái + chấm gõ câu 🟢
 
 **Requirement:** plan **G-06** (bàn phím ảo Kedmanee ẩn/hiện, click + phím vật lý, nhận bàn phím Thái của hệ điều hành, chuẩn hóa, chấm đúng / sai dấu thanh / sai chữ + diff), **0.5 E-07** (đáp án chấp nhận `th` + `th_alt`, bỏ khoảng trắng, ครับ/ค่ะ/คะ tùy chọn), **E-12** (diff khi sai), 7.4 (luồng E2E 4), 7.5 (Kedmanee TIS 820-2538, `simple-keyboard`).
 
@@ -227,13 +227,15 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T8.2 Chấm gõ câu `gradeThaiTyping(input, accepted)` trong core: chuẩn hóa (`normalizeThai`, bỏ khoảng trắng + dấu câu, ครับ/ค่ะ/คะ tùy chọn cuối mỗi cụm), kết quả `correct` / `tone` (chỉ sai dấu thanh) / `wrong`, diff theo cụm ký tự (grapheme) với đáp án gần nhất; `acceptedAnswers(sentence)` = `th` + `th_alt`. Unit test gồm gõ dấu thanh trước nguyên âm trên, `ํ`+`า`.
 - [x] T8.3 Web `ThaiKeyboard` (`simple-keyboard`, layout từ core, Shift/Caps, nút `<button>`, bấm không làm mất focus ô nhập, CSS theo tokens) + `ThaiTextInput` (chèn tại con trỏ, phím vật lý ra chữ Latin → map Kedmanee, bàn phím Thái của hệ điều hành/IME giữ nguyên, nút ẩn/hiện bàn phím). Component test.
 - [x] T8.4 Web `TypingFeedback`: kết quả đúng / sai dấu thanh / sai chữ + diff (thiếu/thừa) + đáp án đúng, `lang="th"`. Component test.
-- [ ] T8.5 `/dev/typing` (trang mẫu, câu mẫu draft của content) + E2E luồng 4 plan 7.4 (bàn phím ảo, dấu thanh trước nguyên âm trên → đúng; phím vật lý map Kedmanee) + axe + screenshot baseline.
+- [x] T8.5 `/dev/typing` (trang mẫu, câu mẫu draft của content) + E2E luồng 4 plan 7.4 (bàn phím ảo, dấu thanh trước nguyên âm trên → đúng; phím vật lý map Kedmanee) + axe + screenshot baseline.
 
 **Tiêu chí nghiệm thu**
 - Gõ `พ` `่` `ี` (dấu thanh trước nguyên âm trên) hay `ค` `ํ` `า` vẫn chấm **đúng**; sai mỗi dấu thanh → **sai dấu thanh**; còn lại → **sai chữ** kèm diff.
 - Câu có `th_alt` / thiếu hoặc thừa ครับ/ค่ะ/คะ / khác khoảng trắng → vẫn đúng.
 - Bàn phím ảo bấm bằng chuột không mất con trỏ; chưa cài bàn phím Thái vẫn gõ được bằng phím vật lý; đã cài thì nhận nguyên.
 - Logic thuần trong core, coverage 100% lines; không lỗi axe serious/critical; baseline `/dev/typing` owner đã xem.
+
+**Kết quả (2026-11-17):** core `KEDMANEE_ROWS`/`kedmaneeChar`, `gradeThaiTyping`/`diffThai`/`acceptedAnswers`; web `ThaiKeyboard` (`simple-keyboard` 3.8.205, theme `hg-theme-nom` chỉ dùng tokens — không nạp CSS mặc định), `ThaiTextInput`, `TypingFeedback`, `/dev/typing`. Tests: core 280 (coverage lines 100%), scripts 72, web 166; E2E `typing.spec.ts` + axe `/dev/typing` xanh 3 trình duyệt × 2 viewport; baseline Windows `dev-typing-*-win32.png` (Linux do CI sinh). Ghi chú: ครับ/ค่ะ/คะ tùy chọn ở cuối mỗi cụm của đáp án (gõ liền vẫn nhận); dấu câu ASCII/ngoặc kép bị bỏ khi chấm (giữ ฯ ๆ).
 
 ### M7 — Bài học 🔵
 
@@ -324,6 +326,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-17 | M8 | Mở M8 song song M7 (owner chốt), chi tiết hóa T8.1–T8.5. T8.1 layout Kedmanee TIS 820-2538 trong core; T8.2 `gradeThaiTyping` (chuẩn hóa, `th_alt`, ครับ/ค่ะ/คะ tùy chọn, sai dấu thanh, diff grapheme); T8.3 `ThaiKeyboard` (`simple-keyboard`, CSS tokens) + `ThaiTextInput` (map phím vật lý, ẩn/hiện); T8.4 `TypingFeedback`; T8.5 `/dev/typing` + E2E luồng 4 + axe + baseline. M8 → 🟢 | — | Owner xem baseline `/dev/typing`; M9 chờ M7 (SCR-04/05) + SCR-06 | `m8-thai-keyboard` PR |
 | 2026-11-17 | M6.1 → M7 | Commit docs v7.1 (plan 0.11). T6.1.1–T6.1.5: `Unit.kind` + level B1/tùy chọn, `Word.classifier`/`thai_alt`/`note_vi`, nghĩa/đáp án được trống khi draft (JSON Schema xuất lại); `content:check` cảnh báo thiếu nghĩa/đáp án/tokens tự tách, unit `grammar` ≤ 40 từ/bài; build tự tách `tokens` (`auto_tokens`) + `lesson.steps`; templates + README ánh xạ Plern-Pin; content mẫu Unit 3 + Unit 11 (draft). Đóng M6.1 → 🟢, M7 🔵 | — | M7 UI chờ SCR-04/05; owner duyệt content mẫu Unit 3/11 | `m6.1-teacher-content` PR #13 |
 | 2026-11-17 | M6.1 (plan) | Owner gửi 2 PDF mẫu giáo viên (`sources/03-loai-tu.pdf`, `sources/11-cac-truong-hop-cua-na.pdf`, gitignored). Plan v7.1 mục 0.11: PDF ảnh + watermark → Claude vision; lộ trình theo chuyên đề giáo viên; schema thêm `kind`, B1, `classifier`, `thai_alt`, `note_vi`; E-14 Loại từ. Mở **M6.1** 🔵 trước M7 | — | M4 chờ S9 | — |
 | 2026-11-17 | M6 → M7 | T6.1–T6.7: schema `Unit`/`Lesson`/`Word` v7/`Sentence`/`Grammar`/`Dialogue` (bỏ `Deck`/`WordRow`/`Reading`/`MinimalPair`, JSON Schema 6 file), loader 6 file + `--input` theo tên, `content:check` v7 (khóa ngoại, `tokens` = `th`, `distractors`, `th_alt`, ký tự Thái; cảnh báo 3–4 bài/8–12 từ/4–8 câu thoại), `content:build` `units.json` + `unit-<id>.json`, `content/templates/` + README, content mẫu Unit 1–2 (draft), docs (AGENTS 10, plan 5.4–5.6, SETUP S10). Đóng M6 → 🟢, mở M7 🔵 (T7.1–T7.7) | — | M7 UI (T7.4–T7.6) chờ SCR-04/05; owner duyệt content mẫu Unit 1–2 + task M7 | `m6-content-v7` PR #12 |

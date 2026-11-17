@@ -3,7 +3,12 @@ import { expect, test, type Page } from '@playwright/test';
 import { ROUTE_SAMPLES } from '../src/app/route-samples';
 import { chooseGuest, signInWithGoogle, uniqueEmail } from './helpers';
 
-const PATHS = [...ROUTE_SAMPLES.map((r) => r.path), '/dev/typography', '/dev/progress'];
+const PATHS = [
+  ...ROUTE_SAMPLES.map((r) => r.path),
+  '/dev/typography',
+  '/dev/progress',
+  '/dev/typing',
+];
 
 async function expectNoSevereViolations(page: Page) {
   // Đợi hiệu ứng mở dialog chạy xong — chữ đang mờ dần làm axe báo sai độ tương phản.

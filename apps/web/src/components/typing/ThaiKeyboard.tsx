@@ -1,6 +1,6 @@
 import { KEDMANEE_ROWS } from '@nom/core';
 import { useEffect, useRef } from 'react';
-import Keyboard from 'simple-keyboard';
+import { SimpleKeyboard } from 'simple-keyboard';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 
@@ -67,7 +67,7 @@ export function ThaiKeyboard({ onKey, onBackspace, id, className }: ThaiKeyboard
         ...pressed(lock, LOCK),
       ],
     });
-    const keyboard = new Keyboard(ref.current!, {
+    const keyboard = new SimpleKeyboard(ref.current!, {
       layout: LAYOUT,
       display: { ...DISPLAY, [BKSP]: '⌫', [SHIFT]: '⇧', [LOCK]: '⇪', [SPACE]: ' ' },
       theme: 'hg-theme-nom',
