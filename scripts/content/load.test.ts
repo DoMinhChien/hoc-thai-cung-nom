@@ -161,12 +161,13 @@ describe('YAML', () => {
 describe('CSV', () => {
   it('lỗi kèm dòng (tính cả header) và trường; dòng hợp lệ vẫn được đọc', async () => {
     const root = await tree({
-      'sentences.csv': `${SENTENCES}s2,u01,u01-l1,Tốt.,ดี,,,,,,\ns3,u01,u01-l1,Tốt.,ดี,,ดี|good,,,,\n`,
+      // s2: thiếu th mà không draft (v7.1 chỉ cho phép khi draft).
+      'sentences.csv': `${SENTENCES}s2,u01,u01-l1,Tốt.,,,ดี,,,,\ns3,u01,u01-l1,Tốt.,ดี,,ดี|good,,,,\n`,
     });
     const { content, issues } = await loadContent(root, { cwd: root });
     expect(content.sentences.map((s) => s.value.id)).toEqual(['s1']);
     expect(issues).toEqual([
-      expect.objectContaining({ file: 'sentences.csv', line: 3, field: 'tokens' }),
+      expect.objectContaining({ file: 'sentences.csv', line: 3, field: 'th' }),
       expect.objectContaining({ line: 4, field: 'tokens.1' }),
     ]);
   });
@@ -181,9 +182,8 @@ describe('CSV', () => {
   it('thiếu cột bắt buộc → lỗi ở từng dòng nêu cột', async () => {
     const root = await tree({ 'words.csv': 'id,thai\nx,ดี\n' });
     const { issues } = await loadContent(root, { cwd: root });
-    expect(issues.map((i) => i.field)).toEqual(
-      expect.arrayContaining(['unit_id', 'lesson_id', 'meaning_vi']),
-    );
+    // v7.1: meaning_vi được trống khi draft → không còn là cột bắt buộc.
+    expect(issues.map((i) => i.field)).toEqual(['unit_id', 'lesson_id']);
     expect(issues.every((i) => i.line === 2)).toBe(true);
   });
 

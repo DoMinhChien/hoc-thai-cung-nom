@@ -2,13 +2,18 @@
  * Kiểm tra chéo sau khi loader đã parse schema (plan 0.9, 5.6 — ROADMAP T6.4):
  * id duy nhất theo loại, khóa ngoại giữa unit/lesson/word/sentence/grammar/dialogue,
  * `tokens` ghép lại = `th`, `distractors` không trùng `tokens`, `th_alt` khác `th`,
- * ký tự ngoài bảng Thái ở trường Thái. Cảnh báo cấu trúc bài học (plan 0.4) và mục `draft: true`.
+ * ký tự ngoài bảng Thái ở trường Thái. Cảnh báo: thiếu nghĩa/đáp án, tokens tự tách (plan 0.11),
+ * cấu trúc bài học (plan 0.4) và mục `draft: true`.
  */
 import { normalizeThai } from '@nom/core';
 import {
   ID_FIELD,
   idOf,
-  type ContentIssue, type ContentKind, type ContentSet, type Located } from './load';
+  type ContentIssue,
+  type ContentKind,
+  type ContentSet,
+  type Located,
+} from './load';
 
 /** Tên hiển thị khi báo lỗi theo loại. */
 const KIND_LABEL: Record<ContentKind, string> = {
@@ -25,6 +30,8 @@ export const RANGES = {
   wordsPerLesson: [8, 12],
   lessonsPerUnit: [3, 4],
   linesPerDialogue: [4, 8],
+  /** Unit `grammar` (plan 0.11 #3). */
+  maxWordsPerGrammarLesson: 40,
 } as const;
 
 export function checkContent(content: ContentSet): ContentIssue[] {
@@ -33,6 +40,7 @@ export function checkContent(content: ContentSet): ContentIssue[] {
     ...checkReferences(content),
     ...checkSentences(content),
     ...checkThaiCharacters(content),
+    ...checkMissing(content),
     ...checkLessonShape(content),
     ...checkDrafts(content),
   ];
@@ -125,9 +133,12 @@ export const compactThai = (text: string) => normalizeThai(text).replace(/\s+/gu
 function checkSentences(content: ContentSet): ContentIssue[] {
   return content.sentences.flatMap((s) => {
     const { th, th_alt, tokens, distractors } = s.value;
+    // Chưa có đáp án (draft): cảnh báo ở checkMissing, không có gì để đối chiếu.
+    if (th === undefined) return [];
     const issues: ContentIssue[] = [];
     const joined = tokens.join('');
-    if (compactThai(joined) !== compactThai(th)) {
+    // tokens trống → content:build tự tách (cảnh báo ở checkMissing).
+    if (tokens.length > 0 && compactThai(joined) !== compactThai(th)) {
       issues.push(error(s, 'tokens', `tokens ghép lại là "${joined}", không khớp th "${th}"`));
     }
     const tokenSet = new Set(tokens.map(compactThai));
@@ -149,7 +160,7 @@ function checkSentences(content: ContentSet): ContentIssue[] {
  * Ngoài bảng Thai Unicode chỉ cho phép khoảng trắng, chữ số và dấu câu thường gặp;
  * chữ Latin/Việt trong trường Thái thường là nhập nhầm cột.
  */
-const NON_THAI = /[^฀-๿\s0-9.,!?…"“”'()\-:;/]/gu;
+const NON_THAI = /[^\u0E00-\u0E7F\s0-9.,!?…"“”'()\-:;/]/gu;
 
 /** Các trường chữ Thái của mỗi loại: [mục, tên trường, giá trị]. */
 function thaiFields(content: ContentSet): [Located<unknown>, string, string][] {
@@ -163,6 +174,8 @@ function thaiFields(content: ContentSet): [Located<unknown>, string, string][] {
   for (const u of content.units) add(u, 'title_th', u.value.title_th);
   for (const w of content.words) {
     add(w, 'thai', w.value.thai);
+    addList(w, 'thai_alt', w.value.thai_alt);
+    add(w, 'classifier', w.value.classifier);
     add(w, 'example_th', w.value.example_th);
   }
   for (const s of content.sentences) {
@@ -191,9 +204,33 @@ function checkThaiCharacters(content: ContentSet): ContentIssue[] {
   });
 }
 
+/**
+ * Plan 0.11 #4–5: tài liệu giáo viên thường thiếu nghĩa / đáp án → chỉ được thiếu khi draft
+ * (schema chặn khi không draft); cảnh báo từng mục để giáo viên/owner điền trước khi publish.
+ */
+function checkMissing(content: ContentSet): ContentIssue[] {
+  const issues: ContentIssue[] = [];
+  for (const w of content.words) {
+    if (w.value.meaning_vi.length === 0) {
+      issues.push(warning(w, 'meaning_vi', 'thiếu nghĩa — cần điền trước khi bỏ draft'));
+    }
+  }
+  for (const s of content.sentences) {
+    if (s.value.th === undefined) {
+      issues.push(warning(s, 'th', 'thiếu đáp án tiếng Thái — cần điền trước khi bỏ draft'));
+    } else if (s.value.tokens.length === 0) {
+      issues.push(warning(s, 'tokens', 'tokens tự tách khi build (Intl.Segmenter) — cần duyệt'));
+    }
+  }
+  return issues;
+}
+
 const outside = (n: number, [min, max]: readonly [number, number]) => n < min || n > max;
 
-/** Plan 0.4: unit 3–4 bài, bài 8–12 từ, hội thoại 4–8 câu — chỉ cảnh báo. */
+/**
+ * Plan 0.4: unit 3–4 bài, bài 8–12 từ, hội thoại 4–8 câu — chỉ cảnh báo.
+ * Unit `grammar` (0.11 #3) là danh sách cách dùng dài → chỉ cảnh báo khi bài > 40 từ.
+ */
 function checkLessonShape(content: ContentSet): ContentIssue[] {
   const count = (ids: string[]) => {
     const map = new Map<string, number>();
@@ -202,6 +239,7 @@ function checkLessonShape(content: ContentSet): ContentIssue[] {
   };
   const lessonsPerUnit = count(content.lessons.map((l) => l.value.unit_id));
   const wordsPerLesson = count(content.words.map((w) => w.value.lesson_id));
+  const unitKind = new Map(content.units.map((u) => [u.value.unit_id, u.value.kind]));
   const issues: ContentIssue[] = [];
 
   for (const u of content.units) {
@@ -212,7 +250,13 @@ function checkLessonShape(content: ContentSet): ContentIssue[] {
   }
   for (const l of content.lessons) {
     const n = wordsPerLesson.get(l.value.lesson_id) ?? 0;
-    if (outside(n, RANGES.wordsPerLesson)) {
+    if (unitKind.get(l.value.unit_id) === 'grammar') {
+      if (n > RANGES.maxWordsPerGrammarLesson) {
+        issues.push(
+          warning(l, undefined, `bài có ${n} từ (unit ngữ pháp: tối đa 40, nên chia bài)`),
+        );
+      }
+    } else if (outside(n, RANGES.wordsPerLesson)) {
       issues.push(warning(l, undefined, `bài có ${n} từ (khuyến nghị 8–12, plan 0.4)`));
     }
   }
