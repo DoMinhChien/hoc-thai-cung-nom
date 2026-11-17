@@ -2,21 +2,42 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { detectKind, formatIssue, loadContent, loadFile, normalizeStrings } from './load';
+import {
+  detectKind,
+  formatIssue,
+  idOf,
+  loadContent,
+  loadFile,
+  normalizeStrings,
+} from './load';
 
-// Dữ liệu ở đây chỉ để test cấu trúc loader (mẫu plan 5.5), không phải nội dung học.
-const CONSONANTS = `- { id: ko-kai, char: ก, name: ก ไก่, class: mid, initial: k, final: k, phonetic: k, keyword_vi: con gà, order: 1 }
-- { id: kho-khai, char: ข, name: ข ไข่, class: high, initial: kh, phonetic: kh, keyword_vi: quả trứng, order: 2 }
+// Dữ liệu ở đây chỉ để test cấu trúc loader (mẫu plan 0.9), không phải nội dung học.
+const UNITS = `unit_id,level,order,title_vi,title_th,can_do,draft
+u01,A1,1,Chào hỏi,ทักทาย,Chào hỏi|Giới thiệu tên,true
 `;
-const WORDS_HEADER = 'id,thai,phonetic,syllables,tones,meaning_vi,deck,draft';
+const LESSONS = `lesson_id,unit_id,order,title_vi,grammar_ids
+u01-l1,u01,1,Xin chào,g-chue
+`;
+const WORDS_HEADER =
+  'id,unit_id,lesson_id,thai,meaning_vi,pos,phonetic,example_th,example_vi,image,tags,source,draft';
 const WORDS = `${WORDS_HEADER}
-sawatdee,สวัสดี,sa-wat-di,ส|วัส|ดี,low|low|mid,xin chào,bai-01,true
+sawatdee,u01,u01-l1,สวัสดี,xin chào; tạm biệt,interj,sa-wat-di,,,noto:1f44b,polite,,true
 `;
-const READING = `id: lvl1-001
-title_vi: Chào hỏi
-level: 1
-sentences:
-  - { th: "สวัสดี|ครับ", vi: "Xin chào (nam nói)" }
+const SENTENCES = `id,unit_id,lesson_id,vi,th,th_alt,tokens,distractors,grammar_id,audio,source
+s1,u01,u01-l1,Tôi tên là Nam.,ผมชื่อนาม,ผมชื่อนามครับ,ผม|ชื่อ|นาม,คุณ,g-chue,,
+`;
+const GRAMMAR = `- id: g-chue
+  unit_id: u01
+  title_vi: Nói tên
+  pattern: ชื่อ + tên
+  explain_vi: Dùng ชื่อ để nói tên.
+  examples:
+    - { th: ผมชื่อนาม, vi: Tôi tên là Nam. }
+`;
+const DIALOGUES = `- id: d1
+  lesson_id: u01-l1
+  lines:
+    - { speaker: A, th: สวัสดีครับ, vi: Xin chào. }
 `;
 
 // Ký tự vô hình/dấu khai báo bằng code point để không lẫn trong mã nguồn (như thai/normalize.ts).
@@ -41,25 +62,25 @@ afterEach(async () => {
 });
 
 describe('loadContent', () => {
-  it('đọc file chuẩn plan 5.4 + mọi bài đọc, kèm dòng của từng mục', async () => {
+  it('đọc 6 file plan 0.9 kèm dòng của từng mục; bỏ qua content/templates/', async () => {
     const root = await tree({
-      'alphabet/consonants.yaml': CONSONANTS,
-      'vocab/words.csv': WORDS,
-      'readings/lvl1-001-chao-hoi.yaml': READING,
-      'readings/ghi-chu.txt': 'bỏ qua',
+      'units.csv': UNITS,
+      'lessons.csv': LESSONS,
+      'words.csv': WORDS,
+      'sentences.csv': SENTENCES,
+      'grammar.yaml': GRAMMAR,
+      'dialogues.yaml': DIALOGUES,
+      'templates/units.csv': 'hỏng,"\n',
     });
     const { content, issues } = await loadContent(root, { cwd: root });
     expect(issues).toEqual([]);
-    expect(content.consonants.map((c) => [c.value.id, c.file, c.line])).toEqual([
-      ['ko-kai', 'alphabet/consonants.yaml', 1],
-      ['kho-khai', 'alphabet/consonants.yaml', 2],
-    ]);
-    expect(content.consonants[1]!.value.final).toBeNull();
-    expect(content.words[0]).toMatchObject({ file: 'vocab/words.csv', line: 2 });
-    expect(content.words[0]!.value.tones).toEqual(['low', 'low', 'mid']);
-    expect(content.words[0]!.value.draft).toBe(true);
-    expect(content.readings[0]!.value.sentences[0]!.th).toBe('สวัสดี|ครับ');
-    expect(content.vowels).toEqual([]);
+    expect(content.units[0]).toMatchObject({ file: 'units.csv', line: 2 });
+    expect(content.units[0]!.value).toMatchObject({ order: 1, can_do: ['Chào hỏi', 'Giới thiệu tên'] });
+    expect(content.lessons[0]!.value.grammar_ids).toEqual(['g-chue']);
+    expect(content.words[0]!.value).toMatchObject({ meaning_vi: ['xin chào', 'tạm biệt'], draft: true });
+    expect(content.sentences[0]!.value.tokens).toEqual(['ผม', 'ชื่อ', 'นาม']);
+    expect(content.grammar[0]).toMatchObject({ file: 'grammar.yaml', line: 1 });
+    expect(content.dialogues[0]!.value.lines).toHaveLength(1);
   });
 
   it('thư mục không tồn tại → lỗi', async () => {
@@ -67,128 +88,115 @@ describe('loadContent', () => {
     expect(issues).toHaveLength(1);
     expect(issues[0]!.message).toMatch(/không tìm thấy/);
   });
+
+  it('idOf theo cột id của từng loại', async () => {
+    const root = await tree({ 'units.csv': UNITS, 'words.csv': WORDS });
+    const { content } = await loadContent(root, { cwd: root });
+    expect(idOf('units', content.units[0]!.value)).toBe('u01');
+    expect(idOf('words', content.words[0]!.value)).toBe('sawatdee');
+  });
 });
 
 describe('YAML', () => {
-  it('lỗi schema chỉ đúng dòng/cột của trường', async () => {
+  it('lỗi schema chỉ đúng dòng/cột của trường lồng', async () => {
     const root = await tree({
-      'alphabet/consonants.yaml': `- id: ko-kai
-  char: ก
-  name: ก ไก่
-  class: middle
-  initial: k
-  phonetic: k
-  keyword_vi: con gà
-  order: 1
-`,
+      'grammar.yaml': GRAMMAR.replace('{ th: ผมชื่อนาม,', '{ th: Phom chue Nam,'),
     });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues).toEqual([
       expect.objectContaining({
         severity: 'error',
-        file: 'alphabet/consonants.yaml',
-        line: 4,
-        column: 10,
-        field: 'class',
+        file: 'grammar.yaml',
+        line: 7,
+        column: 13,
+        field: 'examples.0.th',
       }),
     ]);
   });
 
   it('trường thiếu → báo ở dòng đầu của mục', async () => {
     const root = await tree({
-      'alphabet/consonants.yaml': `${CONSONANTS}- { id: x, char: ค, name: ค ควาย, class: low, initial: kh, phonetic: kh, order: 3 }\n`,
+      'dialogues.yaml': `${DIALOGUES}- id: d2\n  lines: [{ speaker: B, th: ดี, vi: tốt }]\n`,
     });
     const { issues } = await loadContent(root, { cwd: root });
-    expect(issues).toEqual([expect.objectContaining({ line: 3, field: 'keyword_vi' })]);
+    expect(issues).toEqual([expect.objectContaining({ line: 5, field: 'lesson_id' })]);
   });
 
   it('trường lạ (gõ sai tên) → nêu tên trường', async () => {
-    const root = await tree({
-      'alphabet/consonants.yaml': CONSONANTS.replace('keyword_vi: con gà', 'keywrd_vi: con gà'),
-    });
+    const root = await tree({ 'grammar.yaml': GRAMMAR.replace('explain_vi:', 'explian_vi:') });
     const { issues } = await loadContent(root, { cwd: root });
-    expect(issues.map((i) => i.field)).toContain('keywrd_vi');
-    expect(issues.find((i) => i.field === 'keywrd_vi')!.line).toBe(1);
+    expect(issues.map((i) => i.field)).toContain('explian_vi');
+    expect(issues.find((i) => i.field === 'explian_vi')!.line).toBe(1);
   });
 
   it('lỗi cú pháp YAML kèm dòng', async () => {
-    const root = await tree({ 'alphabet/tones.yaml': '- id: mid\n  label_vi: [Ngang\n' });
+    const root = await tree({ 'grammar.yaml': '- id: g1\n  title_vi: [Nói\n' });
     const { issues, content } = await loadContent(root, { cwd: root });
-    expect(content.tones).toEqual([]);
-    expect(issues[0]).toMatchObject({ severity: 'error', file: 'alphabet/tones.yaml' });
+    expect(content.grammar).toEqual([]);
+    expect(issues[0]).toMatchObject({ severity: 'error', file: 'grammar.yaml' });
     expect(issues[0]!.message).toMatch(/^YAML:/);
     expect(issues[0]!.line).toBeGreaterThan(0);
   });
 
   it('key trùng trong một mục → lỗi YAML', async () => {
-    const root = await tree({
-      'vocab/decks.yaml': '- id: a\n  id: b\n  title_vi: A\n  order: 1\n',
-    });
+    const root = await tree({ 'dialogues.yaml': '- id: a\n  id: b\n' });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues[0]).toMatchObject({ severity: 'error', line: 2 });
   });
 
-  it('sai dạng gốc: file danh sách nhưng là object, bài đọc nhưng là danh sách', async () => {
-    const root = await tree({
-      'vocab/decks.yaml': 'id: bai-01\n',
-      'readings/a.yaml': `- ${READING.split('\n')[0]}\n`,
-    });
+  it('file không phải danh sách → lỗi', async () => {
+    const root = await tree({ 'grammar.yaml': 'id: g1\n' });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues.map((i) => [i.file, i.line, i.message])).toEqual([
-      ['vocab/decks.yaml', 1, expect.stringMatching(/danh sách/)],
-      ['readings/a.yaml', 1, expect.stringMatching(/một mục/)],
+      ['grammar.yaml', 1, expect.stringMatching(/danh sách/)],
     ]);
   });
 
   it('file rỗng → không có mục, không lỗi', async () => {
-    const root = await tree({ 'alphabet/vowels.yaml': '# chưa có\n' });
+    const root = await tree({ 'dialogues.yaml': '# chưa có\n' });
     expect(await loadContent(root, { cwd: root })).toMatchObject({ issues: [] });
-  });
-
-  it('lỗi trong mảng lồng (bài đọc) chỉ đúng dòng câu', async () => {
-    const root = await tree({
-      'readings/lvl1-001.yaml': `${READING}  - { th: "hello", vi: "x" }\n`,
-    });
-    const { issues } = await loadContent(root, { cwd: root });
-    expect(issues).toEqual([expect.objectContaining({ line: 6, field: 'sentences.1.th' })]);
   });
 });
 
 describe('CSV', () => {
   it('lỗi kèm dòng (tính cả header) và trường; dòng hợp lệ vẫn được đọc', async () => {
     const root = await tree({
-      'vocab/words.csv': `${WORDS}di,ดี,di,ดี,ngang,tốt,bai-01,\nsong,สอง,song,สอง,rising|mid,hai,bai-01,\n`,
+      'sentences.csv': `${SENTENCES}s2,u01,u01-l1,Tốt.,ดี,,,,,,\ns3,u01,u01-l1,Tốt.,ดี,,ดี|good,,,,\n`,
     });
     const { content, issues } = await loadContent(root, { cwd: root });
-    expect(content.words.map((w) => w.value.id)).toEqual(['sawatdee']);
+    expect(content.sentences.map((s) => s.value.id)).toEqual(['s1']);
     expect(issues).toEqual([
-      expect.objectContaining({ file: 'vocab/words.csv', line: 3, field: 'tones.0' }),
-      expect.objectContaining({ line: 4, field: 'tones' }),
+      expect.objectContaining({ file: 'sentences.csv', line: 3, field: 'tokens' }),
+      expect.objectContaining({ line: 4, field: 'tokens.1' }),
     ]);
   });
 
   it('BOM của Excel và CRLF không ảnh hưởng', async () => {
-    const root = await tree({ 'vocab/words.csv': `${BOM}${WORDS.replaceAll('\n', '\r\n')}` });
+    const root = await tree({ 'units.csv': `${BOM}${UNITS.replaceAll('\n', '\r\n')}` });
     const { content, issues } = await loadContent(root, { cwd: root });
     expect(issues).toEqual([]);
-    expect(content.words[0]!.value.id).toBe('sawatdee');
+    expect(content.units[0]!.value.unit_id).toBe('u01');
   });
 
   it('thiếu cột bắt buộc → lỗi ở từng dòng nêu cột', async () => {
-    const root = await tree({ 'vocab/words.csv': 'id,thai\nx,ดี\n' });
+    const root = await tree({ 'words.csv': 'id,thai\nx,ดี\n' });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues.map((i) => i.field)).toEqual(
-      expect.arrayContaining(['phonetic', 'meaning_vi', 'deck']),
+      expect.arrayContaining(['unit_id', 'lesson_id', 'meaning_vi']),
     );
-    // v7: syllables/tones tùy chọn.
-    expect(issues.map((i) => i.field)).not.toContain('tones');
     expect(issues.every((i) => i.line === 2)).toBe(true);
   });
 
+  it('cột cũ (deck) → lỗi trường lạ', async () => {
+    const root = await tree({ 'lessons.csv': 'lesson_id,unit_id,order,title_vi,deck\nl1,u01,1,A,x\n' });
+    const { issues } = await loadContent(root, { cwd: root });
+    expect(issues).toEqual([expect.objectContaining({ line: 2, field: 'deck' })]);
+  });
+
   it('số cột lệch header → lỗi CSV kèm dòng', async () => {
-    const root = await tree({ 'vocab/words.csv': `${WORDS}a,b\n` });
+    const root = await tree({ 'units.csv': `${UNITS}a,b\n` });
     const { issues, content } = await loadContent(root, { cwd: root });
-    expect(content.words).toEqual([]);
+    expect(content.units).toEqual([]);
     expect(issues).toEqual([expect.objectContaining({ line: 3 })]);
     expect(issues[0]!.message).toMatch(/^CSV:/);
   });
@@ -199,11 +207,11 @@ describe('chuẩn hóa chữ Thái', () => {
     // ม + ้ + ี (sai thứ tự) + ZWSP → ม + ี + ้
     const typed = MO + MAI_THO + SARA_II + ZWSP;
     const root = await tree({
-      'vocab/words.csv': `${WORDS_HEADER}\nmii,${typed},mi,${typed},falling,có,bai-01,\n`,
+      'words.csv': `${WORDS_HEADER}\nmii,u01,u01-l1,${typed},có,,,${typed},,,,,\n`,
     });
     const { content } = await loadContent(root, { cwd: root });
     expect(content.words[0]!.value.thai).toBe(MO + SARA_II + MAI_THO);
-    expect(content.words[0]!.value.syllables).toEqual([MO + SARA_II + MAI_THO]);
+    expect(content.words[0]!.value.example_th).toBe(MO + SARA_II + MAI_THO);
   });
 
   it('normalizeStrings đi qua mảng/object, giữ nguyên số/boolean/null', () => {
@@ -218,16 +226,16 @@ describe('chuẩn hóa chữ Thái', () => {
 
 describe('detectKind / loadFile', () => {
   it.each([
-    ['content/alphabet/consonants.yaml', 'consonants'],
-    ['content/alphabet/tone-drills.yaml', 'toneDrills'],
-    ['content/alphabet/tone-marks.yml', 'toneMarks'],
+    ['content/units.csv', 'units'],
+    ['content/templates/lessons.csv', 'lessons'],
     ['staging/words.giao-trinh-a.csv', 'words'],
-    ['staging/tone-drills.giao-trinh-a.yaml', 'toneDrills'],
-    ['content/readings/lvl1-001.yaml', 'readings'],
-    ['content/listening/minimal-pairs.yaml', 'minimalPairs'],
+    ['staging/sentences.giao-trinh-a.csv', 'sentences'],
+    ['staging/grammar.giao-trinh-a.yaml', 'grammar'],
+    ['staging/dialogues.yml', 'dialogues'],
+    ['staging/words.yaml', null],
+    ['staging/grammar.csv', null],
     ['staging/khac.csv', null],
     ['staging/ghi-chu.txt', null],
-    ['staging/la.yaml', null],
   ])('%s → %s', (file, kind) => {
     expect(detectKind(file)).toBe(kind);
   });
