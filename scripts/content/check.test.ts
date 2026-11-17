@@ -114,9 +114,7 @@ describe('id duy nhất', () => {
   });
 
   it('cùng id khác loại không tính là trùng', () => {
-    expect(relevant(valid({ grammar: [grammar('s1')], sentences: [sentence('s1')] }))).toEqual(
-      [],
-    );
+    expect(relevant(valid({ grammar: [grammar('s1')], sentences: [sentence('s1')] }))).toEqual([]);
   });
 });
 

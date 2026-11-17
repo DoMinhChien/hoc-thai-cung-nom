@@ -205,7 +205,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Task**
 - [x] T6.1.1 Schema: `Unit.kind` (`theme`|`grammar`, mặc định `theme`), `Unit.level` thêm `B1`; `Word.classifier`, `Word.thai_alt` (`|`), `Word.note_vi`; `meaning_vi` và `Sentence.th` cho phép rỗng **chỉ khi** `draft: true`; xuất lại JSON Schema; unit test.
 - [x] T6.1.2 `content:check`: `classifier`/`thai_alt` chỉ chứa chữ Thái; lỗi khi item không draft thiếu `meaning_vi`/`th`; cảnh báo "thiếu nghĩa", "thiếu đáp án", "tokens tự tách — cần duyệt"; unit `grammar` không áp cảnh báo 8–12 từ/bài (thay bằng cảnh báo > 40 từ/bài).
-- [ ] T6.1.3 `content:build`: `tokens` rỗng → tách bằng `Intl.Segmenter('th')`, ghi cờ `auto_tokens`; bundle unit có `kind`, `level`; lesson có `steps` = các bước có dữ liệu (`vocab`, `grammar`, `dialogue`, `exercise`).
+- [x] T6.1.3 `content:build`: `tokens` rỗng → tách bằng `Intl.Segmenter('th')`, ghi cờ `auto_tokens`; bundle unit có `kind`, `level`; lesson có `steps` = các bước có dữ liệu (`vocab`, `grammar`, `dialogue`, `exercise`).
 - [ ] T6.1.4 `content/templates/`: cột mới + README thêm mục **"Ánh xạ tài liệu Plern-Pin"** (bảng loại từ → `words.csv` + `classifier`; danh sách น่า → `grammar.yaml` + `words.csv`; "Bài tập vận dụng" → `sentences.csv` với `vi`, `th` trống, `draft: true`).
 - [ ] T6.1.5 Content mẫu: thêm **Unit 3 "Loại từ"** (`theme`) và **Unit 11 "Các trường hợp của น่า"** (`grammar`), mỗi unit ≤ 5 từ + ≤ 3 câu, gồm 1 từ thiếu nghĩa và 1 câu thiếu `th` (draft) để chạy đủ kiểm tra; `source` theo 0.11 #8.
 

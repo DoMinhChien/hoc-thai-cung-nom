@@ -2,10 +2,18 @@ import { mkdir, mkdtemp, readdir, readFile, rm, stat, writeFile } from 'node:fs/
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { buildContent, type Manifest, type UnitBundle, type UnitSummary } from './build';
+import {
+  buildContent,
+  segmentThai,
+  withTokens,
+  type Manifest,
+  type UnitBundle,
+  type UnitSummary,
+} from './build';
 import { loadContent } from './load';
 
 // Mẫu tối thiểu chỉ để test build — không phải nội dung học.
+const csv = (...lines: string[]) => `${lines.join('\n')}\n`;
 const FILES = {
   'units.csv':
     'unit_id,level,order,title_vi,can_do\nu02,A1,2,Gia đình,Nói về gia đình\nu01,A1,1,Chào hỏi,Chào hỏi\n',
@@ -13,8 +21,7 @@ const FILES = {
     'lesson_id,unit_id,order,title_vi\nu01-l2,u01,2,Bài 2\nu01-l1,u01,1,Bài 1\nu02-l1,u02,1,Bài 1\n',
   'words.csv':
     'id,unit_id,lesson_id,thai,meaning_vi\ndi,u01,u01-l1,ดี,tốt; hay\nma,u01,u01-l2,มา,đến\nphi,u02,u02-l1,พี่,anh chị\n',
-  'sentences.csv':
-    'id,unit_id,lesson_id,vi,th,tokens\ns1,u01,u01-l1,Tốt.,ดี,ดี\n',
+  'sentences.csv': 'id,unit_id,lesson_id,vi,th,tokens\ns1,u01,u01-l1,Tốt.,ดี,ดี\n',
   'grammar.yaml':
     '- { id: g1, unit_id: u01, title_vi: A, pattern: ดี, explain_vi: x, examples: [{ th: ดี, vi: tốt }] }\n',
   'dialogues.yaml': '- { id: d1, lesson_id: u02-l1, lines: [{ speaker: A, th: ดี, vi: tốt }] }\n',
@@ -117,5 +124,67 @@ describe('buildContent', () => {
     await buildContent(content, out);
     const units = await readJson<UnitSummary[]>(path.join(out, 'units.json'));
     expect(units.map((u) => u.unit_id)).toEqual(['u01', 'u02']);
+  });
+});
+
+describe('v7.1 (plan 0.11)', () => {
+  it('bundle có kind/level; lesson có steps = bước có dữ liệu', async () => {
+    const { content, out } = await setup({
+      ...FILES,
+      'units.csv': csv(
+        'unit_id,level,kind,order,title_vi,can_do',
+        'u01,A1,,1,A,x',
+        'u02,,grammar,2,B,x',
+      ),
+      'lessons.csv': csv(
+        'lesson_id,unit_id,order,title_vi,grammar_ids',
+        'u01-l1,u01,1,A,g1',
+        'u01-l2,u01,2,B,',
+        'u02-l1,u02,1,C,g1',
+      ),
+      'sentences.csv': csv(
+        'id,unit_id,lesson_id,vi,th,tokens,draft',
+        's1,u01,u01-l1,Tốt.,ดี,ดี,',
+        's2,u01,u01-l2,Chưa có đáp án.,,,true',
+      ),
+    });
+    await buildContent(content, out);
+    const units = await readJson<UnitSummary[]>(path.join(out, 'units.json'));
+    expect(units.map((u) => [u.unit_id, u.kind, u.level])).toEqual([
+      ['u01', 'theme', 'A1'],
+      ['u02', 'grammar', undefined],
+    ]);
+    expect(units[0]!.lessons.map((l) => l.steps)).toEqual([
+      ['vocab', 'grammar', 'exercise'],
+      // u01-l2: chỉ có từ; câu chưa có th không tạo bước bài tập.
+      ['vocab'],
+    ]);
+    // unit grammar: Mẫu câu trước Từ vựng; có hội thoại d1.
+    const u02 = await readJson<UnitBundle>(path.join(out, 'unit-u02.json'));
+    expect(u02.lessons[0]!.steps).toEqual(['grammar', 'vocab', 'dialogue']);
+  });
+
+  it('tokens trống + có th → tự tách, auto_tokens; không có th → giữ nguyên', () => {
+    const base = {
+      id: 's',
+      unit_id: 'u',
+      lesson_id: 'l',
+      vi: 'x',
+      th_alt: [],
+      distractors: [],
+      draft: true,
+    };
+    const auto = withTokens({ ...base, th: 'ผมชื่อสมชาย', tokens: [] });
+    expect(auto.auto_tokens).toBe(true);
+    expect(auto.tokens.join('')).toBe('ผมชื่อสมชาย');
+    expect(auto.tokens.length).toBeGreaterThan(1);
+    const given = { ...base, th: 'ดี', tokens: ['ดี'] };
+    expect(withTokens(given)).toBe(given);
+    const noTh = { ...base, tokens: [] };
+    expect(withTokens(noTh)).toBe(noTh);
+  });
+
+  it('segmentThai bỏ khoảng trắng và dấu câu', () => {
+    expect(segmentThai('มีค่ะ พี่สาว').join('')).toBe('มีค่ะพี่สาว');
   });
 });

@@ -2,14 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import {
-  detectKind,
-  formatIssue,
-  idOf,
-  loadContent,
-  loadFile,
-  normalizeStrings,
-} from './load';
+import { detectKind, formatIssue, idOf, loadContent, loadFile, normalizeStrings } from './load';
 
 // Dữ liệu ở đây chỉ để test cấu trúc loader (mẫu plan 0.9), không phải nội dung học.
 const UNITS = `unit_id,level,order,title_vi,title_th,can_do,draft
@@ -75,9 +68,15 @@ describe('loadContent', () => {
     const { content, issues } = await loadContent(root, { cwd: root });
     expect(issues).toEqual([]);
     expect(content.units[0]).toMatchObject({ file: 'units.csv', line: 2 });
-    expect(content.units[0]!.value).toMatchObject({ order: 1, can_do: ['Chào hỏi', 'Giới thiệu tên'] });
+    expect(content.units[0]!.value).toMatchObject({
+      order: 1,
+      can_do: ['Chào hỏi', 'Giới thiệu tên'],
+    });
     expect(content.lessons[0]!.value.grammar_ids).toEqual(['g-chue']);
-    expect(content.words[0]!.value).toMatchObject({ meaning_vi: ['xin chào', 'tạm biệt'], draft: true });
+    expect(content.words[0]!.value).toMatchObject({
+      meaning_vi: ['xin chào', 'tạm biệt'],
+      draft: true,
+    });
     expect(content.sentences[0]!.value.tokens).toEqual(['ผม', 'ชื่อ', 'นาม']);
     expect(content.grammar[0]).toMatchObject({ file: 'grammar.yaml', line: 1 });
     expect(content.dialogues[0]!.value.lines).toHaveLength(1);
@@ -188,7 +187,9 @@ describe('CSV', () => {
   });
 
   it('cột cũ (deck) → lỗi trường lạ', async () => {
-    const root = await tree({ 'lessons.csv': 'lesson_id,unit_id,order,title_vi,deck\nl1,u01,1,A,x\n' });
+    const root = await tree({
+      'lessons.csv': 'lesson_id,unit_id,order,title_vi,deck\nl1,u01,1,A,x\n',
+    });
     const { issues } = await loadContent(root, { cwd: root });
     expect(issues).toEqual([expect.objectContaining({ line: 2, field: 'deck' })]);
   });

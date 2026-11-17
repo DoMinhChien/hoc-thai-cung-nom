@@ -3,6 +3,8 @@
  * - `units.json`: lộ trình (unit theo `order`, kèm bài + số từ/câu) cho `/units` (P-10);
  * - `unit-<unit_id>.json`: mọi thứ của một unit (bài, từ, câu, mẫu câu, hội thoại) — tải khi mở unit;
  * - `manifest.json`: hash từng file + version gộp.
+ * v7.1 (plan 0.11 #3, #5): câu có `th` mà `tokens` trống → tự tách bằng `Intl.Segmenter('th')`, gắn
+ * `auto_tokens: true`; mỗi bài có `steps` = các bước có dữ liệu (unit `grammar`: Mẫu câu trước Từ vựng).
  * Output ổn định: cùng content → cùng byte (thứ tự trường theo schema), file không đổi thì không ghi lại.
  */
 import { createHash } from 'node:crypto';
@@ -15,7 +17,17 @@ export const UNITS_FILE = 'units.json';
 export const MANIFEST_FILE = 'manifest.json';
 export const unitFile = (unitId: string) => `unit-${unitId}.json`;
 
-export interface LessonSummary extends Lesson {
+/** Bước của bài học (plan 0.4), chỉ gồm bước có dữ liệu (0.11 #3). */
+export type LessonStep = 'vocab' | 'grammar' | 'dialogue' | 'exercise';
+
+export interface BuiltLesson extends Lesson {
+  steps: LessonStep[];
+}
+
+/** Câu sau build: `tokens` luôn có khi có `th`; `auto_tokens` = do build tự tách, cần duyệt. */
+export type BuiltSentence = Sentence & { auto_tokens?: true };
+
+export interface LessonSummary extends BuiltLesson {
   words: number;
   sentences: number;
 }
@@ -28,9 +40,9 @@ export interface UnitSummary extends Unit {
 
 export interface UnitBundle {
   unit: Unit;
-  lessons: Lesson[];
+  lessons: BuiltLesson[];
   words: Word[];
-  sentences: Sentence[];
+  sentences: BuiltSentence[];
   grammar: Grammar[];
   dialogues: Dialogue[];
 }
@@ -60,6 +72,23 @@ const toJson = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`;
 const byOrder = <T extends { order: number }>(items: T[], id: (item: T) => string) =>
   [...items].sort((a, b) => a.order - b.order || id(a).localeCompare(id(b)));
 
+const segmenter = new Intl.Segmenter('th', { granularity: 'word' });
+
+/** Tách câu Thái thành từ (bỏ khoảng trắng, dấu câu) — dùng khi giáo viên chưa điền `tokens`. */
+export function segmentThai(text: string): string[] {
+  return [...segmenter.segment(text)].filter((s) => s.isWordLike).map((s) => s.segment);
+}
+
+export function withTokens(sentence: Sentence): BuiltSentence {
+  if (sentence.th === undefined || sentence.tokens.length > 0) return sentence;
+  return { ...sentence, tokens: segmentThai(sentence.th), auto_tokens: true };
+}
+
+const STEP_ORDER: Record<Unit['kind'], LessonStep[]> = {
+  theme: ['vocab', 'grammar', 'dialogue', 'exercise'],
+  grammar: ['grammar', 'vocab', 'dialogue', 'exercise'],
+};
+
 /** Gom content theo unit (giữ thứ tự nguồn cho từ/câu/mẫu câu/hội thoại). */
 export function bundleUnits(content: ContentSet): UnitBundle[] {
   const values = <T>(items: { value: T }[]) => items.map((i) => i.value);
@@ -69,15 +98,28 @@ export function bundleUnits(content: ContentSet): UnitBundle[] {
   return byOrder(values(content.units), (u) => u.unit_id).map((unit) => {
     const inUnit = <T extends { unit_id: string }>(items: T[]) =>
       items.filter((i) => i.unit_id === unit.unit_id);
+    const words = inUnit(values(content.words));
+    const sentences = inUnit(values(content.sentences)).map(withTokens);
+    const dialogues = values(content.dialogues).filter(
+      (d) => lessonUnit.get(d.lesson_id) === unit.unit_id,
+    );
+    const has = (lesson: Lesson): Record<LessonStep, boolean> => ({
+      vocab: words.some((w) => w.lesson_id === lesson.lesson_id),
+      grammar: lesson.grammar_ids.length > 0,
+      dialogue: dialogues.some((d) => d.lesson_id === lesson.lesson_id),
+      // Câu chưa có đáp án (draft) chưa làm bài tập được.
+      exercise: sentences.some((s) => s.lesson_id === lesson.lesson_id && s.th !== undefined),
+    });
     return {
       unit,
-      lessons: byOrder(inUnit(lessons), (l) => l.lesson_id),
-      words: inUnit(values(content.words)),
-      sentences: inUnit(values(content.sentences)),
+      lessons: byOrder(inUnit(lessons), (l) => l.lesson_id).map((l) => {
+        const present = has(l);
+        return { ...l, steps: STEP_ORDER[unit.kind].filter((step) => present[step]) };
+      }),
+      words,
+      sentences,
       grammar: inUnit(values(content.grammar)),
-      dialogues: values(content.dialogues).filter(
-        (d) => lessonUnit.get(d.lesson_id) === unit.unit_id,
-      ),
+      dialogues,
     };
   });
 }

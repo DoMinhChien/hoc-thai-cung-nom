@@ -60,9 +60,7 @@ export async function runCheck(argv: string[], options: RunOptions): Promise<Run
   }
 
   const report =
-    args.input.length > 0
-      ? await checkInputs(args.input, options)
-      : await checkAll(options);
+    args.input.length > 0 ? await checkInputs(args.input, options) : await checkAll(options);
 
   if (args.json) {
     return { exitCode: report.ok ? 0 : 1, stdout: [JSON.stringify(report, null, 2)], stderr: [] };
@@ -100,7 +98,8 @@ async function checkInputs(inputs: string[], { cwd, contentRoot }: RunOptions) {
           issues.push({
             severity: 'error',
             file: input,
-            message: 'không nhận ra loại nội dung từ tên file (vd. words.<nguồn>.csv, grammar.<nguồn>.yaml)',
+            message:
+              'không nhận ra loại nội dung từ tên file (vd. words.<nguồn>.csv, grammar.<nguồn>.yaml)',
           });
         }
         continue;
