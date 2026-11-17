@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkContent, splitWords } from './check';
+import { checkContent, compactThai } from './check';
 import {
   CONTENT_KINDS,
   emptyContentSet,
@@ -8,7 +8,7 @@ import {
   type ContentSet,
 } from './load';
 
-// Mẫu tối thiểu theo plan 5.5, chỉ để test quy tắc — không phải nội dung học.
+// Mẫu tối thiểu theo plan 0.9, chỉ để test quy tắc — không phải nội dung học.
 const at = <K extends ContentKind>(kind: K, value: unknown, file: string, line = 1) => ({
   value: CONTENT_KINDS[kind].parse(value) as ContentItem<K>,
   file,
@@ -18,211 +18,261 @@ const at = <K extends ContentKind>(kind: K, value: unknown, file: string, line =
 function setOf(patch: Partial<{ [K in ContentKind]: unknown[] }>): ContentSet {
   const set = emptyContentSet();
   for (const [kind, values] of Object.entries(patch) as [ContentKind, unknown[]][]) {
-    (set[kind] as unknown[]) = values.map((v, i) => at(kind, v, `${kind}.file`, i + 1));
+    (set[kind] as unknown[]) = values.map((v, i) => at(kind, v, `${kind}.file`, i + 2));
   }
   return set;
 }
 
-const deck = { id: 'bai-01', title_vi: 'Bài 1', order: 1 };
-const word = (id: string, thai: string, extra: object = {}) => ({
-  id,
-  thai,
-  phonetic: 'x',
-  syllables: thai,
-  tones: 'mid',
-  meaning_vi: 'nghĩa',
-  deck: 'bai-01',
+const unit = (unit_id = 'u01', extra: object = {}) => ({
+  unit_id,
+  level: 'A1',
+  order: '1',
+  title_vi: 'Chào hỏi',
+  can_do: 'Chào hỏi',
   ...extra,
 });
-const consonant = (id: string, char: string, cls: string) => ({
-  id,
-  char,
-  name: `${char} ชื่อ`,
-  class: cls,
-  initial: 'k',
-  phonetic: 'k',
-  keyword_vi: 'x',
-  order: 1,
-});
-const drill = (patch: object) => ({
-  id: 'mai-1',
-  thai: 'ไม่',
-  initial_char: 'ม',
-  vowel_length: 'short',
-  final_sound: 'y',
-  tone_mark: 'ek',
-  expected_tone: 'falling',
-  ...patch,
-});
-const reading = (sentences: string[], id = 'lvl1-001') => ({
-  id,
+const lesson = (lesson_id = 'u01-l1', unit_id = 'u01', extra: object = {}) => ({
+  lesson_id,
+  unit_id,
+  order: '1',
   title_vi: 'Bài',
-  level: 1,
-  sentences: sentences.map((th) => ({ th, vi: 'x' })),
+  ...extra,
+});
+const word = (id: string, thai = 'ดี', extra: object = {}) => ({
+  id,
+  unit_id: 'u01',
+  lesson_id: 'u01-l1',
+  thai,
+  meaning_vi: 'nghĩa',
+  ...extra,
+});
+const sentence = (id: string, extra: object = {}) => ({
+  id,
+  unit_id: 'u01',
+  lesson_id: 'u01-l1',
+  vi: 'Tôi tên là Nam.',
+  th: 'ผมชื่อนาม',
+  tokens: 'ผม|ชื่อ|นาม',
+  ...extra,
+});
+const grammar = (id = 'g-chue', extra: object = {}) => ({
+  id,
+  unit_id: 'u01',
+  title_vi: 'Nói tên',
+  pattern: 'ชื่อ + tên',
+  explain_vi: 'x',
+  examples: [{ th: 'ผมชื่อนาม', vi: 'Tôi tên là Nam.' }],
+  ...extra,
+});
+const line = { speaker: 'A', th: 'สวัสดี', vi: 'Xin chào.' };
+const dialogue = (id = 'd1', lines = 4, extra: object = {}) => ({
+  id,
+  lesson_id: 'u01-l1',
+  lines: Array.from({ length: lines }, () => line),
+  ...extra,
 });
 
-const summary = (set: ContentSet) =>
-  checkContent(set).map((i) => `${i.severity} ${i.file}:${i.line} [${i.field ?? ''}] ${i.message}`);
+/** Content hợp lệ, đúng khoảng plan 0.4 → không cảnh báo. */
+function valid(patch: Partial<{ [K in ContentKind]: unknown[] }> = {}) {
+  return setOf({
+    units: [unit()],
+    lessons: ['u01-l1', 'u01-l2', 'u01-l3'].map((id) => lesson(id)),
+    words: Array.from({ length: 8 }, (_, i) => word(`w${i}`)),
+    sentences: [sentence('s1', { grammar_id: 'g-chue' })],
+    grammar: [grammar()],
+    dialogues: [dialogue()],
+    ...patch,
+  });
+}
 
-describe('checkContent', () => {
-  it('content hợp lệ → không có issue', () => {
-    const set = setOf({
-      decks: [deck],
-      words: [word('di', 'ดี'), word('mai', 'ไม่')],
-      consonants: [consonant('ko-kai', 'ก', 'mid')],
-      toneDrills: [drill({})],
-      readings: [reading(['ดี|ไม่'])],
+/** Bỏ cảnh báo số từ mỗi bài (test riêng ở cuối) để các test khác chỉ cần vài từ. */
+const relevant = (content: ContentSet) =>
+  checkContent(content).filter((i) => !/^bài có \d+ từ/.test(i.message));
+
+describe('content hợp lệ', () => {
+  it('không lỗi, không cảnh báo', () => {
+    expect(relevant(valid())).toEqual([]);
+  });
+});
+
+describe('id duy nhất', () => {
+  it('trùng trong cùng loại → lỗi ở mục sau, nêu vị trí mục trước', () => {
+    const issues = relevant(valid({ grammar: [grammar(), grammar()] }));
+    expect(issues).toEqual([
+      expect.objectContaining({
+        severity: 'error',
+        line: 3,
+        field: 'id',
+        message: expect.stringMatching(/trùng với mẫu câu ở grammar.file:2/),
+      }),
+    ]);
+  });
+
+  it('units/lessons báo ở cột unit_id/lesson_id', () => {
+    const issues = relevant(valid({ units: [unit(), unit()] }));
+    expect(issues.find((i) => i.severity === 'error')).toMatchObject({ field: 'unit_id' });
+  });
+
+  it('cùng id khác loại không tính là trùng', () => {
+    expect(relevant(valid({ grammar: [grammar('s1')], sentences: [sentence('s1')] }))).toEqual(
+      [],
+    );
+  });
+});
+
+describe('khóa ngoại', () => {
+  const errors = (content: ContentSet) =>
+    checkContent(content)
+      .filter((i) => i.severity === 'error')
+      .map((i) => [i.file, i.field, i.message]);
+
+  it('lesson.unit_id, lesson.grammar_ids', () => {
+    expect(
+      errors(valid({ lessons: [lesson('u01-l1', 'u09', { grammar_ids: 'g-chue|g-x' })] })),
+    ).toEqual(
+      expect.arrayContaining([
+        ['lessons.file', 'unit_id', 'unit "u09" không có trong units.csv'],
+        ['lessons.file', 'grammar_ids.1', 'mẫu câu "g-x" không có trong grammar.yaml'],
+      ]),
+    );
+  });
+
+  it('word/sentence: unit, lesson tồn tại và lesson thuộc đúng unit', () => {
+    const content = valid({
+      units: [unit(), unit('u02')],
+      lessons: [lesson(), lesson('u02-l1', 'u02')],
+      words: [word('a', 'ดี', { lesson_id: 'u09-l1' }), word('b', 'ดี', { unit_id: 'u09' })],
+      sentences: [sentence('s1', { lesson_id: 'u02-l1' })],
     });
-    expect(checkContent(set)).toEqual([]);
+    expect(errors(content)).toEqual([
+      ['words.file', 'lesson_id', 'bài "u09-l1" không có trong lessons.csv'],
+      ['words.file', 'unit_id', 'unit "u09" không có trong units.csv'],
+      ['words.file', 'lesson_id', 'bài "u01-l1" thuộc unit "u01", không phải "u09"'],
+      ['sentences.file', 'lesson_id', 'bài "u02-l1" thuộc unit "u02", không phải "u01"'],
+    ]);
   });
 
-  it('id trùng trong cùng loại → lỗi chỉ về mục đầu; khác loại thì không sao', () => {
-    const set = setOf({
-      decks: [deck, { ...deck, order: 2 }],
-      words: [word('bai-01', 'ดี')],
+  it('sentence.grammar_id, grammar.unit_id, dialogue.lesson_id', () => {
+    const content = valid({
+      sentences: [sentence('s1', { grammar_id: 'g-x' })],
+      grammar: [grammar('g-chue', { unit_id: 'u09' })],
+      dialogues: [dialogue('d1', 4, { lesson_id: 'l-x' })],
     });
-    expect(summary(set)).toEqual([
-      'error decks.file:2 [id] id "bai-01" trùng với deck ở decks.file:1',
-    ]);
-  });
-
-  it('id bài đọc trùng giữa hai file', () => {
-    const set = emptyContentSet();
-    set.readings = [
-      at('readings', reading(['ดี']), 'readings/a.yaml'),
-      at('readings', reading(['ดี']), 'readings/b.yaml'),
-    ];
-    set.words = [at('words', word('di', 'ดี'), 'words.csv', 2)];
-    set.decks = [at('decks', deck, 'decks.yaml')];
-    expect(summary(set)).toEqual([
-      'error readings/b.yaml:1 [id] id "lvl1-001" trùng với bài đọc ở readings/a.yaml:1',
-    ]);
-  });
-
-  it('deck không tồn tại', () => {
-    const set = setOf({ decks: [deck], words: [word('di', 'ดี', { deck: 'bai-99' })] });
-    expect(summary(set)).toEqual([
-      'error words.file:1 [deck] deck "bai-99" không có trong vocab/decks.yaml',
-    ]);
-  });
-
-  it('lớp phụ âm khác consonantClass()', () => {
-    const set = setOf({ consonants: [consonant('kho-khai', 'ข', 'low')] });
-    expect(summary(set)).toEqual([
-      'error consonants.file:1 [class] ข thuộc lớp high, không phải low',
-    ]);
-  });
-
-  it('Tone Engine khác expected_tone', () => {
-    const set = setOf({ toneDrills: [drill({ expected_tone: 'high' })] });
-    expect(summary(set)).toEqual([
-      'error toneDrills.file:1 [expected_tone] Tone Engine tính ra "falling" (quy tắc low:ek) nhưng expected_tone là "high"',
-    ]);
-  });
-
-  it.each([
-    [{ thai: 'สข', initial_char: 'ข', leading: 'ส' }, 'leading'],
-    [{ initial_char: 'ข', tone_mark: 'tri', expected_tone: 'high' }, 'tone_mark'],
-  ])('Tone Engine không tính được → lỗi ở trường gây ra (%o)', (patch, field) => {
-    const [issue] = checkContent(setOf({ toneDrills: [drill(patch)] }));
-    expect(issue).toMatchObject({ severity: 'error', field });
-  });
-
-  it('อักษรนำ: วัส (สวัสดี) theo lớp của ส → khớp expected_tone low', () => {
-    const wat = { thai: 'วัส', initial_char: 'ว', leading: 'ส', final_sound: 't', tone_mark: null };
-    expect(summary(setOf({ toneDrills: [drill({ ...wat, expected_tone: 'low' })] }))).toEqual([]);
-  });
-
-  it('ไ/ใ/ำ/เา ghi vowel_length long hoặc thiếu final_sound → cảnh báo (T2.1.4)', () => {
-    const set = setOf({
-      toneDrills: [
-        drill({ vowel_length: 'long', final_sound: null }),
-        drill({ id: 'khao', thai: 'เขา', initial_char: 'ข', final_sound: 'm', tone_mark: null, expected_tone: 'rising' }),
-      ],
-    });
-    const rule = (f: string) =>
-      `ไ– ใ– –ำ เ–า là nguyên âm ngắn + âm cuối vang (plan 6.2): ghi vowel_length: short, final_sound: ${f}`;
-    expect(summary(set)).toEqual([
-      `warning toneDrills.file:1 [vowel_length] ${rule('y')}`,
-      `warning toneDrills.file:1 [final_sound] ${rule('y')}`,
-      `warning toneDrills.file:2 [final_sound] ${rule('w')}`,
-    ]);
-  });
-
-  it('tone_override: không đối chiếu Tone Engine, không cảnh báo', () => {
-    const exception = drill({ vowel_length: 'long', expected_tone: 'mid', tone_override: true });
-    expect(checkContent(setOf({ toneDrills: [exception] }))).toEqual([]);
-  });
-
-  it('cảnh báo kèm lỗi khi Tone Engine không tính được', () => {
-    const set = setOf({ toneDrills: [drill({ final_sound: null, tone_mark: 'tri', initial_char: 'ข', thai: 'ไข๊' })] });
-    expect(checkContent(set).map((i) => [i.severity, i.field])).toEqual([
-      ['error', 'tone_mark'],
-      ['warning', 'final_sound'],
-    ]);
-  });
-
-  it('nguyên âm inherent_final phải ngắn', () => {
-    const ai = { id: 'sara-ai', form: 'ไ–', length: 'long', inherent_final: 'y', phonetic: 'ai', order: 1 };
-    expect(summary(setOf({ vowels: [ai] }))).toEqual([
-      'error vowels.file:1 [length] nguyên âm có âm cuối sẵn (inherent_final) là nguyên âm ngắn (plan 6.2)',
-    ]);
-  });
-
-  it('cảnh báo ký tự ngoài bảng Thái (kể cả trong từng âm tiết, câu, cặp tối thiểu)', () => {
-    const set = setOf({
-      decks: [deck],
-      words: [word('di', 'ดีa', { syllables: 'ดีa' })],
-      minimalPairs: [
-        {
-          id: 'p1',
-          words: [
-            { thai: 'ไม้!', tone: 'high' },
-            { thai: 'ไม่', tone: 'falling' },
-          ],
-        },
-      ],
-      vowels: [{ id: 'sara-a', form: '–ะ', length: 'short', phonetic: 'a', order: 1 }],
-    });
-    expect(summary(set)).toEqual([
-      'warning words.file:1 [thai] ký tự ngoài bảng chữ Thái: "a" (U+0061)',
-      'warning words.file:1 [syllables.0] ký tự ngoài bảng chữ Thái: "a" (U+0061)',
-      'warning minimalPairs.file:1 [words.0.thai] ký tự ngoài bảng chữ Thái: "!" (U+0021)',
-    ]);
-  });
-
-  it('cảnh báo từ trong bài đọc chưa có trong lexicon — mỗi từ một lần mỗi bài', () => {
-    const set = setOf({
-      decks: [deck],
-      words: [word('di', 'ดี')],
-      readings: [reading(['ดี|มาก', 'มาก|ดี'])],
-    });
-    expect(summary(set)).toEqual([
-      'warning readings.file:1 [sentences.0.th] từ "มาก" chưa có trong lexicon (vocab/words.csv)',
-    ]);
-  });
-
-  it('gộp cảnh báo draft theo file', () => {
-    const set = setOf({ decks: [{ ...deck, draft: true }] });
-    set.words = [
-      at('words', word('di', 'ดี', { draft: 'true' }), 'words.csv', 2),
-      at('words', word('mai', 'ไม่', { draft: 'true' }), 'words.csv', 3),
-      at('words', word('ma', 'มา'), 'words.csv', 4),
-    ];
-    expect(summary(set)).toEqual([
-      'warning decks.file:1 [] 1 mục draft: true — chưa được owner duyệt',
-      'warning words.csv:2 [] 2 mục draft: true — chưa được owner duyệt',
+    expect(errors(content)).toEqual([
+      ['sentences.file', 'grammar_id', 'mẫu câu "g-x" không có trong grammar.yaml'],
+      ['grammar.file', 'unit_id', 'unit "u09" không có trong units.csv'],
+      ['dialogues.file', 'lesson_id', 'bài "l-x" không có trong lessons.csv'],
     ]);
   });
 });
 
-describe('splitWords', () => {
-  it('theo | khi owner đặt ranh giới (bỏ khoảng trắng, dấu câu)', () => {
-    expect(splitWords('สวัสดี|ครับ ไป|ไหน ?')).toEqual(['สวัสดี', 'ครับ', 'ไป', 'ไหน']);
+describe('câu (sentences.csv)', () => {
+  const sentenceIssues = (extra: object) =>
+    relevant(valid({ sentences: [sentence('s1', extra)] })).map((i) => [i.field, i.message]);
+
+  it('tokens ghép lại ≠ th → lỗi', () => {
+    expect(sentenceIssues({ tokens: 'ผม|ชื่อ' })).toEqual([
+      ['tokens', 'tokens ghép lại là "ผมชื่อ", không khớp th "ผมชื่อนาม"'],
+    ]);
   });
-  it('không có | → Intl.Segmenter tách từ', () => {
-    const words = splitWords('สวัสดีครับ');
-    expect(words.join('')).toBe('สวัสดีครับ');
-    expect(words.length).toBeGreaterThan(1);
+
+  it('so sánh bỏ khoảng trắng và chuẩn hóa', () => {
+    expect(sentenceIssues({ th: 'ผม ชื่อ นาม' })).toEqual([]);
+    expect(compactThai(' ก ข ค ')).toBe('กขค');
+  });
+
+  it('distractors trùng tokens → lỗi', () => {
+    expect(sentenceIssues({ distractors: 'คุณ|ชื่อ' })).toEqual([
+      ['distractors.1', 'thẻ nhiễu "ชื่อ" trùng một token của câu'],
+    ]);
+  });
+
+  it('th_alt trùng th (bỏ khoảng trắng) → lỗi', () => {
+    expect(sentenceIssues({ th_alt: 'ผมชื่อนามครับ|ผม ชื่อนาม' })).toEqual([
+      ['th_alt.1', 'bản dịch chấp nhận khác trùng với th'],
+    ]);
+  });
+});
+
+describe('ký tự ngoài bảng Thái', () => {
+  it('chữ Latin trong trường Thái → lỗi, nêu mã Unicode', () => {
+    const issues = relevant(valid({ words: [word('w', 'ดีx')] }));
+    expect(issues).toEqual([
+      expect.objectContaining({
+        severity: 'error',
+        field: 'thai',
+        message: 'ký tự ngoài bảng chữ Thái: "x" (U+0078)',
+      }),
+    ]);
+  });
+
+  it('khoảng trắng, chữ số, dấu câu được phép', () => {
+    const content = valid({
+      words: [word('w', 'ดี', { example_th: '10 บาท!' })],
+      dialogues: [dialogue('d1', 4)],
+    });
+    expect(relevant(content)).toEqual([]);
+  });
+
+  it('kiểm mọi trường Thái: title_th, example_th, th_alt, tokens, distractors, ví dụ, câu thoại', () => {
+    const content = valid({
+      units: [unit('u01', { title_th: 'ทักทายA' })],
+      words: [word('w', 'ดี', { example_th: 'ดีB' })],
+      sentences: [
+        sentence('s1', { th: 'ผมชื่อนามC', tokens: 'ผม|ชื่อ|นามC', th_alt: 'ผมD', distractors: 'คุณE' }),
+      ],
+      grammar: [grammar('g-chue', { examples: [{ th: 'ดีF', vi: 'x' }] })],
+      dialogues: [dialogue('d1', 4, { lines: Array(4).fill({ ...line, th: 'ดีG' }) })],
+    });
+    const fields = relevant(content)
+      .filter((i) => i.message.startsWith('ký tự'))
+      .map((i) => i.field);
+    expect(fields).toEqual(
+      expect.arrayContaining([
+        'title_th',
+        'example_th',
+        'th',
+        'th_alt.0',
+        'tokens.2',
+        'distractors.0',
+        'examples.0.th',
+        'lines.0.th',
+      ]),
+    );
+  });
+});
+
+describe('cảnh báo cấu trúc bài học (plan 0.4)', () => {
+  const warnings = (content: ContentSet) =>
+    checkContent(content)
+      .filter((i) => i.severity === 'warning')
+      .map((i) => [i.file, i.line, i.message]);
+
+  it('unit ngoài 3–4 bài, bài ngoài 8–12 từ, hội thoại ngoài 4–8 câu', () => {
+    const content = setOf({
+      units: [unit()],
+      lessons: [lesson()],
+      words: [word('a')],
+      dialogues: [dialogue('d1', 9)],
+    });
+    expect(warnings(content)).toEqual([
+      ['units.file', 2, 'unit có 1 bài (khuyến nghị 3–4, plan 0.4)'],
+      ['lessons.file', 2, 'bài có 1 từ (khuyến nghị 8–12, plan 0.4)'],
+      ['dialogues.file', 2, 'hội thoại có 9 câu (khuyến nghị 4–8, plan 0.4)'],
+    ]);
+  });
+
+  it('draft: true gộp một cảnh báo mỗi file', () => {
+    const content = valid({
+      grammar: [grammar('g-chue', { draft: true }), grammar('g-2', { draft: true })],
+    });
+    expect(relevant(content)).toEqual([
+      expect.objectContaining({
+        severity: 'warning',
+        file: 'grammar.file',
+        line: 2,
+        message: '2 mục draft: true — chưa được owner duyệt',
+      }),
+    ]);
   });
 });

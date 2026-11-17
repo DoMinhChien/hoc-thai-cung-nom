@@ -4,7 +4,7 @@
 
 - **Không UI nào import.** ESLint (`eslint.config.js`, `FROZEN_TONE`) chặn `apps/web` import `computeTone`, `TONE_RULES`, `inherentFinal`, `consonantClass`, các hằng lớp phụ âm, và import thẳng vào `packages/core/src/tone/`.
 - **Không phát triển thêm.** Chỉ sửa khi test hiện có hỏng (vd. nâng cấp dependency).
-- Còn dùng ở: schema `SyllableAnalysis` (regex phụ âm dẫn) và `content:check` cho file `tone-drills` nếu có (content mẫu đã xóa ở M5.5).
+- Còn dùng ở: schema `SyllableAnalysis` (regex phụ âm dẫn). `content:check` v7 (M6) không còn đọc file chữ cái/tone-drills.
 - Muốn dùng lại (vd. Phase 2) → owner quyết định, viết ADR mới, gỡ quy tắc ESLint.
 
 | File | Nội dung |

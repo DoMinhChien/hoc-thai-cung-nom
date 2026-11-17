@@ -1,54 +1,62 @@
 /**
- * Loader nội dung (plan 5.4): đọc YAML + CSV trong `content/`, chuẩn hóa chữ Thái bằng
+ * Loader nội dung v7 (plan 0.9): đọc 4 CSV + 2 YAML ở gốc `content/`, chuẩn hóa chữ Thái bằng
  * `normalizeThai`, parse bằng schema của `@nom/core`. Mọi lỗi kèm file + dòng/cột + trường.
+ * `content/templates/` (mẫu cho giáo viên) không được đọc ở đây.
  * Cách tổ chức học theo LibreLingo (loader tách khỏi validator/exporter — plan 7.5).
  */
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { parse as parseCsv, CsvError } from 'csv-parse/sync';
-import { isMap, isSeq, LineCounter, parseDocument, type Document, type Node } from 'yaml';
+import { isSeq, LineCounter, parseDocument, type Document, type Node } from 'yaml';
 import type { z } from 'zod';
 import {
-  ConsonantSchema,
-  DeckSchema,
-  MinimalPairSchema,
+  DialogueSchema,
+  GrammarSchema,
+  LessonSchema,
   normalizeThai,
-  ReadingSchema,
-  SyllableAnalysisSchema,
-  ToneEntrySchema,
-  ToneMarkEntrySchema,
-  VowelSchema,
-  WordRowSchema,
+  SentenceSchema,
+  UnitSchema,
+  WordSchema,
 } from '@nom/core';
 
 /** Loại file nội dung → schema của từng mục. */
 export const CONTENT_KINDS = {
-  consonants: ConsonantSchema,
-  vowels: VowelSchema,
-  toneMarks: ToneMarkEntrySchema,
-  tones: ToneEntrySchema,
-  toneDrills: SyllableAnalysisSchema,
-  decks: DeckSchema,
-  words: WordRowSchema,
-  readings: ReadingSchema,
-  minimalPairs: MinimalPairSchema,
+  units: UnitSchema,
+  lessons: LessonSchema,
+  words: WordSchema,
+  sentences: SentenceSchema,
+  grammar: GrammarSchema,
+  dialogues: DialogueSchema,
 } as const;
 
 export type ContentKind = keyof typeof CONTENT_KINDS;
 export type ContentItem<K extends ContentKind> = z.output<(typeof CONTENT_KINDS)[K]>;
 
-/** Vị trí file chuẩn trong `content/` (plan 5.4). `readings` là cả thư mục, mỗi file một bài. */
-export const CONTENT_FILES: Record<Exclude<ContentKind, 'readings'>, string> = {
-  consonants: 'alphabet/consonants.yaml',
-  vowels: 'alphabet/vowels.yaml',
-  toneMarks: 'alphabet/tone-marks.yaml',
-  tones: 'alphabet/tones.yaml',
-  toneDrills: 'alphabet/tone-drills.yaml',
-  decks: 'vocab/decks.yaml',
-  words: 'vocab/words.csv',
-  minimalPairs: 'listening/minimal-pairs.yaml',
+/** Tên file trong `content/` (và `content/templates/`) — plan 0.9. */
+export const CONTENT_FILES: Record<ContentKind, string> = {
+  units: 'units.csv',
+  lessons: 'lessons.csv',
+  words: 'words.csv',
+  sentences: 'sentences.csv',
+  grammar: 'grammar.yaml',
+  dialogues: 'dialogues.yaml',
 };
-export const READINGS_DIR = 'readings';
+
+/** Trường id của từng loại (units/lessons dùng `unit_id`/`lesson_id` như cột CSV). */
+export const ID_FIELD = {
+  units: 'unit_id',
+  lessons: 'lesson_id',
+  words: 'id',
+  sentences: 'id',
+  grammar: 'id',
+  dialogues: 'id',
+} as const satisfies Record<ContentKind, string>;
+
+export function idOf<K extends ContentKind>(kind: K, item: ContentItem<K>): string {
+  return (item as unknown as Record<string, string>)[ID_FIELD[kind]]!;
+}
+
+const isCsv = (kind: ContentKind) => CONTENT_FILES[kind].endsWith('.csv');
 
 export interface ContentIssue {
   severity: 'error' | 'warning';
@@ -57,12 +65,12 @@ export interface ContentIssue {
   /** Dòng/cột bắt đầu từ 1. */
   line?: number;
   column?: number;
-  /** Trường trong mục, vd. `tones.1`; mục thứ mấy nằm ở `line`. */
+  /** Trường trong mục, vd. `tokens.1`; mục thứ mấy nằm ở `line`. */
   field?: string;
   message: string;
 }
 
-/** Một mục đã parse, kèm vị trí để validator (T3.2) báo lỗi chéo (id trùng, deck thiếu…). */
+/** Một mục đã parse, kèm vị trí để validator báo lỗi chéo (id trùng, khóa ngoại…). */
 export interface Located<T> {
   value: T;
   file: string;
@@ -82,37 +90,25 @@ export interface LoadOptions {
 }
 
 export function emptyContentSet(): ContentSet {
-  return {
-    consonants: [],
-    vowels: [],
-    toneMarks: [],
-    tones: [],
-    toneDrills: [],
-    decks: [],
-    words: [],
-    readings: [],
-    minimalPairs: [],
-  };
+  return { units: [], lessons: [], words: [], sentences: [], grammar: [], dialogues: [] };
 }
 
 /**
  * Đoán loại file theo tên (dùng cho `--input` file staging của pipeline Python, M4):
- * `words.<pdf>.csv` → words, `consonants.yaml` → consonants, file trong `readings/` → readings.
+ * `words.<nguồn>.csv` → words, `sentences.<nguồn>.csv` → sentences, `grammar.<nguồn>.yaml` → grammar…
  */
 export function detectKind(file: string): ContentKind | null {
   const base = path.basename(file).toLowerCase();
   const stem = base.split('.')[0]!;
   const ext = path.extname(base);
-  if (ext === '.csv') return stem === 'words' ? 'words' : null;
-  if (ext !== '.yaml' && ext !== '.yml') return null;
-  for (const [kind, rel] of Object.entries(CONTENT_FILES)) {
-    if (path.basename(rel).split('.')[0] === stem) return kind as ContentKind;
+  for (const [kind, name] of Object.entries(CONTENT_FILES) as [ContentKind, string][]) {
+    if (name.split('.')[0] !== stem) continue;
+    if (isCsv(kind) ? ext === '.csv' : ext === '.yaml' || ext === '.yml') return kind;
   }
-  if (path.basename(path.dirname(file)) === READINGS_DIR) return 'readings';
   return null;
 }
 
-/** Đọc toàn bộ `content/`. File chuẩn nào chưa có thì coi như rỗng (validator quyết định). */
+/** Đọc toàn bộ `content/`. File nào chưa có thì coi như rỗng (validator quyết định). */
 export async function loadContent(root: string, options: LoadOptions = {}): Promise<LoadResult> {
   const content = emptyContentSet();
   const issues: ContentIssue[] = [];
@@ -123,18 +119,9 @@ export async function loadContent(root: string, options: LoadOptions = {}): Prom
     return { content, issues };
   }
 
-  for (const [kind, rel] of Object.entries(CONTENT_FILES) as [ContentKind, string][]) {
-    const file = path.join(root, rel);
+  for (const [kind, name] of Object.entries(CONTENT_FILES) as [ContentKind, string][]) {
+    const file = path.join(root, name);
     if (await isFile(file)) mergeInto(content, issues, kind, await loadFile(file, kind, options));
-  }
-
-  const readingsDir = path.join(root, READINGS_DIR);
-  if (await isDirectory(readingsDir)) {
-    const names = (await readdir(readingsDir)).filter((n) => /\.ya?ml$/i.test(n)).sort();
-    for (const name of names) {
-      const file = path.join(readingsDir, name);
-      mergeInto(content, issues, 'readings', await loadFile(file, 'readings', options));
-    }
   }
   return { content, issues };
 }
@@ -152,17 +139,10 @@ export async function loadFile<K extends ContentKind>(
 ): Promise<FileResult<K>> {
   const shown = displayPath(options.cwd)(file);
   const text = await readFile(file, 'utf8');
-  return kind === 'words'
-    ? (loadCsv(text, shown) as FileResult<K>)
-    : loadYaml(text, shown, kind, kind !== 'readings');
+  return isCsv(kind) ? loadCsv(text, shown, kind) : loadYaml(text, shown, kind);
 }
 
-function loadYaml<K extends ContentKind>(
-  text: string,
-  file: string,
-  kind: K,
-  isList: boolean,
-): FileResult<K> {
+function loadYaml<K extends ContentKind>(text: string, file: string, kind: K): FileResult<K> {
   const schema = CONTENT_KINDS[kind];
   const lineCounter = new LineCounter();
   const doc = parseDocument(text, { lineCounter, prettyErrors: true });
@@ -189,23 +169,21 @@ function loadYaml<K extends ContentKind>(
 
   const root = doc.contents;
   if (root === null) return { items, issues };
-  if (isList ? !isSeq(root) : !isMap(root)) {
+  if (!isSeq(root)) {
     const pos = root.range ? at(root.range[0]) : undefined;
     issues.push({
       severity: 'error',
       file,
       line: pos?.line,
       column: pos?.col,
-      message: isList ? 'file phải là danh sách mục (- ...)' : 'file phải là một mục (key: value)',
+      message: 'file phải là danh sách mục (- ...)',
     });
     return { items, issues };
   }
 
-  const entries: { prefix: (string | number)[]; node: Node }[] = isSeq(root)
-    ? root.items.map((node, i) => ({ prefix: [i], node: node as Node }))
-    : [{ prefix: [], node: root }];
-
-  for (const { prefix, node } of entries) {
+  for (const [index, item] of root.items.entries()) {
+    const node = item as Node;
+    const prefix = [index];
     const start = at(node.range?.[0] ?? 0);
     const result = schema.safeParse(normalizeStrings(node.toJSON()));
     if (result.success) {
@@ -240,8 +218,9 @@ function locate(
   return undefined;
 }
 
-function loadCsv(text: string, file: string): FileResult<'words'> {
-  const items: Located<ContentItem<'words'>>[] = [];
+function loadCsv<K extends ContentKind>(text: string, file: string, kind: K): FileResult<K> {
+  const schema = CONTENT_KINDS[kind];
+  const items: Located<ContentItem<K>>[] = [];
   const issues: ContentIssue[] = [];
   let records: { record: Record<string, string>; info: { lines: number } }[];
   try {
@@ -254,11 +233,11 @@ function loadCsv(text: string, file: string): FileResult<'words'> {
   }
 
   for (const { record, info } of records) {
-    // info.lines = dòng cuối của bản ghi; ô nhiều dòng hiếm gặp trong words.csv.
+    // info.lines = dòng cuối của bản ghi; ô nhiều dòng hiếm gặp trong CSV nội dung.
     const line = info.lines;
-    const result = WordRowSchema.safeParse(normalizeStrings(record));
+    const result = schema.safeParse(normalizeStrings(record));
     if (result.success) {
-      items.push({ value: result.data, file, line });
+      items.push({ value: result.data as ContentItem<K>, file, line });
       continue;
     }
     for (const issue of result.error.issues) {

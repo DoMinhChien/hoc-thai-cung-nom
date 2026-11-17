@@ -1,0 +1,12 @@
+# MẪU grammar.yaml — mỗi mẫu câu (điểm ngữ pháp) là một mục bắt đầu bằng "- ".
+# Lưu file dạng UTF-8. Dòng bắt đầu bằng # là chú thích, app bỏ qua.
+- id: g-u01-chue            # bắt buộc · id duy nhất: chữ thường a-z, số, gạch nối (vd. g-u01-chue)
+  unit_id: u01              # bắt buộc · unit_id trong units.csv
+  title_vi: Nói tên         # bắt buộc · tên mẫu câu (tiếng Việt)
+  pattern: ผม/ฉัน + ชื่อ + tên   # bắt buộc · công thức, trộn Thái/Việt được
+  explain_vi: Dùng ชื่อ (tên là) sau đại từ để nói tên. Nam nói ผม, nữ nói ฉัน.   # bắt buộc
+  examples:                 # bắt buộc · ít nhất 1 ví dụ (khuyến nghị 3–5), mỗi ví dụ có th + vi
+    - th: ผมชื่อสมชาย
+      vi: Tôi tên là Somchai.
+  source: giao-trinh-a.pdf#p13   # tùy chọn · nguồn để truy vết
+  draft: true               # tùy chọn · true = chưa duyệt (mặc định false)

@@ -550,6 +550,8 @@ PDF ──► [1. Detect] text-based hay scan?
 **Phase 2 —** cùng pipeline, chạy trên **Azure Functions (Python runtime, Function App riêng)** khi Editor upload PDF; bước validate gọi API validate của Function App TypeScript (M-02); kết quả vào bảng `import_items` trạng thái `Draft`.
 
 ### 5.4 Cấu trúc thư mục content (Phase 1)
+> **v7 (M6):** thay bằng **mục 0.9**. `content/` gồm 6 file ở gốc (`units.csv`, `lessons.csv`, `words.csv`, `sentences.csv`, `grammar.yaml`, `dialogues.yaml`), mẫu + hướng dẫn ở `content/templates/`. Cây thư mục dưới đây (alphabet/, vocab/, readings/, listening/) đã bỏ.
+
 ```
 content/
   alphabet/   consonants.yaml  vowels.yaml  tone-marks.yaml  tones.yaml  tone-drills.yaml
@@ -564,6 +566,8 @@ tools/pdf-pipeline/   (Python) extract.py  normalize.py  prompts/  tests/
 ```
 
 ### 5.5 Schema (implement bằng Zod, dùng chung cho Phase 1 build và Phase 2 API)
+> **v7 (M6):** schema dùng là `Unit`, `Lesson`, `Word`, `Sentence`, `Grammar`, `Dialogue` (mục 0.9, `packages/core/src/schema/`). Bảng `words.csv` cũ dưới đây (`deck`, `syllables`, `tones`) và Reading/MinimalPair đã bỏ; schema chữ cái chỉ còn cho Tone Engine đóng băng.
+
 
 **Word (`words.csv`)**
 
@@ -603,6 +607,8 @@ sentences:
 ```
 
 ### 5.6 Validator (`npm run content:check`, chạy trong CI)
+> **v7 (M6):** quy tắc hiện hành ở ROADMAP T6.4: id duy nhất, khóa ngoại unit/lesson/grammar, `tokens` ghép = `th`, `distractors` ∉ `tokens`, `th_alt` ≠ `th`, ký tự ngoài bảng Thái (lỗi); cảnh báo cấu trúc bài (0.4) và `draft`. Kiểm tra Tone Engine/lexicon bài đọc dưới đây đã bỏ.
+
 - Schema, id duy nhất, `deck` tồn tại, `syllables`/`tones` cùng độ dài.
 - `computeTone()` khớp `expected_tone` / `tones`.
 - Cảnh báo: ký tự ngoài bảng Thai Unicode (U+0E00–U+0E7F) trong trường `thai`; từ trong bài đọc chưa có trong lexicon.

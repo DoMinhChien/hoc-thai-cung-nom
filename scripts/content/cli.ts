@@ -3,7 +3,7 @@
  *
  *   content:check                         validate toàn bộ content/
  *   content:check --input <file|thư mục>  validate file staging của pipeline Python (plan 5.3 bước 5);
- *                                         content/ làm ngữ cảnh (deck, lexicon, id trùng), chỉ báo issue của input
+ *                                         content/ làm ngữ cảnh (khóa ngoại, id trùng), chỉ báo issue của input
  *   --json                                in JSON ra stdout cho Python đọc
  *
  * Lỗi → exit 1; chỉ có cảnh báo → exit 0; tham số sai → exit 2.
@@ -100,7 +100,7 @@ async function checkInputs(inputs: string[], { cwd, contentRoot }: RunOptions) {
           issues.push({
             severity: 'error',
             file: input,
-            message: 'không nhận ra loại nội dung từ tên file (vd. words.<nguồn>.csv)',
+            message: 'không nhận ra loại nội dung từ tên file (vd. words.<nguồn>.csv, grammar.<nguồn>.yaml)',
           });
         }
         continue;

@@ -1,9 +1,17 @@
 {
-  "title": "word-row",
+  "title": "word",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "unit_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "lesson_id": {
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
@@ -12,25 +20,14 @@
       "minLength": 1,
       "pattern": "[\\u0E00-\\u0E7F]"
     },
-    "phonetic": {
-      "type": "string",
-      "pattern": "^[a-z]+([- ][a-z]+)*$"
-    },
-    "syllables": {
-      "type": "string"
-    },
-    "tones": {
-      "type": "string"
-    },
     "meaning_vi": {
       "type": "string"
     },
     "pos": {
       "type": "string"
     },
-    "deck": {
-      "type": "string",
-      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    "phonetic": {
+      "type": "string"
     },
     "example_th": {
       "type": "string"
@@ -38,16 +35,13 @@
     "example_vi": {
       "type": "string"
     },
+    "image": {
+      "type": "string"
+    },
     "tags": {
       "type": "string"
     },
     "source": {
-      "type": "string"
-    },
-    "image": {
-      "type": "string"
-    },
-    "mnemonic_vi": {
       "type": "string"
     },
     "draft": {
@@ -61,10 +55,10 @@
   },
   "required": [
     "id",
+    "unit_id",
+    "lesson_id",
     "thai",
-    "phonetic",
-    "meaning_vi",
-    "deck"
+    "meaning_vi"
   ],
   "additionalProperties": false
 }

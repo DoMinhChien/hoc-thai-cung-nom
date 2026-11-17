@@ -1,70 +1,29 @@
 import { z } from 'zod';
-import { contentMeta, IdSchema, TextSchema, ThaiTextSchema, ToneSchema } from './common';
-
-/** Ô CSV trống → `undefined`. */
-const optionalCell = z
-  .string()
-  .optional()
-  .transform((v) => (v === undefined || v.trim() === '' ? undefined : v.trim()));
-
-const split = (value: string, sep: string) =>
-  value
-    .split(sep)
-    .map((part) => part.trim())
-    .filter((part) => part.length > 0);
-
-/** Tách ô CSV theo `sep`, bỏ khoảng trắng thừa. */
-const splitCell = (sep: string) => z.string().transform((v) => split(v, sep));
-
-const optionalList = (sep: string) => optionalCell.transform((v) => (v ? split(v, sep) : []));
+import { draftCell, listCell, optionalCell, optionalListCell } from './csv';
+import { IdSchema, ImageSchema, TextSchema, ThaiTextSchema } from './common';
 
 /**
- * Một dòng `content/vocab/words.csv` (plan 5.5, B-02). Mọi ô là chuỗi;
- * `syllables`/`tones` ngăn bằng `|`, `meaning_vi`/`tags` ngăn bằng `;`.
- * v7 (plan 0.2): `syllables`/`tones` tùy chọn (Tone Engine đóng băng); có thì phải cùng độ dài.
+ * Một dòng `content/words.csv` (plan 0.9, B-02). `meaning_vi`/`tags` ngăn bằng `;`.
+ * v7: không còn `deck`/`syllables`/`tones`; `phonetic` tùy chọn (ẩn mặc định — plan 0.2).
  */
-export const WordRowSchema = z
-  .strictObject({
-    id: IdSchema,
-    thai: ThaiTextSchema,
-    phonetic: z
-      .string()
-      .regex(/^[a-z]+([- ][a-z]+)*$/, 'phiên âm: chữ Latin thường, không dấu, ngăn bằng -'),
-    syllables: optionalList('|').pipe(z.array(ThaiTextSchema)),
-    tones: optionalList('|').pipe(z.array(ToneSchema)),
-    meaning_vi: splitCell(';').pipe(z.array(TextSchema).min(1, 'cần ít nhất 1 nghĩa')),
-    pos: optionalCell,
-    deck: IdSchema,
-    example_th: optionalCell,
-    example_vi: optionalCell,
-    tags: optionalList(';'),
-    source: optionalCell,
-    image: optionalCell.pipe(contentMeta.image),
-    mnemonic_vi: optionalCell,
-    draft: z
-      .enum(['true', 'false', ''])
-      .optional()
-      .transform((v) => v === 'true'),
-  })
-  .check((ctx) => {
-    const { syllables, tones } = ctx.value;
-    if (tones.length > 0 && syllables.length !== tones.length) {
-      ctx.issues.push({
-        code: 'custom',
-        input: ctx.value,
-        path: ['tones'],
-        message: `tones có ${tones.length} mục nhưng syllables có ${syllables.length}`,
-      });
-    }
-  });
-export type WordRow = z.output<typeof WordRowSchema>;
-
-/** `content/vocab/decks.yaml` — B-01 (thứ tự do owner định nghĩa). */
-export const DeckSchema = z.strictObject({
+export const WordSchema = z.strictObject({
   id: IdSchema,
-  title_vi: TextSchema,
-  description_vi: TextSchema.optional(),
-  order: z.int().positive(),
-  ...contentMeta,
+  unit_id: IdSchema,
+  lesson_id: IdSchema,
+  thai: ThaiTextSchema,
+  meaning_vi: listCell(';').pipe(z.array(TextSchema).min(1, 'cần ít nhất 1 nghĩa')),
+  pos: optionalCell,
+  phonetic: optionalCell.pipe(
+    z
+      .string()
+      .regex(/^[a-z]+([- ][a-z]+)*$/, 'phiên âm: chữ Latin thường, không dấu, ngăn bằng -')
+      .optional(),
+  ),
+  example_th: optionalCell.pipe(ThaiTextSchema.optional()),
+  example_vi: optionalCell,
+  image: optionalCell.pipe(ImageSchema.optional()),
+  tags: optionalListCell(';'),
+  source: optionalCell,
+  draft: draftCell,
 });
-export type Deck = z.output<typeof DeckSchema>;
+export type Word = z.output<typeof WordSchema>;
