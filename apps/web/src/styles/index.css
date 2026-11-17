@@ -102,3 +102,68 @@
     line-height: var(--nom-leading-th);
   }
 }
+
+/*
+ * Bàn phím ảo Kedmanee (`simple-keyboard`, theme `hg-theme-nom`) — chỉ dùng token, không nạp CSS mặc
+ * định của thư viện (màu cứng). Bố cục giữ như theme gốc: hàng flex, phím co giãn.
+ */
+.hg-theme-nom {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px;
+  border-radius: var(--nom-radius-md);
+  background: var(--nom-bg-subtle);
+  touch-action: manipulation;
+  user-select: none;
+}
+.hg-theme-nom .hg-row {
+  display: flex;
+  gap: 4px;
+}
+.hg-theme-nom .hg-row:not(:last-child) {
+  margin-bottom: 4px;
+}
+.hg-theme-nom .hg-button {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--nom-border);
+  border-radius: var(--nom-radius-sm);
+  background: var(--nom-surface);
+  box-shadow: var(--nom-shadow-sm);
+  color: var(--nom-fg);
+  font-family: var(--nom-font-th);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--nom-motion-fast) var(--nom-motion-easing);
+}
+.hg-theme-nom .hg-button span {
+  pointer-events: none;
+}
+.hg-theme-nom .hg-button:hover,
+.hg-theme-nom .hg-button.hg-activeButton {
+  background: var(--nom-accent-subtle);
+}
+.hg-theme-nom .hg-button:focus-visible {
+  outline: 2px solid var(--nom-accent);
+  outline-offset: 1px;
+}
+.hg-theme-nom .hg-button[aria-pressed='true'] {
+  border-color: var(--nom-accent);
+  background: var(--nom-accent);
+  color: var(--nom-accent-fg);
+}
+.hg-theme-nom .hg-functionBtn {
+  flex-grow: 1.6;
+  background: var(--nom-bg-subtle);
+  font-family: var(--nom-font-vi);
+}
+.hg-theme-nom .hg-button-space {
+  flex: 0 0 50%;
+  margin-inline: auto;
+}

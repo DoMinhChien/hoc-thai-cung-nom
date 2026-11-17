@@ -125,6 +125,7 @@ export const vi = {
     notFound: 'Không tìm thấy trang',
     typography: 'Kiểm tra font chữ',
     devProgress: 'Mẫu component tiến độ',
+    devTyping: 'Mẫu ô gõ chữ Thái',
   },
   legal: {
     footerLabel: 'Liên kết pháp lý',
@@ -155,6 +156,28 @@ export const vi = {
     stacked: 'StackedProgressBar',
     sampleLevel: 'Cấp A1',
     sampleLesson: 'Bài 1 — Chào hỏi',
+  },
+  typing: {
+    keyboard: 'Bàn phím tiếng Thái (Kedmanee)',
+    showKeyboard: 'Hiện bàn phím ảo',
+    hideKeyboard: 'Ẩn bàn phím ảo',
+    backspace: 'Xoá',
+    shift: 'Shift',
+    capsLock: 'Caps Lock',
+    space: 'Dấu cách',
+    correct: 'Chính xác!',
+    toneWrong: 'Sai dấu thanh',
+    wrong: 'Chưa đúng',
+    yourAnswer: 'Bạn gõ',
+    expected: 'Đáp án',
+  },
+  devTyping: {
+    intro:
+      'Dữ liệu giả lập — chỉ để xem ô gõ và bàn phím ảo (M8). Bài tập gõ câu thật (E-07) dùng ở M9.',
+    prompt: 'Dịch sang tiếng Thái',
+    inputLabel: 'Bản dịch tiếng Thái',
+    check: 'Kiểm tra',
+    hint: 'Chưa cài bàn phím Thái? Gõ phím thường — chữ được đổi theo vị trí Kedmanee.',
   },
   typography: {
     intro: 'Mẫu chữ Thái có dấu chồng — kiểm tra dấu trên/dưới không bị cắt.',

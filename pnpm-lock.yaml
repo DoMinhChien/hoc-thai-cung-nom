@@ -83,6 +83,9 @@ importers:
       react-router:
         specifier: ^8.5.1
         version: 8.5.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      simple-keyboard:
+        specifier: 3.8.205
+        version: 3.8.205
       sonner:
         specifier: ^2.0.8
         version: 2.0.8(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -4623,6 +4626,9 @@ packages:
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+
+  simple-keyboard@3.8.205:
+    resolution: {integrity: sha512-6uy8t4HhLuL0b60z0myhjmgGhJ73itb8NBPASDpLoC0HdsOzH3ZnaOLRGE7rG0DgKB/z+9Sgy1GEjoGleM7NBQ==}
 
   skin-tone@2.0.0:
     resolution: {integrity: sha512-kUMbT1oBJCpgrnKoSr0o6wPtvRWT9W9UKvGLwfJYO2WuahZRHOpEyL1ckyMGgMWh0UdpmaoFqKKD29WTomNEGA==}
@@ -10066,6 +10072,8 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
+
+  simple-keyboard@3.8.205: {}
 
   skin-tone@2.0.0:
     dependencies:

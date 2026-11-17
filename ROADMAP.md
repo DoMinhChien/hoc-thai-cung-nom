@@ -225,7 +225,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 **Task**
 - [x] T8.1 Layout **Kedmanee TIS 820-2538** trong `packages/core` (`KeyboardEvent.code` → ký tự thường/Shift, 4 hàng) + `kedmaneeChar(code, shift)`. Unit test: đủ phụ âm ก–ฮ, nguyên âm, dấu thanh, chữ số Thái; không ký tự nào trùng.
 - [x] T8.2 Chấm gõ câu `gradeThaiTyping(input, accepted)` trong core: chuẩn hóa (`normalizeThai`, bỏ khoảng trắng + dấu câu, ครับ/ค่ะ/คะ tùy chọn cuối mỗi cụm), kết quả `correct` / `tone` (chỉ sai dấu thanh) / `wrong`, diff theo cụm ký tự (grapheme) với đáp án gần nhất; `acceptedAnswers(sentence)` = `th` + `th_alt`. Unit test gồm gõ dấu thanh trước nguyên âm trên, `ํ`+`า`.
-- [ ] T8.3 Web `ThaiKeyboard` (`simple-keyboard`, layout từ core, Shift/Caps, nút `<button>`, bấm không làm mất focus ô nhập, CSS theo tokens) + `ThaiTextInput` (chèn tại con trỏ, phím vật lý ra chữ Latin → map Kedmanee, bàn phím Thái của hệ điều hành/IME giữ nguyên, nút ẩn/hiện bàn phím). Component test.
+- [x] T8.3 Web `ThaiKeyboard` (`simple-keyboard`, layout từ core, Shift/Caps, nút `<button>`, bấm không làm mất focus ô nhập, CSS theo tokens) + `ThaiTextInput` (chèn tại con trỏ, phím vật lý ra chữ Latin → map Kedmanee, bàn phím Thái của hệ điều hành/IME giữ nguyên, nút ẩn/hiện bàn phím). Component test.
 - [ ] T8.4 Web `TypingFeedback`: kết quả đúng / sai dấu thanh / sai chữ + diff (thiếu/thừa) + đáp án đúng, `lang="th"`. Component test.
 - [ ] T8.5 `/dev/typing` (trang mẫu, câu mẫu draft của content) + E2E luồng 4 plan 7.4 (bàn phím ảo, dấu thanh trước nguyên âm trên → đúng; phím vật lý map Kedmanee) + axe + screenshot baseline.
 
