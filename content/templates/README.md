@@ -33,18 +33,34 @@ Thư mục này chứa **6 file mẫu**. Mỗi file có đủ cột/trường v�
 
 ## Các cột cần chú ý
 
-- **`level`**: `A1` hoặc `A2`. **`order`**: số thứ tự 1, 2, 3…
-- **`draft`**: `true` = nội dung chưa được duyệt; để trống hoặc `false` khi đã duyệt.
+- **`unit_id` / `order`** (units.csv): nên theo **số chuyên đề** của giáo viên, vd. chuyên đề 3 → `u03`, `order` = 3. Thứ tự lộ trình trong app theo `order`.
+- **`level`**: `A1`, `A2`, `B1` hoặc để trống.
+- **`kind`**: `theme` (từ vựng theo chủ đề, mặc định khi để trống) hoặc `grammar` (điểm ngữ pháp / cách dùng, vd. "Các trường hợp của น่า"). Unit `grammar` cho phép bài dài (tối đa 40 từ) và học Mẫu câu trước Từ vựng.
+- **`draft`**: `true` = nội dung chưa được duyệt; để trống hoặc `false` khi đã duyệt. Mục `draft: true` **được thiếu** `meaning_vi` (words.csv) và `th` (sentences.csv); bỏ `draft` thì bắt buộc điền.
+- **`thai_alt`** (words.csv): cách viết/từ khác cùng nghĩa, ngăn bằng `|` (vd. ภาษิต → `สุภาษิต`).
+- **`note_vi`**: ghi chú cách dùng (vd. "dùng cho thuyền lớn", "trong quân sự").
+- **`classifier`**: loại từ (ลักษณนาม) đi kèm danh từ khi đếm, vd. แมว → `ตัว`.
 - **`phonetic`** (words.csv): tùy chọn, chữ Latin thường không dấu, ngăn âm tiết bằng `-` (vd. `sa-wat-di`). App ẩn phiên âm mặc định.
 - **`image`**: emoji Noto `noto:<mã hex>` (vd. `noto:1f44b` = 👋) hoặc file `img/<tên>.svg|png|webp|jpg`.
-- **`tokens`** (sentences.csv): tách câu Thái thành các thẻ từ để người học sắp xếp. **Ghép các thẻ lại phải ra đúng `th`** (không tính khoảng trắng). Vd. `th = ผมชื่อสมชาย` → `tokens = ผม|ชื่อ|สมชาย`.
+- **`tokens`** (sentences.csv): tách câu Thái thành các thẻ từ để người học sắp xếp. **Ghép các thẻ lại phải ra đúng `th`** (không tính khoảng trắng). Vd. `th = ผมชื่อสมชาย` → `tokens = ผม|ชื่อ|สมชาย`. Để trống thì app tự tách (có cảnh báo "cần duyệt").
 - **`distractors`**: thẻ nhiễu cho bài sắp xếp khó; **không được trùng** thẻ nào trong `tokens`.
 - **`th_alt`**: các bản dịch Thái khác cũng được chấp nhận (vd. thêm ครับ/ค่ะ); không trùng `th`.
 - **`audio`**: tùy chọn, `audio/<tên>.mp3|m4a|ogg`. Để trống thì app dùng giọng đọc máy (TTS).
 
 ## Khuyến nghị (cảnh báo, không chặn)
 
-Mỗi unit 3–4 bài; mỗi bài 8–12 từ; mỗi hội thoại 4–8 câu (plan mục 0.4).
+Mỗi unit 3–4 bài; mỗi bài 8–12 từ (unit `grammar`: tối đa 40); mỗi hội thoại 4–8 câu (plan mục 0.4). Mục draft thiếu nghĩa/đáp án được cảnh báo từng dòng.
+
+## Ánh xạ tài liệu Plern-Pin
+
+Giáo trình "Tiếng Thái Thạc Sĩ Plern-Pin" chia theo chuyên đề đánh số. Mỗi chuyên đề là một dòng `units.csv`; ghi `source` dạng `plernpin-<số chuyên đề>#p<trang>` (vd. `plernpin-03#p1`).
+
+| Trong tài liệu | Ghi vào | Cách điền |
+|---|---|---|
+| **Bảng loại từ** (cột trái danh từ, có khi kèm `: nghĩa`; cột phải trống) — vd. chuyên đề 3 "Loại từ" | `words.csv`, unit `kind = theme` | `thai` = danh từ; `meaning_vi` = phần sau dấu `:` (không có thì để trống + `draft: true`); `classifier` = loại từ (giáo viên điền đáp án; chưa có thì để trống) |
+| **Danh sách cách dùng** `น่า…: nghĩa` — vd. chuyên đề 11 "Các trường hợp của น่า" | `grammar.yaml` (1 mẫu câu: `pattern` = `น่า + động từ`, vài ví dụ) + `words.csv` (mỗi dòng danh sách là một từ), unit `kind = grammar` | Nghĩa có nhiều ý ngăn bằng dấu phẩy → đổi sang `;` (vd. `Đáng yêu, dễ thương` → `đáng yêu; dễ thương`); chú thích trong ngoặc → `note_vi` |
+| **"Bài tập vận dụng"** (câu tiếng Việt, dòng `=>` trống) | `sentences.csv` | `vi` = câu tiếng Việt; `th` để trống + `draft: true` khi chưa có đáp án; giáo viên điền `th` (và `th_alt` nếu nhiều cách dịch) rồi bỏ `draft` |
+| Header/footer, số Zalo, watermark | — | Bỏ qua |
 
 ## Kiểm tra trước khi gửi
 
