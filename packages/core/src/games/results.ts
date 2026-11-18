@@ -1,0 +1,58 @@
+/**
+ * Lưu kết quả một lượt chơi (F-11, F-12): kỷ lục theo trò + nguồn, cờ "cần ôn" cho mục sai.
+ * **Không** đụng thẻ SRS / log ôn — chỉ dùng phần kỷ lục + cờ của `ProgressRepository`.
+ */
+import { newId } from '../data/memory';
+import type { GameResultRecord } from '../data/records';
+import type { ProgressRepository } from '../data/repositories';
+import { isBetterResult, type GameStats, type GameSummary } from './game';
+
+export interface SavedGameResult {
+  record: GameResultRecord;
+  /** Kỷ lục mới (kể cả lượt đầu tiên). */
+  newBest: boolean;
+  /** Kỷ lục trước lượt này; `null` khi chưa chơi. */
+  previous: GameStats | null;
+}
+
+const stats = ({ score, correct, total, maxCombo, durationMs }: GameStats): GameStats => ({
+  score,
+  correct,
+  total,
+  maxCombo,
+  durationMs,
+});
+
+/** Gọi khi lượt kết thúc tự nhiên — thoát giữa chừng không lưu (SCR-08 §B). */
+export async function saveGameResult(
+  progress: Pick<ProgressRepository, 'getGameResult' | 'putGameResult' | 'putNeedsReview'>,
+  summary: GameSummary,
+  source: string,
+  now: Date,
+): Promise<SavedGameResult> {
+  const ts = now.toISOString();
+  const current = await progress.getGameResult(summary.gameId, source);
+  const previous = current?.best ?? null;
+  const newBest = !previous || isBetterResult(summary.gameId, summary, previous);
+  const record: GameResultRecord = {
+    id: current?.id ?? newId(),
+    gameId: summary.gameId,
+    source,
+    best: newBest ? stats(summary) : previous,
+    plays: (current?.plays ?? 0) + 1,
+    lastPlayedAt: ts,
+    updatedAt: ts,
+  };
+  await progress.putGameResult(record);
+  for (const m of summary.mistakes) {
+    await progress.putNeedsReview({
+      id: newId(),
+      itemType: m.itemType,
+      itemId: m.itemId,
+      origin: 'game',
+      flaggedAt: ts,
+      updatedAt: ts,
+    });
+  }
+  return { record, newBest, previous };
+}

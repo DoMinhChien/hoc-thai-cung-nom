@@ -3,6 +3,7 @@
  * export/import (M12) và đồng bộ (Phase 2). Ngày giờ lưu ISO string UTC (so sánh được theo chuỗi).
  */
 import type { LessonStep } from '../content/bundle';
+import type { GameId, GameStats } from '../games/game';
 import type { Tone } from '../schema/common';
 import type { SrsLog, SrsState } from '../srs/srs';
 
@@ -82,5 +83,28 @@ export interface CanDoRecord {
   /** Câu can-do (khóa theo nội dung; giáo viên sửa câu → tick cũ không còn áp dụng). */
   canDo: string;
   checked: boolean;
+  updatedAt: string;
+}
+
+/** Kỷ lục cá nhân theo trò + nguồn (F-11, P-09) — một bản ghi mỗi cặp. */
+export interface GameResultRecord {
+  id: string;
+  gameId: GameId;
+  /** `learned` hoặc `unit:<id>` (`GameSource.key`). */
+  source: string;
+  best: GameStats;
+  plays: number;
+  lastPlayedAt: string;
+  updatedAt: string;
+}
+
+/** Mục bị đánh dấu "cần ôn" (F-12: trò chơi không đổi FSRS) — Bài tập (M9) ưu tiên. */
+export interface NeedsReviewRecord {
+  id: string;
+  itemType: ItemType;
+  itemId: string;
+  /** Nơi sinh cờ (P-09: số mục "cần ôn" sinh ra từ trò chơi). */
+  origin: 'game';
+  flaggedAt: string;
   updatedAt: string;
 }

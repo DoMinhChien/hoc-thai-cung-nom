@@ -4,9 +4,12 @@ import {
   type CanDoRecord,
   type CardFilter,
   type CardType,
+  type GameId,
+  type GameResultRecord,
   type ItemType,
   type LessonProgressRecord,
   type ListeningStatRecord,
+  type NeedsReviewRecord,
   type ProgressRepository,
   type Repositories,
   type ReviewLogRecord,
@@ -78,6 +81,34 @@ class DexieProgressRepository implements ProgressRepository {
       await this.db.canDos.where('[unitId+canDo]').equals([record.unitId, record.canDo]).delete();
       await this.db.canDos.put(record);
     });
+  }
+
+  getGameResult(gameId: GameId, source: string) {
+    return this.db.gameResults.where('[gameId+source]').equals([gameId, source]).first();
+  }
+  listGameResults() {
+    return this.db.gameResults.toArray();
+  }
+  async putGameResult(record: GameResultRecord) {
+    await this.db.transaction('rw', this.db.gameResults, async () => {
+      await this.db.gameResults
+        .where('[gameId+source]')
+        .equals([record.gameId, record.source])
+        .delete();
+      await this.db.gameResults.put(record);
+    });
+  }
+  listNeedsReview() {
+    return this.db.needsReview.toArray();
+  }
+  async putNeedsReview(record: NeedsReviewRecord) {
+    await this.db.transaction('rw', this.db.needsReview, async () => {
+      await this.deleteNeedsReview(record.itemType, record.itemId);
+      await this.db.needsReview.put(record);
+    });
+  }
+  async deleteNeedsReview(itemType: ItemType, itemId: string) {
+    await this.db.needsReview.where('[itemType+itemId]').equals([itemType, itemId]).delete();
   }
 }
 
