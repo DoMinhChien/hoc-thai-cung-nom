@@ -9,6 +9,9 @@ import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
 import { GamePage } from '@/pages/games/GamePage';
 import { GamesPage } from '@/pages/games/GamesPage';
+import { LessonPage } from '@/pages/units/LessonPage';
+import { UnitPage } from '@/pages/units/UnitPage';
+import { UnitsPage } from '@/pages/units/UnitsPage';
 import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -59,7 +62,10 @@ export const routes: RouteObject[] = [
   },
   {
     element: <FocusLayout />,
-    children: [{ path: '/games/:id', element: <GamePage /> }],
+    children: [
+      { path: '/games/:id', element: <GamePage /> },
+      { path: '/units/:unitId/:lessonId', element: <LessonPage /> },
+    ],
   },
   {
     element: <AppLayout />,
@@ -80,7 +86,8 @@ export const routes: RouteObject[] = [
           </RequireAuth>
         ),
       },
-      page('/units', 'pages.units', 'units'),
+      { path: '/units', element: <UnitsPage /> },
+      { path: '/units/:unitId', element: <UnitPage /> },
       page('/practice', 'pages.practice', 'practice'),
       page('/words', 'pages.words', 'words'),
       { path: '/games', element: <GamesPage /> },
