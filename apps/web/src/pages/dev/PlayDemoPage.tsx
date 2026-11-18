@@ -271,10 +271,11 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
   const [picked, setPicked] = useState<number[]>([]);
   const q = state.questions[Math.min(state.index, state.questions.length - 1)]!;
 
-  // Xếp đúng → đọc lại cả câu cho người học nhớ (góp ý owner 2026-11-18), đọc xong mới sang câu.
+  // Sau mỗi câu (đúng hay sai) đọc cả câu đúng cho người học nhớ (góp ý owner 2026-11-18),
+  // đọc xong mới sang câu.
   useFeedbackPause({
     active: state.status === 'feedback',
-    speakText: state.feedback?.correct ? q.th : null,
+    speakText: q.th,
     speech,
     minMs: 1500,
     onDone: () => {
