@@ -6,7 +6,7 @@
 |---|---|---|
 | `brief.md` | Định hướng, tính cách, phạm vi | ✅ Chốt định hướng (accent chàm, màn Chào mừng) |
 | `flows.md` | Sitemap + luồng đăng nhập / Guest / xoá tài khoản | ✅ Duyệt 2026-11-15 |
-| `tokens.json` | Màu, font, spacing, radius | ✅ Duyệt 2026-11-15 |
+| `tokens.json` | Màu, font, spacing, radius | ✅ Duyệt 2026-11-15 · font Thái → **Sarabun** (owner, 2026-11-18) |
 | `screens/SCR-00-layout.md` | Khung chung | ✅ Duyệt 2026-11-15 |
 | `screens/SCR-01-login.md` | Đăng nhập | ✅ Duyệt 2026-11-15 |
 | `screens/SCR-02-account.md` | Tài khoản + trang pháp lý | ✅ Duyệt 2026-11-15 |

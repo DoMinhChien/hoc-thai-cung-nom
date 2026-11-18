@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.2** (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.4** (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -482,7 +482,7 @@ Mục tiêu: **vui nhờ cơ chế chơi** (thời gian, combo, âm thanh phản
 - **G-02** Export / Import tiến độ ra JSON (Phase 1; vẫn giữ ở Phase 2).
 - **G-03** PWA, dùng offline sau lần tải đầu.
 - **G-04** **Desktop-first**: thiết kế & test cho màn hình ≥ 1280px; hỗ trợ tối thiểu 1024px. Mobile chưa nằm trong scope (chỉ đảm bảo không vỡ layout nghiêm trọng).
-- **G-05** Font Thái self-host (Noto Sans Thai / Sarabun), dấu hiển thị đúng vị trí.
+- **G-05** Font Thái self-host **Sarabun** (v7.4: kiểu chữ Thái **có đầu tròn** phổ thông, giống giáo trình/sách; không dùng kiểu không đầu tròn như Noto Sans Thai), dấu hiển thị đúng vị trí.
 - **G-06** **Gõ chữ Thái** (Phase 1):
   - Bàn phím ảo layout **Kedmanee** (chuẩn Thái), có thể ẩn/hiện; trên desktop hiển thị dưới ô nhập, hỗ trợ cả click chuột và bàn phím vật lý (map phím theo layout Kedmanee khi người dùng chưa cài bàn phím Thái).
   - Vẫn nhận input từ bàn phím Thái của hệ điều hành nếu người dùng đã cài.
@@ -841,7 +841,7 @@ Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Kh�
 | D5 | **Tiến độ luôn thấy nhưng kín đáo** | Thanh tiến độ mảnh khi ôn; số tổng (tổng thẻ, tổng từ) luôn hiển thị, không giấu |
 | D6 | **Focus mode khi học/ôn** | Ẩn sidebar/điều hướng, chỉ còn thẻ + tiến độ + nút thoát |
 | D7 | **Không vì thẩm mỹ mà giấu thông tin** | Dashboard ít khối nhưng đủ số liệu; thông tin quan trọng không phải click mới thấy |
-| D8 | **Typography là "trang trí" chính** | Font Việt: *Inter* hoặc *Be Vietnam Pro*; font Thái: *Noto Sans Thai* hoặc *IBM Plex Sans Thai* (self-host); line-height chữ Thái 1.6–1.8 để dấu trên/dưới không bị cắt |
+| D8 | **Typography là "trang trí" chính** | Font Việt: *Inter* hoặc *Be Vietnam Pro*; font Thái: **Sarabun** (v7.4, owner chốt — có đầu tròn; phương án phụ *Noto Sans Thai Looped*) (self-host); line-height chữ Thái 1.6–1.8 để dấu trên/dưới không bị cắt |
 | D9 | **Light mode trước, token sẵn cho dark mode** | Phase 1 chỉ light; tokens đặt theo nghĩa (`bg`, `fg`, `accent`…) để thêm dark mode không sửa component |
 | D10 | **Thanh điệu không chỉ dựa vào màu** | Mỗi thanh có **ký hiệu đường cao độ nhỏ** (mini contour) + tên, để người mù màu vẫn phân biệt |
 
@@ -1085,6 +1085,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.4 (2026-11-18):** Owner yêu cầu **font chữ phổ thông** (ảnh mẫu sách tập viết, chữ Thái có đầu tròn) → font Thái **Sarabun** thay Noto Sans Thai (G-05, D8, `tokens.json`); tiếng Việt giữ Inter.
 - **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản. Tham khảo **Memrise Speed Review**: F-02' và F-04' chơi theo **3 tim** (giờ mỗi câu theo độ dài 5–9 s, sai/hết giờ mất tim, 15 câu đúng liền +1 tim), nền thẻ ngả đỏ dần khi sắp hết giờ, thưởng tốc độ, tự đọc chữ Thái, màn kết quả bật/tắt "cần ôn" từng mục.
 - **v7.2 (2026-11-18):** **Trò chơi trước Bài tập**: M10.5 → **M7.5**; thêm **F-04' Đoán loại từ**; F-10 cho phép chơi với từ chưa học của chuyên đề đã chọn; spec SCR-04/05/06/08.
 - **v7.1 (2026-11-17):** Nhận 2 PDF mẫu của giáo viên (mục 0.11): lộ trình theo **chuyên đề giáo viên**, `Unit.kind`/`level` B1, `Word.classifier`/`thai_alt`/`note_vi`, `meaning_vi`/`Sentence.th` được trống khi draft, bài tập **E-14 Loại từ**, pipeline M4 dùng Claude vision + `--suggest`; Open Q #1 đóng; milestone **M6.1**.
