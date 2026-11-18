@@ -113,7 +113,8 @@ Google Cloud Console → APIs & Services → Credentials → API key của Fireb
 
 ## S11 — Duyệt thiết kế
 - [x] Đợt M0.5a: brief, flows, tokens, SCR-00/01/02, wireframe — duyệt 2026-11-15.
-- [ ] Đợt M0.5b: các màn còn lại (theo từng milestone).
+- [ ] Đợt M0.5b-1: **SCR-08 Trò chơi (ưu tiên)**, **SCR-04, SCR-05, SCR-06** + 13 wireframe (`docs/design/screens/`, soạn 2026-11-18) — duyệt để mở UI M7.5, M7, M9.
+- [ ] Đợt M0.5b-2: SCR-03 Tổng quan, SCR-07 Sổ từ, SCR-09 Tiến độ (trước M10).
 Ghi ngày duyệt vào `docs/design/README.md`.
 
 ## S12 — Email liên hệ (trước M1)
