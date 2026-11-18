@@ -5,6 +5,7 @@ import type { MessageKey } from '@/i18n';
 import { deleteInstructionsVi, privacyVi, termsVi } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
+import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
 import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
@@ -51,6 +52,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: '/dev/typography', element: <TypographyPage /> },
       { path: '/dev/progress', element: <ProgressDemoPage /> },
+      { path: '/dev/typing', element: <TypingDemoPage /> },
     ],
   },
   {
