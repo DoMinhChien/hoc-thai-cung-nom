@@ -38,6 +38,20 @@
   --nom-mastery-mastered: #3f4aa8;
   --nom-mastery-mastered-fg: #ffffff;
 
+  /* Màu riêng từng trò (v7.3, chỉ khu Trò chơi) — thay accent trong màn chơi */
+  --nom-game-match: #7c3aed;
+  --nom-game-match-subtle: #f3eeff;
+  --nom-game-match-fg: #ffffff;
+  --nom-game-true-false: #c2410c;
+  --nom-game-true-false-subtle: #fff1e8;
+  --nom-game-true-false-fg: #ffffff;
+  --nom-game-sentence-rush: #0f766e;
+  --nom-game-sentence-rush-subtle: #e6f6f4;
+  --nom-game-sentence-rush-fg: #ffffff;
+  --nom-game-classifier-rush: #be185d;
+  --nom-game-classifier-rush-subtle: #fdecf4;
+  --nom-game-classifier-rush-fg: #ffffff;
+
   /* Nút đăng nhập theo guideline của hãng (ngoại lệ duy nhất ngoài bảng màu) */
   --nom-google-bg: #ffffff;
   --nom-google-border: #747775;

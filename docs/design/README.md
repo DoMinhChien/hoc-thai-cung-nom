@@ -40,3 +40,4 @@
 | 2026-11-15 | M0.5a | Chốt brief: accent chàm `#3F4AA8`, lần đầu mở app → màn Chào mừng | Owner |
 | 2026-11-15 | M0.5a | Duyệt flows, tokens.json, SCR-00/01/02 + wireframe | Owner |
 | — | M0.5b | SCR-04/05/06/08 + 13 wireframe (chờ duyệt) | Owner |
+| 2026-11-18 | M7.5 | Phương án B: khu Trò chơi có màu riêng từng trò (`color.game.*`, plan 7.6.1 v7.3) + chuyển động phản hồi; khu khác giữ tối giản | Owner |

@@ -16,7 +16,7 @@ export interface ChoiceButtonProps extends Omit<ComponentProps<'button'>, 'onSel
 }
 
 const STATUS = {
-  idle: 'border-border-strong bg-background hover:border-primary hover:bg-accent enabled:hover:-translate-y-0.5 enabled:hover:shadow-md enabled:active:translate-y-0',
+  idle: 'border-border-strong bg-background hover:border-game hover:bg-game-subtle enabled:hover:-translate-y-0.5 enabled:hover:shadow-md enabled:active:translate-y-0',
   correct: 'border-positive bg-positive-subtle text-positive motion-safe:animate-pop',
   wrong: 'border-destructive bg-destructive-subtle text-destructive motion-safe:animate-shake',
 } as const;
@@ -54,7 +54,7 @@ export function ChoiceButton({
       {shortcut && (
         <kbd
           aria-hidden
-          className="absolute top-1.5 left-2 rounded bg-accent px-1.5 font-sans text-xs font-semibold text-primary"
+          className="absolute top-1.5 left-2 rounded bg-game-subtle px-1.5 font-sans text-xs font-semibold text-game"
         >
           {shortcut}
         </kbd>

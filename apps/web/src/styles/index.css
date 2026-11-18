@@ -67,6 +67,10 @@
   --color-facebook-bg: var(--nom-facebook-bg);
   --color-facebook-fg: var(--nom-facebook-fg);
 
+  /* Màu của trò đang chơi (`data-game` trên khung màn chơi); ngoài khu Trò chơi = accent. */
+  --color-game: var(--game, var(--nom-accent));
+  --color-game-subtle: var(--game-subtle, var(--nom-accent-subtle));
+  --color-game-fg: var(--game-fg, var(--nom-accent-fg));
   --color-mastery-none: var(--nom-mastery-none);
   --color-mastery-learning: var(--nom-mastery-learning);
   --color-mastery-known: var(--nom-mastery-known);
@@ -166,6 +170,28 @@
     font-family: var(--nom-font-th);
     line-height: var(--nom-leading-th);
   }
+}
+
+/* Khu Trò chơi (v7.3): mỗi trò một màu thay accent — xem `color.game` trong tokens.json. */
+[data-game='match'] {
+  --game: var(--nom-game-match);
+  --game-subtle: var(--nom-game-match-subtle);
+  --game-fg: var(--nom-game-match-fg);
+}
+[data-game='true-false'] {
+  --game: var(--nom-game-true-false);
+  --game-subtle: var(--nom-game-true-false-subtle);
+  --game-fg: var(--nom-game-true-false-fg);
+}
+[data-game='sentence-rush'] {
+  --game: var(--nom-game-sentence-rush);
+  --game-subtle: var(--nom-game-sentence-rush-subtle);
+  --game-fg: var(--nom-game-sentence-rush-fg);
+}
+[data-game='classifier-rush'] {
+  --game: var(--nom-game-classifier-rush);
+  --game-subtle: var(--nom-game-classifier-rush-subtle);
+  --game-fg: var(--nom-game-classifier-rush-fg);
 }
 
 /*

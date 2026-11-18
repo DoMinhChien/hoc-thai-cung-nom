@@ -3,6 +3,7 @@
 > Trạng thái: **📝 Chờ owner duyệt** (M0.5b, 2026-11-18). Ưu tiên làm **trước** Bài tập (owner chốt 2026-11-18). Wireframe: `SCR-08-games.png`, `SCR-08-play-match.png`, `SCR-08-play-truefalse.png`, `SCR-08-play-classifier.png`, `SCR-08-result.png`.
 
 ## Nguyên tắc chung
+- **v7.3 (owner chốt 2026-11-18):** khu Trò chơi sinh động hơn phần còn lại — mỗi trò **một màu riêng** (`color.game.*`: Ghép cặp tím · Đúng hay sai? cam · Xếp câu tốc độ xanh ngọc · Đoán loại từ hồng) cho card ở `/games`, thanh trên, nút, thanh thời gian, màn kết quả; chuyển động phản hồi (đếm 3·2·1, rung/nảy, "+điểm", combo, đồng hồ sắp hết giờ) và **hiệu ứng mạnh hơn khi phá kỷ lục** (vẫn không confetti/mascot). Dòng "không confetti" bên dưới vẫn áp dụng.
 - Mỗi lượt **1–3 phút**, chơi được hoàn toàn bằng bàn phím; vui nhờ **cơ chế** (giờ, combo, kỷ lục), không mascot, không confetti (7.6.1).
 - **Không đổi lịch FSRS** (F-12). Chỉ lưu: điểm, độ chính xác, kỷ lục cá nhân, và đánh dấu mục sai là **"cần ôn"** (Bài tập M9 sẽ ưu tiên các mục này).
 - **Nguồn câu hỏi (F-10, sửa v7.2):** mặc định "Từ đã học" (mục đã có thẻ SRS). Chưa đủ (< 6 mục) → dùng **từ/câu của chuyên đề đang chọn** kể cả chưa học (chơi để làm quen). Không dùng mục `draft` thiếu nghĩa / thiếu đáp án.

@@ -828,6 +828,8 @@ Nguyên tắc cho agent: **mỗi thành phần phải bám theo một tham chi�
 
 Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Không mascot, không confetti, không hiệu ứng thừa. Màu chỉ dùng khi **mang nghĩa**.
 
+> **v7.3 (owner chốt 2026-11-18, phương án B) — ngoại lệ cho khu Trò chơi:** `/games`, màn chơi và kết quả được **sinh động hơn**: mỗi trò **một màu riêng** thay accent (token `color.game.*`: Ghép cặp tím, Đúng hay sai? cam, Xếp câu tốc độ xanh ngọc, Đoán loại từ hồng; tương phản ≥ 4.5:1) và **chuyển động phản hồi rõ** (đếm 3·2·1, rung khi sai, nảy khi đúng, "+điểm" bay lên, combo nảy, đồng hồ cảnh báo khi sắp hết giờ, hiệu ứng mạnh hơn khi **phá kỷ lục**). Vẫn không mascot; mọi chuyển động tắt khi `prefers-reduced-motion`. Bài học, Bài tập, Tổng quan… giữ nguyên D1/D2 (chỉ accent).
+
 **Nguyên tắc**
 | # | Nguyên tắc | Cụ thể |
 |---|---|---|
@@ -1083,6 +1085,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản.
 - **v7.2 (2026-11-18):** **Trò chơi trước Bài tập**: M10.5 → **M7.5**; thêm **F-04' Đoán loại từ**; F-10 cho phép chơi với từ chưa học của chuyên đề đã chọn; spec SCR-04/05/06/08.
 - **v7.1 (2026-11-17):** Nhận 2 PDF mẫu của giáo viên (mục 0.11): lộ trình theo **chuyên đề giáo viên**, `Unit.kind`/`level` B1, `Word.classifier`/`thai_alt`/`note_vi`, `meaning_vi`/`Sentence.th` được trống khi draft, bài tập **E-14 Loại từ**, pipeline M4 dùng Claude vision + `--suggest`; Open Q #1 đóng; milestone **M6.1**.
 - **v7 (2026-11-16):** **Đổi phạm vi theo phản hồi demo khách hàng** (mục 0): người học A1–A2 đã đọc được → bỏ Module A (chữ cái, Tone Trainer), Module D (quiz thanh), thanh điệu khỏi UI (Tone Engine đóng băng), `MasteryGrid`, `HeatmapTable`, `ToneBarChart`; "Ôn tập" → **Bài tập** (Module E, dịch câu nâng dần bậc); 16 chủ đề A1–A2 + bài học 4 bước; nav, routes, tiến độ (P-10..P-12), mẫu content (0.9); milestone Phase 1 mới M5.5, M6–M10.5.

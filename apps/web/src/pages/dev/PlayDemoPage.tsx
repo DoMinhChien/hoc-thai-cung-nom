@@ -116,9 +116,9 @@ function Finished({ state, onRestart }: { state: GameState; onRestart: () => voi
   return (
     <div
       data-testid="demo-finished"
-      className="flex flex-col items-start gap-4 rounded-xl bg-accent p-6 motion-safe:animate-enter"
+      className="flex flex-col items-start gap-4 rounded-xl bg-game-subtle p-6 motion-safe:animate-enter"
     >
-      <p className="text-5xl font-semibold text-primary tabular-nums motion-safe:animate-pop">
+      <p className="text-5xl font-semibold text-game tabular-nums motion-safe:animate-pop">
         {state.score}
       </p>
       <p className="text-lg font-semibold">
@@ -139,7 +139,9 @@ function Finished({ state, onRestart }: { state: GameState; onRestart: () => voi
           ))}
         </ul>
       )}
-      <Button onClick={onRestart}>{t('devPlay.restart')}</Button>
+      <Button className="bg-game text-game-fg hover:bg-game/90" onClick={onRestart}>
+        {t('devPlay.restart')}
+      </Button>
     </div>
   );
 }
@@ -178,7 +180,7 @@ function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
             data-testid="tf-card"
             className={cn(
               'flex flex-col items-center gap-3 rounded-xl border-2 p-8 motion-safe:animate-enter motion-safe:transition-colors',
-              !fb && 'border-transparent bg-accent/60',
+              !fb && 'border-transparent bg-game-subtle',
               fb?.correct && 'border-positive bg-positive-subtle',
               fb &&
                 !fb.correct &&
@@ -258,7 +260,7 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
           </p>
           <p
             key={state.index}
-            className="rounded-xl bg-accent/60 px-5 py-4 text-xl font-medium motion-safe:animate-enter"
+            className="rounded-xl bg-game-subtle px-5 py-4 text-xl font-medium motion-safe:animate-enter"
           >
             {q.vi}
           </p>
@@ -271,7 +273,7 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
             disabled={state.status !== 'playing'}
           />
           <Button
-            className="self-start"
+            className="self-start bg-game text-game-fg hover:bg-game/90"
             disabled={state.status !== 'playing' || picked.length === 0}
             onClick={submit}
           >
@@ -312,7 +314,7 @@ export function PlayDemoPage() {
   if (demo) {
     const { Component } = DEMOS[demo];
     return (
-      <div data-testid="page-dev-play">
+      <div data-testid="page-dev-play" data-game={demo}>
         <Component
           key={seed}
           seed={seed}
@@ -335,11 +337,12 @@ export function PlayDemoPage() {
           return (
             <ChoiceButton
               key={id}
+              data-game={id}
               shortcut={String(i + 1)}
               className="w-64 flex-col py-6"
               onSelect={() => setDemo(id)}
             >
-              <span className="flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <span className="flex size-12 items-center justify-center rounded-xl bg-game text-game-fg">
                 <Icon className="size-6" aria-hidden />
               </span>
               {t(DEMOS[id].title)}

@@ -24,12 +24,12 @@ export function CountIn({ onDone }: { onDone: () => void }) {
   return (
     <div
       data-testid="count-in"
-      className="flex flex-col items-center justify-center gap-4 rounded-xl bg-accent py-16"
+      className="flex flex-col items-center justify-center gap-4 rounded-xl bg-game-subtle py-16"
     >
       <span
         key={n}
         aria-live="assertive"
-        className="text-7xl font-semibold text-primary tabular-nums motion-safe:animate-pop"
+        className="text-7xl font-semibold text-game tabular-nums motion-safe:animate-pop"
       >
         {Math.max(n, 1)}
       </span>

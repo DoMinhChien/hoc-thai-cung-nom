@@ -49,7 +49,7 @@ export function GameTopBar({
   return (
     <header
       data-testid="game-top-bar"
-      className="flex items-center gap-4 rounded-xl bg-accent px-3 py-2"
+      className="flex items-center gap-4 rounded-xl bg-game-subtle px-3 py-2"
     >
       <Button variant="ghost" size="sm" onClick={onExit} aria-keyshortcuts="Escape">
         <X aria-hidden />
@@ -64,7 +64,7 @@ export function GameTopBar({
           <span
             key={combo}
             data-testid="game-combo"
-            className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-0.5 text-sm font-semibold text-primary-foreground motion-safe:animate-pop"
+            className="inline-flex items-center gap-1 rounded-full bg-game px-3 py-0.5 text-sm font-semibold text-game-fg motion-safe:animate-pop"
           >
             <Zap className="size-3.5" aria-hidden />
             {t('play.combo', { n: combo })}
@@ -77,7 +77,7 @@ export function GameTopBar({
           </span>
           <span
             key={score}
-            className="inline-block text-lg font-semibold text-primary motion-safe:animate-pop"
+            className="inline-block text-lg font-semibold text-game motion-safe:animate-pop"
           >
             {numberFormat.format(score)}
           </span>
@@ -146,7 +146,7 @@ export function TimeBar({ totalMs, remainingMs, className }: TimeBarProps) {
       <div
         className={cn(
           'h-full rounded-full motion-safe:transition-[width] motion-safe:duration-100 motion-safe:ease-linear',
-          percent <= 20 ? 'bg-caution motion-safe:animate-urgent' : 'bg-primary',
+          percent <= 20 ? 'bg-caution motion-safe:animate-urgent' : 'bg-game',
         )}
         style={{ width: `${percent}%` }}
       />
