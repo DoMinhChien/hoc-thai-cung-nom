@@ -83,3 +83,47 @@ export function canDoChecklist(
     auto,
   }));
 }
+
+/** Bước nên mở khi vào bài: bước đầu tiên chưa xong; xong hết → bước đầu (ôn lại). */
+export function resumeStep(
+  steps: readonly LessonStep[],
+  record: Pick<LessonProgressRecord, 'stepsDone'> | undefined,
+): LessonStep | undefined {
+  return steps.find((s) => !record?.stepsDone.includes(s)) ?? steps[0];
+}
+
+export interface ContinueTarget {
+  /** `continue`: bài đang dở gần nhất; `start`: chưa học gì; `next`: bài chưa học kế tiếp; `done`: xong hết. */
+  kind: 'continue' | 'start' | 'next' | 'done';
+  unitId: string;
+  lessonId: string;
+}
+
+/**
+ * Card "Học tiếp" (SCR-04 §A): bài đang dở cập nhật gần nhất; không có → bài chưa xong đầu tiên
+ * theo `order` của unit rồi của bài. `units` đã sắp theo `order`.
+ */
+export function continueTarget(
+  units: readonly { unit_id: string; lessons: readonly LessonRef[] }[],
+  records: readonly LessonProgressRecord[],
+): ContinueTarget | null {
+  const map = byLesson(records);
+  const all = units.flatMap((u) => u.lessons.map((l) => ({ unitId: u.unit_id, lesson: l })));
+  if (all.length === 0) return null;
+  const inProgress = all
+    .filter(({ lesson }) => lessonStatus(lesson, map.get(lesson.lesson_id)) === 'in-progress')
+    .sort((a, b) =>
+      map.get(b.lesson.lesson_id)!.updatedAt.localeCompare(map.get(a.lesson.lesson_id)!.updatedAt),
+    );
+  const pick = (kind: ContinueTarget['kind'], x: (typeof all)[number]) => ({
+    kind,
+    unitId: x.unitId,
+    lessonId: x.lesson.lesson_id,
+  });
+  if (inProgress[0]) return pick('continue', inProgress[0]);
+  const todo = all.find(
+    ({ lesson }) => lessonStatus(lesson, map.get(lesson.lesson_id)) !== 'completed',
+  );
+  if (!todo) return pick('done', all[0]!);
+  return pick(records.length === 0 ? 'start' : 'next', todo);
+}

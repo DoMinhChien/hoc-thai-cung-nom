@@ -11,6 +11,7 @@ export * from './data/records';
 export * from './data/repositories';
 export * from './data/study';
 export * from './games';
+export * from './progress/lesson-quiz';
 export * from './progress/lessons';
 export * from './progress/progress';
 export * from './schema';

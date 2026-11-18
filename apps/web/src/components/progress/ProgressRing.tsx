@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 
@@ -7,12 +8,15 @@ export function ProgressRing({
   label,
   size = 64,
   className,
+  children,
 }: {
   percent: number;
   /** Tên module/bộ — cho trình đọc màn hình. */
   label: string;
   size?: number;
   className?: string;
+  /** Thay chữ % ở giữa (vd. số thứ tự chuyên đề) — % vẫn đọc qua `aria-label`. */
+  children?: ReactNode;
 }) {
   const value = Math.min(100, Math.max(0, Math.round(percent)));
   const stroke = Math.max(4, Math.round(size / 10));
@@ -52,7 +56,7 @@ export function ProgressRing({
         />
       </svg>
       <span className="absolute text-sm font-semibold tabular-nums" aria-hidden="true">
-        {t('progress.percent', { percent: value })}
+        {children ?? t('progress.percent', { percent: value })}
       </span>
     </div>
   );

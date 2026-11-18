@@ -3,8 +3,10 @@ import type { LessonStep } from '../content/bundle';
 import type { CanDoRecord, LessonProgressRecord } from '../data/records';
 import {
   canDoChecklist,
+  continueTarget,
   isLessonComplete,
   lessonStatus,
+  resumeStep,
   unitLessonProgress,
   unitStatus,
 } from './lessons';
@@ -84,5 +86,46 @@ describe('tiến độ bài học (plan 0.4)', () => {
     ]);
     const finished = [done('l1', ['vocab', 'exercise']), done('l2', ['grammar', 'vocab'])];
     expect(canDoChecklist(unit, finished, ticks).every((i) => i.checked && i.auto)).toBe(true);
+  });
+});
+
+describe('Học tiếp (SCR-04 §A)', () => {
+  const units = [
+    { unit_id: 'u01', lessons },
+    { unit_id: 'u02', lessons: [{ lesson_id: 'l3', steps: ['vocab'] as LessonStep[] }] },
+  ];
+
+  it('resumeStep: bước chưa xong đầu tiên; xong hết / chưa có bước', () => {
+    expect(resumeStep(['vocab', 'exercise'], undefined)).toBe('vocab');
+    expect(resumeStep(['vocab', 'exercise'], { stepsDone: ['vocab'] })).toBe('exercise');
+    expect(resumeStep(['vocab'], { stepsDone: ['vocab'] })).toBe('vocab');
+    expect(resumeStep([], undefined)).toBeUndefined();
+  });
+
+  it('chưa học → start bài đầu; đang dở → bài cập nhật gần nhất; xong bài → next; xong hết → done', () => {
+    expect(continueTarget([], [])).toBeNull();
+    expect(continueTarget(units, [])).toEqual({ kind: 'start', unitId: 'u01', lessonId: 'l1' });
+    const older = record('l1', { stepsDone: ['vocab'], updatedAt: '2026-03-01T08:00:00.000Z' });
+    const newer = record('l3', {
+      stepsDone: [],
+      bestScore: 0.5,
+      updatedAt: '2026-03-02T08:00:00.000Z',
+    });
+    expect(continueTarget(units, [older, newer])).toEqual({
+      kind: 'continue',
+      unitId: 'u02',
+      lessonId: 'l3',
+    });
+    expect(continueTarget(units, [done('l1', ['vocab', 'exercise'])])).toEqual({
+      kind: 'next',
+      unitId: 'u01',
+      lessonId: 'l2',
+    });
+    const all = [
+      done('l1', ['vocab', 'exercise']),
+      done('l2', ['grammar', 'vocab']),
+      done('l3', ['vocab']),
+    ];
+    expect(continueTarget(units, all)).toEqual({ kind: 'done', unitId: 'u01', lessonId: 'l1' });
   });
 });
