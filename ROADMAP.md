@@ -9,7 +9,7 @@
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
-> **🔵 M7.5 — Trò chơi** (nhánh `m7.5-games` tách từ `m7-lessons` vì cần T7.1–T7.3, 8/10 task — còn T7.5.7 content loại từ → mở T7.5.6 phần Đoán loại từ) — **owner chốt ưu tiên Trò chơi trước Bài tập (2026-11-18, plan v7.2)**. Logic T7.5.1–T7.5.3 ✅ + màu/chuyển động khu Trò chơi (phương án B) + cơ chế kiểu Memrise (3 tim, nền đỏ dần, tự đọc) ✅ (v7.3) + font Thái Sarabun ✅ (v7.4); **SCR-08 ✅ owner duyệt 2026-11-18** → `/games` + 4 màn chơi + kết quả ✅ (T7.5.4–T7.5.5); T7.5.6 E2E xong trừ Đoán loại từ — **🟠 chờ content mẫu có `classifier`** (≥ 8 danh từ, Unit 3).
+> **🟢 M7.5 — Trò chơi** (nhánh `m7.5-games`, xếp chồng trên `m7-lessons`, 10/10 task, PR #16) — xong 2026-11-19: `/games` + 4 trò (Ghép cặp, Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ) + kết quả, màu/chuyển động khu Trò chơi + cơ chế kiểu Memrise (v7.3), font Sarabun (v7.4). Chờ owner: xem baseline mới, content mẫu chưa có chuyên đề nào ≥ 5 câu nên Xếp câu tốc độ đang khóa trên content thật. **Không còn milestone mở được**: M7 UI chờ SCR-04/05, M9 chờ M7 + SCR-06.
 > 🟠 **M7 — Bài học** (nhánh `m7-lessons`, 3/7 task). Phần logic T7.1–T7.3 ✅; phần UI T7.4–T7.7 **🟠 chờ owner duyệt SCR-04/05** (spec + wireframe đã có trong `docs/design/screens/`, 2026-11-18).
 > ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
 > 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6, M6.1 xong (Tone Engine giữ nhưng đóng băng).
@@ -49,7 +49,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | 🟢 | M5.5 ✅ — PR #12 |
 | M6.1 | Content model theo tài liệu giáo viên (plan 0.11): `kind`, B1, `classifier`, `thai_alt`, `note_vi`, draft được thiếu nghĩa/đáp án | 🟢 | M6 ✅; PDF mẫu ✅ — PR #13 |
 | M7 | Bài học: `/units`, chi tiết unit, bài học (bỏ qua bước trống), AudioProvider | 🟠 | M6.1 ✅; logic ✅; UI chờ SCR-04/05 (M0.5b) |
-| M7.5 | **Trò chơi** F-01, F-02', F-03', F-04' + component tương tác dùng chung (ưu tiên, v7.2) | 🔵 | M7 logic ✅; UI chờ duyệt SCR-08 |
+| M7.5 | **Trò chơi** F-01, F-02', F-03', F-04' + component tương tác dùng chung (ưu tiên, v7.2) | 🟢 | M7 logic ✅; SCR-08 ✅ — PR #16 |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | ⚪ | M7, M7.5, M8 ✅, SCR-06 |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
@@ -239,7 +239,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Kết quả (2026-11-17):** core `KEDMANEE_ROWS`/`kedmaneeChar`, `gradeThaiTyping`/`diffThai`/`acceptedAnswers`; web `ThaiKeyboard` (`simple-keyboard` 3.8.205, theme `hg-theme-nom` chỉ dùng tokens — không nạp CSS mặc định), `ThaiTextInput`, `TypingFeedback`, `/dev/typing`. Tests: core 280 (coverage lines 100%), scripts 72, web 166; E2E `typing.spec.ts` + axe `/dev/typing` xanh 3 trình duyệt × 2 viewport; baseline Windows `dev-typing-*-win32.png` (Linux do CI sinh). Ghi chú: ครับ/ค่ะ/คะ tùy chọn ở cuối mỗi cụm của đáp án (gõ liền vẫn nhận); dấu câu ASCII/ngoặc kép bị bỏ khi chấm (giữ ฯ ๆ).
 
-### M7.5 — Trò chơi 🔵 (ưu tiên, v7.2)
+### M7.5 — Trò chơi 🟢 (ưu tiên, v7.2)
 
 **Requirement:** plan **0.6** (F-01, F-02', F-03', F-04'; F-10 sửa v7.2), **F-11..F-14**, **P-09** (kỷ lục), 7.2 (audio), 7.4. Spec **`docs/design/screens/SCR-08-games.md`** + 5 wireframe `SCR-08-*.png`.
 
@@ -254,14 +254,16 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T7.5.3d **Đổi font Thái → Sarabun (owner yêu cầu 2026-11-18, plan v7.4 G-05/D8)**: thay `@fontsource-variable/noto-sans-thai` bằng `@fontsource/sarabun` (subset `thai`, weight 400/500/600, self-host); `tokens.css` theo `docs/design/tokens.json` (đã sửa); `index.css` comment; kiểm tra dấu trên/dưới không bị cắt ở mọi cỡ `th-*` (line-height 1.75), thẻ từ ≥ 48px; cập nhật toàn bộ visual baseline; ghi chú trong `docs/design/README.md`.
 - [x] T7.5.4 `/games` theo SCR-08 §A: chọn nguồn, 4 card (kỷ lục, khóa khi thiếu dữ liệu + lý do), phím `1`–`4`; **mỗi card màu của trò** (`data-game`).
 - [x] T7.5.5 `/games/:id` 4 màn chơi + màn kết quả theo SCR-08 §B–C (màu + chuyển động của trò, **hiệu ứng mạnh hơn khi phá kỷ lục** — không confetti; kỷ lục mới, mục sai → `needsReview`, "Chơi với mục sai").
-- [ ] T7.5.7 **Content mẫu loại từ cho Unit 3** (Claude Desktop soạn 2026-11-19, `draft: true`, giáo viên duyệt sau — S10): điền `classifier` cho 5 từ hiện có — ตุ๊กตา **ตัว**, ถุงเท้า **คู่**, รองเท้า **คู่**, ตะเกียบ **คู่**, ช้อน **คัน** (giữ ช้อน thiếu nghĩa để test cảnh báo) — và thêm 7 từ từ `sources/03-loai-tu.pdf` vào `u03-l1` (tổng 12, không vượt cảnh báo 8–12 từ/bài): ร่ม (ô, dù) **คัน** · แก้ว (cốc, ly) **ใบ** · จาน (đĩa) **ใบ** · หนังสือ (sách) **เล่ม** · ปากกา (bút bi) **ด้าม** · รถ (xe) **คัน** · ไข่ (trứng) **ฟอง**; `source = plernpin-03#p<trang>`. Kết quả: 11 từ dùng được (≥ 8) với 7 loại từ khác nhau → Đoán loại từ mở khóa. Sửa test/fixture phụ thuộc số từ Unit 3 nếu có.
-- [ ] T7.5.6 🟠 (xong trừ phần Đoán loại từ — chờ T7.5.7) E2E: Đúng hay sai? với seed cố định → điểm + kỷ lục lưu, hết 3 tim → kết quả, bỏ "cần ôn" một mục; Đoán loại từ trên Unit 3 mẫu; khẳng định lịch FSRS không đổi; axe; baseline `/games` + 1 màn chơi.
+- [x] T7.5.7 **Content mẫu loại từ cho Unit 3** (Claude Desktop soạn 2026-11-19, `draft: true`, giáo viên duyệt sau — S10): điền `classifier` cho 5 từ hiện có — ตุ๊กตา **ตัว**, ถุงเท้า **คู่**, รองเท้า **คู่**, ตะเกียบ **คู่**, ช้อน **คัน** (giữ ช้อน thiếu nghĩa để test cảnh báo) — và thêm 7 từ từ `sources/03-loai-tu.pdf` vào `u03-l1` (tổng 12, không vượt cảnh báo 8–12 từ/bài): ร่ม (ô, dù) **คัน** · แก้ว (cốc, ly) **ใบ** · จาน (đĩa) **ใบ** · หนังสือ (sách) **เล่ม** · ปากกา (bút bi) **ด้าม** · รถ (xe) **คัน** · ไข่ (trứng) **ฟอง**; `source = plernpin-03#p<trang>`. Kết quả: 11 từ dùng được (≥ 8) với 7 loại từ khác nhau → Đoán loại từ mở khóa. Sửa test/fixture phụ thuộc số từ Unit 3 nếu có.
+- [x] T7.5.6 E2E: Đúng hay sai? với seed cố định → điểm + kỷ lục lưu, hết 3 tim → kết quả, bỏ "cần ôn" một mục; Đoán loại từ trên Unit 3 mẫu; khẳng định lịch FSRS không đổi; axe; baseline `/games` + 1 màn chơi.
 
 **Tiêu chí nghiệm thu**
 - Chơi được 4 trò hoàn toàn bằng bàn phím trên content mẫu (Unit 1–3, 11); trò thiếu dữ liệu bị khóa có lý do.
 - Kỷ lục theo trò + nguồn đúng sau reload; mục sai có cờ "cần ôn".
 - Không thẻ SRS nào đổi `due`/`stability` sau khi chơi.
 - Coverage core giữ nguyên; CI pass.
+
+**Kết quả (2026-11-19):** core `games/` (`Game`, `rapidGame` 3 tim, 4 trò, nguồn F-10 v7.2, `subsetSource`, `saveGameResult`/`setNeedsReview` — không đụng FSRS), Dexie v4 (`gameResults`, `needsReview`); web `components/interactive` (dùng lại ở M9), `/games`, `/games/:id` (Focus layout), token `color.game.*`, font Sarabun. Content mẫu Unit 3: 12 từ, 11 có loại từ (7 loại). Tests: core 328 (coverage lines 100%), scripts 73, web 251; E2E 201 pass + 3 chập chờn (popup Auth Emulator, chạy lại pass) trên 3 trình duyệt × 2 viewport. Tiêu chí "chơi được 4 trò trên content mẫu": 3/4 — **Xếp câu tốc độ khóa đúng có lý do** vì chưa chuyên đề nào có ≥ 5 câu có thẻ từ (đã test bằng content giả); cần owner thêm câu mẫu. Baseline mới: `games-*`, `game-match-*`, `typography-*` (Windows đã commit; Linux do CI sinh).
 
 ### M7 — Bài học 🟠
 
@@ -352,6 +354,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-19 | M7.5 → 🟢 | T7.5.7 content mẫu Unit 3: `classifier` cho 5 từ + 7 từ mới (ร่ม, แก้ว, จาน, หนังสือ, ปากกา, รถ, ไข่; trang PDF đã tra: p1/p4/p6), `content:check` 0 lỗi; T7.5.6 E2E Đoán loại từ trên Chuyên đề 3 (chọn nguồn được nhớ, phím 1–4, hết tim → kết quả, mục sai `lang="th"`, axe). E2E đầy đủ 201 pass + 3 chập chờn (Auth Emulator). Đóng M7.5 → 🟢 | — | Xếp câu tốc độ cần chuyên đề có ≥ 5 câu (content); baseline Linux từ CI; M7 chờ SCR-04/05, M9 chờ M7 + SCR-06 | `m7.5-games` PR #16 |
 | 2026-11-19 | M7.5 (plan) | Claude Desktop: thêm **T7.5.7** — danh sách loại từ cho content mẫu Unit 3 (12 từ, 7 loại từ: ตัว คู่ คัน ใบ เล่ม ด้าม ฟอง) để mở khóa Đoán loại từ và hoàn tất T7.5.6 | T7.5.7 | — | — (chưa commit) |
 | 2026-11-18 | M7.5 | Owner **duyệt SCR-08** (README, SETUP S11). T7.5.4 `/games` (chọn nguồn + nhớ, "Từ đã học" → Chuyên đề 1 khi chưa đủ, 4 card màu trò, kỷ lục, khóa có lý do, phím 1–4, số mục "cần ôn"); T7.5.5 `FocusLayout` + `/games/:id` (`?source=`, `?seed=`): Ghép cặp (lưới 4×3, mũi tên + Space), Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ, kết quả (lưu kỷ lục + "cần ôn" một lần, kỷ lục mới có sao + vòng sáng, bật/tắt "cần ôn", Chơi lại ↵ / Chơi với mục sai W / Trò khác); core `subsetSource`; bỏ `/dev/play`. T7.5.6 `games.spec.ts`: Đúng hay sai? hết 3 tim → kỷ lục sau reload, bỏ "cần ôn", không có thẻ SRS; Đoán loại từ bị khóa có lý do (content chưa có loại từ); axe; baseline `/games` + Ghép cặp. Sửa: axe (lưới thiếu role row, chữ `fg-subtle` thiếu tương phản), phím tắt gắn bằng layout effect (WebKit bấm sớm bị mất phím → câu hết giờ). Test: core 328, web 251; E2E games + a11y liên quan xanh; lần chạy E2E đầy đủ cuối bị dừng do máy hết bộ nhớ (CI chạy lại) | — | Đoán loại từ trên Unit 3 chờ content `classifier`; baseline Linux `games-*` từ CI | `m7.5-games` PR #16 (draft) |
 | 2026-11-18 | M7.5 | T7.5.3d: `@fontsource/sarabun` 5.3.0 (subset `thai`, 400/500/600) thay `@fontsource-variable/noto-sans-thai`; `tokens.css` khớp `tokens.json` (test); E2E `typography` kiểm tra Sarabun đã tải + dấu không bị cắt; E2E 186/186 (3 trình duyệt × 2 viewport); baseline Windows `typography-*` cập nhật, baseline Linux `typography-*` xoá để CI sinh lại (owner xem artifact) | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` | `m7.5-games` PR #16 (draft) |
