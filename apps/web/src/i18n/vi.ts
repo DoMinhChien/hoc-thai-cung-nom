@@ -126,6 +126,7 @@ export const vi = {
     typography: 'Kiểm tra font chữ',
     devProgress: 'Mẫu component tiến độ',
     devTyping: 'Mẫu ô gõ chữ Thái',
+    devPlay: 'Mẫu component trò chơi',
   },
   legal: {
     footerLabel: 'Liên kết pháp lý',
@@ -185,6 +186,19 @@ export const vi = {
     paused: 'Đã tạm dừng — Space để tiếp tục',
     soundOn: 'Tắt âm phản hồi',
     soundOff: 'Bật âm phản hồi',
+  },
+  devPlay: {
+    intro:
+      'Dữ liệu giả lập — chạy component tương tác (M7.5) với logic trò chơi thật. Chưa phải màn Trò chơi (chờ duyệt SCR-08). Phím: 1–2 chọn trò; F/← Sai, J/→ Đúng; 1–9, Backspace, Enter khi xếp câu; Esc thoát.',
+    trueFalse: 'Đúng hay sai?',
+    sentenceRush: 'Xếp câu tốc độ',
+    states: 'Trạng thái nút lựa chọn, thanh phản hồi, thanh thời gian',
+    finished: '{score} điểm · {correct}/{total} đúng · combo cao nhất ×{combo}',
+    mistake: 'đáp án {expected}',
+    given: ' · bạn chọn {given}',
+    restart: 'Chơi lại',
+    sentenceOf: 'Câu {n}/{total} — xếp thành câu tiếng Thái',
+    check: 'Kiểm tra ↵',
   },
   devTyping: {
     intro:

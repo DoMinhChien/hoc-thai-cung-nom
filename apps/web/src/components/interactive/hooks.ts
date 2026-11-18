@@ -62,6 +62,8 @@ export interface CountdownOptions {
   intervalMs?: number;
   /** Đồng hồ đơn điệu (ms) — test truyền đồng hồ giả. */
   clock?: () => number;
+  /** Gọi mỗi `intervalMs` với thời gian đã chạy — trò chơi `tick` hết giờ ở đây. */
+  onTick?: (elapsedMs: number) => void;
 }
 
 export interface Countdown {
@@ -88,14 +90,17 @@ export function useCountdown({
   autoPause = true,
   intervalMs = 100,
   clock = defaultClock,
+  onTick,
 }: CountdownOptions): Countdown {
   const base = useRef(0);
   const since = useRef<number | null>(null);
   const [paused, setPaused] = useState(false);
   const [elapsedMs, setElapsed] = useState(0);
   const clockRef = useRef(clock);
+  const onTickRef = useRef(onTick);
   useEffect(() => {
     clockRef.current = clock;
+    onTickRef.current = onTick;
   });
 
   const now = useCallback(
@@ -107,7 +112,11 @@ export function useCountdown({
   useEffect(() => {
     if (!active) return;
     since.current = clockRef.current();
-    const id = window.setInterval(() => setElapsed(now()), intervalMs);
+    const id = window.setInterval(() => {
+      const elapsed = now();
+      setElapsed(elapsed);
+      onTickRef.current?.(elapsed);
+    }, intervalMs);
     return () => {
       window.clearInterval(id);
       base.current = now();

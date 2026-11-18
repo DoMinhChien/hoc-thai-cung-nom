@@ -4,6 +4,7 @@ import { AppLayout, BareLayout, DevLayout } from '@/components/layout/AppLayout'
 import type { MessageKey } from '@/i18n';
 import { deleteInstructionsVi, privacyVi, termsVi } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
+import { PlayDemoPage } from '@/pages/dev/PlayDemoPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
 import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
@@ -53,6 +54,7 @@ export const routes: RouteObject[] = [
       { path: '/dev/typography', element: <TypographyPage /> },
       { path: '/dev/progress', element: <ProgressDemoPage /> },
       { path: '/dev/typing', element: <TypingDemoPage /> },
+      { path: '/dev/play', element: <PlayDemoPage /> },
     ],
   },
   {

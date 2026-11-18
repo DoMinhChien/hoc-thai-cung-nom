@@ -5,6 +5,7 @@ export {
   FEEDBACK_SOUND_KEY,
   useFeedbackSound,
   webAudioTone,
+  type FeedbackSound,
   type TonePlayer,
 } from './feedback-sound';
 export { formatClock } from './format';

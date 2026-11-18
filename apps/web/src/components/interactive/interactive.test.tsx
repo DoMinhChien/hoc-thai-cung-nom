@@ -227,12 +227,16 @@ describe('useCountdown', () => {
   it('đếm thời gian chạy, không tính lúc tạm dừng; tab ẩn / mất focus → tạm dừng', () => {
     vi.useFakeTimers();
     const c = fakeClock();
-    const { result } = renderHook(() => useCountdown({ durationMs: 60_000, clock: c.clock }));
+    const onTick = vi.fn();
+    const { result } = renderHook(() =>
+      useCountdown({ durationMs: 60_000, clock: c.clock, onTick }),
+    );
     act(() => {
       c.advance(1000);
       vi.advanceTimersByTime(100);
     });
     expect(result.current.elapsedMs).toBe(1000);
+    expect(onTick).toHaveBeenLastCalledWith(1000);
     expect(result.current.remainingMs).toBe(59_000);
 
     act(() => {

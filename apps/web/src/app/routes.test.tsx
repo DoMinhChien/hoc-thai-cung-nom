@@ -75,6 +75,17 @@ describe('routes', () => {
     fireEvent.change(screen.getByTestId('thai-input'), { target: { value: 'ผม' } });
     expect(screen.queryByTestId('typing-feedback')).toBeNull();
   });
+
+  it('/dev/play: chọn "Đúng hay sai?" bằng phím 1 → trả lời → phản hồi; Esc quay lại', async () => {
+    renderApp('/dev/play');
+    expect(await screen.findByTestId('page-dev-play')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: '1' });
+    expect(await screen.findByTestId('game-top-bar')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'ArrowRight' });
+    expect(await screen.findByTestId('feedback-bar')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByTestId('game-top-bar')).toBeNull();
+  });
 });
 
 describe('quy tắc truy cập (flows §1–§2)', () => {
