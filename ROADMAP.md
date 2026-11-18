@@ -9,7 +9,7 @@
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
-> **🔵 M7.5 — Trò chơi** (nhánh `m7.5-games` tách từ `m7-lessons` vì cần T7.1–T7.3, 6/9 task) — **owner chốt ưu tiên Trò chơi trước Bài tập (2026-11-18, plan v7.2)**. Logic T7.5.1–T7.5.3 ✅ + màu/chuyển động khu Trò chơi (phương án B) + cơ chế kiểu Memrise (3 tim, nền đỏ dần, tự đọc) ✅ (v7.3) + font Thái Sarabun ✅ (v7.4); UI T7.5.4–T7.5.6 **🟠 chờ owner duyệt SCR-08** + content mẫu có `classifier` (Đoán loại từ cần ≥ 8 từ).
+> **🔵 M7.5 — Trò chơi** (nhánh `m7.5-games` tách từ `m7-lessons` vì cần T7.1–T7.3, 6/9 task) — **owner chốt ưu tiên Trò chơi trước Bài tập (2026-11-18, plan v7.2)**. Logic T7.5.1–T7.5.3 ✅ + màu/chuyển động khu Trò chơi (phương án B) + cơ chế kiểu Memrise (3 tim, nền đỏ dần, tự đọc) ✅ (v7.3) + font Thái Sarabun ✅ (v7.4); **SCR-08 ✅ owner duyệt 2026-11-18** → đang làm UI T7.5.4–T7.5.6; Đoán loại từ cần content mẫu có `classifier` (≥ 8 từ).
 > 🟠 **M7 — Bài học** (nhánh `m7-lessons`, 3/7 task). Phần logic T7.1–T7.3 ✅; phần UI T7.4–T7.7 **🟠 chờ owner duyệt SCR-04/05** (spec + wireframe đã có trong `docs/design/screens/`, 2026-11-18).
 > ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
 > 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6, M6.1 xong (Tone Engine giữ nhưng đóng băng).
@@ -243,7 +243,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Requirement:** plan **0.6** (F-01, F-02', F-03', F-04'; F-10 sửa v7.2), **F-11..F-14**, **P-09** (kỷ lục), 7.2 (audio), 7.4. Spec **`docs/design/screens/SCR-08-games.md`** + 5 wireframe `SCR-08-*.png`.
 
-**Cần trước:** M7 T7.1–T7.3 ✅ (content client, tiến độ, audio). UI (T7.5.4–T7.5.6) **🟠 chờ owner duyệt SCR-08**; T7.5.1–T7.5.3 làm ngay.
+**Cần trước:** M7 T7.1–T7.3 ✅ (content client, tiến độ, audio). SCR-08 ✅ duyệt 2026-11-18.
 
 **Task**
 - [x] T7.5.1 Core: interface `Game` (`generateRound(source, seed)`, `answer`, `score`, `summary`) + `GameSource` (mục đã học ∪ từ/câu của unit đã chọn, bỏ draft thiếu nghĩa/đáp án; kiểm tra đủ dữ liệu từng trò) + RNG có seed. Record `GameResultRecord` (kỷ lục theo trò + nguồn) và cờ `needsReview` theo item; Dexie migration + `ProgressRepository` (contract test). **Không** gọi `recordReview` (F-12) — test khẳng định.
@@ -252,9 +252,9 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] T7.5.3b **Khu Trò chơi sinh động (owner chốt phương án B, plan 7.6.1 v7.3)**: token `color.game.*` (Ghép cặp tím `#7C3AED`, Đúng hay sai? cam `#C2410C`, Xếp câu tốc độ xanh ngọc `#0F766E`, Đoán loại từ hồng `#BE185D`; tương phản ≥ 4.5:1) trong `tokens.json` + `tokens.css`, utility `bg-game`/`text-game`/`bg-game-subtle` theo `data-game` (ngoài khu Trò chơi = accent); chuyển động phản hồi (`animate-shake`/`pop`/`rise`/`enter`/`urgent`, `CountIn` 3·2·1) — tắt khi reduced-motion; trang mẫu `/dev/play`.
 - [x] T7.5.3c **Cơ chế kiểu Memrise Speed Review (owner chọn "cả gói", v7.3)**: core `rapidGame` — Đúng hay sai? + Đoán loại từ chơi **3 tim** (giờ mỗi câu `questionTimeMs` 5–9 s theo độ dài, sai/hết giờ mất tim, 15 đúng liền +1 tim tối đa 5, điểm = 100 × combo + tốc độ 0..50), `setNeedsReview` (bật/tắt "cần ôn" từng mục); web `UrgencyCard` (nền ngả đỏ dần), tim trên `GameTopBar`, `useAutoSpeech`/`useSpeakOnCue` (tự đọc qua `AudioProvider`, cài đặt `gameAutoSpeak`), `ReviewList`; **Xếp câu tốc độ: sau mỗi câu (đúng hay sai) đọc cả câu đúng** rồi mới sang câu (`useFeedbackPause`, góp ý owner); `/dev/play` cập nhật. SCR-08 + plan 0.6 sửa theo.
 - [x] T7.5.3d **Đổi font Thái → Sarabun (owner yêu cầu 2026-11-18, plan v7.4 G-05/D8)**: thay `@fontsource-variable/noto-sans-thai` bằng `@fontsource/sarabun` (subset `thai`, weight 400/500/600, self-host); `tokens.css` theo `docs/design/tokens.json` (đã sửa); `index.css` comment; kiểm tra dấu trên/dưới không bị cắt ở mọi cỡ `th-*` (line-height 1.75), thẻ từ ≥ 48px; cập nhật toàn bộ visual baseline; ghi chú trong `docs/design/README.md`.
-- [ ] T7.5.4 🟠 `/games` theo SCR-08 §A: chọn nguồn, 4 card (kỷ lục, khóa khi thiếu dữ liệu + lý do), phím `1`–`4`; **mỗi card màu của trò** (`data-game`).
-- [ ] T7.5.5 🟠 `/games/:id` 4 màn chơi + màn kết quả theo SCR-08 §B–C (màu + chuyển động của trò, **hiệu ứng mạnh hơn khi phá kỷ lục** — không confetti; kỷ lục mới, mục sai → `needsReview`, "Chơi với mục sai").
-- [ ] T7.5.6 🟠 E2E: Đúng hay sai? với seed cố định → điểm + kỷ lục lưu, hết 3 tim → kết quả, bỏ "cần ôn" một mục; Đoán loại từ trên Unit 3 mẫu; khẳng định lịch FSRS không đổi; axe; baseline `/games` + 1 màn chơi.
+- [x] T7.5.4 `/games` theo SCR-08 §A: chọn nguồn, 4 card (kỷ lục, khóa khi thiếu dữ liệu + lý do), phím `1`–`4`; **mỗi card màu của trò** (`data-game`).
+- [x] T7.5.5 `/games/:id` 4 màn chơi + màn kết quả theo SCR-08 §B–C (màu + chuyển động của trò, **hiệu ứng mạnh hơn khi phá kỷ lục** — không confetti; kỷ lục mới, mục sai → `needsReview`, "Chơi với mục sai").
+- [ ] T7.5.6 E2E: Đúng hay sai? với seed cố định → điểm + kỷ lục lưu, hết 3 tim → kết quả, bỏ "cần ôn" một mục; Đoán loại từ trên Unit 3 mẫu; khẳng định lịch FSRS không đổi; axe; baseline `/games` + 1 màn chơi.
 
 **Tiêu chí nghiệm thu**
 - Chơi được 4 trò hoàn toàn bằng bàn phím trên content mẫu (Unit 1–3, 11); trò thiếu dữ liệu bị khóa có lý do.

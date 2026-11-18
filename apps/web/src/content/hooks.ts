@@ -42,3 +42,11 @@ export function useUnits(): ContentState<UnitSummary[]> {
 export function useUnit(unitId: string): ContentState<UnitBundle> {
   return useContent(`unit:${unitId}`, (client) => client.unit(unitId));
 }
+
+/** Mọi unit (`units.json` + từng `unit-<id>.json`) — nguồn "Từ đã học" của Trò chơi (F-10). */
+export function useAllUnits(): ContentState<UnitBundle[]> {
+  return useContent('all-units', async (client) => {
+    const list = await client.units();
+    return Promise.all(list.map((u) => client.unit(u.unit_id)));
+  });
+}

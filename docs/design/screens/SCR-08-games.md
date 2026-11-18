@@ -1,6 +1,6 @@
 # SCR-08 Trò chơi: Danh sách, Màn chơi, Kết quả — Requirements: plan 0.6 (F-01, F-02', F-03', F-04'), F-10..F-14, P-09, 7.2
 
-> Trạng thái: **📝 Chờ owner duyệt** (M0.5b, 2026-11-18). Ưu tiên làm **trước** Bài tập (owner chốt 2026-11-18). Wireframe: `SCR-08-games.png`, `SCR-08-play-match.png`, `SCR-08-play-truefalse.png`, `SCR-08-play-classifier.png`, `SCR-08-result.png`.
+> Trạng thái: **✅ Owner duyệt 2026-11-18** (bản v7.3). Ưu tiên làm **trước** Bài tập (owner chốt 2026-11-18). Wireframe: `SCR-08-games.png`, `SCR-08-play-match.png`, `SCR-08-play-truefalse.png`, `SCR-08-play-classifier.png`, `SCR-08-result.png`.
 
 ## Nguyên tắc chung
 - **v7.3 (owner chốt 2026-11-18):** khu Trò chơi sinh động hơn phần còn lại — mỗi trò **một màu riêng** (`color.game.*`: Ghép cặp tím · Đúng hay sai? cam · Xếp câu tốc độ xanh ngọc · Đoán loại từ hồng) cho card ở `/games`, thanh trên, nút, thanh thời gian, màn kết quả; chuyển động phản hồi (đếm 3·2·1, rung/nảy, "+điểm", combo, đồng hồ sắp hết giờ) và **hiệu ứng mạnh hơn khi phá kỷ lục** (vẫn không confetti/mascot). Dòng "không confetti" bên dưới vẫn áp dụng.

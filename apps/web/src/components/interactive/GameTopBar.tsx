@@ -14,6 +14,8 @@ export interface GameTopBarProps {
   timeMs?: number;
   clock?: 'down' | 'up';
   score: number;
+  /** Nhãn thay "Điểm" (vd. Ghép cặp: "Lượt lật") — khi có thì không hiện "+n". */
+  scoreLabel?: string;
   /** Hệ số combo; chỉ hiện khi ≥ 2. */
   combo?: number;
   onExit: () => void;
@@ -37,6 +39,7 @@ export function GameTopBar({
   timeMs,
   clock = 'down',
   score,
+  scoreLabel,
   combo = 0,
   onExit,
   sound,
@@ -77,9 +80,9 @@ export function GameTopBar({
           </span>
         )}
         <span data-testid="game-score" className="relative">
-          <span className="sr-only">{t('play.score')}: </span>
+          <span className="sr-only">{scoreLabel ?? t('play.score')}: </span>
           <span aria-hidden className="text-sm text-muted-foreground">
-            {t('play.score')}{' '}
+            {scoreLabel ?? t('play.score')}{' '}
           </span>
           <span
             key={score}
@@ -87,7 +90,7 @@ export function GameTopBar({
           >
             {numberFormat.format(score)}
           </span>
-          {gain > 0 && (
+          {gain > 0 && !scoreLabel && (
             <span
               key={`gain-${score}`}
               aria-hidden

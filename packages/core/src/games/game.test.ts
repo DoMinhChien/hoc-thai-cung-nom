@@ -17,6 +17,8 @@ import {
   learnedSource,
   MIN_LEARNED_ITEMS,
   selectGameSource,
+  subsetSource,
+  unitSource,
   unitSourceKey,
 } from './source';
 
@@ -115,6 +117,19 @@ describe('nguồn câu hỏi (F-10 v7.2)', () => {
       fallback: false,
     });
     expect(bundle('u05', 5, []).words).toEqual([]);
+  });
+});
+
+describe('subsetSource ("Chơi với mục sai")', () => {
+  it('chỉ giữ mục được chọn, giữ key nguồn', () => {
+    const sub = subsetSource(unitSource(GREETINGS), [
+      { itemType: 'word', itemId: 'chue' },
+      { itemType: 'sentence', itemId: 's2' },
+      { itemType: 'sentence', itemId: 'chue' },
+    ]);
+    expect(sub.key).toBe('unit:u01');
+    expect(sub.words.map((w) => w.id)).toEqual(['chue']);
+    expect(sub.sentences.map((s) => s.id)).toEqual(['s2']);
   });
 });
 

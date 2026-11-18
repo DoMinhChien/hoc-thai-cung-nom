@@ -8,7 +8,6 @@ const PATHS = [
   '/dev/typography',
   '/dev/progress',
   '/dev/typing',
-  '/dev/play',
 ];
 
 async function expectNoSevereViolations(page: Page) {

@@ -111,3 +111,13 @@ export function selectGameSource(
   }
   return { source: unitSource(units[0]!), fallback: true };
 }
+
+/** "Chơi với mục sai" (SCR-08 §C): chỉ giữ các mục vừa sai; giữ `key` để kỷ lục vẫn theo nguồn gốc. */
+export function subsetSource(source: GameSource, items: readonly GameItemRef[]): GameSource {
+  const ids = new Set(items.map((r) => `${r.itemType}:${r.itemId}`));
+  return {
+    ...source,
+    words: source.words.filter((w) => ids.has(`word:${w.id}`)),
+    sentences: source.sentences.filter((s) => ids.has(`sentence:${s.id}`)),
+  };
+}

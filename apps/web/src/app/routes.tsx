@@ -1,13 +1,14 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { FirstVisitGate, RequireAuth } from '@/app/guards';
-import { AppLayout, BareLayout, DevLayout } from '@/components/layout/AppLayout';
+import { AppLayout, BareLayout, DevLayout, FocusLayout } from '@/components/layout/AppLayout';
 import type { MessageKey } from '@/i18n';
 import { deleteInstructionsVi, privacyVi, termsVi } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
-import { PlayDemoPage } from '@/pages/dev/PlayDemoPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
 import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
+import { GamePage } from '@/pages/games/GamePage';
+import { GamesPage } from '@/pages/games/GamesPage';
 import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -54,8 +55,11 @@ export const routes: RouteObject[] = [
       { path: '/dev/typography', element: <TypographyPage /> },
       { path: '/dev/progress', element: <ProgressDemoPage /> },
       { path: '/dev/typing', element: <TypingDemoPage /> },
-      { path: '/dev/play', element: <PlayDemoPage /> },
     ],
+  },
+  {
+    element: <FocusLayout />,
+    children: [{ path: '/games/:id', element: <GamePage /> }],
   },
   {
     element: <AppLayout />,
@@ -79,8 +83,7 @@ export const routes: RouteObject[] = [
       page('/units', 'pages.units', 'units'),
       page('/practice', 'pages.practice', 'practice'),
       page('/words', 'pages.words', 'words'),
-      page('/games', 'pages.games', 'games'),
-      page('/games/:id', 'pages.game', 'game'),
+      { path: '/games', element: <GamesPage /> },
       page('/progress', 'pages.progress', 'progress'),
       page('/settings', 'pages.settings', 'settings'),
       ...Object.entries(LEGACY_REDIRECTS).map(([path, to]) => ({
