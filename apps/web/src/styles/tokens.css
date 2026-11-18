@@ -60,8 +60,8 @@
   --nom-facebook-fg: #ffffff;
 
   /* Typography (D8) */
-  --nom-font-vi: 'Inter Variable', 'Noto Sans Thai Variable', system-ui, sans-serif;
-  --nom-font-th: 'Noto Sans Thai Variable', 'Inter Variable', system-ui, sans-serif;
+  --nom-font-vi: 'Inter Variable', 'Sarabun', system-ui, sans-serif;
+  --nom-font-th: 'Sarabun', 'Inter Variable', system-ui, sans-serif;
   --nom-text-th-sm: 20px;
   --nom-text-th-md: 32px;
   --nom-text-th-lg: 64px;

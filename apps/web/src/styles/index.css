@@ -1,8 +1,13 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-/* Font self-host (D8): Inter cho tiếng Việt, Noto Sans Thai cho chữ Thái — đóng gói vào build. */
+/*
+ * Font self-host (D8, G-05): Inter cho tiếng Việt; Sarabun cho chữ Thái (v7.4 — kiểu có đầu tròn,
+ * phổ thông như giáo trình). Chỉ subset `thai`, 3 độ đậm dùng trong UI — đóng gói vào build.
+ */
 @import '@fontsource-variable/inter';
-@import '@fontsource-variable/noto-sans-thai';
+@import '@fontsource/sarabun/thai-400.css';
+@import '@fontsource/sarabun/thai-500.css';
+@import '@fontsource/sarabun/thai-600.css';
 @import './tokens.css';
 
 /*
