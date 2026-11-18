@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { bundle, fakeContent, manifest, units } from '@/test/content-fixtures';
 import { ContentProvider } from './ContentProvider';
-import { useUnit, useUnits, type ContentState } from './hooks';
+import { useAllUnits, useUnit, useUnits, type ContentState } from './hooks';
 
 const show = (state: ContentState<unknown>, ready: (data: never) => string) =>
   state.status === 'ready'
@@ -81,5 +81,23 @@ describe('useUnits / useUnit (T7.1)', () => {
     );
     expect(screen.getByTestId('unit')).toHaveTextContent('loading');
     expect(await screen.findByText('u02:0')).toBeInTheDocument();
+  });
+
+  it('useAllUnits: units.json rồi từng unit', async () => {
+    const { client } = fakeContent(files());
+    function All() {
+      const state = useAllUnits();
+      return (
+        <p data-testid="all">
+          {show(state, (data: (typeof bundle)[]) => data.map((b) => b.unit.unit_id).join(','))}
+        </p>
+      );
+    }
+    render(
+      <ContentProvider client={client}>
+        <All />
+      </ContentProvider>,
+    );
+    expect(await screen.findByText('u01')).toBeInTheDocument();
   });
 });

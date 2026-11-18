@@ -13,7 +13,7 @@ export const ROUTE_SAMPLES: { path: string; testId: string }[] = [
   { path: '/practice', testId: 'practice' },
   { path: '/words', testId: 'words' },
   { path: '/games', testId: 'games' },
-  { path: '/games/demo', testId: 'game' },
+  { path: '/games/true-false', testId: 'game' },
   { path: '/progress', testId: 'progress' },
   { path: '/settings', testId: 'settings' },
 ];

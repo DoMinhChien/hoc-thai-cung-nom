@@ -1,4 +1,10 @@
-import type { CanDoRecord, CardRecord, LessonProgressRecord } from '@nom/core';
+import type {
+  CanDoRecord,
+  CardRecord,
+  GameResultRecord,
+  LessonProgressRecord,
+  NeedsReviewRecord,
+} from '@nom/core';
 import Dexie, { type EntityTable, type IndexableType } from 'dexie';
 import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES } from './db';
 
@@ -18,7 +24,8 @@ type Synced = { id: string; updatedAt: string };
 
 /**
  * Bản ghi Guest vào DB user theo khóa duy nhất (`index`): đã có ở user thì giữ bản cập nhật sau
- * (một mục chỉ một thẻ mỗi loại; một bài một bản ghi tiến độ; một mục can-do một tick).
+ * (một mục chỉ một thẻ mỗi loại; một bài một bản ghi tiến độ; một mục can-do một tick;
+ * một kỷ lục mỗi trò + nguồn; một cờ "cần ôn" mỗi mục).
  * Log ôn của cả hai vẫn giữ (không có khóa duy nhất).
  */
 async function mergeUnique<T extends Synced>(
@@ -91,6 +98,20 @@ export class AccountDataRepository {
               c.unitId,
               c.canDo,
             ]);
+          } else if (name === 'gameResults') {
+            await mergeUnique(
+              user.gameResults,
+              data as GameResultRecord[],
+              '[gameId+source]',
+              (r) => [r.gameId, r.source],
+            );
+          } else if (name === 'needsReview') {
+            await mergeUnique(
+              user.needsReview,
+              data as NeedsReviewRecord[],
+              '[itemType+itemId]',
+              (r) => [r.itemType, r.itemId],
+            );
           } else await user.table(name).bulkPut(data);
         }
       }),

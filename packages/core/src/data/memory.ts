@@ -2,14 +2,17 @@
  * Repository trong bộ nhớ — cho unit test và component test không cần IndexedDB.
  * Cùng hành vi với bản Dexie (cùng bộ test hợp đồng ở `apps/web/src/data`).
  */
+import type { GameId } from '../games/game';
 import { selectDue } from '../srs/srs';
 import type {
   CanDoRecord,
   CardRecord,
   CardType,
+  GameResultRecord,
   ItemType,
   LessonProgressRecord,
   ListeningStatRecord,
+  NeedsReviewRecord,
   ReviewLogRecord,
   SessionRecord,
 } from './records';
@@ -91,6 +94,30 @@ export class MemoryProgressRepository implements ProgressRepository {
   }
   async putCanDo(record: CanDoRecord) {
     this.canDos.set(JSON.stringify([record.unitId, record.canDo]), clone(record));
+  }
+
+  /** Khóa theo `gameId + source` / `itemType + itemId`. */
+  readonly gameResults = new Map<string, GameResultRecord>();
+  readonly needsReview = new Map<string, NeedsReviewRecord>();
+
+  async getGameResult(gameId: GameId, source: string) {
+    const record = this.gameResults.get(JSON.stringify([gameId, source]));
+    return record && clone(record);
+  }
+  async listGameResults() {
+    return [...this.gameResults.values()].map(clone);
+  }
+  async putGameResult(record: GameResultRecord) {
+    this.gameResults.set(JSON.stringify([record.gameId, record.source]), clone(record));
+  }
+  async listNeedsReview() {
+    return [...this.needsReview.values()].map(clone);
+  }
+  async putNeedsReview(record: NeedsReviewRecord) {
+    this.needsReview.set(JSON.stringify([record.itemType, record.itemId]), clone(record));
+  }
+  async deleteNeedsReview(itemType: ItemType, itemId: string) {
+    this.needsReview.delete(JSON.stringify([itemType, itemId]));
   }
 }
 
