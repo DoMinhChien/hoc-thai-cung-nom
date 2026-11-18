@@ -173,7 +173,7 @@ export function GameResult({
             {t('games.other')}
           </Button>
         </div>
-        <p className="text-xs text-subtle-foreground">{t('games.fsrsNote')}</p>
+        <p className="text-xs text-muted-foreground">{t('games.fsrsNote')}</p>
       </div>
     </div>
   );

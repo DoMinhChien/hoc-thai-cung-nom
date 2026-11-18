@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
@@ -31,12 +38,14 @@ export function useKeyShortcut(
   enabled = true,
 ) {
   const handlerRef = useRef(handler);
-  useEffect(() => {
+  // Layout effect: phím có tác dụng ngay khi màn vừa hiện (effect thường có thể chạy trễ tới sau
+  // khi trình duyệt vẽ — người học bấm sớm thì mất phím).
+  useLayoutEffect(() => {
     handlerRef.current = handler;
   });
   const list = (typeof keys === 'string' ? [keys] : keys).map((k) => k.toLowerCase()).join('\n');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!enabled) return;
     const wanted = list.split('\n');
     const onKeyDown = (e: KeyboardEvent) => {

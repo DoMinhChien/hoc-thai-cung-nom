@@ -93,7 +93,7 @@ export function MatchBoard({ source, seed, children }: BoardProps) {
   ) : (
     <div className="flex flex-col items-center gap-4">
       <p className="text-sm text-muted-foreground">{t('games.matchLeft', { n: pairsLeft })}</p>
-      <div role="grid" aria-label={t('games.name.match')} className="grid grid-cols-4 gap-4">
+      <div role="group" aria-label={t('games.name.match')} className="grid grid-cols-4 gap-4">
         {state.cards.map((card, i) => {
           const matched = state.matched.includes(card.wordId);
           const open = matched || state.open.includes(i);
@@ -102,7 +102,6 @@ export function MatchBoard({ source, seed, children }: BoardProps) {
             <button
               key={i}
               type="button"
-              role="gridcell"
               data-testid="match-card"
               data-open={open}
               data-matched={matched}
@@ -135,7 +134,7 @@ export function MatchBoard({ source, seed, children }: BoardProps) {
           );
         })}
       </div>
-      <p className="text-xs text-subtle-foreground">{t('games.matchHint')}</p>
+      <p className="text-xs text-muted-foreground">{t('games.matchHint')}</p>
     </div>
   );
   return children(run, body, {

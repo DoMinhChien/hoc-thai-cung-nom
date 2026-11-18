@@ -1,0 +1,111 @@
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test, type Page } from '@playwright/test';
+import { chooseGuest, countCards } from './helpers';
+
+/**
+ * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Guest chưa học gì → nguồn là
+ * Chuyên đề 1 (F-10 v7.2). Giảm chuyển động → bỏ đếm 3·2·1 và hiệu ứng (ảnh chụp ổn định).
+ */
+test.beforeEach(async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await chooseGuest(page);
+});
+
+/** Nghĩa đúng của từ / câu Unit 1 (đọc từ bundle đã build) — để biết nghĩa đề xuất đúng hay sai. */
+async function meaningsOfUnit1(page: Page): Promise<Map<string, string>> {
+  const res = await page.request.get('/content/unit-u01.json');
+  const unit = (await res.json()) as {
+    words: { thai: string; meaning_vi: string[] }[];
+    sentences: { th?: string; vi: string }[];
+  };
+  return new Map([
+    ...unit.words.map((w) => [w.thai, w.meaning_vi.join('; ')] as const),
+    ...unit.sentences.flatMap((s) => (s.th ? [[s.th, s.vi] as const] : [])),
+  ]);
+}
+
+async function expectNoSevereViolations(page: Page) {
+  const { violations } = await new AxeBuilder({ page }).analyze();
+  const severe = violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+  expect(
+    severe.map((v) => `${v.id}: ${v.help} — ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`),
+  ).toEqual([]);
+}
+
+test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần ôn" một mục, FSRS không đổi', async ({
+  page,
+}) => {
+  const meanings = await meaningsOfUnit1(page);
+  await page.goto('/games/true-false?seed=11');
+  await expect(page.getByTestId('game-lives')).toHaveAttribute('data-lives', '3');
+
+  // Đúng 1 câu rồi cố ý sai tới khi hết tim.
+  let correct = true;
+  while (!(await page.getByTestId('game-result').isVisible())) {
+    const th = await page.getByTestId('tf-th').textContent();
+    const shown = await page.getByTestId('tf-shown').textContent();
+    const isTrue = meanings.get(th!) === shown;
+    await page.keyboard.press(isTrue === correct ? 'ArrowRight' : 'ArrowLeft');
+    await expect(page.getByTestId('feedback-bar')).toHaveAttribute('data-correct', String(correct));
+    correct = false;
+    await expect(
+      page.getByTestId('feedback-bar').or(page.getByTestId('game-result')),
+    ).toBeVisible();
+    await page.waitForFunction(
+      () =>
+        !document.querySelector('[data-testid="feedback-bar"]') ||
+        document.querySelector('[data-testid="game-result"]'),
+    );
+  }
+
+  await expect(page.getByTestId('result-correct')).toHaveText('1/4');
+  await expect(page.getByTestId('result-new-record')).toBeVisible();
+  const score = (await page.getByTestId('result-score').textContent())!;
+  await expectNoSevereViolations(page);
+
+  const toggles = page.getByTestId('review-list').getByRole('button');
+  await expect(toggles).toHaveCount(3);
+  await toggles.first().click();
+  await expect(toggles.first()).toHaveAttribute('aria-pressed', 'false');
+
+  // Về danh sách: kỷ lục + số mục "cần ôn" còn sau khi tải lại.
+  await page.getByTestId('result-other').click();
+  await page.reload();
+  await expect(page.getByTestId('game-record-true-false')).toHaveText(`Kỷ lục: ${score} điểm`);
+  await expect(page.getByTestId('game-review-count')).toContainText('2 mục cần ôn');
+  // Trò chơi không đụng lịch FSRS (F-12): Guest vẫn chưa có thẻ nào.
+  expect(await countCards(page, 'hoc-thai-nom-guest')).toBe(0);
+});
+
+test('Đoán loại từ: content mẫu chưa có loại từ → card khóa kèm lý do, cả với Chuyên đề 3', async ({
+  page,
+}) => {
+  await page.goto('/games');
+  await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
+    'Cần chuyên đề có loại từ',
+  );
+  await page.getByTestId('game-source').selectOption('unit:u03');
+  await expect(page.getByTestId('game-locked-classifier-rush')).toBeVisible();
+  // Lựa chọn nguồn được nhớ.
+  await page.reload();
+  await expect(page.getByTestId('game-source')).toHaveValue('unit:u03');
+});
+
+test('/games và màn Ghép cặp: baseline', async ({ page }) => {
+  await page.goto('/games');
+  await expect(page.getByTestId('game-card-match')).toBeVisible();
+  await page.evaluate(() => document.fonts.ready);
+  await expect(page).toHaveScreenshot('games.png', { fullPage: true });
+
+  await page.keyboard.press('1');
+  await expect(page.getByTestId('match-card')).toHaveCount(12);
+  await page.goto('/games/match?seed=5');
+  await expect(page.getByTestId('match-card')).toHaveCount(12);
+  await page.keyboard.press(' ');
+  await expect(page.getByTestId('match-card').first()).toHaveAttribute('data-open', 'true');
+  await expectNoSevereViolations(page);
+  await expect(page).toHaveScreenshot('game-match.png', {
+    fullPage: true,
+    mask: [page.getByTestId('game-clock')],
+  });
+});

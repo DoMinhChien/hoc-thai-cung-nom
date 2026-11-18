@@ -71,7 +71,7 @@ export function GamesPage() {
                   </option>
                 ))}
             </select>
-            <span className="text-sm text-subtle-foreground">{t('games.orUnit')}</span>
+            <span className="text-sm text-muted-foreground">{t('games.orUnit')}</span>
           </div>
           {ready.fallback && (
             <p data-testid="game-fallback" className="text-sm text-muted-foreground">
@@ -94,7 +94,7 @@ export function GamesPage() {
                   data-game={id}
                   data-testid={`game-card-${id}`}
                   className={cn(
-                    'flex flex-col gap-3 rounded-xl border-2 border-transparent bg-game-subtle p-5 motion-safe:animate-enter',
+                    'flex flex-col gap-3 rounded-xl border-2 border-transparent bg-game-subtle p-5',
                     !reason && 'hover:border-game motion-safe:transition-colors',
                   )}
                 >
@@ -107,7 +107,7 @@ export function GamesPage() {
                   </span>
                   <h2 className="text-lg font-semibold">{gameName(id)}</h2>
                   <p className="text-sm text-muted-foreground">{t(`games.desc.${id}`)}</p>
-                  <p className="text-sm text-subtle-foreground">{t(`games.duration.${id}`)}</p>
+                  <p className="text-sm text-muted-foreground">{t(`games.duration.${id}`)}</p>
                   <p className="text-sm font-medium" data-testid={`game-record-${id}`}>
                     {best
                       ? t('games.record', { value: formatRecord(id, best.best) })
