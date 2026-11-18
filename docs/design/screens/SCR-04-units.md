@@ -1,6 +1,6 @@
 # SCR-04 Bài học: Lộ trình & Chi tiết chuyên đề — Requirements: plan 0.4, 0.7, 0.8 (P-04, P-10, P-11), 0.11 #1–#3, #8
 
-> Trạng thái: **📝 Chờ owner duyệt** (M0.5b, 2026-11-18). Wireframe: `SCR-04-units.png`, `SCR-04-unit-detail.png`.
+> Trạng thái: **✅ Owner duyệt 2026-11-19** (M0.5b). Wireframe: `SCR-04-units.png`, `SCR-04-unit-detail.png`.
 > Dữ liệu: `units.json` (`UnitSummary[]`), `unit-<id>.json` (`UnitBundle`) qua `useUnits()`/`useUnit(id)`; tiến độ từ `LessonProgressRecord`, `CanDoRecord`, mức thuộc FSRS (T7.2).
 
 ---

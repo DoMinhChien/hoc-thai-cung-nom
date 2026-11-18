@@ -1,6 +1,6 @@
 # SCR-05 Bài học (route: `/units/:unitId/:lessonId` · Focus layout) — Requirements: plan 0.4, 0.11 #3, B-03/B-04, C-02/C-03/C-04/C-06/C-07, V-02/V-03, 7.2
 
-> Trạng thái: **📝 Chờ owner duyệt** (M0.5b, 2026-11-18). Wireframe: `SCR-05-lesson-vocab.png`, `SCR-05-lesson-dialogue.png`.
+> Trạng thái: **✅ Owner duyệt 2026-11-19** (M0.5b). Wireframe: `SCR-05-lesson-vocab.png`, `SCR-05-lesson-dialogue.png`.
 
 ## Mục đích
 Học một bài 10–15 phút qua các bước **có trong `lesson.steps`** (thứ tự do build quyết định: unit `theme` = Từ vựng → Mẫu câu → Hội thoại → Bài tập; unit `grammar` = Mẫu câu → Từ vựng → Bài tập). Không có dữ liệu cho bước nào thì bước đó **không hiện**.
