@@ -315,12 +315,12 @@ export function ClassifierBoard({ source, seed, children }: BoardProps) {
         feedback={fb ? (fb.correct ? 'correct' : 'wrong') : null}
       >
         <p className="text-sm text-muted-foreground">{t('games.classifierPrompt')}</p>
-        <p lang="th" className="text-th-lg">
+        <p lang="th" data-testid="cr-th" className="text-th-lg">
           {q.th}
         </p>
         <p className="text-lg text-muted-foreground">{q.meaning}</p>
       </UrgencyCard>
-      <div className="grid grid-cols-4 gap-3">
+      <div data-testid="cr-options" className="grid grid-cols-4 gap-3">
         {q.options.map((option, i) => (
           <ChoiceButton
             key={`${state.index}-${option}`}

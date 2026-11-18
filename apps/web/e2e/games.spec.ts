@@ -77,18 +77,45 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   expect(await countCards(page, 'hoc-thai-nom-guest')).toBe(0);
 });
 
-test('Đoán loại từ: content mẫu chưa có loại từ → card khóa kèm lý do, cả với Chuyên đề 3', async ({
+test('Đoán loại từ trên Chuyên đề 3: chọn nguồn (được nhớ), trả lời bằng phím 1–4, hết tim → kết quả', async ({
   page,
 }) => {
+  // Chưa học gì → Chuyên đề 1 (không có loại từ) → trò bị khóa kèm lý do.
   await page.goto('/games');
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );
   await page.getByTestId('game-source').selectOption('unit:u03');
-  await expect(page.getByTestId('game-locked-classifier-rush')).toBeVisible();
-  // Lựa chọn nguồn được nhớ.
+  await expect(page.getByTestId('game-locked-classifier-rush')).toBeHidden();
   await page.reload();
   await expect(page.getByTestId('game-source')).toHaveValue('unit:u03');
+
+  const res = await page.request.get('/content/unit-u03.json');
+  const unit = (await res.json()) as { words: { thai: string; classifier?: string }[] };
+  const classifierOf = new Map(unit.words.map((w) => [w.thai, w.classifier]));
+
+  await page.keyboard.press('4');
+  await expect(page).toHaveURL(/\/games\/classifier-rush\?source=unit%3Au03/);
+  // Đúng 1 câu rồi cố ý sai tới khi hết tim.
+  let correct = true;
+  while (!(await page.getByTestId('game-result').isVisible())) {
+    const th = (await page.getByTestId('cr-th').textContent())!;
+    const options = await page.getByTestId('cr-options').getByRole('button').allTextContents();
+    const right = options.findIndex((o) => o.endsWith(classifierOf.get(th)!));
+    const pick = correct ? right : (right + 1) % options.length;
+    await page.keyboard.press(String(pick + 1));
+    await expect(page.getByTestId('feedback-bar')).toHaveAttribute('data-correct', String(correct));
+    correct = false;
+    await page.waitForFunction(
+      () =>
+        !document.querySelector('[data-testid="feedback-bar"]') ||
+        document.querySelector('[data-testid="game-result"]'),
+    );
+  }
+  await expect(page.getByTestId('result-correct')).toHaveText('1/4');
+  // Mục sai ghi loại từ đã chọn, chữ Thái có lang="th".
+  await expect(page.getByTestId('review-list').locator('del[lang="th"]')).toHaveCount(3);
+  await expectNoSevereViolations(page);
 });
 
 test('/games và màn Ghép cặp: baseline', async ({ page }) => {
