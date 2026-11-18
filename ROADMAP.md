@@ -237,7 +237,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Kết quả (2026-11-17):** core `KEDMANEE_ROWS`/`kedmaneeChar`, `gradeThaiTyping`/`diffThai`/`acceptedAnswers`; web `ThaiKeyboard` (`simple-keyboard` 3.8.205, theme `hg-theme-nom` chỉ dùng tokens — không nạp CSS mặc định), `ThaiTextInput`, `TypingFeedback`, `/dev/typing`. Tests: core 280 (coverage lines 100%), scripts 72, web 166; E2E `typing.spec.ts` + axe `/dev/typing` xanh 3 trình duyệt × 2 viewport; baseline Windows `dev-typing-*-win32.png` (Linux do CI sinh). Ghi chú: ครับ/ค่ะ/คะ tùy chọn ở cuối mỗi cụm của đáp án (gõ liền vẫn nhận); dấu câu ASCII/ngoặc kép bị bỏ khi chấm (giữ ฯ ๆ).
 
-### M7 — Bài học 🔵
+### M7 — Bài học 🟠
 
 **Requirement:** plan **0.4** (bài học 4 bước, mở khóa mềm, checklist can-do), **0.7** (`/units`, `/units/:unitId`, `/units/:unitId/:lessonId`), **0.8** (P-10 `UnitPath`, P-11 `CanDoList`, P-04 theo unit), **7.2** (AudioProvider), **B-03/B-04** (từ mới vào SRS), **C-02/C-03/C-04/C-06/C-07** (tra từ, toggle bản dịch, phát câu trong bước Hội thoại), 7.3–7.4.
 
