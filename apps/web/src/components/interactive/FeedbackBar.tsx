@@ -21,7 +21,7 @@ export function FeedbackBar({ correct, answer, children, className }: FeedbackBa
       data-testid="feedback-bar"
       data-correct={correct}
       className={cn(
-        'flex items-center gap-3 rounded-lg border-l-4 px-4 py-3',
+        'flex items-center gap-3 rounded-lg border-l-4 px-4 py-3 motion-safe:animate-enter',
         correct ? 'border-positive bg-positive-subtle' : 'border-destructive bg-destructive-subtle',
         className,
       )}
@@ -41,7 +41,16 @@ export function FeedbackBar({ correct, answer, children, className }: FeedbackBa
           </>
         )}
       </p>
-      {children && <div className="ml-auto text-sm text-muted-foreground">{children}</div>}
+      {children && (
+        <div
+          className={cn(
+            'ml-auto text-sm font-semibold',
+            correct ? 'text-positive' : 'text-destructive',
+          )}
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 }

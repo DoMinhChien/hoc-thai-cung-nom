@@ -1,5 +1,6 @@
 /** Component tương tác dùng chung cho Trò chơi (M7.5) và Bài tập (M9). */
 export { ChoiceButton, type ChoiceStatus } from './ChoiceButton';
+export { CountIn } from './CountIn';
 export { FeedbackBar } from './FeedbackBar';
 export {
   FEEDBACK_SOUND_KEY,

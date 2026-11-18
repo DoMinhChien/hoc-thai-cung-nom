@@ -7,9 +7,11 @@ import {
   type GameSource,
   type GameState,
 } from '@nom/core';
-import { useEffect, useState } from 'react';
+import { Shuffle, ThumbsUp } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ChoiceButton,
+  CountIn,
   FeedbackBar,
   GameTopBar,
   PausedOverlay,
@@ -61,9 +63,11 @@ const SOURCE: GameSource = {
 /** Chạy một lượt: đồng hồ trò chơi (tạm dừng khi rời tab) + tick hết giờ. */
 function useRun<R, A, S extends GameState>(game: Game<R, A, S>, seed: number) {
   const [state, setState] = useState(() => game.start(game.generateRound(SOURCE, seed), 0));
+  const [started, setStarted] = useState(false);
+  const start = useCallback(() => setStarted(true), []);
   const clock = useCountdown({
     durationMs: game.durationMs,
-    running: state.status !== 'finished',
+    running: started && state.status !== 'finished',
     onTick: (elapsed) => setState((s) => game.tick(s, elapsed)),
   });
   const sound = useFeedbackSound();
@@ -75,7 +79,7 @@ function useRun<R, A, S extends GameState>(game: Game<R, A, S>, seed: number) {
     setState(next);
   };
   const advance = () => setState((s) => game.next(s, now()));
-  return { state, clock, sound, answer, advance };
+  return { state, clock, sound, answer, advance, started, start };
 }
 
 function TopBar({
@@ -110,7 +114,13 @@ function TopBar({
 
 function Finished({ state, onRestart }: { state: GameState; onRestart: () => void }) {
   return (
-    <div data-testid="demo-finished" className="flex flex-col items-start gap-3">
+    <div
+      data-testid="demo-finished"
+      className="flex flex-col items-start gap-4 rounded-xl bg-accent p-6 motion-safe:animate-enter"
+    >
+      <p className="text-5xl font-semibold text-primary tabular-nums motion-safe:animate-pop">
+        {state.score}
+      </p>
       <p className="text-lg font-semibold">
         {t('devPlay.finished', {
           score: state.score,
@@ -136,58 +146,76 @@ function Finished({ state, onRestart }: { state: GameState; onRestart: () => voi
 
 function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
   const run = useRun(trueFalse, seed);
-  const { state, answer, advance } = run;
+  const { state, answer, advance, started, start } = run;
+  const [said, setSaid] = useState<boolean | null>(null);
   const q = state.questions[state.index % state.questions.length]!;
+  const fb = state.feedback;
 
   useEffect(() => {
     if (state.status !== 'feedback') return;
-    const id = window.setTimeout(advance, state.feedback?.correct ? 300 : 600);
+    const id = window.setTimeout(advance, fb?.correct ? 450 : 900);
     return () => window.clearTimeout(id);
   });
+
+  const choose = (value: boolean) => {
+    setSaid(value);
+    answer(value);
+  };
+  const statusOf = (value: boolean) =>
+    fb && said === value ? (fb.correct ? 'correct' : 'wrong') : 'idle';
 
   return (
     <div className="flex flex-col gap-6">
       <TopBar run={run} title={t('devPlay.trueFalse')} onExit={onExit} />
-      {state.status === 'finished' ? (
+      {!started ? (
+        <CountIn onDone={start} />
+      ) : state.status === 'finished' ? (
         <Finished state={state} onRestart={onRestart} />
       ) : (
         <>
           <div
+            key={state.index}
+            data-testid="tf-card"
             className={cn(
-              'flex flex-col items-center gap-3 rounded-xl border p-8',
-              state.feedback?.correct === false && 'motion-safe:animate-pulse',
+              'flex flex-col items-center gap-3 rounded-xl border-2 p-8 motion-safe:animate-enter motion-safe:transition-colors',
+              !fb && 'border-transparent bg-accent/60',
+              fb?.correct && 'border-positive bg-positive-subtle',
+              fb &&
+                !fb.correct &&
+                'border-destructive bg-destructive-subtle motion-safe:animate-shake',
             )}
           >
             <p lang="th" className="text-th-xl">
               {q.th}
             </p>
-            <p className="text-xl">{q.shown}</p>
+            <p className="rounded-full bg-background px-4 py-1 text-xl font-medium shadow-sm">
+              {q.shown}
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <ChoiceButton
               shortcut="F"
               extraKeys={['ArrowLeft']}
+              status={statusOf(false)}
               disabled={state.status !== 'playing'}
-              onSelect={() => answer(false)}
+              onSelect={() => choose(false)}
             >
               ← {t('play.wrong')}
             </ChoiceButton>
             <ChoiceButton
               shortcut="J"
               extraKeys={['ArrowRight']}
+              status={statusOf(true)}
               disabled={state.status !== 'playing'}
-              onSelect={() => answer(true)}
+              onSelect={() => choose(true)}
             >
               {t('play.correct')} →
             </ChoiceButton>
           </div>
           <div className="min-h-14">
-            {state.feedback && (
-              <FeedbackBar
-                correct={state.feedback.correct}
-                answer={state.feedback.correct ? undefined : state.feedback.expected}
-              >
-                {state.feedback.points > 0 && `+${state.feedback.points}`}
+            {fb && (
+              <FeedbackBar correct={fb.correct} answer={fb.correct ? undefined : fb.expected}>
+                {fb.points > 0 && `+${fb.points}`}
               </FeedbackBar>
             )}
           </div>
@@ -199,7 +227,7 @@ function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
 
 function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
   const run = useRun(sentenceRush, seed);
-  const { state, clock, answer, advance } = run;
+  const { state, clock, answer, advance, started, start } = run;
   const [picked, setPicked] = useState<number[]>([]);
   const q = state.questions[Math.min(state.index, state.questions.length - 1)]!;
 
@@ -218,7 +246,9 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
   return (
     <div className="flex flex-col gap-6">
       <TopBar run={run} title={t('devPlay.sentenceRush')} onExit={onExit} />
-      {state.status === 'finished' ? (
+      {!started ? (
+        <CountIn onDone={start} />
+      ) : state.status === 'finished' ? (
         <Finished state={state} onRestart={onRestart} />
       ) : (
         <>
@@ -226,8 +256,14 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
           <p className="text-sm text-muted-foreground">
             {t('devPlay.sentenceOf', { n: state.index + 1, total: state.questions.length })}
           </p>
-          <p className="text-xl font-medium">{q.vi}</p>
+          <p
+            key={state.index}
+            className="rounded-xl bg-accent/60 px-5 py-4 text-xl font-medium motion-safe:animate-enter"
+          >
+            {q.vi}
+          </p>
           <TokenBank
+            key={`bank-${state.index}`}
             tokens={q.bank}
             value={picked}
             onChange={setPicked}
@@ -264,8 +300,8 @@ interface DemoProps {
 }
 
 const DEMOS = {
-  'true-false': { title: 'devPlay.trueFalse', Component: TrueFalseDemo },
-  'sentence-rush': { title: 'devPlay.sentenceRush', Component: SentenceRushDemo },
+  'true-false': { title: 'devPlay.trueFalse', icon: ThumbsUp, Component: TrueFalseDemo },
+  'sentence-rush': { title: 'devPlay.sentenceRush', icon: Shuffle, Component: SentenceRushDemo },
 } as const;
 type DemoId = keyof typeof DEMOS;
 
@@ -294,16 +330,22 @@ export function PlayDemoPage() {
         <p className="text-muted-foreground">{t('devPlay.intro')}</p>
       </header>
       <div className="flex gap-4">
-        {(Object.keys(DEMOS) as DemoId[]).map((id, i) => (
-          <ChoiceButton
-            key={id}
-            shortcut={String(i + 1)}
-            className="w-64"
-            onSelect={() => setDemo(id)}
-          >
-            {t(DEMOS[id].title)}
-          </ChoiceButton>
-        ))}
+        {(Object.keys(DEMOS) as DemoId[]).map((id, i) => {
+          const Icon = DEMOS[id].icon;
+          return (
+            <ChoiceButton
+              key={id}
+              shortcut={String(i + 1)}
+              className="w-64 flex-col py-6"
+              onSelect={() => setDemo(id)}
+            >
+              <span className="flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <Icon className="size-6" aria-hidden />
+              </span>
+              {t(DEMOS[id].title)}
+            </ChoiceButton>
+          );
+        })}
       </div>
       <section className="flex flex-col gap-3 border-t pt-4">
         <h2 className="font-semibold">{t('devPlay.states')}</h2>

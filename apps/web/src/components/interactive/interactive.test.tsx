@@ -16,6 +16,7 @@ import { createDexieRepositories } from '@/data/dexie-repositories';
 import { RepositoriesContext } from '@/data/repositories-context';
 import {
   ChoiceButton,
+  CountIn,
   FEEDBACK_SOUND_KEY,
   FeedbackBar,
   formatClock,
@@ -215,6 +216,52 @@ describe('GameTopBar, TimeBar, PausedOverlay', () => {
     press(' ', { target: document.body } as KeyboardEventInit);
     await userEvent.click(screen.getByRole('button'));
     expect(onResume).toHaveBeenCalled();
+  });
+});
+
+describe('CountIn', () => {
+  it('3 · 2 · 1 rồi bắt đầu; Space bắt đầu ngay', () => {
+    vi.useFakeTimers();
+    const onDone = vi.fn();
+    render(<CountIn onDone={onDone} />);
+    expect(screen.getByTestId('count-in')).toHaveTextContent('3');
+    act(() => {
+      vi.advanceTimersByTime(700);
+    });
+    expect(screen.getByTestId('count-in')).toHaveTextContent('2');
+    for (let i = 0; i < 2; i++) {
+      act(() => {
+        vi.advanceTimersByTime(700);
+      });
+    }
+    expect(onDone).toHaveBeenCalledOnce();
+    press(' ');
+    expect(onDone).toHaveBeenCalledTimes(2);
+  });
+
+  it('giảm chuyển động → bỏ qua đếm', () => {
+    vi.stubGlobal('matchMedia', () => ({
+      matches: true,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    }));
+    const onDone = vi.fn();
+    render(<CountIn onDone={onDone} />);
+    expect(onDone).toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+});
+
+describe('GameTopBar — chuyển động', () => {
+  it('điểm tăng → hiện "+n"; còn ≤ 10 s → đồng hồ cảnh báo', () => {
+    const { rerender } = render(
+      <GameTopBar title="x" timeMs={30_000} score={100} onExit={() => {}} />,
+    );
+    expect(screen.queryByTestId('game-gain')).toBeNull();
+    expect(screen.getByRole('timer')).toHaveAttribute('data-urgent', 'false');
+    rerender(<GameTopBar title="x" timeMs={9_000} score={300} onExit={() => {}} />);
+    expect(screen.getByTestId('game-gain')).toHaveTextContent('+200');
+    expect(screen.getByRole('timer')).toHaveAttribute('data-urgent', 'true');
   });
 });
 

@@ -184,6 +184,7 @@ export const vi = {
     bank: 'Thẻ từ',
     removeToken: 'Bỏ thẻ {token}',
     paused: 'Đã tạm dừng — Space để tiếp tục',
+    countIn: 'Space để bắt đầu ngay',
     soundOn: 'Tắt âm phản hồi',
     soundOff: 'Bật âm phản hồi',
   },

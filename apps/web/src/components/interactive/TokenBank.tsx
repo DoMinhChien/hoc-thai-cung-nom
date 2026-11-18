@@ -16,7 +16,7 @@ export function TokenChip({ shortcut, className, children, ...props }: TokenChip
       data-slot="token-chip"
       aria-keyshortcuts={shortcut}
       className={cn(
-        'relative inline-flex min-h-12 items-center rounded-md border border-border-strong bg-background px-3 pt-1 text-th-sm shadow-xs outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none',
+        'relative inline-flex min-h-12 items-center rounded-md border border-border-strong bg-background px-3 pt-1 text-th-sm shadow-xs outline-none hover:border-primary hover:bg-accent motion-safe:transition-[border-color,background-color,transform] motion-safe:duration-150 enabled:hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none',
         className,
       )}
       {...props}
@@ -25,7 +25,7 @@ export function TokenChip({ shortcut, className, children, ...props }: TokenChip
         <kbd
           aria-hidden
           lang="vi"
-          className="absolute top-0.5 left-1 font-sans text-[10px] leading-none text-muted-foreground"
+          className="absolute top-0.5 left-1 font-sans text-[10px] leading-none font-semibold text-primary"
         >
           {shortcut}
         </kbd>
@@ -75,12 +75,13 @@ export function TokenBank({ tokens, value, onChange, onSubmit, disabled }: Token
         role="group"
         aria-label={t('play.answer')}
         data-testid="token-answer"
-        className="flex min-h-16 flex-wrap items-center gap-2 border-b-2 border-border-strong pb-2"
+        className="flex min-h-16 flex-wrap items-center gap-2 rounded-lg border-2 border-dashed border-primary/40 bg-accent/40 p-2"
       >
         {value.map((i, position) => (
           <TokenChip
             key={`${i}`}
             disabled={disabled}
+            className="border-primary bg-accent motion-safe:animate-enter"
             aria-label={t('play.removeToken', { token: tokens[i]! })}
             onClick={() => remove(position)}
           >

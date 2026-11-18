@@ -85,6 +85,71 @@
   --text-th-md: var(--nom-text-th-md);
   --text-th-lg: var(--nom-text-th-lg);
   --text-th-xl: var(--nom-text-th-xl);
+
+  /* Chuyển động phản hồi trò chơi / bài tập (plan 7.6.1: "chuyển động ngắn"). Chỉ dùng qua
+     `motion-safe:animate-*` → tắt khi prefers-reduced-motion. Thời lượng theo token motion. */
+  --animate-shake: nom-shake 360ms var(--nom-motion-easing);
+  --animate-pop: nom-pop var(--nom-motion-base) var(--nom-motion-easing);
+  --animate-rise: nom-rise 700ms var(--nom-motion-easing) forwards;
+  --animate-enter: nom-enter var(--nom-motion-base) var(--nom-motion-easing);
+  --animate-urgent: nom-urgent 600ms ease-in-out infinite alternate;
+
+  @keyframes nom-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20%,
+    60% {
+      transform: translateX(-6px);
+    }
+    40%,
+    80% {
+      transform: translateX(6px);
+    }
+  }
+  @keyframes nom-pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.06);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes nom-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+  @keyframes nom-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes nom-urgent {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.55;
+    }
+  }
 }
 
 @layer base {
