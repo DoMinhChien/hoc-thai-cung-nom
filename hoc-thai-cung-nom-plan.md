@@ -86,7 +86,7 @@ Mọi loại bài tập là module độc lập theo interface `Exercise` (`gene
 - **E-13** Trò chơi vẫn **không** đổi lịch FSRS (F-12 giữ nguyên).
 
 ### 0.6 Trò chơi Phase 1 (thay F-02..F-04)
-F-01 **Ghép cặp** từ ↔ nghĩa/hình · F-02' **Đúng hay sai?** (từ/câu + nghĩa, 60 giây, combo) · F-03' **Xếp câu tốc độ** (E-06 có giờ) · **F-04' Đoán loại từ** (danh từ → chọn ลักษณนาม, 5 s/từ, 60 giây — v7.2, dùng `Word.classifier`). F-05..F-07 giữ ở Phase 2. Spec: `docs/design/screens/SCR-08-games.md`.
+F-01 **Ghép cặp** từ ↔ nghĩa/hình · F-02' **Đúng hay sai?** (từ/câu + nghĩa, **3 tim** — v7.3, combo) · F-03' **Xếp câu tốc độ** (E-06 có giờ) · **F-04' Đoán loại từ** (danh từ → chọn ลักษณนาม, 5 s/từ, **3 tim** — v7.2/v7.3, dùng `Word.classifier`). F-05..F-07 giữ ở Phase 2. Spec: `docs/design/screens/SCR-08-games.md`.
 
 **v7.2 (2026-11-18) — owner chốt làm Trò chơi trước Bài tập:** milestone **M7.5 Trò chơi** (thay M10.5) làm ngay sau M7, trước M9. Hệ quả:
 - **F-10 sửa:** nguồn câu hỏi = mục đã học; chưa đủ (< 6) → từ/câu của **chuyên đề người học chọn** (kể cả chưa học). Bỏ yêu cầu "chỉ mục đã học".
@@ -1085,7 +1085,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
-- **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản.
+- **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản. Tham khảo **Memrise Speed Review**: F-02' và F-04' chơi theo **3 tim** (giờ mỗi câu theo độ dài 5–9 s, sai/hết giờ mất tim, 15 câu đúng liền +1 tim), nền thẻ ngả đỏ dần khi sắp hết giờ, thưởng tốc độ, tự đọc chữ Thái, màn kết quả bật/tắt "cần ôn" từng mục.
 - **v7.2 (2026-11-18):** **Trò chơi trước Bài tập**: M10.5 → **M7.5**; thêm **F-04' Đoán loại từ**; F-10 cho phép chơi với từ chưa học của chuyên đề đã chọn; spec SCR-04/05/06/08.
 - **v7.1 (2026-11-17):** Nhận 2 PDF mẫu của giáo viên (mục 0.11): lộ trình theo **chuyên đề giáo viên**, `Unit.kind`/`level` B1, `Word.classifier`/`thai_alt`/`note_vi`, `meaning_vi`/`Sentence.th` được trống khi draft, bài tập **E-14 Loại từ**, pipeline M4 dùng Claude vision + `--suggest`; Open Q #1 đóng; milestone **M6.1**.
 - **v7 (2026-11-16):** **Đổi phạm vi theo phản hồi demo khách hàng** (mục 0): người học A1–A2 đã đọc được → bỏ Module A (chữ cái, Tone Trainer), Module D (quiz thanh), thanh điệu khỏi UI (Tone Engine đóng băng), `MasteryGrid`, `HeatmapTable`, `ToneBarChart`; "Ôn tập" → **Bài tập** (Module E, dịch câu nâng dần bậc); 16 chủ đề A1–A2 + bài học 4 bước; nav, routes, tiến độ (P-10..P-12), mẫu content (0.9); milestone Phase 1 mới M5.5, M6–M10.5.

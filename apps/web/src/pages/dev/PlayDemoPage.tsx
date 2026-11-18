@@ -1,34 +1,43 @@
 import {
+  currentQuestion,
+  rapidQuestionEndsAt,
   sentenceRush,
   SENTENCE_RUSH_MS,
+  START_LIVES,
   questionEndsAt,
   trueFalse,
   type Game,
+  type GameItemRef,
   type GameSource,
   type GameState,
 } from '@nom/core';
 import { Shuffle, ThumbsUp } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ChoiceButton,
   CountIn,
   FeedbackBar,
   GameTopBar,
+  itemKey,
   PausedOverlay,
+  ReviewList,
   TimeBar,
   TokenBank,
+  UrgencyCard,
+  useAutoSpeech,
   useCountdown,
   useFeedbackSound,
+  useSpeakOnCue,
+  type AutoSpeech,
   type Countdown,
   type FeedbackSound,
 } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
 import { t } from '@/i18n';
-import { cn } from '@/lib/utils';
 
 /**
- * Dữ liệu GIẢ LẬP để xem component tương tác (M7.5 T7.5.3) chạy với logic trò chơi trong core —
- * từ/câu lấy từ content mẫu Unit 1–2 (draft), tách thẻ tay. KHÔNG phải màn `/games` (chờ SCR-08).
+ * Dữ liệu GIẢ LẬP để xem component tương tác (M7.5) chạy với logic trò chơi trong core — từ/câu lấy
+ * từ content mẫu Unit 1–2 (draft), tách thẻ tay. KHÔNG phải màn `/games` (chờ SCR-08).
  */
 const SOURCE: GameSource = {
   key: 'demo',
@@ -60,7 +69,7 @@ const SOURCE: GameSource = {
   })),
 };
 
-/** Chạy một lượt: đồng hồ trò chơi (tạm dừng khi rời tab) + tick hết giờ. */
+/** Chạy một lượt: đồng hồ trò chơi (tạm dừng khi rời tab) + tick hết giờ + âm phản hồi. */
 function useRun<R, A, S extends GameState>(game: Game<R, A, S>, seed: number) {
   const [state, setState] = useState(() => game.start(game.generateRound(SOURCE, seed), 0));
   const [started, setStarted] = useState(false);
@@ -71,40 +80,58 @@ function useRun<R, A, S extends GameState>(game: Game<R, A, S>, seed: number) {
     onTick: (elapsed) => setState((s) => game.tick(s, elapsed)),
   });
   const sound = useFeedbackSound();
+  const speech = useAutoSpeech();
   const { now } = clock;
 
-  const answer = (a: A) => {
-    const next = game.answer(state, a, now());
-    if (next.feedback && next !== state) sound.play(next.feedback.correct);
-    setState(next);
-  };
-  const advance = () => setState((s) => game.next(s, now()));
-  return { state, clock, sound, answer, advance, started, start };
+  // Âm đúng/sai cho cả câu trả lời lẫn hết giờ (tick).
+  const play = useRef(sound.play);
+  useEffect(() => {
+    play.current = sound.play;
+  });
+  useEffect(() => {
+    if (state.feedback) play.current(state.feedback.correct);
+  }, [state.feedback]);
+
+  const answer = (a: A) => setState(game.answer(state, a, now()));
+  const advance = useCallback(() => setState((s) => game.next(s, now())), [game, now]);
+  return { state, clock, sound, speech, answer, advance, started, start };
 }
 
 function TopBar({
   run,
   title,
   onExit,
+  lives,
 }: {
-  run: { state: GameState; clock: Countdown; sound: FeedbackSound };
+  run: { state: GameState; clock: Countdown; sound: FeedbackSound; speech?: AutoSpeech };
   title: string;
   onExit: () => void;
+  lives?: { count: number; max: number; delta?: -1 | 0 | 1 };
 }) {
-  const { state, clock, sound } = run;
+  const { state, clock, sound, speech } = run;
   return (
     <>
       <GameTopBar
         title={title}
-        timeMs={clock.remainingMs ?? clock.elapsedMs}
+        timeMs={lives ? undefined : (clock.remainingMs ?? clock.elapsedMs)}
         clock={clock.remainingMs === null ? 'up' : 'down'}
         score={state.score}
         combo={state.combo}
+        lives={lives}
         onExit={onExit}
         sound={
           sound.enabled === undefined
             ? undefined
             : { enabled: sound.enabled, onToggle: () => void sound.setEnabled(!sound.enabled) }
+        }
+        speech={
+          speech?.enabled === undefined
+            ? undefined
+            : {
+                enabled: speech.enabled,
+                disabled: !speech.available,
+                onToggle: () => void speech.setEnabled(!speech.enabled),
+              }
         }
       />
       {clock.paused && state.status !== 'finished' && <PausedOverlay onResume={clock.resume} />}
@@ -113,6 +140,15 @@ function TopBar({
 }
 
 function Finished({ state, onRestart }: { state: GameState; onRestart: () => void }) {
+  // Demo: cờ "cần ôn" chỉ giữ trong trang (màn thật ghi qua `setNeedsReview`).
+  const [flagged, setFlagged] = useState(() => new Set(state.mistakes.map(itemKey)));
+  const toggle = (item: GameItemRef, on: boolean) =>
+    setFlagged((prev) => {
+      const next = new Set(prev);
+      if (on) next.add(itemKey(item));
+      else next.delete(itemKey(item));
+      return next;
+    });
   return (
     <div
       data-testid="demo-finished"
@@ -130,14 +166,7 @@ function Finished({ state, onRestart }: { state: GameState; onRestart: () => voi
         })}
       </p>
       {state.mistakes.length > 0 && (
-        <ul className="text-sm text-muted-foreground">
-          {state.mistakes.map((m, i) => (
-            <li key={i}>
-              <span lang="th">{m.th}</span> — {t('devPlay.mistake', { expected: m.expected })}
-              {m.given ? t('devPlay.given', { given: m.given }) : ''}
-            </li>
-          ))}
-        </ul>
+        <ReviewList mistakes={state.mistakes} flagged={flagged} onToggle={toggle} />
       )}
       <Button className="bg-game text-game-fg hover:bg-game/90" onClick={onRestart}>
         {t('devPlay.restart')}
@@ -148,16 +177,25 @@ function Finished({ state, onRestart }: { state: GameState; onRestart: () => voi
 
 function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
   const run = useRun(trueFalse, seed);
-  const { state, answer, advance, started, start } = run;
+  const { state, clock, answer, advance, started, start, speech } = run;
   const [said, setSaid] = useState<boolean | null>(null);
-  const q = state.questions[state.index % state.questions.length]!;
+  const q = currentQuestion(state);
   const fb = state.feedback;
+  const used = Math.max(0, clock.elapsedMs - state.questionStartedAt);
+  const left = state.status === 'playing' ? rapidQuestionEndsAt(state) - clock.elapsedMs : 0;
+
+  useSpeakOnCue(
+    started && state.status === 'playing' ? q.th : null,
+    `${started}-${state.index}`,
+    speech,
+  );
 
   useEffect(() => {
     if (state.status !== 'feedback') return;
     const id = window.setTimeout(advance, fb?.correct ? 450 : 900);
     return () => window.clearTimeout(id);
-  });
+    // Đồng hồ render lại mỗi 100 ms — chỉ đặt hẹn giờ khi vào màn phản hồi.
+  }, [state.status, state.index, fb?.correct, advance]);
 
   const choose = (value: boolean) => {
     setSaid(value);
@@ -168,24 +206,23 @@ function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <TopBar run={run} title={t('devPlay.trueFalse')} onExit={onExit} />
+      <TopBar
+        run={run}
+        title={t('devPlay.trueFalse')}
+        onExit={onExit}
+        lives={{ count: state.lives, max: START_LIVES, delta: state.lifeDelta }}
+      />
       {!started ? (
         <CountIn onDone={start} />
       ) : state.status === 'finished' ? (
         <Finished state={state} onRestart={onRestart} />
       ) : (
         <>
-          <div
+          <TimeBar totalMs={q.timeMs} remainingMs={left} />
+          <UrgencyCard
             key={state.index}
-            data-testid="tf-card"
-            className={cn(
-              'flex flex-col items-center gap-3 rounded-xl border-2 p-8 motion-safe:animate-enter motion-safe:transition-colors',
-              !fb && 'border-transparent bg-game-subtle',
-              fb?.correct && 'border-positive bg-positive-subtle',
-              fb &&
-                !fb.correct &&
-                'border-destructive bg-destructive-subtle motion-safe:animate-shake',
-            )}
+            elapsed={used / q.timeMs}
+            feedback={fb ? (fb.correct ? 'correct' : 'wrong') : null}
           >
             <p lang="th" className="text-th-xl">
               {q.th}
@@ -193,7 +230,7 @@ function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
             <p className="rounded-full bg-background px-4 py-1 text-xl font-medium shadow-sm">
               {q.shown}
             </p>
-          </div>
+          </UrgencyCard>
           <div className="grid grid-cols-2 gap-4">
             <ChoiceButton
               shortcut="F"
@@ -240,7 +277,7 @@ function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
       advance();
     }, 1500);
     return () => window.clearTimeout(id);
-  });
+  }, [state.status, state.index, advance]);
 
   const submit = () => answer(picked.map((i) => q.bank[i]!));
   const left = questionEndsAt(state) - clock.elapsedMs;

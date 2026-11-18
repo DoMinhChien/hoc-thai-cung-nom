@@ -4,7 +4,7 @@
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { GameId, GameSummary } from '../games/game';
-import { saveGameResult } from '../games/results';
+import { saveGameResult, setNeedsReview } from '../games/results';
 import { newSrsState, reviewSrs } from '../srs/srs';
 import type { CardRecord, LessonProgressRecord } from './records';
 import type { Repositories } from './repositories';
@@ -250,6 +250,16 @@ export function describeRepositories(
           at(4),
         );
         expect(slower.newBest).toBe(false);
+      });
+
+      it('setNeedsReview: màn kết quả bật / tắt "cần ôn" từng mục', async () => {
+        const item = { itemType: 'word', itemId: 'chue' } as const;
+        await setNeedsReview(repos.progress, item, true, at(0));
+        expect(await repos.progress.listNeedsReview()).toMatchObject([
+          { ...item, origin: 'game', flaggedAt: at(0).toISOString() },
+        ]);
+        await setNeedsReview(repos.progress, item, false, at(1));
+        expect(await repos.progress.listNeedsReview()).toEqual([]);
       });
 
       it('saveGameResult: mục sai → "cần ôn"; không đổi thẻ SRS, không thêm log (F-12)', async () => {

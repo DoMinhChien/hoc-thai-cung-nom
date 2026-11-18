@@ -21,7 +21,7 @@ Nguồn: [ Từ đã học (86 từ · 24 câu) ▾ ]      (hoặc chọn một 
 
 ┌ 1 Ghép cặp ───────────┐ ┌ 2 Đúng hay sai? ─────┐ ┌ 3 Xếp câu tốc độ ────┐ ┌ 4 Đoán loại từ ──────┐
 │ Lật thẻ, ghép từ Thái │ │ Từ + nghĩa: đúng hay │ │ Xếp thẻ từ thành câu │ │ Chọn loại từ đúng     │
-│ với nghĩa.            │ │ sai? 60 giây.        │ │ trước khi hết giờ.   │ │ cho danh từ. 60 giây. │
+│ với nghĩa.            │ │ sai? 3 tim.          │ │ trước khi hết giờ.   │ │ cho danh từ. 60 giây. │
 │ ~1 phút · 6 cặp       │ │ ~1 phút              │ │ ~2 phút · 5 câu      │ │ ~1 phút               │
 │ Kỷ lục: 0:42          │ │ Kỷ lục: 1 240 điểm   │ │ Chưa chơi            │ │ Kỷ lục: 860 điểm      │
 │ [ Chơi  1 ]           │ │ [ Chơi  2 ]          │ │ [ Chơi  3 ]          │ │ [ Chơi  4 ]           │
@@ -40,9 +40,9 @@ Bắt đầu: màn đếm "3 · 2 · 1" (bỏ qua khi reduced-motion) — `Space
 | Trò | Bố cục | Luật & điểm | Phím |
 |---|---|---|---|
 | **F-01 Ghép cặp** | Lưới 4 × 3 thẻ úp (6 cặp: 6 từ Thái + 6 nghĩa Việt); thẻ lật hiện chữ; cặp đúng mờ đi và giữ mở | Lật 2 thẻ; khớp → giữ, sai → úp lại sau 0,8 s. Kết thúc khi hết cặp. Điểm = thời gian (thấp hơn tốt hơn) + số lượt lật | Mũi tên + `Space` / click |
-| **F-02' Đúng hay sai?** | Thẻ giữa: từ/câu Thái 48px (+ 🔊 tự phát nếu bật) và **một nghĩa Việt** đề xuất (50% đúng); 2 nút lớn **← Sai** · **Đúng →** | 60 s đếm ngược. Đúng +100 × combo (tối đa ×5); sai: combo về 1, rung nhẹ thẻ, hiện nghĩa đúng 0,6 s | `←` / `→` (hoặc `F` / `J`) |
+| **F-02' Đúng hay sai?** | Thẻ giữa: từ/câu Thái 48px (+ 🔊 tự phát nếu bật) và **một nghĩa Việt** đề xuất (50% đúng); 2 nút lớn **← Sai** · **Đúng →** | **3 tim** (v7.3): mỗi câu có giờ theo độ dài (từ 5 s, câu +1 s / 3 thẻ từ, tối đa 9 s), nền thẻ ngả đỏ dần khi sắp hết giờ; sai hoặc hết giờ **mất 1 tim**; đúng 15 câu liền +1 tim (tối đa 5); hết tim → kết thúc. Đúng +100 × combo (tối đa ×5) + thưởng tốc độ 0..50; sai: combo về 0, rung thẻ, hiện nghĩa đúng 0,9 s | `←` / `→` (hoặc `F` / `J`) |
 | **F-03' Xếp câu tốc độ** | Như E-06 (câu Việt + ngân hàng thẻ từ, **không** thẻ nhiễu) + thanh thời gian mỗi câu 20 s | 5 câu; điểm = 100 + giây còn lại × 10; hết giờ = 0 điểm câu đó, hiện đáp án | `1`–`9`, `Backspace`, `Enter` |
-| **F-04' Đoán loại từ** | Danh từ Thái 48px (+ nghĩa nhỏ) trên **thanh thời gian 5 s** co dần; 4 nút loại từ (vd. ตัว · คู่ · คัน · อัน) — 1 đúng + 3 loại từ khác có trong dữ liệu | 60 s đếm ngược; đúng +100 × combo, càng nhanh càng thêm điểm (+0..50); hết 5 s = sai | `1`–`4` |
+| **F-04' Đoán loại từ** | Danh từ Thái 48px (+ nghĩa nhỏ) trên **thanh thời gian 5 s** co dần; 4 nút loại từ (vd. ตัว · คู่ · คัน · อัน) — 1 đúng + 3 loại từ khác có trong dữ liệu | **3 tim** như Đúng hay sai? (5 s/từ, nền ngả đỏ dần); đúng +100 × combo + thưởng tốc độ 0..50; sai / hết giờ mất 1 tim | `1`–`4` |
 
 - Phản hồi luôn có **icon + chữ** ("✓ Đúng" / "✕ Sai — ตัว"), không chỉ màu.
 - Mỗi trò là module độc lập theo interface `Game` (`generateRound(source, seed)`, `answer()`, `score()`, `summary()`, F-14).
@@ -52,12 +52,13 @@ Bắt đầu: màn đếm "3 · 2 · 1" (bỏ qua khi reduced-motion) — `Space
 Đoán loại từ — Kết thúc                                         (H1)
   1 120 điểm        18/22 đúng (82%)        Combo cao nhất ×5
   ★ Kỷ lục mới! (trước: 860)                                  (chỉ hiện khi phá kỷ lục, chữ, không hiệu ứng)
-  Mục sai (4) — đã đánh dấu "cần ôn"
+  Mục sai (4) — đã đánh dấu "cần ôn" (bấm [🔖 Cần ôn] từng mục để bỏ / thêm lại)
    รองเท้า  giày        đáp án คู่   · bạn chọn ตัว
    ...
   [ Chơi lại  ↵ ]   [ Chơi với mục sai  W ]   [ Trò khác ]
 ```
 - "Chơi với mục sai": lượt mới chỉ gồm các mục vừa sai (nếu ≥ 4 mục, không thì ẩn).
+- **v7.3 (tham khảo Memrise):** tự đọc chữ Thái khi hiện câu (Đúng hay sai?, Đoán loại từ) qua `AudioProvider`, nút 🗣 bật/tắt trên thanh trên (cài đặt `gameAutoSpeak`, mặc định bật; không có giọng Thái → nút vô hiệu). Thanh trên của trò "3 tim" hiện ♥ thay đồng hồ.
 - Kỷ lục lưu theo **trò + nguồn** (Từ đã học / từng chuyên đề).
 
 ## Trạng thái

@@ -5,7 +5,7 @@
 import { newId } from '../data/memory';
 import type { GameResultRecord } from '../data/records';
 import type { ProgressRepository } from '../data/repositories';
-import { isBetterResult, type GameStats, type GameSummary } from './game';
+import { isBetterResult, type GameItemRef, type GameStats, type GameSummary } from './game';
 
 export interface SavedGameResult {
   record: GameResultRecord;
@@ -25,7 +25,10 @@ const stats = ({ score, correct, total, maxCombo, durationMs }: GameStats): Game
 
 /** Gọi khi lượt kết thúc tự nhiên — thoát giữa chừng không lưu (SCR-08 §B). */
 export async function saveGameResult(
-  progress: Pick<ProgressRepository, 'getGameResult' | 'putGameResult' | 'putNeedsReview'>,
+  progress: Pick<
+    ProgressRepository,
+    'getGameResult' | 'putGameResult' | 'putNeedsReview' | 'deleteNeedsReview'
+  >,
   summary: GameSummary,
   source: string,
   now: Date,
@@ -45,14 +48,31 @@ export async function saveGameResult(
   };
   await progress.putGameResult(record);
   for (const m of summary.mistakes) {
-    await progress.putNeedsReview({
-      id: newId(),
-      itemType: m.itemType,
-      itemId: m.itemId,
-      origin: 'game',
-      flaggedAt: ts,
-      updatedAt: ts,
-    });
+    await setNeedsReview(progress, { itemType: m.itemType, itemId: m.itemId }, true, now);
   }
   return { record, newBest, previous };
+}
+
+/**
+ * Màn kết quả: người học bật/tắt "cần ôn" cho từng mục (tham khảo Memrise — đánh dấu "khó"
+ * cuối lượt). Chỉ đổi cờ, không đụng FSRS.
+ */
+export async function setNeedsReview(
+  progress: Pick<ProgressRepository, 'putNeedsReview' | 'deleteNeedsReview'>,
+  item: GameItemRef,
+  flagged: boolean,
+  now: Date,
+): Promise<void> {
+  if (!flagged) {
+    await progress.deleteNeedsReview(item.itemType, item.itemId);
+    return;
+  }
+  const ts = now.toISOString();
+  await progress.putNeedsReview({
+    id: newId(),
+    ...item,
+    origin: 'game',
+    flaggedAt: ts,
+    updatedAt: ts,
+  });
 }

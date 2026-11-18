@@ -1,22 +1,28 @@
 import { describe, expect, it } from 'vitest';
 import { bundle, CLASSIFIERS, GREETINGS } from './fixtures.test-utils';
 import {
-  CLASSIFIER_QUESTION_MS,
-  CLASSIFIER_RUSH_MS,
-  classifierQuestionEndsAt,
+  BASE_QUESTION_MS,
+  BONUS_LIFE_STREAK,
   classifierRush,
+  currentQuestion,
   GAME_IDS,
   GAMES,
   MATCH_PAIRS,
+  MAX_LIVES,
+  MAX_QUESTION_MS,
   matchPairs,
   questionEndsAt,
+  questionTimeMs,
+  rapidQuestionEndsAt,
   SENTENCE_RUSH_MS,
   sentenceRush,
-  TRUE_FALSE_MS,
+  START_LIVES,
   trueFalse,
   unitSource,
   type GameSource,
   type MatchState,
+  type RapidState,
+  type TrueFalseQuestion,
 } from './index';
 
 const greetings = unitSource(GREETINGS);
@@ -153,46 +159,20 @@ describe('F-01 Ghép cặp', () => {
 describe("F-02' Đúng hay sai?", () => {
   const round = trueFalse.generateRound(greetings, 11);
 
-  it('khoảng 50% nghĩa đúng; nghĩa sai lấy từ mục cùng loại, khác nghĩa đúng', () => {
+  it('khoảng 50% nghĩa đúng; nghĩa sai lấy từ mục cùng loại; giờ theo độ dài', () => {
     const trues = round.questions.filter((q) => q.isTrue).length;
     expect(trues / round.questions.length).toBeGreaterThan(0.3);
     expect(trues / round.questions.length).toBeLessThan(0.7);
     for (const q of round.questions) {
       if (q.isTrue) expect(q.shown).toBe(q.expected);
       else expect(q.shown).not.toBe(q.expected);
+      if (q.item.itemType === 'word') expect(q.timeMs).toBe(BASE_QUESTION_MS);
       if (!q.isTrue && q.item.itemType === 'sentence') {
         expect(greetings.sentences.map((s) => s.vi)).toContain(q.shown);
       }
     }
-  });
-
-  it('60 s: đúng +100 × combo, sai → combo 0; hết giờ kết thúc', () => {
-    let s = trueFalse.start(round, T);
-    expect(s.endsAt).toBe(T + TRUE_FALSE_MS);
-    const say = (correct: boolean, now: number) => {
-      const q = s.questions[s.index]!;
-      s = trueFalse.answer(s, correct ? q.isTrue : !q.isTrue, now);
-      const fb = s.feedback;
-      s = trueFalse.next(s, now);
-      return fb;
-    };
-    expect(say(true, T + 1000)?.points).toBe(100);
-    expect(say(true, T + 2000)?.points).toBe(200);
-    const wrong = say(false, T + 3000)!;
-    expect(wrong).toMatchObject({ correct: false, points: 0 });
-    expect(s).toMatchObject({ combo: 0, score: 300, index: 3, status: 'playing' });
-    expect(trueFalse.next(s, T + 3000)).toBe(s);
-
-    expect(trueFalse.tick(s, T + 59_999)).toBe(s);
-    const ended = trueFalse.tick(s, T + 61_000);
-    expect(ended).toMatchObject({ status: 'finished', finishedAt: T + TRUE_FALSE_MS });
-    expect(trueFalse.answer(ended, true, T + 61_000)).toBe(ended);
-    expect(trueFalse.answer(s, true, T + 60_000).status).toBe('finished');
-    expect(trueFalse.score(ended)).toBe(300);
-    const summary = trueFalse.summary(ended);
-    expect(summary).toMatchObject({ durationMs: TRUE_FALSE_MS, correct: 2, total: 3 });
-    expect(summary.mistakes).toHaveLength(1);
-    expect(trueFalse.summary(trueFalse.start(round, T)).durationMs).toBe(TRUE_FALSE_MS);
+    // Câu 4 thẻ từ → 6 s.
+    expect(round.questions.find((q) => q.item.itemId === 's4')!.timeMs).toBe(6_000);
   });
 
   it('nhận nhầm nghĩa sai là đúng → ghi nghĩa đã nhận; từ chối nghĩa đúng → không có given', () => {
@@ -204,10 +184,6 @@ describe("F-02' Đúng hay sai?", () => {
       expected: round.questions[falseQ]!.expected,
     });
     expect(trueFalse.answer(at(trueQ), false, T).mistakes[0]).not.toHaveProperty('given');
-    // Trả lời xong lúc hết giờ: next kết thúc lượt.
-    expect(trueFalse.next(trueFalse.answer(at(trueQ), true, T), T + TRUE_FALSE_MS).status).toBe(
-      'finished',
-    );
   });
 
   it('nguồn chỉ có câu: nghĩa sai lấy từ câu khác', () => {
@@ -220,6 +196,76 @@ describe("F-02' Đúng hay sai?", () => {
       .generateRound(oneWord, 5)
       .questions.find((x) => x.item.itemType === 'word' && !x.isTrue)!;
     expect(greetings.sentences.map((s) => s.vi)).toContain(q.shown);
+  });
+});
+
+describe('luật "3 tim" (v7.3, Đúng hay sai? + Đoán loại từ)', () => {
+  const round = trueFalse.generateRound(greetings, 11);
+  const right = (s: RapidState<TrueFalseQuestion>) => currentQuestion(s).isTrue;
+
+  it('questionTimeMs: 5 s, +1 s mỗi 3 thẻ, tối đa 9 s', () => {
+    expect(questionTimeMs(1)).toBe(5_000);
+    expect(questionTimeMs(3)).toBe(6_000);
+    expect(questionTimeMs(7)).toBe(7_000);
+    expect(questionTimeMs(30)).toBe(MAX_QUESTION_MS);
+  });
+
+  it('đúng: 100 × combo + thưởng tốc độ; sai / hết giờ: mất tim; hết tim → kết thúc', () => {
+    let s = trueFalse.start(round, T);
+    expect(s).toMatchObject({ lives: START_LIVES, streak: 0, lifeDelta: 0 });
+    // Trả lời ngay → +50 tốc độ.
+    s = trueFalse.answer(s, right(s), T);
+    expect(s.feedback).toMatchObject({ correct: true, points: 150 });
+    expect(trueFalse.answer(s, true, T)).toBe(s);
+    expect(trueFalse.tick(s, T + 60_000)).toBe(s);
+    s = trueFalse.next(s, T + 100);
+    // Nửa thời gian → +25, combo ×2.
+    const half = currentQuestion(s).timeMs / 2;
+    s = trueFalse.next(trueFalse.answer(s, right(s), T + 100 + half), T + 5_000);
+    expect(s.score).toBe(150 + 225);
+    expect(s.combo).toBe(2);
+
+    // Sai → mất tim.
+    s = trueFalse.answer(s, !right(s), T + 5_100);
+    expect(s).toMatchObject({ lives: 2, lifeDelta: -1, combo: 0, streak: 0 });
+    s = trueFalse.next(s, T + 6_000);
+    expect(s.lifeDelta).toBe(0);
+    // Hết giờ (tick) → mất tim, không có given.
+    const ends = rapidQuestionEndsAt(s);
+    expect(trueFalse.tick(s, ends - 1)).toBe(s);
+    s = trueFalse.tick(s, ends);
+    expect(s).toMatchObject({ lives: 1, lifeDelta: -1 });
+    expect(s.feedback).not.toHaveProperty('given');
+    s = trueFalse.next(s, ends + 100);
+    // Trả lời sau khi hết giờ (chưa kịp tick) → như hết giờ.
+    const late = rapidQuestionEndsAt(s) + 10;
+    s = trueFalse.answer(s, right(s), late);
+    expect(s).toMatchObject({ lives: 0, status: 'feedback' });
+    // Hết tim: next → kết thúc.
+    s = trueFalse.next(s, late + 500);
+    expect(s).toMatchObject({ status: 'finished', finishedAt: late + 500 });
+    expect(trueFalse.score(s)).toBe(375);
+    expect(trueFalse.summary(s)).toMatchObject({
+      correct: 2,
+      total: 5,
+      durationMs: late + 500 - T,
+      maxCombo: 2,
+    });
+    expect(trueFalse.summary(trueFalse.start(round, T)).durationMs).toBe(0);
+  });
+
+  it('đúng 15 câu liền → +1 tim (tối đa 5); chơi lâu thì câu lặp lại', () => {
+    let s = trueFalse.start(round, T);
+    let gained = 0;
+    for (let i = 0; i < BONUS_LIFE_STREAK * 3 + round.questions.length; i++) {
+      s = trueFalse.answer(s, right(s), T);
+      if (s.lifeDelta === 1) gained++;
+      s = trueFalse.next(s, T);
+    }
+    expect(s.lives).toBe(MAX_LIVES);
+    expect(gained).toBe(MAX_LIVES - START_LIVES);
+    expect(s.index).toBeGreaterThan(round.questions.length);
+    expect(s.status).toBe('playing');
   });
 });
 
@@ -301,12 +347,13 @@ describe("F-03' Xếp câu tốc độ", () => {
 describe("F-04' Đoán loại từ", () => {
   const round = classifierRush.generateRound(classifiers, 9);
 
-  it('mỗi từ: 4 lựa chọn khác nhau gồm đáp án, lấy từ loại từ có trong nguồn', () => {
+  it('mỗi từ: 4 lựa chọn khác nhau gồm đáp án, lấy từ loại từ có trong nguồn; 5 s/từ', () => {
     const all = new Set(classifiers.words.map((w) => w.classifier));
     for (const q of round.questions) {
       expect(q.options).toHaveLength(4);
       expect(new Set(q.options).size).toBe(4);
       expect(q.options).toContain(q.expected);
+      expect(q.timeMs).toBe(BASE_QUESTION_MS);
       for (const o of q.options) expect(all.has(o)).toBe(true);
     }
   });
@@ -321,60 +368,14 @@ describe("F-04' Đoán loại từ", () => {
     expect(q.options).toHaveLength(2);
   });
 
-  it('đúng +100 × combo + thưởng tốc độ; 5 s/từ; 60 s/lượt', () => {
+  it('chọn đúng / sai; mục sai ghi loại từ đã chọn, mất tim', () => {
     let s = classifierRush.start(round, T);
-    const q = () => s.questions[s.index]!;
-
-    // Trả lời ngay → thưởng đủ 50.
-    s = classifierRush.answer(s, q().expected, T);
-    expect(s.feedback).toMatchObject({ correct: true, points: 150 });
-    s = classifierRush.next(s, T + 500);
-    // Sau 2,5 s → thưởng 25, combo ×2.
-    s = classifierRush.answer(s, q().expected, T + 3_000);
-    expect(s.feedback?.points).toBe(225);
-    s = classifierRush.next(s, T + 3_000);
-    // Chọn sai.
-    const wrong = q().options.find((o) => o !== q().expected)!;
-    s = classifierRush.answer(s, wrong, T + 3_100);
-    expect(s.mistakes.at(-1)).toMatchObject({
-      given: wrong,
-      expected: round.questions[2]!.expected,
-    });
-    expect(s.combo).toBe(0);
-    s = classifierRush.next(s, T + 3_200);
-    expect(classifierQuestionEndsAt(s)).toBe(T + 3_200 + CLASSIFIER_QUESTION_MS);
-
-    // Hết 5 s (tick) → sai không có given.
-    expect(classifierRush.tick(s, T + 8_199)).toBe(s);
-    s = classifierRush.tick(s, T + 8_200);
-    expect(s.feedback).toMatchObject({ correct: false });
-    expect(s.feedback).not.toHaveProperty('given');
-    expect(classifierRush.tick(s, T + 8_300)).toBe(s);
-    s = classifierRush.next(s, T + 8_300);
-    // Trả lời sau 5 s (chưa kịp tick) → như hết giờ.
-    s = classifierRush.answer(s, q().expected, T + 13_400);
-    expect(s.feedback?.correct).toBe(false);
-    expect(classifierRush.answer(s, q().expected, T + 13_500)).toBe(s);
-
-    // Hết lượt.
-    expect(classifierRush.next(s, T + CLASSIFIER_RUSH_MS).status).toBe('finished');
-    const playing = classifierRush.next(s, T + 14_000);
-    expect(classifierRush.answer(playing, 'ตัว', T + 60_000).status).toBe('finished');
-    // Giờ từ cuối không vượt quá hết lượt.
-    expect(classifierQuestionEndsAt({ ...playing, questionStartedAt: T + 58_000 })).toBe(
-      T + CLASSIFIER_RUSH_MS,
-    );
-    const ended = classifierRush.tick(playing, T + 70_000);
-    expect(ended).toMatchObject({ status: 'finished', finishedAt: T + CLASSIFIER_RUSH_MS });
-    expect(classifierRush.score(ended)).toBe(375);
-    expect(classifierRush.summary(ended)).toMatchObject({
-      durationMs: CLASSIFIER_RUSH_MS,
-      correct: 2,
-      total: 5,
-      maxCombo: 2,
-    });
-    expect(classifierRush.summary(classifierRush.start(round, T)).durationMs).toBe(
-      CLASSIFIER_RUSH_MS,
-    );
+    s = classifierRush.next(classifierRush.answer(s, currentQuestion(s).expected, T), T);
+    expect(s.score).toBe(150);
+    const q = currentQuestion(s);
+    const wrong = q.options.find((o) => o !== q.expected)!;
+    s = classifierRush.answer(s, wrong, T);
+    expect(s.mistakes[0]).toMatchObject({ given: wrong, expected: q.expected });
+    expect(s.lives).toBe(START_LIVES - 1);
   });
 });

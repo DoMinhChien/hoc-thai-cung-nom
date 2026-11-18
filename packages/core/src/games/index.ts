@@ -15,6 +15,7 @@ export const GAMES = {
 export * from './classifier-rush';
 export * from './game';
 export * from './match';
+export * from './rapid';
 export * from './results';
 export * from './rng';
 export * from './sentence-rush';

@@ -1,4 +1,4 @@
-import { Pause, Volume2, VolumeX, X, Zap } from 'lucide-react';
+import { Heart, MessageSquareOff, Pause, Speech, Volume2, VolumeX, X, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { t } from '@/i18n';
@@ -10,8 +10,8 @@ const numberFormat = new Intl.NumberFormat('vi-VN');
 
 export interface GameTopBarProps {
   title: string;
-  /** Thời gian còn lại (`down`) hoặc đã chơi (`up`), ms. */
-  timeMs: number;
+  /** Thời gian còn lại (`down`) hoặc đã chơi (`up`), ms; không có = không hiện đồng hồ. */
+  timeMs?: number;
   clock?: 'down' | 'up';
   score: number;
   /** Hệ số combo; chỉ hiện khi ≥ 2. */
@@ -19,6 +19,10 @@ export interface GameTopBarProps {
   onExit: () => void;
   /** Có thì hiện nút bật/tắt âm phản hồi (F-13). */
   sound?: { enabled: boolean; onToggle: () => void };
+  /** Có thì hiện nút bật/tắt tự đọc chữ Thái; `disabled` khi máy không có giọng Thái. */
+  speech?: { enabled: boolean; disabled?: boolean; onToggle: () => void };
+  /** Trò "3 tim" (v7.3): số tim còn lại / tối đa; `delta` = vừa mất (−1) / được (+1). */
+  lives?: { count: number; max: number; delta?: -1 | 0 | 1 };
 }
 
 /** Đồng hồ đếm ngược ≤ mốc này (ms) → màu cảnh báo + nhấp nháy nhẹ. */
@@ -36,6 +40,8 @@ export function GameTopBar({
   combo = 0,
   onExit,
   sound,
+  speech,
+  lives,
 }: GameTopBarProps) {
   useKeyShortcut('Escape', onExit);
   // Lưu điểm trước để hiện phần vừa cộng (cập nhật state khi prop đổi — mẫu React chính thức).
@@ -45,7 +51,7 @@ export function GameTopBar({
     setGain(score - prev);
     setPrev(score);
   }
-  const urgent = clock === 'down' && timeMs > 0 && timeMs <= URGENT_MS;
+  const urgent = clock === 'down' && timeMs !== undefined && timeMs > 0 && timeMs <= URGENT_MS;
   return (
     <header
       data-testid="game-top-bar"
@@ -92,18 +98,44 @@ export function GameTopBar({
             </span>
           )}
         </span>
-        <span
-          role="timer"
-          data-testid="game-clock"
-          data-urgent={urgent}
-          aria-label={clock === 'down' ? t('play.timeLeft') : t('play.timeElapsed')}
-          className={cn(
-            'min-w-14 rounded-md bg-background px-2 text-right text-lg font-semibold',
-            urgent && 'text-caution motion-safe:animate-urgent',
-          )}
-        >
-          {formatClock(timeMs, clock)}
-        </span>
+        {lives && <Lives {...lives} />}
+        {timeMs !== undefined && (
+          <span
+            role="timer"
+            data-testid="game-clock"
+            data-urgent={urgent}
+            aria-label={clock === 'down' ? t('play.timeLeft') : t('play.timeElapsed')}
+            className={cn(
+              'min-w-14 rounded-md bg-background px-2 text-right text-lg font-semibold',
+              urgent && 'text-caution motion-safe:animate-urgent',
+            )}
+          >
+            {formatClock(timeMs, clock)}
+          </span>
+        )}
+        {speech && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-pressed={speech.enabled && !speech.disabled}
+            disabled={speech.disabled}
+            aria-label={speech.enabled ? t('play.speechOn') : t('play.speechOff')}
+            title={
+              speech.disabled
+                ? t('play.noVoice')
+                : speech.enabled
+                  ? t('play.speechOn')
+                  : t('play.speechOff')
+            }
+            onClick={speech.onToggle}
+          >
+            {speech.enabled && !speech.disabled ? (
+              <Speech aria-hidden />
+            ) : (
+              <MessageSquareOff aria-hidden />
+            )}
+          </Button>
+        )}
         {sound && (
           <Button
             variant="ghost"
@@ -118,6 +150,32 @@ export function GameTopBar({
         )}
       </div>
     </header>
+  );
+}
+
+/** Tim còn lại: tim đầy màu đỏ (nghĩa "mạng"), tim mất là viền. Mất → rung, được → nảy. */
+function Lives({ count, max, delta = 0 }: { count: number; max: number; delta?: -1 | 0 | 1 }) {
+  const shown = Math.max(max, count);
+  return (
+    <span
+      role="img"
+      data-testid="game-lives"
+      data-lives={count}
+      aria-label={t('play.lives', { n: count })}
+      className={cn('flex items-center gap-0.5', delta === -1 && 'motion-safe:animate-shake')}
+    >
+      {Array.from({ length: shown }, (_, i) => (
+        <Heart
+          key={i}
+          aria-hidden
+          className={cn(
+            'size-5',
+            i < count ? 'fill-destructive text-destructive' : 'text-border-strong',
+            delta === 1 && i === count - 1 && 'motion-safe:animate-pop',
+          )}
+        />
+      ))}
+    </span>
   );
 }
 
