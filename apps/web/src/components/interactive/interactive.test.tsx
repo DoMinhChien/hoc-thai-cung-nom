@@ -1,0 +1,385 @@
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Dexie from 'dexie';
+import { useState, type ReactNode } from 'react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { NomDatabase } from '@/data/db';
+import { createDexieRepositories } from '@/data/dexie-repositories';
+import { RepositoriesContext } from '@/data/repositories-context';
+import {
+  ChoiceButton,
+  FEEDBACK_SOUND_KEY,
+  FeedbackBar,
+  formatClock,
+  GameTopBar,
+  PausedOverlay,
+  TimeBar,
+  TokenBank,
+  useCountdown,
+  useFeedbackSound,
+  useKeyShortcut,
+  useReducedMotion,
+  webAudioTone,
+} from './index';
+
+afterEach(async () => {
+  vi.useRealTimers();
+  for (const name of await Dexie.getDatabaseNames()) await Dexie.delete(name);
+});
+
+const press = (key: string, init: KeyboardEventInit = {}) =>
+  fireEvent.keyDown(window, { key, ...init });
+
+describe('useKeyShortcut', () => {
+  it('bắt phím (không phân biệt hoa thường); bỏ qua khi có Ctrl, khi gõ trong ô nhập, khi tắt', () => {
+    const handler = vi.fn();
+    const { rerender } = render(<Probe keys={['f', 'ArrowLeft']} handler={handler} />);
+    press('F');
+    press('ArrowLeft');
+    press('f', { ctrlKey: true });
+    press('x');
+    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'f' });
+    expect(handler).toHaveBeenCalledTimes(2);
+    rerender(<Probe keys={['f']} handler={handler} enabled={false} />);
+    press('f');
+    expect(handler).toHaveBeenCalledTimes(2);
+  });
+
+  it('Enter / Space trên nút đang focus: để nút tự kích hoạt', () => {
+    const handler = vi.fn();
+    render(<Probe keys={['Enter', ' ']} handler={handler} />);
+    fireEvent.keyDown(screen.getByRole('button'), { key: 'Enter' });
+    fireEvent.keyDown(screen.getByRole('button'), { key: ' ' });
+    expect(handler).not.toHaveBeenCalled();
+    press('Enter');
+    expect(handler).toHaveBeenCalledOnce();
+  });
+});
+
+function Probe(props: { keys: string[]; handler: () => void; enabled?: boolean }) {
+  useKeyShortcut(props.keys, props.handler, props.enabled);
+  return (
+    <>
+      <input aria-label="ô" />
+      <button type="button">nút</button>
+    </>
+  );
+}
+
+describe('ChoiceButton', () => {
+  it('phím số chọn nút; trạng thái đúng/sai có icon + data-status; vô hiệu thì không nhận phím', async () => {
+    const onSelect = vi.fn();
+    const { rerender } = render(
+      <ChoiceButton shortcut="1" extraKeys={['ArrowLeft']} onSelect={onSelect}>
+        <span lang="th">ตัว</span>
+      </ChoiceButton>,
+    );
+    const button = screen.getByRole('button', { name: /ตัว/ });
+    expect(button).toHaveAttribute('aria-keyshortcuts', '1 ArrowLeft');
+    expect(button).toHaveAttribute('data-status', 'idle');
+    press('1');
+    press('ArrowLeft');
+    await userEvent.click(button);
+    expect(onSelect).toHaveBeenCalledTimes(3);
+
+    rerender(
+      <ChoiceButton shortcut="1" status="wrong" disabled onSelect={onSelect}>
+        ตัว
+      </ChoiceButton>,
+    );
+    expect(button).toHaveAttribute('data-status', 'wrong');
+    expect(button.querySelector('svg')).not.toBeNull();
+    press('1');
+    expect(onSelect).toHaveBeenCalledTimes(3);
+  });
+});
+
+function Bank({ onSubmit }: { onSubmit?: () => void }) {
+  const [value, setValue] = useState<number[]>([]);
+  return (
+    <TokenBank tokens={['ชื่อ', 'ผม', 'นิด']} value={value} onChange={setValue} onSubmit={onSubmit} />
+  );
+}
+
+describe("TokenBank (E-06, F-03')", () => {
+  const answer = () => screen.getByTestId('token-answer');
+  const bank = () => screen.getByTestId('token-bank');
+
+  it('bấm / phím số thêm thẻ, giữ chỗ trống; bấm thẻ ở câu trả lời để bỏ; Backspace; Enter gửi', async () => {
+    const onSubmit = vi.fn();
+    render(<Bank onSubmit={onSubmit} />);
+    press('Enter');
+    expect(onSubmit).not.toHaveBeenCalled();
+
+    await userEvent.click(within(bank()).getByRole('button', { name: /ผม/ }));
+    press('3');
+    press('2'); // đã dùng → bỏ qua
+    expect(answer()).toHaveTextContent('ผมนิด');
+    // Thẻ còn lại giữ phím số theo vị trí.
+    expect(within(bank()).getByRole('button')).toHaveAttribute('aria-keyshortcuts', '1');
+    expect(within(bank()).getByRole('button')).toHaveAttribute('lang', 'th');
+
+    await userEvent.click(within(answer()).getByRole('button', { name: 'Bỏ thẻ ผม' }));
+    expect(answer()).toHaveTextContent(/^นิด$/);
+    press('1');
+    press('Backspace');
+    expect(answer()).toHaveTextContent(/^นิด$/);
+    press('Enter');
+    expect(onSubmit).toHaveBeenCalledOnce();
+  });
+
+  it('vô hiệu: không nhận bấm / phím', async () => {
+    const onChange = vi.fn();
+    render(<TokenBank tokens={['ก', 'ข']} value={[0]} onChange={onChange} disabled />);
+    press('2');
+    press('Backspace');
+    fireEvent.click(within(answer()).getByRole('button'));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+});
+
+describe('FeedbackBar', () => {
+  it('đúng / sai — đáp án tiếng Thái, role status', () => {
+    const { rerender } = render(<FeedbackBar correct>+150</FeedbackBar>);
+    expect(screen.getByRole('status')).toHaveAttribute('data-correct', 'true');
+    expect(screen.getByRole('status')).toHaveTextContent('Đúng+150');
+    rerender(<FeedbackBar correct={false} answer="คู่" />);
+    expect(screen.getByRole('status')).toHaveTextContent('Sai — คู่');
+    expect(screen.getByText('คู่')).toHaveAttribute('lang', 'th');
+  });
+});
+
+describe('GameTopBar, TimeBar, PausedOverlay', () => {
+  it('formatClock: đếm ngược làm tròn lên, đếm lên làm tròn xuống', () => {
+    expect(formatClock(60_000)).toBe('1:00');
+    expect(formatClock(400)).toBe('0:01');
+    expect(formatClock(-5)).toBe('0:00');
+    expect(formatClock(42_900, 'up')).toBe('0:42');
+  });
+
+  it('đồng hồ, điểm, combo ≥ 2, Esc để thoát, nút âm phản hồi', async () => {
+    const onExit = vi.fn();
+    const onToggle = vi.fn();
+    const { rerender } = render(
+      <GameTopBar title="Đoán loại từ" timeMs={42_000} score={1240} combo={1} onExit={onExit} />,
+    );
+    expect(screen.getByRole('timer')).toHaveTextContent('0:42');
+    expect(screen.getByTestId('game-score')).toHaveTextContent(/1\.240/);
+    expect(screen.queryByTestId('game-combo')).toBeNull();
+    press('Escape');
+    expect(onExit).toHaveBeenCalledOnce();
+
+    rerender(
+      <GameTopBar
+        title="Ghép cặp"
+        timeMs={65_000}
+        clock="up"
+        score={0}
+        combo={3}
+        onExit={onExit}
+        sound={{ enabled: true, onToggle }}
+      />,
+    );
+    expect(screen.getByRole('timer')).toHaveTextContent('1:05');
+    expect(screen.getByTestId('game-combo')).toHaveTextContent('Combo ×3');
+    const soundButton = screen.getByRole('button', { name: 'Tắt âm phản hồi' });
+    expect(soundButton).toHaveAttribute('aria-pressed', 'true');
+    await userEvent.click(soundButton);
+    expect(onToggle).toHaveBeenCalledOnce();
+  });
+
+  it('TimeBar: phần trăm, giá trị giây, báo sắp hết giờ', () => {
+    const { rerender } = render(<TimeBar totalMs={5000} remainingMs={2500} />);
+    const bar = screen.getByRole('progressbar');
+    expect(bar).toHaveAttribute('aria-valuenow', '3');
+    expect(bar.firstElementChild).toHaveStyle({ width: '50%' });
+    rerender(<TimeBar totalMs={5000} remainingMs={-1} />);
+    expect(bar.firstElementChild).toHaveStyle({ width: '0%' });
+    expect(bar.firstElementChild).toHaveClass('bg-caution');
+    rerender(<TimeBar totalMs={0} remainingMs={0} />);
+    expect(bar.firstElementChild).toHaveStyle({ width: '0%' });
+  });
+
+  it('PausedOverlay: Space hoặc bấm để tiếp tục', async () => {
+    const onResume = vi.fn();
+    render(<PausedOverlay onResume={onResume} />);
+    expect(screen.getByRole('dialog')).toHaveTextContent('Đã tạm dừng — Space để tiếp tục');
+    press(' ', { target: document.body } as KeyboardEventInit);
+    await userEvent.click(screen.getByRole('button'));
+    expect(onResume).toHaveBeenCalled();
+  });
+});
+
+describe('useCountdown', () => {
+  const fakeClock = () => {
+    let t = 0;
+    return { clock: () => t, advance: (ms: number) => (t += ms) };
+  };
+
+  it('đếm thời gian chạy, không tính lúc tạm dừng; tab ẩn / mất focus → tạm dừng', () => {
+    vi.useFakeTimers();
+    const c = fakeClock();
+    const { result } = renderHook(() => useCountdown({ durationMs: 60_000, clock: c.clock }));
+    act(() => {
+      c.advance(1000);
+      vi.advanceTimersByTime(100);
+    });
+    expect(result.current.elapsedMs).toBe(1000);
+    expect(result.current.remainingMs).toBe(59_000);
+
+    act(() => {
+      fireEvent.blur(window);
+    });
+    expect(result.current.paused).toBe(true);
+    act(() => {
+      c.advance(30_000);
+      vi.advanceTimersByTime(1000);
+    });
+    expect(result.current.now()).toBe(1000);
+
+    act(() => result.current.resume());
+    act(() => {
+      c.advance(500);
+      vi.advanceTimersByTime(100);
+    });
+    expect(result.current.now()).toBe(1500);
+    expect(result.current.elapsedMs).toBe(1500);
+
+    const hidden = vi.spyOn(document, 'visibilityState', 'get').mockReturnValue('hidden');
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    expect(result.current.paused).toBe(true);
+    hidden.mockReturnValue('visible');
+    act(() => {
+      document.dispatchEvent(new Event('visibilitychange'));
+      result.current.pause();
+    });
+    expect(result.current.paused).toBe(true);
+    hidden.mockRestore();
+  });
+
+  it('đếm lên: remainingMs null; running=false thì đứng yên, không tự tạm dừng', () => {
+    vi.useFakeTimers();
+    const c = fakeClock();
+    const { result, rerender } = renderHook(
+      ({ running }) => useCountdown({ durationMs: null, running, clock: c.clock }),
+      { initialProps: { running: false } },
+    );
+    act(() => {
+      c.advance(5000);
+      vi.advanceTimersByTime(1000);
+      fireEvent.blur(window);
+    });
+    expect(result.current).toMatchObject({ elapsedMs: 0, remainingMs: null, paused: false });
+    rerender({ running: true });
+    act(() => {
+      c.advance(2000);
+      vi.advanceTimersByTime(100);
+    });
+    expect(result.current.elapsedMs).toBe(2000);
+  });
+
+  it('đồng hồ mặc định: performance.now()', () => {
+    const { result } = renderHook(() => useCountdown({ durationMs: 1000 }));
+    expect(result.current.now()).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe('useReducedMotion', () => {
+  it('đọc prefers-reduced-motion; không có matchMedia → false', () => {
+    const listeners: Array<() => void> = [];
+    let matches = false;
+    vi.stubGlobal('matchMedia', (q: string) => ({
+      media: q,
+      get matches() {
+        return matches;
+      },
+      addEventListener: (_: string, l: () => void) => listeners.push(l),
+      removeEventListener: () => {},
+    }));
+    const { result, unmount } = renderHook(() => useReducedMotion());
+    expect(result.current).toBe(false);
+    act(() => {
+      matches = true;
+      listeners.forEach((l) => l());
+    });
+    expect(result.current).toBe(true);
+    unmount();
+    vi.unstubAllGlobals();
+    vi.stubGlobal('matchMedia', undefined);
+    expect(renderHook(() => useReducedMotion()).result.current).toBe(false);
+    vi.unstubAllGlobals();
+  });
+});
+
+describe('webAudioTone', () => {
+  it('đúng = 880 Hz, sai = 220 Hz; không có Web Audio → im lặng', () => {
+    vi.stubGlobal('AudioContext', undefined);
+    expect(() => webAudioTone(true)).not.toThrow();
+    const frequencies: number[] = [];
+    const param = () => ({
+      value: 0,
+      setValueAtTime: vi.fn(),
+      exponentialRampToValueAtTime: vi.fn(),
+    });
+    class FakeContext {
+      currentTime = 0;
+      destination = {};
+      createGain = () => ({ gain: param(), connect: (d: unknown) => d });
+      createOscillator = () => {
+        const frequency = param();
+        return {
+          frequency,
+          connect: (node: unknown) => node,
+          start: () => frequencies.push(frequency.value),
+          stop: vi.fn(),
+        };
+      };
+    }
+    vi.stubGlobal('AudioContext', FakeContext);
+    webAudioTone(true);
+    webAudioTone(false);
+    expect(frequencies).toEqual([880, 220]);
+    vi.unstubAllGlobals();
+  });
+});
+
+describe('useFeedbackSound (F-13)', () => {
+  it('mặc định bật; tắt → không phát; lưu qua SettingsRepository', async () => {
+    const db = new NomDatabase('sound');
+    const repos = createDexieRepositories(db);
+    const wrapper = ({ children }: { children: ReactNode }) => (
+      <RepositoriesContext.Provider value={repos}>{children}</RepositoriesContext.Provider>
+    );
+    const player = vi.fn();
+    const { result } = renderHook(() => useFeedbackSound(player), { wrapper });
+    await waitFor(() => expect(result.current.enabled).toBe(true));
+    act(() => result.current.play(true));
+    expect(player).toHaveBeenCalledWith(true);
+
+    await act(() => result.current.setEnabled(false));
+    await waitFor(() => expect(result.current.enabled).toBe(false));
+    expect(await repos.settings.get(FEEDBACK_SOUND_KEY, true)).toBe(false);
+    act(() => result.current.play(false));
+    expect(player).toHaveBeenCalledOnce();
+    db.close();
+  });
+
+  it('chưa có repository (đang xác định đăng nhập): không phát, ghi không lỗi', async () => {
+    const player = vi.fn();
+    const { result } = renderHook(() => useFeedbackSound(player));
+    expect(result.current.enabled).toBeUndefined();
+    await act(() => result.current.setEnabled(true));
+    act(() => result.current.play(true));
+    expect(player).not.toHaveBeenCalled();
+  });
+});

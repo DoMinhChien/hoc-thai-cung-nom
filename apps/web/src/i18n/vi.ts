@@ -171,6 +171,21 @@ export const vi = {
     yourAnswer: 'Bạn gõ',
     expected: 'Đáp án',
   },
+  play: {
+    exit: 'Thoát',
+    score: 'Điểm',
+    combo: 'Combo ×{n}',
+    timeLeft: 'Thời gian còn lại',
+    timeElapsed: 'Thời gian',
+    correct: 'Đúng',
+    wrong: 'Sai',
+    answer: 'Câu trả lời',
+    bank: 'Thẻ từ',
+    removeToken: 'Bỏ thẻ {token}',
+    paused: 'Đã tạm dừng — Space để tiếp tục',
+    soundOn: 'Tắt âm phản hồi',
+    soundOff: 'Bật âm phản hồi',
+  },
   devTyping: {
     intro:
       'Dữ liệu giả lập — chỉ để xem ô gõ và bàn phím ảo (M8). Bài tập gõ câu thật (E-07) dùng ở M9.',
