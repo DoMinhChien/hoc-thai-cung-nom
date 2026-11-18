@@ -16,6 +16,7 @@ import {
   ReviewList,
   UrgencyCard,
   useAutoSpeech,
+  useFeedbackPause,
   useSpeakOnCue,
 } from './index';
 
@@ -177,5 +178,70 @@ describe('tự đọc chữ Thái (AudioProvider)', () => {
       ),
     });
     await bare.result.current.setEnabled(true);
+  });
+});
+
+describe('useFeedbackPause — đọc lại câu vừa xếp đúng', () => {
+  const wrapperFor = (audio: MockAudioProvider) => {
+    const db = new NomDatabase('pause');
+    const repos = createDexieRepositories(db);
+    const wrapper = ({ children }: { children: ReactNode }) => (
+      <AudioProviderBoundary provider={audio}>
+        <RepositoriesContext.Provider value={repos}>{children}</RepositoriesContext.Provider>
+      </AudioProviderBoundary>
+    );
+    return { db, repos, wrapper };
+  };
+
+  it('đúng → đọc lại câu rồi mới sang câu; sai (không có câu) → chỉ chờ; chưa vào phản hồi → không gì', async () => {
+    const audio = new MockAudioProvider();
+    const { db, wrapper } = wrapperFor(audio);
+    const onDone = vi.fn();
+    const { rerender } = renderHook(
+      ({ active, text }: { active: boolean; text: string | null }) =>
+        useFeedbackPause({
+          active,
+          speakText: text,
+          speech: useAutoSpeech(),
+          minMs: 10,
+          onDone,
+        }),
+      { wrapper, initialProps: { active: false, text: null as string | null } },
+    );
+    await new Promise((r) => setTimeout(r, 30));
+    expect(onDone).not.toHaveBeenCalled();
+
+    rerender({ active: true, text: 'ผมชื่อสมชาย' });
+    await waitFor(() => expect(onDone).toHaveBeenCalled());
+    expect(audio.spokenTexts).toContain('ผมชื่อสมชาย');
+
+    onDone.mockClear();
+    rerender({ active: false, text: null });
+    rerender({ active: true, text: null });
+    await waitFor(() => expect(onDone).toHaveBeenCalledOnce());
+    expect(audio.spokenTexts.filter((x) => x === 'ผมชื่อสมชาย')).toHaveLength(1);
+    db.close();
+  });
+
+  it('tắt tự đọc → không đọc nhưng vẫn sang câu; rời màn phản hồi trước khi xong → không gọi', async () => {
+    const audio = new MockAudioProvider();
+    const { db, repos, wrapper } = wrapperFor(audio);
+    await repos.settings.set(AUTO_SPEAK_KEY, false);
+    const onDone = vi.fn();
+    const { rerender } = renderHook(
+      ({ active, minMs }: { active: boolean; minMs: number }) =>
+        useFeedbackPause({ active, speakText: 'คน', speech: useAutoSpeech(), minMs, onDone }),
+      { wrapper, initialProps: { active: true, minMs: 10 } },
+    );
+    await waitFor(() => expect(onDone).toHaveBeenCalled());
+    expect(audio.spokenTexts).toEqual([]);
+
+    onDone.mockClear();
+    rerender({ active: false, minMs: 10 });
+    rerender({ active: true, minMs: 50 });
+    rerender({ active: false, minMs: 50 });
+    await new Promise((r) => setTimeout(r, 80));
+    expect(onDone).not.toHaveBeenCalled();
+    db.close();
   });
 });

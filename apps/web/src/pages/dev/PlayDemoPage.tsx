@@ -26,6 +26,7 @@ import {
   UrgencyCard,
   useAutoSpeech,
   useCountdown,
+  useFeedbackPause,
   useFeedbackSound,
   useSpeakOnCue,
   type AutoSpeech,
@@ -266,18 +267,21 @@ function TrueFalseDemo({ seed, onExit, onRestart }: DemoProps) {
 
 function SentenceRushDemo({ seed, onExit, onRestart }: DemoProps) {
   const run = useRun(sentenceRush, seed);
-  const { state, clock, answer, advance, started, start } = run;
+  const { state, clock, answer, advance, started, start, speech } = run;
   const [picked, setPicked] = useState<number[]>([]);
   const q = state.questions[Math.min(state.index, state.questions.length - 1)]!;
 
-  useEffect(() => {
-    if (state.status !== 'feedback') return;
-    const id = window.setTimeout(() => {
+  // Xếp đúng → đọc lại cả câu cho người học nhớ (góp ý owner 2026-11-18), đọc xong mới sang câu.
+  useFeedbackPause({
+    active: state.status === 'feedback',
+    speakText: state.feedback?.correct ? q.th : null,
+    speech,
+    minMs: 1500,
+    onDone: () => {
       setPicked([]);
       advance();
-    }, 1500);
-    return () => window.clearTimeout(id);
-  }, [state.status, state.index, advance]);
+    },
+  });
 
   const submit = () => answer(picked.map((i) => q.bank[i]!));
   const left = questionEndsAt(state) - clock.elapsedMs;

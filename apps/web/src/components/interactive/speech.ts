@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useAudio } from '@/audio/useAudio';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import { useRepositories, useRepositoryQuery } from '@/data';
@@ -40,4 +40,46 @@ export function useSpeakOnCue(text: string | null, cue: unknown, speech: AutoSpe
     // Chỉ đọc khi sang câu mới, không đọc lại khi text giữ nguyên.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cue, on, audio]);
+}
+
+export interface FeedbackPauseOptions {
+  /** Đang ở màn phản hồi. */
+  active: boolean;
+  /** Câu tiếng Thái đọc lại trong lúc dừng (vd. câu vừa xếp đúng); `null` = không đọc. */
+  speakText: string | null;
+  speech: AutoSpeech;
+  /** Dừng ít nhất chừng này (ms) dù không đọc. */
+  minMs: number;
+  onDone: () => void;
+}
+
+/**
+ * Dừng ở màn phản hồi rồi gọi `onDone`: nếu có `speakText` và đang bật tự đọc thì đọc lại câu,
+ * chờ đọc xong (và đủ `minMs`) mới sang câu tiếp — người học nghe lại câu vừa làm đúng.
+ */
+export function useFeedbackPause({
+  active,
+  speakText,
+  speech,
+  minMs,
+  onDone,
+}: FeedbackPauseOptions) {
+  const audio = useAudio();
+  const done = useRef(onDone);
+  useEffect(() => {
+    done.current = onDone;
+  });
+  const on = speech.enabled === true && speech.available;
+  useEffect(() => {
+    if (!active) return;
+    let cancelled = false;
+    const wait = new Promise<void>((resolve) => window.setTimeout(resolve, minMs));
+    const said = on && speakText ? audio.speak(speakText).catch(() => {}) : Promise.resolve();
+    void Promise.all([wait, said]).then(() => {
+      if (!cancelled) done.current();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [active, speakText, on, minMs, audio]);
 }

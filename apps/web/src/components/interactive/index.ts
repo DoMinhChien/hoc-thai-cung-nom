@@ -14,5 +14,11 @@ export { GameTopBar, PausedOverlay, TimeBar } from './GameTopBar';
 export { useCountdown, useKeyShortcut, useReducedMotion, type Countdown } from './hooks';
 export { TokenBank, TokenChip } from './TokenBank';
 export { ReviewList } from './ReviewList';
-export { AUTO_SPEAK_KEY, useAutoSpeech, useSpeakOnCue, type AutoSpeech } from './speech';
+export {
+  AUTO_SPEAK_KEY,
+  useAutoSpeech,
+  useFeedbackPause,
+  useSpeakOnCue,
+  type AutoSpeech,
+} from './speech';
 export { UrgencyCard } from './UrgencyCard';
