@@ -3,6 +3,7 @@
  * Trạng thái là dữ liệu thuần, bất biến; thời gian là tham số `now` (ms của đồng hồ trò chơi —
  * UI tạm dừng thì đồng hồ dừng), nên test dùng đồng hồ giả. Trò chơi **không** đổi lịch FSRS (F-12).
  */
+import type { Rng } from './rng';
 import type { GameSource } from './source';
 
 export const GAME_IDS = ['match', 'true-false', 'sentence-rush', 'classifier-rush'] as const;
@@ -169,4 +170,23 @@ export function isBetterResult(gameId: GameId, a: GameStats, b: GameStats): bool
     return a.durationMs !== b.durationMs ? a.durationMs < b.durationMs : a.score > b.score;
   }
   return a.score > b.score;
+}
+
+export function availability(reason: GameLockReason, need: number, have: number): GameAvailability {
+  return have >= need ? { ok: true } : { ok: false, reason, need, have };
+}
+
+export function assertAvailable(game: GameId, result: GameAvailability) {
+  if (!result.ok) {
+    throw new Error(
+      `${game}: nguồn thiếu dữ liệu (${result.reason}: ${result.have}/${result.need})`,
+    );
+  }
+}
+
+/** Dãy `length` mục lấy lần lượt từ các lượt xáo trộn (đủ cho trò đếm ngược 60 s). */
+export function cycle<T>(rng: Rng, items: readonly T[], length: number): T[] {
+  const out: T[] = [];
+  while (out.length < length) out.push(...rng.shuffle(items));
+  return out.slice(0, length);
 }

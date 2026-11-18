@@ -247,7 +247,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Task**
 - [x] T7.5.1 Core: interface `Game` (`generateRound(source, seed)`, `answer`, `score`, `summary`) + `GameSource` (mục đã học ∪ từ/câu của unit đã chọn, bỏ draft thiếu nghĩa/đáp án; kiểm tra đủ dữ liệu từng trò) + RNG có seed. Record `GameResultRecord` (kỷ lục theo trò + nguồn) và cờ `needsReview` theo item; Dexie migration + `ProgressRepository` (contract test). **Không** gọi `recordReview` (F-12) — test khẳng định.
-- [ ] T7.5.2 Core: 4 trò — `matchPairs` (6 cặp, điểm theo thời gian + lượt lật), `trueFalse` (50% nghĩa đúng, combo ×1..×5, 60 s), `sentenceRush` (5 câu, `tokens` không thẻ nhiễu, 20 s/câu), `classifierRush` (đáp án + 3 loại từ khác có trong dữ liệu, 5 s/từ, thưởng tốc độ). Đồng hồ là tham số (test bằng đồng hồ giả). Unit test.
+- [x] T7.5.2 Core: 4 trò — `matchPairs` (6 cặp, điểm theo thời gian + lượt lật), `trueFalse` (50% nghĩa đúng, combo ×1..×5, 60 s), `sentenceRush` (5 câu, `tokens` không thẻ nhiễu, 20 s/câu), `classifierRush` (đáp án + 3 loại từ khác có trong dữ liệu, 5 s/từ, thưởng tốc độ). Đồng hồ là tham số (test bằng đồng hồ giả). Unit test.
 - [ ] T7.5.3 Web component tương tác **dùng chung (M9 dùng lại)**: `ChoiceButton` (phím số), `TokenChip`/`TokenBank`, `FeedbackBar` (icon + chữ), `GameTopBar` (đồng hồ, điểm, combo), hook `useCountdown` (tạm dừng khi tab ẩn), âm phản hồi bật/tắt (F-13), tôn trọng `prefers-reduced-motion`. Component test.
 - [ ] T7.5.4 🟠 `/games` theo SCR-08 §A: chọn nguồn, 4 card (kỷ lục, khóa khi thiếu dữ liệu + lý do), phím `1`–`4`.
 - [ ] T7.5.5 🟠 `/games/:id` 4 màn chơi + màn kết quả theo SCR-08 §B–C (kỷ lục mới, mục sai → `needsReview`, "Chơi với mục sai").
