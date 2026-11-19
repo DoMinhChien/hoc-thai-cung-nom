@@ -2,11 +2,16 @@
  * Interface repository (plan 7.3) — UI chỉ đọc/ghi dữ liệu người dùng qua đây.
  * Phase 1: bản Dexie (`apps/web/src/data`). Phase 2: thêm `SyncedRepository`, UI không đổi.
  */
+import type { GameId } from '../games/game';
 import type {
+  CanDoRecord,
   CardRecord,
   CardType,
+  GameResultRecord,
   ItemType,
+  LessonProgressRecord,
   ListeningStatRecord,
+  NeedsReviewRecord,
   ReviewLogRecord,
   SessionRecord,
 } from './records';
@@ -16,7 +21,7 @@ export interface CardFilter {
   itemIds?: string[];
 }
 
-/** Thẻ SRS. */
+/** Thẻ SRS + tiến độ bài học, can-do (M7) + kỷ lục trò chơi, cờ "cần ôn" (M7.5). */
 export interface ProgressRepository {
   getCard(id: string): Promise<CardRecord | undefined>;
   findCard(itemType: ItemType, itemId: string, cardType: CardType): Promise<CardRecord | undefined>;
@@ -26,6 +31,24 @@ export interface ProgressRepository {
   /** Số thẻ được đưa vào học trong khoảng [from, to) — B-03. */
   countCreatedBetween(from: Date, to: Date): Promise<number>;
   putCard(card: CardRecord): Promise<void>;
+
+  getLessonProgress(lessonId: string): Promise<LessonProgressRecord | undefined>;
+  /** Tiến độ các bài (của một unit nếu có `unitId`). */
+  listLessonProgress(unitId?: string): Promise<LessonProgressRecord[]>;
+  /** Ghi theo `lessonId` (một bản ghi mỗi bài). */
+  putLessonProgress(record: LessonProgressRecord): Promise<void>;
+  listCanDo(unitId: string): Promise<CanDoRecord[]>;
+  /** Ghi theo `unitId` + `canDo` (một bản ghi mỗi mục). */
+  putCanDo(record: CanDoRecord): Promise<void>;
+
+  getGameResult(gameId: GameId, source: string): Promise<GameResultRecord | undefined>;
+  listGameResults(): Promise<GameResultRecord[]>;
+  /** Ghi theo `gameId` + `source` (một bản ghi mỗi cặp). */
+  putGameResult(record: GameResultRecord): Promise<void>;
+  listNeedsReview(): Promise<NeedsReviewRecord[]>;
+  /** Ghi theo `itemType` + `itemId` (một cờ mỗi mục). */
+  putNeedsReview(record: NeedsReviewRecord): Promise<void>;
+  deleteNeedsReview(itemType: ItemType, itemId: string): Promise<void>;
 }
 
 /** Log ôn thẻ + thống kê quiz nghe. */

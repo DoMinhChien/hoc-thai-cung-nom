@@ -32,6 +32,7 @@ function expectedVars(): [string, string][] {
       continue;
     }
     for (const [sub, leaf] of Object.entries(node as Record<string, Leaf>)) {
+      if (sub.startsWith('$')) continue;
       const prefix = key === 'brand-provider' ? sub.replace(/-bg$/, '') : `${key}-${sub}`;
       add(key === 'brand-provider' ? `${prefix}-bg` : prefix, leaf.value);
       for (const extra of ['subtle', 'border', 'fg'] as const) {

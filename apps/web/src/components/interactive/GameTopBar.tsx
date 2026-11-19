@@ -1,0 +1,241 @@
+import { Heart, MessageSquareOff, Pause, Speech, Volume2, VolumeX, X, Zap } from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { t } from '@/i18n';
+import { cn } from '@/lib/utils';
+import { formatClock } from './format';
+import { useKeyShortcut } from './hooks';
+
+const numberFormat = new Intl.NumberFormat('vi-VN');
+
+export interface GameTopBarProps {
+  title: string;
+  /** Thời gian còn lại (`down`) hoặc đã chơi (`up`), ms; không có = không hiện đồng hồ. */
+  timeMs?: number;
+  clock?: 'down' | 'up';
+  score: number;
+  /** Nhãn thay "Điểm" (vd. Ghép cặp: "Lượt lật") — khi có thì không hiện "+n". */
+  scoreLabel?: string;
+  /** Hệ số combo; chỉ hiện khi ≥ 2. */
+  combo?: number;
+  onExit: () => void;
+  /** Có thì hiện nút bật/tắt âm phản hồi (F-13). */
+  sound?: { enabled: boolean; onToggle: () => void };
+  /** Có thì hiện nút bật/tắt tự đọc chữ Thái; `disabled` khi máy không có giọng Thái. */
+  speech?: { enabled: boolean; disabled?: boolean; onToggle: () => void };
+  /** Trò "3 tim" (v7.3): số tim còn lại / tối đa; `delta` = vừa mất (−1) / được (+1). */
+  lives?: { count: number; max: number; delta?: -1 | 0 | 1 };
+}
+
+/** Đồng hồ đếm ngược ≤ mốc này (ms) → màu cảnh báo + nhấp nháy nhẹ. */
+const URGENT_MS = 10_000;
+
+/**
+ * Thanh trên của màn chơi (SCR-08 §B): Thoát (Esc) · tên trò · đồng hồ · điểm · combo.
+ * Điểm tăng → "+n" bay lên; combo đổi → nảy nhẹ (chỉ khi không giảm chuyển động).
+ */
+export function GameTopBar({
+  title,
+  timeMs,
+  clock = 'down',
+  score,
+  scoreLabel,
+  combo = 0,
+  onExit,
+  sound,
+  speech,
+  lives,
+}: GameTopBarProps) {
+  useKeyShortcut('Escape', onExit);
+  // Lưu điểm trước để hiện phần vừa cộng (cập nhật state khi prop đổi — mẫu React chính thức).
+  const [prev, setPrev] = useState(score);
+  const [gain, setGain] = useState(0);
+  if (score !== prev) {
+    setGain(score - prev);
+    setPrev(score);
+  }
+  const urgent = clock === 'down' && timeMs !== undefined && timeMs > 0 && timeMs <= URGENT_MS;
+  return (
+    <header
+      data-testid="game-top-bar"
+      className="flex items-center gap-4 rounded-xl bg-game-subtle px-3 py-2"
+    >
+      <Button variant="ghost" size="sm" onClick={onExit} aria-keyshortcuts="Escape">
+        <X aria-hidden />
+        {t('play.exit')}
+        <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+          Esc
+        </kbd>
+      </Button>
+      <h1 className="text-lg font-semibold">{title}</h1>
+      <div className="ml-auto flex items-center gap-6 tabular-nums">
+        {combo >= 2 && (
+          <span
+            key={combo}
+            data-testid="game-combo"
+            className="inline-flex items-center gap-1 rounded-full bg-game px-3 py-0.5 text-sm font-semibold text-game-fg motion-safe:animate-pop"
+          >
+            <Zap className="size-3.5" aria-hidden />
+            {t('play.combo', { n: combo })}
+          </span>
+        )}
+        <span data-testid="game-score" className="relative">
+          <span className="sr-only">{scoreLabel ?? t('play.score')}: </span>
+          <span aria-hidden className="text-sm text-muted-foreground">
+            {scoreLabel ?? t('play.score')}{' '}
+          </span>
+          <span
+            key={score}
+            className="inline-block text-lg font-semibold text-game motion-safe:animate-pop"
+          >
+            {numberFormat.format(score)}
+          </span>
+          {gain > 0 && !scoreLabel && (
+            <span
+              key={`gain-${score}`}
+              aria-hidden
+              data-testid="game-gain"
+              className="pointer-events-none absolute -top-3 right-0 text-sm font-semibold text-positive opacity-0 motion-safe:animate-rise"
+            >
+              +{gain}
+            </span>
+          )}
+        </span>
+        {lives && <Lives {...lives} />}
+        {timeMs !== undefined && (
+          <span
+            role="timer"
+            data-testid="game-clock"
+            data-urgent={urgent}
+            aria-label={clock === 'down' ? t('play.timeLeft') : t('play.timeElapsed')}
+            className={cn(
+              'min-w-14 rounded-md bg-background px-2 text-right text-lg font-semibold',
+              urgent && 'text-caution motion-safe:animate-urgent',
+            )}
+          >
+            {formatClock(timeMs, clock)}
+          </span>
+        )}
+        {speech && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-pressed={speech.enabled && !speech.disabled}
+            disabled={speech.disabled}
+            aria-label={speech.enabled ? t('play.speechOn') : t('play.speechOff')}
+            title={
+              speech.disabled
+                ? t('play.noVoice')
+                : speech.enabled
+                  ? t('play.speechOn')
+                  : t('play.speechOff')
+            }
+            onClick={speech.onToggle}
+          >
+            {speech.enabled && !speech.disabled ? (
+              <Speech aria-hidden />
+            ) : (
+              <MessageSquareOff aria-hidden />
+            )}
+          </Button>
+        )}
+        {sound && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-pressed={sound.enabled}
+            aria-label={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
+            title={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
+            onClick={sound.onToggle}
+          >
+            {sound.enabled ? <Volume2 aria-hidden /> : <VolumeX aria-hidden />}
+          </Button>
+        )}
+      </div>
+    </header>
+  );
+}
+
+/** Tim còn lại: tim đầy màu đỏ (nghĩa "mạng"), tim mất là viền. Mất → rung, được → nảy. */
+function Lives({ count, max, delta = 0 }: { count: number; max: number; delta?: -1 | 0 | 1 }) {
+  const shown = Math.max(max, count);
+  return (
+    <span
+      role="img"
+      data-testid="game-lives"
+      data-lives={count}
+      aria-label={t('play.lives', { n: count })}
+      className={cn('flex items-center gap-0.5', delta === -1 && 'motion-safe:animate-shake')}
+    >
+      {Array.from({ length: shown }, (_, i) => (
+        <Heart
+          key={i}
+          aria-hidden
+          className={cn(
+            'size-5',
+            i < count ? 'fill-destructive text-destructive' : 'text-border-strong',
+            delta === 1 && i === count - 1 && 'motion-safe:animate-pop',
+          )}
+        />
+      ))}
+    </span>
+  );
+}
+
+export interface TimeBarProps {
+  totalMs: number;
+  remainingMs: number;
+  className?: string;
+}
+
+/**
+ * Thanh thời gian co dần (thời gian mỗi câu — F-03', F-04'). Chuyển động chỉ khi người dùng không
+ * bật giảm chuyển động (`motion-safe`); chữ đồng hồ nằm ở `GameTopBar`.
+ */
+export function TimeBar({ totalMs, remainingMs, className }: TimeBarProps) {
+  const percent = totalMs > 0 ? Math.max(0, Math.min(100, (remainingMs / totalMs) * 100)) : 0;
+  return (
+    <div
+      role="progressbar"
+      aria-label={t('play.timeLeft')}
+      aria-valuemin={0}
+      aria-valuemax={Math.round(totalMs / 1000)}
+      aria-valuenow={Math.ceil(remainingMs / 1000)}
+      data-testid="time-bar"
+      className={cn('h-2 w-full overflow-hidden rounded-full bg-muted', className)}
+    >
+      <div
+        className={cn(
+          'h-full rounded-full motion-safe:transition-[width] motion-safe:duration-100 motion-safe:ease-linear',
+          percent <= 20 ? 'bg-caution motion-safe:animate-urgent' : 'bg-game',
+        )}
+        style={{ width: `${percent}%` }}
+      />
+    </div>
+  );
+}
+
+/** Lớp phủ khi đồng hồ tạm dừng (tab ẩn / mất focus) — `Space` để tiếp tục. */
+export function PausedOverlay({ onResume }: { onResume: () => void }) {
+  useKeyShortcut(' ', onResume);
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="game-paused-title"
+      data-testid="game-paused"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/90"
+    >
+      <button
+        type="button"
+        autoFocus
+        onClick={onResume}
+        aria-keyshortcuts="Space"
+        className="flex items-center gap-3 rounded-lg border-2 border-border-strong bg-background px-6 py-4 text-lg font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <Pause className="size-6" aria-hidden />
+        <span id="game-paused-title">{t('play.paused')}</span>
+      </button>
+    </div>
+  );
+}

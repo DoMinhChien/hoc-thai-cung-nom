@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.1** (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.4** (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -86,7 +86,12 @@ Mọi loại bài tập là module độc lập theo interface `Exercise` (`gene
 - **E-13** Trò chơi vẫn **không** đổi lịch FSRS (F-12 giữ nguyên).
 
 ### 0.6 Trò chơi Phase 1 (thay F-02..F-04)
-F-01 **Ghép cặp** từ ↔ nghĩa/hình · F-02' **Đúng hay sai?** (từ/câu + nghĩa, 60 giây, combo) · F-03' **Xếp câu tốc độ** (E-06 có giờ). F-05..F-07 giữ ở Phase 2.
+F-01 **Ghép cặp** từ ↔ nghĩa/hình · F-02' **Đúng hay sai?** (từ/câu + nghĩa, **3 tim** — v7.3, combo) · F-03' **Xếp câu tốc độ** (E-06 có giờ) · **F-04' Đoán loại từ** (danh từ → chọn ลักษณนาม, 5 s/từ, **3 tim** — v7.2/v7.3, dùng `Word.classifier`). F-05..F-07 giữ ở Phase 2. Spec: `docs/design/screens/SCR-08-games.md`.
+
+**v7.2 (2026-11-18) — owner chốt làm Trò chơi trước Bài tập:** milestone **M7.5 Trò chơi** (thay M10.5) làm ngay sau M7, trước M9. Hệ quả:
+- **F-10 sửa:** nguồn câu hỏi = mục đã học; chưa đủ (< 6) → từ/câu của **chuyên đề người học chọn** (kể cả chưa học). Bỏ yêu cầu "chỉ mục đã học".
+- Trò chơi vẫn **không đổi FSRS** (F-12); mục sai lưu cờ **"cần ôn"** để M9 ưu tiên.
+- Component tương tác dùng chung (nút lựa chọn có phím số, thẻ từ / ngân hàng thẻ, thanh phản hồi, đồng hồ) **xây ở M7.5**, M9 dùng lại.
 
 ### 0.7 Điều hướng & màn hình
 Sidebar (nhóm Học): **Tổng quan · Bài học · Bài tập · Sổ từ · Trò chơi · Tiến độ**; cuối: **Cài đặt**, menu tài khoản.
@@ -477,7 +482,7 @@ Mục tiêu: **vui nhờ cơ chế chơi** (thời gian, combo, âm thanh phản
 - **G-02** Export / Import tiến độ ra JSON (Phase 1; vẫn giữ ở Phase 2).
 - **G-03** PWA, dùng offline sau lần tải đầu.
 - **G-04** **Desktop-first**: thiết kế & test cho màn hình ≥ 1280px; hỗ trợ tối thiểu 1024px. Mobile chưa nằm trong scope (chỉ đảm bảo không vỡ layout nghiêm trọng).
-- **G-05** Font Thái self-host (Noto Sans Thai / Sarabun), dấu hiển thị đúng vị trí.
+- **G-05** Font Thái self-host **Sarabun** (v7.4: kiểu chữ Thái **có đầu tròn** phổ thông, giống giáo trình/sách; không dùng kiểu không đầu tròn như Noto Sans Thai), dấu hiển thị đúng vị trí.
 - **G-06** **Gõ chữ Thái** (Phase 1):
   - Bàn phím ảo layout **Kedmanee** (chuẩn Thái), có thể ẩn/hiện; trên desktop hiển thị dưới ô nhập, hỗ trợ cả click chuột và bàn phím vật lý (map phím theo layout Kedmanee khi người dùng chưa cài bàn phím Thái).
   - Vẫn nhận input từ bàn phím Thái của hệ điều hành nếu người dùng đã cài.
@@ -823,6 +828,8 @@ Nguyên tắc cho agent: **mỗi thành phần phải bám theo một tham chi�
 
 Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Không mascot, không confetti, không hiệu ứng thừa. Màu chỉ dùng khi **mang nghĩa**.
 
+> **v7.3 (owner chốt 2026-11-18, phương án B) — ngoại lệ cho khu Trò chơi:** `/games`, màn chơi và kết quả được **sinh động hơn**: mỗi trò **một màu riêng** thay accent (token `color.game.*`: Ghép cặp tím, Đúng hay sai? cam, Xếp câu tốc độ xanh ngọc, Đoán loại từ hồng; tương phản ≥ 4.5:1) và **chuyển động phản hồi rõ** (đếm 3·2·1, rung khi sai, nảy khi đúng, "+điểm" bay lên, combo nảy, đồng hồ cảnh báo khi sắp hết giờ, hiệu ứng mạnh hơn khi **phá kỷ lục**). Vẫn không mascot; mọi chuyển động tắt khi `prefers-reduced-motion`. Bài học, Bài tập, Tổng quan… giữ nguyên D1/D2 (chỉ accent).
+
 **Nguyên tắc**
 | # | Nguyên tắc | Cụ thể |
 |---|---|---|
@@ -834,7 +841,7 @@ Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Kh�
 | D5 | **Tiến độ luôn thấy nhưng kín đáo** | Thanh tiến độ mảnh khi ôn; số tổng (tổng thẻ, tổng từ) luôn hiển thị, không giấu |
 | D6 | **Focus mode khi học/ôn** | Ẩn sidebar/điều hướng, chỉ còn thẻ + tiến độ + nút thoát |
 | D7 | **Không vì thẩm mỹ mà giấu thông tin** | Dashboard ít khối nhưng đủ số liệu; thông tin quan trọng không phải click mới thấy |
-| D8 | **Typography là "trang trí" chính** | Font Việt: *Inter* hoặc *Be Vietnam Pro*; font Thái: *Noto Sans Thai* hoặc *IBM Plex Sans Thai* (self-host); line-height chữ Thái 1.6–1.8 để dấu trên/dưới không bị cắt |
+| D8 | **Typography là "trang trí" chính** | Font Việt: *Inter* hoặc *Be Vietnam Pro*; font Thái: **Sarabun** (v7.4, owner chốt — có đầu tròn; phương án phụ *Noto Sans Thai Looped*) (self-host); line-height chữ Thái 1.6–1.8 để dấu trên/dưới không bị cắt |
 | D9 | **Light mode trước, token sẵn cho dark mode** | Phase 1 chỉ light; tokens đặt theo nghĩa (`bg`, `fg`, `accent`…) để thêm dark mode không sửa component |
 | D10 | **Thanh điệu không chỉ dựa vào màu** | Mỗi thanh có **ký hiệu đường cao độ nhỏ** (mini contour) + tên, để người mù màu vẫn phân biệt |
 
@@ -1020,10 +1027,11 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 | **M0.5b** | Design v7: SCR-03 Tổng quan, SCR-04 Bài học (lộ trình + chi tiết unit), SCR-05 Bài học 4 bước, SCR-06 Bài tập (hub + phiên + kết quả), SCR-07 Sổ từ, SCR-08 Trò chơi, SCR-09 Tiến độ; owner duyệt (làm dần, mỗi màn trước milestone dùng nó) |
 | **M6** | **Content model v7** (0.9): schema `Unit/Lesson/Word/Sentence/Grammar/Dialogue` + JSON Schema, `build-content`/`content:check` mới, `content/templates/`, content mẫu Unit 1–2 (draft) |
 | **M7** | **Bài học**: AudioProvider (TTS), `/units`, `/units/:unitId`, bài học 4 bước (Từ vựng, Mẫu câu, Hội thoại + tra từ), hoàn thành bài, can-do |
+| **M7.5** | **Trò chơi (ưu tiên, v7.2)**: interface `Game`, F-01, F-02', F-03', F-04', `/games` + màn chơi + kết quả, kỷ lục, cờ "cần ôn"; component tương tác dùng chung cho M9 (SCR-08) |
 | **M8** | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07: chuẩn hóa, đáp án chấp nhận, diff) |
 | **M9** | **Bài tập**: interface `Exercise`, E-01..E-09, E-10..E-13, bước 4 của bài học, `/practice` + phiên + kết quả, SRS cho câu |
 | **M10** | **Tổng quan + Sổ từ + Tiến độ**: `/`, `/words`, `/progress` (P-08, P-10..P-12, R-01'..R-07) |
-| **M10.5** | Trò chơi F-01, F-02', F-03' + interface `Game`; hình & mẹo nhớ cho từ (V-02..V-04) |
+| ~~M10.5~~ | → chuyển lên **M7.5** (v7.2); hình & mẹo nhớ cho từ (V-02..V-04) gộp vào M10 |
 | **M4** | PDF pipeline Python → xuất đúng mẫu 0.9 (chờ S9 + PDF/biểu mẫu của giáo viên) |
 | **M12** | Settings (phiên âm mặc định ẩn, số câu bài tập/ngày), export/import, PWA offline; E2E đủ (luồng 1–2 viết lại theo bài học/bài tập) + visual baseline; go-live checklist đăng nhập |
 
@@ -1077,6 +1085,9 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.4 (2026-11-18):** Owner yêu cầu **font chữ phổ thông** (ảnh mẫu sách tập viết, chữ Thái có đầu tròn) → font Thái **Sarabun** thay Noto Sans Thai (G-05, D8, `tokens.json`); tiếng Việt giữ Inter.
+- **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản. Tham khảo **Memrise Speed Review**: F-02' và F-04' chơi theo **3 tim** (giờ mỗi câu theo độ dài 5–9 s, sai/hết giờ mất tim, 15 câu đúng liền +1 tim), nền thẻ ngả đỏ dần khi sắp hết giờ, thưởng tốc độ, tự đọc chữ Thái, màn kết quả bật/tắt "cần ôn" từng mục.
+- **v7.2 (2026-11-18):** **Trò chơi trước Bài tập**: M10.5 → **M7.5**; thêm **F-04' Đoán loại từ**; F-10 cho phép chơi với từ chưa học của chuyên đề đã chọn; spec SCR-04/05/06/08.
 - **v7.1 (2026-11-17):** Nhận 2 PDF mẫu của giáo viên (mục 0.11): lộ trình theo **chuyên đề giáo viên**, `Unit.kind`/`level` B1, `Word.classifier`/`thai_alt`/`note_vi`, `meaning_vi`/`Sentence.th` được trống khi draft, bài tập **E-14 Loại từ**, pipeline M4 dùng Claude vision + `--suggest`; Open Q #1 đóng; milestone **M6.1**.
 - **v7 (2026-11-16):** **Đổi phạm vi theo phản hồi demo khách hàng** (mục 0): người học A1–A2 đã đọc được → bỏ Module A (chữ cái, Tone Trainer), Module D (quiz thanh), thanh điệu khỏi UI (Tone Engine đóng băng), `MasteryGrid`, `HeatmapTable`, `ToneBarChart`; "Ôn tập" → **Bài tập** (Module E, dịch câu nâng dần bậc); 16 chủ đề A1–A2 + bài học 4 bước; nav, routes, tiến độ (P-10..P-12), mẫu content (0.9); milestone Phase 1 mới M5.5, M6–M10.5.
 - **v6.5 (2026-11-16):** Tone Engine: thêm quy tắc **อักษรนำ tổng quát** (6.1) và **nguyên âm có âm cuối sẵn** ไ– ใ– –ำ เ–า (6.2); `leading` nhận mọi phụ âm cao/trung; test bổ sung; milestone **M2.1** (sau M5, trước M6 & M4).

@@ -10,10 +10,12 @@ export const ROUTE_SAMPLES: { path: string; testId: string }[] = [
   { path: '/terms', testId: 'terms' },
   { path: '/account/delete-instructions', testId: 'delete-instructions' },
   { path: '/units', testId: 'units' },
+  { path: '/units/u01', testId: 'unit' },
+  { path: '/units/u01/u01-l1', testId: 'lesson' },
   { path: '/practice', testId: 'practice' },
   { path: '/words', testId: 'words' },
   { path: '/games', testId: 'games' },
-  { path: '/games/demo', testId: 'game' },
+  { path: '/games/true-false', testId: 'game' },
   { path: '/progress', testId: 'progress' },
   { path: '/settings', testId: 'settings' },
 ];

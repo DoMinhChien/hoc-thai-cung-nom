@@ -1,5 +1,11 @@
-import type { CardRecord } from '@nom/core';
-import Dexie from 'dexie';
+import type {
+  CanDoRecord,
+  CardRecord,
+  GameResultRecord,
+  LessonProgressRecord,
+  NeedsReviewRecord,
+} from '@nom/core';
+import Dexie, { type EntityTable, type IndexableType } from 'dexie';
 import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES } from './db';
 
 const GUEST_CHOSEN = 'guestChosen';
@@ -14,32 +20,42 @@ async function withDb<T>(userKey: string, work: (db: NomDatabase) => Promise<T>)
   }
 }
 
+type Synced = { id: string; updatedAt: string };
+
 /**
- * Thẻ Guest vào DB user: cùng mục + loại thẻ đã có ở user thì giữ bản cập nhật sau
- * (một mục chỉ một thẻ mỗi loại). Log ôn của cả hai vẫn giữ.
+ * Bản ghi Guest vào DB user theo khóa duy nhất (`index`): đã có ở user thì giữ bản cập nhật sau
+ * (một mục chỉ một thẻ mỗi loại; một bài một bản ghi tiến độ; một mục can-do một tick;
+ * một kỷ lục mỗi trò + nguồn; một cờ "cần ôn" mỗi mục).
+ * Log ôn của cả hai vẫn giữ (không có khóa duy nhất).
  */
-async function mergeCards(user: NomDatabase, guestCards: CardRecord[]) {
-  for (const card of guestCards) {
+async function mergeUnique<T extends Synced>(
+  table: EntityTable<T, 'id'>,
+  rows: T[],
+  index: string,
+  key: (row: T) => IndexableType | undefined,
+) {
+  for (const row of rows) {
+    const value = key(row);
     // Bản ghi thiếu khóa (dữ liệu cũ/hỏng) không tra được index → chuyển nguyên trạng.
-    if (!card.itemType || !card.itemId || !card.cardType) {
-      await user.cards.put(card);
+    if (value === undefined) {
+      await table.put(row);
       continue;
     }
-    const existing = await user.cards
-      .where('[itemType+itemId+cardType]')
-      .equals([card.itemType, card.itemId, card.cardType])
-      .first();
-    if (existing && existing.id !== card.id) {
-      if (existing.updatedAt >= card.updatedAt) continue;
-      await user.cards.delete(existing.id);
+    const existing = await table.where(index).equals(value).first();
+    if (existing && existing.id !== row.id) {
+      if (existing.updatedAt >= row.updatedAt) continue;
+      await table.where('id').equals(existing.id).delete();
     }
-    await user.cards.put(card);
+    await table.put(row);
   }
 }
 
+const cardKey = (c: CardRecord) =>
+  c.itemType && c.itemId && c.cardType ? [c.itemType, c.itemId, c.cardType] : undefined;
+
 /**
  * Dữ liệu cấp tài khoản trên IndexedDB (L-07, L-08, flows §2).
- * Tiến độ học chi tiết (thẻ, lịch ôn) do các repository của M5 quản lý.
+ * Tiến độ học chi tiết (thẻ, lịch ôn, bài học, can-do) do `ProgressRepository`… quản lý.
  */
 export class AccountDataRepository {
   /** Có tiến độ trong DB của `userKey` không. Không tạo DB nếu chưa có. */
@@ -62,8 +78,41 @@ export class AccountDataRepository {
     await withDb(uid, (user) =>
       user.transaction('rw', [...PROGRESS_TABLES], async () => {
         for (const [i, name] of PROGRESS_TABLES.entries()) {
-          if (name === 'cards') await mergeCards(user, rows[i] as CardRecord[]);
-          else await user.table(name).bulkPut(rows[i]!);
+          const data = rows[i]!;
+          if (name === 'cards') {
+            await mergeUnique(
+              user.cards,
+              data as CardRecord[],
+              '[itemType+itemId+cardType]',
+              cardKey,
+            );
+          } else if (name === 'lessons') {
+            await mergeUnique(
+              user.lessons,
+              data as LessonProgressRecord[],
+              'lessonId',
+              (l) => l.lessonId,
+            );
+          } else if (name === 'canDos') {
+            await mergeUnique(user.canDos, data as CanDoRecord[], '[unitId+canDo]', (c) => [
+              c.unitId,
+              c.canDo,
+            ]);
+          } else if (name === 'gameResults') {
+            await mergeUnique(
+              user.gameResults,
+              data as GameResultRecord[],
+              '[gameId+source]',
+              (r) => [r.gameId, r.source],
+            );
+          } else if (name === 'needsReview') {
+            await mergeUnique(
+              user.needsReview,
+              data as NeedsReviewRecord[],
+              '[itemType+itemId]',
+              (r) => [r.itemType, r.itemId],
+            );
+          } else await user.table(name).bulkPut(data);
         }
       }),
     );

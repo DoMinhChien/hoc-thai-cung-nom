@@ -29,7 +29,7 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 | D5 | Tiến độ luôn thấy nhưng kín đáo |
 | D6 | Focus mode khi học/ôn (ẩn sidebar) |
 | D7 | Không giấu thông tin vì thẩm mỹ |
-| D8 | Typography là "trang trí" chính (Inter + Noto Sans Thai, line-height Thái 1.75) |
+| D8 | Typography là "trang trí" chính (Inter + **Sarabun** cho chữ Thái — kiểu có đầu tròn, phổ thông, giống giáo trình; v7.4), line-height Thái 1.75 |
 | D9 | Light mode trước, token đặt theo nghĩa |
 | ~~D10~~ | ⛔ Bỏ ở v7 (không còn hiển thị thanh điệu) |
 

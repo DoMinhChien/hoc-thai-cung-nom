@@ -157,6 +157,25 @@ export function BareLayout({ wide = false }: { wide?: boolean }) {
   );
 }
 
+/**
+ * Focus layout (SCR-00 §3): ẩn sidebar khi học / chơi — màn tự vẽ thanh trên (Thoát · Esc).
+ * Dùng cho `/games/:id` (sau này `/units/:unitId/:lessonId`, `/practice/session`).
+ */
+export function FocusLayout() {
+  return (
+    <div className="min-h-screen">
+      <SkipLink />
+      <main
+        id={MAIN_ID}
+        tabIndex={-1}
+        className="mx-auto w-full max-w-[1040px] px-6 py-6 outline-none xl:px-10"
+      >
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+
 /** Khung cho trang `/dev/*` (giữ nguyên bố cục M0 để baseline typography không đổi). */
 export function DevLayout() {
   return (

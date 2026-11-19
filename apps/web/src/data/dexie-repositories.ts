@@ -1,10 +1,15 @@
 import {
   matchesFilter,
   newId,
+  type CanDoRecord,
   type CardFilter,
   type CardType,
+  type GameId,
+  type GameResultRecord,
   type ItemType,
+  type LessonProgressRecord,
   type ListeningStatRecord,
+  type NeedsReviewRecord,
   type ProgressRepository,
   type Repositories,
   type ReviewLogRecord,
@@ -51,6 +56,59 @@ class DexieProgressRepository implements ProgressRepository {
   }
   async putCard(card: CardRecord) {
     await this.db.cards.put(card);
+  }
+
+  getLessonProgress(lessonId: string) {
+    return this.db.lessons.where('lessonId').equals(lessonId).first();
+  }
+  listLessonProgress(unitId?: string) {
+    return unitId === undefined
+      ? this.db.lessons.toArray()
+      : this.db.lessons.where('unitId').equals(unitId).toArray();
+  }
+  async putLessonProgress(record: LessonProgressRecord) {
+    // `lessonId` unique: bản cũ khác id (vd. từ Guest) bị thay.
+    await this.db.transaction('rw', this.db.lessons, async () => {
+      await this.db.lessons.where('lessonId').equals(record.lessonId).delete();
+      await this.db.lessons.put(record);
+    });
+  }
+  listCanDo(unitId: string) {
+    return this.db.canDos.where('unitId').equals(unitId).toArray();
+  }
+  async putCanDo(record: CanDoRecord) {
+    await this.db.transaction('rw', this.db.canDos, async () => {
+      await this.db.canDos.where('[unitId+canDo]').equals([record.unitId, record.canDo]).delete();
+      await this.db.canDos.put(record);
+    });
+  }
+
+  getGameResult(gameId: GameId, source: string) {
+    return this.db.gameResults.where('[gameId+source]').equals([gameId, source]).first();
+  }
+  listGameResults() {
+    return this.db.gameResults.toArray();
+  }
+  async putGameResult(record: GameResultRecord) {
+    await this.db.transaction('rw', this.db.gameResults, async () => {
+      await this.db.gameResults
+        .where('[gameId+source]')
+        .equals([record.gameId, record.source])
+        .delete();
+      await this.db.gameResults.put(record);
+    });
+  }
+  listNeedsReview() {
+    return this.db.needsReview.toArray();
+  }
+  async putNeedsReview(record: NeedsReviewRecord) {
+    await this.db.transaction('rw', this.db.needsReview, async () => {
+      await this.deleteNeedsReview(record.itemType, record.itemId);
+      await this.db.needsReview.put(record);
+    });
+  }
+  async deleteNeedsReview(itemType: ItemType, itemId: string) {
+    await this.db.needsReview.where('[itemType+itemId]').equals([itemType, itemId]).delete();
   }
 }
 

@@ -22,4 +22,10 @@ describe('MockAudioProvider', () => {
     audio.reset();
     expect(audio.calls).toEqual([]);
   });
+
+  it('voiceStatus mặc định available, đổi được để test UI hướng dẫn cài giọng', async () => {
+    expect(await new MockAudioProvider().voiceStatus()).toBe('available');
+    const audio = new MockAudioProvider('missing');
+    expect(await audio.voiceStatus()).toBe('missing');
+  });
 });

@@ -4,11 +4,11 @@ test('/dev/typography: font Thái tự host đã tải và dấu không bị c�
   await page.goto('/dev/typography');
   // fonts.load chờ tải xong font cho đúng ký tự Thái (fonts.check có race trên WebKit).
   const loadedFaces = await page.evaluate(async () => {
-    const faces = await document.fonts.load('40px "Noto Sans Thai Variable"', 'ปู่');
+    const faces = await document.fonts.load('40px "Sarabun"', 'ปู่');
     await document.fonts.ready;
     return faces.map((f) => f.family);
   });
-  expect(loadedFaces).toContain('Noto Sans Thai Variable');
+  expect(loadedFaces).toContain('Sarabun');
 
   // Dấu chồng không bị cắt: mỗi dòng chữ Thái không tràn theo chiều dọc.
   const clipped = await page

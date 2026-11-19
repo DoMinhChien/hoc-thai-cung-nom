@@ -8,8 +8,9 @@
 ## Milestone đang mở
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
-> **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong, chờ owner xem baseline `/dev/typing`. M9 kế tiếp chờ M7 + SCR-06.
-> **🔵 M7 — Bài học** (nhánh `m7-lessons`, chưa bắt đầu). Phần logic (T7.1–T7.3) làm được ngay; phần UI (T7.4–T7.6) **🟠 chờ SCR-04/05** (M0.5b).
+> **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
+> **🟢 M7.5 — Trò chơi** (10/10 task, **PR #16 đã merge vào `m7-lessons` 2026-11-19**; vào `main` cùng PR #14) — xong 2026-11-19: `/games` + 4 trò (Ghép cặp, Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ) + kết quả, màu/chuyển động khu Trò chơi + cơ chế kiểu Memrise (v7.3), font Sarabun (v7.4). Chờ owner: xem baseline mới, content mẫu chưa có chuyên đề nào ≥ 5 câu nên Xếp câu tốc độ đang khóa trên content thật. **Không còn milestone mở được**: M7 UI chờ SCR-04/05, M9 chờ M7 + SCR-06.
+> **🟢 M7 — Bài học** (7/7 task, xong 2026-11-19; nhánh `m7-lessons-ui` tách từ `m7-lessons`, PR xếp chồng lên #14): `/units` lộ trình + Học tiếp, `/units/:unitId` chi tiết + can-do, `/units/:unitId/:lessonId` bài học 4 bước + bài tập ≥ 80% + màn hoàn thành; E2E luồng học 1 bài. **Kế tiếp: M9 Bài tập** — cần owner duyệt **SCR-06**.
 > ⛔ M6 cũ (Bảng chữ cái + Tone Trainer) **hủy**, chưa có code.
 > 🟢 M0, M0.5a/TD, M1, M2, M3, M5, M2.1, M5.5, M6, M6.1 xong (Tone Engine giữ nhưng đóng băng).
 > ⚪ M0.5b (SCR-03..09 v7) làm song song: Claude Desktop soạn spec + wireframe → owner duyệt. ⚪ M4: PDF mẫu ✅ (`sources/`, plan 0.11 + 5.3 v7.1), còn chờ **S9** (Anthropic key).
@@ -20,7 +21,7 @@
 
 ```
 M0 Khung dự án ──────────────┐
-M0.5a Design: brief + Login/Account ─┼──► M1 Đăng nhập ──► M2 Core ──► M3 Content ──► M5 Data+SRS ──► M2.1 ──► M5.5 Dọn v7 ──► M6 Content v7 ──► M7 Bài học ──► M8 Gõ ──► M9 Bài tập ──► M10 Tổng quan/Tiến độ ──► M10.5 Trò chơi ──► M12 Go-live
+M0.5a Design: brief + Login/Account ─┼──► M1 Đăng nhập ──► M2 Core ──► M3 Content ──► M5 Data+SRS ──► M2.1 ──► M5.5 Dọn v7 ──► M6 Content v7 ──► M7 Bài học ──► M8 Gõ ──► M9 Bài tập ──► M10 Tổng quan/Tiến độ ──► M12 Go-live   (v7.2: M7.5 Trò chơi chen sau M7, trước M9)
 SETUP S1–S3 (GitHub, Azure) ─┘        ▲                       │
 SETUP S4–S6 (Firebase, Google, FB) ───┘                       └──► M4 PDF pipeline (cần S9 + PDF mẫu S10)
 M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC milestone dùng nó
@@ -40,18 +41,19 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
 | M4 | PDF pipeline Python (Claude vision, `--suggest`) | ⚪ | M6.1, **S9**; PDF mẫu ✅ (`sources/`) |
-| M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | ⚪ | Làm dần, mỗi màn trước milestone dùng nó |
+| M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | 🔵 | SCR-04/05/06 + wireframe ✅ soạn 2026-11-18, **chờ owner duyệt**; SCR-03/07/08/09 làm trước M10/M10.5 |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
 | M5.5 | **Dọn phạm vi v7**: gỡ chữ cái/thanh điệu khỏi UI, nav mới, schema tùy chọn | 🟢 | M2.1 ✅; plan mục 0 — PR #11 |
 | ~~M6 cũ~~ | ~~Bảng chữ cái + Tone Trainer~~ | ⛔ Hủy (v7) | — |
 | M6 | Content model v7: Unit/Lesson/Word/Sentence/Grammar/Dialogue + mẫu `content/templates/` + content mẫu Unit 1–2 | 🟢 | M5.5 ✅ — PR #12 |
 | M6.1 | Content model theo tài liệu giáo viên (plan 0.11): `kind`, B1, `classifier`, `thai_alt`, `note_vi`, draft được thiếu nghĩa/đáp án | 🟢 | M6 ✅; PDF mẫu ✅ — PR #13 |
-| M7 | Bài học: `/units`, chi tiết unit, bài học (bỏ qua bước trống), AudioProvider | 🔵 | M6.1 ✅; UI chờ SCR-04/05 (M0.5b) |
+| M7 | Bài học: `/units`, chi tiết unit, bài học (bỏ qua bước trống), AudioProvider | 🟢 | SCR-04/05 ✅ — PR #14 (logic) + PR `m7-lessons-ui` (UI) |
+| M7.5 | **Trò chơi** F-01, F-02', F-03', F-04' + component tương tác dùng chung (ưu tiên, v7.2) | 🟢 | SCR-08 ✅ — PR #16 ✅ merge vào `m7-lessons` 2026-11-19 |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
-| M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu | ⚪ | M7, M8, SCR-06 |
-| M10 | Tổng quan + Sổ từ + Tiến độ (P-10..P-12, R1 v7) | ⚪ | M9, SCR-03/07/09 |
-| M10.5 | Trò chơi F-01, F-02', F-03' + hình/mẹo nhớ cho từ | ⚪ | M9, SCR-08 |
+| M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | ⚪ | M7, M7.5, M8 ✅, SCR-06 |
+| M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
+| ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
 
 Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không làm cho tới khi Phase 1 xong.**
@@ -237,20 +239,46 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 **Kết quả (2026-11-17):** core `KEDMANEE_ROWS`/`kedmaneeChar`, `gradeThaiTyping`/`diffThai`/`acceptedAnswers`; web `ThaiKeyboard` (`simple-keyboard` 3.8.205, theme `hg-theme-nom` chỉ dùng tokens — không nạp CSS mặc định), `ThaiTextInput`, `TypingFeedback`, `/dev/typing`. Tests: core 280 (coverage lines 100%), scripts 72, web 166; E2E `typing.spec.ts` + axe `/dev/typing` xanh 3 trình duyệt × 2 viewport; baseline Windows `dev-typing-*-win32.png` (Linux do CI sinh). Ghi chú: ครับ/ค่ะ/คะ tùy chọn ở cuối mỗi cụm của đáp án (gõ liền vẫn nhận); dấu câu ASCII/ngoặc kép bị bỏ khi chấm (giữ ฯ ๆ).
 
-### M7 — Bài học 🔵
+### M7.5 — Trò chơi 🟢 (ưu tiên, v7.2)
+
+**Requirement:** plan **0.6** (F-01, F-02', F-03', F-04'; F-10 sửa v7.2), **F-11..F-14**, **P-09** (kỷ lục), 7.2 (audio), 7.4. Spec **`docs/design/screens/SCR-08-games.md`** + 5 wireframe `SCR-08-*.png`.
+
+**Cần trước:** M7 T7.1–T7.3 ✅ (content client, tiến độ, audio). SCR-08 ✅ duyệt 2026-11-18.
+
+**Task**
+- [x] T7.5.1 Core: interface `Game` (`generateRound(source, seed)`, `answer`, `score`, `summary`) + `GameSource` (mục đã học ∪ từ/câu của unit đã chọn, bỏ draft thiếu nghĩa/đáp án; kiểm tra đủ dữ liệu từng trò) + RNG có seed. Record `GameResultRecord` (kỷ lục theo trò + nguồn) và cờ `needsReview` theo item; Dexie migration + `ProgressRepository` (contract test). **Không** gọi `recordReview` (F-12) — test khẳng định.
+- [x] T7.5.2 Core: 4 trò — `matchPairs` (6 cặp, điểm theo thời gian + lượt lật), `trueFalse` (50% nghĩa đúng, combo ×1..×5, 60 s), `sentenceRush` (5 câu, `tokens` không thẻ nhiễu, 20 s/câu), `classifierRush` (đáp án + 3 loại từ khác có trong dữ liệu, 5 s/từ, thưởng tốc độ). Đồng hồ là tham số (test bằng đồng hồ giả). Unit test.
+- [x] T7.5.3 Web component tương tác **dùng chung (M9 dùng lại)**: `ChoiceButton` (phím số), `TokenChip`/`TokenBank`, `FeedbackBar` (icon + chữ), `GameTopBar` (đồng hồ, điểm, combo), hook `useCountdown` (tạm dừng khi tab ẩn), âm phản hồi bật/tắt (F-13), tôn trọng `prefers-reduced-motion`. Component test.
+- [x] T7.5.3b **Khu Trò chơi sinh động (owner chốt phương án B, plan 7.6.1 v7.3)**: token `color.game.*` (Ghép cặp tím `#7C3AED`, Đúng hay sai? cam `#C2410C`, Xếp câu tốc độ xanh ngọc `#0F766E`, Đoán loại từ hồng `#BE185D`; tương phản ≥ 4.5:1) trong `tokens.json` + `tokens.css`, utility `bg-game`/`text-game`/`bg-game-subtle` theo `data-game` (ngoài khu Trò chơi = accent); chuyển động phản hồi (`animate-shake`/`pop`/`rise`/`enter`/`urgent`, `CountIn` 3·2·1) — tắt khi reduced-motion; trang mẫu `/dev/play`.
+- [x] T7.5.3c **Cơ chế kiểu Memrise Speed Review (owner chọn "cả gói", v7.3)**: core `rapidGame` — Đúng hay sai? + Đoán loại từ chơi **3 tim** (giờ mỗi câu `questionTimeMs` 5–9 s theo độ dài, sai/hết giờ mất tim, 15 đúng liền +1 tim tối đa 5, điểm = 100 × combo + tốc độ 0..50), `setNeedsReview` (bật/tắt "cần ôn" từng mục); web `UrgencyCard` (nền ngả đỏ dần), tim trên `GameTopBar`, `useAutoSpeech`/`useSpeakOnCue` (tự đọc qua `AudioProvider`, cài đặt `gameAutoSpeak`), `ReviewList`; **Xếp câu tốc độ: sau mỗi câu (đúng hay sai) đọc cả câu đúng** rồi mới sang câu (`useFeedbackPause`, góp ý owner); `/dev/play` cập nhật. SCR-08 + plan 0.6 sửa theo.
+- [x] T7.5.3d **Đổi font Thái → Sarabun (owner yêu cầu 2026-11-18, plan v7.4 G-05/D8)**: thay `@fontsource-variable/noto-sans-thai` bằng `@fontsource/sarabun` (subset `thai`, weight 400/500/600, self-host); `tokens.css` theo `docs/design/tokens.json` (đã sửa); `index.css` comment; kiểm tra dấu trên/dưới không bị cắt ở mọi cỡ `th-*` (line-height 1.75), thẻ từ ≥ 48px; cập nhật toàn bộ visual baseline; ghi chú trong `docs/design/README.md`.
+- [x] T7.5.4 `/games` theo SCR-08 §A: chọn nguồn, 4 card (kỷ lục, khóa khi thiếu dữ liệu + lý do), phím `1`–`4`; **mỗi card màu của trò** (`data-game`).
+- [x] T7.5.5 `/games/:id` 4 màn chơi + màn kết quả theo SCR-08 §B–C (màu + chuyển động của trò, **hiệu ứng mạnh hơn khi phá kỷ lục** — không confetti; kỷ lục mới, mục sai → `needsReview`, "Chơi với mục sai").
+- [x] T7.5.7 **Content mẫu loại từ cho Unit 3** (Claude Desktop soạn 2026-11-19, `draft: true`, giáo viên duyệt sau — S10): điền `classifier` cho 5 từ hiện có — ตุ๊กตา **ตัว**, ถุงเท้า **คู่**, รองเท้า **คู่**, ตะเกียบ **คู่**, ช้อน **คัน** (giữ ช้อน thiếu nghĩa để test cảnh báo) — và thêm 7 từ từ `sources/03-loai-tu.pdf` vào `u03-l1` (tổng 12, không vượt cảnh báo 8–12 từ/bài): ร่ม (ô, dù) **คัน** · แก้ว (cốc, ly) **ใบ** · จาน (đĩa) **ใบ** · หนังสือ (sách) **เล่ม** · ปากกา (bút bi) **ด้าม** · รถ (xe) **คัน** · ไข่ (trứng) **ฟอง**; `source = plernpin-03#p<trang>`. Kết quả: 11 từ dùng được (≥ 8) với 7 loại từ khác nhau → Đoán loại từ mở khóa. Sửa test/fixture phụ thuộc số từ Unit 3 nếu có.
+- [x] T7.5.6 E2E: Đúng hay sai? với seed cố định → điểm + kỷ lục lưu, hết 3 tim → kết quả, bỏ "cần ôn" một mục; Đoán loại từ trên Unit 3 mẫu; khẳng định lịch FSRS không đổi; axe; baseline `/games` + 1 màn chơi.
+
+**Tiêu chí nghiệm thu**
+- Chơi được 4 trò hoàn toàn bằng bàn phím trên content mẫu (Unit 1–3, 11); trò thiếu dữ liệu bị khóa có lý do.
+- Kỷ lục theo trò + nguồn đúng sau reload; mục sai có cờ "cần ôn".
+- Không thẻ SRS nào đổi `due`/`stability` sau khi chơi.
+- Coverage core giữ nguyên; CI pass.
+
+**Kết quả (2026-11-19):** core `games/` (`Game`, `rapidGame` 3 tim, 4 trò, nguồn F-10 v7.2, `subsetSource`, `saveGameResult`/`setNeedsReview` — không đụng FSRS), Dexie v4 (`gameResults`, `needsReview`); web `components/interactive` (dùng lại ở M9), `/games`, `/games/:id` (Focus layout), token `color.game.*`, font Sarabun. Content mẫu Unit 3: 12 từ, 11 có loại từ (7 loại). Tests: core 328 (coverage lines 100%), scripts 73, web 251; E2E 201 pass + 3 chập chờn (popup Auth Emulator, chạy lại pass) trên 3 trình duyệt × 2 viewport. Tiêu chí "chơi được 4 trò trên content mẫu": 3/4 — **Xếp câu tốc độ khóa đúng có lý do** vì chưa chuyên đề nào có ≥ 5 câu có thẻ từ (đã test bằng content giả); cần owner thêm câu mẫu. Baseline mới: `games-*`, `game-match-*`, `typography-*` (Windows đã commit; Linux do CI sinh).
+
+### M7 — Bài học 🟢
 
 **Requirement:** plan **0.4** (bài học 4 bước, mở khóa mềm, checklist can-do), **0.7** (`/units`, `/units/:unitId`, `/units/:unitId/:lessonId`), **0.8** (P-10 `UnitPath`, P-11 `CanDoList`, P-04 theo unit), **7.2** (AudioProvider), **B-03/B-04** (từ mới vào SRS), **C-02/C-03/C-04/C-06/C-07** (tra từ, toggle bản dịch, phát câu trong bước Hội thoại), 7.3–7.4.
 
-**Cần trước:** M6 ✅. **SCR-04** (lộ trình + chi tiết unit) và **SCR-05** (bài học 4 bước) chưa có → T7.4–T7.6 🟠 chờ M0.5b (AGENTS.md mục 4: làm logic/test trước, báo owner).
+**Cần trước:** M6 ✅, M6.1 ✅. **SCR-04, SCR-05 ✅ owner duyệt 2026-11-19** (`docs/design/screens/`). Dùng lại component tương tác của M7.5 (bước Bài tập trong bài học) và font Sarabun.
 
 **Task**
-- [ ] T7.1 Types bundle content (`UnitSummary`, `UnitBundle`, `BuiltLesson` + `steps`, `BuiltSentence` + `auto_tokens`, `Manifest`) chuyển từ `scripts/content/build.ts` vào `packages/core` (web và script dùng chung) + content client trong `apps/web` (`fetch` `manifest.json` → `units.json` / `unit-<id>.json`, cache theo `manifest.version`, validate bằng Zod) + hook `useUnits()`, `useUnit(id)`. Unit test (fetch giả).
-- [ ] T7.2 Tiến độ bài học: record `LessonProgressRecord` (bước đã xong 1–4, điểm bài tập, hoàn thành khi ≥ 80%) + `CanDoRecord` (tick tay); Dexie store mới + migration `schemaVersion`; `ProgressRepository` mở rộng (Dexie + memory, contract test); selector core: trạng thái unit chưa học/đang học/xong (P-10), can-do tự tick khi mọi bài xong (P-11), % theo unit (P-04). `ITEM_TYPES` thêm `sentence` (chuẩn bị M9).
-- [ ] T7.3 `WebSpeechProvider` (`th-TH`) + ưu tiên file `audio/<id>` khi câu có `audio`; không có giọng Thái → trạng thái để UI hướng dẫn cài. Unit test với mock `speechSynthesis`/`Audio`.
-- [ ] T7.4 🟠 `/units` lộ trình theo **chuyên đề giáo viên** (thứ tự `order`, nhãn `level` + `kind`; plan 0.11 #1), `UnitPath` + `ProgressRing` mỗi unit (SCR-04).
-- [ ] T7.5 🟠 `/units/:unitId`: danh sách bài, `CanDoList`, từ vựng của unit (SCR-04).
-- [ ] T7.6 🟠 `/units/:unitId/:lessonId` focus layout, stepper theo `lesson.steps` (bỏ qua bước không có dữ liệu, plan 0.11 #3), mở khóa mềm: Từ vựng (flashcard Thái → Việt, phiên âm ẩn, từ mới vào SRS), Mẫu câu, Hội thoại (tra từ panel phải, toggle bản dịch, phát câu), Bài tập (khung + chấm ≥ 80% — loại bài tập thật ở M9) (SCR-05).
-- [ ] T7.7 E2E luồng học 1 bài (Unit 1 mẫu) + axe + screenshot baseline 3 route mới.
+- [x] T7.1 Types bundle content (`UnitSummary`, `UnitBundle`, `BuiltLesson` + `steps`, `BuiltSentence` + `auto_tokens`, `Manifest`) chuyển từ `scripts/content/build.ts` vào `packages/core` (web và script dùng chung) + content client trong `apps/web` (`fetch` `manifest.json` → `units.json` / `unit-<id>.json`, cache theo `manifest.version`, validate bằng Zod) + hook `useUnits()`, `useUnit(id)`. Unit test (fetch giả).
+- [x] T7.2 Tiến độ bài học: record `LessonProgressRecord` (bước đã xong 1–4, điểm bài tập, hoàn thành khi ≥ 80%) + `CanDoRecord` (tick tay); Dexie store mới + migration `schemaVersion`; `ProgressRepository` mở rộng (Dexie + memory, contract test); selector core: trạng thái unit chưa học/đang học/xong (P-10), can-do tự tick khi mọi bài xong (P-11), % theo unit (P-04). `ITEM_TYPES` thêm `sentence` (chuẩn bị M9).
+- [x] T7.3 `WebSpeechProvider` (`th-TH`) + ưu tiên file `audio/<id>` khi câu có `audio`; không có giọng Thái → trạng thái để UI hướng dẫn cài. Unit test với mock `speechSynthesis`/`Audio`.
+- [x] T7.4 `/units` lộ trình theo **chuyên đề giáo viên** (thứ tự `order`, nhãn `level` + `kind`; plan 0.11 #1), `UnitPath` + `ProgressRing` mỗi unit (SCR-04).
+- [x] T7.5 `/units/:unitId`: danh sách bài, `CanDoList`, từ vựng của unit (SCR-04).
+- [x] T7.6 `/units/:unitId/:lessonId` focus layout, stepper theo `lesson.steps` (bỏ qua bước không có dữ liệu, plan 0.11 #3), mở khóa mềm: Từ vựng (flashcard Thái → Việt, phiên âm ẩn, từ mới vào SRS), Mẫu câu, Hội thoại (tra từ panel phải, toggle bản dịch, phát câu), Bài tập (khung + chấm ≥ 80% — loại bài tập thật ở M9) (SCR-05).
+- [x] T7.7 E2E luồng học 1 bài (Unit 1 mẫu) + axe + screenshot baseline 3 route mới.
 
 **Tiêu chí nghiệm thu**
 - Web đọc được `units.json`/`unit-*.json` do M6 sinh; đổi content → `manifest.version` đổi → client tải lại.
@@ -258,6 +286,8 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Từ mới ở bước Từ vựng có thẻ FSRS; bước Hội thoại tra từ được.
 - Audio luôn qua `AudioProvider`; test dùng mock.
 - Không lỗi axe serious/critical; baseline mới owner đã xem.
+
+**Kết quả (2026-11-19):** core `continueTarget`/`resumeStep` (Học tiếp, bước dở dang), `buildLessonQuiz`/`checkLessonAnswer` (bước Bài tập ở M7: chọn nghĩa + xếp câu, dùng component M7.5; loại đầy đủ ở M9); web `UnitsPage` (lọc `?kind=`, `↑↓` + Enter), `UnitPage` (can-do tick tay / tự tick, từ vựng + mức thuộc, chi tiết từ), `LessonPage` (Focus layout, stepper mở khóa mềm `[` `]`, Từ vựng thẻ/danh sách → `introduceCard` mỗi từ một lần, Mẫu câu, Hội thoại tách từ `Intl.Segmenter` + panel tra từ + bản dịch `T` (nhớ lựa chọn) + phát cả đoạn, Bài tập ≥ 80% → `completeLessonStep`, màn hoàn thành), banner thiếu giọng Thái + hướng dẫn cài; `ProgressRing` nhận nội dung giữa vòng. Tests: core 333 (coverage lines 100%), web 260; E2E `lessons.spec.ts` (luồng học trọn Bài 1 Unit 1 → xong chuyên đề, thẻ SRS được tạo) + axe 3 route + baseline `units`/`unit`/`lesson`; E2E đầy đủ 225 pass + 1 chập chờn (Auth Emulator). Lệch spec có chủ đích: chi tiết từ ở `/units/:unitId` mở rộng tại chỗ thay popover (chưa có component popover); tự đọc khi lật thẻ dùng chung cài đặt `gameAutoSpeak`.
 
 ### M6 — Content model v7 🟢
 
@@ -326,7 +356,21 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-19 | M7 → 🟢 | Owner chọn tách `m7-lessons-ui` từ `m7-lessons` (PR #14 chưa merge vào `main`). T7.4 `/units`, T7.5 `/units/:unitId`, T7.6 bài học 4 bước + bài tập + hoàn thành, T7.7 E2E + axe + baseline. Sửa trong lúc làm: thẻ SRS bị tạo trùng khi lật lại từ "Chưa nhớ" (gọi `introduceCard` song song) → mỗi từ một lần/bước; axe `label-content-name-mismatch` ở danh sách từ. Đóng M7 → 🟢 | — | M9 chờ duyệt SCR-06; baseline Linux mới từ CI | `m7-lessons-ui` PR #17 |
+| 2026-11-19 | M7 (mở khóa) | Owner: **merge PR #16** (M7.5 vào `m7-lessons`; `main` còn chờ PR #14), **duyệt SCR-04/05**. Claude Desktop: content mẫu Chuyên đề 11 thêm **31 câu** từ "Bài tập vận dụng của น่า" (`sources/11-…pdf` p2–p6) — bản dịch Thái + `tokens` + 1 thẻ nhiễu mỗi câu, `draft: true` chờ giáo viên duyệt → mở khóa **Xếp câu tốc độ** (≥ 5 câu). Giữ nguyên s-u11-016/019 (thiếu đáp án, phục vụ test cảnh báo) | T7.4–T7.7 | — | `m7-lessons-ui` (tách từ `m7-lessons`) |
+| 2026-11-19 | M7.5 → 🟢 | T7.5.7 content mẫu Unit 3: `classifier` cho 5 từ + 7 từ mới (ร่ม, แก้ว, จาน, หนังสือ, ปากกา, รถ, ไข่; trang PDF đã tra: p1/p4/p6), `content:check` 0 lỗi; T7.5.6 E2E Đoán loại từ trên Chuyên đề 3 (chọn nguồn được nhớ, phím 1–4, hết tim → kết quả, mục sai `lang="th"`, axe). E2E đầy đủ 201 pass + 3 chập chờn (Auth Emulator). Đóng M7.5 → 🟢 | — | Xếp câu tốc độ cần chuyên đề có ≥ 5 câu (content); baseline Linux từ CI; M7 chờ SCR-04/05, M9 chờ M7 + SCR-06 | `m7.5-games` PR #16 |
+| 2026-11-19 | M7.5 (plan) | Claude Desktop: thêm **T7.5.7** — danh sách loại từ cho content mẫu Unit 3 (12 từ, 7 loại từ: ตัว คู่ คัน ใบ เล่ม ด้าม ฟอง) để mở khóa Đoán loại từ và hoàn tất T7.5.6 | T7.5.7 | — | — (chưa commit) |
+| 2026-11-18 | M7.5 | Owner **duyệt SCR-08** (README, SETUP S11). T7.5.4 `/games` (chọn nguồn + nhớ, "Từ đã học" → Chuyên đề 1 khi chưa đủ, 4 card màu trò, kỷ lục, khóa có lý do, phím 1–4, số mục "cần ôn"); T7.5.5 `FocusLayout` + `/games/:id` (`?source=`, `?seed=`): Ghép cặp (lưới 4×3, mũi tên + Space), Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ, kết quả (lưu kỷ lục + "cần ôn" một lần, kỷ lục mới có sao + vòng sáng, bật/tắt "cần ôn", Chơi lại ↵ / Chơi với mục sai W / Trò khác); core `subsetSource`; bỏ `/dev/play`. T7.5.6 `games.spec.ts`: Đúng hay sai? hết 3 tim → kỷ lục sau reload, bỏ "cần ôn", không có thẻ SRS; Đoán loại từ bị khóa có lý do (content chưa có loại từ); axe; baseline `/games` + Ghép cặp. Sửa: axe (lưới thiếu role row, chữ `fg-subtle` thiếu tương phản), phím tắt gắn bằng layout effect (WebKit bấm sớm bị mất phím → câu hết giờ). Test: core 328, web 251; E2E games + a11y liên quan xanh; lần chạy E2E đầy đủ cuối bị dừng do máy hết bộ nhớ (CI chạy lại) | — | Đoán loại từ trên Unit 3 chờ content `classifier`; baseline Linux `games-*` từ CI | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 | T7.5.3d: `@fontsource/sarabun` 5.3.0 (subset `thai`, 400/500/600) thay `@fontsource-variable/noto-sans-thai`; `tokens.css` khớp `tokens.json` (test); E2E `typography` kiểm tra Sarabun đã tải + dấu không bị cắt; E2E 186/186 (3 trình duyệt × 2 viewport); baseline Windows `typography-*` cập nhật, baseline Linux `typography-*` xoá để CI sinh lại (owner xem artifact) | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 (plan) | Owner: dùng **font chữ phổ thông** (mẫu sách tập viết, chữ Thái có đầu tròn) → plan v7.4: font Thái **Sarabun** (G-05, D8, `tokens.json`, `brief.md`); thêm **T7.5.3d** (làm ngay, không chờ duyệt) | — | — | `m7.5-games` (docs `acd4f0e`) |
+| 2026-11-18 | M7.5 | Góp ý owner: Xếp câu tốc độ — sau mỗi câu (xếp đúng, và theo owner đồng ý: cả khi sai / hết giờ) **đọc cả câu đúng** để người học nhớ. `useFeedbackPause` (đọc qua `AudioProvider` khi bật tự đọc, chờ đọc xong và ≥ 1,5 s mới sang câu); SCR-08 F-03' cập nhật; test | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 | Owner: tham khảo Memrise → chọn **cả gói** (v7.3). T7.5.3c: `rapidGame` (3 tim, giờ theo độ dài 5–9 s, +1 tim / 15 đúng liền, combo + tốc độ) cho Đúng hay sai? + Đoán loại từ; `setNeedsReview`; `UrgencyCard`, tim trên thanh trên, tự đọc chữ Thái (`gameAutoSpeak`), `ReviewList` bật/tắt "cần ôn"; sửa lỗi demo không tự sang câu (hẹn giờ bị đặt lại mỗi lần render); SCR-08 + plan 0.6/changelog | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 | Owner xem `/dev/play`: "thiếu màu, không animation" → **chốt phương án B** (plan 7.6.1 v7.3, SCR-08, `docs/design/README.md`). T7.5.3b: token `color.game.*` 4 màu (AA), `data-game` → `bg-game`/`text-game`; chuyển động phản hồi (rung/nảy/+điểm/combo/đếm 3·2·1/đồng hồ sắp hết giờ, theo token motion, tắt khi reduced-motion); trang mẫu `/dev/play` (Đúng hay sai?, Xếp câu tốc độ chạy logic core) + test route + axe | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 | T7.5.1 core `Game` (trạng thái thuần, `now` là tham số), nguồn F-10 v7.2 (`selectGameSource`: đã học ≥ 6 mục, không thì chuyên đề), RNG seed, `GameResultRecord` + `NeedsReviewRecord` (Dexie v4, chuyển Guest), `saveGameResult` không đụng FSRS (contract test); T7.5.2 `matchPairs`, `trueFalse`, `sentenceRush`, `classifierRush` (coverage lines 100%); T7.5.3 `components/interactive`: `ChoiceButton`, `TokenBank`/`TokenChip`, `FeedbackBar`, `GameTopBar`/`TimeBar`/`PausedOverlay`, `useCountdown` (tạm dừng khi tab ẩn/mất focus), `useKeyShortcut`, `useReducedMotion`, `useFeedbackSound` (Web Audio, cài đặt qua `SettingsRepository`) | — | T7.5.4–T7.5.6 chờ duyệt SCR-08; content mẫu chưa có `classifier` (Unit 3) → Đoán loại từ bị khóa | `m7.5-games` PR #16 (draft) |
+| 2026-11-18 | M7.5 (plan) | Owner chốt **Trò chơi trước Bài tập** (plan v7.2): M10.5 → **M7.5**, thêm F-04' Đoán loại từ, F-10 cho chơi với từ chưa học của chuyên đề; Claude Desktop soạn `SCR-08-games.md` + 5 wireframe. Mở M7.5 🔵 (T7.5.1–T7.5.6) | — | UI M7.5 chờ duyệt SCR-08; UI M7 chờ duyệt SCR-04/05 | — (chưa commit) |
+| 2026-11-18 | M0.5b | Claude Desktop: spec `SCR-04-units.md` (Lộ trình + Chi tiết chuyên đề), `SCR-05-lesson.md` (bài học theo `lesson.steps`, flashcard, Mẫu câu, Hội thoại + panel tra từ), `SCR-06-practice.md` (trang Bài tập, phiên E-01..E-14, kết quả, quy tắc chấm FSRS) + 8 wireframe PNG; `docs/design/README.md` | — | Owner duyệt SCR-04/05/06 → mở khóa M7 T7.4–T7.7 | — (chưa commit, trên nhánh `m7-lessons`) |
 | 2026-11-17 | M8 | Mở M8 song song M7 (owner chốt), chi tiết hóa T8.1–T8.5. T8.1 layout Kedmanee TIS 820-2538 trong core; T8.2 `gradeThaiTyping` (chuẩn hóa, `th_alt`, ครับ/ค่ะ/คะ tùy chọn, sai dấu thanh, diff grapheme); T8.3 `ThaiKeyboard` (`simple-keyboard`, CSS tokens) + `ThaiTextInput` (map phím vật lý, ẩn/hiện); T8.4 `TypingFeedback`; T8.5 `/dev/typing` + E2E luồng 4 + axe + baseline. M8 → 🟢 | — | Owner xem baseline `/dev/typing`; M9 chờ M7 (SCR-04/05) + SCR-06 | `m8-thai-keyboard` PR #15 |
+| 2026-11-17 | M7 | T7.1 types/schema bundle content vào core + content client web (manifest no-cache, cache theo hash) + `useUnits`/`useUnit`; T7.2 `LessonProgressRecord`/`CanDoRecord`, Dexie v3, `completeLessonStep` (≥ 80%), selector P-04/P-10/P-11, `ITEM_TYPES` + `sentence`; T7.3 `WebSpeechProvider` th-TH + file audio + `voiceStatus` | — | T7.4–T7.7 chờ SCR-04/05 (M0.5b); `content:build` chưa chép `content/audio/` (chưa có file audio) | `m7-lessons` PR #14 (draft) |
 | 2026-11-17 | M6.1 → M7 | Commit docs v7.1 (plan 0.11). T6.1.1–T6.1.5: `Unit.kind` + level B1/tùy chọn, `Word.classifier`/`thai_alt`/`note_vi`, nghĩa/đáp án được trống khi draft (JSON Schema xuất lại); `content:check` cảnh báo thiếu nghĩa/đáp án/tokens tự tách, unit `grammar` ≤ 40 từ/bài; build tự tách `tokens` (`auto_tokens`) + `lesson.steps`; templates + README ánh xạ Plern-Pin; content mẫu Unit 3 + Unit 11 (draft). Đóng M6.1 → 🟢, M7 🔵 | — | M7 UI chờ SCR-04/05; owner duyệt content mẫu Unit 3/11 | `m6.1-teacher-content` PR #13 |
 | 2026-11-17 | M6.1 (plan) | Owner gửi 2 PDF mẫu giáo viên (`sources/03-loai-tu.pdf`, `sources/11-cac-truong-hop-cua-na.pdf`, gitignored). Plan v7.1 mục 0.11: PDF ảnh + watermark → Claude vision; lộ trình theo chuyên đề giáo viên; schema thêm `kind`, B1, `classifier`, `thai_alt`, `note_vi`; E-14 Loại từ. Mở **M6.1** 🔵 trước M7 | — | M4 chờ S9 | — |
 | 2026-11-17 | M6 → M7 | T6.1–T6.7: schema `Unit`/`Lesson`/`Word` v7/`Sentence`/`Grammar`/`Dialogue` (bỏ `Deck`/`WordRow`/`Reading`/`MinimalPair`, JSON Schema 6 file), loader 6 file + `--input` theo tên, `content:check` v7 (khóa ngoại, `tokens` = `th`, `distractors`, `th_alt`, ký tự Thái; cảnh báo 3–4 bài/8–12 từ/4–8 câu thoại), `content:build` `units.json` + `unit-<id>.json`, `content/templates/` + README, content mẫu Unit 1–2 (draft), docs (AGENTS 10, plan 5.4–5.6, SETUP S10). Đóng M6 → 🟢, mở M7 🔵 (T7.1–T7.7) | — | M7 UI (T7.4–T7.6) chờ SCR-04/05; owner duyệt content mẫu Unit 1–2 + task M7 | `m6-content-v7` PR #12 |
