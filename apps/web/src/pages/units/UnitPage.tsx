@@ -246,7 +246,6 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
                     <button
                       type="button"
                       aria-expanded={open}
-                      aria-label={t('units.wordDetail', { text: w.thai })}
                       onClick={() => setOpenWord(open ? null : w.id)}
                       className="flex items-center gap-2 rounded px-1 py-1 text-left text-sm outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring"
                     >

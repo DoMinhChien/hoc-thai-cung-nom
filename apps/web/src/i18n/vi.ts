@@ -298,7 +298,6 @@ export const vi = {
     lessonDone: '✓ Xong · {score}%',
     noMeaning: '—',
     listen: 'Nghe {text}',
-    wordDetail: 'Chi tiết từ {text}',
   },
   lesson: {
     exit: 'Thoát',

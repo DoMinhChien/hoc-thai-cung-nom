@@ -198,7 +198,7 @@ describe('/units/:unitId (SCR-04 §B)', () => {
 
     const vocab = screen.getByTestId('unit-vocab');
     expect(vocab).toHaveTextContent('Từ vựng (3)');
-    await userEvent.click(within(vocab).getByRole('button', { name: 'Chi tiết từ คุณ' }));
+    await userEvent.click(within(vocab).getByRole('button', { name: /คุณ/ }));
     expect(within(vocab).getByRole('button', { name: 'Nghe คุณ' })).toBeInTheDocument();
   });
 
