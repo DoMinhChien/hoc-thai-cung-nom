@@ -14,6 +14,7 @@ import { ProgressRing } from '@/components/progress';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useUnit } from '@/content/hooks';
+import { unitLabel } from '@/content/labels';
 import { useMastery, useRepositories, useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
@@ -22,7 +23,7 @@ import { Badge, LoadError, SpeakButton } from './parts';
 const VOCAB_PREVIEW = 8;
 const MASTERY_DOT = { none: '○', learning: '◐', known: '◐', mastered: '●' } as const;
 
-/** `/units/:unitId` — chi tiết chuyên đề (SCR-04 §B, P-11). */
+/** `/units/:unitId` — chi tiết Bài (giáo trình) / Chuyên đề (SCR-04 §B, P-11, plan 0.12 #1). */
 export function UnitPage() {
   const { unitId = '' } = useParams();
   const content = useUnit(unitId);
@@ -35,7 +36,7 @@ export function UnitPage() {
         <Link to="/units" className="hover:text-foreground hover:underline">
           {t('pages.units')}
         </Link>
-        {content.status === 'ready' && <> / {t('units.unitN', { n: content.data.unit.order })}</>}
+        {content.status === 'ready' && <> / {unitLabel(content.data.unit)}</>}
       </nav>
       {content.status === 'loading' ? (
         <Skeleton className="h-64" />
@@ -112,7 +113,7 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
           />
           <p className="text-sm text-muted-foreground" data-testid="unit-progress">
             {status === 'completed'
-              ? t('units.unitDone')
+              ? t('units.unitDone', { unit: unitLabel(unit) })
               : t('units.progressLine', {
                   done: progress.completed,
                   total: progress.total,
@@ -128,7 +129,7 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
               onClick={primary}
             >
               {status === 'completed'
-                ? t('units.practiceUnit')
+                ? t('units.practiceUnit', { unit: unitLabel(unit) })
                 : t('units.continueLesson', { n: current!.order })}
               <kbd
                 aria-hidden

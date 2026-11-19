@@ -5,6 +5,9 @@ import { chooseGuest, signInWithGoogle, uniqueEmail } from './helpers';
 
 const PATHS = [
   ...ROUTE_SAMPLES.map((r) => r.path),
+  // Nội dung thật của giáo viên (plan 0.12, TC.1).
+  '/units/b02',
+  '/units/b02/b02-l1',
   '/dev/typography',
   '/dev/progress',
   '/dev/typing',

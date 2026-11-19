@@ -3,7 +3,7 @@
  * `MIN_LEARNED_ITEMS` → từ/câu của chuyên đề người học chọn (kể cả chưa học, chơi để làm quen).
  * Bỏ mục draft thiếu nghĩa (từ) / thiếu đáp án (câu).
  */
-import type { UnitBundle } from '../content/bundle';
+import { compareUnits, type UnitBundle } from '../content/bundle';
 import type { GameItemRef } from './game';
 
 export interface GameWord {
@@ -94,15 +94,15 @@ export function learnedSource(
 export const sourceSize = (source: GameSource) => source.words.length + source.sentences.length;
 
 /**
- * Chọn nguồn theo lựa chọn của người học. "Từ đã học" chưa đủ → chuyên đề đầu tiên theo `order`
- * (`fallback: true` — UI nhắc "Bạn đang chơi với từ chưa học của Chuyên đề {n}").
+ * Chọn nguồn theo lựa chọn của người học. "Từ đã học" chưa đủ → unit đầu tiên của lộ trình (`compareUnits`)
+ * (`fallback: true` — UI nhắc "Bạn đang chơi với từ chưa học của Bài/Chuyên đề {n}").
  */
 export function selectGameSource(
   bundles: readonly UnitBundle[],
   learned: readonly GameItemRef[],
   choice: string = LEARNED_SOURCE,
 ): { source: GameSource; fallback: boolean } {
-  const units = [...bundles].sort((a, b) => a.unit.order - b.unit.order);
+  const units = [...bundles].sort((a, b) => compareUnits(a.unit, b.unit));
   const chosen = units.find((b) => unitSourceKey(b.unit.unit_id) === choice);
   if (chosen) return { source: unitSource(chosen), fallback: false };
   const source = learnedSource(units, learned);

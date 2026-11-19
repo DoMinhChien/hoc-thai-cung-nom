@@ -11,7 +11,7 @@ Học một bài 10–15 phút qua các bước **có trong `lesson.steps`** (th
 ## Khung chung (focus layout, D6)
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│ [✕ Thoát  Esc]   Chuyên đề 3 · Bài 1: Loại từ của đồ vật                    │
+│ [✕ Thoát  Esc]   Chuyên đề 3 · Bài học 1: Loại từ của đồ vật                │
 │                  ① Từ vựng ✓ ── ② Mẫu câu ── ③ Hội thoại ── ④ Bài tập        │
 ├───────────────────────────────────────────────────────────────────────────┤
 │                         (nội dung bước, max 720, căn giữa)                 │
@@ -72,7 +72,7 @@ Học một bài 10–15 phút qua các bước **có trong `lesson.steps`** (th
 - Kết thúc → màn kết quả SCR-06 §C, thêm dòng: **≥ 80%** → "✓ Hoàn thành bài" + nút chính "Bài tiếp theo ↵" (hoặc "Về chuyên đề" nếu là bài cuối); **< 80%** → "Cần đạt 80% để hoàn thành bài" + nút chính "Làm lại câu sai ↵", phụ "Để sau".
 
 ## Màn hoàn thành bài
-Sau bước cuối (≥ 80%): tiêu đề "Xong Bài {n}: {tên}", 3 số (từ đã học · câu đã luyện · điểm), nếu unit vừa xong: dòng "✓ Bạn đã hoàn thành chuyên đề {tên}" + các can-do vừa tick. Không confetti, không âm thanh ăn mừng.
+Sau bước cuối (≥ 80%): tiêu đề "Xong Bài học {n}: {tên}", 3 số (từ đã học · câu đã luyện · điểm), nếu unit vừa xong: dòng "✓ Bạn đã hoàn thành {Bài n | Chuyên đề n}: {tên}" (nhãn theo nhánh, plan 0.12 #1) + các can-do vừa tick. Không confetti, không âm thanh ăn mừng.
 
 ## Phím tắt (hiện ngay trên nút, D4)
 `Esc` thoát · `[` `]` đổi bước · `Space` lật / hiện nghĩa · `1` `2` chưa nhớ / đã biết · `R` nghe lại · `P` phiên âm · `T` bản dịch · `Enter` nút chính.

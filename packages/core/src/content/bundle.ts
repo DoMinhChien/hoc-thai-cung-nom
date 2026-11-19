@@ -15,6 +15,21 @@ export const unitFile = (unitId: string) => `unit-${unitId}.json`;
 
 const OrderSchema = z.number().int().positive();
 
+const KIND_RANK = { theme: 0, grammar: 1 } as const;
+
+/**
+ * Thứ tự lộ trình (plan 0.12 #1): nhánh Giáo trình (`theme`) trước, rồi Chuyên đề (`grammar`);
+ * trong nhánh theo `order` (chỉ duy nhất trong nhánh), trùng thì theo `unit_id`.
+ */
+export function compareUnits(
+  a: { kind: keyof typeof KIND_RANK; order: number; unit_id: string },
+  b: { kind: keyof typeof KIND_RANK; order: number; unit_id: string },
+): number {
+  return (
+    KIND_RANK[a.kind] - KIND_RANK[b.kind] || a.order - b.order || a.unit_id.localeCompare(b.unit_id)
+  );
+}
+
 /** Bước của bài học (plan 0.4), chỉ gồm bước có dữ liệu (0.11 #3). */
 export const LessonStepSchema = z.enum(['vocab', 'grammar', 'dialogue', 'exercise']);
 export type LessonStep = z.infer<typeof LessonStepSchema>;

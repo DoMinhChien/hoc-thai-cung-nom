@@ -64,7 +64,7 @@ Bắt đầu: màn đếm "3 · 2 · 1" (bỏ qua khi reduced-motion) — `Space
 ## Trạng thái
 | Trạng thái | Hiển thị |
 |---|---|
-| Chưa học gì và chưa chọn chuyên đề | Nguồn tự chọn chuyên đề đầu tiên theo `order`, dòng nhắc "Bạn đang chơi với từ chưa học của Chuyên đề {n}." |
+| Chưa học gì và chưa chọn chuyên đề | Nguồn tự chọn unit đầu tiên của lộ trình (Giáo trình → Chuyên đề, theo `order`), dòng nhắc "Bạn đang chơi với từ chưa học của {Bài n | Chuyên đề n}." |
 | Không có giọng Thái | Tắt tự phát âm, nút 🔊 vô hiệu; trò vẫn chơi được |
 | Offline / Guest | Chơi bình thường (dữ liệu local) |
 | Tab ẩn | Tạm dừng, overlay "Đã tạm dừng — Space để tiếp tục" |

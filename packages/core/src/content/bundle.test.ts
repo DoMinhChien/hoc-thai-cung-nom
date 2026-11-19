@@ -1,6 +1,7 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import type { Sentence, Unit, Word } from '../schema';
 import {
+  compareUnits,
   ManifestSchema,
   unitFile,
   UnitBundleSchema,
@@ -102,5 +103,24 @@ describe('bundle JSON (T7.1)', () => {
     };
     expect(ManifestSchema.parse(manifest).files['unit-u01.json']?.count).toBe(4);
     expect(ManifestSchema.safeParse({ ...manifest, version: 'v1' }).success).toBe(false);
+  });
+});
+
+describe('compareUnits (plan 0.12 #1)', () => {
+  it('Giáo trình (theme) trước Chuyên đề (grammar), rồi theo order, rồi unit_id', () => {
+    const units = [
+      { unit_id: 'c02', kind: 'grammar', order: 2 },
+      { unit_id: 'c01', kind: 'grammar', order: 1 },
+      { unit_id: 'b03', kind: 'theme', order: 3 },
+      { unit_id: 'u03', kind: 'theme', order: 3 },
+      { unit_id: 'b01', kind: 'theme', order: 1 },
+    ] as const;
+    expect([...units].sort(compareUnits).map((u) => u.unit_id)).toEqual([
+      'b01',
+      'b03',
+      'u03',
+      'c01',
+      'c02',
+    ]);
   });
 });

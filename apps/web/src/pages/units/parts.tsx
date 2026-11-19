@@ -8,7 +8,7 @@ import { t } from '@/i18n';
 import { useOnline } from '@/lib/useOnline';
 import { cn } from '@/lib/utils';
 
-/** Nhãn nhỏ viền (level, "Ngữ pháp", "Bản nháp"). */
+/** Nhãn nhỏ viền (level, nhánh "Giáo trình"/"Chuyên đề", "Bản nháp"). */
 export function Badge({ children, muted = false }: { children: ReactNode; muted?: boolean }) {
   return (
     <span
