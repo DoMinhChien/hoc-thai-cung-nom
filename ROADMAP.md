@@ -287,8 +287,8 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - Audio luôn qua `AudioProvider`; test dùng mock.
 - Không lỗi axe serious/critical; baseline mới owner đã xem.
 
-
 **Kết quả (2026-11-19):** core `continueTarget`/`resumeStep` (Học tiếp, bước dở dang), `buildLessonQuiz`/`checkLessonAnswer` (bước Bài tập ở M7: chọn nghĩa + xếp câu, dùng component M7.5; loại đầy đủ ở M9); web `UnitsPage` (lọc `?kind=`, `↑↓` + Enter), `UnitPage` (can-do tick tay / tự tick, từ vựng + mức thuộc, chi tiết từ), `LessonPage` (Focus layout, stepper mở khóa mềm `[` `]`, Từ vựng thẻ/danh sách → `introduceCard` mỗi từ một lần, Mẫu câu, Hội thoại tách từ `Intl.Segmenter` + panel tra từ + bản dịch `T` (nhớ lựa chọn) + phát cả đoạn, Bài tập ≥ 80% → `completeLessonStep`, màn hoàn thành), banner thiếu giọng Thái + hướng dẫn cài; `ProgressRing` nhận nội dung giữa vòng. Tests: core 333 (coverage lines 100%), web 260; E2E `lessons.spec.ts` (luồng học trọn Bài 1 Unit 1 → xong chuyên đề, thẻ SRS được tạo) + axe 3 route + baseline `units`/`unit`/`lesson`; E2E đầy đủ 225 pass + 1 chập chờn (Auth Emulator). Lệch spec có chủ đích: chi tiết từ ở `/units/:unitId` mở rộng tại chỗ thay popover (chưa có component popover); tự đọc khi lật thẻ dùng chung cài đặt `gameAutoSpeak`.
+
 ### M6 — Content model v7 🟢
 
 **Requirement:** plan **mục 0.9** (mẫu nhập liệu), 0.3 (16 chủ đề, cấp A1/A2), 0.4 (cấu trúc bài học: 8–12 từ, 1–2 mẫu câu, 4–8 câu thoại), 0.5 (E-04, E-06, E-07 cần `tokens`, `distractors`, `th_alt`), 5.4–5.6 (loader/validator/build — giữ cách làm M3).
