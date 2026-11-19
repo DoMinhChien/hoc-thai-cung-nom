@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.4** (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.5** (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -148,6 +148,21 @@ Nguồn: giáo trình **"Tiếng Thái Thạc Sĩ Plern-Pin"**, chia theo **chuy
 6. Bài tập mới **E-14 Loại từ**: cho danh từ → chọn (bậc 1) hoặc gõ (bậc 4) ลักษณนาม đúng; mở rộng: điền vào cụm `danh từ + số + loại từ` (vd. แมว 2 ___ → ตัว). Implement ở M9.
 7. **Phần còn thiếu** (đáp án loại từ, nghĩa Việt còn trống, bản dịch Thái của 34 câu): pipeline M4 có bước **`--suggest`**: Claude đề xuất, ghi `suggested_by: claude`, `confidence`, giữ `draft: true` → **giáo viên/owner duyệt** trước khi publish. Ưu tiên đáp án gốc nếu giáo viên cung cấp (SETUP S10).
 8. Ghi nguồn: `source = "plernpin-03#p<trang>"`; hiển thị dòng ghi công giáo trình ở chi tiết unit (câu chữ do owner duyệt).
+
+### 0.12 Nội dung thật từ giáo viên (2026-11-19, v7.5)
+
+Owner đưa toàn bộ tài liệu vào `sources/` (27 PDF ~ 550 trang, **ảnh, có watermark**, bản quyền — không commit). Hai bộ:
+- **Giáo trình** "Tiếng Thái chuyên sâu cấp độ 1 (Level A1)" — 12 **บทที่** (slide 16:9): đại từ, chào hỏi, số đếm, loại từ & so sánh, ngày tháng, giờ, đi lại & chỉ đường, đặt phòng, gọi món, mua bán, nhập vai hội thoại 1–2. Mỗi bài: **Hệ thống từ vựng** (bảng คำศัพท์ | nghĩa, thẻ hình), **Cấu trúc** (โครงสร้างที่ n: mẫu + ví dụ), **Bài luyện tập** (câu Việt → dịch Thái, không có đáp án).
+- **Chuyên đề** 1–15 (A4): cách dùng từ / ngữ pháp nâng cao (การ, ความ, ใจ, ขี้, น่า, ที่, ว่า/ถูก, สม, ไป/มา, đại từ, từ để hỏi, loại từ) + bài tập.
+
+**Quyết định (owner):**
+1. **Lộ trình 2 nhánh**: *Giáo trình* (`kind: theme`, unit `b01`–`b12`, học trước) và *Chuyên đề* (`kind: grammar`, unit `c01`–`c15`). Trên `/units`: bộ lọc đổi nhãn **"Giáo trình" / "Chuyên đề"** (thay "Từ vựng" / "Ngữ pháp"); số hiển thị theo nhánh: "Bài {order}" / "Chuyên đề {order}"; sắp xếp Giáo trình trước, rồi Chuyên đề. `order` chỉ cần duy nhất **trong cùng nhánh**.
+2. **Claude Desktop chuyển tay** từng PDF → `content/*` (không chờ M4). Trạng thái từng file: `content/IMPORT-STATUS.md`.
+3. Một **บทที่** dài được chia thành **nhiều bài học ~10 từ** theo nhóm trang (bảng từ vựng liền nhau), mẫu câu gắn vào bài học đầu tiên có liên quan; câu luyện tập chia theo chủ đề gần nhất.
+4. **Bài luyện tập**: Claude soạn bản dịch Thái + `th_alt` (biến thể ผม/ฉัน, ครับ/ค่ะ) + `tokens` + 1 thẻ nhiễu → `draft: true`, **giáo viên duyệt** trước khi publish.
+5. Ảnh minh họa trong slide **không** trích xuất (bản quyền ảnh không rõ) → dùng Noto Emoji (V-05).
+6. Content mẫu cũ (`u01`, `u02`, `u03`, `u11`) **giữ** tới khi nội dung thật đủ thay; sau đó agent xóa và chuyển test/E2E sang unit thật (`u03` → `c03`, `u11` → `c11`).
+7. M4 (PDF pipeline tự động) **hạ ưu tiên** — chỉ cần khi giáo viên gửi tài liệu mới thường xuyên.
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1085,6 +1100,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.5 (2026-11-19):** Nhận 27 PDF giáo viên (mục 0.12): lộ trình 2 nhánh Giáo trình (`b01`–`b12`) / Chuyên đề (`c01`–`c15`); Claude Desktop chuyển tay, theo dõi ở `content/IMPORT-STATUS.md`; M4 hạ ưu tiên.
 - **v7.4 (2026-11-18):** Owner yêu cầu **font chữ phổ thông** (ảnh mẫu sách tập viết, chữ Thái có đầu tròn) → font Thái **Sarabun** thay Noto Sans Thai (G-05, D8, `tokens.json`); tiếng Việt giữ Inter.
 - **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản. Tham khảo **Memrise Speed Review**: F-02' và F-04' chơi theo **3 tim** (giờ mỗi câu theo độ dài 5–9 s, sai/hết giờ mất tim, 15 câu đúng liền +1 tim), nền thẻ ngả đỏ dần khi sắp hết giờ, thưởng tốc độ, tự đọc chữ Thái, màn kết quả bật/tắt "cần ôn" từng mục.
 - **v7.2 (2026-11-18):** **Trò chơi trước Bài tập**: M10.5 → **M7.5**; thêm **F-04' Đoán loại từ**; F-10 cho phép chơi với từ chưa học của chuyên đề đã chọn; spec SCR-04/05/06/08.

@@ -18,7 +18,7 @@
 | S7 | GitHub Variables / Secrets | M0–M1 | 5 phút | ✅ Secret SWA + 4 Variables Firebase (2026-11-15) |
 | S8 | Giới hạn Firebase API key | M12 | 5 phút | ☐ |
 | S9 | Anthropic API key + giới hạn chi tiêu | M4 | 10 phút | ☐ |
-| S10 | Nội dung: PDF mẫu, duyệt content mẫu, nội dung thật 16 unit | M3, M4, M6+ | — | ◐ content mẫu M3 ✅, PDF mẫu ✅ (2026-11-17) — còn đáp án + danh sách chuyên đề từ giáo viên, duyệt content mẫu M6/M6.1, nội dung thật |
+| S10 | Nội dung: PDF mẫu, duyệt content mẫu, nội dung thật 16 unit | M3, M4, M6+ | — | ◐ content mẫu M3 ✅, PDF mẫu ✅ (2026-11-17) — tài liệu thật ✅ (27 PDF, 2026-11-19), Claude nhập dần (`content/IMPORT-STATUS.md`), duyệt content mẫu M6/M6.1, nội dung thật |
 | S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ◐ M0.5a ✅ duyệt 2026-11-15 — còn M0.5b |
 | S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ✅ `dominhchien206@gmail.com` |
 
@@ -105,7 +105,9 @@ Google Cloud Console → APIs & Services → Credentials → API key của Fireb
 ## S10 — Nội dung
 - [x] Gửi **PDF giáo trình mẫu** → `sources/03-loai-tu.pdf`, `sources/11-cac-truong-hop-cua-na.pdf` (2026-11-17, gitignored; phân tích ở plan 0.11).
 - [ ] Hỏi giáo viên **đáp án** (nếu có): loại từ cho bảng "Loại từ"; bản dịch Thái cho "Bài tập vận dụng" (vd. 34 câu của น่า). Không có → dùng `--suggest` của M4 rồi giáo viên duyệt.
-- [ ] Hỏi giáo viên **danh sách chuyên đề** (số thứ tự + tên) để làm lộ trình (plan 0.11 #1) và câu ghi công giáo trình hiển thị trong app.
+- [x] Tài liệu giáo viên (27 PDF) đã vào `sources/` 2026-11-19 — Claude Desktop nhập dần, theo dõi `content/IMPORT-STATUS.md`.
+- [ ] Giáo viên **duyệt từng bài đã nhập** (đánh dấu 🟡 trong `content/IMPORT-STATUS.md`): bản dịch Thái của bài luyện tập, cách chia bài học.
+- [x] ~~Hỏi giáo viên danh sách chuyên đề~~ — đã có trong tài liệu (12 bài + 15 chuyên đề). - [ ] Câu **ghi công giáo trình** hiển thị trong app (owner duyệt).
 - [x] Duyệt **content mẫu** agent tạo ở M3 (các mục `draft: true`) — owner cho đóng M3 2026-11-16.
 - [ ] ~~Duyệt mẹo nhớ & hình cho 44 phụ âm~~ ⛔ bỏ ở v7 (plan 0.2).
 - [ ] Duyệt **content mẫu M6** (Unit 1–2, `draft: true` trong `content/`).

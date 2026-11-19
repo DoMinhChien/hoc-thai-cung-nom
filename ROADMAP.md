@@ -7,6 +7,8 @@
 
 ## Milestone đang mở
 
+> **📥 Nội dung thật (2026-11-19, plan 0.12):** owner đã đưa 27 PDF vào `sources/`. Claude Desktop nhập tay dần → `content/` (draft, GV duyệt); tiến độ ở **`content/IMPORT-STATUS.md`** (hiện: Bài 2 ✅ nhập — 65 từ, 29 câu, 2 mẫu câu). Agent: làm **TC.1** bên dưới.
+
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
 > **🟢 M7.5 — Trò chơi** (10/10 task, **PR #16 đã merge vào `m7-lessons` 2026-11-19**; vào `main` cùng PR #14) — xong 2026-11-19: `/games` + 4 trò (Ghép cặp, Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ) + kết quả, màu/chuyển động khu Trò chơi + cơ chế kiểu Memrise (v7.3), font Sarabun (v7.4). Chờ owner: xem baseline mới, content mẫu chưa có chuyên đề nào ≥ 5 câu nên Xếp câu tốc độ đang khóa trên content thật. **Không còn milestone mở được**: M7 UI chờ SCR-04/05, M9 chờ M7 + SCR-06.
@@ -61,6 +63,12 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 ---
 
 ## 3. Chi tiết milestone đang mở
+
+### TC — Hỗ trợ nội dung thật (plan 0.12) 🔵
+
+- [ ] TC.1 `/units` theo 0.12 #1: bộ lọc **"Giáo trình" / "Chuyên đề"** (theo `kind`), nhãn "Bài n" / "Chuyên đề n", sắp xếp Giáo trình → Chuyên đề; chi tiết unit + breadcrumb dùng cùng nhãn; cập nhật SCR-04 (câu chữ) + E2E/baseline. Kiểm tra `content:check` / `content:build` với unit `b02` (65 từ, 29 câu, 6 bài học) — sửa nếu có lỗi, **không** sửa nội dung Thái (báo Claude Desktop).
+- [ ] TC.2 (khi `IMPORT-STATUS.md` có đủ Bài 1–3 và CĐ 3, 11) xóa content mẫu `u01`/`u02`/`u03`/`u11`, chuyển test/E2E sang unit thật.
+
 
 ### M0 — Khung dự án 🟢
 
@@ -356,6 +364,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-19 | Nội dung (plan 0.12) | Owner đưa 27 PDF giáo viên vào `sources/`, chọn lộ trình 2 nhánh + Claude Desktop nhập tay + Claude dịch bài luyện tập (GV duyệt). Claude Desktop: nhập **Bài 2** (`b02`: 6 bài học, 65 từ, 2 mẫu câu, 29 câu luyện dịch, draft); tạo `content/IMPORT-STATUS.md`; thêm TC.1–TC.2 | TC.1 | — | — (content + docs chưa commit) |
 | 2026-11-19 | M7 → 🟢 | Owner chọn tách `m7-lessons-ui` từ `m7-lessons` (PR #14 chưa merge vào `main`). T7.4 `/units`, T7.5 `/units/:unitId`, T7.6 bài học 4 bước + bài tập + hoàn thành, T7.7 E2E + axe + baseline. Sửa trong lúc làm: thẻ SRS bị tạo trùng khi lật lại từ "Chưa nhớ" (gọi `introduceCard` song song) → mỗi từ một lần/bước; axe `label-content-name-mismatch` ở danh sách từ. Đóng M7 → 🟢 | — | M9 chờ duyệt SCR-06; baseline Linux mới từ CI | `m7-lessons-ui` PR #17 |
 | 2026-11-19 | M7 (mở khóa) | Owner: **merge PR #16** (M7.5 vào `m7-lessons`; `main` còn chờ PR #14), **duyệt SCR-04/05**. Claude Desktop: content mẫu Chuyên đề 11 thêm **31 câu** từ "Bài tập vận dụng của น่า" (`sources/11-…pdf` p2–p6) — bản dịch Thái + `tokens` + 1 thẻ nhiễu mỗi câu, `draft: true` chờ giáo viên duyệt → mở khóa **Xếp câu tốc độ** (≥ 5 câu). Giữ nguyên s-u11-016/019 (thiếu đáp án, phục vụ test cảnh báo) | T7.4–T7.7 | — | `m7-lessons-ui` (tách từ `m7-lessons`) |
 | 2026-11-19 | M7.5 → 🟢 | T7.5.7 content mẫu Unit 3: `classifier` cho 5 từ + 7 từ mới (ร่ม, แก้ว, จาน, หนังสือ, ปากกา, รถ, ไข่; trang PDF đã tra: p1/p4/p6), `content:check` 0 lỗi; T7.5.6 E2E Đoán loại từ trên Chuyên đề 3 (chọn nguồn được nhớ, phím 1–4, hết tim → kết quả, mục sai `lang="th"`, axe). E2E đầy đủ 201 pass + 3 chập chờn (Auth Emulator). Đóng M7.5 → 🟢 | — | Xếp câu tốc độ cần chuyên đề có ≥ 5 câu (content); baseline Linux từ CI; M7 chờ SCR-04/05, M9 chờ M7 + SCR-06 | `m7.5-games` PR #16 |
