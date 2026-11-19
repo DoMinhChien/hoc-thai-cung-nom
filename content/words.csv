@@ -31,3 +31,68 @@ na-rak,u11,u11-l1,น่ารัก,,đáng yêu; dễ thương,,,adj,,,,,,pler
 na-du,u11,u11-l1,น่าดู,,đáng xem; nên xem,,,adj,,,,,,plernpin-11#p1,true
 na-klua,u11,u11-l1,น่ากลัว,,đáng sợ,,,adj,,,,,,plernpin-11#p1,true
 na-buea,u11,u11-l1,น่าเบื่อ,,nhàm chán; trông nhàm chán,,,adj,,,,,,plernpin-11#p1,true
+b02-w01,b02,b02-l1,สวัสดี,,xin chào,,,interj,,,,,,plernpin-b02#p3,true
+b02-w02,b02,b02-l1,ค่ะ,,ạ; dạ; vâng,"nữ dùng, đứng cuối câu trả lời / câu kể",,particle,,,,,,plernpin-b02#p3,true
+b02-w03,b02,b02-l1,คะ,,ạ,"nữ dùng, đứng cuối câu hỏi",,particle,,,,,,plernpin-b02#p3,true
+b02-w04,b02,b02-l1,ครับ,,ạ; dạ; vâng,"nam dùng, cuối câu",,particle,,,,,,plernpin-b02#p3,true
+b02-w05,b02,b02-l1,ชื่อ,,tên,,,noun,,,,,,plernpin-b02#p3,true
+b02-w06,b02,b02-l1,อะไร,,gì; cái gì,,,pron,,,,,,plernpin-b02#p4,true
+b02-w07,b02,b02-l1,ส่วน,,còn,,,conj,,,,,,plernpin-b02#p4,true
+b02-w08,b02,b02-l1,ชาติ,,quốc gia; đất nước,,,noun,,,,,,plernpin-b02#p4,true
+b02-w09,b02,b02-l1,เช่นกัน,,như vậy; cũng thế,,,adv,,,,,,plernpin-b02#p4,true
+b02-w10,b02,b02-l1,ยินดีที่ได้รู้จัก,,hân hạnh được làm quen,,,phrase,,,,,,plernpin-b02#p4,true
+b02-w11,b02,b02-l2,นี่,,đây,,,pron,,,,,,plernpin-b02#p5,true
+b02-w12,b02,b02-l2,คือ,,là; nghĩa là,,,verb,,,,,,plernpin-b02#p5,true
+b02-w13,b02,b02-l2,เพื่อน,,bạn,danh từ (người bạn),,noun,,,,,,plernpin-b02#p5,true
+b02-w14,b02,b02-l2,ของ,,của,,,prep,,,,,,plernpin-b02#p5,true
+b02-w15,b02,b02-l2,พูด,,nói,,,verb,,,,,,plernpin-b02#p5,true
+b02-w16,b02,b02-l2,ขอโทษ,,xin lỗi,,,phrase,,,,,,plernpin-b02#p6,true
+b02-w17,b02,b02-l2,ขอบคุณ,,cảm ơn,,,phrase,,,,,,plernpin-b02#p6,true
+b02-w18,b02,b02-l2,ได้,,được,,,verb,,,,,,plernpin-b02#p6,true
+b02-w19,b02,b02-l2,เก่ง,,giỏi,,,adj,,,,,,plernpin-b02#p6,true
+b02-w20,b02,b02-l2,มาก,,nhiều; rất,,,adv,,,,,,plernpin-b02#p6,true
+b02-w21,b02,b02-l3,นิดหน่อย,,một chút; một ít,,,adv,,,,,,plernpin-b02#p7,true
+b02-w22,b02,b02-l3,สบายดี,,khỏe,,,adj,,,,,,plernpin-b02#p7,true
+b02-w23,b02,b02-l3,ไม่ค่อยสบาย,,không khỏe lắm,,,phrase,,,,,,plernpin-b02#p7,true
+b02-w24,b02,b02-l3,ไหม,,không,"từ để hỏi, cuối câu hỏi có/không",,particle,,,,,,plernpin-b02#p7,true
+b02-w25,b02,b02-l3,ไม่,,không,"từ phủ định, đứng trước động từ/tính từ",,adv,,,,,,plernpin-b02#p7,true
+b02-w26,b02,b02-l3,หรือ,,hay; hoặc,,,conj,,,,,,plernpin-b02#p8,true
+b02-w27,b02,b02-l3,นามสกุล,,họ,,,noun,,,,,,plernpin-b02#p8,true
+b02-w28,b02,b02-l3,ภาษา,,tiếng; ngôn ngữ,,,noun,,,,,,plernpin-b02#p8,true
+b02-w29,b02,b02-l3,ภาษาไทย,,tiếng Thái,,,noun,,,,,,plernpin-b02#p8,true
+b02-w30,b02,b02-l3,ภาษาเวียดนาม,,tiếng Việt Nam,,,noun,,,,,,plernpin-b02#p8,true
+b02-w31,b02,b02-l4,ภาษาอังกฤษ,,tiếng Anh,,,noun,,,,,,plernpin-b02#p9,true
+b02-w32,b02,b02-l4,อยู่,,ở; sống,,,verb,,,,,,plernpin-b02#p9,true
+b02-w33,b02,b02-l4,พัก,,nghỉ,,,verb,,,,,,plernpin-b02#p9,true
+b02-w34,b02,b02-l4,มา,,đến,,,verb,,,,,,plernpin-b02#p9,true
+b02-w35,b02,b02-l4,จาก,,từ,,,prep,,,,,,plernpin-b02#p9,true
+b02-w36,b02,b02-l4,เมือง,,nước; thành phố,,,noun,,,,,,plernpin-b02#p10,true
+b02-w37,b02,b02-l4,กับ,,với,,,prep,,,,,,plernpin-b02#p10,true
+b02-w38,b02,b02-l4,ใคร,,ai,,,pron,,,,,,plernpin-b02#p10,true
+b02-w39,b02,b02-l4,ไม่เป็นไร,,không sao; không có gì,,,phrase,,,,,,plernpin-b02#p10,true
+b02-w40,b02,b02-l4,ขอตัว,,xin phép,xin phép đi trước / rời đi,,phrase,,,,,,plernpin-b02#p10,true
+b02-w41,b02,b02-l5,ก่อน,,trước,,,adv,,,,,,plernpin-b02#p11,true
+b02-w42,b02,b02-l5,ลาก่อน,,tạm biệt,dùng khi lâu nữa mới gặp hoặc không gặp lại,,phrase,,,,,,plernpin-b02#p11,true
+b02-w43,b02,b02-l5,พบกันใหม่,,hẹn gặp lại,,,phrase,,,,,,plernpin-b02#p11,true
+b02-w44,b02,b02-l5,โอกาสหน้า,,dịp sau; cơ hội sau,,,noun,,,,,,plernpin-b02#p11,true
+b02-w45,b02,b02-l5,ผู้หญิง,,con gái; nữ,,,noun,,,,,,plernpin-b02#p11,true
+b02-w46,b02,b02-l5,ผู้ชาย,,con trai; nam,,,noun,,,,,,plernpin-b02#p12,true
+b02-w47,b02,b02-l5,แนะนำ,,giới thiệu,,,verb,,,,,,plernpin-b02#p12,true
+b02-w48,b02,b02-l5,ทำงาน,,làm việc,,,verb,,,,,,plernpin-b02#p12,true
+b02-w49,b02,b02-l5,ประเทศ,,nước; quốc gia,,,noun,,,,,,plernpin-b02#p12,true
+b02-w50,b02,b02-l5,ใช่,,phải; đúng,,,adj,,,,,,plernpin-b02#p12,true
+b02-w51,b02,b02-l6,ยังไง,,thế nào,từ để hỏi,,pron,,,,,,plernpin-b02#p13,true
+b02-w52,b02,b02-l6,บริษัท,,công ty,,,noun,,,,,,plernpin-b02#p13,true
+b02-w53,b02,b02-l6,มหาวิทยาลัย,,trường đại học,,,noun,,,,,,plernpin-b02#p13,true
+b02-w54,b02,b02-l6,ฮานอย,,Hà Nội,,,noun,,,,,,plernpin-b02#p13,true
+b02-w55,b02,b02-l6,เป็นอะไร,,bị làm sao,hỏi thăm sức khỏe,,phrase,,,,,,plernpin-b02#p13,true
+b02-w56,b02,b02-l6,เป็นหวัด,,bị cảm cúm,,,phrase,,,,,,plernpin-b02#p14,true
+b02-w57,b02,b02-l6,เรื่อยๆ,,tạm ổn; bình thường,,,adv,,,,,,plernpin-b02#p14,true
+b02-w58,b02,b02-l6,ยัง,ยังคง,vẫn; vẫn còn,,,adv,,,,,,plernpin-b02#p14,true
+b02-w59,b02,b02-l6,เหมือน,,giống,,,adj,,,,,,plernpin-b02#p14,true
+b02-w60,b02,b02-l6,เดิม,,cũ; như cũ,"như ban đầu, không có gì thay đổi",,adj,,,,,,plernpin-b02#p14,true
+b02-w61,b02,b02-l6,ล่ะ,หละ,thì sao,"ล่ะ dùng trong văn nói, หละ trong văn viết",,particle,,,,,,plernpin-b02#p15,true
+b02-w62,b02,b02-l6,เหรอ,,hả; thế à,,,particle,,,,,,plernpin-b02#p15,true
+b02-w63,b02,b02-l6,สยาม,,Siam (tên cũ của Thái Lan),,,noun,,,,,,plernpin-b02#p15,true
+b02-w64,b02,b02-l6,วิศวกร,,kỹ sư,,,noun,,,,,,plernpin-b02#p15,true
+b02-w65,b02,b02-l6,ไฮเทค,,công nghệ cao,phiên âm từ tiếng Anh “high tech”,,noun,,,,,,plernpin-b02#p15,true
