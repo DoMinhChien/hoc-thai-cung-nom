@@ -75,6 +75,8 @@ export function PracticeRunner({
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState<WrongAnswer[]>([]);
   const [stopping, setStopping] = useState(false);
+  // Đã qua câu cuối, đang chờ ghi xong → khóa phiên (không trả lời lại câu cuối).
+  const [finishing, setFinishing] = useState(false);
 
   const current = queue[index];
   const firstRound = questions.length;
@@ -132,10 +134,12 @@ export function PracticeRunner({
     });
 
   const next = () => {
-    if (!answered) return;
-    setAnswered(null);
-    if (index + 1 < queue.length) setIndex(index + 1);
-    else {
+    if (!answered || finishing) return;
+    if (index + 1 < queue.length) {
+      setAnswered(null);
+      setIndex(index + 1);
+    } else {
+      setFinishing(true);
       const summary = {
         total: firstRound,
         correct,
@@ -146,7 +150,7 @@ export function PracticeRunner({
     }
   };
 
-  useKeyShortcut('Enter', next, !!answered && !stopping);
+  useKeyShortcut('Enter', next, !!answered && !stopping && !finishing);
   useKeyShortcut(['s', 'S'], skip, !answered && !stopping);
   useKeyShortcut('Escape', () => setStopping(true), !stopping && !!onExit);
 

@@ -6,7 +6,7 @@ import {
   type PracticeMode,
 } from '@nom/core';
 import { useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import { Skeleton } from '@/components/ui/skeleton';
 import { t } from '@/i18n';
@@ -66,20 +66,16 @@ export function PracticeSessionPage() {
   const state = usePracticeData();
   const voice = useVoiceStatus();
   const [params] = useSearchParams();
+  const location = useLocation();
 
   let body;
   if (state.status === 'error') body = <Message text={t('practice.loadError')} />;
   else if (state.status === 'loading' || voice === 'checking') {
-    body = <Skeleton className="h-96" aria-label={t('practice.loading')} />;
+    body = <Skeleton className="h-96" role="status" aria-label={t('practice.loading')} />;
   } else {
-    // Đổi URL ("Luyện lại câu sai", "Làm thêm") → phiên mới.
+    // Mỗi lần điều hướng ("Luyện lại câu sai", "Làm thêm" — kể cả cùng URL) → phiên mới.
     body = (
-      <Session
-        key={params.toString()}
-        data={state.data}
-        params={params}
-        voice={voice === 'available'}
-      />
+      <Session key={location.key} data={state.data} params={params} voice={voice === 'available'} />
     );
   }
   return <section data-testid="page-practice-session">{body}</section>;

@@ -314,6 +314,23 @@ describe('/practice/session (SCR-06 §B–C)', () => {
     fireEvent.keyDown(window, { key: 'Enter' });
     await waitFor(() => expect(router.state.location.search).toMatch(/^\?items=.*word:w4/));
     expect(await screen.findByTestId('practice-session')).toBeInTheDocument();
+    // Phiên "Luyện lại" cũng sai → "Luyện lại câu sai" về cùng URL vẫn mở phiên mới.
+    const url = router.state.location.search;
+    while (!screen.queryByTestId('practice-result')) {
+      fireEvent.keyDown(window, { key: 's' });
+      await screen.findByTestId('feedback-bar');
+      fireEvent.keyDown(window, { key: 'Enter' });
+      await waitFor(() =>
+        expect(
+          !!screen.queryByTestId('practice-result') ||
+            (!!screen.queryByTestId('question') && !screen.queryByTestId('feedback-bar')),
+        ).toBe(true),
+      );
+    }
+    fireEvent.keyDown(window, { key: 'Enter' });
+    expect(await screen.findByTestId('practice-session')).toBeInTheDocument();
+    const itemsOf = (search: string) => search.replace('?items=', '').split(',').sort();
+    expect(itemsOf(router.state.location.search)).toEqual(itemsOf(url));
     // Đợi ghi xong (lần đầu + hỏi lại của mọi mục) trước khi xóa DB.
     await waitFor(async () => {
       const attempts = await repos().reviews.attemptsBetween(
@@ -380,7 +397,8 @@ describe('/practice (SCR-06 §A)', () => {
     const router = renderAt('/practice');
     const state = await screen.findByTestId('practice-today-state');
     expect(state).toHaveAttribute('data-state', 'ready');
-    expect(state).toHaveTextContent('1 từ · 1 câu');
+    // Câu sai s2 + đến hạn w1, s1 + câu mới của bài đã học s3.
+    expect(state).toHaveTextContent('4 câu đến hạn · 1 từ · 3 câu · khoảng 1 phút');
     expect(await screen.findByTestId('nav-practice-due')).toHaveTextContent('2');
     expect(screen.getByTestId('practice-goal')).toHaveTextContent('1/20');
     expect(screen.getByTestId('practice-mistakes')).toHaveTextContent('1 câu sai trong 7 ngày qua');

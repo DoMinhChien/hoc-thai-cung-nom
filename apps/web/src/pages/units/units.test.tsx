@@ -271,8 +271,9 @@ describe('/units/:unitId/:lessonId (SCR-05)', () => {
       await userEvent.click(screen.getByTestId('practice-next'));
       await waitFor(() =>
         expect(
-          screen.queryByTestId('lesson-finished') ?? screen.queryByTestId('question'),
-        ).not.toBeNull(),
+          !!screen.queryByTestId('lesson-finished') ||
+            (!!screen.queryByTestId('question') && !screen.queryByTestId('feedback-bar')),
+        ).toBe(true),
       );
     }
 

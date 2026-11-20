@@ -4,10 +4,11 @@ import {
   PRACTICE_FILTER_KEY,
   PRACTICE_FILTERS,
   practiceOverview,
+  questionItems,
   SECONDS_PER_QUESTION,
   type PracticeFilter,
 } from '@nom/core';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
@@ -32,7 +33,7 @@ export function PracticePage() {
         <p className="text-muted-foreground">{t('practice.intro')}</p>
       </header>
       {state.status === 'loading' ? (
-        <Skeleton className="h-40" aria-label={t('practice.loading')} />
+        <Skeleton className="h-40" role="status" aria-label={t('practice.loading')} />
       ) : state.status === 'error' ? (
         <p>{t('practice.loadError')}</p>
       ) : (
@@ -46,25 +47,32 @@ function Hub({ data }: { data: PracticeData }) {
   const navigate = useNavigate();
   const repos = useRepositories();
   const now = useMemo(() => new Date(), []);
+  // Cập nhật ngay khi chọn (ghi cài đặt là bất đồng bộ).
+  const [filter, setFilter] = useState(data.filter);
   const overview = practiceOverview({
     cards: data.cards,
     attempts: data.attempts,
     now,
     dayStart: startOfDay(now),
   });
-  // Số câu của phiên "hôm nay" nếu bắt đầu bây giờ (gồm "cần ôn", câu sai, thẻ mới).
-  const todayCount = useMemo(
-    () =>
-      buildPracticeSession({
-        ...data,
-        mode: { kind: 'today' },
-        filter: data.filter,
-        size: data.size,
-        now,
-        seed: 0,
-      }).length,
-    [data, now],
-  );
+  // Phiên "hôm nay" nếu bắt đầu bây giờ (gồm "cần ôn", câu sai, thẻ mới): số câu, số từ / câu.
+  const today = useMemo(() => {
+    const session = buildPracticeSession({
+      ...data,
+      mode: { kind: 'today' },
+      filter,
+      size: data.size,
+      now,
+      seed: 0,
+    });
+    const items = session.flatMap((q) => questionItems(q.question));
+    return {
+      count: session.length,
+      words: items.filter((i) => i.itemType === 'word').length,
+      sentences: items.filter((i) => i.itemType === 'sentence').length,
+    };
+  }, [data, filter, now]);
+  const todayCount = today.count;
   const learnedUnits = new Set(data.lessons.map((l) => l.unitId));
   const started = learnedUnits.size > 0 || data.cards.length > 0;
   const start = () => navigate('/practice/session');
@@ -105,8 +113,8 @@ function Hub({ data }: { data: PracticeData }) {
             <p data-testid="practice-today-state" data-state="ready">
               {t('practice.dueLine', {
                 n: todayCount,
-                words: overview.due.words,
-                sentences: overview.due.sentences,
+                words: today.words,
+                sentences: today.sentences,
                 min: Math.max(1, Math.round((todayCount * SECONDS_PER_QUESTION) / 60)),
               })}
             </p>
@@ -181,9 +189,12 @@ function Hub({ data }: { data: PracticeData }) {
                     type="radio"
                     name="practice-filter"
                     value={f}
-                    checked={data.filter === f}
+                    checked={filter === f}
                     data-testid={`practice-filter-${f}`}
-                    onChange={() => void repos?.settings.set(PRACTICE_FILTER_KEY, f)}
+                    onChange={() => {
+                      setFilter(f);
+                      void repos?.settings.set(PRACTICE_FILTER_KEY, f);
+                    }}
                     className="size-4 accent-primary"
                   />
                   {t(`practice.filters.${f}`)}
