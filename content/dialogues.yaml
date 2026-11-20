@@ -2,16 +2,121 @@
 - id: d-u01-l1
   lesson_id: u01-l1
   lines:
-    - { speaker: A, th: สวัสดีครับ, vi: Xin chào. }
-    - { speaker: B, th: สวัสดีค่ะ, vi: Xin chào. }
-    - { speaker: A, th: คุณชื่ออะไรครับ, vi: Bạn tên là gì? }
-    - { speaker: B, th: ฉันชื่อมะลิค่ะ, vi: Tôi tên là Mali. }
+    - { speaker: A, th: "สวัสดีครับ", vi: "Xin chào." }
+    - { speaker: B, th: "สวัสดีค่ะ", vi: "Xin chào." }
+    - { speaker: A, th: "คุณชื่ออะไรครับ", vi: "Bạn tên là gì?" }
+    - { speaker: B, th: "ฉันชื่อมะลิค่ะ", vi: "Tôi tên là Mali." }
   draft: true
 - id: d-u02-l1
   lesson_id: u02-l1
   lines:
-    - { speaker: A, th: บ้านคุณมีกี่คนครับ, vi: Nhà bạn có mấy người? }
-    - { speaker: B, th: สี่คนค่ะ, vi: Bốn người. }
-    - { speaker: A, th: คุณมีพี่ไหมครับ, vi: Bạn có anh chị không? }
-    - { speaker: B, th: มีค่ะ พี่สาวหนึ่งคน, vi: Có. Một chị gái. }
+    - { speaker: A, th: "บ้านคุณมีกี่คนครับ", vi: "Nhà bạn có mấy người?" }
+    - { speaker: B, th: "สี่คนค่ะ", vi: "Bốn người." }
+    - { speaker: A, th: "คุณมีพี่ไหมครับ", vi: "Bạn có anh chị không?" }
+    - { speaker: B, th: "มีค่ะ พี่สาวหนึ่งคน", vi: "Có. Một chị gái." }
+  draft: true
+- id: d-b12-l1
+  lesson_id: b12-l1
+  lines:
+    - { speaker: A, th: "ขอโทษครับ ตอนนี้กี่โมงแล้วครับ", vi: "Xin lỗi! Bây giờ mấy giờ rồi ạ?" }
+    - { speaker: B, th: "แปดโมงสิบห้าแล้วค่ะ", vi: "8h15 sáng rồi ạ." }
+    - { speaker: A, th: "ผมไปก่อนดีกว่า กลัวว่าจะสายครับ", vi: "Tôi đi trước tốt hơn, tôi e là sẽ muộn nhé." }
+    - { speaker: B, th: "คุณไปรถเมล์เหรอคะ", vi: "Bạn đi xe buýt hả?" }
+    - { speaker: A, th: "ไม่ใช่ครับ ผมขับรถไปเองครับ", vi: "Không phải ạ. Tôi tự lái xe đi ạ." }
+    - { speaker: B, th: "งานเริ่มกี่โมงคะ", vi: "Chương trình bắt đầu lúc mấy giờ?" }
+    - { speaker: A, th: "เริ่มสิบโมงเช้าครับ", vi: "Bắt đầu lúc 10h sáng ạ." }
+    - { speaker: B, th: "แล้วงานช่วงบ่ายล่ะคะ", vi: "Còn chương trình trong khoảng thời gian chiều thì sao?" }
+    - { speaker: A, th: "เริ่มหกโมงเย็นครับ แต่บางครั้งก็หกโมงครึ่ง ผมไม่ค่อยแน่ใจครับ", vi: "Bắt đầu 6h chiều ạ. Nhưng thỉnh thoảng thì 6h30. Tôi không chắc chắn lắm đâu." }
+    - { speaker: B, th: "ขอบคุณมากค่ะ", vi: "Cảm ơn nhiều ạ!" }
+  source: plernpin-b12#p3-5
+  draft: true
+- id: d-b12-l2
+  lesson_id: b12-l2
+  lines:
+    - { speaker: A, th: "สวัสดีครับคุณผู้หญิง", vi: "Xin chào bà!" }
+    - { speaker: B, th: "สวัสดีค่ะ ฉันต้องการห้องเตียงใหญ่หนึ่งห้อง และห้องเตียงคู่หนึ่งห้องค่ะ", vi: "Xin chào. Tôi muốn 1 phòng giường đôi và 1 phòng 2 giường ạ." }
+    - { speaker: A, th: "ยังมีห้องว่างอยู่ครับ", vi: "Phòng vẫn còn đang trống ạ." }
+    - { speaker: B, th: "ราคาห้องละเท่าไรคะ", vi: "Giá mỗi phòng bao nhiêu ạ?" }
+    - { speaker: A, th: "ห้องละสองพันบาทต่อวันครับ", vi: "Mỗi phòng 2,000 bạt/ngày ạ." }
+    - { speaker: B, th: "ขอห้องที่ติดกันและอยู่ชั้นเดียวกันนะคะ", vi: "Tôi xin phòng liền nhau và cùng tầng với nhau ạ." }
+    - { speaker: A, th: "คุณจะพักกี่วันครับ", vi: "Bà sẽ ở mấy ngày ạ?" }
+    - { speaker: B, th: "ฉันพักสองวันค่ะ", vi: "Tôi ở 2 ngày ạ." }
+  source: plernpin-b12#p6-7
+  draft: true
+- id: d-b12-l3
+  lesson_id: b12-l3
+  lines:
+    - { speaker: A, th: "ขอพาสปอร์ตและเงินมัดจำหนึ่งพันบาทครับ นี่กุญแจห้องกับคูปองอาหารเช้าครับ ห้องอาหารอยู่ชั้นล่าง ไวไฟฟรี รหัสผ่านคือหนึ่งถึงเก้าครับ", vi: "Xin hộ chiếu và tiền đặt cọc 1,000 bạt ạ. Chìa khóa phòng, phiếu ăn sáng, phòng ăn ở tầng trệt, wifi free, password từ 1 đến 9 ạ." }
+    - { speaker: B, th: "ถ้าจะโทรหาพนักงานต้อนรับ ต้องกดเบอร์อะไรคะ", vi: "Gọi nhân viên lễ tân bấm số nào ạ?" }
+    - { speaker: A, th: "กดเบอร์หนึ่งร้อยครับ", vi: "Bấm số 100 ạ." }
+    - { speaker: B, th: "เช็คเอาท์กี่โมงคะ", vi: "Trả phòng lúc mấy giờ ạ?" }
+    - { speaker: A, th: "เช็คเอาท์ตอนเที่ยงครับ", vi: "12h trưa trả phòng ạ." }
+    - { speaker: B, th: "ช่วยปลุกตอนหกโมงเช้าด้วยนะคะ", vi: "Giúp báo thức lúc 6h sáng nhé ạ." }
+    - { speaker: A, th: "ได้ครับ", vi: "Dạ vâng ạ." }
+    - { speaker: B, th: "ช่วยยกกระเป๋าขึ้นไปห้องสองศูนย์ห้าให้หน่อยนะคะ", vi: "Bạn chuyển hành lý lên phòng 205 giúp tôi nhé ạ." }
+    - { speaker: A, th: "ได้ครับ", vi: "Dạ vâng ạ." }
+    - { speaker: B, th: "นี่ทิปสำหรับคุณค่ะ", vi: "Đây là tiền bo cho anh." }
+    - { speaker: A, th: "ขอบคุณครับ", vi: "Cảm ơn bà ạ." }
+    - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Không có gì!" }
+  source: plernpin-b12#p8-10
+  draft: true
+- id: d-b12-l4
+  lesson_id: b12-l4
+  lines:
+    - { speaker: A, th: "ฮวา วันอาทิตย์นี้คุณจะทำอะไรบ้างครับ", vi: "Bạn Hoa, chủ nhật này bạn định làm những gì?" }
+    - { speaker: B, th: "ฉันยังไม่แน่ใจค่ะ อยากไปอยุธยาค่ะ", vi: "Tôi vẫn chưa chắc chắn ạ. Tôi muốn đi Ayutthaya nhé." }
+    - { speaker: A, th: "อยุธยาสวยมากเลยครับ แล้วคุณจะไปเที่ยวสุโขทัยไหมครับ", vi: "Ayutthaya đẹp lắm luôn ạ. Thế bạn định đi vương quốc Sukhothai không?" }
+    - { speaker: B, th: "อาจจะค่ะ ฉันอยากไปหลายที่มากเลยค่ะ", vi: "Có thể ạ, tôi muốn đi nhiều lắm luôn." }
+    - { speaker: A, th: "แล้วเชียงใหม่ล่ะครับ", vi: "Còn Chiangmai thì sao?" }
+    - { speaker: B, th: "อาจจะไปค่ะ แต่ยังไม่รู้ ฉันอยากไปทะเลด้วยค่ะ", vi: "Có thể đi ạ. Nhưng chưa biết. Tôi muốn đi bãi biển nữa nhé." }
+    - { speaker: A, th: "งั้นไปภูเก็ตกับกระบี่สิครับ", vi: "Vậy thì đi Phuket và Krabi ạ." }
+    - { speaker: B, th: "โอเคค่ะ", vi: "Okie ạ." }
+  source: plernpin-b12#p11-12
+  draft: true
+- id: d-b12-l5
+  lesson_id: b12-l5
+  lines:
+    - { speaker: A, th: "วันนี้อากาศไม่ดีครับ แต่คุณโชคดีนะครับ หน้าร้อนเป็นฤดูที่สวย อากาศดีมากเลยในเดือนเมษายนครับ", vi: "Ngày hôm nay thời tiết tồi. Nhưng bạn may mắn nhé. Mùa hè là mùa đẹp ạ, thời tiết đẹp lắm luôn trong tháng 4." }
+    - { speaker: B, th: "จริงเหรอคะ", vi: "Thật hả?" }
+    - { speaker: A, th: "ใช่ครับ อากาศดีมาก", vi: "Vâng, thời tiết đẹp lắm." }
+    - { speaker: B, th: "ขอบคุณค่ะ รถแท็กซี่อยู่ที่ไหนคะ", vi: "Cảm ơn, xe taxi ở đâu ạ?" }
+    - { speaker: A, th: "รถแท็กซี่อยู่หน้าโรงแรมครับ", vi: "Xe taxi ở trước khách sạn ạ." }
+    - { speaker: B, th: "โอเคค่ะ", vi: "Oki ạ." }
+    - { speaker: A, th: "เที่ยวให้สนุกนะครับ", vi: "Du lịch thú vị nhé!" }
+    - { speaker: B, th: "ขอบคุณค่ะ", vi: "Cảm ơn ạ!" }
+  source: plernpin-b12#p13-14
+  draft: true
+- id: d-b12-l6
+  lesson_id: b12-l6
+  lines:
+    - { speaker: A, th: "สวัสดีครับ ผมอยากจองห้อง มีห้องว่างไหมครับ", vi: "Xin chào, tôi muốn đặt phòng, có phòng trống không ạ?" }
+    - { speaker: B, th: "มีค่ะ มีทั้งห้องเดี่ยวและห้องคู่ค่ะ", vi: "Dạ có ạ. Có cả phòng đơn lẫn phòng đôi ạ." }
+    - { speaker: A, th: "ผมขอดูห้องได้ไหมครับ", vi: "Tôi xem phòng được không ạ?" }
+    - { speaker: B, th: "ได้ค่ะ", vi: "Dạ, được ạ." }
+    - { speaker: A, th: "มีห้องอื่นไหมครับ", vi: "Có phòng khác không ạ?" }
+    - { speaker: B, th: "มีค่ะ", vi: "Dạ có ạ." }
+    - { speaker: A, th: "มีห้องที่ใหญ่กว่านี้ไหมครับ", vi: "Có phòng to hơn này không ạ?" }
+    - { speaker: B, th: "มีค่ะ", vi: "Có ạ." }
+    - { speaker: A, th: "โอเค ห้องนี้ดีกว่าเยอะเลยครับ งั้นผมเอาห้องนี้นะครับ", vi: "Oki, phòng này tốt hơn nhiều luôn ạ. Vậy tôi chốt lấy phòng này nhé." }
+    - { speaker: B, th: "โอเคค่ะ", vi: "Oki ạ." }
+  source: plernpin-b12#p15-17
+  draft: true
+- id: d-b12-l7
+  lesson_id: b12-l7
+  lines:
+    - { speaker: A, th: "ผมจะพักสองคืน ลดราคาได้ไหมครับ", vi: "Tôi sẽ nghỉ 2 đêm, giảm giá được không ạ?" }
+    - { speaker: B, th: "ลดไม่ได้ค่ะ", vi: "Không giảm được ạ." }
+    - { speaker: A, th: "แล้วห้องของผมราคาเท่าไรครับ", vi: "Vậy phòng của tôi giá bao nhiêu?" }
+    - { speaker: B, th: "ค่าห้องคืนละห้าร้อยบาทค่ะ", vi: "Giá phòng mỗi đêm 500 bạt ạ." }
+    - { speaker: A, th: "โอเคครับ ห้องมีแอร์ใช่ไหมครับ", vi: "Oki ạ. Phòng có điều hòa phải không ạ?" }
+    - { speaker: B, th: "มีค่ะ", vi: "Dạ có ạ." }
+    - { speaker: A, th: "มีเครื่องทำน้ำอุ่นไหมครับ", vi: "Có bình nóng lạnh không ạ?" }
+    - { speaker: B, th: "มีด้วยค่ะ", vi: "Có luôn ạ." }
+    - { speaker: A, th: "ดีมากเลยครับ", vi: "Tốt quá ạ." }
+    - { speaker: B, th: "นี่กุญแจค่ะ ห้องของคุณเบอร์สามห้าเจ็ดค่ะ", vi: "Chìa khóa đây ạ, phòng của anh số 357 ạ." }
+    - { speaker: A, th: "ขอบคุณครับ แล้วที่นี่มีอาหารเช้าไหมครับ", vi: "Dạ, cảm ơn ạ. Thế ở đây có phục vụ bữa ăn sáng không?" }
+    - { speaker: B, th: "มีค่ะ อาหารเช้าเริ่มตั้งแต่เจ็ดโมงเช้าถึงเก้าโมงเช้าที่ชั้นสามค่ะ", vi: "Dạ có ạ. Bữa ăn sáng sẽ bắt đầu từ 7h sáng đến 9h sáng ở tầng 3 ạ." }
+    - { speaker: A, th: "ขอบคุณมากนะครับ", vi: "Cảm ơn bạn nhiều nhé." }
+    - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Dạ không có gì ạ." }
+  source: plernpin-b12#p18-21
   draft: true
