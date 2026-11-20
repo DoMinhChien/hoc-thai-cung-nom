@@ -21,6 +21,7 @@
 | S10 | Nội dung: PDF mẫu, duyệt content mẫu, nội dung thật 16 unit | M3, M4, M6+ | — | ◐ content mẫu M3 ✅, PDF mẫu ✅ (2026-11-17) — tài liệu thật ✅ (27 PDF, 2026-11-19), Claude nhập dần (`content/IMPORT-STATUS.md`), duyệt content mẫu M6/M6.1, nội dung thật |
 | S11 | Duyệt thiết kế từng đợt | M0.5a, M0.5b | — | ◐ M0.5a ✅ duyệt 2026-11-15 — còn M0.5b |
 | S12 | Email liên hệ cho trang pháp lý, Google consent screen, Facebook App | M1 | 2 phút | ✅ `dominhchien206@gmail.com` |
+| S13 | Azure AI Speech F0 (giọng đọc neural) | M9.5 (T9.5.3) | ~10 phút | ☐ |
 
 ---
 
@@ -112,6 +113,13 @@ Google Cloud Console → APIs & Services → Credentials → API key của Fireb
 - [ ] ~~Duyệt mẹo nhớ & hình cho 44 phụ âm~~ ⛔ bỏ ở v7 (plan 0.2).
 - [ ] Duyệt **content mẫu M6** (Unit 1–2, `draft: true` trong `content/`).
 - [ ] Nội dung thật: giáo viên điền theo **`content/templates/`** (6 file, hướng dẫn trong `content/templates/README.md`), kiểm tra bằng `pnpm content:check --input <file>` rồi đặt vào `content/` (bỏ `draft`).
+
+## S13 — Azure AI Speech (giọng đọc neural, M9.5 T9.5.3)
+- [ ] Trong Azure (subscription **cá nhân** đang dùng cho SWA): tạo resource **Speech** (Azure AI services → Speech), region **Southeast Asia**, gói **Free F0** (0,5 triệu ký tự/tháng — đủ cho toàn bộ giáo trình).
+- [ ] Lấy **Key 1** + **Region** → tạo file `.env.local` ở thư mục repo: `AZURE_SPEECH_KEY=...` và `AZURE_SPEECH_REGION=southeastasia`. **Không commit, không gửi vào chat, không đưa cho agent qua tin nhắn** — agent chỉ đọc biến môi trường khi chạy `pnpm audio:build` trên máy bạn.
+- [ ] (Tuỳ chọn) Nghe thử giọng `th-TH-PremwadeeNeural` và `th-TH-AcharaNeural` trên Speech Studio, báo agent giọng chọn.
+
+**Đầu ra cho agent:** "S13 xong, giọng: Premwadee/Achara".
 
 ## S11 — Duyệt thiết kế
 - [x] Đợt M0.5a: brief, flows, tokens, SCR-00/01/02, wireframe — duyệt 2026-11-15.
