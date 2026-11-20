@@ -14,8 +14,9 @@ import {
   arcadeInitial,
   arcadeSummary,
   finishArcade,
+  choiceOptions,
+  cyclic,
   promptItems,
-  wrongOptions,
   type ArcadeGame,
   type ArcadeState,
   type PromptItem,
@@ -65,8 +66,11 @@ export interface AirplaneInput {
   move: -1 | 1;
 }
 
-export const currentFlight = (state: AirplaneState) =>
-  state.questions[state.index % state.questions.length]!;
+export const currentFlight = (state: AirplaneState) => cyclic(state.questions, state.index);
+
+/** Làn trong số mây của câu (câu có thể ít mây hơn câu trước khi nguồn nhiều mục cùng nghĩa). */
+const inLanes = (lane: number, question: AirplaneQuestion) =>
+  Math.min(question.clouds.length - 1, Math.max(0, lane));
 
 /** Tốc độ mây sau `correct` câu đúng. */
 export const cloudSpeed = (correct: number) =>
@@ -91,12 +95,14 @@ function collide(state: AirplaneState): AirplaneState {
     (combo) => POINTS * combo,
   );
   const lives = s.lives - (correct ? 0 : 1);
+  const index = s.index + 1;
   const next: AirplaneState = {
     ...s,
     lives,
     lifeDelta: correct ? 0 : -1,
-    index: s.index + 1,
+    index,
     cloudX: 1,
+    lane: inLanes(s.lane, cyclic(s.questions, index)),
   };
   return lives <= 0 ? finishArcade(next) : next;
 }
@@ -113,9 +119,8 @@ export const airplane: ArcadeGame<AirplaneRound, AirplaneInput, AirplaneState> =
     const all = items(source);
     return {
       questions: cycle(rng, all, QUESTIONS).map((target) => {
-        const wrong = rng.shuffle(wrongOptions(all, target)).slice(0, AIRPLANE_LANES - 1);
-        const clouds = rng.shuffle([target.th, ...wrong]);
-        return { ...target, clouds, answerLane: clouds.indexOf(target.th) };
+        const { options, answer } = choiceOptions(rng, all, target, AIRPLANE_LANES);
+        return { ...target, clouds: options, answerLane: answer };
       }),
     };
   },
@@ -124,7 +129,7 @@ export const airplane: ArcadeGame<AirplaneRound, AirplaneInput, AirplaneState> =
     ...arcadeInitial(),
     questions: round.questions,
     index: 0,
-    lane: 1,
+    lane: inLanes(1, round.questions[0]!),
     cloudX: 1,
     lives: START_LIVES,
     lifeDelta: 0,
@@ -132,9 +137,8 @@ export const airplane: ArcadeGame<AirplaneRound, AirplaneInput, AirplaneState> =
 
   tick(state, dtMs, input) {
     if (state.status === 'finished') return state;
-    const lanes = currentFlight(state).clouds.length;
     const s = input
-      ? { ...state, lane: Math.min(lanes - 1, Math.max(0, state.lane + input.move)) }
+      ? { ...state, lane: inLanes(state.lane + input.move, currentFlight(state)) }
       : state;
     return advance(s, dtMs, (next, ms) => {
       const cloudX = next.cloudX - (cloudSpeed(next.correct) * ms) / 1000;

@@ -74,6 +74,7 @@ export function GameResult({
   useKeyShortcut('w', () => onAgainMistakes(summary.mistakes), replay);
 
   const pct = Math.round(summary.accuracy * 100);
+  const stars = resultStars(summary);
   return (
     <div data-testid="game-result" className="flex flex-col gap-6">
       <header className="flex items-center border-b pb-3">
@@ -89,7 +90,7 @@ export function GameResult({
         <h1 className="text-3xl font-semibold">
           {t('games.resultTitle', { game: gameName(gameId) })}
         </h1>
-        <Stars n={resultStars(summary)} />
+        {stars > 0 && <Stars n={stars} />}
         <dl className="flex flex-wrap gap-10">
           <Stat
             value={

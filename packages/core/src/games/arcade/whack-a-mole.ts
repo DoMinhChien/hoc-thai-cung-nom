@@ -10,6 +10,7 @@ import {
   arcadeAnswer,
   arcadeInitial,
   arcadeSummary,
+  cyclic,
   finishArcade,
   promptItems,
   wrongOptions,
@@ -71,8 +72,7 @@ export interface ActiveMole extends Mole {
   key: number;
 }
 
-export const currentWhack = (state: WhackState) =>
-  state.questions[state.index % state.questions.length]!;
+export const currentWhack = (state: WhackState) => cyclic(state.questions, state.index);
 
 /** Các con đang thò lên (chưa bị đập) tại đồng hồ hiện tại. */
 export function activeMoles(state: WhackState): ActiveMole[] {

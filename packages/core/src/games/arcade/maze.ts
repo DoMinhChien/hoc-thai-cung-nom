@@ -13,8 +13,9 @@ import {
   arcadeInitial,
   arcadeSummary,
   finishArcade,
+  choiceOptions,
+  cyclic,
   promptItems,
-  wrongOptions,
   type ArcadeGame,
   type ArcadeState,
 } from './arcade';
@@ -98,8 +99,7 @@ export interface MazeInput {
   dir: Direction;
 }
 
-export const currentMaze = (state: MazeState) =>
-  state.questions[state.index % state.questions.length]!;
+export const currentMaze = (state: MazeState) => cyclic(state.questions, state.index);
 
 const at = (maze: Maze, c: Cell) => maze.cells[c.y * maze.cols + c.x]!;
 const same = (a: Cell, b: Cell) => a.x === b.x && a.y === b.y;
@@ -234,9 +234,8 @@ export const maze: ArcadeGame<MazeRound, MazeInput, MazeState> = {
     return {
       maze: generateMaze(rng),
       questions: cycle(rng, items, QUESTIONS).map((target) => {
-        const wrong = rng.shuffle(wrongOptions(items, target)).slice(0, MAZE_CORNERS.length - 1);
-        const options = rng.shuffle([target.th, ...wrong]);
-        return { ...target, options, answerCorner: options.indexOf(target.th) };
+        const { options, answer } = choiceOptions(rng, items, target, MAZE_CORNERS.length);
+        return { ...target, options, answerCorner: answer };
       }),
     };
   },
@@ -275,7 +274,8 @@ export const maze: ArcadeGame<MazeRound, MazeInput, MazeState> = {
         }
       }
     }
-    if (s.stepMode) return { ...s, elapsedMs: s.elapsedMs + Math.max(0, dtMs) };
+    // Chế độ từng bước không có đồng hồ: thời gian nghĩ giữa các bước không tính.
+    if (s.stepMode) return s;
     return advance(s, dtMs, (next, ms) => {
       const clock = next.ghostClock + ms;
       if (clock < ghostStepMs(next.correct)) return { ...next, ghostClock: clock };

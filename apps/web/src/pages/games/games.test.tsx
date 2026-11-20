@@ -1,4 +1,10 @@
-import { MockAuthService, type Manifest, type UnitBundle, type UnitSummary } from '@nom/core';
+import {
+  MockAuthService,
+  type GameSummary,
+  type Manifest,
+  type UnitBundle,
+  type UnitSummary,
+} from '@nom/core';
 import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
@@ -11,6 +17,7 @@ import { accountData } from '@/data';
 import { createDexieRepositories } from '@/data/dexie-repositories';
 import { GUEST_KEY, NomDatabase } from '@/data/db';
 import { fakeContent } from '@/test/content-fixtures';
+import { GameResult } from './GameResult';
 
 // Content GIẢ LẬP cho test màn Trò chơi — không phải nội dung học.
 const WORDS: [string, string, string, string?][] = [
@@ -259,5 +266,42 @@ describe('/games/:id (SCR-08 §B–C)', () => {
     expect(
       await screen.findByText('Trò này chưa chơi được với nguồn đã chọn.'),
     ).toBeInTheDocument();
+  });
+});
+
+describe('GameResult — sao (M9.6)', () => {
+  const result = (summary: Partial<GameSummary> & Pick<GameSummary, 'gameId'>) =>
+    render(
+      <AppProviders authService={new MockAuthService()}>
+        <GameResult
+          summary={{
+            score: 0,
+            correct: 0,
+            total: 0,
+            accuracy: 0,
+            maxCombo: 0,
+            durationMs: 30_000,
+            mistakes: [],
+            ...summary,
+          }}
+          sourceKey="learned"
+          canReplayMistakes={false}
+          onExit={() => {}}
+          onAgain={() => {}}
+          onAgainMistakes={() => {}}
+          gameId={summary.gameId}
+        />
+      </AppProviders>,
+    );
+
+  it('chưa trả lời câu nào → không hiện hàng sao', () => {
+    result({ gameId: 'true-false' });
+    expect(screen.getByTestId('game-result')).toBeInTheDocument();
+    expect(screen.queryByTestId('result-stars')).toBeNull();
+  });
+
+  it('Ghép cặp không ghép sai thật → 3 sao dù tỉ lệ lật 50%', () => {
+    result({ gameId: 'match', correct: 6, total: 12, accuracy: 0.5 });
+    expect(screen.getByTestId('result-stars')).toHaveAttribute('data-stars', '3');
   });
 });

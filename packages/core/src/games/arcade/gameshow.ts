@@ -119,6 +119,15 @@ function candidates(source: GameSource, pool: ExercisePool): Candidate[] {
   ].filter((c) => c.types.length > 0);
 }
 
+/**
+ * 50:50: bỏ một nửa số lựa chọn sai (tối đa 2), luôn giữ ≥ 1 đáp án sai — câu 3 lựa chọn chỉ bỏ 1.
+ * Bỏ theo thứ tự lựa chọn (đã xáo khi ra đề).
+ */
+export function fiftyFifty(q: Pick<GameshowQuestion, 'options' | 'answer'>): string[] {
+  const wrong = q.options.filter((o) => o !== q.answer);
+  return wrong.slice(0, Math.min(2, wrong.length - 1));
+}
+
 function grade(state: GameshowState, given: string | null): GameshowState {
   const q = currentShow(state);
   const correct = given === q.answer;
@@ -189,7 +198,11 @@ export const gameshow: ArcadeGame<GameshowRound, GameshowInput, GameshowState> =
               removed: [],
             };
     } else if (input && 'answer' in input && s.status === 'playing') {
-      s = grade(s, input.answer);
+      // Lựa chọn không có trong câu hoặc đã bị 50:50 bỏ (phím tắt lệch, UI trễ) → bỏ qua.
+      const q = currentShow(s);
+      if (q.options.includes(input.answer) && !s.removed.includes(input.answer)) {
+        s = grade(s, input.answer);
+      }
     } else if (input && 'lifeline' in input && s.status === 'playing') {
       if (!s.used.includes(input.lifeline)) {
         const q = currentShow(s);
@@ -199,8 +212,7 @@ export const gameshow: ArcadeGame<GameshowRound, GameshowInput, GameshowState> =
             : {
                 ...s,
                 used: [...s.used, 'fifty'],
-                // Bỏ 2 lựa chọn sai đầu tiên (lựa chọn đã xáo khi ra đề).
-                removed: q.options.filter((o) => o !== q.answer).slice(0, 2),
+                removed: fiftyFifty(q),
               };
       }
     }

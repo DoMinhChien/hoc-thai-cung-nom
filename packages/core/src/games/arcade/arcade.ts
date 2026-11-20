@@ -14,6 +14,7 @@ import {
   type GameState,
   type GameSummary,
 } from '../game';
+import type { Rng } from '../rng';
 import type { GameSource } from '../source';
 
 export const ARCADE_GAME_IDS = ['whack-a-mole', 'gameshow', 'airplane', 'maze'] as const;
@@ -51,7 +52,8 @@ export function advance<S extends ArcadeState>(
   step: (state: S, ms: number) => S,
 ): S {
   let s = state;
-  let left = Math.max(0, dtMs);
+  // Infinity / NaN (đồng hồ hỏng) → không chạy, tránh lặp vô hạn.
+  let left = Number.isFinite(dtMs) ? Math.max(0, dtMs) : 0;
   while (left > 0 && s.status !== 'finished') {
     const ms = Math.min(LOOP_STEP_MS, left);
     s = step({ ...s, elapsedMs: s.elapsedMs + ms }, ms);
@@ -113,6 +115,25 @@ export function promptItems(source: GameSource, words = true, sentences = true):
         }))
       : []),
   ];
+}
+
+/** Câu thứ `index` của lượt (quay vòng khi chơi hết danh sách). */
+export const cyclic = <T>(questions: readonly T[], index: number): T =>
+  questions[index % questions.length]!;
+
+/**
+ * Lựa chọn chữ Thái cho `target`: đáp án + tối đa `count − 1` nhiễu (`wrongOptions`), đã xáo.
+ * Nguồn có nhiều mục cùng nghĩa có thể cho ít hơn `count` lựa chọn.
+ */
+export function choiceOptions(
+  rng: Rng,
+  items: readonly PromptItem[],
+  target: PromptItem,
+  count: number,
+): { options: string[]; answer: number } {
+  const wrong = rng.shuffle(wrongOptions(items, target)).slice(0, count - 1);
+  const options = rng.shuffle([target.th, ...wrong]);
+  return { options, answer: options.indexOf(target.th) };
 }
 
 /**

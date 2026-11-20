@@ -22,6 +22,7 @@ import {
   currentWhack,
   DOOR,
   EXTRA_TIME_MS,
+  fiftyFifty,
   GAMESHOW_QUESTION_MS,
   GAMESHOW_QUESTIONS,
   gameshow,
@@ -83,11 +84,13 @@ describe('khung arcade', () => {
     expect(s.elapsedMs).toBe(120);
     const done = advance(arcadeInitial(), 500, (st) => ({ ...st, status: 'finished' as const }));
     expect(done.elapsedMs).toBe(LOOP_STEP_MS);
-    expect(
-      advance(arcadeInitial(), -10, () => {
-        throw new Error('không chạy');
-      }).elapsedMs,
-    ).toBe(0);
+    for (const dt of [-10, Infinity, NaN]) {
+      expect(
+        advance(arcadeInitial(), dt, () => {
+          throw new Error('không chạy');
+        }).elapsedMs,
+      ).toBe(0);
+    }
   });
 
   it('wrongOptions: bỏ chữ trùng và mục cùng nghĩa với đáp án', () => {
@@ -258,6 +261,20 @@ describe('F-16 Đố vui truyền hình', () => {
     expect(s.mistakes[1]!.given).toBeUndefined();
   });
 
+  it('bỏ qua lựa chọn không có trong câu hoặc đã bị 50:50 bỏ', () => {
+    let s = gameshow.tick(start(), 0, { lifeline: 'fifty' });
+    expect(gameshow.tick(s, 0, { answer: 'không có' })).toEqual(s);
+    expect(gameshow.tick(s, 0, { answer: s.removed[0]! })).toEqual(s);
+    s = gameshow.tick(s, 0, { answer: currentShow(s).answer });
+    expect(s.status).toBe('feedback');
+  });
+
+  it('fiftyFifty luôn giữ ≥ 1 đáp án sai', () => {
+    expect(fiftyFifty({ options: ['a', 'b', 'c', 'd'], answer: 'c' })).toEqual(['a', 'b']);
+    expect(fiftyFifty({ options: ['a', 'b', 'c'], answer: 'a' })).toEqual(['b']);
+    expect(fiftyFifty({ options: ['a', 'b'], answer: 'a' })).toEqual([]);
+  });
+
   it('50:50 bỏ 2 lựa chọn sai, thêm giờ +10 s; mỗi loại một lần', () => {
     let s = start();
     const q = currentShow(s);
@@ -334,6 +351,22 @@ describe('F-17 Máy bay', () => {
     expect(s.mistakes[0]!.given).toBeDefined();
     expect(airplane.tick(s, 100, { move: 1 })).toBe(s);
     expect(airplane.summary(s)).toMatchObject({ gameId: 'airplane', correct: 1, total: 4 });
+  });
+
+  it('câu sau ít mây hơn → máy bay về làn hợp lệ (không mất tim oan); câu đầu cũng vậy', () => {
+    const q = (id: string, clouds: string[]) => ({
+      item: { itemType: 'word' as const, itemId: id },
+      th: clouds[0]!,
+      vi: id,
+      clouds,
+      answerLane: 0,
+    });
+    expect(airplane.start({ questions: [q('a', ['ก'])] }).lane).toBe(0);
+    let s = airplane.start({ questions: [q('a', ['ก', 'ข', 'ค', 'ง']), q('b', ['ข', 'ค'])] });
+    s = airplane.tick({ ...s, lane: 3 }, flight(0));
+    expect(s.index).toBe(1);
+    expect(s.lane).toBe(1);
+    expect(currentFlight(s).clouds[s.lane]).toBeDefined();
   });
 
   it('tốc độ tăng 6% mỗi câu đúng, tối đa ×2', () => {
@@ -462,7 +495,8 @@ describe('F-18 Mê cung', () => {
     let s: MazeState = setMazeStepMode(start(), true);
     s = maze.tick(s, 10_000);
     expect(s.ghost).toEqual(GHOST_START);
-    expect(s.elapsedMs).toBe(10_000);
+    // Không có đồng hồ: thời gian nghĩ không tính.
+    expect(s.elapsedMs).toBe(0);
     const dirs: Direction[] = ['down', 'down'];
     for (let i = 0; i < STEP_MODE_RATIO - 1; i++) s = maze.tick(s, 0, { dir: dirs[i]! });
     expect(s.ghost).toEqual(GHOST_START);
