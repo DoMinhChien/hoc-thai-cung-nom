@@ -8,7 +8,7 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 
 | Bài | unit_id | File | Trang | Từ | Câu | Trạng thái |
 |---|---|---|---|---|---|---|
-| 1 | `b01` | `บทที่ 1_สรรพนามบุรุษ_bản quyền.pdf` | 22 |  |  | ⬜ |
+| 1 | `b01` | `บทที่ 1_สรรพนามบุรุษ_bản quyền.pdf` | 22 | 71 | 11 | 🟡 2026-11-20 · 7 bài học · 5 mẫu câu (câu 1, 3, 5 có đáp án của GV) |
 | 2 | `b02` | `บทที่ 2_การทักทายและแนะนำตัวเอง_bản quyền.pdf` | 24 | 65 | 29 | 🟡 2026-11-19 · 6 bài học · 2 mẫu câu |
 | 3 | `b03` | `บทที่ 3_เลขนับจํานวน_ bản quyền.pdf` | 61 |  |  | ⬜ |
 | 4 | `b04` | `บทที่ 4_ลักษณนาม และโครงสร้างการเปรียบเทียบ_bản quyền.pdf` | 54 |  |  | ⬜ |
@@ -25,7 +25,7 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 
 | CĐ | unit_id | File | Trang | Từ | Câu | Trạng thái |
 |---|---|---|---|---|---|---|
-| 1 | `c01` | `1. ĐẠI TỪ NHÂN XƯNG NÂNG CAO_bản quyền.pdf` | 3 |  |  | ⬜ |
+| 1 | `c01` | `1. ĐẠI TỪ NHÂN XƯNG NÂNG CAO_bản quyền.pdf` | 3 | 19 | 6 | 🟡 2026-11-20 · 2 bài học · 3 mẫu câu (6 câu ví dụ lấy từ tài liệu, có sẵn tiếng Thái) — bỏ cặp “ไอ – ยู” (chữ mờ, chờ GV) |
 | 2 | `c02` | `2. TỪ ĐỂ HỎI TRONG TIẾNG THÁI_bản quyền.pdf` | 11 |  |  | ⬜ |
 | 3 | `c03` | `3. LOẠI TỪ_bản quyền.pdf` | 13 |  |  | ⬜ (mẫu cũ ở `u03`: 12 từ) |
 | 4 | `c04` | `4. BÀI TẬP VỀ LOẠI TỪ_bản quyền.pdf` | 4 |  |  | ⬜ |

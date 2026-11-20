@@ -3,8 +3,8 @@ import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
 
 /**
- * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Guest chưa học gì → nguồn là
- * Chuyên đề 1 (F-10 v7.2). Giảm chuyển động → bỏ đếm 3·2·1 và hiệu ứng (ảnh chụp ổn định).
+ * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Chọn nguồn rõ ràng (`u01`, `u03`)
+ * thay vì dựa vào unit đầu lộ trình — nội dung thật (`b01`…) thêm dần sẽ đổi unit đầu. Giảm chuyển động → bỏ đếm 3·2·1 và hiệu ứng (ảnh chụp ổn định).
  */
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -36,6 +36,8 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   page,
 }) => {
   const meanings = await meaningsOfUnit1(page);
+  await page.goto('/games');
+  await page.getByTestId('game-source').selectOption('unit:u01');
   await page.goto('/games/true-false?seed=11');
   await expect(page.getByTestId('game-lives')).toHaveAttribute('data-lives', '3');
 
@@ -80,8 +82,9 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
 test('Đoán loại từ trên Chuyên đề 3: chọn nguồn (được nhớ), trả lời bằng phím 1–4, hết tim → kết quả', async ({
   page,
 }) => {
-  // Chưa học gì → Chuyên đề 1 (không có loại từ) → trò bị khóa kèm lý do.
+  // Unit 1 mẫu (không có loại từ) → trò bị khóa kèm lý do.
   await page.goto('/games');
+  await page.getByTestId('game-source').selectOption('unit:u01');
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );

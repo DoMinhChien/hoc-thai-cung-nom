@@ -22,10 +22,17 @@ test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hộ
   const content = await unit1(page);
   const lessonWords = content.words.filter((w) => w.lesson_id === 'u01-l1');
 
+  // "Bắt đầu" → bài học đầu của unit đầu lộ trình (nội dung thật thêm dần nên đọc từ units.json).
+  const units = (await (await page.request.get('/content/units.json')).json()) as {
+    unit_id: string;
+    lessons: { lesson_id: string }[];
+  }[];
   await page.goto('/units');
   await expect(page.getByTestId('continue-card')).toHaveAttribute('data-kind', 'start');
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/\/units\/u01\/u01-l1$/);
+  await expect(page).toHaveURL(`/units/${units[0]!.unit_id}/${units[0]!.lessons[0]!.lesson_id}`);
+  // Học trọn Bài 1 mẫu (`u01`, 1 bài học).
+  await page.goto('/units/u01/u01-l1');
 
   // Từ vựng: lật từng thẻ (Space), "Đã biết" (2).
   for (let i = 0; i < lessonWords.length; i++) {
