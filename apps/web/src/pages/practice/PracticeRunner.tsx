@@ -45,8 +45,8 @@ export interface PracticeRunnerProps {
   questions: PracticeQuestion[];
   /** Có giọng Thái. */
   voice: boolean;
-  /** Dừng giữa chừng (đã xác nhận) hoặc thoát. */
-  onExit: () => void;
+  /** Dừng giữa chừng (đã xác nhận). Không có → nhúng trong bài học: không nút Thoát / Esc riêng. */
+  onExit?: () => void;
   onFinish: (summary: PracticeSummary) => void;
   /** Đồng hồ (test). */
   now?: () => Date;
@@ -148,26 +148,28 @@ export function PracticeRunner({
 
   useKeyShortcut('Enter', next, !!answered && !stopping);
   useKeyShortcut(['s', 'S'], skip, !answered && !stopping);
-  useKeyShortcut('Escape', () => setStopping(true), !stopping);
+  useKeyShortcut('Escape', () => setStopping(true), !stopping && !!onExit);
 
   if (!current) return null;
   const done = Math.min(index + (answered ? 1 : 0), firstRound);
   return (
     <div className="flex flex-col gap-6" data-testid="practice-session">
       <header className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          data-testid="practice-exit"
-          aria-keyshortcuts="Escape"
-          onClick={() => setStopping(true)}
-        >
-          <X aria-hidden />
-          {t('practice.exit')}
-          <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
-            Esc
-          </kbd>
-        </Button>
+        {onExit && (
+          <Button
+            variant="ghost"
+            size="sm"
+            data-testid="practice-exit"
+            aria-keyshortcuts="Escape"
+            onClick={() => setStopping(true)}
+          >
+            <X aria-hidden />
+            {t('practice.exit')}
+            <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+              Esc
+            </kbd>
+          </Button>
+        )}
         <div
           role="progressbar"
           aria-label={t('practice.progressLabel')}

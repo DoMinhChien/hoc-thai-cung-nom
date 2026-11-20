@@ -239,6 +239,29 @@ export function buildPracticeSession(input: PracticeInput): PracticeQuestion[] {
   return out;
 }
 
+/** Độ khó tăng dần (plan 0.4 bước 4): nhận diện từ → ghép → hiểu câu → nghe → dựng câu → gõ. */
+export const EXERCISE_DIFFICULTY: readonly ExerciseType[] = [
+  'E-01',
+  'E-02',
+  'E-03',
+  'E-14',
+  'E-05',
+  'E-04',
+  'E-09',
+  'E-08',
+  'E-06',
+  'E-07',
+];
+
+/** Xếp câu hỏi theo `EXERCISE_DIFFICULTY` (ổn định trong cùng loại) — bước Bài tập của bài học. */
+export function byDifficulty<T extends { question: Question }>(questions: readonly T[]): T[] {
+  const rank = (q: T) =>
+    q.question.kind === 'typing' && q.question.type === 'E-14'
+      ? EXERCISE_DIFFICULTY.length
+      : EXERCISE_DIFFICULTY.indexOf(q.question.type);
+  return [...questions].sort((a, b) => rank(a) - rank(b));
+}
+
 /** Các mục được chấm trong một câu hỏi (ghép cặp: mọi cặp). */
 export function questionItems(question: Question): ExerciseItemRef[] {
   return question.kind === 'match' ? question.pairs.map((p) => p.item) : [question.item];

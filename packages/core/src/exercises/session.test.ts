@@ -10,13 +10,17 @@ import { bundle, CLASSIFIERS, GREETINGS } from '../games/fixtures.test-utils';
 import { newSrsState, reviewSrs } from '../srs/srs';
 import {
   buildPracticeSession,
+  byDifficulty,
   exercisePool,
   practiceOverview,
   questionItems,
   recentMistakes,
   recordPracticeAnswer,
   type PracticeInput,
+  EXERCISE_DIFFICULTY,
+  EXERCISES,
 } from '.';
+import { createRng } from '../games/rng';
 
 const T0 = new Date('2026-03-10T08:00:00.000Z');
 const DAY = 24 * 3600_000;
@@ -377,5 +381,21 @@ describe('practiceOverview', () => {
 
   it('recentMistakes bỏ lượt đúng', () => {
     expect(recentMistakes([attempt('s1', true, T0)])).toEqual([]);
+  });
+});
+
+describe('byDifficulty (plan 0.4: độ khó tăng dần)', () => {
+  it('từ → câu → gõ; E-14 gõ xếp cuối; ổn định trong cùng loại', () => {
+    const session = buildPracticeSession(
+      input({ mode: { kind: 'unit', unitId: 'u01' }, size: 20, seed: 5 }),
+    );
+    const ranks = byDifficulty(session).map((q) => EXERCISE_DIFFICULTY.indexOf(q.question.type));
+    expect(new Set(ranks).size).toBeGreaterThan(1);
+    expect(ranks).toEqual([...ranks].sort((a, b) => a - b));
+    const typed = EXERCISES['E-14'].generate('rot', { pool, rng: createRng(1), mode: 'typing' });
+    const choice = EXERCISES['E-07'].generate('s1', { pool, rng: createRng(1) });
+    expect(
+      byDifficulty([{ question: typed }, { question: choice }]).map((q) => q.question.type),
+    ).toEqual(['E-07', 'E-14']);
   });
 });
