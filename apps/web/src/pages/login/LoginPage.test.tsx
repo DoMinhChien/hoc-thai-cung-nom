@@ -1,5 +1,5 @@
 import { AuthError, MockAuthService } from '@nom/core';
-import { screen, waitFor, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
 import { afterEach, describe, expect, it } from 'vitest';
@@ -135,6 +135,7 @@ describe('LoginPage (SCR-01)', () => {
 
     await screen.findByTestId('page-dashboard');
     expect(await countCards(GUEST_KEY)).toBe(2);
-    await waitFor(async () => expect(await Dexie.exists('hoc-thai-nom-u-old')).toBe(false));
+    // Không chuyển tiến độ: DB của tài khoản không có thẻ (layout có thể đã mở DB rỗng — badge Bài tập).
+    expect(await countCards('u-old')).toBe(0);
   });
 });
