@@ -175,6 +175,25 @@ describe("F-02' Đúng hay sai?", () => {
     expect(round.questions.find((q) => q.item.itemId === 's4')!.timeMs).toBe(6_000);
   });
 
+  it('nghĩa sai không bao giờ là nghĩa khác của cùng chữ Thái (มา "đến" / มา "tới")', () => {
+    const homographs = unitSource(
+      bundle('u09', 9, [
+        ['ma', 'มา', ['đến']],
+        ['ma2', 'มา', ['tới']],
+        ['khao', 'ข้าว', ['cơm']],
+        ['nam', 'น้ำ', ['nước']],
+        ['pai', 'ไป', ['đi']],
+        ['kin', 'กิน', ['ăn']],
+        ['non', 'นอน', ['ngủ']],
+      ]),
+    );
+    for (let seed = 1; seed <= 10; seed++) {
+      for (const q of trueFalse.generateRound(homographs, seed).questions) {
+        if (q.th === 'มา' && !q.isTrue) expect(['đến', 'tới']).not.toContain(q.shown);
+      }
+    }
+  });
+
   it('nhận nhầm nghĩa sai là đúng → ghi nghĩa đã nhận; từ chối nghĩa đúng → không có given', () => {
     const falseQ = round.questions.findIndex((q) => !q.isTrue);
     const trueQ = round.questions.findIndex((q) => q.isTrue);

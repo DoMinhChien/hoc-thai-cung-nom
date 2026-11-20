@@ -98,16 +98,26 @@ function byId<T extends { id: string }>(items: readonly T[], id: string): T | un
   return items.find((i) => i.id === id);
 }
 
-/** Nhiễu = giá trị khác đáp án, ưu tiên cùng unit. */
+/**
+ * Nhiễu = giá trị khác đáp án, ưu tiên cùng unit. `prompt`: bỏ mục có cùng đề với đáp án (vd. ฉัน
+ * và ดิฉัน đều nghĩa "tôi" — đề "tôi" không được có cả hai làm lựa chọn).
+ */
 function distractors<T extends { unitId: string }>(
   items: readonly T[],
   self: T,
   value: (item: T) => string | undefined,
+  prompt?: (item: T) => string,
 ): string[] {
   const answer = value(self);
+  const same = prompt?.(self);
   const others = (sameUnit: boolean) =>
     items
-      .filter((i) => i !== self && (i.unitId === self.unitId) === sameUnit)
+      .filter(
+        (i) =>
+          i !== self &&
+          (i.unitId === self.unitId) === sameUnit &&
+          (same === undefined || prompt!(i) !== same),
+      )
       .map(value)
       .filter((v): v is string => !!v && v !== answer);
   return uniq([...others(true), ...others(false)]);
@@ -158,9 +168,26 @@ function sentenceExercise(
 }
 
 const meaningPool = (w: PoolWord, pool: ExercisePool) =>
-  distractors(pool.words, w, (x) => x.meaning);
-const thaiPool = (w: PoolWord, pool: ExercisePool) => distractors(pool.words, w, (x) => x.thai);
-const viPool = (s: PoolSentence, pool: ExercisePool) => distractors(pool.sentences, s, (x) => x.vi);
+  distractors(
+    pool.words,
+    w,
+    (x) => x.meaning,
+    (x) => x.thai,
+  );
+const thaiPool = (w: PoolWord, pool: ExercisePool) =>
+  distractors(
+    pool.words,
+    w,
+    (x) => x.thai,
+    (x) => x.meaning,
+  );
+const viPool = (s: PoolSentence, pool: ExercisePool) =>
+  distractors(
+    pool.sentences,
+    s,
+    (x) => x.vi,
+    (x) => x.th,
+  );
 const classifierPool = (w: PoolWord, pool: ExercisePool) =>
   distractors(pool.words, w, (x) => x.classifier);
 

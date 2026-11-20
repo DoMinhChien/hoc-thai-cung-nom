@@ -68,6 +68,41 @@ describe('exercisePool', () => {
 });
 
 describe('10 loại bài tập (E-01..E-09, E-14)', () => {
+  it('nhiễu không trùng đề: từ cùng nghĩa (E-02), cùng chữ Thái (E-01), câu cùng tiếng Thái (E-05)', () => {
+    const same = exercisePool([
+      bundle(
+        'u09',
+        9,
+        [
+          ['chan', 'ฉัน', ['tôi']],
+          ['dichan', 'ดิฉัน', ['tôi']],
+          ['phom', 'ผม', ['tôi']],
+          ['khao', 'ข้าว', ['cơm']],
+          ['nam', 'น้ำ', ['nước']],
+          ['ma', 'มา', ['đến']],
+          ['ma2', 'มา', ['tới']],
+        ],
+        [
+          ['s1', 'Tôi đến.', ['ฉัน', 'มา']],
+          ['s2', 'Tôi tới.', ['ฉัน', 'มา']],
+          ['s3', 'Cơm.', ['ข้าว']],
+          ['s4', 'Nước.', ['น้ำ']],
+          ['s5', 'Đến.', ['มา', 'แล้ว']],
+        ],
+      ),
+    ]);
+    for (let seed = 1; seed <= 20; seed++) {
+      const c = { pool: same, rng: createRng(seed) };
+      const e02 = asChoice(EXERCISES['E-02'].generate('chan', c));
+      expect(e02.options).not.toContain('ดิฉัน');
+      expect(e02.options).not.toContain('ผม');
+      const e01 = asChoice(EXERCISES['E-01'].generate('ma', c));
+      expect(e01.options).not.toContain('tới');
+      const e05 = asChoice(EXERCISES['E-05'].generate('s1', c));
+      expect(e05.options).not.toContain('Tôi tới.');
+    }
+  });
+
   it('mỗi loại có trong registry, đúng itemType', () => {
     expect(Object.keys(EXERCISES)).toEqual([...EXERCISE_TYPES]);
     expect(EXERCISES['E-01'].itemType).toBe('word');

@@ -64,8 +64,10 @@ export const trueFalse = rapidGame<TrueFalseQuestion, boolean>({
         timeMs: questionTimeMs(e.tokens),
       };
       if (isTrue) return { ...base, shown: e.meaning, isTrue };
-      // Nghĩa sai: ưu tiên mục cùng loại (từ ↔ từ, câu ↔ câu) để khó đoán theo độ dài.
-      const others = all.filter((o) => o.meaning !== e.meaning);
+      // Nghĩa sai: không phải nghĩa của mục cùng chữ Thái (มา "đến" / มา "tới"); ưu tiên mục cùng
+      // loại (từ ↔ từ, câu ↔ câu) để khó đoán theo độ dài.
+      const valid = new Set(all.filter((o) => o.th === e.th).map((o) => o.meaning));
+      const others = all.filter((o) => !valid.has(o.meaning));
       const sameKind = others.filter((o) => o.item.itemType === e.item.itemType);
       const pool = sameKind.length > 0 ? sameKind : others;
       return { ...base, shown: pool[rng.int(pool.length)]!.meaning, isTrue };
