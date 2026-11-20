@@ -1,4 +1,5 @@
 import {
+  compareUnits,
   continueTarget,
   unitLessonProgress,
   unitStatus,
@@ -14,6 +15,7 @@ import { ProgressRing } from '@/components/progress';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useUnits } from '@/content/hooks';
+import { unitLabel } from '@/content/labels';
 import { useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
@@ -21,7 +23,7 @@ import { Badge, LoadError } from './parts';
 
 type Kind = 'theme' | 'grammar';
 
-/** `/units` — lộ trình theo chuyên đề giáo viên (SCR-04 §A, P-04, P-10, plan 0.11 #1). */
+/** `/units` — lộ trình Giáo trình → Chuyên đề (SCR-04 §A, P-04, P-10, plan 0.11 #1, 0.12 #1). */
 export function UnitsPage() {
   const content = useUnits();
   const records = useRepositoryQuery((r) => r.progress.listLessonProgress(), []);
@@ -68,7 +70,7 @@ function Path({
   onKind: (kind: Kind | null) => void;
 }) {
   const navigate = useNavigate();
-  const sorted = [...units].sort((a, b) => a.order - b.order);
+  const sorted = [...units].sort(compareUnits);
   const target = continueTarget(sorted, records);
   const kinds = new Set(sorted.map((u) => u.kind));
   const shown = kind ? sorted.filter((u) => u.kind === kind) : sorted;
@@ -125,7 +127,7 @@ function Path({
           <span />
         )}
         <span className="text-sm text-muted-foreground">
-          {t('units.count', { n: shown.length })}
+          {t(`units.count.${kind ?? 'all'}`, { n: shown.length })}
         </span>
       </div>
 
@@ -162,6 +164,9 @@ function Path({
                 </ProgressRing>
                 <span className="flex min-w-0 flex-1 flex-col gap-0.5">
                   <span className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm text-muted-foreground" data-testid="unit-label">
+                      {unitLabel(unit)}
+                    </span>
                     <span className="font-medium">{unit.title_vi}</span>
                     {unit.title_th && (
                       <span lang="th" className="truncate text-muted-foreground">
@@ -169,7 +174,6 @@ function Path({
                       </span>
                     )}
                     {unit.level && <Badge>{unit.level}</Badge>}
-                    {unit.kind === 'grammar' && <Badge>{t('units.filterGrammar')}</Badge>}
                     {unit.draft && <Badge muted>{t('units.draft')}</Badge>}
                   </span>
                   <span className="text-sm text-muted-foreground">
@@ -216,10 +220,14 @@ function ContinueCard({
     target.kind === 'done'
       ? t('units.allDone')
       : target.kind === 'start'
-        ? t('units.startWith', { n: unit.order, title: unit.title_vi })
+        ? t('units.startWith', { unit: unitLabel(unit), title: unit.title_vi })
         : target.kind === 'next'
-          ? t('units.nextLesson', { n: unit.order, lesson: lesson.order, title: lesson.title_vi })
-          : `${t('units.unitN', { n: unit.order })} · ${unit.title_vi}`;
+          ? t('units.nextLesson', {
+              unit: unitLabel(unit),
+              lesson: lesson.order,
+              title: lesson.title_vi,
+            })
+          : `${unitLabel(unit)} · ${unit.title_vi}`;
   return (
     <div
       data-testid="continue-card"

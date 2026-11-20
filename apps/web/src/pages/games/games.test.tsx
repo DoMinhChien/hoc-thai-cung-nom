@@ -122,9 +122,9 @@ afterEach(async () => {
 });
 
 describe('/games (SCR-08 §A)', () => {
-  it('chưa học gì → chơi với Chuyên đề 1; khóa trò thiếu dữ liệu kèm lý do; đổi nguồn được nhớ', async () => {
+  it('chưa học gì → chơi với Bài 1 (unit đầu lộ trình); khóa trò thiếu dữ liệu kèm lý do; đổi nguồn được nhớ', async () => {
     renderAt('/games');
-    expect(await screen.findByTestId('game-fallback')).toHaveTextContent('Chuyên đề 1');
+    expect(await screen.findByTestId('game-fallback')).toHaveTextContent('Bài 1');
     expect(screen.getByTestId('game-locked-classifier-rush')).toHaveTextContent(
       'Cần chuyên đề có loại từ',
     );

@@ -138,12 +138,10 @@ afterEach(async () => {
 });
 
 describe('/units (SCR-04 §A)', () => {
-  it('lộ trình theo order, nhãn level/kind/bản nháp, "Bắt đầu" → bài đầu; lọc theo loại trong URL', async () => {
+  it('lộ trình Giáo trình → Chuyên đề, nhãn "Bài n"/"Chuyên đề n", level/bản nháp, "Bắt đầu" → bài đầu; lọc theo nhánh trong URL', async () => {
     const router = renderAt('/units');
     expect(await screen.findByTestId('continue-card')).toHaveAttribute('data-kind', 'start');
-    expect(screen.getByTestId('continue-card')).toHaveTextContent(
-      'Bắt đầu với Chuyên đề 1: Chào hỏi',
-    );
+    expect(screen.getByTestId('continue-card')).toHaveTextContent('Bắt đầu với Bài 1: Chào hỏi');
     const rows = within(screen.getByTestId('unit-path')).getAllByRole('link');
     expect(rows.map((r) => r.getAttribute('data-testid'))).toEqual([
       'unit-row-u01',
@@ -151,7 +149,10 @@ describe('/units (SCR-04 §A)', () => {
     ]);
     expect(rows[0]).toHaveTextContent('A1');
     expect(rows[0]).toHaveTextContent('Bản nháp');
-    expect(rows[1]).toHaveTextContent('Ngữ pháp');
+    expect(within(rows[0]!).getByTestId('unit-label')).toHaveTextContent('Bài 1');
+    expect(within(rows[1]!).getByTestId('unit-label')).toHaveTextContent('Chuyên đề 11');
+    expect(screen.getByTestId('units-filter-theme')).toHaveTextContent('Giáo trình');
+    expect(screen.getByTestId('units-filter-grammar')).toHaveTextContent('Chuyên đề');
     expect(screen.getByTestId('unit-status-u01')).toHaveTextContent('Chưa học');
 
     await userEvent.click(screen.getByTestId('units-filter-grammar'));
@@ -184,10 +185,13 @@ describe('/units/:unitId (SCR-04 §B)', () => {
   it('bài theo các bước có dữ liệu, mục tiêu tick được, từ vựng + chi tiết từ', async () => {
     renderAt('/units/u01');
     expect(await screen.findByRole('heading', { name: 'Chào hỏi' })).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: 'Về Bài học' })).toHaveTextContent(
+      'Bài học / Bài 1',
+    );
     const row = screen.getByTestId('lesson-row-u01-l1');
     expect(row).toHaveTextContent('Từ vựng · Mẫu câu · Hội thoại · Bài tập');
     expect(row).toHaveTextContent('Chưa học');
-    expect(screen.getByTestId('unit-primary')).toHaveTextContent('Học tiếp: Bài 1');
+    expect(screen.getByTestId('unit-primary')).toHaveTextContent('Học tiếp: Bài học 1');
 
     await userEvent.click(within(screen.getByTestId('can-do-list')).getByRole('checkbox'));
     await waitFor(async () =>
@@ -204,7 +208,7 @@ describe('/units/:unitId (SCR-04 §B)', () => {
 
   it('chuyên đề không tồn tại → thông báo + link về Bài học', async () => {
     renderAt('/units/u99');
-    expect(await screen.findByText('Không tìm thấy chuyên đề.')).toBeInTheDocument();
+    expect(await screen.findByText('Không tìm thấy bài hoặc chuyên đề này.')).toBeInTheDocument();
   });
 });
 
@@ -212,6 +216,7 @@ describe('/units/:unitId/:lessonId (SCR-05)', () => {
   it('học trọn 1 bài: từ vựng → mẫu câu → hội thoại (tra từ, thêm Sổ từ) → bài tập ≥ 80% → hoàn thành', async () => {
     const router = renderAt('/units/u01/u01-l1');
     expect(await screen.findByTestId('flashcard')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Bài 1 · Bài học 1:');
     expect(screen.getByTestId('step-vocab')).toHaveAttribute('aria-current', 'step');
 
     // Từ vựng: Space hiện nghĩa, 1 chưa nhớ (quay lại cuối hàng 1 lần), 2 đã biết.
@@ -280,9 +285,9 @@ describe('/units/:unitId/:lessonId (SCR-05)', () => {
       await userEvent.click(screen.getByTestId('exercise-next'));
     }
 
-    expect(screen.getByTestId('lesson-finished')).toHaveTextContent('Xong Bài 1');
+    expect(screen.getByTestId('lesson-finished')).toHaveTextContent('Xong Bài học 1');
     expect(await screen.findByTestId('unit-complete')).toHaveTextContent(
-      'Bạn đã hoàn thành chuyên đề Chào hỏi',
+      'Bạn đã hoàn thành Bài 1: Chào hỏi',
     );
     const [record] = await repos().progress.listLessonProgress('u01');
     expect(record).toMatchObject({

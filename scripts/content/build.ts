@@ -1,6 +1,6 @@
 /**
  * `content:build` v7 (T6.5): content đã validate → `apps/web/public/content/`:
- * - `units.json`: lộ trình (unit theo `order`, kèm bài + số từ/câu) cho `/units` (P-10);
+ * - `units.json`: lộ trình (Giáo trình rồi Chuyên đề, theo `order` — `compareUnits`, kèm bài + số từ/câu) cho `/units` (P-10);
  * - `unit-<unit_id>.json`: mọi thứ của một unit (bài, từ, câu, mẫu câu, hội thoại) — tải khi mở unit;
  * - `manifest.json`: hash từng file + version gộp.
  * v7.1 (plan 0.11 #3, #5): câu có `th` mà `tokens` trống → tự tách bằng `Intl.Segmenter('th')`, gắn
@@ -12,6 +12,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {
+  compareUnits,
   MANIFEST_FILE,
   UNITS_FILE,
   unitFile,
@@ -62,7 +63,7 @@ export function bundleUnits(content: ContentSet): UnitBundle[] {
   const lessons = values(content.lessons);
   const lessonUnit = new Map(lessons.map((l) => [l.lesson_id, l.unit_id]));
 
-  return byOrder(values(content.units), (u) => u.unit_id).map((unit) => {
+  return [...values(content.units)].sort(compareUnits).map((unit) => {
     const inUnit = <T extends { unit_id: string }>(items: T[]) =>
       items.filter((i) => i.unit_id === unit.unit_id);
     const words = inUnit(values(content.words));

@@ -27,3 +27,21 @@
     - { th: น่ารัก, vi: "Đáng yêu, dễ thương." }
   source: plernpin-11#p1
   draft: true
+- id: g-b02-laeo
+  unit_id: b02
+  title_vi: Còn … thì sao?
+  pattern: แล้ว + S + ล่ะคะ/ล่ะครับ
+  explain_vi: Hỏi lại người nghe (hoặc người khác) cùng câu hỏi vừa được hỏi — giống "Còn bạn thì sao?". ล่ะ là văn nói (văn viết là หละ).
+  examples:
+    - { th: แล้วคุณล่ะคะ, vi: "Còn bạn thì sao?" }
+  source: plernpin-b02#p16
+  draft: true
+- id: g-b02-ko
+  unit_id: b02
+  title_vi: Cũng … như thế
+  pattern: ก็ + V + เช่นกัน/เหมือนกัน
+  explain_vi: Nói người khác cũng làm / cũng như vậy. ก็ đứng trước động từ, เช่นกัน hoặc เหมือนกัน ở cuối câu.
+  examples:
+    - { th: ฉันชอบดูหนัง เขาก็ชอบเช่นกัน, vi: "Tôi thích xem phim, anh ấy cũng thích như thế." }
+  source: plernpin-b02#p17
+  draft: true

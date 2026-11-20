@@ -129,6 +129,23 @@ describe('buildContent', () => {
     const units = UnitsFileSchema.parse(await readJson(path.join(out, 'units.json')));
     expect(units.map((u) => u.unit_id)).toEqual(['u01', 'u02']);
   });
+
+  it('Giáo trình trước Chuyên đề; order chỉ cần duy nhất trong nhánh (plan 0.12 #1)', async () => {
+    const { content, out } = await setup({
+      ...FILES,
+      'units.csv': [
+        'unit_id,level,kind,order,title_vi,can_do',
+        'c01,,grammar,1,CĐ 1,x',
+        'b02,A1,theme,2,Bài 2,x',
+        'b01,A1,,1,Bài 1,x',
+        'c02,,grammar,2,CĐ 2,x',
+        '',
+      ].join('\n'),
+    });
+    await buildContent(content, out);
+    const units = UnitsFileSchema.parse(await readJson(path.join(out, 'units.json')));
+    expect(units.map((u) => u.unit_id)).toEqual(['b01', 'b02', 'c01', 'c02']);
+  });
 });
 
 describe('v7.1 (plan 0.11)', () => {

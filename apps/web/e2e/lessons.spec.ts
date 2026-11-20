@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
 
 /**
- * Luồng học 1 bài (M7 T7.7, SCR-04/05) trên content mẫu đã build — Chuyên đề 1, Bài 1.
+ * Luồng học 1 bài (M7 T7.7, SCR-04/05) trên content mẫu đã build — Bài 1 (`u01`), bài học 1.
  * Giảm chuyển động để ảnh chụp ổn định.
  */
 test.beforeEach(async ({ page }) => {
@@ -43,7 +43,7 @@ async function answerExercise(page: Page, content: Unit1) {
   }
 }
 
-test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hội thoại → Bài tập → hoàn thành chuyên đề', async ({
+test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hội thoại → Bài tập → hoàn thành Bài 1', async ({
   page,
 }) => {
   const content = await unit1(page);
@@ -78,16 +78,47 @@ test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hộ
 
   // Bài tập đúng hết → hoàn thành bài, xong chuyên đề (1 bài).
   await answerExercise(page, content);
-  await expect(page.getByTestId('lesson-finished')).toContainText('Xong Bài 1');
+  await expect(page.getByTestId('lesson-finished')).toContainText('Xong Bài học 1');
   await expect(page.getByTestId('unit-complete')).toBeVisible();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/units\/u01$/);
-  await expect(page.getByTestId('unit-progress')).toHaveText('✓ Đã xong chuyên đề');
+  await expect(page.getByTestId('unit-progress')).toHaveText('✓ Đã xong Bài 1');
 
-  // Lộ trình: Chuyên đề 1 xong, giữ sau khi tải lại.
+  // Lộ trình: Bài 1 xong, giữ sau khi tải lại.
   await page.goto('/units');
   await page.reload();
   await expect(page.getByTestId('unit-status-u01')).toHaveText('✓ Xong');
+});
+
+test('lộ trình 2 nhánh (plan 0.12 #1): Giáo trình trước Chuyên đề, nhãn "Bài n" / "Chuyên đề n"; Bài 2 (nội dung thật) mở được', async ({
+  page,
+}) => {
+  await page.goto('/units');
+  const labels = page.getByTestId('unit-path').getByTestId('unit-label');
+  await expect(labels.first()).toBeVisible();
+  const all = await labels.allTextContents();
+  // Mọi "Bài n" đứng trước mọi "Chuyên đề n".
+  const firstTopic = all.findIndex((l) => l.startsWith('Chuyên đề'));
+  expect(firstTopic).toBeGreaterThan(0);
+  expect(all.slice(firstTopic).every((l) => l.startsWith('Chuyên đề'))).toBe(true);
+
+  await page.getByTestId('units-filter-theme').click();
+  await expect(page).toHaveURL(/\?kind=theme$/);
+  await expect(page.getByTestId('unit-path').getByTestId('unit-label')).toHaveText(
+    all.slice(0, firstTopic),
+  );
+  await page.getByTestId('units-filter-grammar').click();
+  await expect(page.getByTestId('unit-path').getByTestId('unit-label')).toHaveText(
+    all.slice(firstTopic),
+  );
+
+  await page.goto('/units/b02');
+  await expect(page.getByRole('navigation', { name: 'Về Bài học' })).toContainText('Bài 2');
+  await expect(page.locator('[data-testid^="lesson-row-b02-"]')).toHaveCount(6);
+  await page.getByTestId('lesson-row-b02-l1').click();
+  await expect(page).toHaveURL(/\/units\/b02\/b02-l1$/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Bài 2 · Bài học 1:');
+  await expect(page.getByTestId('flashcard')).toBeVisible();
 });
 
 test('baseline: /units, /units/u01, bài học (thẻ từ vựng đầu)', async ({ page }) => {

@@ -1,9 +1,10 @@
-import { GAMES, LEARNED_SOURCE, unitSourceKey, type GameId } from '@nom/core';
+import { compareUnits, GAMES, LEARNED_SOURCE, unitSourceKey, type GameId } from '@nom/core';
 import { Lock } from 'lucide-react';
 import { useId } from 'react';
 import { useNavigate } from 'react-router';
 import { useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
+import { unitLabel } from '@/content/labels';
 import { useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
@@ -64,10 +65,10 @@ export function GamesPage() {
             >
               <option value={LEARNED_SOURCE}>{t('games.learned', ready.learned)}</option>
               {[...ready.bundles]
-                .sort((a, b) => a.unit.order - b.unit.order)
+                .sort((a, b) => compareUnits(a.unit, b.unit))
                 .map(({ unit }) => (
                   <option key={unit.unit_id} value={unitSourceKey(unit.unit_id)}>
-                    {t('games.unitOption', { order: unit.order, title: unit.title_vi })}
+                    {t('games.unitOption', { unit: unitLabel(unit), title: unit.title_vi })}
                   </option>
                 ))}
             </select>
@@ -76,9 +77,9 @@ export function GamesPage() {
           {ready.fallback && (
             <p data-testid="game-fallback" className="text-sm text-muted-foreground">
               {t('games.fallback', {
-                n:
-                  ready.bundles.find((b) => b.unit.unit_id === ready.source.unitId)?.unit.order ??
-                  1,
+                unit: unitLabel(
+                  ready.bundles.find((b) => b.unit.unit_id === ready.source.unitId)!.unit,
+                ),
               })}
             </p>
           )}

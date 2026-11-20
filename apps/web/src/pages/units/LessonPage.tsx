@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useUnit } from '@/content/hooks';
+import { unitLabel } from '@/content/labels';
 import { useRepositories, useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
@@ -132,7 +133,7 @@ function Lesson({
           </Button>
           <h1 className="font-semibold">
             {t('lesson.title', {
-              n: bundle.unit.order,
+              unit: unitLabel(bundle.unit),
               lesson: lesson.order,
               title: lesson.title_vi,
             })}
@@ -285,7 +286,10 @@ function Finished({ bundle, lesson }: { bundle: UnitBundle; lesson: BuiltLesson 
       {unitDone && (
         <div className="flex flex-col gap-1" data-testid="unit-complete">
           <p className="font-medium text-positive">
-            {t('lesson.unitComplete', { title: bundle.unit.title_vi })}
+            {t('lesson.unitComplete', {
+              unit: unitLabel(bundle.unit),
+              title: bundle.unit.title_vi,
+            })}
           </p>
           <ul className="text-sm text-muted-foreground">
             {bundle.unit.can_do.map((c) => (
