@@ -86,3 +86,62 @@ s-c01-003,c01,c01-l1,Cậu nhớ làm bài tập về nhà nhé.,ตัวอย
 s-c01-004,c01,c01-l1,Hôm nay mình mệt lắm luôn.,ตัวเองเหนื่อยมากเลยวันนี้,,ตัวเอง|เหนื่อย|มาก|เลย|วันนี้,ข้า,g-c01-tua,,plernpin-c01#p1,true
 s-c01-005,c01,c01-l1,Em ăn cơm chưa?,ตัวเองกินข้าวหรือยัง,,ตัวเอง|กิน|ข้าว|หรือ|ยัง,ลื้อ,g-c01-tua,,plernpin-c01#p2,true
 s-c01-006,c01,c01-l1,Tự mình phải chịu trách nhiệm nhé.,ตัวเองต้องรับผิดชอบนะ,,ตัวเอง|ต้อง|รับผิดชอบ|นะ,เค้า,g-c01-tua,,plernpin-c01#p2,true
+s-b12-001,b12,b12-l1,Xin lỗi! Bây giờ mấy giờ rồi ạ?,ขอโทษครับ ตอนนี้กี่โมงแล้วครับ,,,,,,plernpin-b12#p3,true
+s-b12-002,b12,b12-l1,8h15 sáng rồi ạ.,แปดโมงสิบห้าแล้วค่ะ,,,,,,plernpin-b12#p3,true
+s-b12-003,b12,b12-l1,"Tôi đi trước tốt hơn, tôi e là sẽ muộn nhé.",ผมไปก่อนดีกว่า กลัวว่าจะสายครับ,ฉันไปก่อนดีกว่า กลัวว่าจะสายค่ะ,,,,,plernpin-b12#p3,true
+s-b12-004,b12,b12-l1,Bạn đi xe buýt hả?,คุณไปรถเมล์เหรอคะ,คุณไปรถบัสเหรอคะ,,,,,plernpin-b12#p3,true
+s-b12-005,b12,b12-l1,Không phải ạ. Tôi tự lái xe đi ạ.,ไม่ใช่ครับ ผมขับรถไปเองครับ,ไม่ใช่ค่ะ ฉันขับรถไปเองค่ะ,,,,,plernpin-b12#p4,true
+s-b12-006,b12,b12-l1,Chương trình bắt đầu lúc mấy giờ?,งานเริ่มกี่โมงคะ,โปรแกรมเริ่มกี่โมงคะ,,,,,plernpin-b12#p4,true
+s-b12-007,b12,b12-l1,Bắt đầu lúc 10h sáng ạ.,เริ่มสิบโมงเช้าครับ,,,,,,plernpin-b12#p4,true
+s-b12-008,b12,b12-l1,Còn chương trình trong khoảng thời gian chiều thì sao?,แล้วงานช่วงบ่ายล่ะคะ,,,,,,plernpin-b12#p4,true
+s-b12-009,b12,b12-l1,Bắt đầu 6h chiều ạ. Nhưng thỉnh thoảng thì 6h30. Tôi không chắc chắn lắm đâu.,เริ่มหกโมงเย็นครับ แต่บางครั้งก็หกโมงครึ่ง ผมไม่ค่อยแน่ใจครับ,,,,,,plernpin-b12#p5,true
+s-b12-010,b12,b12-l1,Cảm ơn nhiều ạ!,ขอบคุณมากค่ะ,,,,,,plernpin-b12#p5,true
+s-b12-011,b12,b12-l2,Xin chào bà!,สวัสดีครับคุณผู้หญิง,,,,,,plernpin-b12#p6,true
+s-b12-012,b12,b12-l2,Xin chào. Tôi muốn 1 phòng giường đôi và 1 phòng 2 giường ạ.,สวัสดีค่ะ ฉันต้องการห้องเตียงใหญ่หนึ่งห้อง และห้องเตียงคู่หนึ่งห้องค่ะ,,,,,,plernpin-b12#p6,true
+s-b12-013,b12,b12-l2,Phòng vẫn còn đang trống ạ.,ยังมีห้องว่างอยู่ครับ,,,,,,plernpin-b12#p6,true
+s-b12-014,b12,b12-l2,Giá mỗi phòng bao nhiêu ạ?,ราคาห้องละเท่าไรคะ,ห้องละเท่าไรคะ,,,,,plernpin-b12#p6,true
+s-b12-015,b12,b12-l2,"Mỗi phòng 2,000 bạt/ngày ạ.",ห้องละสองพันบาทต่อวันครับ,ห้องละสองพันบาทต่อคืนครับ,,,,,plernpin-b12#p7,true
+s-b12-016,b12,b12-l2,Tôi xin phòng liền nhau và cùng tầng với nhau ạ.,ขอห้องที่ติดกันและอยู่ชั้นเดียวกันนะคะ,,,,,,plernpin-b12#p7,true
+s-b12-017,b12,b12-l2,Bà sẽ ở mấy ngày ạ?,คุณจะพักกี่วันครับ,,,,,,plernpin-b12#p7,true
+s-b12-018,b12,b12-l2,Tôi ở 2 ngày ạ.,ฉันพักสองวันค่ะ,,,,,,plernpin-b12#p7,true
+s-b12-019,b12,b12-l3,"Xin hộ chiếu và tiền đặt cọc 1,000 bạt ạ. Chìa khóa phòng, phiếu ăn sáng, phòng ăn ở tầng trệt, wifi free, password từ 1 đến 9 ạ.",ขอพาสปอร์ตและเงินมัดจำหนึ่งพันบาทครับ นี่กุญแจห้องกับคูปองอาหารเช้าครับ ห้องอาหารอยู่ชั้นล่าง ไวไฟฟรี รหัสผ่านคือหนึ่งถึงเก้าครับ,,,,,,plernpin-b12#p8,true
+s-b12-020,b12,b12-l3,Gọi nhân viên lễ tân bấm số nào ạ?,ถ้าจะโทรหาพนักงานต้อนรับ ต้องกดเบอร์อะไรคะ,,,,,,plernpin-b12#p8,true
+s-b12-021,b12,b12-l3,Bấm số 100 ạ.,กดเบอร์หนึ่งร้อยครับ,,,,,,plernpin-b12#p8,true
+s-b12-022,b12,b12-l3,Trả phòng lúc mấy giờ ạ?,เช็คเอาท์กี่โมงคะ,คืนห้องกี่โมงคะ,,,,,plernpin-b12#p8,true
+s-b12-023,b12,b12-l3,12h trưa trả phòng ạ.,เช็คเอาท์ตอนเที่ยงครับ,คืนห้องตอนเที่ยงครับ,,,,,plernpin-b12#p9,true
+s-b12-024,b12,b12-l3,Giúp báo thức lúc 6h sáng nhé ạ.,ช่วยปลุกตอนหกโมงเช้าด้วยนะคะ,,,,,,plernpin-b12#p9,true
+s-b12-026,b12,b12-l3,Bạn chuyển hành lý lên phòng 205 giúp tôi nhé ạ.,ช่วยยกกระเป๋าขึ้นไปห้องสองศูนย์ห้าให้หน่อยนะคะ,,,,,,plernpin-b12#p9,true
+s-b12-028,b12,b12-l3,Đây là tiền bo cho anh.,นี่ทิปสำหรับคุณค่ะ,,,,,,plernpin-b12#p10,true
+s-b12-029,b12,b12-l3,Cảm ơn bà ạ.,ขอบคุณครับ,,,,,,plernpin-b12#p10,true
+s-b12-030,b12,b12-l3,Không có gì!,ไม่เป็นไรค่ะ,,,,,,plernpin-b12#p10,true
+s-b12-031,b12,b12-l4,"Bạn Hoa, chủ nhật này bạn định làm những gì?",ฮวา วันอาทิตย์นี้คุณจะทำอะไรบ้างครับ,,,,,,plernpin-b12#p11,true
+s-b12-032,b12,b12-l4,Tôi vẫn chưa chắc chắn ạ. Tôi muốn đi Ayutthaya nhé.,ฉันยังไม่แน่ใจค่ะ อยากไปอยุธยาค่ะ,,,,,,plernpin-b12#p11,true
+s-b12-033,b12,b12-l4,Ayutthaya đẹp lắm luôn ạ. Thế bạn định đi vương quốc Sukhothai không?,อยุธยาสวยมากเลยครับ แล้วคุณจะไปเที่ยวสุโขทัยไหมครับ,,,,,,plernpin-b12#p11,true
+s-b12-034,b12,b12-l4,"Có thể ạ, tôi muốn đi nhiều lắm luôn.",อาจจะค่ะ ฉันอยากไปหลายที่มากเลยค่ะ,,,,,,plernpin-b12#p11,true
+s-b12-035,b12,b12-l4,Còn Chiangmai thì sao?,แล้วเชียงใหม่ล่ะครับ,,,,,,plernpin-b12#p12,true
+s-b12-036,b12,b12-l4,Có thể đi ạ. Nhưng chưa biết. Tôi muốn đi bãi biển nữa nhé.,อาจจะไปค่ะ แต่ยังไม่รู้ ฉันอยากไปทะเลด้วยค่ะ,,,,,,plernpin-b12#p12,true
+s-b12-037,b12,b12-l4,Vậy thì đi Phuket và Krabi ạ.,งั้นไปภูเก็ตกับกระบี่สิครับ,,,,,,plernpin-b12#p12,true
+s-b12-039,b12,b12-l5,"Ngày hôm nay thời tiết tồi. Nhưng bạn may mắn nhé. Mùa hè là mùa đẹp ạ, thời tiết đẹp lắm luôn trong tháng 4.",วันนี้อากาศไม่ดีครับ แต่คุณโชคดีนะครับ หน้าร้อนเป็นฤดูที่สวย อากาศดีมากเลยในเดือนเมษายนครับ,,,,,,plernpin-b12#p13,true
+s-b12-040,b12,b12-l5,Thật hả?,จริงเหรอคะ,,,,,,plernpin-b12#p13,true
+s-b12-041,b12,b12-l5,"Vâng, thời tiết đẹp lắm.",ใช่ครับ อากาศดีมาก,,,,,,plernpin-b12#p13,true
+s-b12-042,b12,b12-l5,"Cảm ơn, xe taxi ở đâu ạ?",ขอบคุณค่ะ รถแท็กซี่อยู่ที่ไหนคะ,,,,,,plernpin-b12#p13,true
+s-b12-043,b12,b12-l5,Xe taxi ở trước khách sạn ạ.,รถแท็กซี่อยู่หน้าโรงแรมครับ,,,,,,plernpin-b12#p14,true
+s-b12-045,b12,b12-l5,Du lịch thú vị nhé!,เที่ยวให้สนุกนะครับ,,,,,,plernpin-b12#p14,true
+s-b12-047,b12,b12-l6,"Xin chào, tôi muốn đặt phòng, có phòng trống không ạ?",สวัสดีครับ ผมอยากจองห้อง มีห้องว่างไหมครับ,สวัสดีค่ะ ฉันอยากจองห้อง มีห้องว่างไหมคะ,,,,,plernpin-b12#p15,true
+s-b12-048,b12,b12-l6,Dạ có ạ. Có cả phòng đơn lẫn phòng đôi ạ.,มีค่ะ มีทั้งห้องเดี่ยวและห้องคู่ค่ะ,,,,,,plernpin-b12#p15,true
+s-b12-049,b12,b12-l6,Tôi xem phòng được không ạ?,ผมขอดูห้องได้ไหมครับ,ฉันขอดูห้องได้ไหมคะ,,,,,plernpin-b12#p15,true
+s-b12-051,b12,b12-l6,Có phòng khác không ạ?,มีห้องอื่นไหมครับ,,,,,,plernpin-b12#p16,true
+s-b12-053,b12,b12-l6,Có phòng to hơn này không ạ?,มีห้องที่ใหญ่กว่านี้ไหมครับ,,,,,,plernpin-b12#p16,true
+s-b12-055,b12,b12-l6,"Oki, phòng này tốt hơn nhiều luôn ạ. Vậy tôi chốt lấy phòng này nhé.",โอเค ห้องนี้ดีกว่าเยอะเลยครับ งั้นผมเอาห้องนี้นะครับ,,,,,,plernpin-b12#p17,true
+s-b12-057,b12,b12-l7,"Tôi sẽ nghỉ 2 đêm, giảm giá được không ạ?",ผมจะพักสองคืน ลดราคาได้ไหมครับ,ฉันจะพักสองคืน ลดราคาได้ไหมคะ,,,,,plernpin-b12#p18,true
+s-b12-058,b12,b12-l7,Không giảm được ạ.,ลดไม่ได้ค่ะ,,,,,,plernpin-b12#p18,true
+s-b12-059,b12,b12-l7,Vậy phòng của tôi giá bao nhiêu?,แล้วห้องของผมราคาเท่าไรครับ,แล้วห้องของฉันราคาเท่าไรคะ,,,,,plernpin-b12#p18,true
+s-b12-060,b12,b12-l7,Giá phòng mỗi đêm 500 bạt ạ.,ค่าห้องคืนละห้าร้อยบาทค่ะ,,,,,,plernpin-b12#p18,true
+s-b12-061,b12,b12-l7,Oki ạ. Phòng có điều hòa phải không ạ?,โอเคครับ ห้องมีแอร์ใช่ไหมครับ,,,,,,plernpin-b12#p19,true
+s-b12-063,b12,b12-l7,Có bình nóng lạnh không ạ?,มีเครื่องทำน้ำอุ่นไหมครับ,,,,,,plernpin-b12#p19,true
+s-b12-065,b12,b12-l7,Tốt quá ạ.,ดีมากเลยครับ,,,,,,plernpin-b12#p20,true
+s-b12-066,b12,b12-l7,"Chìa khóa đây ạ, phòng của anh số 357 ạ.",นี่กุญแจค่ะ ห้องของคุณเบอร์สามห้าเจ็ดค่ะ,,,,,,plernpin-b12#p20,true
+s-b12-067,b12,b12-l7,"Dạ, cảm ơn ạ. Thế ở đây có phục vụ bữa ăn sáng không?",ขอบคุณครับ แล้วที่นี่มีอาหารเช้าไหมครับ,,,,,,plernpin-b12#p20,true
+s-b12-068,b12,b12-l7,Dạ có ạ. Bữa ăn sáng sẽ bắt đầu từ 7h sáng đến 9h sáng ở tầng 3 ạ.,มีค่ะ อาหารเช้าเริ่มตั้งแต่เจ็ดโมงเช้าถึงเก้าโมงเช้าที่ชั้นสามค่ะ,,,,,,plernpin-b12#p20,true
+s-b12-069,b12,b12-l7,Cảm ơn bạn nhiều nhé.,ขอบคุณมากนะครับ,,,,,,plernpin-b12#p21,true
+s-b12-070,b12,b12-l7,Dạ không có gì ạ.,ไม่เป็นไรค่ะ,,,,,,plernpin-b12#p21,true

@@ -4,6 +4,8 @@
 
 Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · ✅ GV đã duyệt
 
+**Thứ tự nhập (owner chốt 2026-11-20 — số lớn trước):** Giáo trình **Bài 12 → 11 → … → 3**, rồi Chuyên đề **15 → 14 → … → 2** (CĐ 11, 3 chuyển từ mẫu `u11`, `u03` khi tới lượt). Đã xong trước đó: Bài 1, Bài 2, CĐ 1.
+
 ## Giáo trình (kind `theme`) — “Tiếng Thái chuyên sâu cấp độ 1 (A1)”
 
 | Bài | unit_id | File | Trang | Từ | Câu | Trạng thái |
@@ -19,7 +21,7 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 | 9 | `b09` | `บทที่ 9_การสั่งอาหาร_bản quyền.pdf` | 39 |  |  | ⬜ |
 | 10 | `b10` | `บทที่ 10_การซื้อขาย_bản quyền.pdf` | 44 |  |  | ⬜ |
 | 11 | `b11` | `บทที่ 11 สวมบทสนทนา ตอนที่ 1_bản quyền.pdf` | 21 |  |  | ⬜ |
-| 12 | `b12` | `บทที่ 12 สวมบทสนทนา ตอนที่ 2_bản quyền.pdf` | 21 |  |  | ⬜ |
+| 12 | `b12` | `บทที่ 12 สวมบทสนทนา ตอนที่ 2_bản quyền.pdf` | 21 | 0 | 59 | 🟡 2026-11-20 · 7 bài học = 5 hội thoại nhập vai (70 lượt, chỉ có tiếng Việt → Claude dịch Thái), 59 câu luyện dịch (`tokens` để build tự tách) |
 
 ## Chuyên đề (kind `grammar`)
 
