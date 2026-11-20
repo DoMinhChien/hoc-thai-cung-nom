@@ -89,6 +89,22 @@ export interface Countdown {
 
 const defaultClock = () => performance.now();
 
+/** Gọi `pause` khi tab ẩn hoặc cửa sổ mất focus (SCR-08) — dùng chung cho đồng hồ và vòng lặp game. */
+function useAutoPause(enabled: boolean, pause: () => void) {
+  useEffect(() => {
+    if (!enabled) return;
+    const onHidden = () => {
+      if (document.visibilityState === 'hidden') pause();
+    };
+    document.addEventListener('visibilitychange', onHidden);
+    window.addEventListener('blur', pause);
+    return () => {
+      document.removeEventListener('visibilitychange', onHidden);
+      window.removeEventListener('blur', pause);
+    };
+  }, [enabled, pause]);
+}
+
 /**
  * Đồng hồ trò chơi: đếm thời gian chạy, tạm dừng khi tab ẩn (người học bấm tiếp tục).
  * Trò chơi trong `@nom/core` nhận `now()` này, nên thời gian tạm dừng không bị tính.
@@ -137,18 +153,7 @@ export function useCountdown({
   const pause = useCallback(() => setPaused(true), []);
   const resume = useCallback(() => setPaused(false), []);
 
-  useEffect(() => {
-    if (!autoPause || !running) return;
-    const onHidden = () => {
-      if (document.visibilityState === 'hidden') pause();
-    };
-    document.addEventListener('visibilitychange', onHidden);
-    window.addEventListener('blur', pause);
-    return () => {
-      document.removeEventListener('visibilitychange', onHidden);
-      window.removeEventListener('blur', pause);
-    };
-  }, [autoPause, running, pause]);
+  useAutoPause(autoPause && running, pause);
 
   return {
     elapsedMs,
@@ -158,4 +163,73 @@ export function useCountdown({
     resume,
     now,
   };
+}
+
+/** Khung hình dài hơn chừng này (ms) bị cắt — vd. máy treo, debugger — trò không nhảy cóc. */
+export const MAX_FRAME_MS = 100;
+
+export interface FrameScheduler {
+  request(callback: (time: number) => void): number;
+  cancel(id: number): void;
+}
+
+const animationFrames: FrameScheduler = {
+  request: (callback) => window.requestAnimationFrame(callback),
+  cancel: (id) => window.cancelAnimationFrame(id),
+};
+
+export interface GameLoopOptions {
+  /** `false` = dừng hẳn (chưa bắt đầu / đã kết thúc). */
+  running?: boolean;
+  /** Tự tạm dừng khi tab ẩn hoặc cửa sổ mất focus (SCR-08). */
+  autoPause?: boolean;
+  /** Gọi mỗi khung hình với số ms đã trôi (≤ `MAX_FRAME_MS`) — trò arcade `tick(state, dtMs)` ở đây. */
+  onFrame: (dtMs: number) => void;
+  /** Test truyền bộ lập lịch giả. */
+  frames?: FrameScheduler;
+}
+
+export interface GameLoop {
+  paused: boolean;
+  pause(): void;
+  resume(): void;
+}
+
+/**
+ * Vòng lặp khung hình cho trò arcade (M9.6, plan 0.14): `requestAnimationFrame`, tạm dừng khi tab
+ * ẩn như `useCountdown`; khung hình đầu sau khi chạy lại không tính thời gian tạm dừng.
+ */
+export function useGameLoop({
+  running = true,
+  autoPause = true,
+  onFrame,
+  frames = animationFrames,
+}: GameLoopOptions): GameLoop {
+  const [paused, setPaused] = useState(false);
+  const onFrameRef = useRef(onFrame);
+  const framesRef = useRef(frames);
+  useEffect(() => {
+    onFrameRef.current = onFrame;
+    framesRef.current = frames;
+  });
+  const active = running && !paused;
+
+  useEffect(() => {
+    if (!active) return;
+    const scheduler = framesRef.current;
+    let last: number | null = null;
+    let id = 0;
+    const loop = (time: number) => {
+      if (last !== null) onFrameRef.current(Math.min(MAX_FRAME_MS, Math.max(0, time - last)));
+      last = time;
+      id = scheduler.request(loop);
+    };
+    id = scheduler.request(loop);
+    return () => scheduler.cancel(id);
+  }, [active]);
+
+  const pause = useCallback(() => setPaused(true), []);
+  const resume = useCallback(() => setPaused(false), []);
+  useAutoPause(autoPause && running, pause);
+  return { paused, pause, resume };
 }

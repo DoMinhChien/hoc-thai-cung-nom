@@ -18,6 +18,7 @@ import {
   sentenceRush,
   START_LIVES,
   trueFalse,
+  resultStars,
   unitSource,
   type GameSource,
   type MatchState,
@@ -396,5 +397,15 @@ describe("F-04' Đoán loại từ", () => {
     s = classifierRush.answer(s, wrong, T);
     expect(s.mistakes[0]).toMatchObject({ given: wrong, expected: q.expected });
     expect(s.lives).toBe(START_LIVES - 1);
+  });
+});
+
+describe('sao kết quả (plan 0.14)', () => {
+  it('≥ 90% → 3 sao, ≥ 60% → 2, còn lại 1; chưa trả lời → 0', () => {
+    expect(resultStars({ total: 10, accuracy: 0.9 })).toBe(3);
+    expect(resultStars({ total: 10, accuracy: 0.6 })).toBe(2);
+    expect(resultStars({ total: 10, accuracy: 0.59 })).toBe(1);
+    expect(resultStars({ total: 1, accuracy: 0 })).toBe(1);
+    expect(resultStars({ total: 0, accuracy: 0 })).toBe(0);
   });
 });

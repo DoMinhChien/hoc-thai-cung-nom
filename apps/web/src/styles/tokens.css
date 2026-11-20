@@ -51,6 +51,16 @@
   --nom-game-classifier-rush: #be185d;
   --nom-game-classifier-rush-subtle: #fdecf4;
   --nom-game-classifier-rush-fg: #ffffff;
+  /* Chủ đề màn chơi arcade (M9.6, tạm — chờ SCR-08 v2) */
+  --nom-game-theme-sea: #0e7490;
+  --nom-game-theme-sea-subtle: #e3f6fa;
+  --nom-game-theme-sea-fg: #ffffff;
+  --nom-game-theme-space: #312e81;
+  --nom-game-theme-space-subtle: #ecebfb;
+  --nom-game-theme-space-fg: #ffffff;
+  --nom-game-theme-garden: #3f6212;
+  --nom-game-theme-garden-subtle: #eef6e2;
+  --nom-game-theme-garden-fg: #ffffff;
 
   /* Nút đăng nhập theo guideline của hãng (ngoại lệ duy nhất ngoài bảng màu) */
   --nom-google-bg: #ffffff;

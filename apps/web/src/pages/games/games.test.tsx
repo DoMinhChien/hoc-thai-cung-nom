@@ -183,6 +183,9 @@ describe('/games/:id (SCR-08 §B–C)', () => {
 
     expect(await screen.findByTestId('game-result')).toBeInTheDocument();
     expect(screen.getByTestId('result-correct')).toHaveTextContent('1/4');
+    // 25% đúng → 1 sao (plan 0.14).
+    expect(screen.getByTestId('result-stars')).toHaveAttribute('data-stars', '1');
+    expect(screen.getByTestId('result-stars')).toHaveAccessibleName('1/3 sao');
     expect(await screen.findByTestId('result-new-record')).toBeInTheDocument();
     const repos = guestRepos();
     const [record] = await repos.progress.listGameResults();
@@ -195,7 +198,7 @@ describe('/games/:id (SCR-08 §B–C)', () => {
     await waitFor(async () => expect(await repos.progress.listNeedsReview()).toHaveLength(2));
     expect(await repos.progress.listCards()).toEqual([]);
 
-    // Chơi lại (Enter) → lượt mới; Trò khác → /games.
+    // Chơi lại (Enter) → lượt mới; Đổi trò / Esc → /games (giữ nguồn đã chọn).
     fireEvent.keyDown(window, { key: 'Enter' });
     expect(await screen.findByTestId('count-in')).toBeInTheDocument();
     fireEvent.keyDown(window, { key: 'Escape' });

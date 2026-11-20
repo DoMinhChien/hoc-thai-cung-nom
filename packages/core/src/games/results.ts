@@ -15,6 +15,21 @@ export interface SavedGameResult {
   previous: GameStats | null;
 }
 
+/** Ngưỡng tỉ lệ đúng cho 3 / 2 sao (plan 0.14); dưới ngưỡng 2 sao vẫn được 1 sao khi đã chơi. */
+export const STAR_THRESHOLDS = { three: 0.9, two: 0.6 } as const;
+
+/**
+ * Sao kết quả 1–3 (plan 0.14, mọi trò): theo tỉ lệ đúng của lượt; chưa trả lời câu nào → 0.
+ */
+export function resultStars(
+  summary: Pick<GameSummary<string>, 'total' | 'accuracy'>,
+): 0 | 1 | 2 | 3 {
+  if (summary.total === 0) return 0;
+  if (summary.accuracy >= STAR_THRESHOLDS.three) return 3;
+  if (summary.accuracy >= STAR_THRESHOLDS.two) return 2;
+  return 1;
+}
+
 const stats = ({ score, correct, total, maxCombo, durationMs }: GameStats): GameStats => ({
   score,
   correct,
