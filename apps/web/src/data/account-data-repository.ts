@@ -4,6 +4,7 @@ import type {
   GameResultRecord,
   LessonProgressRecord,
   NeedsReviewRecord,
+  SentenceLevelRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type IndexableType } from 'dexie';
 import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES } from './db';
@@ -111,6 +112,13 @@ export class AccountDataRepository {
               data as NeedsReviewRecord[],
               '[itemType+itemId]',
               (r) => [r.itemType, r.itemId],
+            );
+          } else if (name === 'sentenceLevels') {
+            await mergeUnique(
+              user.sentenceLevels,
+              data as SentenceLevelRecord[],
+              'sentenceId',
+              (r) => r.sentenceId,
             );
           } else await user.table(name).bulkPut(data);
         }

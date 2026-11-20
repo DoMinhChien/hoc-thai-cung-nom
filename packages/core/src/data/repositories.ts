@@ -7,12 +7,14 @@ import type {
   CanDoRecord,
   CardRecord,
   CardType,
+  ExerciseAttemptRecord,
   GameResultRecord,
   ItemType,
   LessonProgressRecord,
   ListeningStatRecord,
   NeedsReviewRecord,
   ReviewLogRecord,
+  SentenceLevelRecord,
   SessionRecord,
 } from './records';
 
@@ -21,7 +23,7 @@ export interface CardFilter {
   itemIds?: string[];
 }
 
-/** Thẻ SRS + tiến độ bài học, can-do (M7) + kỷ lục trò chơi, cờ "cần ôn" (M7.5). */
+/** Thẻ SRS + tiến độ bài học, can-do (M7) + kỷ lục trò chơi, cờ "cần ôn" (M7.5) + bậc dịch câu (M9). */
 export interface ProgressRepository {
   getCard(id: string): Promise<CardRecord | undefined>;
   findCard(itemType: ItemType, itemId: string, cardType: CardType): Promise<CardRecord | undefined>;
@@ -49,6 +51,11 @@ export interface ProgressRepository {
   /** Ghi theo `itemType` + `itemId` (một cờ mỗi mục). */
   putNeedsReview(record: NeedsReviewRecord): Promise<void>;
   deleteNeedsReview(itemType: ItemType, itemId: string): Promise<void>;
+
+  getSentenceLevel(sentenceId: string): Promise<SentenceLevelRecord | undefined>;
+  listSentenceLevels(): Promise<SentenceLevelRecord[]>;
+  /** Ghi theo `sentenceId` (một bản ghi mỗi câu). */
+  putSentenceLevel(record: SentenceLevelRecord): Promise<void>;
 }
 
 /** Log ôn thẻ + thống kê quiz nghe. */
@@ -58,6 +65,9 @@ export interface ReviewRepository {
   /** Log trong khoảng [from, to), cũ trước. */
   logsBetween(from: Date, to: Date): Promise<ReviewLogRecord[]>;
   addListeningStat(stat: ListeningStatRecord): Promise<void>;
+  addAttempt(attempt: ExerciseAttemptRecord): Promise<void>;
+  /** Lượt trả lời bài tập trong khoảng [from, to), cũ trước. */
+  attemptsBetween(from: Date, to: Date): Promise<ExerciseAttemptRecord[]>;
   listeningStatsBetween(from: Date, to: Date): Promise<ListeningStatRecord[]>;
 }
 

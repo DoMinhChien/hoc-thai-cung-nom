@@ -75,7 +75,11 @@ export function createContentClient({
     const parsed = schema.safeParse(await response.json().catch(() => undefined));
     if (!parsed.success) {
       const issue = parsed.error.issues[0];
-      throw new ContentError('invalid', file, `${issue?.path.map(String).join('.')}: ${issue?.message}`);
+      throw new ContentError(
+        'invalid',
+        file,
+        `${issue?.path.map(String).join('.')}: ${issue?.message}`,
+      );
     }
     return parsed.data;
   }

@@ -2,11 +2,13 @@ import {
   newSrsState,
   type CanDoRecord,
   type CardRecord,
+  type ExerciseAttemptRecord,
   type GameResultRecord,
   type LessonProgressRecord,
   type ListeningStatRecord,
   type NeedsReviewRecord,
   type ReviewLogRecord,
+  type SentenceLevelRecord,
   type SessionRecord,
   type SettingRecord,
 } from '@nom/core';
@@ -17,7 +19,7 @@ export const GUEST_KEY = 'guest';
 export const dbName = (userKey: string) => `hoc-thai-nom-${userKey}`;
 
 /** Phiên bản schema hiện tại — cũng ghi vào `meta.schemaVersion` (plan 7.3). */
-export const SCHEMA_VERSION = 4;
+export const SCHEMA_VERSION = 5;
 export const SCHEMA_VERSION_KEY = 'schemaVersion';
 
 export type KeyValueRecord = { key: string; value: unknown };
@@ -33,6 +35,8 @@ export const PROGRESS_TABLES = [
   'canDos',
   'gameResults',
   'needsReview',
+  'sentenceLevels',
+  'exerciseAttempts',
 ] as const;
 
 /** v1 (M1): khung store, bản ghi chỉ có vài trường. */
@@ -69,6 +73,13 @@ const STORES_V4 = {
   needsReview: 'id, &[itemType+itemId]',
 };
 
+/** v5 (M9): bậc dịch của câu (một bản ghi mỗi câu, E-11) + lượt trả lời bài tập (theo thời gian). */
+const STORES_V5 = {
+  ...STORES_V4,
+  sentenceLevels: 'id, &sentenceId',
+  exerciseAttempts: 'id, ts',
+};
+
 /** v1 → v2: thẻ cũ thiếu trường thì bổ sung mặc định (thẻ mới, loại Thai → Việt). */
 async function upgradeToV2(tx: Transaction) {
   const now = new Date();
@@ -101,6 +112,8 @@ export class NomDatabase extends Dexie {
   canDos!: EntityTable<CanDoRecord, 'id'>;
   gameResults!: EntityTable<GameResultRecord, 'id'>;
   needsReview!: EntityTable<NeedsReviewRecord, 'id'>;
+  sentenceLevels!: EntityTable<SentenceLevelRecord, 'id'>;
+  exerciseAttempts!: EntityTable<ExerciseAttemptRecord, 'id'>;
   meta!: EntityTable<KeyValueRecord, 'key'>;
 
   constructor(userKey: string) {
@@ -115,6 +128,10 @@ export class NomDatabase extends Dexie {
     this.version(4)
       .stores(STORES_V4)
       .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 4 }));
+    // v4 → v5 chỉ thêm store rỗng.
+    this.version(5)
+      .stores(STORES_V5)
+      .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 5 }));
     this.on('populate', (tx) => {
       void tx.table('meta').add({ key: SCHEMA_VERSION_KEY, value: SCHEMA_VERSION });
     });

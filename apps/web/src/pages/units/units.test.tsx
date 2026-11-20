@@ -1,4 +1,10 @@
-import { MockAuthService, type Manifest, type UnitBundle, type UnitSummary } from '@nom/core';
+import {
+  MockAudioProvider,
+  MockAuthService,
+  type Manifest,
+  type UnitBundle,
+  type UnitSummary,
+} from '@nom/core';
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
@@ -11,6 +17,7 @@ import { accountData } from '@/data';
 import { GUEST_KEY, NomDatabase } from '@/data/db';
 import { createDexieRepositories } from '@/data/dexie-repositories';
 import { fakeContent } from '@/test/content-fixtures';
+import { answerCurrentQuestion } from '@/test/practice-solver';
 
 // Content GIẢ LẬP cho test màn Bài học — không phải nội dung học.
 const lesson = (
@@ -111,7 +118,10 @@ const manifest: Manifest = {
   },
 };
 
+let audio = new MockAudioProvider();
+
 function renderAt(path: string) {
+  audio = new MockAudioProvider();
   const { client } = fakeContent({
     'manifest.json': manifest,
     'units.json': [summary(U1), summary(U11)],
@@ -120,7 +130,7 @@ function renderAt(path: string) {
   });
   const router = createMemoryRouter(routes, { initialEntries: [path] });
   render(
-    <AppProviders authService={new MockAuthService()}>
+    <AppProviders authService={new MockAuthService()} audio={audio}>
       <ContentProvider client={client}>
         <RouterProvider router={router} />
       </ContentProvider>
@@ -253,36 +263,18 @@ describe('/units/:unitId/:lessonId (SCR-05)', () => {
     );
     fireEvent.keyDown(window, { key: 'Enter' });
 
-    // Bài tập: trả lời đúng mọi câu.
-    const meanings = new Map(U1.words.map((w) => [w.thai, w.meaning_vi[0]!]));
-    const nextScreen = () =>
-      waitFor(() => {
-        const el =
-          screen.queryByTestId('lesson-finished') ??
-          screen.queryByTestId('exercise-th') ??
-          screen.queryByTestId('token-bank');
-        expect(el).not.toBeNull();
-        return el!;
-      });
-    for (
-      let el = await nextScreen();
-      el.dataset.testid !== 'lesson-finished';
-      el = await nextScreen()
-    ) {
-      if (el.dataset.testid === 'exercise-th') {
-        await userEvent.click(
-          within(screen.getByTestId('exercise-options')).getByRole('button', {
-            name: new RegExp(meanings.get(el.textContent!)!),
-          }),
-        );
-      } else {
-        for (const token of ['คุณ', 'ชื่อ', 'อะไร']) {
-          await userEvent.click(within(el).getByRole('button', { name: new RegExp(token) }));
-        }
-        await userEvent.click(screen.getByTestId('exercise-check'));
-      }
+    // Bài tập (cùng engine với /practice): trả lời đúng mọi câu.
+    await screen.findByTestId('practice-session');
+    while (!screen.queryByTestId('lesson-finished')) {
+      await answerCurrentQuestion([U1], audio);
       expect(await screen.findByTestId('feedback-bar')).toHaveAttribute('data-correct', 'true');
-      await userEvent.click(screen.getByTestId('exercise-next'));
+      await userEvent.click(screen.getByTestId('practice-next'));
+      await waitFor(() =>
+        expect(
+          !!screen.queryByTestId('lesson-finished') ||
+            (!!screen.queryByTestId('question') && !screen.queryByTestId('feedback-bar')),
+        ).toBe(true),
+      );
     }
 
     expect(screen.getByTestId('lesson-finished')).toHaveTextContent('Xong Bài học 1');
@@ -307,7 +299,7 @@ describe('/units/:unitId/:lessonId (SCR-05)', () => {
     expect(await screen.findByTestId('grammar-point')).toBeInTheDocument();
     fireEvent.keyDown(window, { key: ']' });
     fireEvent.keyDown(window, { key: ']' });
-    expect(await screen.findByTestId('exercise')).toBeInTheDocument();
+    expect(await screen.findByTestId('practice-session')).toBeInTheDocument();
     fireEvent.keyDown(window, { key: 'Escape' });
     await waitFor(() => expect(router.state.location.pathname).toBe('/units/u01'));
   });

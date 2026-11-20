@@ -1,46 +1,19 @@
 import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
+import { answerAll, loadBundle, recordSpeech } from './practice-helpers';
 
 /**
  * Luồng học 1 bài (M7 T7.7, SCR-04/05) trên content mẫu đã build — Bài 1 (`u01`), bài học 1.
  * Giảm chuyển động để ảnh chụp ổn định.
  */
 test.beforeEach(async ({ page }) => {
+  await recordSpeech(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await chooseGuest(page);
 });
 
-interface Unit1 {
-  words: { thai: string; meaning_vi: string[]; lesson_id: string }[];
-  sentences: { vi: string; th?: string; tokens: string[]; lesson_id: string }[];
-}
-
-async function unit1(page: Page): Promise<Unit1> {
-  return (await (await page.request.get('/content/unit-u01.json')).json()) as Unit1;
-}
-
-/** Trả lời đúng mọi câu của bước Bài tập (đáp án đọc từ bundle đã build). */
-async function answerExercise(page: Page, content: Unit1) {
-  const meanings = new Map(content.words.map((w) => [w.thai, w.meaning_vi.join('; ')]));
-  const tokensOf = new Map(content.sentences.map((s) => [s.vi, s.tokens]));
-  while (!(await page.getByTestId('lesson-finished').isVisible())) {
-    const th = page.getByTestId('exercise-th');
-    const vi = page.getByTestId('exercise-vi');
-    await expect(th.or(vi).or(page.getByTestId('lesson-finished'))).toBeVisible();
-    if (await page.getByTestId('lesson-finished').isVisible()) break;
-    if (await th.isVisible()) {
-      const expected = meanings.get((await th.textContent())!)!;
-      await page.getByTestId('exercise-options').getByRole('button', { name: expected }).click();
-    } else {
-      const bank = page.getByTestId('token-bank');
-      for (const token of tokensOf.get((await vi.textContent())!)!) {
-        await bank.getByRole('button', { name: token, exact: true }).first().click();
-      }
-      await page.getByTestId('exercise-check').click();
-    }
-    await expect(page.getByTestId('feedback-bar')).toHaveAttribute('data-correct', 'true');
-    await page.getByTestId('exercise-next').click();
-  }
+async function unit1(page: Page) {
+  return loadBundle(page, 'u01');
 }
 
 test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hội thoại → Bài tập → hoàn thành Bài 1', async ({
@@ -84,7 +57,7 @@ test('luồng học 1 bài: Bắt đầu → Từ vựng → Mẫu câu → Hộ
   await page.getByTestId('step-next').click();
 
   // Bài tập đúng hết → hoàn thành bài, xong chuyên đề (1 bài).
-  await answerExercise(page, content);
+  await answerAll(page, [content], page.getByTestId('lesson-finished'));
   await expect(page.getByTestId('lesson-finished')).toContainText('Xong Bài học 1');
   await expect(page.getByTestId('unit-complete')).toBeVisible();
   await page.keyboard.press('Enter');

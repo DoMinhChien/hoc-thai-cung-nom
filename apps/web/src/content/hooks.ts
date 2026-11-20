@@ -4,9 +4,7 @@ import type { ContentClient, ContentError } from './content-client';
 import { ContentContext } from './content-context';
 
 export type ContentState<T> =
-  | { status: 'loading' }
-  | { status: 'ready'; data: T }
-  | { status: 'error'; error: ContentError };
+  { status: 'loading' } | { status: 'ready'; data: T } | { status: 'error'; error: ContentError };
 
 export function useContentClient(): ContentClient {
   return useContext(ContentContext);
@@ -15,13 +13,18 @@ export function useContentClient(): ContentClient {
 /** Tải một file content; đổi `key` (vd. unit khác) → về `loading` rồi tải lại. */
 function useContent<T>(key: string, load: (client: ContentClient) => Promise<T>): ContentState<T> {
   const client = useContentClient();
-  const [result, setResult] = useState<{ key: string; client: ContentClient; state: ContentState<T> }>();
+  const [result, setResult] = useState<{
+    key: string;
+    client: ContentClient;
+    state: ContentState<T>;
+  }>();
 
   useEffect(() => {
     let active = true;
     load(client).then(
       (data) => active && setResult({ key, client, state: { status: 'ready', data } }),
-      (error: ContentError) => active && setResult({ key, client, state: { status: 'error', error } }),
+      (error: ContentError) =>
+        active && setResult({ key, client, state: { status: 'error', error } }),
     );
     return () => {
       active = false;

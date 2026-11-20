@@ -31,17 +31,17 @@ describe('NomDatabase schema (plan 7.3)', () => {
     const db = new NomDatabase('moi');
     await db.open();
     expect(db.verno).toBe(SCHEMA_VERSION);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 4 });
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 5 });
     db.close();
   });
 
-  it('nâng v1 (M1) → v4 không mất dữ liệu; bổ sung trường còn thiếu', async () => {
+  it('nâng v1 (M1) → v5 không mất dữ liệu; bổ sung trường còn thiếu', async () => {
     await createV1('u1');
     const db = new NomDatabase('u1');
     await db.open();
 
-    expect(db.verno).toBe(4);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 4 });
+    expect(db.verno).toBe(5);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
     expect(await db.meta.get('guestChosen')).toMatchObject({ value: true });
 
     const [c1, c2] = await db.cards.bulkGet(['c1', 'c2']);
@@ -64,7 +64,7 @@ describe('NomDatabase schema (plan 7.3)', () => {
     db.close();
   });
 
-  it('nâng v2 (M5) → v4: giữ thẻ, thêm store bài học + can-do (lessonId duy nhất)', async () => {
+  it('nâng v2 (M5) → v5: giữ thẻ, thêm store bài học + can-do (lessonId duy nhất)', async () => {
     const old = new Dexie(dbName('u2'));
     old.version(2).stores({
       cards: 'id, [itemType+itemId+cardType], itemType, fsrs.due, createdAt, updatedAt',
@@ -80,8 +80,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u2');
     await db.open();
-    expect(db.verno).toBe(4);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 4 });
+    expect(db.verno).toBe(5);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
     expect(await db.cards.get('c1')).toMatchObject({ itemId: 'di' });
 
     const lesson = {
@@ -98,7 +98,7 @@ describe('NomDatabase schema (plan 7.3)', () => {
     db.close();
   });
 
-  it('nâng v3 (M7) → v4: giữ tiến độ bài học, thêm kỷ lục trò chơi + cờ "cần ôn" (khóa duy nhất)', async () => {
+  it('nâng v3 (M7) → v5: giữ tiến độ bài học, thêm kỷ lục trò chơi + cờ "cần ôn" (khóa duy nhất)', async () => {
     const old = new Dexie(dbName('u3'));
     old.version(3).stores({
       cards: 'id, [itemType+itemId+cardType], itemType, fsrs.due, createdAt, updatedAt',
@@ -116,8 +116,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u3');
     await db.open();
-    expect(db.verno).toBe(4);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 4 });
+    expect(db.verno).toBe(5);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
     expect(await db.lessons.get('l1')).toMatchObject({ lessonId: 'u01-l1' });
 
     const ts = '2026-03-01T00:00:00.000Z';
@@ -140,6 +140,49 @@ describe('NomDatabase schema (plan 7.3)', () => {
     };
     await db.needsReview.add({ id: 'a', ...flag });
     await expect(db.needsReview.add({ id: 'b', ...flag })).rejects.toThrow();
+    db.close();
+  });
+
+  it('nâng v4 (M7.5) → v5: giữ cờ "cần ôn", thêm bậc dịch câu (sentenceId duy nhất) + lượt trả lời', async () => {
+    const old = new Dexie(dbName('u4'));
+    old.version(4).stores({
+      cards: 'id, [itemType+itemId+cardType], itemType, fsrs.due, createdAt, updatedAt',
+      reviewLogs: 'id, cardId, review',
+      listeningStats: 'id, ts',
+      sessions: 'id, startedAt',
+      settings: 'key',
+      meta: 'key',
+      lessons: 'id, &lessonId, unitId, updatedAt',
+      canDos: 'id, &[unitId+canDo], unitId',
+      gameResults: 'id, &[gameId+source]',
+      needsReview: 'id, &[itemType+itemId]',
+    });
+    await old.table('needsReview').put({ id: 'f1', itemType: 'word', itemId: 'chue' });
+    await old.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 4 });
+    old.close();
+
+    const db = new NomDatabase('u4');
+    await db.open();
+    expect(db.verno).toBe(5);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
+    expect(await db.needsReview.get('f1')).toMatchObject({ itemId: 'chue' });
+
+    const ts = '2026-03-01T00:00:00.000Z';
+    const level = { sentenceId: 's1', level: 2 as const, streak: 0, updatedAt: ts };
+    await db.sentenceLevels.add({ id: 'a', ...level });
+    await expect(db.sentenceLevels.add({ id: 'b', ...level })).rejects.toThrow();
+    await db.exerciseAttempts.add({
+      id: 'x',
+      exerciseType: 'E-01',
+      itemType: 'word',
+      itemId: 'chue',
+      unitId: 'u01',
+      correct: true,
+      rating: 'good',
+      ts,
+      updatedAt: ts,
+    });
+    expect(await db.exerciseAttempts.where('ts').equals(ts).count()).toBe(1);
     db.close();
   });
 });

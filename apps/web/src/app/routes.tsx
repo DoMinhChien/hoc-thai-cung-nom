@@ -9,6 +9,8 @@ import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
 import { GamePage } from '@/pages/games/GamePage';
 import { GamesPage } from '@/pages/games/GamesPage';
+import { PracticePage } from '@/pages/practice/PracticePage';
+import { PracticeSessionPage } from '@/pages/practice/PracticeSessionPage';
 import { LessonPage } from '@/pages/units/LessonPage';
 import { UnitPage } from '@/pages/units/UnitPage';
 import { UnitsPage } from '@/pages/units/UnitsPage';
@@ -65,6 +67,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: '/games/:id', element: <GamePage /> },
       { path: '/units/:unitId/:lessonId', element: <LessonPage /> },
+      { path: '/practice/session', element: <PracticeSessionPage /> },
     ],
   },
   {
@@ -88,7 +91,7 @@ export const routes: RouteObject[] = [
       },
       { path: '/units', element: <UnitsPage /> },
       { path: '/units/:unitId', element: <UnitPage /> },
-      page('/practice', 'pages.practice', 'practice'),
+      { path: '/practice', element: <PracticePage /> },
       page('/words', 'pages.words', 'words'),
       { path: '/games', element: <GamesPage /> },
       page('/progress', 'pages.progress', 'progress'),

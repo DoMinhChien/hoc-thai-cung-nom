@@ -1,21 +1,30 @@
 import {
-  buildLessonQuiz,
-  checkLessonAnswer,
+  buildPracticeSession,
+  byDifficulty,
+  exercisePool,
   LESSON_PASS_SCORE,
+  questionItems,
   type BuiltLesson,
-  type LessonQuestion,
+  type ExerciseItemRef,
+  type PracticeMode,
+  type SentenceLevelRecord,
   type UnitBundle,
 } from '@nom/core';
 import { useState } from 'react';
-import { ChoiceButton, FeedbackBar, TokenBank, useKeyShortcut } from '@/components/interactive';
+import { useVoiceStatus } from '@/audio/useVoiceStatus';
+import { useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
+import { PracticeRunner, type PracticeSummary } from '@/pages/practice/PracticeRunner';
 
 const randomSeed = () => Math.floor(Math.random() * 2 ** 31);
 
 /**
- * Bước Bài tập (SCR-05, M7): khung + 2 loại có sẵn (chọn nghĩa, xếp câu) dùng component M7.5.
- * ≥ 80% → hoàn thành bài; < 80% → làm lại câu sai hoặc để sau (vẫn lưu điểm cao nhất).
+ * Bước Bài tập (SCR-05, M9 T9.6): cùng engine với `/practice` — câu hỏi E-01..E-14 của bài, độ khó
+ * tăng dần, lần trả lời đầu chấm FSRS (từ/câu của bài vào SRS). ≥ 80% → hoàn thành bài; < 80% → làm
+ * lại câu sai hoặc để sau (vẫn lưu điểm cao nhất).
  */
 export function ExerciseStep({
   bundle,
@@ -29,159 +38,106 @@ export function ExerciseStep({
   onScore: (score: number) => Promise<void>;
   onLater: () => void;
 }) {
-  const [questions, setQuestions] = useState<LessonQuestion[]>(() =>
-    buildLessonQuiz(bundle, lesson.lesson_id, randomSeed()),
+  const voice = useVoiceStatus();
+  const levels = useRepositoryQuery((r) => r.progress.listSentenceLevels(), []);
+  const [round, setRound] = useState<{ n: number; items: ExerciseItemRef[] | null }>({
+    n: 0,
+    items: null,
+  });
+  if (levels === undefined || voice === 'checking') return <Skeleton className="h-64" />;
+  return (
+    <Round
+      key={round.n}
+      bundle={bundle}
+      lesson={lesson}
+      levels={levels}
+      voice={voice === 'available'}
+      mode={
+        round.items
+          ? { kind: 'items', items: round.items }
+          : { kind: 'lesson', lessonId: lesson.lesson_id }
+      }
+      onScore={onScore}
+      onLater={onLater}
+      onRetry={(items) => setRound({ n: round.n + 1, items })}
+    />
   );
-  const total = useState(() => questions.length)[0];
-  const [index, setIndex] = useState(0);
-  const [results, setResults] = useState<Map<string, boolean>>(new Map());
-  const [answer, setAnswer] = useState<{ correct: boolean } | null>(null);
-  const [picked, setPicked] = useState<number[]>([]);
-  const [chosen, setChosen] = useState<string | null>(null);
-  const finished = index >= questions.length;
-  const q = questions[index];
+}
 
-  const submit = (value: string | readonly string[]) => {
-    if (!q || answer) return;
-    const correct = checkLessonAnswer(q, value);
-    setAnswer({ correct });
-    setResults(new Map(results).set(q.itemId, correct));
-  };
-  const next = () => {
-    const nextIndex = index + 1;
-    setIndex(nextIndex);
-    setAnswer(null);
-    setPicked([]);
-    if (nextIndex >= questions.length) {
-      const correct = [...results.values()].filter(Boolean).length;
-      void onScore(correct / total);
-    }
-  };
-  useKeyShortcut('Enter', next, !!answer);
+function Round({
+  bundle,
+  levels,
+  voice,
+  mode,
+  onScore,
+  onLater,
+  onRetry,
+}: {
+  bundle: UnitBundle;
+  lesson: BuiltLesson;
+  levels: SentenceLevelRecord[];
+  voice: boolean;
+  mode: PracticeMode;
+  onScore: (score: number) => Promise<void>;
+  onLater: () => void;
+  onRetry: (items: ExerciseItemRef[]) => void;
+}) {
+  // Dựng một lần cho lượt này (dữ liệu đổi trong lúc làm không xáo lại câu).
+  const [questions] = useState(() =>
+    byDifficulty(
+      buildPracticeSession({
+        pool: exercisePool([bundle]),
+        cards: [],
+        levels,
+        needsReview: [],
+        attempts: [],
+        lessons: [],
+        mode,
+        voice,
+        now: new Date(),
+        seed: randomSeed(),
+      }),
+    ),
+  );
+  const [summary, setSummary] = useState<PracticeSummary | null>(null);
 
-  if (finished) {
-    const correct = [...results.values()].filter(Boolean).length;
-    const score = correct / total;
+  if (questions.length === 0) {
+    return <p className="text-muted-foreground">{t('practice.empty')}</p>;
+  }
+  if (summary) {
     return (
       <Result
-        correct={correct}
-        total={total}
-        passed={score >= LESSON_PASS_SCORE}
-        onRetry={() => {
-          setQuestions(questions.filter((x) => results.get(x.itemId) === false));
-          setIndex(0);
-        }}
+        summary={summary}
+        onRetry={() => onRetry(summary.wrong.flatMap((w) => questionItems(w.question)))}
         onLater={onLater}
       />
     );
   }
-
-  const question = q!;
   return (
-    <div className="flex flex-col gap-6" data-testid="exercise">
-      <p className="text-sm text-muted-foreground">
-        {t('lesson.questionOf', { n: index + 1, total: questions.length })} ·{' '}
-        {question.kind === 'meaning' ? t('lesson.quizMeaning') : t('lesson.quizArrange')}
-      </p>
-      {question.kind === 'meaning' ? (
-        <>
-          <p lang="th" data-testid="exercise-th" className="text-center text-th-lg">
-            {question.th}
-          </p>
-          <div className="grid grid-cols-2 gap-3" data-testid="exercise-options">
-            {question.options.map((option, i) => (
-              <ChoiceButton
-                key={`${index}-${option}`}
-                shortcut={String(i + 1)}
-                status={
-                  !answer
-                    ? 'idle'
-                    : option === question.expected
-                      ? 'correct'
-                      : option === chosen
-                        ? 'wrong'
-                        : 'idle'
-                }
-                disabled={!!answer}
-                onSelect={() => {
-                  setChosen(option);
-                  submit(option);
-                }}
-              >
-                {option}
-              </ChoiceButton>
-            ))}
-          </div>
-        </>
-      ) : (
-        <>
-          <p
-            data-testid="exercise-vi"
-            className="rounded-xl bg-accent px-5 py-4 text-xl font-medium"
-          >
-            {question.vi}
-          </p>
-          <TokenBank
-            key={index}
-            tokens={question.bank}
-            value={picked}
-            onChange={setPicked}
-            onSubmit={() => submit(picked.map((i) => question.bank[i]!))}
-            disabled={!!answer}
-          />
-          {!answer && (
-            <Button
-              className="self-start"
-              data-testid="exercise-check"
-              disabled={picked.length === 0}
-              onClick={() => submit(picked.map((i) => question.bank[i]!))}
-            >
-              {t('lesson.check')} ↵
-            </Button>
-          )}
-        </>
-      )}
-      {answer && (
-        <>
-          <FeedbackBar
-            correct={answer.correct}
-            answer={
-              answer.correct
-                ? undefined
-                : question.kind === 'meaning'
-                  ? question.expected
-                  : question.th
-            }
-          />
-          <Button
-            className="self-start"
-            data-testid="exercise-next"
-            aria-keyshortcuts="Enter"
-            onClick={next}
-          >
-            {t('lesson.nextQuestion')} ↵
-          </Button>
-        </>
-      )}
-    </div>
+    <PracticeRunner
+      questions={questions}
+      voice={voice}
+      onFinish={(s) => {
+        setSummary(s);
+        void onScore(s.total ? s.correct / s.total : 0);
+      }}
+    />
   );
 }
 
 function Result({
-  correct,
-  total,
-  passed,
+  summary,
   onRetry,
   onLater,
 }: {
-  correct: number;
-  total: number;
-  passed: boolean;
+  summary: PracticeSummary;
   onRetry: () => void;
   onLater: () => void;
 }) {
+  const { correct, total } = summary;
+  const passed = total > 0 && correct / total >= LESSON_PASS_SCORE;
   useKeyShortcut('Enter', onRetry, !passed);
-  const pct = Math.round((correct / total) * 100);
+  const pct = total ? Math.round((correct / total) * 100) : 0;
   return (
     <div className="flex flex-col gap-4" data-testid="exercise-result" data-passed={passed}>
       <p className="text-2xl font-semibold">{t('lesson.score', { correct, total, pct })}</p>

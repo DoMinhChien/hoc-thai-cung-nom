@@ -3,6 +3,7 @@
  * Import qua `@nom/core/testing` — không nằm trong bundle app.
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { updateSentenceLevel } from '../exercises/ladder';
 import type { GameId, GameSummary } from '../games/game';
 import { saveGameResult, setNeedsReview } from '../games/results';
 import { newSrsState, reviewSrs } from '../srs/srs';
@@ -298,6 +299,44 @@ export function describeRepositories(
         expect(await repos.progress.listCards()).toEqual(before);
         expect(await repos.progress.getCard(card.id)).toEqual(reviewed);
         expect(await repos.reviews.logsBetween(at(0), at(DAY))).toEqual(logsBefore);
+      });
+    });
+
+    describe('Bài tập: bậc dịch câu, lượt trả lời (M9)', () => {
+      it('bậc dịch: một bản ghi mỗi câu, lên bậc sau 2 lần đúng, lùi khi sai', async () => {
+        await updateSentenceLevel(repos.progress, 's1', true, at(0));
+        expect(await repos.progress.getSentenceLevel('s1')).toMatchObject({ level: 2, streak: 1 });
+        const up = await updateSentenceLevel(repos.progress, 's1', true, at(1));
+        expect(up).toMatchObject({ level: 3, streak: 0, updatedAt: at(1).toISOString() });
+        await updateSentenceLevel(repos.progress, 's2', false, at(2));
+        await updateSentenceLevel(repos.progress, 's1', false, at(3));
+        const levels = await repos.progress.listSentenceLevels();
+        expect(levels.map((l) => [l.sentenceId, l.level]).sort()).toEqual([
+          ['s1', 2],
+          ['s2', 2],
+        ]);
+        expect(levels.find((l) => l.sentenceId === 's1')?.id).toBe(up.id);
+        expect(await repos.progress.getSentenceLevel('nope')).toBeUndefined();
+      });
+
+      it('lượt trả lời theo khoảng thời gian, cũ trước', async () => {
+        for (const [i, correct] of [true, false, true].entries()) {
+          await repos.reviews.addAttempt({
+            id: `a${i}`,
+            exerciseType: 'E-07',
+            itemType: 'sentence',
+            itemId: 's1',
+            unitId: 'u01',
+            correct,
+            rating: i === 0 ? 'good' : null,
+            ...(correct ? {} : { answer: 'ผม' }),
+            ts: at((2 - i) * DAY).toISOString(),
+            updatedAt: at((2 - i) * DAY).toISOString(),
+          });
+        }
+        const recent = await repos.reviews.attemptsBetween(at(0), at(2 * DAY));
+        expect(recent.map((a) => a.id)).toEqual(['a2', 'a1']);
+        expect(recent[1]).toMatchObject({ correct: false, answer: 'ผม', rating: null });
       });
     });
 
