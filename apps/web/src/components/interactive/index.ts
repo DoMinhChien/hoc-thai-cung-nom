@@ -16,8 +16,25 @@ export {
   type TonePlayer,
 } from './feedback-sound';
 export { formatClock, itemKey, langOf } from './format';
+export {
+  DEFAULT_GAME_THEME,
+  GAME_THEME_KEY,
+  GAME_THEMES,
+  useGameTheme,
+  type GameTheme,
+  type GameThemeSetting,
+} from './game-theme';
 export { GameTopBar, PausedOverlay, TimeBar } from './GameTopBar';
-export { useCountdown, useKeyShortcut, useReducedMotion, type Countdown } from './hooks';
+export {
+  MAX_FRAME_MS,
+  useCountdown,
+  useGameLoop,
+  useKeyShortcut,
+  useReducedMotion,
+  type Countdown,
+  type FrameScheduler,
+  type GameLoop,
+} from './hooks';
 export { TokenBank, TokenChip } from './TokenBank';
 export { ReviewList } from './ReviewList';
 export {

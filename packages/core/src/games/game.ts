@@ -34,8 +34,8 @@ export interface GameStats {
   durationMs: number;
 }
 
-export interface GameSummary extends GameStats {
-  gameId: GameId;
+export interface GameSummary<Id extends string = GameId> extends GameStats {
+  gameId: Id;
   /** correct / total, 0–1 (0 khi chưa trả lời câu nào). */
   accuracy: number;
   /** Mỗi mục một lần, theo thứ tự sai. */
@@ -141,7 +141,11 @@ export function finish<S extends GameState>(state: S, now: number): S {
     : { ...state, status: 'finished', finishedAt: now, feedback: null };
 }
 
-export function summarize(gameId: GameId, state: GameState, durationMs: number): GameSummary {
+export function summarize<Id extends string = GameId>(
+  gameId: Id,
+  state: GameState,
+  durationMs: number,
+): GameSummary<Id> {
   const seen = new Set<string>();
   const mistakes = state.mistakes.filter((m) => {
     const key = `${m.itemType}:${m.itemId}`;
@@ -176,7 +180,7 @@ export function availability(reason: GameLockReason, need: number, have: number)
   return have >= need ? { ok: true } : { ok: false, reason, need, have };
 }
 
-export function assertAvailable(game: GameId, result: GameAvailability) {
+export function assertAvailable(game: string, result: GameAvailability) {
   if (!result.ok) {
     throw new Error(
       `${game}: nguồn thiếu dữ liệu (${result.reason}: ${result.have}/${result.need})`,

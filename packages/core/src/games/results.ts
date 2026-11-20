@@ -15,6 +15,30 @@ export interface SavedGameResult {
   previous: GameStats | null;
 }
 
+/** Ngưỡng tỉ lệ đúng cho 3 / 2 sao (plan 0.14); dưới ngưỡng 2 sao vẫn được 1 sao khi đã chơi. */
+export const STAR_THRESHOLDS = { three: 0.9, two: 0.6 } as const;
+/**
+ * Ghép cặp: lật thẻ chưa thấy là bắt buộc (tỉ lệ đúng ~50% dù nhớ tốt) → tính theo số lần ghép
+ * sai "thật" (đã thấy cả 2 thẻ, `mistakes`): ≤ 0 → 3 sao, ≤ 2 → 2 sao.
+ */
+export const MATCH_STAR_MISTAKES = { three: 0, two: 2 } as const;
+
+/**
+ * Sao kết quả 1–3 (plan 0.14, mọi trò). `0` = không xếp hạng (chưa trả lời câu nào) — UI ẩn hàng sao.
+ */
+export function resultStars(
+  summary: Pick<GameSummary<string>, 'gameId' | 'total' | 'accuracy' | 'mistakes'>,
+): 0 | 1 | 2 | 3 {
+  if (summary.total === 0) return 0;
+  if (summary.gameId === 'match') {
+    const n = summary.mistakes.length;
+    return n <= MATCH_STAR_MISTAKES.three ? 3 : n <= MATCH_STAR_MISTAKES.two ? 2 : 1;
+  }
+  if (summary.accuracy >= STAR_THRESHOLDS.three) return 3;
+  if (summary.accuracy >= STAR_THRESHOLDS.two) return 2;
+  return 1;
+}
+
 const stats = ({ score, correct, total, maxCombo, durationMs }: GameStats): GameStats => ({
   score,
   correct,

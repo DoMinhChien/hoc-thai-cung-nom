@@ -18,6 +18,7 @@ import {
   sentenceRush,
   START_LIVES,
   trueFalse,
+  resultStars,
   unitSource,
   type GameSource,
   type MatchState,
@@ -396,5 +397,34 @@ describe("F-04' Đoán loại từ", () => {
     s = classifierRush.answer(s, wrong, T);
     expect(s.mistakes[0]).toMatchObject({ given: wrong, expected: q.expected });
     expect(s.lives).toBe(START_LIVES - 1);
+  });
+});
+
+describe('sao kết quả (plan 0.14)', () => {
+  const at = (gameId: string, total: number, accuracy: number, mistakes = 0) => ({
+    gameId,
+    total,
+    accuracy,
+    mistakes: Array.from({ length: mistakes }, (_, i) => ({
+      itemType: 'word' as const,
+      itemId: `w${i}`,
+      th: 'ก',
+      expected: 'x',
+    })),
+  });
+
+  it('≥ 90% → 3 sao, ≥ 60% → 2, còn lại 1; chưa trả lời → 0 (không xếp hạng)', () => {
+    expect(resultStars(at('true-false', 10, 0.9))).toBe(3);
+    expect(resultStars(at('true-false', 10, 0.6))).toBe(2);
+    expect(resultStars(at('true-false', 10, 0.59))).toBe(1);
+    expect(resultStars(at('true-false', 1, 0))).toBe(1);
+    expect(resultStars(at('true-false', 0, 0))).toBe(0);
+  });
+
+  it('Ghép cặp: theo số lần ghép sai thật, không theo tỉ lệ lật (lật thẻ mới là bắt buộc)', () => {
+    // 12 lượt lật cho 6 cặp, không sai thật → 3 sao dù tỉ lệ 50%.
+    expect(resultStars(at('match', 12, 0.5))).toBe(3);
+    expect(resultStars(at('match', 12, 0.5, 2))).toBe(2);
+    expect(resultStars(at('match', 12, 0.5, 3))).toBe(1);
   });
 });

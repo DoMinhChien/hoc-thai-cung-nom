@@ -76,6 +76,10 @@
   --color-game: var(--game, var(--nom-accent));
   --color-game-subtle: var(--game-subtle, var(--nom-accent-subtle));
   --color-game-fg: var(--game-fg, var(--nom-accent-fg));
+  /* Chủ đề màn chơi arcade (`data-game-theme`, M9.6); ngoài màn chơi = nền phụ. */
+  --color-game-theme: var(--game-theme, var(--nom-bg-subtle));
+  --color-game-theme-subtle: var(--game-theme-subtle, var(--nom-bg-subtle));
+  --color-game-theme-fg: var(--game-theme-fg, var(--nom-fg));
   --color-mastery-none: var(--nom-mastery-none);
   --color-mastery-learning: var(--nom-mastery-learning);
   --color-mastery-known: var(--nom-mastery-known);
@@ -197,6 +201,22 @@
   --game: var(--nom-game-classifier-rush);
   --game-subtle: var(--nom-game-classifier-rush-subtle);
   --game-fg: var(--nom-game-classifier-rush-fg);
+}
+/* Chủ đề màn chơi arcade (M9.6 T9.6.3) — xem `color.game-theme` trong tokens.json. */
+[data-game-theme='sea'] {
+  --game-theme: var(--nom-game-theme-sea);
+  --game-theme-subtle: var(--nom-game-theme-sea-subtle);
+  --game-theme-fg: var(--nom-game-theme-sea-fg);
+}
+[data-game-theme='space'] {
+  --game-theme: var(--nom-game-theme-space);
+  --game-theme-subtle: var(--nom-game-theme-space-subtle);
+  --game-theme-fg: var(--nom-game-theme-space-fg);
+}
+[data-game-theme='garden'] {
+  --game-theme: var(--nom-game-theme-garden);
+  --game-theme-subtle: var(--nom-game-theme-garden-subtle);
+  --game-theme-fg: var(--nom-game-theme-garden-fg);
 }
 
 /*

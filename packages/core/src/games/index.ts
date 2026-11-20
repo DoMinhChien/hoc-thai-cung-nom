@@ -21,3 +21,4 @@ export * from './rng';
 export * from './sentence-rush';
 export * from './source';
 export * from './true-false';
+export * from './arcade';
