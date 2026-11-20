@@ -96,3 +96,93 @@ b02-w62,b02,b02-l6,เหรอ,,hả; thế à,,,particle,,,,,,plernpin-b02#p15
 b02-w63,b02,b02-l6,สยาม,,Siam (tên cũ của Thái Lan),,,noun,,,,,,plernpin-b02#p15,true
 b02-w64,b02,b02-l6,วิศวกร,,kỹ sư,,,noun,,,,,,plernpin-b02#p15,true
 b02-w65,b02,b02-l6,ไฮเทค,,công nghệ cao,phiên âm từ tiếng Anh “high tech”,,noun,,,,,,plernpin-b02#p15,true
+b01-w01,b01,b01-l1,ฉัน,,tôi,"nam hoặc nữ, nói với người ngang hàng hoặc ít tuổi hơn",,pron,,,,,,plernpin-b01#p3,true
+b01-w02,b01,b01-l1,ดิฉัน,,tôi,"nữ dùng, nói với người lớn tuổi hơn (lịch sự)",,pron,,,,,,plernpin-b01#p3,true
+b01-w03,b01,b01-l1,หนู,,con; em; cháu,"nữ tự xưng khi nói với bố mẹ, anh chị, ông bà, cô dì chú bác",,pron,,,,,,plernpin-b01#p3,true
+b01-w04,b01,b01-l1,ผม,,tôi,nam dùng với mọi đối tượng,,pron,,,,,,plernpin-b01#p3,true
+b01-w05,b01,b01-l1,กระผม,,tôi,"nam dùng khi muốn tỏ ra cung kính, lịch sự",,pron,,,,,,plernpin-b01#p3,true
+b01-w06,b01,b01-l1,กู,,tao,"nói với bạn bè, xuồng xã",,pron,,,,,,plernpin-b01#p3,true
+b01-w07,b01,b01-l1,ข้าพเจ้า,,tôi,"dùng trong văn viết, bài phát biểu, diễn văn",,pron,,,,,,plernpin-b01#p3,true
+b01-w08,b01,b01-l1,เรา,,tôi; chúng tôi; chúng ta,,,pron,,,,,,plernpin-b01#p3,true
+b01-w09,b01,b01-l1,พวกหนู,,chúng con; chúng em; chúng cháu,"ngôi 2: các con, các em, các cháu",,pron,,,,,,plernpin-b01#p4,true
+b01-w10,b01,b01-l1,พวกเรา,,chúng tôi; chúng ta,"ngôi 2: các cháu, các em",,pron,,,,,,plernpin-b01#p4,true
+b01-w11,b01,b01-l2,คุณ,,bạn,ngôi 3: คุณ + tên (vd. คุณทราย),,pron,,,,,,plernpin-b01#p5,true
+b01-w12,b01,b01-l2,พวกคุณ,,các bạn,,,pron,,,,,,plernpin-b01#p5,true
+b01-w13,b01,b01-l2,เธอ,,bạn; cô ấy,"ngôi 2: nói với bạn bè là nữ, không dùng với người lớn; ngôi 3: cô ấy",,pron,,,,,,plernpin-b01#p6,true
+b01-w14,b01,b01-l2,นาย,,bạn; ông (Mr.),"ngôi 2: nói với bạn bè là nam, không dùng với người lớn; นาย + tên = Mr.",,pron,,,,,,plernpin-b01#p6,true
+b01-w15,b01,b01-l2,พี่,,anh; chị,,,pron,,,,,,plernpin-b01#p4,true
+b01-w16,b01,b01-l2,น้อง,,em,,,pron,,,,,,plernpin-b01#p5,true
+b01-w17,b01,b01-l2,หลาน,,cháu,,,pron,,,,,,plernpin-b01#p5,true
+b01-w18,b01,b01-l2,อาจารย์,,thầy; cô,,,noun,,,,,,plernpin-b01#p4,true
+b01-w19,b01,b01-l2,ครู,,thầy; cô (giáo viên),,,noun,,,,,,plernpin-b01#p4,true
+b01-w20,b01,b01-l2,ท่าน,,ngài; ngài ấy,,,pron,,,,,,plernpin-b01#p7,true
+b01-w21,b01,b01-l3,พ่อ,,bố,,,noun,,,,,,plernpin-b01#p4,true
+b01-w22,b01,b01-l3,แม่,,mẹ,,,noun,,,,,,plernpin-b01#p4,true
+b01-w23,b01,b01-l3,คุณพ่อ,,bố,cách gọi lịch sự,,noun,,,,,,plernpin-b01#p6,true
+b01-w24,b01,b01-l3,คุณแม่,,mẹ,cách gọi lịch sự,,noun,,,,,,plernpin-b01#p6,true
+b01-w25,b01,b01-l3,ลุง,,bác (trai),,,noun,,,,,,plernpin-b01#p4,true
+b01-w26,b01,b01-l3,ป้า,,bác (gái),,,noun,,,,,,plernpin-b01#p4,true
+b01-w27,b01,b01-l3,อา,,cô; chú,"em trai, em gái của bố (bên nội)",,noun,,,,,,plernpin-b01#p4,true
+b01-w28,b01,b01-l3,น้า,,cậu; mợ; dì,"em trai, em gái của mẹ (bên ngoại)",,noun,,,,,,plernpin-b01#p4,true
+b01-w29,b01,b01-l3,คุณปู่,,ông nội,,,noun,,,,,,plernpin-b01#p12,true
+b01-w30,b01,b01-l3,คุณย่า,,bà nội,,,noun,,,,,,plernpin-b01#p13,true
+b01-w31,b01,b01-l3,คุณตา,,ông ngoại,,,noun,,,,,,plernpin-b01#p12,true
+b01-w32,b01,b01-l3,คุณยาย,,bà ngoại,,,noun,,,,,,plernpin-b01#p13,true
+b01-w33,b01,b01-l4,เขา,,anh ấy; cô ấy,,,pron,,,,,,plernpin-b01#p8,true
+b01-w34,b01,b01-l4,มัน,,nó,,,pron,,,,,,plernpin-b01#p8,true
+b01-w35,b01,b01-l4,เค้า,,hắn ta; anh ấy,ngôi 3; trong văn nói thân mật còn dùng thay เขา,,pron,,,,,,plernpin-b01#p8,true
+b01-w36,b01,b01-l4,พวกเขา,,bọn họ; họ,,,pron,,,,,,plernpin-b01#p8,true
+b01-w37,b01,b01-l4,แก,,cậu; mày; ông ta; bà ta,"thân mật, suồng sã với bạn bè, người thân quen; ngôi 3: ông ta, bà ta",,pron,,,,,,plernpin-b01#p7,true
+b01-w38,b01,b01-l4,มึง,,mày,rất suồng sã,,pron,,,,,,plernpin-b01#p7,true
+b01-w39,b01,b01-l4,คุณหนู,,cô chủ,,,noun,,,,,,plernpin-b01#p7,true
+b01-w40,b01,b01-l4,คุณชาย,,cậu chủ,,,noun,,,,,,plernpin-b01#p7,true
+b01-w41,b01,b01-l4,คุณนาย,,bà chủ,vợ của người có quyền lực,,noun,,,,,,plernpin-b01#p7,true
+b01-w42,b01,b01-l4,นาง,,bà (Mrs.),นาง + tên: phụ nữ đã có chồng,,noun,,,,,,plernpin-b01#p9,true
+b01-w43,b01,b01-l4,นางสาว,,cô (Miss),นางสาว + tên: phụ nữ chưa có chồng,,noun,,,,,,plernpin-b01#p9,true
+b01-w44,b01,b01-l4,พวก,,các; những (số nhiều),"đứng trước đại từ: พวกคุณ, พวกหนู",,noun,,,,,,plernpin-b01#p10,true
+b01-w45,b01,b01-l4,ทั้งหลาย,,tất cả các,"đứng sau đại từ: คุณทั้งหลาย, เขาทั้งหลาย",,adj,,,,,,plernpin-b01#p10,true
+b01-w46,b01,b01-l5,กุญแจ,,chìa khóa,,,noun,,,,,,plernpin-b01#p11,true
+b01-w47,b01,b01-l5,ตั๋วรถ,,vé xe,,,noun,,,,,,plernpin-b01#p11,true
+b01-w48,b01,b01-l5,เจอ,พบ,gặp; thấy,เจอ = พบ,,verb,,,,,,plernpin-b01#p11,true
+b01-w49,b01,b01-l5,คุณทราบไหมว่า,,bạn có biết … không,,,phrase,,,,,,plernpin-b01#p11,true
+b01-w50,b01,b01-l5,เงิน,,tiền,,,noun,,,,,,plernpin-b01#p11,true
+b01-w51,b01,b01-l5,หาย,,mất,,,verb,,,,,,plernpin-b01#p12,true
+b01-w52,b01,b01-l5,แล้ว,,rồi,,,adv,,,,,,plernpin-b01#p12,true
+b01-w53,b01,b01-l5,บัตรเครดิต,,thẻ tín dụng,,,noun,,,,,,plernpin-b01#p12,true
+b01-w54,b01,b01-l5,หา,,tìm,,,verb,,,,,,plernpin-b01#p15,true
+b01-w55,b01,b01-l5,ไหน,,đâu; nào,,,pron,,,,,,plernpin-b01#p16,true
+b01-w56,b01,b01-l6,ไม่สบาย,,không khỏe; ốm,,,phrase,,,,,,plernpin-b01#p13,true
+b01-w57,b01,b01-l6,สุขภาพ,,sức khỏe,,,noun,,,,,,plernpin-b01#p13,true
+b01-w58,b01,b01-l6,เด็กๆ,,lũ trẻ; các con; các cháu,,,noun,,,,,,plernpin-b01#p13,true
+b01-w59,b01,b01-l6,เลว,,tồi; tệ; xấu,,,adj,,,,,,plernpin-b01#p14,true
+b01-w60,b01,b01-l6,สั่ง,,gọi (món); ra lệnh,gọi = order,,verb,,,,,,plernpin-b01#p14,true
+b01-w61,b01,b01-l6,อะไรบ้าง,,những gì,,,pron,,,,,,plernpin-b01#p14,true
+b01-w62,b01,b01-l6,จะ,,sẽ; định,,,adv,,,,,,plernpin-b01#p14,true
+b01-w63,b01,b01-l6,เป็น,,là,,,verb,,,,,,plernpin-b01#p14,true
+b01-w64,b01,b01-l7,ของ,,của,,,prep,,,,,,plernpin-b01#p15,true
+b01-w65,b01,b01-l7,คน,,người,,,noun,,,,,,plernpin-b01#p15,true
+b01-w66,b01,b01-l7,ก็,,cũng,,,adv,,,,,,plernpin-b01#p15,true
+b01-w67,b01,b01-l7,ไหม,,không,từ để hỏi cuối câu,,particle,,,,,,plernpin-b01#p15,true
+b01-w68,b01,b01-l7,อยู่,,ở,,,verb,,,,,,plernpin-b01#p16,true
+b01-w69,b01,b01-l7,ที่,,chỗ; ở (tại),,,noun,,,,,,plernpin-b01#p16,true
+b01-w70,b01,b01-l7,และ,,và,,,conj,,,,,,plernpin-b01#p16,true
+b01-w71,b01,b01-l7,ดี,,tốt,,,adj,,,,,,plernpin-b01#p16,true
+c01-w01,c01,c01-l1,ข้า,,ta; tớ,"cặp ข้า – เอ็ง: trong phim cổ trang = ta – ngươi; đời thường (nam, bạn thân) = tớ – cậu",,pron,,,,,,plernpin-c01#p1,true
+c01-w02,c01,c01-l1,เอ็ง,,ngươi; cậu,đi cặp với ข้า,,pron,,,,,,plernpin-c01#p1,true
+c01-w03,c01,c01-l1,เค้า,,người ta; anh,"cặp เขา/เค้า – ตัว/ตัวเอง: người yêu, vợ chồng, bạn gái thân với nhau",,pron,,,,,,plernpin-c01#p1,true
+c01-w04,c01,c01-l1,ตัว,,đằng ấy; em; mình; cậu,đứng một mình có thể là ngôi 1 hoặc ngôi 2 tùy hoàn cảnh,,pron,,,,,,plernpin-c01#p1,true
+c01-w05,c01,c01-l1,ตัวเอง,,đằng ấy; em; bản thân mình,"ngôi 1, ngôi 2 và đại từ phản thân “tự mình”",,pron,,,,,,plernpin-c01#p1,true
+c01-w06,c01,c01-l1,อั๊ว,,tớ; tao,"cặp อั๊ว – ลื้อ: nam, ngang hàng, thân mật; người Thái gốc Hoa hay dùng",,pron,,,,,,plernpin-c01#p3,true
+c01-w07,c01,c01-l1,ลื้อ,,bạn; mày,đi cặp với อั๊ว,,pron,,,,,,plernpin-c01#p3,true
+c01-w08,c01,c01-l1,กัน,,tớ; tao,"cặp กัน – แก: nam, ngang hàng, thân mật; hiện nay rất hiếm",,pron,,,,,,plernpin-c01#p3,true
+c01-w09,c01,c01-l1,แก,,cậu; mày; ông; bà,cặp เรา – แก (tôi – ông / tôi – bà); cặp กัน – แก,,pron,,,,,,plernpin-c01#p2,true
+c01-w10,c01,c01-l2,อาตมา,,tôi (nhà sư tự xưng),,,pron,,,,,,plernpin-c01#p3,true
+c01-w11,c01,c01-l2,หลวงพ่อ,,thầy; sư (gọi nhà sư),"gọi nhà sư tùy tuổi: หลวงปู่, หลวงตา, หลวงพ่อ, หลวงลุง, หลวงน้า, หลวงพี่",,noun,,,,,,plernpin-c01#p3,true
+c01-w12,c01,c01-l2,หลวงพี่,,sư huynh; thầy (nhà sư trẻ),,,noun,,,,,,plernpin-c01#p3,true
+c01-w13,c01,c01-l2,หลวงปู่,,sư ông; hòa thượng (nhà sư cao tuổi),,,noun,,,,,,plernpin-c01#p3,true
+c01-w14,c01,c01-l2,หลวงตา,,sư ông (nhà sư lớn tuổi),,,noun,,,,,,plernpin-c01#p3,true
+c01-w15,c01,c01-l2,แม่ชี,,ni cô; sư cô,,,noun,,,,,,plernpin-c01#p3,true
+c01-w16,c01,c01-l2,โยม,,phật tử; con,nhà sư gọi người thường; người thường tự xưng với nhà sư,,pron,,,,,,plernpin-c01#p3,true
+c01-w17,c01,c01-l2,โยมพ่อ,,bố (của nhà sư),nhà sư gọi bố đẻ; bố tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
+c01-w18,c01,c01-l2,โยมแม่,,mẹ (của nhà sư),nhà sư gọi mẹ đẻ; mẹ tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
+c01-w19,c01,c01-l2,พระ,,nhà sư; sư,พระ + pháp danh (vd. พระสมชาย),,noun,,,,,,plernpin-c01#p3,true

@@ -5,8 +5,8 @@
   pattern: ผม/ฉัน + ชื่อ + tên
   explain_vi: Dùng ชื่อ (tên là) sau đại từ để nói tên. Nam nói ผม, nữ nói ฉัน. Hỏi tên dùng คุณชื่ออะไร.
   examples:
-    - { th: ผมชื่อสมชาย, vi: Tôi tên là Somchai. }
-    - { th: คุณชื่ออะไร, vi: Bạn tên là gì? }
+    - { th: "ผมชื่อสมชาย", vi: "Tôi tên là Somchai." }
+    - { th: "คุณชื่ออะไร", vi: "Bạn tên là gì?" }
   draft: true
 - id: g-u02-mi
   unit_id: u02
@@ -14,8 +14,8 @@
   pattern: มี + danh từ · … มีกี่คน
   explain_vi: มี nghĩa là "có". Hỏi số người dùng มีกี่คน (có mấy người).
   examples:
-    - { th: ผมมีพี่ชายหนึ่งคน, vi: Tôi có một anh trai. }
-    - { th: บ้านคุณมีกี่คน, vi: Nhà bạn có mấy người? }
+    - { th: "ผมมีพี่ชายหนึ่งคน", vi: "Tôi có một anh trai." }
+    - { th: "บ้านคุณมีกี่คน", vi: "Nhà bạn có mấy người?" }
   draft: true
 - id: g-u11-na
   unit_id: u11
@@ -23,8 +23,8 @@
   pattern: น่า + động từ
   explain_vi: น่า đứng trước động từ tạo nghĩa "đáng …" hoặc "trông …" (đáng để làm việc đó).
   examples:
-    - { th: น่ากิน, vi: Trông ngon (rất đáng để ăn). }
-    - { th: น่ารัก, vi: "Đáng yêu, dễ thương." }
+    - { th: "น่ากิน", vi: "Trông ngon (rất đáng để ăn)." }
+    - { th: "น่ารัก", vi: "Đáng yêu, dễ thương." }
   source: plernpin-11#p1
   draft: true
 - id: g-b02-laeo
@@ -33,7 +33,7 @@
   pattern: แล้ว + S + ล่ะคะ/ล่ะครับ
   explain_vi: Hỏi lại người nghe (hoặc người khác) cùng câu hỏi vừa được hỏi — giống "Còn bạn thì sao?". ล่ะ là văn nói (văn viết là หละ).
   examples:
-    - { th: แล้วคุณล่ะคะ, vi: "Còn bạn thì sao?" }
+    - { th: "แล้วคุณล่ะคะ", vi: "Còn bạn thì sao?" }
   source: plernpin-b02#p16
   draft: true
 - id: g-b02-ko
@@ -42,6 +42,86 @@
   pattern: ก็ + V + เช่นกัน/เหมือนกัน
   explain_vi: Nói người khác cũng làm / cũng như vậy. ก็ đứng trước động từ, เช่นกัน hoặc เหมือนกัน ở cuối câu.
   examples:
-    - { th: ฉันชอบดูหนัง เขาก็ชอบเช่นกัน, vi: "Tôi thích xem phim, anh ấy cũng thích như thế." }
+    - { th: "ฉันชอบดูหนัง เขาก็ชอบเช่นกัน", vi: "Tôi thích xem phim, anh ấy cũng thích như thế." }
   source: plernpin-b02#p17
+  draft: true
+- id: g-b01-phuak
+  unit_id: b01
+  title_vi: พวก và ทั้งหลาย (số nhiều)
+  pattern: พวก + đại từ · đại từ + ทั้งหลาย
+  explain_vi: พวก đứng trước đại từ để chỉ số nhiều (các, những). ทั้งหลาย đứng sau đại từ, nghĩa "tất cả các".
+  examples:
+    - { th: "พวกคุณ", vi: "Các bạn" }
+    - { th: "พวกหนู", vi: "Chúng con / các con" }
+    - { th: "คุณทั้งหลาย", vi: "Tất cả các bạn" }
+    - { th: "เขาทั้งหลาย", vi: "Tất cả bọn họ / các anh ấy" }
+  source: plernpin-b01#p10
+  draft: true
+- id: g-b01-nai
+  unit_id: b01
+  title_vi: นาย / นาง / นางสาว + tên
+  pattern: นาย / นาง / นางสาว + họ tên
+  explain_vi: Danh xưng đặt trước tên người — นาย (Mr., nam), นาง (Mrs., phụ nữ đã có chồng), นางสาว (Miss, phụ nữ chưa có chồng).
+  examples:
+    - { th: "นาย สมชาย ใจดี", vi: "Mr. Somchai Jaidee" }
+    - { th: "นาง สุภาพร ศรีสุข", vi: "Mrs. Suphaporn Srisuk" }
+    - { th: "นางสาว สุดารัตน์ บุญมา", vi: "Miss Sudarat Boonma" }
+  source: plernpin-b01#p9
+  draft: true
+- id: g-b01-mai-joe
+  unit_id: b01
+  title_vi: Không tìm thấy …
+  pattern: S + หา + O + ไม่เจอ
+  explain_vi: Nói đã tìm mà không thấy vật gì. ไม่เจอ (không thấy) đứng cuối câu.
+  examples:
+    - { th: "ฉันหากุญแจของฉันไม่เจอ", vi: "Tôi không tìm thấy chìa khóa của tôi." }
+  source: plernpin-b01#p20
+  draft: true
+- id: g-b01-joe-mai
+  unit_id: b01
+  title_vi: Tìm thấy … chưa?
+  pattern: S + หา + O + เจอไหม
+  explain_vi: Hỏi người khác đã tìm thấy vật gì chưa. เจอไหม đứng cuối câu.
+  examples:
+    - { th: "คุณหากุญแจของคุณเจอไหม", vi: "Bạn tìm thấy chìa khóa của bạn chưa?" }
+  source: plernpin-b01#p21
+  draft: true
+- id: g-b01-sap-mai-wa
+  unit_id: b01
+  title_vi: Bạn có biết … không?
+  pattern: S + ทราบไหมว่า + O + V + từ để hỏi
+  explain_vi: Hỏi lịch sự xem người nghe có biết thông tin gì không. Sau ทราบไหมว่า là một câu có từ để hỏi (ที่ไหน, อะไร, ใคร…).
+  examples:
+    - { th: "คุณทราบไหมว่ากุญแจของเขาอยู่ที่ไหน", vi: "Bạn có biết chìa khóa của anh ấy ở đâu không?" }
+  source: plernpin-b01#p22
+  draft: true
+- id: g-c01-pairs
+  unit_id: c01
+  title_vi: Các cặp đại từ ngôi 1 – ngôi 2 thân mật
+  pattern: ข้า–เอ็ง · เขา/เค้า–ตัว/ตัวเอง · ฉัน–เธอ · ฉัน/เรา–นาย · เรา–แก · อั๊ว–ลื้อ · กัน–แก
+  explain_vi: "ข้า–เอ็ง: ta–ngươi (phim cổ trang) hoặc tớ–cậu (nam, bạn thân). เขา/เค้า–ตัว/ตัวเอง: người ta–đằng ấy, anh–em (người yêu, vợ chồng, bạn gái thân). ฉัน–เธอ, เรา–เธอ, ฉัน–นาย, เรา–นาย: tớ–cậu. เรา–แก: tôi–ông, tôi–bà. อั๊ว–ลื้อ: tớ–bạn, tao–mày (nam, ngang hàng; người Thái gốc Hoa hay dùng). กัน–แก: tớ–cậu, tao–mày (nam, nay rất hiếm)."
+  examples:
+    - { th: "เค้าอยากให้ตัวเองมีความสุข", vi: "Anh muốn em hạnh phúc." }
+  source: plernpin-c01#p1
+  draft: true
+- id: g-c01-tua
+  unit_id: c01
+  title_vi: ตัว và ตัวเอง
+  pattern: ตัว / ตัวเอง (ngôi 1 hoặc ngôi 2)
+  explain_vi: Khi đứng độc lập, ตัว và ตัวเอง mang sắc thái khác nhau tùy hoàn cảnh. ตัว vừa là ngôi 1 vừa là ngôi 2. ตัวเอง là ngôi 1, ngôi 2 và còn là đại từ phản thân "bản thân mình, tự mình".
+  examples:
+    - { th: "ตัวยังไม่กินข้าวเลย", vi: "Mình vẫn chưa ăn gì cả." }
+    - { th: "ตัวอย่าลืมทำการบ้านนะ", vi: "Cậu nhớ làm bài tập về nhà nhé." }
+    - { th: "ตัวเองกินข้าวหรือยัง", vi: "Em ăn cơm chưa?" }
+    - { th: "ตัวเองต้องรับผิดชอบนะ", vi: "Tự mình phải chịu trách nhiệm nhé." }
+  source: plernpin-c01#p1
+  draft: true
+- id: g-c01-monk
+  unit_id: c01
+  title_vi: Xưng hô với nhà sư
+  pattern: อาตมา (sư tự xưng) · หลวง + ปู่/ตา/พ่อ/ลุง/น้า/พี่ (gọi sư) · โยม (phật tử)
+  explain_vi: Nhà sư tự xưng อาตมา và gọi người thường là โยม. Người thường gọi nhà sư bằng หลวง + từ chỉ vai vế phù hợp tuổi (หลวงปู่, หลวงตา, หลวงพ่อ, หลวงลุง, หลวงน้า, หลวงพี่) và tự xưng โยม, หนู, ผม, ดิฉัน. Ni cô, sư cô là แม่ชี. Bố mẹ của nhà sư là โยมพ่อ, โยมแม่; bố mẹ gọi con đã xuất gia là พระ + pháp danh hoặc พระลูกชาย.
+  examples:
+    - { th: "พระสมชาย", vi: "Sư Somchai (พระ + pháp danh)" }
+  source: plernpin-c01#p3
   draft: true

@@ -9,3 +9,12 @@ b02-l3,b02,3,Hỏi thăm sức khỏe và ngôn ngữ,,true
 b02-l4,b02,4,"Đến từ đâu, sống ở đâu",,true
 b02-l5,b02,5,Tạm biệt và công việc,,true
 b02-l6,b02,6,"Ốm đau, vẫn như cũ và nghề nghiệp",,true
+b01-l1,b01,1,Đại từ ngôi thứ nhất,,true
+b01-l2,b01,2,Đại từ ngôi thứ hai,,true
+b01-l3,b01,3,Người trong gia đình,,true
+b01-l4,b01,4,Ngôi thứ ba và cách gọi khác,g-b01-phuak|g-b01-nai,true
+b01-l5,b01,5,"Tìm đồ, mất đồ",g-b01-mai-joe|g-b01-joe-mai|g-b01-sap-mai-wa,true
+b01-l6,b01,6,Sức khỏe và gọi món,,true
+b01-l7,b01,7,Từ thông dụng,,true
+c01-l1,c01,1,Các cặp đại từ thân mật,g-c01-pairs|g-c01-tua,true
+c01-l2,c01,2,Xưng hô với nhà sư,g-c01-monk,true
