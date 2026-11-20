@@ -11,6 +11,7 @@ import {
 import { Link, NavLink, Outlet } from 'react-router';
 import { AccountBlock } from '@/components/account/AccountBlock';
 import { AppLogo } from '@/components/AppLogo';
+import { DueBadge } from '@/components/layout/DueBadge';
 import { OfflineBadge } from '@/components/layout/OfflineBadge';
 import { t, type MessageKey } from '@/i18n';
 import { cn } from '@/lib/utils';
@@ -23,7 +24,6 @@ const NAV_GROUPS: { label: MessageKey; items: NavItem[] }[] = [
     items: [
       { to: '/', label: 'nav.dashboard', testId: 'nav-dashboard', icon: LayoutDashboard },
       { to: '/units', label: 'nav.units', testId: 'nav-units', icon: BookOpen },
-      // Badge số câu đến hạn có từ M9 (SCR-00).
       { to: '/practice', label: 'nav.practice', testId: 'nav-practice', icon: PencilLine },
       { to: '/words', label: 'nav.words', testId: 'nav-words', icon: NotebookText },
       { to: '/games', label: 'nav.games', testId: 'nav-games', icon: Gamepad2 },
@@ -84,6 +84,7 @@ export function AppLayout() {
                     >
                       <Icon className="size-[18px]" aria-hidden />
                       {t(label)}
+                      {to === '/practice' && <DueBadge />}
                     </NavLink>
                   </li>
                 ))}

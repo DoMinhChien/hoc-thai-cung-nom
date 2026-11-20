@@ -160,8 +160,10 @@ describe('PracticeRunner (SCR-06 §B)', () => {
     const logs = await repos().reviews.logsBetween(new Date(0), new Date(Date.now() + 1000));
     expect(logs.map((l) => l.rating)).toEqual(['good']);
     fireEvent.keyDown(window, { key: 'Enter' });
-    expect(onFinish).toHaveBeenCalledWith(
-      expect.objectContaining({ total: 1, correct: 1, wrong: [] }),
+    await waitFor(() =>
+      expect(onFinish).toHaveBeenCalledWith(
+        expect.objectContaining({ total: 1, correct: 1, wrong: [] }),
+      ),
     );
   });
 
@@ -182,7 +184,9 @@ describe('PracticeRunner (SCR-06 §B)', () => {
     });
     await userEvent.click(again);
     await userEvent.click(await screen.findByTestId('practice-next'));
-    expect(onFinish).toHaveBeenCalledWith(expect.objectContaining({ total: 1, correct: 0 }));
+    await waitFor(() =>
+      expect(onFinish).toHaveBeenCalledWith(expect.objectContaining({ total: 1, correct: 0 })),
+    );
     expect(onFinish.mock.calls[0]![0].wrong).toHaveLength(1);
     await waitFor(async () => expect(await reps('sentence', 's1')).toBe(1));
     const attempts = await repos().reviews.attemptsBetween(
@@ -310,5 +314,118 @@ describe('/practice/session (SCR-06 §B–C)', () => {
     fireEvent.keyDown(window, { key: 'Enter' });
     await waitFor(() => expect(router.state.location.search).toMatch(/^\?items=.*word:w4/));
     expect(await screen.findByTestId('practice-session')).toBeInTheDocument();
+    // Đợi ghi xong (lần đầu + hỏi lại của mọi mục) trước khi xóa DB.
+    await waitFor(async () => {
+      const attempts = await repos().reviews.attemptsBetween(
+        new Date(0),
+        new Date(Date.now() + 1000),
+      );
+      expect(attempts.filter((a) => a.rating === null).length).toBeGreaterThan(0);
+      expect(attempts.filter((a) => a.rating === null)).toHaveLength(
+        attempts.filter((a) => a.rating !== null).length,
+      );
+    });
+  });
+});
+
+const dueCard = (itemType: 'word' | 'sentence', itemId: string): CardRecord => {
+  const reviewed = new Date(Date.now() - 2 * 24 * 3600_000);
+  return {
+    id: `${itemType}-${itemId}`,
+    itemType,
+    itemId,
+    cardType: itemType === 'word' ? 'th-vi' : 'vi-th',
+    fsrs: reviewSrs(newSrsState(reviewed), 'good', reviewed).state,
+    createdAt: reviewed.toISOString(),
+    updatedAt: reviewed.toISOString(),
+  };
+};
+
+describe('/practice (SCR-06 §A)', () => {
+  it('chưa học bài nào → "Học bài đầu tiên…" + link Bài học; không badge', async () => {
+    renderAt('/practice');
+    expect(await screen.findByTestId('practice-today-state')).toHaveAttribute(
+      'data-state',
+      'not-started',
+    );
+    expect(screen.getByRole('link', { name: 'Đến Bài học' })).toHaveAttribute('href', '/units');
+    expect(screen.queryByTestId('nav-practice-due')).toBeNull();
+  });
+
+  it('có thẻ đến hạn: số câu, badge sidebar, Enter bắt đầu; câu sai (W), "Kiểu bài" được nhớ, theo unit', async () => {
+    const r = repos();
+    await r.progress.putCard(dueCard('word', 'w1'));
+    await r.progress.putCard(dueCard('sentence', 's1'));
+    await r.progress.putLessonProgress({
+      id: 'p',
+      lessonId: 'u01-l1',
+      unitId: 'u01',
+      stepsDone: ['vocab'],
+      bestScore: null,
+      completedAt: null,
+      updatedAt: new Date().toISOString(),
+    });
+    const ts = new Date(Date.now() - 3600_000).toISOString();
+    await r.reviews.addAttempt({
+      id: 'a',
+      exerciseType: 'E-05',
+      itemType: 'sentence',
+      itemId: 's2',
+      unitId: 'u01',
+      correct: false,
+      rating: 'again',
+      ts,
+      updatedAt: ts,
+    });
+    const router = renderAt('/practice');
+    const state = await screen.findByTestId('practice-today-state');
+    expect(state).toHaveAttribute('data-state', 'ready');
+    expect(state).toHaveTextContent('1 từ · 1 câu');
+    expect(await screen.findByTestId('nav-practice-due')).toHaveTextContent('2');
+    expect(screen.getByTestId('practice-goal')).toHaveTextContent('1/20');
+    expect(screen.getByTestId('practice-mistakes')).toHaveTextContent('1 câu sai trong 7 ngày qua');
+    expect(screen.getByTestId('practice-unit-u01')).toHaveTextContent('Đúng 0%');
+
+    await userEvent.click(screen.getByTestId('practice-filter-typing'));
+    await waitFor(async () =>
+      expect(await repos().settings.get('practiceFilter', 'all')).toBe('typing'),
+    );
+    expect(screen.getByTestId('practice-filter-typing')).toBeChecked();
+
+    fireEvent.keyDown(window, { key: 'w' });
+    await waitFor(() => expect(router.state.location.search).toBe('?mode=mistakes'));
+  });
+
+  it('Enter → /practice/session; ?unit= mở thẳng phiên của unit', async () => {
+    await repos().progress.putCard(dueCard('word', 'w1'));
+    const router = renderAt('/practice');
+    await screen.findByTestId('practice-start');
+    fireEvent.keyDown(window, { key: 'Enter' });
+    await waitFor(() => expect(router.state.location.pathname).toBe('/practice/session'));
+
+    const other = renderAt('/practice?unit=u01');
+    await waitFor(() =>
+      expect(other.state.location.pathname + other.state.location.search).toBe(
+        '/practice/session?unit=u01',
+      ),
+    );
+  });
+
+  it('không còn gì đến hạn → "✓ Xong bài tập hôm nay" + Luyện thêm 10 câu', async () => {
+    const r = repos();
+    const fresh = dueCard('word', 'w1');
+    const reviewed = new Date();
+    await r.progress.putCard({
+      ...fresh,
+      fsrs: reviewSrs(newSrsState(reviewed), 'easy', reviewed).state,
+    });
+    renderAt('/practice');
+    const state = await screen.findByTestId('practice-today-state');
+    expect(state).toHaveAttribute('data-state', 'done');
+    expect(state).toHaveTextContent('✓ Xong bài tập hôm nay');
+    expect(screen.getByTestId('practice-more')).toHaveAttribute(
+      'href',
+      '/practice/session?mode=more',
+    );
   });
 });

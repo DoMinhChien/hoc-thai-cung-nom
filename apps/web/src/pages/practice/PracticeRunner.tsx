@@ -66,6 +66,8 @@ export function PracticeRunner({
   const repos = useRepositories();
   const sound = useFeedbackSound();
   const startedAt = useRef(now());
+  // Ghi tuần tự (không tạo thẻ trùng); kết quả phiên chỉ hiện khi đã ghi xong.
+  const writes = useRef<Promise<unknown>>(Promise.resolve());
   // Hàng câu hỏi: lượt đầu, rồi câu sai được thêm vào cuối (retry: true).
   const [queue, setQueue] = useState(() => questions.map((q) => ({ ...q, retry: false })));
   const [index, setIndex] = useState(0);
@@ -93,18 +95,17 @@ export function PracticeRunner({
               ...(result.hinted ? { hinted: true } : {}),
               ...(result.skipped ? { skipped: true } : {}),
             });
-      void recordPracticeAnswer(
-        repos,
-        {
-          exerciseType: question.type,
-          item,
-          unitId,
-          correct: question.kind === 'match' ? mistakes === 0 : result.correct,
-          rating,
-          ...(result.given === undefined ? {} : { answer: result.given }),
-        },
-        at,
-      );
+      const entry = {
+        exerciseType: question.type,
+        item,
+        unitId,
+        correct: question.kind === 'match' ? mistakes === 0 : result.correct,
+        rating,
+        ...(result.given === undefined ? {} : { answer: result.given }),
+      };
+      writes.current = writes.current
+        .then(() => recordPracticeAnswer(repos, entry, at))
+        .catch(() => {});
     }
   };
 
@@ -134,13 +135,15 @@ export function PracticeRunner({
     if (!answered) return;
     setAnswered(null);
     if (index + 1 < queue.length) setIndex(index + 1);
-    else
-      onFinish({
+    else {
+      const summary = {
         total: firstRound,
         correct,
         durationMs: now().getTime() - startedAt.current.getTime(),
         wrong,
-      });
+      };
+      void writes.current.then(() => onFinish(summary));
+    }
   };
 
   useKeyShortcut('Enter', next, !!answered && !stopping);
