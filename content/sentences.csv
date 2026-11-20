@@ -1,9 +1,4 @@
 id,unit_id,lesson_id,vi,th,th_alt,tokens,distractors,grammar_id,audio,source,draft
-s-u01-001,u01,u01-l1,Xin chào (nam nói).,สวัสดีครับ,,สวัสดี|ครับ,ค่ะ,,,,true
-s-u01-002,u01,u01-l1,Tôi tên là Somchai.,ผมชื่อสมชาย,ผมชื่อสมชายครับ,ผม|ชื่อ|สมชาย,ฉัน|คุณ,g-u01-chue,,,true
-s-u01-003,u01,u01-l1,Bạn tên là gì?,คุณชื่ออะไร,คุณชื่ออะไรครับ|คุณชื่ออะไรคะ,คุณ|ชื่อ|อะไร,ผม,g-u01-chue,,,true
-s-u02-001,u02,u02-l1,Nhà bạn có mấy người?,บ้านคุณมีกี่คน,บ้านคุณมีกี่คนครับ|บ้านคุณมีกี่คนคะ,บ้าน|คุณ|มี|กี่|คน,พ่อ,g-u02-mi,,,true
-s-u02-002,u02,u02-l1,Tôi có một anh trai.,ผมมีพี่ชายหนึ่งคน,,ผม|มี|พี่ชาย|หนึ่ง|คน,แม่|กี่,g-u02-mi,,,true
 s-u03-001,u03,u03-l1,Tôi có hai con búp bê.,ฉันมีตุ๊กตาสองตัว,,,,,,,true
 s-u03-002,u03,u03-l1,Tôi mua một đôi giày.,,,,,,,,true
 s-u11-017,u11,u11-l1,Con ma trong phim này đáng sợ lắm.,ผีในหนังเรื่องนี้น่ากลัวมาก,,,,g-u11-na,,plernpin-11#p4,true
