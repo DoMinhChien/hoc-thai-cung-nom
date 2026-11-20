@@ -13,7 +13,7 @@
 
 > **🟠 M9.5 — Phản hồi người học** (2/4 task — T9.5.1, T9.5.2 ✅ nhánh `m9.5-feedback`; T9.5.3 chờ **S13**, T9.5.4 chờ **M0.5c**): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe (chọn giọng Natural + Cài đặt giọng; mp3 Azure neural khi có S13), giao diện sinh động hơn (chờ M0.5c). Nhánh `m9.5-feedback` tách từ `main` (sau khi merge PR nội dung + #20).
 
-> **⚪ M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
+> **🔵 M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall; nhánh `m9.6-games` tách từ `m9.5-feedback`): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
@@ -62,7 +62,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | 🟢 | M7, M7.5, M8 ✅, SCR-06 |
 | M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🟠 | M9 ✅; T9.5.3 cần S13; T9.5.4 cần M0.5c |
-| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | ⚪ | M9.5; UI chờ SCR-08 v2 (M0.5c) |
+| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | 🔵 | M9.5; UI chờ SCR-08 v2 (M0.5c) |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
@@ -443,15 +443,15 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - **Test:** unit (player giả, danh sách giọng giả), E2E spy Web Audio (âm sai 392→311 Hz, âm đúng + hoàn thành), `settings.spec` (giọng giả cố định, lưu sau reload, axe), baseline `settings-*` mới. Playwright WebKit trên Windows không có Web Audio / Web Speech → các kiểm tra âm/giọng bỏ qua trên webkit.
 - **Còn lại:** T9.5.3 chờ owner làm **SETUP S13** (Azure Speech F0); T9.5.4 chờ **M0.5c**.
 
-### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) ⚪ (plan 0.14) — sau M9.5, trước M10
+### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) 🔵 (plan 0.14) — sau M9.5, trước M10
 
 **Nguồn:** phản hồi người học "ít trò, giao diện trò chơi chưa thu hút"; owner chọn thêm 3–4 trò, UI tham khảo Wordwall (2026-11-20).
 
 **Cần trước:** M9.5 ✅ (âm phản hồi dùng chung). UI (T9.6.4–T9.6.6) **🟠 chờ SCR-08 v2** (Claude Desktop, đợt M0.5c). T9.6.1–T9.6.3 làm được ngay sau M9.5.
 
 **Task**
-- [ ] T9.6.1 Core: vòng lặp game thuần (`tick(state, dtMs, input)`, đồng hồ/seed là tham số) dùng chung cho trò có chuyển động; **F-15 Đập chuột** (lịch xuất hiện 9 ô, combo, phạt đập nhầm) và **F-16 Đố vui truyền hình** (trộn câu hỏi từ engine Bài tập E-01/E-02/E-05/E-14, trợ giúp 50:50 + thêm giờ, vòng thưởng, điểm). Unit test.
-- [ ] T9.6.2 Core: **F-17 Máy bay** (làn, tốc độ tăng dần, va chạm mây, 3 tim — dùng `rapidGame`) và **F-18 Mê cung** (sinh mê cung có seed, 4 ô đáp án, "ma đuổi" theo đường ngắn nhất, chế độ từng bước khi reduced-motion). Unit test.
+- [x] T9.6.1 Core: vòng lặp game thuần (`tick(state, dtMs, input)`, đồng hồ/seed là tham số) dùng chung cho trò có chuyển động; **F-15 Đập chuột** (lịch xuất hiện 9 ô, combo, phạt đập nhầm) và **F-16 Đố vui truyền hình** (trộn câu hỏi từ engine Bài tập E-01/E-02/E-05/E-14, trợ giúp 50:50 + thêm giờ, vòng thưởng, điểm). Unit test.
+- [x] T9.6.2 Core: **F-17 Máy bay** (làn, tốc độ tăng dần, va chạm mây, 3 tim — dùng `rapidGame`) và **F-18 Mê cung** (sinh mê cung có seed, 4 ô đáp án, "ma đuổi" theo đường ngắn nhất, chế độ từng bước khi reduced-motion). Unit test.
 - [ ] T9.6.3 Hạ tầng web: hook `useGameLoop` (rAF, tạm dừng khi tab ẩn — dùng lại `useCountdown`), **theme trò chơi** (token `game.theme.*`: nền minh họa, màu, âm nền tắt được; 3 theme), bộ asset CC0 + `LICENSE.md`, **sao kết quả 1–3** + nút **"Đổi trò"** (giữ nguồn) cho cả 4 trò cũ.
 - [ ] T9.6.4 🟠 `/games` theo **SCR-08 v2**: lưới thumbnail minh họa lớn cho 8 trò, nhãn kỹ năng, lọc theo kỹ năng, kỷ lục, chọn theme, trò bị khóa có lý do.
 - [ ] T9.6.5 🟠 4 màn chơi mới + áp theme/sao cho 4 màn cũ theo SCR-08 v2 (bàn phím đầy đủ, âm M9.5, reduced-motion).
