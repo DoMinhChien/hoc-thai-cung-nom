@@ -1,5 +1,5 @@
 import type { Question } from '@nom/core';
-import { useKeyShortcut } from '@/components/interactive';
+import { useCompletionSound, useKeyShortcut } from '@/components/interactive';
 import { TypingFeedback } from '@/components/typing';
 import { Button } from '@/components/ui/button';
 import { t } from '@/i18n';
@@ -44,6 +44,7 @@ export function PracticeResult({
   const pct = total ? Math.round((correct / total) * 100) : 0;
   const minutes = Math.max(1, Math.round(durationMs / 60_000));
   const hasWrong = wrong.length > 0;
+  useCompletionSound();
   useKeyShortcut('Enter', hasWrong ? onRetryWrong : onBack);
 
   return (

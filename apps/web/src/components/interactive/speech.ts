@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useAudio } from '@/audio/useAudio';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import { useRepositories, useRepositoryQuery } from '@/data';
+import { FEEDBACK_SPEECH_DELAY_MS } from './feedback-sound';
 
 /** Cài đặt tự đọc chữ Thái khi hiện câu trong trò chơi (v7.3) — mặc định bật. */
 export const AUTO_SPEAK_KEY = 'gameAutoSpeak';
@@ -74,7 +75,13 @@ export function useFeedbackPause({
     if (!active) return;
     let cancelled = false;
     const wait = new Promise<void>((resolve) => window.setTimeout(resolve, minMs));
-    const said = on && speakText ? audio.speak(speakText).catch(() => {}) : Promise.resolve();
+    // Âm phản hồi phát trước, đọc sau một nhịp (không chồng nhau).
+    const said =
+      on && speakText
+        ? new Promise((resolve) => window.setTimeout(resolve, FEEDBACK_SPEECH_DELAY_MS)).then(() =>
+            cancelled ? undefined : audio.speak(speakText).catch(() => {}),
+          )
+        : Promise.resolve();
     void Promise.all([wait, said]).then(() => {
       if (!cancelled) done.current();
     });

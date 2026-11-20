@@ -10,7 +10,7 @@ import { Check, TriangleAlert, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
-import { useKeyShortcut } from '@/components/interactive';
+import { useCompletionSound, useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -245,6 +245,7 @@ function VoiceBanner() {
 /** Màn hoàn thành bài (SCR-05): 3 số + dòng xong chuyên đề; không confetti. */
 function Finished({ bundle, lesson }: { bundle: UnitBundle; lesson: BuiltLesson }) {
   const navigate = useNavigate();
+  useCompletionSound();
   const records = useRepositoryQuery(
     (r) => r.progress.listLessonProgress(bundle.unit.unit_id),
     [bundle.unit.unit_id],

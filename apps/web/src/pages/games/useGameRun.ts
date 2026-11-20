@@ -48,7 +48,7 @@ export function useGameRun<R, A, S extends GameState>(
     play.current = sound.play;
   });
   useEffect(() => {
-    if (state.feedback) play.current(state.feedback.correct);
+    if (state.feedback) play.current(state.feedback.correct ? 'correct' : 'wrong');
   }, [state.feedback]);
 
   const answer = useCallback((a: A) => setState((s) => game.answer(s, a, now())), [game, now]);

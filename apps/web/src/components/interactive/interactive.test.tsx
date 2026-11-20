@@ -17,13 +17,17 @@ import { RepositoriesContext } from '@/data/repositories-context';
 import {
   ChoiceButton,
   CountIn,
+  DEFAULT_FEEDBACK_VOLUME,
+  FEEDBACK_NOTES,
   FEEDBACK_SOUND_KEY,
+  FEEDBACK_VOLUME_KEY,
   FeedbackBar,
   formatClock,
   GameTopBar,
   PausedOverlay,
   TimeBar,
   TokenBank,
+  useCompletionSound,
   useCountdown,
   useFeedbackSound,
   useKeyShortcut,
@@ -373,54 +377,96 @@ describe('useReducedMotion', () => {
 });
 
 describe('webAudioTone', () => {
-  it('đúng = 880 Hz, sai = 220 Hz; không có Web Audio → im lặng', () => {
+  it('đúng = 3 nốt đi lên, sai = 2 nốt đi xuống, hoàn thành = 4 nốt; âm lượng; đánh thức context bị treo', () => {
     vi.stubGlobal('AudioContext', undefined);
-    expect(() => webAudioTone(true)).not.toThrow();
-    const frequencies: number[] = [];
+    expect(() => webAudioTone('correct', 0.4)).not.toThrow();
+    const notes: { freq: number; type: string }[] = [];
+    const peaks: number[] = [];
+    const resume = vi.fn(async () => {});
     const param = () => ({
       value: 0,
       setValueAtTime: vi.fn(),
+      linearRampToValueAtTime: (v: number) => peaks.push(v),
       exponentialRampToValueAtTime: vi.fn(),
     });
     class FakeContext {
+      state = 'suspended';
+      resume = resume;
       currentTime = 0;
       destination = {};
       createGain = () => ({ gain: param(), connect: (d: unknown) => d });
       createOscillator = () => {
-        const frequency = param();
-        return {
-          frequency,
+        const osc = {
+          type: '',
+          frequency: param(),
           connect: (node: unknown) => node,
-          start: () => frequencies.push(frequency.value),
+          start: () => notes.push({ freq: osc.frequency.value, type: osc.type }),
           stop: vi.fn(),
         };
+        return osc;
       };
     }
     vi.stubGlobal('AudioContext', FakeContext);
-    webAudioTone(true);
-    webAudioTone(false);
-    expect(frequencies).toEqual([880, 220]);
+    webAudioTone('correct', 0.4);
+    expect(resume).toHaveBeenCalled();
+    const correct = notes.splice(0).map((n) => n.freq);
+    expect(correct).toEqual(FEEDBACK_NOTES.correct.notes.map((n) => n.freq));
+    expect(correct).toEqual([...correct].sort((a, b) => a - b));
+    expect(peaks.every((p) => p === 0.2)).toBe(true);
+
+    webAudioTone('wrong', 1);
+    const wrong = notes.splice(0);
+    expect(wrong.map((n) => n.freq)).toEqual([...wrong.map((n) => n.freq)].sort((a, b) => b - a));
+    expect(wrong.every((n) => n.type === 'triangle')).toBe(true);
+
+    webAudioTone('complete', 1);
+    expect(notes).toHaveLength(4);
+    const { notes: done } = FEEDBACK_NOTES.complete;
+    expect(done.at(-1)!.at + done.at(-1)!.dur).toBeCloseTo(0.8);
     vi.unstubAllGlobals();
   });
 });
 
-describe('useFeedbackSound (F-13)', () => {
-  it('mặc định bật; tắt → không phát; lưu qua SettingsRepository', async () => {
-    const db = new NomDatabase('sound');
+describe('useFeedbackSound (F-13, T9.5.1)', () => {
+  const setup = (name: string) => {
+    const db = new NomDatabase(name);
     const repos = createDexieRepositories(db);
     const wrapper = ({ children }: { children: ReactNode }) => (
       <RepositoriesContext.Provider value={repos}>{children}</RepositoriesContext.Provider>
     );
+    return { db, repos, wrapper };
+  };
+
+  it('mặc định bật, âm lượng 0,4; tắt hoặc âm lượng 0 → không phát; lưu qua SettingsRepository', async () => {
+    const { db, repos, wrapper } = setup('sound');
     const player = vi.fn();
     const { result } = renderHook(() => useFeedbackSound(player), { wrapper });
-    await waitFor(() => expect(result.current.enabled).toBe(true));
-    act(() => result.current.play(true));
-    expect(player).toHaveBeenCalledWith(true);
+    await waitFor(() => expect(result.current.volume).toBe(DEFAULT_FEEDBACK_VOLUME));
+    expect(result.current.enabled).toBe(true);
+    act(() => result.current.play('wrong'));
+    expect(player).toHaveBeenCalledWith('wrong', 0.4);
 
+    await act(() => result.current.setVolume(0));
+    await waitFor(() => expect(result.current.volume).toBe(0));
+    expect(await repos.settings.get(FEEDBACK_VOLUME_KEY, 1)).toBe(0);
+    act(() => result.current.play('correct'));
+    expect(player).toHaveBeenCalledOnce();
+
+    await act(() => result.current.setVolume(0.8));
     await act(() => result.current.setEnabled(false));
     await waitFor(() => expect(result.current.enabled).toBe(false));
     expect(await repos.settings.get(FEEDBACK_SOUND_KEY, true)).toBe(false);
-    act(() => result.current.play(false));
+    act(() => result.current.play('correct'));
+    expect(player).toHaveBeenCalledOnce();
+    db.close();
+  });
+
+  it('useCompletionSound: phát "complete" đúng một lần khi cài đặt đã tải', async () => {
+    const { db, wrapper } = setup('sound-complete');
+    const player = vi.fn();
+    const { rerender } = renderHook(() => useCompletionSound(true, player), { wrapper });
+    await waitFor(() => expect(player).toHaveBeenCalledWith('complete', 0.4));
+    rerender();
     expect(player).toHaveBeenCalledOnce();
     db.close();
   });
@@ -430,7 +476,8 @@ describe('useFeedbackSound (F-13)', () => {
     const { result } = renderHook(() => useFeedbackSound(player));
     expect(result.current.enabled).toBeUndefined();
     await act(() => result.current.setEnabled(true));
-    act(() => result.current.play(true));
+    await act(() => result.current.setVolume(1));
+    act(() => result.current.play('correct'));
     expect(player).not.toHaveBeenCalled();
   });
 });

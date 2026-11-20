@@ -1,7 +1,16 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest } from './helpers';
-import { answerAll, loadBundle, readStore, recordSpeech } from './practice-helpers';
+import {
+  answerAll,
+  loadBundle,
+  readStore,
+  recordSpeech,
+  clearTones,
+  hasWebAudio,
+  recordTones,
+  tones,
+} from './practice-helpers';
 
 /**
  * Bài tập (M9 T9.7, SCR-06) trên content mẫu đã build (Bài 1 mẫu `u01`). Giảm chuyển động để ảnh
@@ -26,6 +35,7 @@ interface Attempt {
 
 test.beforeEach(async ({ page }) => {
   await recordSpeech(page);
+  await recordTones(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await chooseGuest(page);
 });
@@ -135,11 +145,20 @@ test('Bỏ qua (S) → đáp án + hỏi lại cuối phiên (không chấm lầ
   await learnVocab(page);
   await page.goto('/practice/session?items=sentence:s-u01-003');
   await expect(page.getByTestId('question')).toBeVisible();
+  const audible = await hasWebAudio(page);
+  await clearTones(page);
   await page.keyboard.press('s');
   await expect(page.getByTestId('feedback-bar')).toHaveAttribute('data-correct', 'false');
+  // Âm sai (T9.5.1): 2 nốt đi xuống.
+  if (audible) await expect.poll(() => tones(page)).toEqual([392, 311]);
+  await clearTones(page);
   await page.keyboard.press('Enter');
   await expect(page.getByTestId('practice-retry')).toBeVisible();
   await answerAll(page, [u01], page.getByTestId('practice-result'));
+  // Âm đúng (3 nốt đi lên) rồi âm hoàn thành ở màn kết quả.
+  if (audible) {
+    await expect.poll(() => tones(page)).toEqual([784, 1047, 1319, 523, 659, 784, 1047]);
+  }
   await expect(page.getByTestId('result-count')).toHaveText('0/1 đúng');
   await expect(page.getByTestId('practice-wrong-list')).toContainText('(bỏ qua)');
   await expectNoSevereViolations(page);

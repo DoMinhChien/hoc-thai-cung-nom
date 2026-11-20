@@ -8,7 +8,7 @@ import {
 } from '@nom/core';
 import { Star, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { itemKey, ReviewList, useKeyShortcut } from '@/components/interactive';
+import { itemKey, ReviewList, useCompletionSound, useKeyShortcut } from '@/components/interactive';
 import { formatClock } from '@/components/interactive/format';
 import { Button } from '@/components/ui/button';
 import { useRepositories } from '@/data';
@@ -49,6 +49,7 @@ export function GameResult({
   const [record, setRecord] = useState<{ newBest: boolean; previous: GameStats | null }>();
   const [flagged, setFlagged] = useState(() => new Set(summary.mistakes.map(itemKey)));
   const saved = useRef(false);
+  useCompletionSound();
 
   useEffect(() => {
     if (!repos || saved.current) return;

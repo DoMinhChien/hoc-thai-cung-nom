@@ -29,6 +29,43 @@ export async function recordSpeech(page: Page) {
   });
 }
 
+/**
+ * Ghi lại tần số mọi nốt âm phản hồi (Web Audio) vào `window.__tones` (Hz, làm tròn).
+ * Gọi trước `goto`. Nốt đầu: đúng 784, sai 392, hoàn thành 523 (`FEEDBACK_NOTES`).
+ */
+export async function recordTones(page: Page) {
+  await page.addInitScript(() => {
+    const w = window as unknown as { __tones: number[] };
+    w.__tones = [];
+    const Ctor = window.AudioContext;
+    if (!Ctor) return;
+    const create = Ctor.prototype.createOscillator;
+    Ctor.prototype.createOscillator = function (this: AudioContext) {
+      const osc = create.call(this);
+      const start = osc.start.bind(osc);
+      osc.start = (when?: number) => {
+        w.__tones.push(Math.round(osc.frequency.value));
+        start(when);
+      };
+      return osc;
+    };
+  });
+}
+
+/** Tần số các nốt đã phát từ lần `clearTones` trước. */
+export async function tones(page: Page): Promise<number[]> {
+  return page.evaluate(() => [...(window as unknown as { __tones: number[] }).__tones]);
+}
+
+export async function clearTones(page: Page) {
+  await page.evaluate(() => (window as unknown as { __tones: number[] }).__tones.splice(0));
+}
+
+/** Playwright WebKit trên Windows không có Web Audio → app im lặng, bỏ qua kiểm tra âm. */
+export async function hasWebAudio(page: Page): Promise<boolean> {
+  return page.evaluate(() => 'AudioContext' in window);
+}
+
 /** Mọi bản ghi của một store IndexedDB (DB phải đã có). */
 export async function readStore<T>(page: Page, dbName: string, store: string): Promise<T[]> {
   return page.evaluate(
