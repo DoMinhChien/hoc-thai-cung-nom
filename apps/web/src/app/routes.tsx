@@ -11,6 +11,7 @@ import { GamePage } from '@/pages/games/GamePage';
 import { GamesPage } from '@/pages/games/GamesPage';
 import { PracticePage } from '@/pages/practice/PracticePage';
 import { PracticeSessionPage } from '@/pages/practice/PracticeSessionPage';
+import { SettingsPage } from '@/pages/settings/SettingsPage';
 import { LessonPage } from '@/pages/units/LessonPage';
 import { UnitPage } from '@/pages/units/UnitPage';
 import { UnitsPage } from '@/pages/units/UnitsPage';
@@ -95,7 +96,7 @@ export const routes: RouteObject[] = [
       page('/words', 'pages.words', 'words'),
       { path: '/games', element: <GamesPage /> },
       page('/progress', 'pages.progress', 'progress'),
-      page('/settings', 'pages.settings', 'settings'),
+      { path: '/settings', element: <SettingsPage /> },
       ...Object.entries(LEGACY_REDIRECTS).map(([path, to]) => ({
         path,
         element: <Navigate to={to} replace />,

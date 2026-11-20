@@ -8,6 +8,7 @@ type FakeUtterance = {
   lang?: string;
   voice?: SpeechSynthesisVoice;
   rate?: number;
+  pitch?: number;
   onend?: () => void;
   onerror?: (e: { error: string }) => void;
 };
@@ -69,6 +70,20 @@ describe('WebSpeechProvider (T7.3, plan 7.2)', () => {
     expect(synth.spoken).toEqual([
       expect.objectContaining({ text: 'สวัสดี', lang: 'th-TH', voice: THAI, rate: 0.8 }),
     ]);
+  });
+
+  it('mặc định: giọng xếp hạng đầu (Natural trước), rate 0,95, pitch 1,05; thaiVoices đã xếp hạng', async () => {
+    const natural = voice('Microsoft Premwadee Online (Natural) - Thai (Thailand)', 'th-TH');
+    const synth = new FakeSynth([voice('Microsoft Pattara', 'th-TH'), THAI, natural]);
+    const provider = make(synth);
+    await provider.speak('ดี');
+    expect(synth.spoken[0]).toMatchObject({ voice: natural, rate: 0.95, pitch: 1.05 });
+    expect((await provider.thaiVoices()).map((v) => v.name)).toEqual([
+      natural.name,
+      'Kanya',
+      'Microsoft Pattara',
+    ]);
+    expect(await make(undefined).thaiVoices()).toEqual([]);
   });
 
   it('chọn giọng theo tên nếu có; giọng th_TH (Android) cũng nhận', async () => {
