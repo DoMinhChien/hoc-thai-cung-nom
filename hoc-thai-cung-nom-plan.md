@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.5** (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.6** (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -163,6 +163,14 @@ Owner đưa toàn bộ tài liệu vào `sources/` (27 PDF ~ 550 trang, **ảnh,
 5. Ảnh minh họa trong slide **không** trích xuất (bản quyền ảnh không rõ) → dùng Noto Emoji (V-05).
 6. Content mẫu cũ (`u01`, `u02`, `u03`, `u11`) **giữ** tới khi nội dung thật đủ thay; sau đó agent xóa và chuyển test/E2E sang unit thật (`u03` → `c03`, `u11` → `c11`).
 7. M4 (PDF pipeline tự động) **hạ ưu tiên** — chỉ cần khi giáo viên gửi tài liệu mới thường xuyên.
+
+### 0.13 Phản hồi người học (2026-11-20, v7.6)
+
+Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1) chọn đúng/sai cần **âm thanh** tương ứng; (2) **giọng đọc trầm**, không thu hút; (3) **giao diện đơn điệu**. Quyết định:
+1. Âm phản hồi (F-13) áp dụng **toàn app**, không chỉ trò chơi; âm rõ, dễ chịu, mặc định bật, có âm lượng (M9.5 T9.5.1).
+2. Giọng đọc: chọn giọng Thái tự nhiên nhất trên máy + Cài đặt giọng/tốc độ (T9.5.2); **S-01 Azure TTS neural chuyển từ Phase 2 lên Phase 1** — sinh sẵn mp3 giọng nữ `th-TH-PremwadeeNeural` cho toàn bộ nội dung (T9.5.3, gói F0 miễn phí).
+3. Định hướng 7.6.1 "tối giản" được **nới**: khu Trò chơi (v7.3) là chuẩn mới cho mức sinh động; Claude Desktop đề xuất hướng giao diện mới cho cả app (**M0.5c**) → owner chọn → cập nhật D1–D9 và tokens. Vẫn giữ: chữ Thái là trung tâm, phím tắt, a11y AA, tôn trọng reduced-motion.
+4. Thứ tự nhập tài liệu (0.12): **số lớn trước** — Giáo trình Bài 12 → 3, rồi Chuyên đề 15 → 2 (owner, 2026-11-20).
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1100,6 +1108,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.6 (2026-11-20):** Phản hồi người học (mục 0.13): âm đúng/sai toàn app, giọng đọc (chọn giọng + Azure TTS neural lên Phase 1), nới định hướng tối giản (M0.5c); milestone **M9.5**; thứ tự nhập tài liệu số lớn trước.
 - **v7.5 (2026-11-19):** Nhận 27 PDF giáo viên (mục 0.12): lộ trình 2 nhánh Giáo trình (`b01`–`b12`) / Chuyên đề (`c01`–`c15`); Claude Desktop chuyển tay, theo dõi ở `content/IMPORT-STATUS.md`; M4 hạ ưu tiên.
 - **v7.4 (2026-11-18):** Owner yêu cầu **font chữ phổ thông** (ảnh mẫu sách tập viết, chữ Thái có đầu tròn) → font Thái **Sarabun** thay Noto Sans Thai (G-05, D8, `tokens.json`); tiếng Việt giữ Inter.
 - **v7.3 (2026-11-18):** Khu **Trò chơi** sinh động hơn (7.6.1 ngoại lệ, phương án B): màu riêng từng trò (`color.game.*` trong `tokens.json`) + chuyển động phản hồi; các khu khác giữ tối giản. Tham khảo **Memrise Speed Review**: F-02' và F-04' chơi theo **3 tim** (giờ mỗi câu theo độ dài 5–9 s, sai/hết giờ mất tim, 15 câu đúng liền +1 tim), nền thẻ ngả đỏ dần khi sắp hết giờ, thưởng tốc độ, tự đọc chữ Thái, màn kết quả bật/tắt "cần ôn" từng mục.
