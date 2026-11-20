@@ -13,6 +13,8 @@
 
 > **🔵 M9.5 — Phản hồi người học** (mở 2026-11-20, **ưu tiên trước M10**): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe (chọn giọng Natural + Cài đặt giọng; mp3 Azure neural khi có S13), giao diện sinh động hơn (chờ M0.5c). Nhánh `m9.5-feedback` tách từ `main` (sau khi merge PR nội dung + #20).
 
+> **⚪ M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
+
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
 > **🟢 M7.5 — Trò chơi** (10/10 task, **PR #16 đã merge vào `m7-lessons` 2026-11-19**; vào `main` cùng PR #14) — xong 2026-11-19: `/games` + 4 trò (Ghép cặp, Đúng hay sai?, Xếp câu tốc độ, Đoán loại từ) + kết quả, màu/chuyển động khu Trò chơi + cơ chế kiểu Memrise (v7.3), font Sarabun (v7.4). Chờ owner: xem baseline mới, content mẫu chưa có chuyên đề nào ≥ 5 câu nên Xếp câu tốc độ đang khóa trên content thật. **Không còn milestone mở được**: M7 UI chờ SCR-04/05, M9 chờ M7 + SCR-06.
@@ -47,7 +49,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
 | M4 | PDF pipeline Python (Claude vision, `--suggest`) | ⚪ | M6.1, **S9**; PDF mẫu ✅ (`sources/`) |
-| M0.5c | **Làm mới giao diện** theo feedback người học (Claude Desktop: 2–3 hướng hi-fi → owner chọn) | ⚪ | Làm trước M10 cùng SCR-03/07/09 |
+| M0.5c | **Làm mới giao diện** theo feedback người học (Claude Desktop: 2–3 hướng hi-fi → owner chọn) + **SCR-08 v2 Trò chơi** (thumbnail, 3 theme, 4 màn mới — tham khảo Wordwall) | ⚪ | Trước M9.6 UI và M10; cùng SCR-03/07/09 |
 | M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | 🔵 | SCR-04/05/06 + wireframe ✅ soạn 2026-11-18, **chờ owner duyệt**; SCR-03/07/08/09 làm trước M10/M10.5 |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
@@ -60,6 +62,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | 🟢 | M7, M7.5, M8 ✅, SCR-06 |
 | M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🔵 | M9 ✅; T9.5.3 cần S13; T9.5.4 cần M0.5c |
+| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | ⚪ | M9.5; UI chờ SCR-08 v2 (M0.5c) |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
@@ -430,6 +433,26 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Trên Edge, giọng mặc định là giọng Natural (nữ) nếu máy có; đổi giọng / tốc độ trong Cài đặt có hiệu lực ngay.
 - (T9.5.3) Mọi từ / câu của Bài 1, Bài 2 phát bằng mp3 neural; tắt mạng vẫn phát (đã cache PWA ở M12).
 
+### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) ⚪ (plan 0.14) — sau M9.5, trước M10
+
+**Nguồn:** phản hồi người học "ít trò, giao diện trò chơi chưa thu hút"; owner chọn thêm 3–4 trò, UI tham khảo Wordwall (2026-11-20).
+
+**Cần trước:** M9.5 ✅ (âm phản hồi dùng chung). UI (T9.6.4–T9.6.6) **🟠 chờ SCR-08 v2** (Claude Desktop, đợt M0.5c). T9.6.1–T9.6.3 làm được ngay sau M9.5.
+
+**Task**
+- [ ] T9.6.1 Core: vòng lặp game thuần (`tick(state, dtMs, input)`, đồng hồ/seed là tham số) dùng chung cho trò có chuyển động; **F-15 Đập chuột** (lịch xuất hiện 9 ô, combo, phạt đập nhầm) và **F-16 Đố vui truyền hình** (trộn câu hỏi từ engine Bài tập E-01/E-02/E-05/E-14, trợ giúp 50:50 + thêm giờ, vòng thưởng, điểm). Unit test.
+- [ ] T9.6.2 Core: **F-17 Máy bay** (làn, tốc độ tăng dần, va chạm mây, 3 tim — dùng `rapidGame`) và **F-18 Mê cung** (sinh mê cung có seed, 4 ô đáp án, "ma đuổi" theo đường ngắn nhất, chế độ từng bước khi reduced-motion). Unit test.
+- [ ] T9.6.3 Hạ tầng web: hook `useGameLoop` (rAF, tạm dừng khi tab ẩn — dùng lại `useCountdown`), **theme trò chơi** (token `game.theme.*`: nền minh họa, màu, âm nền tắt được; 3 theme), bộ asset CC0 + `LICENSE.md`, **sao kết quả 1–3** + nút **"Đổi trò"** (giữ nguồn) cho cả 4 trò cũ.
+- [ ] T9.6.4 🟠 `/games` theo **SCR-08 v2**: lưới thumbnail minh họa lớn cho 8 trò, nhãn kỹ năng, lọc theo kỹ năng, kỷ lục, chọn theme, trò bị khóa có lý do.
+- [ ] T9.6.5 🟠 4 màn chơi mới + áp theme/sao cho 4 màn cũ theo SCR-08 v2 (bàn phím đầy đủ, âm M9.5, reduced-motion).
+- [ ] T9.6.6 🟠 E2E mỗi trò mới (seed cố định → điểm/kỷ lục, mục sai "cần ôn", FSRS không đổi), axe, baseline `/games` + 4 màn.
+
+**Tiêu chí nghiệm thu**
+- `/games` có **8 trò**, mỗi trò thumbnail riêng, chơi được với nguồn "Từ đã học" và từng chuyên đề (trò thiếu dữ liệu bị khóa có lý do).
+- Chơi trọn 4 trò mới chỉ bằng bàn phím; reduced-motion vẫn chơi được (chế độ từng bước).
+- Màn kết quả có sao + "Đổi trò"; đổi theme có hiệu lực ngay và được nhớ.
+- Không thêm thư viện game engine; bundle trang `/games/:id` tăng < 150 KB gzip (trừ ảnh).
+
 ### M10 → M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
@@ -441,6 +464,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-20 | M9.6 (plan 0.14) | Owner: người học thấy **ít trò, UI trò chơi chưa thu hút** → tham khảo Wordwall, thêm 3–4 trò. Claude Desktop: plan v7.7 mục 0.14 (F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; thumbnail, 3 theme, sao, "Đổi trò"), milestone **M9.6** (T9.6.1–T9.6.6), SCR-08 v2 vào M0.5c | — | UI M9.6 chờ SCR-08 v2 | `m9.5-feedback` |
 | 2026-11-20 | Nội dung | Claude Desktop nhập **Bài 12** (`b12`: nhập vai hội thoại phần 2 — 7 bài học, 5 hội thoại / 70 lượt thoại dịch Thái, 59 câu luyện dịch, không có bảng từ); bọc ngoặc kép `th`/`vi` trong `dialogues.yaml`. Kế tiếp: Bài 11 | — | — | `content-b12` |
 | 2026-11-20 | M9.5 + Nội dung (plan 0.13) | Owner chuyển **feedback người học** (âm đúng/sai, giọng trầm, giao diện đơn điệu). Claude Desktop review code → mở **M9.5** (T9.5.1–T9.5.4), thêm M0.5c (làm mới giao diện), SETUP **S13** (Azure Speech F0); TC.2 tách 2a (xóa `u01`/`u02` ngay) / 2b. Thứ tự nhập tài liệu đổi sang **số lớn trước** (Bài 12 → 3, CĐ 15 → 2) | M9.5 | T9.5.3 chờ S13; T9.5.4 chờ M0.5c | `content-b12` |
 | 2026-11-20 | M9 → 🟢 | T9.1–T9.7: core bài tập (10 loại, chấm FSRS lần đầu, bậc dịch E-11, phiên E-10), Dexie v5, `/practice` + `/practice/session` + badge, bước Bài tập của bài học dùng chung engine, E2E + axe + baseline. Sửa trong lúc làm: radio Kiểu bài nhảy lại, "Luyện lại câu sai" cùng URL không mở phiên mới, trả lời lại câu cuối khi đang ghi, Skeleton thiếu role | — | M10 cần SCR-03/07/09 (đợt M0.5b-2); baseline Linux từ CI | `m9-practice` PR #20 |

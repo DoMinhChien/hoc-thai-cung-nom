@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
+import { readStore } from './practice-helpers';
 
 /**
  * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Chọn nguồn rõ ràng (`u01`, `u03`)
@@ -24,6 +25,19 @@ async function meaningsOfUnit1(page: Page): Promise<Map<string, string>> {
   ]);
 }
 
+/** Chọn nguồn trò chơi và đợi cài đặt được lưu (trước khi rời trang). */
+async function chooseSource(page: Page, source: string) {
+  await page.getByTestId('game-source').selectOption(source);
+  await expect
+    .poll(
+      async () =>
+        (
+          await readStore<{ key: string; value: unknown }>(page, 'hoc-thai-nom-guest', 'settings')
+        ).find((s) => s.key === 'gameSource')?.value,
+    )
+    .toBe(source);
+}
+
 async function expectNoSevereViolations(page: Page) {
   const { violations } = await new AxeBuilder({ page }).analyze();
   const severe = violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
@@ -37,7 +51,7 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
 }) => {
   const meanings = await meaningsOfUnit1(page);
   await page.goto('/games');
-  await page.getByTestId('game-source').selectOption('unit:u01');
+  await chooseSource(page, 'unit:u01');
   await page.goto('/games/true-false?seed=11');
   await expect(page.getByTestId('game-lives')).toHaveAttribute('data-lives', '3');
 
@@ -88,7 +102,7 @@ test('Đoán loại từ trên Chuyên đề 3: chọn nguồn (được nhớ),
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );
-  await page.getByTestId('game-source').selectOption('unit:u03');
+  await chooseSource(page, 'unit:u03');
   await expect(page.getByTestId('game-locked-classifier-rush')).toBeHidden();
   await page.reload();
   await expect(page.getByTestId('game-source')).toHaveValue('unit:u03');
