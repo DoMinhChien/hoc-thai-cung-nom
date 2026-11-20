@@ -145,6 +145,48 @@ describe('AccountDataRepository', () => {
     expect(await repo.hasProgress(GUEST_KEY)).toBe(false);
   });
 
+  it('transferGuestProgress: bậc dịch câu cùng câu → giữ bản cập nhật sau; lượt trả lời gộp hết (M9)', async () => {
+    const older = '2026-03-01T00:00:00.000Z';
+    const newer = '2026-03-02T00:00:00.000Z';
+    const level = (id: string, sentenceId: string, level: 2 | 3 | 4, updatedAt: string) => ({
+      id,
+      sentenceId,
+      level,
+      streak: 0,
+      updatedAt,
+    });
+    const attempt = (id: string) => ({
+      id,
+      exerciseType: 'E-05' as const,
+      itemType: 'sentence' as const,
+      itemId: 's1',
+      unitId: 'u01',
+      correct: true,
+      rating: null,
+      ts: older,
+      updatedAt: older,
+    });
+    const guest = new NomDatabase(GUEST_KEY);
+    await guest.sentenceLevels.bulkPut([level('g1', 's1', 4, newer), level('g2', 's2', 3, older)]);
+    await guest.exerciseAttempts.put(attempt('ga'));
+    guest.close();
+    const user = new NomDatabase('u1');
+    await user.sentenceLevels.bulkPut([level('u1', 's1', 2, older), level('u2', 's2', 2, newer)]);
+    await user.exerciseAttempts.put(attempt('ua'));
+    user.close();
+
+    await repo.transferGuestProgress('u1');
+
+    const db = new NomDatabase('u1');
+    expect((await db.sentenceLevels.toArray()).map((l) => [l.id, l.level]).sort()).toEqual([
+      ['g1', 4],
+      ['u2', 2],
+    ]);
+    expect((await db.exerciseAttempts.toArray()).map((a) => a.id).sort()).toEqual(['ga', 'ua']);
+    db.close();
+    expect(await repo.hasProgress(GUEST_KEY)).toBe(false);
+  });
+
   it('transferGuestProgress: thẻ thiếu khóa (dữ liệu cũ) vẫn được chuyển, không lỗi', async () => {
     const guest = new NomDatabase(GUEST_KEY);
     await guest.cards.put({ id: 'cu', itemType: 'consonant' } as CardRecord);

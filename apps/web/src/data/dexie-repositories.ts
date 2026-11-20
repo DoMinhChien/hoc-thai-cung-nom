@@ -4,6 +4,7 @@ import {
   type CanDoRecord,
   type CardFilter,
   type CardType,
+  type ExerciseAttemptRecord,
   type GameId,
   type GameResultRecord,
   type ItemType,
@@ -13,6 +14,7 @@ import {
   type ProgressRepository,
   type Repositories,
   type ReviewLogRecord,
+  type SentenceLevelRecord,
   type CardRecord,
   type ReviewRepository,
   type SessionRepository,
@@ -110,6 +112,18 @@ class DexieProgressRepository implements ProgressRepository {
   async deleteNeedsReview(itemType: ItemType, itemId: string) {
     await this.db.needsReview.where('[itemType+itemId]').equals([itemType, itemId]).delete();
   }
+  getSentenceLevel(sentenceId: string) {
+    return this.db.sentenceLevels.where('sentenceId').equals(sentenceId).first();
+  }
+  listSentenceLevels() {
+    return this.db.sentenceLevels.toArray();
+  }
+  async putSentenceLevel(record: SentenceLevelRecord) {
+    await this.db.transaction('rw', this.db.sentenceLevels, async () => {
+      await this.db.sentenceLevels.where('sentenceId').equals(record.sentenceId).delete();
+      await this.db.sentenceLevels.put(record);
+    });
+  }
 }
 
 class DexieReviewRepository implements ReviewRepository {
@@ -134,6 +148,15 @@ class DexieReviewRepository implements ReviewRepository {
   }
   listeningStatsBetween(from: Date, to: Date) {
     return this.db.listeningStats
+      .where('ts')
+      .between(from.toISOString(), to.toISOString(), true, false)
+      .toArray();
+  }
+  async addAttempt(attempt: ExerciseAttemptRecord) {
+    await this.db.exerciseAttempts.put(attempt);
+  }
+  attemptsBetween(from: Date, to: Date) {
+    return this.db.exerciseAttempts
       .where('ts')
       .between(from.toISOString(), to.toISOString(), true, false)
       .toArray();

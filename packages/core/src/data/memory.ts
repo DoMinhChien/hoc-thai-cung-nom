@@ -8,12 +8,14 @@ import type {
   CanDoRecord,
   CardRecord,
   CardType,
+  ExerciseAttemptRecord,
   GameResultRecord,
   ItemType,
   LessonProgressRecord,
   ListeningStatRecord,
   NeedsReviewRecord,
   ReviewLogRecord,
+  SentenceLevelRecord,
   SessionRecord,
 } from './records';
 import type {
@@ -119,11 +121,25 @@ export class MemoryProgressRepository implements ProgressRepository {
   async deleteNeedsReview(itemType: ItemType, itemId: string) {
     this.needsReview.delete(JSON.stringify([itemType, itemId]));
   }
+
+  readonly sentenceLevels = new Map<string, SentenceLevelRecord>();
+
+  async getSentenceLevel(sentenceId: string) {
+    const record = this.sentenceLevels.get(sentenceId);
+    return record && clone(record);
+  }
+  async listSentenceLevels() {
+    return [...this.sentenceLevels.values()].map(clone);
+  }
+  async putSentenceLevel(record: SentenceLevelRecord) {
+    this.sentenceLevels.set(record.sentenceId, clone(record));
+  }
 }
 
 export class MemoryReviewRepository implements ReviewRepository {
   readonly logs: ReviewLogRecord[] = [];
   readonly listening: ListeningStatRecord[] = [];
+  readonly attempts: ExerciseAttemptRecord[] = [];
 
   async addLog(log: ReviewLogRecord) {
     this.logs.push(clone(log));
@@ -146,6 +162,15 @@ export class MemoryReviewRepository implements ReviewRepository {
   async listeningStatsBetween(from: Date, to: Date) {
     return this.listening
       .filter((s) => inRange(s.ts, from, to))
+      .sort(byField('ts'))
+      .map(clone);
+  }
+  async addAttempt(attempt: ExerciseAttemptRecord) {
+    this.attempts.push(clone(attempt));
+  }
+  async attemptsBetween(from: Date, to: Date) {
+    return this.attempts
+      .filter((a) => inRange(a.ts, from, to))
       .sort(byField('ts'))
       .map(clone);
   }
