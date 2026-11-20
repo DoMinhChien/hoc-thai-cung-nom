@@ -1,6 +1,15 @@
-import type { AudioProvider, SpeakOptions, VoiceStatus } from '@nom/core';
+import {
+  rankThaiVoices,
+  type AudioProvider,
+  type SpeakOptions,
+  type VoiceInfo,
+  type VoiceStatus,
+} from '@nom/core';
 
 export const THAI_LANG = 'th-TH';
+/** Mặc định dễ nghe hơn giọng máy gốc (plan 0.13 #2): chậm hơn một chút, cao hơn một chút. */
+export const DEFAULT_SPEECH_RATE = 0.95;
+export const DEFAULT_SPEECH_PITCH = 1.05;
 /** Chờ `voiceschanged` tối đa (Chrome nạp danh sách giọng bất đồng bộ). */
 const VOICES_TIMEOUT_MS = 1000;
 
@@ -25,6 +34,7 @@ const isThai = (voice: SpeechSynthesisVoice) =>
 
 /**
  * Phase 1 (plan 7.2): đọc tiếng Thái bằng Web Speech (`th-TH`); câu có file audio thì phát file trước.
+ * Không chọn giọng → giọng Thái dễ nghe nhất của máy (`rankThaiVoices`, plan 0.13).
  * Mỗi lần đọc huỷ câu đang đọc dở (bấm ▶ liên tiếp không bị xếp hàng).
  */
 export class WebSpeechProvider implements AudioProvider {
@@ -44,6 +54,14 @@ export class WebSpeechProvider implements AudioProvider {
     return (await this.loadVoices()).some(isThai) ? 'available' : 'missing';
   }
 
+  async thaiVoices(): Promise<VoiceInfo[]> {
+    if (!this.synth) return [];
+    return rankThaiVoices((await this.loadVoices()).filter(isThai)).map(({ name, lang }) => ({
+      name,
+      lang,
+    }));
+  }
+
   async speak(text: string, opts: SpeakOptions = {}): Promise<void> {
     if (opts.audio) {
       try {
@@ -54,12 +72,13 @@ export class WebSpeechProvider implements AudioProvider {
     }
     const synth = this.synth;
     if (!synth) throw new SpeechUnavailableError();
-    const voices = (await this.loadVoices()).filter(isThai);
+    const voices = rankThaiVoices((await this.loadVoices()).filter(isThai));
     const utterance = this.createUtterance(text);
     utterance.lang = THAI_LANG;
     const voice = voices.find((v) => v.name === opts.voice) ?? voices[0];
     if (voice) utterance.voice = voice;
-    if (opts.rate !== undefined) utterance.rate = opts.rate;
+    utterance.rate = opts.rate ?? DEFAULT_SPEECH_RATE;
+    utterance.pitch = DEFAULT_SPEECH_PITCH;
 
     synth.cancel();
     await new Promise<void>((resolve, reject) => {

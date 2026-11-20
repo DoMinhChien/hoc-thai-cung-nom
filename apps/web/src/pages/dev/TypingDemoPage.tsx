@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { t } from '@/i18n';
 
 /**
- * Dữ liệu GIẢ LẬP để xem ô gõ + bàn phím ảo (M8) — câu `s-u02-002` của content mẫu (draft),
+ * Dữ liệu GIẢ LẬP để xem ô gõ + bàn phím ảo (M8) — lấy từ content mẫu cũ (đã xóa ở TC.2a),
  * KHÔNG phải bài tập thật. Bài tập E-07 dùng các component này ở M9.
  */
 const SAMPLE = { vi: 'Tôi có một anh trai.', accepted: ['ผมมีพี่ชายหนึ่งคน'] };

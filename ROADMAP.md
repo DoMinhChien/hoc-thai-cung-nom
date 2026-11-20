@@ -11,7 +11,9 @@
 
 > **🟢 M9 — Bài tập** (7/7 task, xong 2026-11-20, nhánh `m9-practice` — PR #20): `/practice`, `/practice/session`, 10 loại câu hỏi E-01..E-09, E-14, FSRS cho từ **và** câu, bậc dịch E-11, bước Bài tập của bài học dùng chung engine. Kế tiếp: **M10** (cần SCR-03/07/09 — đợt M0.5b-2).
 
-> **🔵 M9.5 — Phản hồi người học** (mở 2026-11-20, **ưu tiên trước M10**): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe (chọn giọng Natural + Cài đặt giọng; mp3 Azure neural khi có S13), giao diện sinh động hơn (chờ M0.5c). Nhánh `m9.5-feedback` tách từ `main` (sau khi merge PR nội dung + #20).
+> **🟠 M9.5 — Phản hồi người học** (2/4 task — T9.5.1, T9.5.2 ✅ nhánh `m9.5-feedback`; T9.5.3 chờ **S13**, T9.5.4 chờ **M0.5c**): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe (chọn giọng Natural + Cài đặt giọng; mp3 Azure neural khi có S13), giao diện sinh động hơn (chờ M0.5c). Nhánh `m9.5-feedback` tách từ `main` (sau khi merge PR nội dung + #20).
+
+> **⚪ M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
@@ -47,7 +49,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M2 | Core: schema, normalize, Tone Engine | 🟢 | M0 ✅ — PR #3 |
 | M3 | Content pipeline TS + content mẫu | 🟢 | M2 ✅; S10 content mẫu ✅ — PR #7 |
 | M4 | PDF pipeline Python (Claude vision, `--suggest`) | ⚪ | M6.1, **S9**; PDF mẫu ✅ (`sources/`) |
-| M0.5c | **Làm mới giao diện** theo feedback người học (Claude Desktop: 2–3 hướng hi-fi → owner chọn) | ⚪ | Làm trước M10 cùng SCR-03/07/09 |
+| M0.5c | **Làm mới giao diện** theo feedback người học (Claude Desktop: 2–3 hướng hi-fi → owner chọn) + **SCR-08 v2 Trò chơi** (thumbnail, 3 theme, 4 màn mới — tham khảo Wordwall) | ⚪ | Trước M9.6 UI và M10; cùng SCR-03/07/09 |
 | M0.5b | Design v7: SCR-03..09 (Tổng quan, Bài học, Bài tập, Sổ từ, Trò chơi, Tiến độ) | 🔵 | SCR-04/05/06 + wireframe ✅ soạn 2026-11-18, **chờ owner duyệt**; SCR-03/07/08/09 làm trước M10/M10.5 |
 | M5 | Data layer + SRS + progress components | 🟢 | M2 ✅, M3 ✅ — PR #8, #9 |
 | M2.1 | Bổ sung quy tắc Tone Engine (อักษรนำ, ไ/ใ/ำ/เา) | 🟢 | M5 ✅ — PR #10 |
@@ -59,7 +61,8 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M7.5 | **Trò chơi** F-01, F-02', F-03', F-04' + component tương tác dùng chung (ưu tiên, v7.2) | 🟢 | SCR-08 ✅ — PR #16 ✅ merge vào `m7-lessons` 2026-11-19 |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | 🟢 | M7, M7.5, M8 ✅, SCR-06 |
-| M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🔵 | M9 ✅; T9.5.3 cần S13; T9.5.4 cần M0.5c |
+| M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🟠 | M9 ✅; T9.5.3 cần S13; T9.5.4 cần M0.5c |
+| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | ⚪ | M9.5; UI chờ SCR-08 v2 (M0.5c) |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
@@ -74,7 +77,8 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
 - [x] TC.1 `/units` theo 0.12 #1: bộ lọc **"Giáo trình" / "Chuyên đề"** (theo `kind`), nhãn "Bài n" / "Chuyên đề n", sắp xếp Giáo trình → Chuyên đề; chi tiết unit + breadcrumb dùng cùng nhãn; cập nhật SCR-04 (câu chữ) + E2E/baseline. Kiểm tra `content:check` / `content:build` với unit `b02` (65 từ, 29 câu, 6 bài học) — sửa nếu có lỗi, **không** sửa nội dung Thái (báo Claude Desktop).
   - *Kết quả:* core `compareUnits` (theme → grammar → `order` → id) dùng ở `content:build`, `/units`, nguồn Trò chơi; nhãn `unitLabel` ("Bài n" / "Chuyên đề n") ở lộ trình, card Học tiếp, breadcrumb, tiêu đề bài, màn hoàn thành, `/games`. Bài con trong unit đổi thành **"Bài học n"** (tránh "Bài 2 · Bài 2"). `b02`: sửa YAML (ví dụ có dấu phẩy chưa bọc ngoặc kép), bỏ tiền tố "Bài 2 · " khỏi `title_vi` (UI tự thêm nhãn); mẫu `u03` → `kind: grammar` (= CĐ 3). SCR-04/05/08 cập nhật câu chữ; E2E 2 nhánh + mở Bài 2, axe `/units/b02`, `/units/b02/b02-l1`; baseline `units-*` mới.
-- [ ] TC.2a Xóa content mẫu `u01`, `u02` ngay (đã có `b01`, `b02` thật); chuyển test/E2E dùng `u01` sang `b01`/`b02`.
+- [x] TC.2a Xóa content mẫu `u01`, `u02` ngay (đã có `b01`, `b02` thật); chuyển test/E2E dùng `u01` sang `b01`/`b02`.
+  - *Kết quả (2026-11-20, nhánh `m9.5-feedback`):* xóa `u01`, `u02` (2 unit, 2 bài học, 15 từ, 5 câu, 2 mẫu câu, 2 hội thoại); `content:check` 361 mục, 0 lỗi. E2E bài học học trọn **Chuyên đề 1** + bước Hội thoại **Bài 12**; Bài tập/Trò chơi dùng **Bài 1** thật. Chuyển sang nội dung thật lộ ra lỗi engine: **phương án nhiễu trùng đề** (Bài 1 có nhiều đại từ cùng nghĩa "tôi" → E-02 có 2 đáp án đúng; Đúng hay sai? có thể đề xuất nghĩa khác của cùng chữ làm "nghĩa sai") → đã sửa trong core + test.
 - [ ] TC.2b (khi nhập `c03`, `c11` — cuối hàng nhập, plan 0.12 #8) xóa `u03`, `u11`, chuyển test trò chơi Đoán loại từ / Xếp câu sang `c03` / `c11`.
 
 
@@ -412,7 +416,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
   - Badge Bài tập ở sidebar đọc DB của tài khoản ngay khi vào trang, nên DB có thể được tạo (rỗng). Test đăng nhập đổi sang kiểm tra "không chuyển thẻ".
   - Settings chưa có ô chỉnh "số câu mỗi phiên"; khóa `practiceSessionSize` đã có, mặc định 20, UI ở M12.
 
-### M9.5 — Phản hồi người học 🔵 (mở 2026-11-20, plan 0.13) — **làm trước M10**
+### M9.5 — Phản hồi người học 🟠 (mở 2026-11-20, plan 0.13; T9.5.1–T9.5.2 xong, T9.5.3 chờ S13, T9.5.4 chờ M0.5c) — **làm trước M10**
 
 **Nguồn:** feedback người học sau khi dùng Bài học / Bài tập / Trò chơi (owner chuyển, 2026-11-20). Claude Desktop đã review code hiện tại:
 - Âm đúng/sai **đã có** (`webAudioTone`, F-13) nhưng chỉ là tiếng bíp 0,12 s, âm lượng 0,08 (rất nhỏ); **Bài tập chỉ phát khi đúng** (`PracticeRunner`: `if (ok) sound.play(true)`) — sai không có âm.
@@ -420,8 +424,8 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Giao diện: ngoài khu Trò chơi (v7.3), toàn app vẫn theo định hướng tối giản 7.6.1 → người học thấy đơn điệu.
 
 **Task**
-- [ ] T9.5.1 **Âm phản hồi rõ ràng, ở mọi nơi chấm đúng/sai.** Thay bíp bằng âm dễ chịu, dễ phân biệt: **đúng** = 2–3 nốt đi lên (chime, ~0,3 s), **sai** = 2 nốt đi xuống mềm (không chói, ~0,3 s), **hoàn thành** (xong phiên/bài/lượt chơi, phá kỷ lục) = đoạn ngắn ~0,8 s. Ưu tiên file âm thanh **CC0** (ghi nguồn + giấy phép trong `apps/web/public/sounds/LICENSE.md`), fallback Web Audio. Âm lượng mặc định ~0,4 + thanh **Âm lượng** trong Cài đặt (0 = tắt), mặc định **bật**. Phát ở: phiên Bài tập (**cả khi sai** — sửa lỗi hiện tại), bước Bài tập của bài học, 4 trò chơi, màn kết quả. Không phát chồng lên giọng đọc (phát âm phản hồi trước, đọc sau ~150 ms). Unit test (player giả) + E2E spy.
-- [ ] T9.5.2 **Giọng đọc dễ nghe hơn (làm ngay, không cần tài khoản).** Xếp hạng giọng Thái: (1) tên chứa `Natural`/`Online`/`Neural` (Edge: *Premwadee*, *Niwat*), (2) `Google ไทย`, (3) giọng nữ, (4) còn lại; mặc định `rate` 0,95, `pitch` 1,05. Cài đặt **Giọng đọc**: danh sách giọng Thái có trên máy + nút **Nghe thử** (câu mẫu `สวัสดีค่ะ ยินดีที่ได้รู้จัก`) + tốc độ (0,7–1,2), lưu theo user. Nếu chỉ có giọng hệ thống kém: dòng gợi ý "Dùng Microsoft Edge để có giọng đọc tự nhiên". Test với danh sách giọng giả.
+- [x] T9.5.1 **Âm phản hồi rõ ràng, ở mọi nơi chấm đúng/sai.** Thay bíp bằng âm dễ chịu, dễ phân biệt: **đúng** = 2–3 nốt đi lên (chime, ~0,3 s), **sai** = 2 nốt đi xuống mềm (không chói, ~0,3 s), **hoàn thành** (xong phiên/bài/lượt chơi, phá kỷ lục) = đoạn ngắn ~0,8 s. Ưu tiên file âm thanh **CC0** (ghi nguồn + giấy phép trong `apps/web/public/sounds/LICENSE.md`), fallback Web Audio. Âm lượng mặc định ~0,4 + thanh **Âm lượng** trong Cài đặt (0 = tắt), mặc định **bật**. Phát ở: phiên Bài tập (**cả khi sai** — sửa lỗi hiện tại), bước Bài tập của bài học, 4 trò chơi, màn kết quả. Không phát chồng lên giọng đọc (phát âm phản hồi trước, đọc sau ~150 ms). Unit test (player giả) + E2E spy.
+- [x] T9.5.2 **Giọng đọc dễ nghe hơn (làm ngay, không cần tài khoản).** Xếp hạng giọng Thái: (1) tên chứa `Natural`/`Online`/`Neural` (Edge: *Premwadee*, *Niwat*), (2) `Google ไทย`, (3) giọng nữ, (4) còn lại; mặc định `rate` 0,95, `pitch` 1,05. Cài đặt **Giọng đọc**: danh sách giọng Thái có trên máy + nút **Nghe thử** (câu mẫu `สวัสดีค่ะ ยินดีที่ได้รู้จัก`) + tốc độ (0,7–1,2), lưu theo user. Nếu chỉ có giọng hệ thống kém: dòng gợi ý "Dùng Microsoft Edge để có giọng đọc tự nhiên". Test với danh sách giọng giả.
 - [ ] T9.5.3 🟠 **Giọng đọc chất lượng cao, giống nhau trên mọi máy (cần SETUP S13).** Sinh sẵn mp3 bằng **Azure AI Speech** giọng neural nữ `th-TH-PremwadeeNeural` (dự phòng `th-TH-AcharaNeural`): script `pnpm audio:build` (đọc `content/`, sinh cho từ, câu, ví dụ mẫu câu, lượt thoại; cache theo hash văn bản + giọng; chỉ sinh phần mới), mp3 mono 24–32 kbps → `content/audio/<hash>.mp3` (commit; ước tính < 30 MB cho toàn bộ giáo trình), `content:build` gắn đường dẫn audio; `AudioProvider` đã ưu tiên file (T7.3), fallback Web Speech. Key chỉ ở `.env.local` (không commit, không gửi chat). Chi phí: gói **F0 miễn phí** (0,5 triệu ký tự/tháng) đủ cho toàn bộ nội dung. Đưa S-01 từ Phase 2 lên Phase 1.
 - [ ] T9.5.4 🟠 **Giao diện sinh động hơn toàn app** — chờ **M0.5c** (Claude Desktop đề xuất 2–3 hướng hi-fi cho Lộ trình, Bài học, Bài tập, Tổng quan → owner chọn → cập nhật tokens/spec). Sau khi chốt: agent áp dụng (màu theo nhánh/chuyên đề, thẻ có minh họa emoji lớn, hiệu ứng phản hồi + hoàn thành dùng chung với khu Trò chơi, chuỗi ngày học nổi bật…), cập nhật baseline.
 
@@ -429,6 +433,35 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Trả lời đúng và sai ở Bài tập, bài học, trò chơi đều có âm khác nhau, nghe rõ ở âm lượng máy bình thường; tắt được trong Cài đặt.
 - Trên Edge, giọng mặc định là giọng Natural (nữ) nếu máy có; đổi giọng / tốc độ trong Cài đặt có hiệu lực ngay.
 - (T9.5.3) Mọi từ / câu của Bài 1, Bài 2 phát bằng mp3 neural; tắt mạng vẫn phát (đã cache PWA ở M12).
+
+**Kết quả T9.5.1–T9.5.2 (2026-11-20, nhánh `m9.5-feedback`):**
+- **Âm phản hồi** (`feedback-sound.ts`): tổng hợp bằng Web Audio, không dùng file (không vướng bản quyền, không tăng dung lượng) — đúng = 3 nốt đi lên ~0,3 s, sai = 2 nốt đi xuống (sóng tam giác, mềm) ~0,35 s, hoàn thành = 4 nốt ~0,8 s; âm lượng mặc định 0,4 (trước 0,08).
+  - Phát ở: phiên Bài tập và bước Bài tập của bài học (**cả khi sai** — sửa lỗi cũ), 4 trò chơi, màn kết quả Bài tập / hoàn thành bài học / kết quả trò chơi.
+  - Đọc câu sau âm phản hồi 150 ms (trò chơi). Context bị trình duyệt treo → tự đánh thức.
+- **Giọng đọc:** core `rankThaiVoices` (Natural/Online/Neural nữ → Natural nam → Google → giọng nữ → còn lại); `WebSpeechProvider` mặc định giọng xếp đầu, rate 0,95, pitch 1,05, thêm `thaiVoices()`. Cài đặt giọng/tốc độ áp cho mọi lần đọc qua `VoicePreferencesBoundary` (provider giữ nguyên danh tính → không dựng lại phiên đang làm).
+- **`/settings`** (owner cho agent làm khi chưa có SCR, 2026-11-20): mục Âm phản hồi (bật/tắt, âm lượng 0–100%, nghe âm đúng/sai) + Giọng đọc tiếng Thái (chọn giọng, "Tự động — <giọng tốt nhất>", tốc độ 0,7–1,2, Nghe thử `สวัสดีค่ะ ยินดีที่ได้รู้จัก`, gợi ý dùng Edge khi máy chỉ có giọng hệ thống, hướng dẫn cài khi không có giọng Thái). Phần còn lại của Cài đặt ở M12.
+- **Test:** unit (player giả, danh sách giọng giả), E2E spy Web Audio (âm sai 392→311 Hz, âm đúng + hoàn thành), `settings.spec` (giọng giả cố định, lưu sau reload, axe), baseline `settings-*` mới. Playwright WebKit trên Windows không có Web Audio / Web Speech → các kiểm tra âm/giọng bỏ qua trên webkit.
+- **Còn lại:** T9.5.3 chờ owner làm **SETUP S13** (Azure Speech F0); T9.5.4 chờ **M0.5c**.
+
+### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) ⚪ (plan 0.14) — sau M9.5, trước M10
+
+**Nguồn:** phản hồi người học "ít trò, giao diện trò chơi chưa thu hút"; owner chọn thêm 3–4 trò, UI tham khảo Wordwall (2026-11-20).
+
+**Cần trước:** M9.5 ✅ (âm phản hồi dùng chung). UI (T9.6.4–T9.6.6) **🟠 chờ SCR-08 v2** (Claude Desktop, đợt M0.5c). T9.6.1–T9.6.3 làm được ngay sau M9.5.
+
+**Task**
+- [ ] T9.6.1 Core: vòng lặp game thuần (`tick(state, dtMs, input)`, đồng hồ/seed là tham số) dùng chung cho trò có chuyển động; **F-15 Đập chuột** (lịch xuất hiện 9 ô, combo, phạt đập nhầm) và **F-16 Đố vui truyền hình** (trộn câu hỏi từ engine Bài tập E-01/E-02/E-05/E-14, trợ giúp 50:50 + thêm giờ, vòng thưởng, điểm). Unit test.
+- [ ] T9.6.2 Core: **F-17 Máy bay** (làn, tốc độ tăng dần, va chạm mây, 3 tim — dùng `rapidGame`) và **F-18 Mê cung** (sinh mê cung có seed, 4 ô đáp án, "ma đuổi" theo đường ngắn nhất, chế độ từng bước khi reduced-motion). Unit test.
+- [ ] T9.6.3 Hạ tầng web: hook `useGameLoop` (rAF, tạm dừng khi tab ẩn — dùng lại `useCountdown`), **theme trò chơi** (token `game.theme.*`: nền minh họa, màu, âm nền tắt được; 3 theme), bộ asset CC0 + `LICENSE.md`, **sao kết quả 1–3** + nút **"Đổi trò"** (giữ nguồn) cho cả 4 trò cũ.
+- [ ] T9.6.4 🟠 `/games` theo **SCR-08 v2**: lưới thumbnail minh họa lớn cho 8 trò, nhãn kỹ năng, lọc theo kỹ năng, kỷ lục, chọn theme, trò bị khóa có lý do.
+- [ ] T9.6.5 🟠 4 màn chơi mới + áp theme/sao cho 4 màn cũ theo SCR-08 v2 (bàn phím đầy đủ, âm M9.5, reduced-motion).
+- [ ] T9.6.6 🟠 E2E mỗi trò mới (seed cố định → điểm/kỷ lục, mục sai "cần ôn", FSRS không đổi), axe, baseline `/games` + 4 màn.
+
+**Tiêu chí nghiệm thu**
+- `/games` có **8 trò**, mỗi trò thumbnail riêng, chơi được với nguồn "Từ đã học" và từng chuyên đề (trò thiếu dữ liệu bị khóa có lý do).
+- Chơi trọn 4 trò mới chỉ bằng bàn phím; reduced-motion vẫn chơi được (chế độ từng bước).
+- Màn kết quả có sao + "Đổi trò"; đổi theme có hiệu lực ngay và được nhớ.
+- Không thêm thư viện game engine; bundle trang `/games/:id` tăng < 150 KB gzip (trừ ảnh).
 
 ### M10 → M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
@@ -441,6 +474,8 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-20 | M9.5 + TC.2a | **T9.5.1** âm phản hồi mới ở mọi nơi (cả khi sai), **T9.5.2** xếp hạng giọng Thái + `/settings` âm lượng / giọng / tốc độ / nghe thử (owner cho làm khi chưa có SCR); **TC.2a** xóa `u01`/`u02`, test chuyển sang `b01`/`c01`/`b12`; sửa engine: phương án nhiễu trùng đề (từ cùng nghĩa); merge `content-b12` vào nhánh (tránh xung đột `dialogues.yaml`) | M9.6 T9.6.1–T9.6.3 | T9.5.3 chờ S13; T9.5.4 + UI M9.6 chờ M0.5c | `m9.5-feedback` |
+| 2026-11-20 | M9.6 (plan 0.14) | Owner: người học thấy **ít trò, UI trò chơi chưa thu hút** → tham khảo Wordwall, thêm 3–4 trò. Claude Desktop: plan v7.7 mục 0.14 (F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; thumbnail, 3 theme, sao, "Đổi trò"), milestone **M9.6** (T9.6.1–T9.6.6), SCR-08 v2 vào M0.5c | — | UI M9.6 chờ SCR-08 v2 | `m9.5-feedback` |
 | 2026-11-20 | Nội dung | Claude Desktop nhập **Bài 12** (`b12`: nhập vai hội thoại phần 2 — 7 bài học, 5 hội thoại / 70 lượt thoại dịch Thái, 59 câu luyện dịch, không có bảng từ); bọc ngoặc kép `th`/`vi` trong `dialogues.yaml`. Kế tiếp: Bài 11 | — | — | `content-b12` |
 | 2026-11-20 | M9.5 + Nội dung (plan 0.13) | Owner chuyển **feedback người học** (âm đúng/sai, giọng trầm, giao diện đơn điệu). Claude Desktop review code → mở **M9.5** (T9.5.1–T9.5.4), thêm M0.5c (làm mới giao diện), SETUP **S13** (Azure Speech F0); TC.2 tách 2a (xóa `u01`/`u02` ngay) / 2b. Thứ tự nhập tài liệu đổi sang **số lớn trước** (Bài 12 → 3, CĐ 15 → 2) | M9.5 | T9.5.3 chờ S13; T9.5.4 chờ M0.5c | `content-b12` |
 | 2026-11-20 | M9 → 🟢 | T9.1–T9.7: core bài tập (10 loại, chấm FSRS lần đầu, bậc dịch E-11, phiên E-10), Dexie v5, `/practice` + `/practice/session` + badge, bước Bài tập của bài học dùng chung engine, E2E + axe + baseline. Sửa trong lúc làm: radio Kiểu bài nhảy lại, "Luyện lại câu sai" cùng URL không mở phiên mới, trả lời lại câu cuối khi đang ghi, Skeleton thiếu role | — | M10 cần SCR-03/07/09 (đợt M0.5b-2); baseline Linux từ CI | `m9-practice` PR #20 |

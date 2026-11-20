@@ -116,7 +116,7 @@ export function PracticeRunner({
     const ok = result.correct && !result.skipped;
     setAnswered(result);
     record(result);
-    if (ok) sound.play(true);
+    sound.play(ok ? 'correct' : 'wrong');
     if (current.retry) return;
     if (ok) setCorrect((n) => n + 1);
     else {

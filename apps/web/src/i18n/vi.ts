@@ -435,6 +435,27 @@ export const vi = {
     moreTen: 'Làm thêm 10 câu',
     navDue: '{n} câu đến hạn',
   },
+  settings: {
+    intro:
+      'Âm thanh và giọng đọc. Cài đặt lưu theo tài khoản (hoặc trên trình duyệt này nếu học không đăng nhập).',
+    soundTitle: 'Âm phản hồi',
+    soundEnabled: 'Phát âm khi trả lời đúng / sai và khi hoàn thành',
+    volume: 'Âm lượng',
+    percent: '{n}%',
+    testCorrect: 'Nghe âm đúng',
+    testWrong: 'Nghe âm sai',
+    voiceTitle: 'Giọng đọc tiếng Thái',
+    voice: 'Giọng',
+    autoVoice: 'Tự động — {name}',
+    autoVoiceNone: 'Tự động',
+    natural: '{name} · tự nhiên',
+    rate: 'Tốc độ đọc',
+    rateValue: '{n}×',
+    test: 'Nghe thử',
+    edgeHint:
+      'Máy chỉ có giọng hệ thống. Dùng Microsoft Edge để có giọng đọc tự nhiên (Premwadee, Niwat).',
+    later: 'Các cài đặt khác (mục tiêu ngày, số câu mỗi phiên, sao lưu dữ liệu) sẽ có ở bản sau.',
+  },
   devTyping: {
     intro:
       'Dữ liệu giả lập — chỉ để xem ô gõ và bàn phím ảo (M8). Bài tập gõ câu thật (E-07) dùng ở M9.',

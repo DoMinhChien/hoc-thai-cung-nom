@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.6** (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.7** (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -171,6 +171,27 @@ Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1)
 2. Giọng đọc: chọn giọng Thái tự nhiên nhất trên máy + Cài đặt giọng/tốc độ (T9.5.2); **S-01 Azure TTS neural chuyển từ Phase 2 lên Phase 1** — sinh sẵn mp3 giọng nữ `th-TH-PremwadeeNeural` cho toàn bộ nội dung (T9.5.3, gói F0 miễn phí).
 3. Định hướng 7.6.1 "tối giản" được **nới**: khu Trò chơi (v7.3) là chuẩn mới cho mức sinh động; Claude Desktop đề xuất hướng giao diện mới cho cả app (**M0.5c**) → owner chọn → cập nhật D1–D9 và tokens. Vẫn giữ: chữ Thái là trung tâm, phím tắt, a11y AA, tôn trọng reduced-motion.
 4. Thứ tự nhập tài liệu (0.12): **số lớn trước** — Giáo trình Bài 12 → 3, rồi Chuyên đề 15 → 2 (owner, 2026-11-20).
+
+### 0.14 Trò chơi mở rộng — tham khảo Wordwall (2026-11-20, v7.7)
+
+**Phản hồi:** người học thấy **ít trò chơi** và **giao diện trò chơi chưa thu hút**. Owner đề nghị thêm 3–4 trò, UI tham khảo **Wordwall** (wordwall.net — kho mẫu trò chơi giáo dục).
+
+**Học gì từ Wordwall (chỉ lấy ý tưởng, không sao chép tên thương mại, hình, âm thanh):**
+- **Một bộ nội dung → nhiều mẫu trò**: cùng từ/câu của một chuyên đề chơi được bằng mọi trò; ở màn kết quả có nút **"Đổi trò"** chơi tiếp với cùng nguồn.
+- **Thumbnail minh họa lớn, màu tươi** cho từng trò trên trang danh sách; nhãn kỹ năng (Từ vựng / Câu / Loại từ / Nghe), thời lượng, kỷ lục.
+- **Chủ đề giao diện (theme)** cho màn chơi: nền minh họa + bảng màu + âm nền nhẹ (tắt được). Phase 1: **3 chủ đề** (vd. *Biển*, *Không gian*, *Khu vườn*), người học chọn, nhớ lựa chọn.
+- Màn chơi kiểu **arcade**: nhân vật/đồ vật chuyển động, bộ đếm lớn, hiệu ứng đúng/sai rõ; kết quả có **1–3 sao** + kỷ lục + "Chơi lại" / "Đổi trò".
+- Bảng xếp hạng chung theo trò: **Phase 2** (cần backend, E-01..E-05) — Phase 1 chỉ kỷ lục cá nhân.
+
+**4 trò mới (Phase 1, thứ tự ưu tiên)** — đều dùng nội dung sẵn có (`words`, `sentences`, `classifier`), chơi được hoàn toàn bằng bàn phím, không đổi FSRS (F-12), mục sai → "cần ôn":
+| ID | Trò (tên trong app) | Mẫu Wordwall tương ứng | Cách chơi | Luyện |
+|---|---|---|---|---|
+| **F-15** | **Đập chuột** | Whack-a-mole | Đề nghĩa Việt (hoặc nghe audio); 9 ô, các con vật thò lên mang từ Thái — đập đúng từ (phím `1`–`9` theo bố cục numpad hoặc click). 60 s, combo, đập nhầm mất điểm | Nhận diện từ nhanh |
+| **F-16** | **Đố vui truyền hình** | Gameshow quiz | 10–15 câu trắc nghiệm hỗn hợp (nghĩa từ, chọn bản dịch câu, loại từ), đồng hồ mỗi câu, **trợ giúp 50:50** và **thêm giờ** (mỗi loại 1 lần), **vòng thưởng** cuối, nhạc nhấn khi trả lời | Tổng hợp từ + câu |
+| **F-17** | **Máy bay** | Airplane | Máy bay bay ngang; đề tiếng Việt ở trên, các đám mây chở đáp án Thái trôi tới — dùng `↑` `↓` lái vào mây đúng, né mây sai. 3 tim, tốc độ tăng dần | Nghĩa từ, bản dịch câu ngắn |
+| **F-18** | **Mê cung** | Maze chase | Nhân vật đi trong mê cung bằng mũi tên tới ô chứa đáp án đúng (4 ô), tránh "ma đuổi"; trả lời đúng → màn tiếp | Nghĩa từ, loại từ |
+
+**Kỹ thuật:** chuyển động bằng DOM/SVG + `requestAnimationFrame` (không thêm game engine nặng); vòng lặp game là hàm thuần trong `packages/core` với đồng hồ là tham số (test được bằng seed + đồng hồ giả, như M7.5). `prefers-reduced-motion`: chuyển sang chế độ từng bước (không trôi/không đuổi). Hình: **Noto Emoji** + bộ asset **CC0** (vd. Kenney.nl), ghi nguồn trong `apps/web/public/games/LICENSE.md`. Thiết kế: **SCR-08 v2** (danh sách trò + 4 màn mới + 3 theme) trong đợt **M0.5c**.
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1108,6 +1129,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.7 (2026-11-20):** Trò chơi mở rộng (mục 0.14): thêm F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; UI trò chơi tham khảo Wordwall (thumbnail minh họa, 3 theme, sao kết quả, "Đổi trò"); milestone **M9.6**; SCR-08 v2 thuộc M0.5c.
 - **v7.6 (2026-11-20):** Phản hồi người học (mục 0.13): âm đúng/sai toàn app, giọng đọc (chọn giọng + Azure TTS neural lên Phase 1), nới định hướng tối giản (M0.5c); milestone **M9.5**; thứ tự nhập tài liệu số lớn trước.
 - **v7.5 (2026-11-19):** Nhận 27 PDF giáo viên (mục 0.12): lộ trình 2 nhánh Giáo trình (`b01`–`b12`) / Chuyên đề (`c01`–`c15`); Claude Desktop chuyển tay, theo dõi ở `content/IMPORT-STATUS.md`; M4 hạ ưu tiên.
 - **v7.4 (2026-11-18):** Owner yêu cầu **font chữ phổ thông** (ảnh mẫu sách tập viết, chữ Thái có đầu tròn) → font Thái **Sarabun** thay Noto Sans Thai (G-05, D8, `tokens.json`); tiếng Việt giữ Inter.

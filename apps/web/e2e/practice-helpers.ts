@@ -29,6 +29,43 @@ export async function recordSpeech(page: Page) {
   });
 }
 
+/**
+ * Ghi lại tần số mọi nốt âm phản hồi (Web Audio) vào `window.__tones` (Hz, làm tròn).
+ * Gọi trước `goto`. Nốt đầu: đúng 784, sai 392, hoàn thành 523 (`FEEDBACK_NOTES`).
+ */
+export async function recordTones(page: Page) {
+  await page.addInitScript(() => {
+    const w = window as unknown as { __tones: number[] };
+    w.__tones = [];
+    const Ctor = window.AudioContext;
+    if (!Ctor) return;
+    const create = Ctor.prototype.createOscillator;
+    Ctor.prototype.createOscillator = function (this: AudioContext) {
+      const osc = create.call(this);
+      const start = osc.start.bind(osc);
+      osc.start = (when?: number) => {
+        w.__tones.push(Math.round(osc.frequency.value));
+        start(when);
+      };
+      return osc;
+    };
+  });
+}
+
+/** Tần số các nốt đã phát từ lần `clearTones` trước. */
+export async function tones(page: Page): Promise<number[]> {
+  return page.evaluate(() => [...(window as unknown as { __tones: number[] }).__tones]);
+}
+
+export async function clearTones(page: Page) {
+  await page.evaluate(() => (window as unknown as { __tones: number[] }).__tones.splice(0));
+}
+
+/** Playwright WebKit trên Windows không có Web Audio → app im lặng, bỏ qua kiểm tra âm. */
+export async function hasWebAudio(page: Page): Promise<boolean> {
+  return page.evaluate(() => 'AudioContext' in window);
+}
+
 /** Mọi bản ghi của một store IndexedDB (DB phải đã có). */
 export async function readStore<T>(page: Page, dbName: string, store: string): Promise<T[]> {
   return page.evaluate(
@@ -52,11 +89,14 @@ export async function readStore<T>(page: Page, dbName: string, store: string): P
 
 const stripKey = (text: string | null) => (text ?? '').replace(/^\d/, '');
 
-async function clickByText(group: Locator, text: string) {
+/** Bấm lựa chọn có nội dung là một trong `texts` (nội dung thật có từ cùng nghĩa / cùng chữ). */
+async function clickByText(group: Locator, ...texts: string[]) {
   const buttons = group.getByRole('button');
-  const texts = (await buttons.allTextContents()).map(stripKey);
-  const i = texts.indexOf(text);
-  expect(i, `không có lựa chọn "${text}" trong [${texts.join(' | ')}]`).toBeGreaterThanOrEqual(0);
+  const shown = (await buttons.allTextContents()).map(stripKey);
+  const i = shown.findIndex((t) => texts.includes(t));
+  expect(i, `không có [${texts.join(' | ')}] trong [${shown.join(' | ')}]`).toBeGreaterThanOrEqual(
+    0,
+  );
   await buttons.nth(i).click();
 }
 
@@ -91,11 +131,11 @@ export async function answerQuestion(page: Page, bundles: readonly Bundle[]) {
 
   switch (type) {
     case 'E-01':
-      return clickByText(options, meaning(words.find((w) => w.thai === th)!));
+      return clickByText(options, ...words.filter((w) => w.thai === th).map(meaning));
     case 'E-02':
-      return clickByText(options, words.find((w) => meaning(w) === vi)!.thai);
+      return clickByText(options, ...words.filter((w) => meaning(w) === vi).map((w) => w.thai));
     case 'E-05':
-      return clickByText(options, sentences.find((s) => s.th === th)!.vi);
+      return clickByText(options, ...sentences.filter((s) => s.th === th).map((s) => s.vi));
     case 'E-14': {
       const classifier = words.find((w) => w.thai === th.split(' ')[0])!.classifier!;
       return (await question.getByRole('textbox').count())
@@ -128,10 +168,11 @@ export async function answerQuestion(page: Page, bundles: readonly Bundle[]) {
       for (let i = 0; i < (await lefts.count()); i++) {
         const left = (await lefts.nth(i).textContent())!;
         const right =
-          type === 'E-03' ? meaning(words.find((w) => w.thai === left)!) : qa.get(left)!;
+          type === 'E-03' ? words.filter((w) => w.thai === left).map(meaning) : [qa.get(left)!];
         await lefts.nth(i).click();
         const rights = question.getByTestId('match-right');
-        await rights.nth((await rights.allTextContents()).indexOf(right)).click();
+        const texts = await rights.allTextContents();
+        await rights.nth(texts.findIndex((r) => right.includes(r))).click();
       }
       return;
     }

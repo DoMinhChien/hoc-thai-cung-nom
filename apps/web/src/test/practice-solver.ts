@@ -23,9 +23,10 @@ export async function answerCurrentQuestion(
   const question = screen.getByTestId('question');
   const type = question.dataset.type!;
   const text = (id: string) => within(question).queryByTestId(id)?.textContent ?? undefined;
-  const option = async (name: string) => {
+  /** Bấm lựa chọn có nội dung là một trong `names` (có thể có từ cùng nghĩa / cùng chữ). */
+  const option = async (...names: string[]) => {
     const options = within(screen.getByTestId('question-options')).getAllByRole('button');
-    await userEvent.click(options.find((o) => o.textContent?.replace(/^\d/, '') === name)!);
+    await userEvent.click(options.find((o) => names.includes(o.textContent!.replace(/^\d/, '')))!);
   };
   const arrange = async (tokens: readonly string[]) => {
     const bank = screen.getByTestId('token-bank');
@@ -42,11 +43,11 @@ export async function answerCurrentQuestion(
 
   switch (type) {
     case 'E-01':
-      return option(meaning(words.find((w) => w.thai === th)!));
+      return option(...words.filter((w) => w.thai === th).map(meaning));
     case 'E-02':
-      return option(words.find((w) => meaning(w) === vi)!.thai);
+      return option(...words.filter((w) => meaning(w) === vi).map((w) => w.thai));
     case 'E-05':
-      return option(sentences.find((s) => s.th === th)!.vi);
+      return option(...sentences.filter((s) => s.th === th).map((s) => s.vi));
     case 'E-14': {
       const noun = th!.split(' ')[0]!;
       const classifier = words.find((w) => w.thai === noun)!.classifier!;
@@ -80,12 +81,12 @@ export async function answerCurrentQuestion(
     case 'E-03':
     case 'E-09': {
       const rightOf = (left: string) =>
-        type === 'E-03' ? meaning(words.find((w) => w.thai === left)!) : qa.get(left)!;
+        type === 'E-03' ? words.filter((w) => w.thai === left).map(meaning) : [qa.get(left)!];
       for (const left of within(question).getAllByTestId('match-left')) {
         await userEvent.click(left);
         const right = within(question)
           .getAllByTestId('match-right')
-          .find((r) => r.textContent === rightOf(left.textContent!))!;
+          .find((r) => rightOf(left.textContent!).includes(r.textContent!))!;
         await userEvent.click(right);
       }
       return;

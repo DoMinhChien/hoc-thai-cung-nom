@@ -6,6 +6,7 @@ import {
 } from '@nom/core';
 import { useState, type ReactNode } from 'react';
 import { AudioProviderBoundary } from '@/audio/AudioContext';
+import { VoicePreferencesBoundary } from '@/audio/VoicePreferencesBoundary';
 import { AuthProvider } from '@/auth/AuthProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -31,11 +32,13 @@ export function AppProviders({
     <AuthProvider service={authService}>
       <RepositoriesProvider override={repositories}>
         <AudioProviderBoundary provider={audio ?? fallbackAudio}>
-          <TooltipProvider>
-            {children}
-            {/* SCR-00: góc dưới phải, tự ẩn sau 4s, tối đa 3 cái. */}
-            <Toaster position="bottom-right" duration={4000} visibleToasts={3} />
-          </TooltipProvider>
+          <VoicePreferencesBoundary>
+            <TooltipProvider>
+              {children}
+              {/* SCR-00: góc dưới phải, tự ẩn sau 4s, tối đa 3 cái. */}
+              <Toaster position="bottom-right" duration={4000} visibleToasts={3} />
+            </TooltipProvider>
+          </VoicePreferencesBoundary>
         </AudioProviderBoundary>
       </RepositoriesProvider>
     </AuthProvider>
