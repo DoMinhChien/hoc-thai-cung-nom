@@ -1,6 +1,6 @@
 # SCR-06 Bài tập: Trang Bài tập, Phiên làm bài, Kết quả — Requirements: plan 0.5 (E-01..E-14), 0.8 (P-05), G-06, 7.2
 
-> Trạng thái: **📝 Chờ owner duyệt** (M0.5b, 2026-11-18). Wireframe: `SCR-06-practice.png`, `SCR-06-session-arrange.png`, `SCR-06-session-typing.png`, `SCR-06-result.png`.
+> Trạng thái: **✅ Owner duyệt 2026-11-20** (M0.5b). Wireframe: `SCR-06-practice.png`, `SCR-06-session-arrange.png`, `SCR-06-session-typing.png`, `SCR-06-result.png`.
 > Component dùng lại từ M8: `ThaiTextInput`, `ThaiKeyboard`, `TypingFeedback`, `gradeThaiTyping`.
 
 ---
