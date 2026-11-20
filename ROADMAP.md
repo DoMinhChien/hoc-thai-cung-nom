@@ -463,6 +463,22 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Màn kết quả có sao + "Đổi trò"; đổi theme có hiệu lực ngay và được nhớ.
 - Không thêm thư viện game engine; bundle trang `/games/:id` tăng < 150 KB gzip (trừ ảnh).
 
+**Kết quả T9.6.1–T9.6.2 + một phần T9.6.3 (2026-11-20, nhánh `m9.6-games`):**
+- **Core `games/arcade/`** (chưa vào `GAMES` / `/games` — chờ UI T9.6.4):
+  - Khung `ArcadeGame` với `tick(state, dtMs, input)` chạy theo bước cố định ≤ 50 ms (`advance`), nên máy nhanh hay chậm cho cùng kết quả.
+  - Đáp án nhiễu không trùng chữ, không cùng nghĩa với đáp án (`wrongOptions`).
+  - `GameSummary` có thêm tham số kiểu cho id trò.
+- **F-15 Đập chuột:** 9 ô, lịch xuất hiện sinh theo seed (mỗi nhóm 3 con có đúng 1 đáp án, không thò liền cùng ô), 60 s, combo; đập nhầm −50 điểm và ghi "cần ôn".
+- **F-16 Đố vui truyền hình:** 12 câu lấy từ engine Bài tập (E-01/E-02/E-05/E-14), 15 s/câu, 50:50, +10 s, 3 câu cuối ×2; màn phản hồi không tính giờ.
+- **F-17 Máy bay:** 4 làn, mây trôi nhanh dần 6%/câu đúng (tối đa ×2), luật 3 tim; câu > 3 thẻ từ không đưa vào mây.
+- **F-18 Mê cung:** mê cung 9×7 hoàn hảo sinh theo seed, đáp án ở 4 góc, ma đuổi theo đường BFS và nhanh dần; chế độ từng bước (reduced-motion): ma đi 1 ô sau mỗi 2 bước của người chơi.
+- **T9.6.3 (một phần):**
+  - Hook `useGameLoop` (rAF, cắt khung > 100 ms, tạm dừng khi tab ẩn — chung logic với `useCountdown`).
+  - Token `color.game-theme.{sea,space,garden}` + `data-game-theme` + cài đặt `useGameTheme`. **Màu tạm**, chờ SCR-08 v2.
+  - Core `resultStars` (≥ 90% → 3 sao, ≥ 60% → 2, còn lại 1); màn kết quả 4 trò cũ có hàng sao; nút "Trò khác" đổi tên thành **"Đổi trò"** (giữ nguồn).
+  - **Chưa làm:** bộ asset CC0 + `LICENSE.md` và âm nền — cần chọn hình/âm theo SCR-08 v2 (M0.5c).
+- **Test:** core 407 (lines 100%), web 302; E2E Trò chơi 18/18 (thêm kiểm tra sao).
+
 ### M10 → M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
@@ -474,6 +490,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-20 | M9.6 | **T9.6.1** khung arcade + Đập chuột + Đố vui truyền hình, **T9.6.2** Máy bay + Mê cung (core, seed + đồng hồ giả, coverage 100%); T9.6.3 một phần: `useGameLoop`, token 3 theme + `useGameTheme`, sao kết quả + "Đổi trò" cho 4 trò cũ | T9.6.3 (asset CC0 + âm nền) | T9.6.3 phần còn lại + T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c) | `m9.6-games` (xếp chồng trên `m9.5-feedback`) |
 | 2026-11-20 | M9.5 + TC.2a | **T9.5.1** âm phản hồi mới ở mọi nơi (cả khi sai), **T9.5.2** xếp hạng giọng Thái + `/settings` âm lượng / giọng / tốc độ / nghe thử (owner cho làm khi chưa có SCR); **TC.2a** xóa `u01`/`u02`, test chuyển sang `b01`/`c01`/`b12`; sửa engine: phương án nhiễu trùng đề (từ cùng nghĩa); merge `content-b12` vào nhánh (tránh xung đột `dialogues.yaml`) | M9.6 T9.6.1–T9.6.3 | T9.5.3 chờ S13; T9.5.4 + UI M9.6 chờ M0.5c | `m9.5-feedback` |
 | 2026-11-20 | M9.6 (plan 0.14) | Owner: người học thấy **ít trò, UI trò chơi chưa thu hút** → tham khảo Wordwall, thêm 3–4 trò. Claude Desktop: plan v7.7 mục 0.14 (F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; thumbnail, 3 theme, sao, "Đổi trò"), milestone **M9.6** (T9.6.1–T9.6.6), SCR-08 v2 vào M0.5c | — | UI M9.6 chờ SCR-08 v2 | `m9.5-feedback` |
 | 2026-11-20 | Nội dung | Claude Desktop nhập **Bài 12** (`b12`: nhập vai hội thoại phần 2 — 7 bài học, 5 hội thoại / 70 lượt thoại dịch Thái, 59 câu luyện dịch, không có bảng từ); bọc ngoặc kép `th`/`vi` trong `dialogues.yaml`. Kế tiếp: Bài 11 | — | — | `content-b12` |
