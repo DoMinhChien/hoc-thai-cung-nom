@@ -5,7 +5,7 @@ import {
   type CardFilter,
   type CardType,
   type ExerciseAttemptRecord,
-  type GameId,
+  type AnyGameId,
   type GameResultRecord,
   type ItemType,
   type LessonProgressRecord,
@@ -85,7 +85,7 @@ class DexieProgressRepository implements ProgressRepository {
     });
   }
 
-  getGameResult(gameId: GameId, source: string) {
+  getGameResult(gameId: AnyGameId, source: string) {
     return this.db.gameResults.where('[gameId+source]').equals([gameId, source]).first();
   }
   listGameResults() {

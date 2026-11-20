@@ -5,6 +5,7 @@
 import { newId } from '../data/memory';
 import type { GameResultRecord } from '../data/records';
 import type { ProgressRepository } from '../data/repositories';
+import type { AnyGameId } from './catalog';
 import { isBetterResult, type GameItemRef, type GameStats, type GameSummary } from './game';
 
 export interface SavedGameResult {
@@ -53,7 +54,7 @@ export async function saveGameResult(
     ProgressRepository,
     'getGameResult' | 'putGameResult' | 'putNeedsReview' | 'deleteNeedsReview'
   >,
-  summary: GameSummary,
+  summary: GameSummary<AnyGameId>,
   source: string,
   now: Date,
 ): Promise<SavedGameResult> {

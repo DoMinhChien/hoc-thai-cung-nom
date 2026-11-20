@@ -3,6 +3,7 @@
  * Trạng thái là dữ liệu thuần, bất biến; thời gian là tham số `now` (ms của đồng hồ trò chơi —
  * UI tạm dừng thì đồng hồ dừng), nên test dùng đồng hồ giả. Trò chơi **không** đổi lịch FSRS (F-12).
  */
+import type { AnyGameId } from './catalog';
 import type { Rng } from './rng';
 import type { GameSource } from './source';
 
@@ -169,7 +170,7 @@ export function summarize<Id extends string = GameId>(
  * `a` tốt hơn kỷ lục `b`? Ghép cặp: nhanh hơn (cùng thời gian → ít lượt lật hơn, tức điểm cao
  * hơn). Trò khác: điểm cao hơn.
  */
-export function isBetterResult(gameId: GameId, a: GameStats, b: GameStats): boolean {
+export function isBetterResult(gameId: AnyGameId, a: GameStats, b: GameStats): boolean {
   if (gameId === 'match') {
     return a.durationMs !== b.durationMs ? a.durationMs < b.durationMs : a.score > b.score;
   }

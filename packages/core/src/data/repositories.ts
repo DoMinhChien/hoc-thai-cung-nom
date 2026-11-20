@@ -2,7 +2,7 @@
  * Interface repository (plan 7.3) — UI chỉ đọc/ghi dữ liệu người dùng qua đây.
  * Phase 1: bản Dexie (`apps/web/src/data`). Phase 2: thêm `SyncedRepository`, UI không đổi.
  */
-import type { GameId } from '../games/game';
+import type { AnyGameId } from '../games/catalog';
 import type {
   CanDoRecord,
   CardRecord,
@@ -43,7 +43,7 @@ export interface ProgressRepository {
   /** Ghi theo `unitId` + `canDo` (một bản ghi mỗi mục). */
   putCanDo(record: CanDoRecord): Promise<void>;
 
-  getGameResult(gameId: GameId, source: string): Promise<GameResultRecord | undefined>;
+  getGameResult(gameId: AnyGameId, source: string): Promise<GameResultRecord | undefined>;
   listGameResults(): Promise<GameResultRecord[]>;
   /** Ghi theo `gameId` + `source` (một bản ghi mỗi cặp). */
   putGameResult(record: GameResultRecord): Promise<void>;
