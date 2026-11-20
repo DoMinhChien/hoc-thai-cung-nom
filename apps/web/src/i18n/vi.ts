@@ -251,7 +251,8 @@ export const vi = {
     perfect: 'Không sai mục nào!',
     again: 'Chơi lại',
     againMistakes: 'Chơi với mục sai',
-    other: 'Trò khác',
+    other: 'Đổi trò',
+    stars: '{n}/3 sao',
     fsrsNote:
       'Trò chơi không đổi lịch ôn FSRS; chỉ lưu điểm, kỷ lục (theo trò + nguồn) và đánh dấu "cần ôn".',
   },

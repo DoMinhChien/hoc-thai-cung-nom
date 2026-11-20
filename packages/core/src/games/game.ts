@@ -3,6 +3,7 @@
  * Trạng thái là dữ liệu thuần, bất biến; thời gian là tham số `now` (ms của đồng hồ trò chơi —
  * UI tạm dừng thì đồng hồ dừng), nên test dùng đồng hồ giả. Trò chơi **không** đổi lịch FSRS (F-12).
  */
+import type { AnyGameId } from './catalog';
 import type { Rng } from './rng';
 import type { GameSource } from './source';
 
@@ -34,8 +35,8 @@ export interface GameStats {
   durationMs: number;
 }
 
-export interface GameSummary extends GameStats {
-  gameId: GameId;
+export interface GameSummary<Id extends string = GameId> extends GameStats {
+  gameId: Id;
   /** correct / total, 0–1 (0 khi chưa trả lời câu nào). */
   accuracy: number;
   /** Mỗi mục một lần, theo thứ tự sai. */
@@ -141,7 +142,11 @@ export function finish<S extends GameState>(state: S, now: number): S {
     : { ...state, status: 'finished', finishedAt: now, feedback: null };
 }
 
-export function summarize(gameId: GameId, state: GameState, durationMs: number): GameSummary {
+export function summarize<Id extends string = GameId>(
+  gameId: Id,
+  state: GameState,
+  durationMs: number,
+): GameSummary<Id> {
   const seen = new Set<string>();
   const mistakes = state.mistakes.filter((m) => {
     const key = `${m.itemType}:${m.itemId}`;
@@ -165,7 +170,7 @@ export function summarize(gameId: GameId, state: GameState, durationMs: number):
  * `a` tốt hơn kỷ lục `b`? Ghép cặp: nhanh hơn (cùng thời gian → ít lượt lật hơn, tức điểm cao
  * hơn). Trò khác: điểm cao hơn.
  */
-export function isBetterResult(gameId: GameId, a: GameStats, b: GameStats): boolean {
+export function isBetterResult(gameId: AnyGameId, a: GameStats, b: GameStats): boolean {
   if (gameId === 'match') {
     return a.durationMs !== b.durationMs ? a.durationMs < b.durationMs : a.score > b.score;
   }
@@ -176,7 +181,7 @@ export function availability(reason: GameLockReason, need: number, have: number)
   return have >= need ? { ok: true } : { ok: false, reason, need, have };
 }
 
-export function assertAvailable(game: GameId, result: GameAvailability) {
+export function assertAvailable(game: string, result: GameAvailability) {
   if (!result.ok) {
     throw new Error(
       `${game}: nguồn thiếu dữ liệu (${result.reason}: ${result.have}/${result.need})`,

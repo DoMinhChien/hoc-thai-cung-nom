@@ -2,7 +2,7 @@
  * Repository trong bộ nhớ — cho unit test và component test không cần IndexedDB.
  * Cùng hành vi với bản Dexie (cùng bộ test hợp đồng ở `apps/web/src/data`).
  */
-import type { GameId } from '../games/game';
+import type { AnyGameId } from '../games/catalog';
 import { selectDue } from '../srs/srs';
 import type {
   CanDoRecord,
@@ -102,7 +102,7 @@ export class MemoryProgressRepository implements ProgressRepository {
   readonly gameResults = new Map<string, GameResultRecord>();
   readonly needsReview = new Map<string, NeedsReviewRecord>();
 
-  async getGameResult(gameId: GameId, source: string) {
+  async getGameResult(gameId: AnyGameId, source: string) {
     const record = this.gameResults.get(JSON.stringify([gameId, source]));
     return record && clone(record);
   }

@@ -5,7 +5,8 @@
 import type { LessonStep } from '../content/bundle';
 import type { ExerciseType } from '../exercises/exercises';
 import type { ExerciseItemType } from '../exercises/pool';
-import type { GameId, GameStats } from '../games/game';
+import type { AnyGameId } from '../games/catalog';
+import type { GameStats } from '../games/game';
 import type { Tone } from '../schema/common';
 import type { SrsLog, SrsRating, SrsState } from '../srs/srs';
 
@@ -91,7 +92,7 @@ export interface CanDoRecord {
 /** Kỷ lục cá nhân theo trò + nguồn (F-11, P-09) — một bản ghi mỗi cặp. */
 export interface GameResultRecord {
   id: string;
-  gameId: GameId;
+  gameId: AnyGameId;
   /** `learned` hoặc `unit:<id>` (`GameSource.key`). */
   source: string;
   best: GameStats;

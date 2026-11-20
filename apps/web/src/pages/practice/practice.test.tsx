@@ -25,6 +25,7 @@ import { GUEST_KEY, NomDatabase } from '@/data/db';
 import { createDexieRepositories } from '@/data/dexie-repositories';
 import { fakeContent } from '@/test/content-fixtures';
 import { PracticeRunner, type PracticeSummary } from './PracticeRunner';
+import { startOfDay } from './usePracticeData';
 
 // Content GIẢ LẬP cho test Bài tập — không phải nội dung học.
 const words: [string, string, string, string?][] = [
@@ -382,7 +383,10 @@ describe('/practice (SCR-06 §A)', () => {
       completedAt: null,
       updatedAt: new Date().toISOString(),
     });
-    const ts = new Date(Date.now() - 3600_000).toISOString();
+    // Trong hôm nay dù test chạy ngay sau nửa đêm (mục tiêu ngày đếm từ 0 giờ).
+    const ts = new Date(
+      Math.max(startOfDay(new Date()).getTime(), Date.now() - 3600_000),
+    ).toISOString();
     await r.reviews.addAttempt({
       id: 'a',
       exerciseType: 'E-05',

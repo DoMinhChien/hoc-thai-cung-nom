@@ -75,6 +75,8 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   }
 
   await expect(page.getByTestId('result-correct')).toHaveText('1/4');
+  // 25% đúng → 1 sao (M9.6).
+  await expect(page.getByTestId('result-stars')).toHaveAttribute('data-stars', '1');
   await expect(page.getByTestId('result-new-record')).toBeVisible();
   const score = (await page.getByTestId('result-score').textContent())!;
   await expectNoSevereViolations(page);

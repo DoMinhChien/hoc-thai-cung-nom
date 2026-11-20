@@ -18,10 +18,14 @@ import {
   ChoiceButton,
   CountIn,
   DEFAULT_FEEDBACK_VOLUME,
+  DEFAULT_GAME_THEME,
   FEEDBACK_NOTES,
   FEEDBACK_SOUND_KEY,
   FEEDBACK_VOLUME_KEY,
   FeedbackBar,
+  GAME_THEME_KEY,
+  GAME_THEMES,
+  MAX_FRAME_MS,
   formatClock,
   GameTopBar,
   PausedOverlay,
@@ -30,6 +34,8 @@ import {
   useCompletionSound,
   useCountdown,
   useFeedbackSound,
+  useGameLoop,
+  useGameTheme,
   useKeyShortcut,
   useReducedMotion,
   webAudioTone,
@@ -266,6 +272,111 @@ describe('GameTopBar — chuyển động', () => {
     rerender(<GameTopBar title="x" timeMs={9_000} score={300} onExit={() => {}} />);
     expect(screen.getByTestId('game-gain')).toHaveTextContent('+200');
     expect(screen.getByRole('timer')).toHaveAttribute('data-urgent', 'true');
+  });
+});
+
+describe('useGameTheme (M9.6)', () => {
+  it('mặc định Biển; đổi → lưu; giá trị lạ → mặc định', async () => {
+    const db = new NomDatabase('theme');
+    const repos = createDexieRepositories(db);
+    const wrapper = ({ children }: { children: ReactNode }) => (
+      <RepositoriesContext.Provider value={repos}>{children}</RepositoriesContext.Provider>
+    );
+    const { result } = renderHook(() => useGameTheme(), { wrapper });
+    await waitFor(() => expect(result.current.theme).toBe(DEFAULT_GAME_THEME));
+    await act(() => result.current.setTheme('space'));
+    await waitFor(() => expect(result.current.theme).toBe('space'));
+    expect(await repos.settings.get(GAME_THEME_KEY, '')).toBe('space');
+    await act(() => repos.settings.set(GAME_THEME_KEY, 'volcano'));
+    await waitFor(() => expect(result.current.theme).toBe(DEFAULT_GAME_THEME));
+    expect(GAME_THEMES).toHaveLength(3);
+    db.close();
+  });
+
+  it('chưa có repository: đang tải, ghi không lỗi', async () => {
+    const { result } = renderHook(() => useGameTheme());
+    expect(result.current.theme).toBeUndefined();
+    await act(() => result.current.setTheme('garden'));
+  });
+});
+
+describe('useGameLoop (M9.6)', () => {
+  /** Bộ lập lịch khung hình giả: `frame(t)` chạy callback đang chờ ở thời điểm `t`. */
+  function fakeFrames() {
+    let pending: ((time: number) => void) | null = null;
+    let next = 1;
+    const cancelled: number[] = [];
+    return {
+      cancelled,
+      scheduler: {
+        request: (cb: (time: number) => void) => {
+          pending = cb;
+          return next++;
+        },
+        cancel: (id: number) => {
+          cancelled.push(id);
+          pending = null;
+        },
+      },
+      frame(time: number) {
+        const cb = pending;
+        pending = null;
+        act(() => cb?.(time));
+      },
+      get waiting() {
+        return pending !== null;
+      },
+    };
+  }
+
+  it('gọi onFrame với dt giữa hai khung, cắt khung dài; dừng khi running=false', () => {
+    const frames = fakeFrames();
+    const onFrame = vi.fn();
+    const { rerender } = renderHook(
+      ({ running }) => useGameLoop({ running, onFrame, frames: frames.scheduler }),
+      { initialProps: { running: true } },
+    );
+    frames.frame(1000);
+    expect(onFrame).not.toHaveBeenCalled();
+    frames.frame(1016);
+    frames.frame(5000);
+    frames.frame(4990);
+    expect(onFrame.mock.calls.map((c) => c[0])).toEqual([16, MAX_FRAME_MS, 0]);
+    rerender({ running: false });
+    expect(frames.cancelled).toHaveLength(1);
+    expect(frames.waiting).toBe(false);
+  });
+
+  it('tab ẩn / mất focus → tạm dừng; tiếp tục không tính thời gian dừng', () => {
+    const frames = fakeFrames();
+    const onFrame = vi.fn();
+    const { result } = renderHook(() => useGameLoop({ onFrame, frames: frames.scheduler }));
+    frames.frame(0);
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' });
+    act(() => document.dispatchEvent(new Event('visibilitychange')));
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
+    expect(result.current.paused).toBe(true);
+    expect(frames.waiting).toBe(false);
+    act(() => document.dispatchEvent(new Event('visibilitychange')));
+    expect(result.current.paused).toBe(true);
+    act(() => result.current.resume());
+    frames.frame(60_000);
+    frames.frame(60_020);
+    expect(onFrame.mock.calls.map((c) => c[0])).toEqual([20]);
+    act(() => window.dispatchEvent(new Event('blur')));
+    expect(result.current.paused).toBe(true);
+  });
+
+  it('mặc định dùng requestAnimationFrame', () => {
+    const request = vi.fn(() => 7);
+    const cancel = vi.fn();
+    vi.stubGlobal('requestAnimationFrame', request);
+    vi.stubGlobal('cancelAnimationFrame', cancel);
+    const { unmount } = renderHook(() => useGameLoop({ onFrame: () => {}, autoPause: false }));
+    expect(request).toHaveBeenCalled();
+    unmount();
+    expect(cancel).toHaveBeenCalledWith(7);
+    vi.unstubAllGlobals();
   });
 });
 
