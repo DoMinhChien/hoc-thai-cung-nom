@@ -360,7 +360,28 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 
 **Requirement:** plan **0.5** (E-01..E-14, E-10..E-13), 0.8 (P-05), G-06. Spec **`docs/design/screens/SCR-06-practice.md` ✅ owner duyệt 2026-11-20** + 4 wireframe `SCR-06-*.png`. Dùng lại component tương tác M7.5 (`ChoiceButton`, `TokenBank`, `FeedbackBar`, `GameTopBar`, `useCountdown`) + M8 (`ThaiTextInput`, `ThaiKeyboard`, `TypingFeedback`, `gradeThaiTyping`) + cờ "cần ôn" của trò chơi (ưu tiên trong Bài tập hôm nay). Bước Bài tập trong bài học (M7, `buildLessonQuiz`) chuyển sang cùng engine.
 
-**Task:** agent tự chi tiết hóa theo AGENTS.md mục 5 (gợi ý: interface `Exercise` + 10 loại E-01..E-09, E-14 trong core · bậc dịch E-11 · chấm FSRS lần trả lời đầu (Good/Hard/Again) · `/practice` hub · `/practice/session` + kết quả · nhúng vào bước Bài tập của bài học · badge sidebar · E2E + axe + baseline).
+**Cần trước:** M7 ✅, M7.5 ✅, M8 ✅, SCR-06 ✅ (2026-11-20).
+
+**Quyết định kỹ thuật (agent, theo plan 0.5 + SCR-06):**
+- Thẻ câu: `itemType: 'sentence'`, `cardType: 'vi-th'` (một thẻ/câu, vào SRS khi làm bài tập lần đầu); thẻ từ giữ `th-vi`.
+- Bậc dịch E-11 lưu riêng theo câu (`sentenceLevels`: bậc 2–4 + chuỗi đúng); lượt trả lời lưu `exerciseAttempts` (loại bài, item, unit, đúng/sai, rating, câu trả lời) — nguồn cho "câu sai 7 ngày", "Đúng {n}%" 30 ngày, P-12 sau này. Dexie v5.
+- Chấm FSRS **chỉ lần trả lời đầu** của item trong phiên (Good / Hard = gợi ý hoặc sai dấu / Again = sai, bỏ qua); hỏi lại cuối phiên không chấm. E-03/E-09 chấm từng item theo số lần ghép sai.
+- E-09 lấy cặp câu liên tiếp trong `dialogues` (dòng kết thúc bằng `?`/ไหม/หรือ… → dòng kế tiếp); không đủ cặp → bỏ loại này.
+
+**Task**
+- [ ] T9.1 Core `exercises/`: interface `Exercise` (`generate(item, ctx)`, `check(question, answer)`, `grade(attempt)` → `SrsRating`), 10 loại E-01..E-09, E-14 (lựa chọn nhiễu cùng unit, RNG có seed; câu draft thiếu `th` bị loại; E-07 dùng `gradeThaiTyping` + `acceptedAnswers`, gợi ý = từ đầu; E-14 chọn/gõ). Unit test từng loại.
+- [ ] T9.2 Core: bậc dịch E-11 (`nextLevel`, chọn loại câu hỏi theo bậc: 2 → E-05/E-04, 3 → E-06 có thẻ nhiễu, 4 → E-07), record `SentenceLevelRecord` + `ExerciseAttemptRecord`, Dexie v5 + repository (contract test, chuyển dữ liệu Guest → tài khoản).
+- [ ] T9.3 Core: dựng phiên E-10 `buildPracticeSession` — "hôm nay" (thẻ đến hạn từ + câu, ưu tiên "cần ôn" + sai gần đây, thiếu thì bù mục đã học chưa có thẻ; mặc định 20 = cài đặt `practiceSessionSize`), "câu sai 7 ngày", "theo unit" (10 câu), lọc "Kiểu bài" (Tất cả / Từ vựng / Dịch câu / Gõ chữ Thái), bỏ E-08 khi không có giọng Thái; `recordPracticeAnswer` (FSRS lần đầu + attempt + bậc dịch + gỡ cờ "cần ôn" khi đúng); thống kê trang (đến hạn, câu sai 7 ngày, đúng % 30 ngày theo unit, đã xong hôm nay). Unit test với đồng hồ giả.
+- [ ] T9.4 Web `/practice/session` (Focus layout) theo SCR-06 §B–C: khung (thanh tiến độ, x/y, ✓), 10 renderer câu hỏi dùng `ChoiceButton`/`TokenBank`/`FeedbackBar`/`ThaiTextInput`/`ThaiKeyboard`/`TypingFeedback`, Bỏ qua `S`, gợi ý `H`, nghe lại `R`, hỏi lại câu sai cuối phiên, dialog thoát, màn kết quả (3 số, câu sai + diff, Luyện lại câu sai / Về Bài tập / Làm thêm 10 câu). Component test.
+- [ ] T9.5 Web `/practice` theo SCR-06 §A: card "Bài tập hôm nay" (đến hạn, phút ước tính, mục tiêu ngày), "Luyện câu sai" (`W`), "Kiểu bài" (nhớ lựa chọn), "Luyện theo chuyên đề" + `?unit=`; trạng thái chưa học / đã xong hôm nay; **badge số câu đến hạn** ở sidebar.
+- [ ] T9.6 Bước Bài tập của bài học (SCR-05) chạy cùng engine (phiên của bài, ≥ 80% → hoàn thành; thay `buildLessonQuiz`), câu của bài vào SRS.
+- [ ] T9.7 E2E: phiên "hôm nay" làm bằng bàn phím trên content đã build (đúng → Good, sai → hỏi lại, kết quả), E-07 gõ có sai dấu → Hard, thẻ câu được tạo + `due` đổi, Trò chơi vẫn không đổi FSRS; axe `/practice`, `/practice/session`; baseline `/practice` + 1 câu E-06.
+
+**Tiêu chí nghiệm thu**
+- Làm trọn "Bài tập hôm nay" chỉ bằng bàn phím; mọi loại E-01..E-09, E-14 hiển thị đúng khi có dữ liệu, loại thiếu dữ liệu tự bỏ.
+- FSRS chỉ đổi theo lần trả lời đầu; câu lên/xuống bậc đúng E-11 sau reload.
+- Mục "cần ôn" từ Trò chơi được ưu tiên vào phiên hôm nay.
+- Coverage core giữ 100% dòng; CI pass; axe sạch.
 
 ### M10 → M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
