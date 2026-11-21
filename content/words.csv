@@ -1253,3 +1253,313 @@ c04-w02,c04,c04-l1,โค่น,,đốn,,,verb,,,,,,plernpin-c04#p1,true
 c04-w03,c04,c04-l1,ตาก,,phơi,,,verb,,,,,,plernpin-c04#p1,true
 c04-w04,c04,c04-l1,ข้าว,,gạo; thóc,,,noun,,,,,,plernpin-c04#p1,true
 c04-w05,c04,c04-l1,สีน้ำเงิน,,màu xanh dương,,,noun,,,,,,plernpin-c04#p1,true
+c03-w01,c03,c03-l1,สัตว์,,con vật; động vật,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w02,c03,c03-l1,กางเกง,,quần,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w03,c03,c03-l1,โต๊ะ,,cái bàn,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w04,c03,c03-l1,เก้าอี้,,cái ghế,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w05,c03,c03-l1,ตุ๊กตา,,búp bê,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w06,c03,c03-l1,ตัวอักษร,,chữ cái; ký tự,,ตัว,noun,,,,,,plernpin-c03#p1,true
+c03-w07,c03,c03-l1,ถุงเท้า,,tất,,คู่,noun,,,,,,plernpin-c03#p1,true
+c03-w08,c03,c03-l1,รองเท้า,,giày,,คู่,noun,,,,,,plernpin-c03#p1,true
+c03-w09,c03,c03-l1,ตะเกียบ,,đũa,,คู่,noun,,,,,,plernpin-c03#p1,true
+c03-w10,c03,c03-l1,รถ,,xe,,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w11,c03,c03-l1,ช้อน,,thìa; muỗng,,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w12,c03,c03-l1,ธนู,,cung tên,,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w13,c03,c03-l1,เบ็ด,,lưỡi câu,คันเบ็ด: cần câu,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w14,c03,c03-l1,จักรเย็บผ้า,,máy may quần áo,,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w15,c03,c03-l1,ร่ม,,ô; dù,,คัน,noun,,,,,,plernpin-c03#p1,true
+c03-w16,c03,c03-l1,ผลไม้,,trái cây; hoa quả,,ผล,noun,,,,,,plernpin-c03#p1,true
+c03-w17,c03,c03-l1,ไข่,,trứng,,ฟอง,noun,,,,,,plernpin-c03#p1,true
+c03-w18,c03,c03-l1,ใบไม้,,lá cây,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w19,c03,c03-l1,แจกัน,,lọ hoa; bình hoa,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w20,c03,c03-l1,แก้ว,,cốc; ly,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w21,c03,c03-l1,จาน,,đĩa,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w22,c03,c03-l1,ชาม,,bát; tô,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w23,c03,c03-l1,ถ้วย,,chén; tách,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w24,c03,c03-l1,หมวก,,mũ; nón,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w25,c03,c03-l1,ขวด,,chai; lọ,,ใบ,noun,,,,,,plernpin-c03#p1,true
+c03-w26,c03,c03-l2,ตู้,,tủ,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w27,c03,c03-l2,หมอน,,gối,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w28,c03,c03-l2,หม้อ,,nồi,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w29,c03,c03-l2,นามบัตร,,danh thiếp,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w30,c03,c03-l2,ใบเสร็จ,,hóa đơn; biên lai,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w31,c03,c03-l2,กาน้ำ,,ấm nước,,ใบ,noun,,,,,,plernpin-c03#p2,true
+c03-w32,c03,c03-l2,ผ้า,,vải; tấm vải,,ผืน,noun,,,,,,plernpin-c03#p2,true
+c03-w33,c03,c03-l2,ผ้าเช็ดหน้า,,khăn lau mặt,,ผืน,noun,,,,,,plernpin-c03#p2,true
+c03-w34,c03,c03-l2,ผ้าเช็ดตัว,,khăn tắm,,ผืน,noun,,,,,,plernpin-c03#p2,true
+c03-w35,c03,c03-l2,ผ้าพันคอ,,khăn quàng cổ,,ผืน,noun,,,,,,plernpin-c03#p2,true
+c03-w36,c03,c03-l2,ธง,,lá cờ,,ผืน,noun,,,,,,plernpin-c03#p2,true
+c03-w37,c03,c03-l2,นาฬิกา,,đồng hồ,,เรือน,noun,,,,,,plernpin-c03#p2,true
+c03-w38,c03,c03-l2,สายสร้อย,,dây chuyền,,เส้น,noun,,,,,,plernpin-c03#p2,true
+c03-w39,c03,c03-l2,เชือก,,dây thừng,,เส้น,noun,,,,,,plernpin-c03#p2,true
+c03-w40,c03,c03-l2,เนคไท,,cà vạt,,เส้น,noun,,,,,,plernpin-c03#p2,true
+c03-w41,c03,c03-l2,หนัง,,phim,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w42,c03,c03-l2,ละคร,,kịch; vở kịch; phim dài tập,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w43,c03,c03-l2,บทความ,,bài viết; bài luận; bài báo,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w44,c03,c03-l2,นิทาน,,truyện cổ tích,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w45,c03,c03-l2,นิยาย,,tiểu thuyết,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w46,c03,c03-l2,ตำนาน,,huyền thoại; truyền thuyết,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w47,c03,c03-l2,สารคดี,,phim tài liệu,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w48,c03,c03-l2,ข่าว,,tin tức; bản tin,,เรื่อง,noun,,,,,,plernpin-c03#p2,true
+c03-w49,c03,c03-l2,ร้านอาหาร,,nhà hàng; quán ăn,,ร้าน,noun,,,,,,plernpin-c03#p2,true
+c03-w50,c03,c03-l3,ร้าน,,cửa hàng; quán,,ร้าน,noun,,,,,,plernpin-c03#p3,true
+c03-w51,c03,c03-l3,รถประจำทาง,,xe buýt,,คัน,noun,,,,,,plernpin-c03#p3,true
+c03-w52,c03,c03-l3,แม่น้ำ,,sông; dòng sông,,สาย,noun,,,,,,plernpin-c03#p3,true
+c03-w53,c03,c03-l3,ถนน,,đường; con đường,,สาย,noun,,,,,,plernpin-c03#p3,true
+c03-w54,c03,c03-l3,เข็มขัด,,thắt lưng,,เส้น,noun,,,,,,plernpin-c03#p3,true
+c03-w55,c03,c03-l3,ยางรถยนต์,,lốp xe ô tô,,เส้น,noun,,,,,,plernpin-c03#p3,true
+c03-w56,c03,c03-l3,บทเรียน,,bài học,,บท,noun,,,,,,plernpin-c03#p3,true
+c03-w57,c03,c03-l3,บทกวี,,bài thơ,,บท,noun,,,,,,plernpin-c03#p3,true
+c03-w58,c03,c03-l3,บทกลอน,,bài thơ,có vần điệu,บท,noun,,,,,,plernpin-c03#p3,true
+c03-w59,c03,c03-l3,ภาษิต,สุภาษิต,tục ngữ,ภาษิต = สุภาษิต,บท,noun,,,,,,plernpin-c03#p3,true
+c03-w60,c03,c03-l3,เพชร,,kim cương,,เม็ด,noun,,,,,,plernpin-c03#p3,true
+c03-w61,c03,c03-l3,พลอย,,đá quý,,เม็ด,noun,,,,,,plernpin-c03#p3,true
+c03-w62,c03,c03-l3,พริก,,ớt,,เม็ด,noun,,,,,,plernpin-c03#p3,true
+c03-w63,c03,c03-l3,ยาเม็ด,,thuốc viên,,เม็ด,noun,,,,,,plernpin-c03#p3,true
+c03-w64,c03,c03-l3,กระดุม,,cúc áo,,เม็ด,noun,,,,,,plernpin-c03#p3,true
+c03-w65,c03,c03-l3,ดอกไม้,,hoa,,ดอก,noun,,,,,,plernpin-c03#p3,true
+c03-w66,c03,c03-l3,ผัก,,rau,,ต้น,noun,,,,,,plernpin-c03#p3,true
+c03-w67,c03,c03-l3,หิน,,hòn đá; đá,,ก้อน,noun,,,,,,plernpin-c03#p3,true
+c03-w68,c03,c03-l3,สบู่,,xà phòng,,ก้อน,noun,,,,,,plernpin-c03#p3,true
+c03-w69,c03,c03-l3,ประตู,,cửa; cửa ra vào,,บาน,noun,,,,,,plernpin-c03#p3,true
+c03-w70,c03,c03-l3,หน้าต่าง,,cửa sổ,,บาน,noun,,,,,,plernpin-c03#p3,true
+c03-w71,c03,c03-l3,เรือ,,thuyền; tàu thủy,,ลำ,noun,,,,,,plernpin-c03#p3,true
+c03-w72,c03,c03-l3,เครื่องบิน,,máy bay,,ลำ,noun,,,,,,plernpin-c03#p3,true
+c03-w73,c03,c03-l3,ยา,,thuốc,,ขนาน,noun,,,,,,plernpin-c03#p3,true
+c03-w74,c03,c03-l3,เพลง,,bài hát,,เพลง,noun,,,,,,plernpin-c03#p3,true
+c03-w75,c03,c03-l3,โรงงาน,,nhà máy,,โรง,noun,,,,,,plernpin-c03#p3,true
+c03-w76,c03,c03-l4,โรงพยาบาล,,bệnh viện,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w77,c03,c03-l4,โรงแรม,,khách sạn,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w78,c03,c03-l4,สำนักงาน,,văn phòng,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w79,c03,c03-l4,ธนาคาร,,ngân hàng,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w80,c03,c03-l4,สนามบิน,,sân bay,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w81,c03,c03-l4,ศูนย์การค้า,,trung tâm thương mại,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w82,c03,c03-l4,ที่ทำงาน,,chỗ làm việc; nơi làm việc,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w83,c03,c03-l4,บริษัท,,công ty,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w84,c03,c03-l4,บันได,,cầu thang; cái thang,,อัน,noun,,,,,,plernpin-c03#p4,true
+c03-w85,c03,c03-l4,ตลาด,,chợ,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w86,c03,c03-l4,สนามกีฬา,,sân vận động; sân thể thao,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w87,c03,c03-l4,สถานี,,nhà ga; trạm,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w88,c03,c03-l4,สะพาน,,cây cầu,,แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w89,c03,c03-l4,เครื่องแบบ,,đồng phục,,ชุด,noun,,,,,,plernpin-c03#p4,true
+c03-w90,c03,c03-l4,ดินสอ,,bút chì,,แท่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w91,c03,c03-l4,ยางลบ,,cục tẩy; gôm,,ก้อน,noun,,,,,,plernpin-c03#p4,true
+c03-w92,c03,c03-l4,ปากกา,,bút; bút bi,,ด้าม,noun,,,,,,plernpin-c03#p4,true
+c03-w93,c03,c03-l4,มุ้ง,,màn; mùng,,หลัง,noun,,,,,,plernpin-c03#p4,true
+c03-w94,c03,c03-l4,ผี,,ma,,ตน,noun,,,,,,plernpin-c03#p4,true
+c03-w95,c03,c03-l4,ยักษ์,,quỷ khổng lồ,,ตน,noun,,,,,,plernpin-c03#p4,true
+c03-w96,c03,c03-l4,ฤาษี,,ẩn sĩ; tu sĩ ẩn dật,,ตน,noun,,,,,,plernpin-c03#p4,true
+c03-w97,c03,c03-l4,เขื่อน,,đập; con đập; con đê,đập (thủy điện),แห่ง,noun,,,,,,plernpin-c03#p4,true
+c03-w98,c03,c03-l4,ทวีป,,lục địa; châu lục,,ทวีป,noun,,,,,,plernpin-c03#p4,true
+c03-w99,c03,c03-l4,ฤดู,,mùa,,ฤดู,noun,,,,,,plernpin-c03#p4,true
+c03-w100,c03,c03-l4,ครอบครัว,,gia đình,,ครอบครัว,noun,,,,,,plernpin-c03#p4,true
+c03-w101,c03,c03-l4,กระทรวง,,bộ,"VD: Bộ giáo dục, bộ y tế",กระทรวง,noun,,,,,,plernpin-c03#p4,true
+c03-w102,c03,c03-l5,กรม,,cục; tổng cục; vụ,"VD: Cục khí tượng thủy văn, cục lâm nghiệp, tổng cục cảnh sát",กรม,noun,,,,,,plernpin-c03#p5,true
+c03-w103,c03,c03-l5,วิชา,,môn học,,วิชา,noun,,,,,,plernpin-c03#p5,true
+c03-w104,c03,c03-l5,เมือง,,thành phố; đô thị,,เมือง,noun,,,,,,plernpin-c03#p5,true
+c03-w105,c03,c03-l5,เตียงนอน,,giường ngủ,,เตียง,noun,,,,,,plernpin-c03#p5,true
+c03-w106,c03,c03-l5,นิ้วมือ,,ngón tay,,นิ้ว,noun,,,,,,plernpin-c03#p5,true
+c03-w107,c03,c03-l5,มือ,,tay; bàn tay,,ข้าง,noun,,,,,,plernpin-c03#p5,true
+c03-w108,c03,c03-l5,ตา,,mắt,,ข้าง,noun,,,,,,plernpin-c03#p5,true
+c03-w109,c03,c03-l5,ขา,,chân,,ข้าง,noun,,,,,,plernpin-c03#p5,true
+c03-w110,c03,c03-l5,เท้า,,bàn chân,,ข้าง,noun,,,,,,plernpin-c03#p5,true
+c03-w111,c03,c03-l5,หู,,tai,,ข้าง,noun,,,,,,plernpin-c03#p5,true
+c03-w112,c03,c03-l5,ชั่วโมง,,giờ; tiếng đồng hồ,,ชั่วโมง,noun,,,,,,plernpin-c03#p5,true
+c03-w113,c03,c03-l5,วัน,,ngày,,วัน,noun,,,,,,plernpin-c03#p5,true
+c03-w114,c03,c03-l5,สัปดาห์,,tuần,,สัปดาห์,noun,,,,,,plernpin-c03#p5,true
+c03-w115,c03,c03-l5,เดือน,,tháng,,เดือน,noun,,,,,,plernpin-c03#p5,true
+c03-w116,c03,c03-l5,ปี,,năm,,ปี,noun,,,,,,plernpin-c03#p5,true
+c03-w117,c03,c03-l5,รางวัล,,phần thưởng; giải thưởng,,รางวัล,noun,,,,,,plernpin-c03#p5,true
+c03-w118,c03,c03-l5,คะแนน,,điểm; điểm số,,คะแนน,noun,,,,,,plernpin-c03#p5,true
+c03-w119,c03,c03-l5,โรงเรียน,,trường học,,แห่ง,noun,,,,,,plernpin-c03#p5,true
+c03-w120,c03,c03-l5,โรงอาหาร,,nhà ăn; căng tin,,โรง,noun,,,,,,plernpin-c03#p5,true
+c03-w121,c03,c03-l5,โรงละคร,,nhà hát; rạp hát,,โรง,noun,,,,,,plernpin-c03#p5,true
+c03-w122,c03,c03-l5,โรงหนัง,,rạp chiếu phim,,โรง,noun,,,,,,plernpin-c03#p5,true
+c03-w123,c03,c03-l5,โรงรถ,,nhà để xe,,โรง,noun,,,,,,plernpin-c03#p5,true
+c03-w124,c03,c03-l6,มหาวิทยาลัย,,trường đại học,,แห่ง,noun,,,,,,plernpin-c03#p6,true
+c03-w125,c03,c03-l6,บ้าน,,nhà; ngôi nhà,,หลัง,noun,,,,,,plernpin-c03#p6,true
+c03-w126,c03,c03-l6,ตึก,,tòa nhà,,หลัง,noun,,,,,,plernpin-c03#p6,true
+c03-w127,c03,c03-l6,อาคาร,,tòa nhà; công trình,,หลัง,noun,,,,,,plernpin-c03#p6,true
+c03-w128,c03,c03-l6,กระติกน้ำ,,bình nước; bình giữ nhiệt,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w129,c03,c03-l6,ตู้เย็น,,tủ lạnh,,ตู้,noun,,,,,,plernpin-c03#p6,true
+c03-w130,c03,c03-l6,กล่อง,,hộp,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w131,c03,c03-l6,ถุง,,túi; bao,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w132,c03,c03-l6,กระเป๋า,,túi; cặp; ví,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w133,c03,c03-l6,ถัง,,thùng; xô,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w134,c03,c03-l6,ตะกร้า,,giỏ; rổ,,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w135,c03,c03-l6,กระถาง,,chậu,trồng cây,ใบ,noun,,,,,,plernpin-c03#p6,true
+c03-w136,c03,c03-l6,ดวงจันทร์,,mặt trăng,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w137,c03,c03-l6,ดวงดาว,,ngôi sao,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w138,c03,c03-l6,ดวงอาทิตย์,,mặt trời,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w139,c03,c03-l6,หัวใจ,,trái tim,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w140,c03,c03-l6,แสตมป์,,tem dán thư; tem sưu tập,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w141,c03,c03-l6,ตะเกียง,,đèn dầu,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w142,c03,c03-l6,หลอดไฟ,,bóng đèn,,ดวง,noun,,,,,,plernpin-c03#p6,true
+c03-w143,c03,c03-l6,จดหมาย,,thư; bức thư,,ฉบับ,noun,,,,,,plernpin-c03#p6,true
+c03-w144,c03,c03-l6,หนังสือพิมพ์,,báo; tờ báo,,ฉบับ,noun,,,,,,plernpin-c03#p6,true
+c03-w145,c03,c03-l6,วารสาร,,tập san,,ฉบับ,noun,,,,,,plernpin-c03#p6,true
+c03-w146,c03,c03-l6,นิตยสาร,,tạp chí,,ฉบับ,noun,,,,,,plernpin-c03#p6,true
+c03-w147,c03,c03-l6,หนังสือ,,sách; quyển sách,,เล่ม,noun,,,,,,plernpin-c03#p6,true
+c03-w148,c03,c03-l6,สมุด,,quyển vở,,เล่ม,noun,,,,,,plernpin-c03#p6,true
+c03-w149,c03,c03-l7,มีด,,con dao,,เล่ม,noun,,,,,,plernpin-c03#p7,true
+c03-w150,c03,c03-l7,ขวาน,,cái rìu,,เล่ม,noun,,,,,,plernpin-c03#p7,true
+c03-w151,c03,c03-l7,เกวียน,,xe bò,,เล่ม,noun,,,,,,plernpin-c03#p7,true
+c03-w152,c03,c03-l7,เทียน,,nến,,เล่ม,noun,,,,,,plernpin-c03#p7,true
+c03-w153,c03,c03-l7,โทรทัศน์,,ti vi,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w154,c03,c03-l7,วิทยุ,,đài; radio,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w155,c03,c03-l7,คอมพิวเตอร์,,máy tính,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w156,c03,c03-l7,พัดลม,,quạt điện,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w157,c03,c03-l7,โทรศัพท์,,điện thoại,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w158,c03,c03-l7,เครื่องปรับอากาศ,,máy điều hòa,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w159,c03,c03-l7,เครื่องทำน้ำอุ่น,,máy nước nóng,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w160,c03,c03-l7,เครื่องชั่งน้ำหนัก,,cái cân,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w161,c03,c03-l7,เครื่องดูดฝุ่น,,máy hút bụi,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w162,c03,c03-l7,เครื่องคิดเลข,,máy tính cầm tay,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w163,c03,c03-l7,เครื่องพิมพ์ดีด,,máy đánh chữ,,เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w164,c03,c03-l7,เครื่องเล่นวีดีโอ,,đầu video,"VD: Đầu VCD, đầu DVD",เครื่อง,noun,,,,,,plernpin-c03#p7,true
+c03-w165,c03,c03-l7,รายการโทรทัศน์,,chương trình truyền hình,,รายการ,noun,,,,,,plernpin-c03#p7,true
+c03-w166,c03,c03-l7,รายการวิทยุ,,chương trình phát thanh; chương trình radio,,รายการ,noun,,,,,,plernpin-c03#p7,true
+c03-w167,c03,c03-l7,ขนม,,bánh kẹo; đồ ăn ngọt; đồ ăn vặt,,ชิ้น,noun,,,,,,plernpin-c03#p7,true
+c03-w168,c03,c03-l7,แปรงสีฟัน,,bàn chải đánh răng,,อัน,noun,,,,,,plernpin-c03#p7,true
+c03-w169,c03,c03-l7,ไม้บรรทัด,,thước kẻ,,อัน,noun,,,,,,plernpin-c03#p7,true
+c03-w170,c03,c03-l7,ไม้กวาด,,chổi,,อัน,noun,,,,,,plernpin-c03#p7,true
+c03-w171,c03,c03-l7,กระดาษ,,giấy; tờ giấy,,แผ่น,noun,,,,,,plernpin-c03#p7,true
+c03-w172,c03,c03-l8,เอกสาร,,tài liệu; giấy tờ,,ฉบับ,noun,,,,,,plernpin-c03#p8,true
+c03-w173,c03,c03-l8,กระจก,,gương; kính,,บาน,noun,,,,,,plernpin-c03#p8,true
+c03-w174,c03,c03-l8,แผ่นซีดี,,đĩa CD,,แผ่น,noun,,,,,,plernpin-c03#p8,true
+c03-w175,c03,c03-l8,ฟิล์ม,,phim,tấm phim chụp ảnh,ม้วน,noun,,,,,,plernpin-c03#p8,true
+c03-w176,c03,c03-l8,เทปวีดีโอ,,băng video,,ม้วน,noun,,,,,,plernpin-c03#p8,true
+c03-w177,c03,c03-l8,เทปเพลง,,băng nhạc,,ม้วน,noun,,,,,,plernpin-c03#p8,true
+c03-w178,c03,c03-l8,มันเทศ,,khoai lang,,หัว,noun,,,,,,plernpin-c03#p8,true
+c03-w179,c03,c03-l8,หัวหอม,,hành tây,,หัว,noun,,,,,,plernpin-c03#p8,true
+c03-w180,c03,c03-l8,กระเทียม,,tỏi,,หัว,noun,,,,,,plernpin-c03#p8,true
+c03-w181,c03,c03-l8,เผือก,,khoai môn,,หัว,noun,,,,,,plernpin-c03#p8,true
+c03-w182,c03,c03-l8,ฟัน,,răng,,ซี่,noun,,,,,,plernpin-c03#p8,true
+c03-w183,c03,c03-l8,บุหรี่,,thuốc lá; điếu thuốc,,มวน,noun,,,,,,plernpin-c03#p8,true
+c03-w184,c03,c03-l8,รูปภาพ,,tranh ảnh,,ภาพ,noun,,,,,,plernpin-c03#p8,true
+c03-w185,c03,c03-l8,รูปถ่าย,,ảnh chụp,,รูป,noun,,,,,,plernpin-c03#p8,true
+c03-w186,c03,c03-l8,รูปวาด,,tranh vẽ,,รูป,noun,,,,,,plernpin-c03#p8,true
+c03-w187,c03,c03-l8,กรอบรูป,,khung ảnh,,อัน,noun,,,,,,plernpin-c03#p8,true
+c03-w188,c03,c03-l8,กล้องถ่ายรูป,,máy ảnh,,ตัว,noun,,,,,,plernpin-c03#p8,true
+c03-w189,c03,c03-l8,แหวน,,nhẫn,,วง,noun,,,,,,plernpin-c03#p8,true
+c03-w190,c03,c03-l8,วงดนตรี,,ban nhạc,,วง,noun,,,,,,plernpin-c03#p8,true
+c03-w191,c03,c03-l8,รถไฟ,,tàu hỏa,,ขบวน,noun,,,,,,plernpin-c03#p8,true
+c03-w192,c03,c03-l8,กุญแจ,,chìa khóa; ổ khóa,,ดอก,noun,,,,,,plernpin-c03#p8,true
+c03-w193,c03,c03-l8,ภูเขา,,núi; ngọn núi,,ลูก,noun,,,,,,plernpin-c03#p8,true
+c03-w194,c03,c03-l8,ต้นไม้,,cây; cây cối,,ต้น,noun,,,,,,plernpin-c03#p8,true
+c03-w195,c03,c03-l8,กิ่งไม้,,cành cây,,กิ่ง,noun,,,,,,plernpin-c03#p8,true
+c03-w196,c03,c03-l8,กรรไกร,,cái kéo,,เล่ม,noun,,,,,,plernpin-c03#p8,true
+c03-w197,c03,c03-l8,อาหาร,,thức ăn; món ăn,,อย่าง,noun,,,,,,plernpin-c03#p8,true
+c03-w198,c03,c03-l9,ยาน้ำ,,thuốc nước,,ขวด,noun,,,,,,plernpin-c03#p9,true
+c03-w199,c03,c03-l9,ซองจดหมาย,,phong bì,,ซอง,noun,,,,,,plernpin-c03#p9,true
+c03-w200,c03,c03-l9,พระสงฆ์,พระ,nhà sư; tăng sĩ,tài liệu ghi พระสงฆ์/พระ,รูป,noun,,,,,,plernpin-c03#p9,true
+c03-w201,c03,c03-l9,พระพุทธรูป,,tượng phật,,องค์,noun,,,,,,plernpin-c03#p9,true
+c03-w202,c03,c03-l9,เทวดา,,thiên thần,,องค์,noun,,,,,,plernpin-c03#p9,true
+c03-w203,c03,c03-l9,นางฟ้า,,cô tiên; tiên nữ,,องค์,noun,,,,,,plernpin-c03#p9,true
+c03-w204,c03,c03-l9,กษัตริย์,,vua,,องค์,noun,,,,,,plernpin-c03#p9,true
+c03-w205,c03,c03-l9,ของขวัญ,,quà tặng,,ชิ้น,noun,,,,,,plernpin-c03#p9,true
+c03-w206,c03,c03-l9,ของฝาก,,quà,mang về từ chuyến đi,ชิ้น,noun,,,,,,plernpin-c03#p9,true
+c03-w207,c03,c03-l9,ของเล่น,,đồ chơi,,ชิ้น,noun,,,,,,plernpin-c03#p9,true
+c03-w208,c03,c03-l9,ทะเลสาบ,,hồ,,แห่ง,noun,,,,,,plernpin-c03#p9,true
+c03-w209,c03,c03-l9,น้ำตก,,thác nước,,แห่ง,noun,,,,,,plernpin-c03#p9,true
+c03-w210,c03,c03-l9,ทะเล,,biển,,แห่ง,noun,,,,,,plernpin-c03#p9,true
+c03-w211,c03,c03-l9,อ่าว,,vịnh,,แห่ง,noun,,,,,,plernpin-c03#p9,true
+c03-w212,c03,c03-l9,เกาะ,,đảo; hòn đảo,,เกาะ,noun,,,,,,plernpin-c03#p9,true
+c03-w213,c03,c03-l9,ประเทศ,,đất nước; quốc gia,,ประเทศ,noun,,,,,,plernpin-c03#p9,true
+c03-w214,c03,c03-l9,อำเภอ,,huyện,,อำเภอ,noun,,,,,,plernpin-c03#p9,true
+c03-w215,c03,c03-l9,จังหวัด,,tỉnh,,จังหวัด,noun,,,,,,plernpin-c03#p9,true
+c03-w216,c03,c03-l9,ตำบล,,xã,,ตำบล,noun,,,,,,plernpin-c03#p9,true
+c03-w217,c03,c03-l9,หมู่บ้าน,,làng; thôn,,หมู่บ้าน,noun,,,,,,plernpin-c03#p9,true
+c03-w218,c03,c03-l9,คำ,,từ; lời,,คำ,noun,,,,,,plernpin-c03#p9,true
+c03-w219,c03,c03-l9,พยางค์,,âm tiết,,พยางค์,noun,,,,,,plernpin-c03#p9,true
+c03-w220,c03,c03-l9,ภาษา,,ngôn ngữ; tiếng,,ภาษา,noun,,,,,,plernpin-c03#p9,true
+c03-w221,c03,c03-l9,ห้อง,,phòng; căn phòng,,ห้อง,noun,,,,,,plernpin-c03#p9,true
+c03-w222,c03,c03-l9,สระน้ำ,สระ,ao; hồ nước; bể bơi,tài liệu ghi “สระ (น้ำ)”,สระ,noun,,,,,,plernpin-c03#p9,true
+c03-w223,c03,c03-l9,ปืน,,súng,,กระบอก,noun,,,,,,plernpin-c03#p9,true
+c03-w224,c03,c03-l10,แว่นตา,,kính mắt,,อัน,noun,,,,,,plernpin-c03#p10,true
+c03-w225,c03,c03-l10,กำไล,,vòng tay; lắc tay,,วง,noun,,,,,,plernpin-c03#p10,true
+c03-w226,c03,c03-l10,เตารีด,,bàn là,,เตา,noun,,,,,,plernpin-c03#p10,true
+c03-w227,c03,c03-l10,ตั๋ว,,vé,,ใบ,noun,,,,,,plernpin-c03#p10,true
+c03-w228,c03,c03-l10,วุฒิบัตร,,chứng chỉ; giấy chứng nhận,,ฉบับ,noun,,,,,,plernpin-c03#p10,true
+c03-w229,c03,c03-l10,ปริญญาบัตร,,bằng cấp; bằng tốt nghiệp đại học,,ใบ,noun,,,,,,plernpin-c03#p10,true
+c03-w230,c03,c03-l10,ช้างบ้าน,,voi nuôi,tài liệu ghi “ช้าง (บ้าน)”,เชือก,noun,,,,,,plernpin-c03#p10,true
+c03-w231,c03,c03-l10,ช้างป่า,,voi rừng,tài liệu ghi “ช้าง (ป่า)”,ตัว,noun,,,,,,plernpin-c03#p10,true
+c03-w232,c03,c03-l10,ช้าง,,con voi,,เชือก,noun,,,,,,plernpin-c03#p10,true
+c03-w233,c03,c03-l10,ขลุ่ย,,sáo; cây sáo,,เลา,noun,,,,,,plernpin-c03#p10,true
+c03-w234,c03,c03-l10,ปี่,,kèn,,เลา,noun,,,,,,plernpin-c03#p10,true
+c03-w235,c03,c03-l10,เลื่อย,,cưa,,ปื้น,noun,,,,,,plernpin-c03#p10,true
+c03-w236,c03,c03-l10,ลูกอม,,kẹo ngậm; kẹo viên,,เม็ด,noun,,,,,,plernpin-c03#p10,true
+c03-w237,c03,c03-l10,หวี,,cái lược,,เล่ม,noun,,,,,,plernpin-c03#p10,true
+c03-w238,c03,c03-l10,พิพิธภัณฑ์,,bảo tàng,,แห่ง,noun,,,,,,plernpin-c03#p10,true
+c03-w239,c03,c03-l10,ซอย,,ngõ; hẻm,,ซอย,noun,,,,,,plernpin-c03#p10,true
+c03-w240,c03,c03-l10,ถ่าน,,than củi; than đá; cục pin,,ก้อน,noun,,,,,,plernpin-c03#p10,true
+c03-w241,c03,c03-l10,ธูป,,nhang; hương,,ดอก,noun,,,,,,plernpin-c03#p10,true
+c03-w242,c03,c03-l10,ไม้แจว,ไม้พาย,mái chèo,ไม้แจว dùng cho thuyền lớn; ไม้พาย dùng cho thuyền nhỏ,เล่ม,noun,,,,,,plernpin-c03#p10,true
+c03-w243,c03,c03-l10,แห,,lưới đánh cá,,ปาก,noun,,,,,,plernpin-c03#p10,true
+c03-w244,c03,c03-l10,ไม้ไผ่,,sào tre,,ลำ,noun,,,,,,plernpin-c03#p10,true
+c03-w245,c03,c03-l10,นก,,con chim,,ตัว,noun,,,,,,plernpin-c03#p10,true
+c03-w246,c03,c03-l11,นา,,ruộng,,แปลง,noun,,,,,,plernpin-c03#p11,true
+c03-w247,c03,c03-l11,ลูกปืน,,đạn,nói trong đời sống hàng ngày,นัด,noun,,,,,,plernpin-c03#p11,true
+c03-w248,c03,c03-l11,กระสุน,,đạn,dùng trong quân sự,นัด,noun,,,,,,plernpin-c03#p11,true
+c03-w249,c03,c03-l11,อ้อย,,cây mía,,ลำ,noun,,,,,,plernpin-c03#p11,true
+c03-w250,c03,c03-l11,ทอง,,vàng,,แท่ง,noun,,,,,,plernpin-c03#p11,true
+c03-w251,c03,c03-l11,ทหาร,,binh lính; quân nhân,,นาย,noun,,,,,,plernpin-c03#p11,true
+c03-w252,c03,c03-l11,พระพุทธเจ้า,,đức phật,,พระองค์,noun,,,,,,plernpin-c03#p11,true
+c03-w253,c03,c03-l11,เทพเจ้า,,thần thánh; thần linh,,องค์,noun,,,,,,plernpin-c03#p11,true
+c03-w254,c03,c03-l11,ราชวงศ์,,vương triều; hoàng tộc,,ราชวงศ์,noun,,,,,,plernpin-c03#p11,true
+c03-w255,c03,c03-l11,เจดีย์,,tháp; bảo tháp,,องค์,noun,,,,,,plernpin-c03#p11,true
+c03-w256,c03,c03-l11,สามเณร,,chú tiểu,,รูป,noun,,,,,,plernpin-c03#p11,true
+c03-w257,c03,c03-l11,นักบวช,,người tu hành; người xuất gia,,รูป,noun,,,,,,plernpin-c03#p11,true
+c03-w258,c03,c03-l11,เข็ม,,cây kim,kim chỉ,เล่ม,noun,,,,,,plernpin-c03#p11,true
+c03-w259,c03,c03-l11,สมุดบันทึก,,sổ tay; sổ ghi chép; sổ nhật ký,,เล่ม,noun,,,,,,plernpin-c03#p11,true
+c03-w260,c03,c03-l11,กระเบื้องหลังคา,,ngói lợp mái; ngói mái nhà,,แผ่น,noun,,,,,,plernpin-c03#p11,true
+c03-w261,c03,c03-l11,เนื้อ,,thịt,,ชิ้น,noun,,,,,,plernpin-c03#p11,true
+c03-w262,c03,c03-l11,เค้ก,,bánh kem; bánh gato; bánh sinh nhật,,ก้อน,noun,,,,,,plernpin-c03#p11,true
+c03-w263,c03,c03-l11,เงิน,,tiền,,ก้อน,noun,,,,,,plernpin-c03#p11,true
+c03-w264,c03,c03-l11,ขยะ,,rác,,ชิ้น,noun,,,,,,plernpin-c03#p11,true
+c03-w265,c03,c03-l11,ทราย,,cát,,เม็ด,noun,,,,,,plernpin-c03#p11,true
+c03-w266,c03,c03-l12,อิฐ,,gạch,,ก้อน,noun,,,,,,plernpin-c03#p12,true
+c03-w267,c03,c03-l12,ดิน,,đất,,ก้อน,noun,,,,,,plernpin-c03#p12,true
+c03-w268,c03,c03-l12,ชอล์ก,,phấn viết,,แท่ง,noun,,,,,,plernpin-c03#p12,true
+c03-w269,c03,c03-l12,เหล็ก,,sắt; thép,,แท่ง,noun,,,,,,plernpin-c03#p12,true
+c03-w270,c03,c03-l12,เสา,,cột; trụ,,ต้น,noun,,,,,,plernpin-c03#p12,true
+c03-w271,c03,c03-l12,ระเบิด,,bom; chất nổ,,ลูก,noun,,,,,,plernpin-c03#p12,true
+c03-w272,c03,c03-l12,ลูกปิงปอง,,quả bóng bàn,,ลูก,noun,,,,,,plernpin-c03#p12,true
+c03-w273,c03,c03-l12,ลูกบอล,,quả bóng,,ลูก,noun,,,,,,plernpin-c03#p12,true
+c03-w274,c03,c03-l12,วิญญาณ,,linh hồn,,ดวง,noun,,,,,,plernpin-c03#p12,true
+c03-w275,c03,c03-l12,ผม,,tóc,,เส้น,noun,,,,,,plernpin-c03#p12,true
+c03-w276,c03,c03-l12,ด้าย,,chỉ,sợi chỉ,เส้น,noun,,,,,,plernpin-c03#p12,true
+c03-w277,c03,c03-l12,เส้นประสาท,,dây thần kinh,,เส้น,noun,,,,,,plernpin-c03#p12,true
+c03-w278,c03,c03-l12,สายเลือด,,dòng máu; mạch máu,,สาย,noun,,,,,,plernpin-c03#p12,true
+c03-w279,c03,c03-l12,ขนมจีน,,bún,,จับ,noun,,,,,,plernpin-c03#p12,true
+c03-w280,c03,c03-l12,ขน,,lông,,เส้น,noun,,,,,,plernpin-c03#p12,true
+c03-w281,c03,c03-l12,ลำธาร,,suối,,สาย,noun,,,,,,plernpin-c03#p12,true
+c03-w282,c03,c03-l12,สายการบิน,,hãng hàng không,,สาย,noun,,,,,,plernpin-c03#p12,true
+c03-w283,c03,c03-l12,ยาสีฟัน,,kem đánh răng,,หลอด,noun,,,,,,plernpin-c03#p12,true
+c03-w284,c03,c03-l12,ต่างหู,,bông tai; hoa tai,,คู่,noun,,,,,,plernpin-c03#p12,true
+c03-w285,c03,c03-l12,ผ้าขนหนู,,khăn mặt,làm bằng sợi bông mềm,ผืน,noun,,,,,,plernpin-c03#p12,true
+c03-w286,c03,c03-l12,เสื่อ,,chiếu,,ผืน,noun,,,,,,plernpin-c03#p12,true
+c03-w287,c03,c03-l12,ผ้าห่ม,,chăn,,ผืน,noun,,,,,,plernpin-c03#p12,true
+c03-w288,c03,c03-l12,พรม,,thảm; thảm trải sàn,,ผืน,noun,,,,,,plernpin-c03#p12,true
+c03-w289,c03,c03-l12,ทุ่งนา,,cánh đồng,,แห่ง,noun,,,,,,plernpin-c03#p12,true
+c03-w290,c03,c03-l12,พจนานุกรม,,từ điển,,เล่ม,noun,,,,,,plernpin-c03#p12,true
+c03-w291,c03,c03-l13,สัญญา,,hợp đồng,,ฉบับ,noun,,,,,,plernpin-c03#p13,true
+c03-w292,c03,c03-l13,สลากกินแบ่ง,,vé xổ số,,ฉบับ,noun,,,,,,plernpin-c03#p13,true
+c03-w293,c03,c03-l13,คันไถ,,cái cày,,คัน,noun,,,,,,plernpin-c03#p13,true
+c03-w294,c03,c03-l13,ซี่จักรยาน,,nan hoa xe đạp,,ซี่,noun,,,,,,plernpin-c03#p13,true
+c03-w295,c03,c03-l13,องุ่น,,nho,,พวง,noun,,,,,,plernpin-c03#p13,true
+c03-w296,c03,c03-l13,หญ้า,,cỏ,,ต้น,noun,,,,,,plernpin-c03#p13,true
+c03-w297,c03,c03-l13,ต้นข้าว,,cây lúa,,ต้น,noun,,,,,,plernpin-c03#p13,true
+c03-w298,c03,c03-l13,ฝน,,mưa,,เม็ด,noun,,,,,,plernpin-c03#p13,true
+c03-w299,c03,c03-l13,เมล็ดผลไม้,,hạt trái cây,,เมล็ด,noun,,,,,,plernpin-c03#p13,true
+c03-w300,c03,c03-l13,ข้าว,,gạo; thóc; cơm,,เมล็ด,noun,,,,,,plernpin-c03#p13,true
+c03-w301,c03,c03-l13,นักท่องเที่ยว,,khách du lịch,,คน,noun,,,,,,plernpin-c03#p13,true
+c03-w302,c03,c03-l13,คณะ,,khoa,,คณะ,noun,,,,,,plernpin-c03#p13,true
+c03-w303,c03,c03-l13,ไวน์,,rượu vang,,ขวด,noun,,,,,,plernpin-c03#p13,true
+c03-w304,c03,c03-l13,กล้วย,,chuối,,หวี,noun,,,,,,plernpin-c03#p13,true
+c03-w305,c03,c03-l13,น้ำอัดลม,,nước ngọt,,ขวด,noun,,,,,,plernpin-c03#p13,true
+c03-w306,c03,c03-l13,เครื่องสำอาง,,mỹ phẩm,,ชิ้น,noun,,,,,,plernpin-c03#p13,true
+c03-w307,c03,c03-l13,น้ำมัน,,dầu,,ลิตร,noun,,,,,,plernpin-c03#p13,true
+c03-w308,c03,c03-l13,ข้าวหลาม,,cơm lam,,กระบอก,noun,,,,,,plernpin-c03#p13,true
+c03-w309,c03,c03-l13,พลุ,,pháo hoa; pháo sáng,tài liệu ghi cách đọc “p’lú”,ลูก,noun,,,,,,plernpin-c03#p13,true
+c03-w310,c03,c03-l13,ลูกศร,,mũi tên,,ดอก,noun,,,,,,plernpin-c03#p13,true

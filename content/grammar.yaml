@@ -1071,3 +1071,14 @@
     - { th: "สามร้อยบาทเท่านั้นเอง", vi: "Chỉ 300 bạt mà thôi" }
   source: plernpin-c05#p5
   draft: true
+- id: g-c03-clf
+  unit_id: c03
+  title_vi: "Loại từ (ลักษณนาม): danh từ + số + loại từ"
+  pattern: "Danh từ + số + loại từ"
+  explain_vi: "Khi đếm, tiếng Thái đặt loại từ (ลักษณนาม) sau số: danh từ + số + loại từ. Mỗi danh từ đi với một loại từ riêng; người (เกี่ยวกับคน) dùng คน, con vật (สัตว์) dùng ตัว."
+  examples:
+    - { th: "ตุ๊กตาสองตัว", vi: "2 con búp bê" }
+    - { th: "รองเท้าหนึ่งคู่", vi: "1 đôi giày" }
+    - { th: "หนังสือสามเล่ม", vi: "3 quyển sách" }
+  source: plernpin-c03#p1
+  draft: true
