@@ -228,16 +228,17 @@ test('Sổ từ: tìm không dấu, chi tiết, mẹo nhớ của tôi, cần ô
   await expect(page).toHaveURL(/q=toi/);
   const options = page.getByTestId('words-list').getByRole('option');
   await expect(options.first()).toBeVisible();
-  for (const label of await options.allTextContents()) {
-    expect(label).toMatch(/tôi/);
-  }
+  // Lọc chạy sau khi URL đổi — chờ tới khi mọi dòng đều khớp.
+  await expect
+    .poll(async () => (await options.allTextContents()).every((label) => /tôi/.test(label)))
+    .toBe(true);
 
   // Chọn từ đầu, viết mẹo nhớ (M → Ctrl+Enter), bật "Cần ôn" (C).
   const first = words[0]!;
   await page.goto(`/words?word=${first.id}`);
   await expect(page.getByTestId('word-detail-th')).toHaveText(first.thai);
   // Phím M chỉ bật khi đã đọc xong mẹo hiện có.
-  await expect(page.getByTestId('mnemonic-write')).toBeVisible();
+  await expect(page.getByTestId('mnemonic')).toHaveAttribute('data-loaded', 'true');
   await page.keyboard.press('m');
   await page.getByTestId('mnemonic-input').fill('Mẹo thử ฉัน');
   await page.keyboard.press('Control+Enter');

@@ -197,17 +197,16 @@ describe('useFeedbackPause — đọc lại câu vừa xếp đúng', () => {
     const audio = new MockAudioProvider();
     const { db, wrapper } = wrapperFor(audio);
     const onDone = vi.fn();
-    const { rerender } = renderHook(
-      ({ active, text }: { active: boolean; text: string | null }) =>
-        useFeedbackPause({
-          active,
-          speakText: text,
-          speech: useAutoSpeech(),
-          minMs: 10,
-          onDone,
-        }),
+    const { rerender, result } = renderHook(
+      ({ active, text }: { active: boolean; text: string | null }) => {
+        const speech = useAutoSpeech();
+        useFeedbackPause({ active, speakText: text, speech, minMs: 10, onDone });
+        return speech;
+      },
       { wrapper, initialProps: { active: false, text: null as string | null } },
     );
+    // Cài đặt "tự đọc" + giọng nạp bất đồng bộ — máy bận có thể lâu hơn vài chục ms.
+    await waitFor(() => expect(result.current).toMatchObject({ enabled: true, available: true }));
     await new Promise((r) => setTimeout(r, 30));
     expect(onDone).not.toHaveBeenCalled();
 

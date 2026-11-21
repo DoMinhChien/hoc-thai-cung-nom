@@ -94,6 +94,7 @@ export function MnemonicBlock({
     <div
       data-testid="mnemonic"
       data-source={mine ? 'mine' : suggested ? 'suggested' : 'none'}
+      data-loaded={loaded !== undefined}
       className={cn('flex flex-col gap-2 rounded-lg bg-muted p-4', className)}
     >
       <p className="flex items-center gap-2 text-sm font-semibold">
