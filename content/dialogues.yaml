@@ -1,4 +1,30 @@
 # DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M6. Owner/giáo viên thay (SETUP-OWNER S10).
+- id: d-b09-l1
+  lesson_id: b09-l1
+  lines:
+    - { speaker: Phục vụ, th: "สวัสดีครับ เชิญครับ มากี่ท่านครับ", vi: "Xin chào, mời vào! Quý khách đi mấy người ạ?" }
+    - { speaker: Khách, th: "สองคนค่ะ ขอเมนูหน่อยค่ะ", vi: "Hai người ạ. Cho tôi xin thực đơn." }
+    - { speaker: Phục vụ, th: "นี่เมนูครับ จะรับอะไรดีครับ", vi: "Thực đơn đây ạ. Quý khách dùng gì ạ?" }
+    - { speaker: Khách, th: "ขอผัดไทยหนึ่งจาน กับต้มยำกุ้งหนึ่งถ้วยค่ะ", vi: "Cho tôi một đĩa pad Thái và một bát tom yum tôm." }
+    - { speaker: Phục vụ, th: "ต้มยำกุ้งเผ็ดนะครับ กินเผ็ดได้ไหมครับ", vi: "Tom yum tôm cay đấy ạ. Quý khách ăn cay được không?" }
+    - { speaker: Khách, th: "กินเผ็ดไม่ได้ค่ะ ขอไม่เผ็ดนะคะ", vi: "Tôi không ăn cay được. Làm không cay giúp tôi nhé." }
+    - { speaker: Phục vụ, th: "ได้ครับ รับข้าวเปล่าด้วยไหมครับ", vi: "Vâng ạ. Quý khách có lấy thêm cơm trắng không ạ?" }
+    - { speaker: Khách, th: "เอาข้าวเปล่าสองจานค่ะ ขอบคุณค่ะ", vi: "Cho hai đĩa cơm trắng. Cảm ơn anh." }
+  source: claude-tc3-b09
+  draft: true
+- id: d-b09-l10
+  lesson_id: b09-l10
+  lines:
+    - { speaker: Phục vụ, th: "จะรับเครื่องดื่มอะไรดีครับ", vi: "Quý khách dùng đồ uống gì ạ?" }
+    - { speaker: Khách, th: "ขอชาเย็นหนึ่งแก้ว กับน้ำเปล่าหนึ่งขวดค่ะ", vi: "Cho tôi một cốc trà sữa Thái và một chai nước lọc." }
+    - { speaker: Khách, th: "น้องคะ เก็บเงินด้วยค่ะ", vi: "(Ăn xong) Em ơi, tính tiền giúp chị." }
+    - { speaker: Phục vụ, th: "ทั้งหมดสามร้อยห้าสิบบาทครับ", vi: "Tất cả 350 baht ạ." }
+    - { speaker: Khách, th: "จ่ายด้วยบัตรได้ไหมคะ", vi: "Trả bằng thẻ được không em?" }
+    - { speaker: Phục vụ, th: "ขอโทษครับ ร้านเรารับแต่เงินสดครับ", vi: "Xin lỗi chị, quán em chỉ nhận tiền mặt ạ." }
+    - { speaker: Khách, th: "ได้ค่ะ นี่ห้าร้อยบาทค่ะ", vi: "Được rồi. Đây là 500 baht." }
+    - { speaker: Phục vụ, th: "นี่เงินทอนหนึ่งร้อยห้าสิบบาทครับ ขอบคุณครับ", vi: "Đây là 150 baht tiền thối ạ. Cảm ơn chị." }
+  source: claude-tc3-b09
+  draft: true
 - id: d-b12-l1
   lesson_id: b12-l1
   lines:

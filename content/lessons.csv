@@ -42,16 +42,16 @@ b10-l10,b10,10,Đi mua sắm,,true
 b10-l11,b10,11,Thanh toán và giao hàng,,true
 b10-l12,b10,12,"Hóa đơn, chợ và siêu thị",,true
 b10-l13,b10,13,"Chọn hàng: loại, kiểu, cỡ",g-b10-la,true
-b09-l1,b09,1,Nhà hàng và thực đơn,,true
-b09-l2,b09,2,Bát đĩa và món Thái,,true
-b09-l3,b09,3,Món Thái và món Âu,,true
-b09-l4,b09,4,Tráng miệng và món Âu,,true
-b09-l5,b09,5,Bữa sáng kiểu Tây,,true
-b09-l6,b09,6,Đồ uống (1),,true
-b09-l7,b09,7,"Đồ uống (2) và cốc, đá",,true
-b09-l8,b09,8,Gọi món và hương vị,,true
-b09-l9,b09,9,Nước uống và đồ ăn nhanh,,true
-b09-l10,b09,10,"Trả tiền, đã từng, được / biết",g-b09-khoei|g-b09-mai-dai|g-b09-mai-pen,true
+b09-l1,b09,1,Nhà hàng và thực đơn,g-b09-kho,true
+b09-l2,b09,2,Bát đĩa và món Thái,g-b09-mai-phet,true
+b09-l3,b09,3,Món Thái và món Âu,g-b09-ao,true
+b09-l4,b09,4,Tráng miệng và món Âu,g-b09-khoei,true
+b09-l5,b09,5,Bữa sáng kiểu Tây,g-b09-mai-dai,true
+b09-l6,b09,6,Đồ uống (1),g-b09-ja-sang,true
+b09-l7,b09,7,"Đồ uống (2) và cốc, đá",g-b09-ki,true
+b09-l8,b09,8,Gọi món và hương vị,g-b09-rot,true
+b09-l9,b09,9,"Nước uống, đồ ăn nhanh, tính tiền",g-b09-ya,true
+b09-l10,b09,10,Trả tiền và không biết làm (ไม่เป็น),g-b09-mai-pen|g-b09-kep-ngoen,true
 b08-l1,b08,1,Phòng nghỉ và phòng tắm,g-b08-yak|g-b08-yak-dai,true
 b08-l2,b08,2,"Phòng ăn, bể bơi và sảnh",,true
 b08-l3,b08,3,"Đồ dùng cá nhân, chăn gối",g-b08-yak-kho,true
