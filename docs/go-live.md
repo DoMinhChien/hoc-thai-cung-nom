@@ -20,6 +20,8 @@
 
 ## B. Owner làm tay (trước khi công bố link)
 
+> **2026-11-21 — giai đoạn CAT:** owner hoãn B1–B7, B9 và mục C tới khi công bố chính thức; **B8 ✅** (giữ câu ghi công). Trong CAT, Google OAuth ở chế độ *Testing*: chỉ *Test users* đăng nhập Google được — người thử khác dùng "Học không cần đăng nhập".
+
 | # | Việc | Ở đâu | Xong |
 |---|---|---|---|
 | B1 | Bảo vệ nhánh `main`: bắt buộc PR + CI (`check`, `e2e`) xanh, **không** bắt buộc review (AGENTS 8.1) | GitHub → Settings → Branches (S1) | ☐ |
@@ -29,7 +31,7 @@
 | B5 | Giới hạn Firebase API key theo **HTTP referrers**: domain production + `localhost` | Google Cloud → Credentials (S8) | ☐ |
 | B6 | Bật Budget alert Azure ($5 / $20) | Azure → Cost Management (S3) | ☐ |
 | B7 | Quyết định công bố khi nội dung còn `draft` (mọi bài hiện nhãn "Bản nháp") hay chờ giáo viên duyệt | `content/IMPORT-STATUS.md` (S10) | ☐ |
-| B8 | Duyệt câu ghi công giáo trình hiển thị ở `/units` ("Nguồn: giáo trình Tiếng Thái Thạc Sĩ Plern-Pin.") | S10 | ☐ |
+| B8 | Duyệt câu ghi công giáo trình hiển thị ở `/units` ("Nguồn: giáo trình Tiếng Thái Thạc Sĩ Plern-Pin.") | S10 | ✅ 2026-11-21 |
 | B9 | Xem lại `/privacy` (đoạn mới về tệp xuất tiến độ) | `apps/web/src/i18n/legal.vi.ts` | ☐ |
 
 ## C. Smoke test thủ công trên production (sau B1–B5, mỗi lần release)

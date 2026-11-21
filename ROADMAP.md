@@ -29,18 +29,18 @@
 > - [ ] **E2E chập chờn trên WebKit (Linux CI):** `settings.spec` — ô chọn giọng có lúc không hiện trong 5 s (giọng giả nạp chậm); `auth.spec` popup emulator. Không chặn merge khi chạy lại xanh; agent sẽ xem lại khi có thời gian.
 > - [x] **SCR-03 / SCR-07 / SCR-09** — owner duyệt 2026-11-21 (câu trả lời ghi trong spec), **#26 đã merge** → M10 mở và làm xong.
 > - [x] **PR M10 (#32)** — owner duyệt 2026-11-21.
-> - [ ] **Go-live (M12 T12.6) — owner làm tay, chi tiết + cách làm ở `docs/go-live.md` mục B:**
->   - [ ] B1 Bảo vệ `main`: bắt buộc PR + CI (`check`, `e2e`), **không** bắt buộc review (SETUP S1).
+> - [ ] **Go-live (M12 T12.6)** — **2026-11-21: owner chốt giai đoạn CAT (Customer Acceptance Testing)** — bỏ qua B1, B4–B7, B9 và smoke test tới khi công bố chính thức (**⏸ CAT**); B8 ✅. Chi tiết `docs/go-live.md` mục B:
+>   - [ ] ⏸ CAT — B1 Bảo vệ `main`: bắt buộc PR + CI (`check`, `e2e`), **không** bắt buộc review (SETUP S1).
 >   - [x] B2 Dọn môi trường preview cũ của Static Web App (giới hạn staging environment — deploy preview lỗi).
 >   - [x] B3 Firebase Authorized domains có domain production `*.azurestaticapps.net` (S4).
->   - [ ] B4 Google OAuth consent screen: link `/privacy`, `/terms` production → **Publish / In production** (SETUP S5 bước 3).
->   - [ ] B5 Giới hạn Firebase API key theo HTTP referrer: domain production + `localhost` (SETUP S8).
->   - [ ] B6 Budget alert Azure (SETUP S3).
->   - [ ] B7 Quyết định công bố khi nội dung còn `draft` (nhãn "Bản nháp") hay chờ giáo viên duyệt.
->   - [ ] B8 Duyệt câu ghi công giáo trình ở `/units` (S10).
->   - [ ] B9 Xem đoạn mới ở `/privacy` (tệp xuất tiến độ nằm trên máy người dùng).
->   - [ ] Sau B1–B5: smoke test thủ công trên production (`docs/go-live.md` mục C) → báo agent ghi nhật ký.
-> - [ ] **PR M12** (`m12-golive`): xem baseline đổi (`settings-*` — thêm khối Hiển thị, Dữ liệu tiến độ) + PWA (`staticwebapp`/service worker) — không tự merge (8.1: đụng cấu hình build/PWA, nhiều màn).
+>   - [ ] ⏸ CAT — B4 Google OAuth consent screen: link `/privacy`, `/terms` production → **Publish / In production** (SETUP S5 bước 3).
+>   - [ ] ⏸ CAT — B5 Giới hạn Firebase API key theo HTTP referrer: domain production + `localhost` (SETUP S8).
+>   - [ ] ⏸ CAT — B6 Budget alert Azure (SETUP S3).
+>   - [ ] ⏸ CAT — B7 Quyết định công bố khi nội dung còn `draft` (nhãn "Bản nháp") hay chờ giáo viên duyệt.
+>   - [x] B8 Duyệt câu ghi công (owner duyệt 2026-11-21 — giữ “Nguồn: giáo trình Tiếng Thái Thạc Sĩ Plern-Pin.”) giáo trình ở `/units` (S10).
+>   - [ ] ⏸ CAT — B9 Xem đoạn mới ở `/privacy` (tệp xuất tiến độ nằm trên máy người dùng).
+>   - [ ] ⏸ CAT — Sau B1–B5: smoke test thủ công trên production (`docs/go-live.md` mục C) → báo agent ghi nhật ký.
+> - [x] **PR M12 (#34)** — owner merge 2026-11-21. ~~(`m12-golive`): xem baseline đổi (`settings-*` — thêm khối Hiển thị, Dữ liệu tiến độ) + PWA (`staticwebapp`/service worker) — không tự merge (8.1: đụng cấu hình build/PWA, nhiều màn).~~
 > - [x] **Chuyên đề 15 → 2 (#31)** tự merge 2026-11-21 (8.1); **TC.2b (#33)** xoá `u03`/`u11`, tự merge. GV còn duyệt nội dung draft — xem dòng dưới.
 > - [ ] **Nội dung (giáo viên duyệt):** Bài 11 → 6 (**#28**) và Bài 5 → 3 (**#29**) **đã merge 2026-11-21** (draft) — giáo trình Bài 1–12 đủ; GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
@@ -563,7 +563,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Test: core 440, web 382 (+ E2E M10 4 test × 6 project; full E2E 344 pass). Sửa test chập chờn `useFeedbackPause` (chờ cài đặt tự đọc nạp xong). Baseline `settings-*` đổi vì thêm khối Bài tập. `/` `/words` `/progress` thay trang tạm (`PlaceholderPage` đã xoá).
 - **Khác spec (owner xem):** biểu đồ cột tự vẽ bằng CSS (không Recharts); chuỗi ngày **không** tính "từ mới vào học" (`CardRecord.createdAt`) như bản nháp SCR-03 cũ — tính bài tập, ôn thẻ, bước bài học, phiên học, lượt chơi (đã ghi trong spec); 1024–1279px: chi tiết từ xếp dưới danh sách (chưa làm Sheet trượt).
 
-### M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live 🔵 (mở 2026-11-21; plan 4.12 G-01..G-03, 4.0 go-live, 7.4)
+### M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live 🟢 CAT (T12.1–T12.5 ✅, T12.6 ⏸) (mở 2026-11-21; plan 4.12 G-01..G-03, 4.0 go-live, 7.4)
 
 **Cần trước:** M10 ✅ (#32). Không cần spec màn mới (Cài đặt là trang có sẵn, owner cho agent làm từ M9.5). Go-live cần owner: SETUP S1, S3, S4, S5 bước 3, S8.
 
@@ -574,7 +574,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - [x] T12.4 E2E đủ (plan 7.4 viết lại theo v7): `golive.spec.ts` — luồng 1 + 3 (học bài → bài tập 100% → Tổng quan / Tiến độ cập nhật → 4 ngày sau có câu đến hạn), 7 (xuất → xoá → nhập, tệp sai báo lỗi), 8 (tải một lần → offline vẫn học, Sổ từ, Tiến độ); luồng 0 (`auth.spec`), 4 (`typing.spec`, `practice.spec`) đã có; baseline đổi `settings-*`.
 - [x] T12.5 Checklist go-live `docs/go-live.md`: A (agent kiểm tra tự động) · B (owner làm tay B1–B9) · C (smoke test production); `/privacy` thêm đoạn về tệp xuất.
 - **Vấn đề còn mở:** Firefox (Playwright) thỉnh thoảng crash (`Page crashed`) khi axe chạy trên Tổng quan trong `m10.spec` (~1/8–1/3 lần khi máy tải nặng, cả CI Linux). Đã dò: không do đồng hồ giả, luật `color-contrast`, hoạt ảnh. Tạm bỏ bước axe của `m10.spec` trên Firefox; `/` vẫn được axe kiểm trên Firefox ở `a11y.spec`.
-- [ ] T12.6 Go-live: owner xong B1–B9 + smoke test production → agent ghi nhật ký, đóng Phase 1. **🟠 Chờ owner.**
+- [ ] T12.6 Go-live: owner xong B1–B9 + smoke test production → agent ghi nhật ký, đóng Phase 1. **⏸ Giai đoạn CAT (owner 2026-11-21):** bản hiện tại trên production dùng cho khách hàng nghiệm thu; B8 ✅, các mục còn lại làm trước khi công bố chính thức. Lưu ý CAT: Google OAuth vẫn **Testing** → chỉ tài khoản trong *Test users* đăng nhập Google được, người thử khác dùng **"Học không cần đăng nhập"** (hoặc owner thêm Gmail của họ vào Test users).
 
 **Tiêu chí nghiệm thu**
 - Xuất → xoá → nhập khôi phục đủ thẻ, bài học, kỷ lục, cài đặt; tệp lạ / bản mới hơn bị từ chối có lời nhắn.
@@ -592,6 +592,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | M12 → CAT | Owner: production hiện tại là bản **CAT** (khách hàng nghiệm thu). **B8 duyệt** (giữ câu ghi công). B1, B4–B7, B9, smoke test **⏸ hoãn** tới công bố chính thức. Phase 1 code hoàn tất (M0 → M12 T12.5, TC.3) | — | Công bố chính thức chờ B1, B4–B7, B9 + smoke test + GV duyệt nội dung | — (docs chưa commit) |
 | 2026-11-21 | Nội dung (TC.3) | **TC.3** Bài 9, 10 làm đầy đủ: rà PDF, hình, loại từ, ví dụ, câu luyện (≥ 5 / bài học: b09 77, b10 80), mẫu câu rải theo bài học, 6 hội thoại — tự merge theo 8.1 (nội dung `draft`) | — | GV duyệt tiếng Thái Claude soạn | `content-b09-b10` → PR |
 | 2026-11-21 | Go-live + Nội dung | Owner: **B2** dọn preview, **merge #34 (M12)**, **B3** Firebase authorized domains OK. Yêu cầu **TC.3** rà soát & làm đầy đủ Bài 9, 10 (người học đang học) — ưu tiên số 1 | TC.3 | — | — (ROADMAP chưa commit) |
 | 2026-11-21 | M10 → M12 + TC.2b | Owner duyệt M10: sửa lỗi axe (nút 🔊 lồng trong `option` Sổ từ) rồi merge #32. **Tự merge #31** (nội dung Chuyên đề 15 → 2, 8.1). **TC.2b** xoá `u03`/`u11` (#33, tự merge 8.1). Mở **M12**: T12.1–T12.5 xong (phiên âm mặc định, xuất/nhập/xoá tiến độ, PWA offline, E2E go-live, checklist). Firefox thỉnh thoảng crash khi axe chạy trên Tổng quan (~1/10, không do đồng hồ giả / luật contrast — đã dò); CI tự chạy lại → flaky | T12.6 go-live | B1–B9 việc tay owner (`docs/go-live.md`) | #32 ✅, #31 ✅, #33 ✅, `m12-golive` → #34 |
