@@ -8,6 +8,7 @@ export * from './auth';
 export * from './content/bundle';
 export * from './content/search';
 export * from './content/topic';
+export * from './data/backup';
 export * from './data/memory';
 export * from './data/records';
 export * from './data/repositories';

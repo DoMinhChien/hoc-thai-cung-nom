@@ -1,14 +1,16 @@
-import type {
-  CanDoRecord,
-  CardRecord,
-  GameResultRecord,
-  LessonProgressRecord,
-  NeedsReviewRecord,
-  WordNoteRecord,
-  SentenceLevelRecord,
+import {
+  createBackup,
+  type CanDoRecord,
+  type ProgressBackup,
+  type CardRecord,
+  type GameResultRecord,
+  type LessonProgressRecord,
+  type NeedsReviewRecord,
+  type SentenceLevelRecord,
+  type WordNoteRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type IndexableType } from 'dexie';
-import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES } from './db';
+import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES, SCHEMA_VERSION } from './db';
 
 const GUEST_CHOSEN = 'guestChosen';
 
@@ -135,6 +137,39 @@ export class AccountDataRepository {
     await withDb(GUEST_KEY, (guest) =>
       guest.transaction('rw', [...PROGRESS_TABLES], async () => {
         for (const name of PROGRESS_TABLES) await guest.table(name).clear();
+      }),
+    );
+  }
+
+  /** G-02: ảnh chụp mọi store tiến độ của `userKey` (tệp JSON để người học tự giữ). */
+  async exportProgress(userKey: string, now: Date): Promise<ProgressBackup> {
+    const rows = await withDb(userKey, (db) =>
+      Promise.all(PROGRESS_TABLES.map((name) => db.table(name).toArray())),
+    );
+    return createBackup(
+      Object.fromEntries(PROGRESS_TABLES.map((name, i) => [name, rows[i]!])),
+      SCHEMA_VERSION,
+      now,
+    );
+  }
+
+  /** G-02: **thay** toàn bộ tiến độ của `userKey` bằng tệp đã kiểm tra (`parseBackup`). */
+  async importProgress(userKey: string, backup: ProgressBackup): Promise<void> {
+    await withDb(userKey, (db) =>
+      db.transaction('rw', [...PROGRESS_TABLES], async () => {
+        for (const name of PROGRESS_TABLES) {
+          await db.table(name).clear();
+          await db.table(name).bulkPut(backup.tables[name] ?? []);
+        }
+      }),
+    );
+  }
+
+  /** Xoá tiến độ trên máy (giữ tài khoản / lựa chọn Guest) — Cài đặt › Dữ liệu. */
+  async clearProgress(userKey: string): Promise<void> {
+    await withDb(userKey, (db) =>
+      db.transaction('rw', [...PROGRESS_TABLES], async () => {
+        for (const name of PROGRESS_TABLES) await db.table(name).clear();
       }),
     );
   }

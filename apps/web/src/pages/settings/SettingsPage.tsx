@@ -5,7 +5,7 @@ import {
   type VoiceInfo,
 } from '@nom/core';
 import { Play, TriangleAlert } from 'lucide-react';
-import { useEffect, useId, useState, type ReactNode } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useAudio } from '@/audio/useAudio';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import {
@@ -20,7 +20,10 @@ import { useFeedbackSound, webAudioTone, type FeedbackSoundKind } from '@/compon
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRepositories, useRepositoryQuery } from '@/data';
+import { SHOW_PHONETIC_KEY, useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
+import { DataSettings } from './DataSettings';
+import { Card } from './SettingsCard';
 
 const rateFormat = new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 });
 
@@ -42,31 +45,10 @@ export function SettingsPage() {
       <SoundSettings />
       <VoiceSettings />
       <PracticeSettings />
+      <DisplaySettings />
+      <DataSettings />
       <p className="text-sm text-muted-foreground">{t('settings.later')}</p>
     </section>
-  );
-}
-
-function Card({
-  title,
-  testId,
-  id,
-  children,
-}: {
-  title: string;
-  testId: string;
-  id?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div
-      id={id}
-      data-testid={testId}
-      className="flex scroll-mt-6 flex-col gap-4 rounded-xl border border-border bg-surface p-6 shadow-card"
-    >
-      <h2 className="text-lg font-semibold">{title}</h2>
-      {children}
-    </div>
   );
 }
 
@@ -311,6 +293,30 @@ function PracticeSettings() {
         ))}
       </select>
       <p className="text-sm text-muted-foreground">{t('settings.sessionSizeHint')}</p>
+    </Card>
+  );
+}
+
+/** Hiển thị (G-01): phiên âm Latin — mặc định ẩn (plan 0.2), bật/tắt riêng từng thẻ bằng `P`. */
+function DisplaySettings() {
+  const repos = useRepositories();
+  const show = useShowPhonetic();
+  if (show === undefined) {
+    return <Skeleton className="h-24" role="status" aria-label={t('settings.displayTitle')} />;
+  }
+  return (
+    <Card title={t('settings.displayTitle')} testId="settings-display">
+      <label className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          data-testid="settings-phonetic"
+          checked={show}
+          onChange={(e) => void repos?.settings.set(SHOW_PHONETIC_KEY, e.target.checked)}
+          className="size-4 accent-primary"
+        />
+        {t('settings.phonetic')}
+      </label>
+      <p className="text-sm text-muted-foreground">{t('settings.phoneticHint')}</p>
     </Card>
   );
 }

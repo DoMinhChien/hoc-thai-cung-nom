@@ -22,6 +22,7 @@ import { MnemonicBlock } from '@/components/words/MnemonicBlock';
 import { useAllUnits } from '@/content/hooks';
 import { imageEmoji, unitLabel } from '@/content/labels';
 import { useRepositories, useRepositoryQuery } from '@/data';
+import { useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { SpeakButton } from '../units/parts';
@@ -111,7 +112,9 @@ function Book({
     : 'lesson';
   const [query, setQuery] = useState(q);
   const [limit, setLimit] = useState(PAGE);
-  const [phonetic, setPhonetic] = useState(false);
+  const showDefault = useShowPhonetic();
+  const [override, setPhonetic] = useState<boolean | null>(null);
+  const phonetic = override ?? !!showDefault;
   const searchRef = useRef<HTMLInputElement>(null);
 
   const update = (next: Record<string, string | null>, keepWord = false) => {
@@ -183,7 +186,7 @@ function Book({
   const audio = useAudio();
   const speak = () => selected && void audio.speak(selected.word.thai).catch(() => {});
   useKeyShortcut([' ', 'Enter'], speak, !!selected);
-  useKeyShortcut('p', () => setPhonetic((v) => !v), !!selected);
+  useKeyShortcut('p', () => setPhonetic(!phonetic), !!selected);
   const repos = useRepositories();
   const toggleReview = () =>
     selected &&
@@ -339,7 +342,7 @@ function Book({
             type="button"
             aria-pressed={phonetic}
             data-testid="words-phonetic"
-            onClick={() => setPhonetic((v) => !v)}
+            onClick={() => setPhonetic(!phonetic)}
             className={cn(
               'ml-auto rounded-full border px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
               phonetic ? 'border-primary bg-accent text-accent-foreground' : 'bg-surface',
@@ -513,7 +516,7 @@ function Book({
             row={selected}
             phonetic={phonetic}
             onSpeak={speak}
-            onTogglePhonetic={() => setPhonetic((v) => !v)}
+            onTogglePhonetic={() => setPhonetic(!phonetic)}
             onToggleReview={toggleReview}
           />
         )}
