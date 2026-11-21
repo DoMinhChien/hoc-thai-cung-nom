@@ -1082,3 +1082,130 @@
     - { th: "หนังสือสามเล่ม", vi: "3 quyển sách" }
   source: plernpin-c03#p1
   draft: true
+- id: g-c02-mai
+  unit_id: c02
+  title_vi: "ไหม/มั้ย: Không?"
+  pattern: "Câu + ไหม/มั้ย"
+  explain_vi: "ไหม/มั้ย đứng cuối câu để hỏi “… không?”. Lưu ý 1: ม่ะ/มะ là cách nói ngắn gọn, thân mật của ไหม, dùng khi chát chít với nhau, thể hiện sự thân mật khi giao tiếp: ชอบมะ (Thích không?) dùng trong văn nói, xuồng xã hơn, dùng với bạn bè, người thân; ชอบม่ะ (Thích không?) dùng trong văn nói có chút ngọt ngào, xuất hiện nhiều trong tin nhắn, chat. Lưu ý 2: หรือไม่/หรือเปล่า/รึเปล่า/ป่าว/ป่ะ đôi khi được dùng thay thế cho ไหม/มั้ย."
+  examples:
+    - { th: "ชอบมะ", vi: "Thích không?" }
+    - { th: "ชอบม่ะ", vi: "Thích không?" }
+    - { th: "อยากกินข้าวเหนียวมะม่วงหรือเปล่าคะ", vi: "Muốn ăn xôi xoài không ạ?" }
+    - { th: "อร่อยป่ะ", vi: "Ngon không?" }
+    - { th: "ชอบรึเปล่า", vi: "Thích không?" }
+  source: plernpin-c02#p1
+  draft: true
+- id: g-c02-chai-mai
+  unit_id: c02
+  title_vi: "ใช่ไหม: Phải không?"
+  pattern: "Câu + ใช่ไหม"
+  explain_vi: "ใช่ไหม: Phải không? => Dự đoán được câu trả lời rồi nhưng cần sự khẳng định của người nghe. Lưu ý: Bạn có thể sử dụng ใช่ป่ะ/ใช่ป่าว để thay thế ใช่ไหม."
+  examples:
+    - { th: "คุณเป็นนักศึกษาใช่ไหม", vi: "Bạn là sinh viên phải không?" }
+  source: plernpin-c02#p2
+  draft: true
+- id: g-c02-boi-mai
+  unit_id: c02
+  title_vi: "บ่อยไหม: Thường xuyên không?"
+  pattern: "Câu + บ่อยไหม"
+  explain_vi: "บ่อยไหม đứng cuối câu để hỏi “… thường xuyên không?”."
+  examples:
+    - { th: "คุณดูทีวีบ่อยไหม", vi: "Bạn xem tivi thường xuyên không?" }
+  source: plernpin-c02#p2
+  draft: true
+- id: g-c02-rue
+  unit_id: c02
+  title_vi: "หรือ: Chứ, à? · Hay/hoặc (câu hỏi lựa chọn)"
+  pattern: "Câu + หรือ · A + หรือ + B"
+  explain_vi: "หรือ cuối câu: chứ, à? Lưu ý: หรือ: Hay/hoặc (câu hỏi lựa chọn)."
+  examples:
+    - { th: "จริงหรือ", vi: "Thật à?" }
+    - { th: "คุณจะไปกับเขาหรือจะไปกับฉัน", vi: "Bạn định đi với anh ấy hay sẽ đi với tôi" }
+  source: plernpin-c02#p3
+  draft: true
+- id: g-c02-rue-yang
+  unit_id: c02
+  title_vi: "แล้วหรือยัง/หรือยัง/ยัง: Chưa?"
+  pattern: "Câu + แล้วหรือยัง / หรือยัง / ยัง"
+  explain_vi: "แล้วหรือยัง/หรือยัง/ยัง: Chưa? => Để hỏi điều gì đó đã xảy ra hay chưa?"
+  examples:
+    - { th: "คุณแต่งงานแล้วหรือยัง", vi: "Bạn kết hôn chưa?" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-khoei
+  unit_id: c02
+  title_vi: "เคย….หรือยัง/เคย….ไหม: Đã từng….chưa?"
+  pattern: "เคย + V + หรือยัง / ไหม"
+  explain_vi: "เคย….หรือยัง/เคย….ไหม: Đã từng….chưa?"
+  examples:
+    - { th: "คุณเคยไปเมืองไทยหรือยัง", vi: "Bạn đã từng đi Thái chưa?" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-khrai
+  unit_id: c02
+  title_vi: "ใคร: Ai?"
+  pattern: "… ใคร …"
+  explain_vi: "ใคร: Ai? Lưu ý: ใคร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời (ai đó, không ai)."
+  examples:
+    - { th: "คุณอยู่กับใคร", vi: "Bạn ở với ai?" }
+    - { th: "ไม่มีใครรู้", vi: "Không có ai biết" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-arai
+  unit_id: c02
+  title_vi: "อะไร: Cái gì?"
+  pattern: "… อะไร …"
+  explain_vi: "อะไร: Cái gì? Lưu ý: อะไร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời (gì cũng…, không có gì)."
+  examples:
+    - { th: "อะไรอยู่ในตู้", vi: "Cái gì ở trong tủ" }
+    - { th: "คุณอยากกินอะไรก็ได้", vi: "Bạn muốn ăn gì cũng được" }
+  source: plernpin-c02#p6
+  draft: true
+- id: g-c02-thinai
+  unit_id: c02
+  title_vi: "ที่ไหน/ไหน: Ở đâu?, chỗ nào?/Đâu?"
+  pattern: "… ที่ไหน / ไหน"
+  explain_vi: "ที่ไหน/ไหน: Ở đâu?, chỗ nào?/Đâu? Lưu ý: ที่ไหน còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "บ้านของคุณอยู่ที่ไหน", vi: "Nhà của bạn ở đâu?" }
+    - { th: "อยู่ที่ไหนก็ไม่สะดวกเท่าอยู่บ้าน", vi: "Ở đâu cũng không tiện bằng ở nhà" }
+  source: plernpin-c02#p7
+  draft: true
+- id: g-c02-muearai
+  unit_id: c02
+  title_vi: "เมื่อไหร่/เมื่อไร/เมื่อใด: Khi nào? Bao giờ?"
+  pattern: "… เมื่อไหร่ / เมื่อไร / เมื่อใด"
+  explain_vi: "เมื่อไหร่/เมื่อไร/เมื่อใด: Khi nào? Bao giờ? Lưu ý: เมื่อไหร่/เมื่อไร/เมื่อใด còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "เครื่องบินจะลงจอดเมื่อไหร่", vi: "Máy bay sẽ hạ cánh khi nào?" }
+    - { th: "เธอจะมาเมื่อไหร่ก็ได้", vi: "Cô ấy định đến lúc nào cũng được" }
+  source: plernpin-c02#p8
+  draft: true
+- id: g-c02-thaorai
+  unit_id: c02
+  title_vi: "เท่าไหร่/เท่าไร: Bao nhiêu?"
+  pattern: "… เท่าไหร่ / เท่าไร"
+  explain_vi: "เท่าไหร่/เท่าไร: Bao nhiêu? Lưu ý: เท่าไหร่/เท่าไร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "วันนี้วันที่เท่าไหร่", vi: "Ngày hôm nay là ngày bao nhiêu?" }
+  source: plernpin-c02#p9
+  draft: true
+- id: g-c02-yangrai
+  unit_id: c02
+  title_vi: "อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง/ทำไฉน: Như thế nào? Bằng cách nào?/Làm sao, làm thế nào?"
+  pattern: "… อย่างไร / ยังไง / เป็นยังไง(บ้าง)"
+  explain_vi: "อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง/ทำไฉน: Như thế nào? Bằng cách nào?/Làm sao, làm thế nào? Lưu ý: còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "คุณมาเรียนยังไง", vi: "Bạn đến học bằng cách nào?" }
+    - { th: "วันนี้คุณเป็นยังไงบ้าง", vi: "Ngày hôm nay bạn như thế nào?" }
+  source: plernpin-c02#p9
+  draft: true
+- id: g-c02-ki
+  unit_id: c02
+  title_vi: "กี่: Mấy?"
+  pattern: "กี่ + loại từ / đơn vị"
+  explain_vi: "กี่: Mấy? Lưu ý: กี่ còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "คุณพูดได้กี่ภาษา", vi: "Bạn nói được mấy ngôn ngữ?" }
+  source: plernpin-c02#p10
+  draft: true

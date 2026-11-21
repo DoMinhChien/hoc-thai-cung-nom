@@ -1563,3 +1563,19 @@ c03-w307,c03,c03-l13,น้ำมัน,,dầu,,ลิตร,noun,,,,,,plernpin-
 c03-w308,c03,c03-l13,ข้าวหลาม,,cơm lam,,กระบอก,noun,,,,,,plernpin-c03#p13,true
 c03-w309,c03,c03-l13,พลุ,,pháo hoa; pháo sáng,tài liệu ghi cách đọc “p’lú”,ลูก,noun,,,,,,plernpin-c03#p13,true
 c03-w310,c03,c03-l13,ลูกศร,,mũi tên,,ดอก,noun,,,,,,plernpin-c03#p13,true
+c02-w01,c02,c02-l1,ไหม,มั้ย,không?,từ để hỏi cuối câu; มั้ย là cách viết theo văn nói,,particle,,,,,,plernpin-c02#p1,true
+c02-w02,c02,c02-l1,มะ,ม่ะ,không?,"Lưu ý 1: ม่ะ/มะ là cách nói ngắn gọn, thân mật của ไหม, dùng khi chát chít với nhau",,particle,,,,,,plernpin-c02#p1,true
+c02-w03,c02,c02-l1,หรือเปล่า,หรือไม่|รึเปล่า|ป่าว|ป่ะ,không?,Lưu ý 2: หรือไม่/หรือเปล่า/รึเปล่า/ป่าว/ป่ะ đôi khi được dùng thay thế cho ไหม/มั้ย,,phrase,,,,,,plernpin-c02#p2,true
+c02-w04,c02,c02-l1,ใช่ไหม,ใช่ป่ะ|ใช่ป่าว,phải không?,dự đoán được câu trả lời rồi nhưng cần sự khẳng định của người nghe; có thể dùng ใช่ป่ะ/ใช่ป่าว thay thế,,phrase,,,,,,plernpin-c02#p2,true
+c02-w05,c02,c02-l1,บ่อยไหม,,thường xuyên không?,,,phrase,,,,,,plernpin-c02#p2,true
+c02-w06,c02,c02-l2,หรือ,,chứ; à?; hay; hoặc,"cuối câu: chứ, à?; Lưu ý: หรือ = hay/hoặc (câu hỏi lựa chọn)",,particle,,,,,,plernpin-c02#p3,true
+c02-w07,c02,c02-l2,แล้วหรือยัง,หรือยัง|ยัง,chưa?,để hỏi điều gì đó đã xảy ra hay chưa,,phrase,,,,,,plernpin-c02#p4,true
+c02-w08,c02,c02-l2,เคย,,đã từng,เคย … หรือยัง / เคย … ไหม: đã từng … chưa?,,verb,,,,,,plernpin-c02#p4,true
+c02-w09,c02,c02-l3,ใคร,,ai?,"Lưu ý: ใคร còn giống như một đại từ không xác định (ai đó, không ai) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p4,true
+c02-w10,c02,c02-l3,อะไร,,cái gì?,"Lưu ý: อะไร còn giống như một đại từ không xác định (gì cũng…, không có gì) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p6,true
+c02-w11,c02,c02-l3,ที่ไหน,ไหน,ở đâu?; chỗ nào?; đâu?,"Lưu ý: ที่ไหน còn giống như một đại từ không xác định (ở đâu cũng…, chỗ nào đó) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p7,true
+c02-w12,c02,c02-l4,เมื่อไหร่,เมื่อไร|เมื่อใด,khi nào?; bao giờ?,Lưu ý: còn giống như một đại từ không xác định (khi nào … cũng) => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p8,true
+c02-w13,c02,c02-l4,เท่าไหร่,เท่าไร,bao nhiêu?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p9,true
+c02-w14,c02,c02-l4,อย่างไร,ยังไง|เป็นยังไง|เป็นยังไงบ้าง,như thế nào?; bằng cách nào?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p9,true
+c02-w15,c02,c02-l4,ทำไฉน,,làm sao?; làm thế nào?,"tài liệu xếp chung nhóm với อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง",,pron,,,,,,plernpin-c02#p9,true
+c02-w16,c02,c02-l4,กี่,,mấy?,đứng trước loại từ / đơn vị; Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p10,true

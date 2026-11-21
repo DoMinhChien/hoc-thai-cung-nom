@@ -155,3 +155,7 @@ c03-l10,c03,10,Bảng loại từ (trang 10),,true
 c03-l11,c03,11,Bảng loại từ (trang 11),,true
 c03-l12,c03,12,Bảng loại từ (trang 12),,true
 c03-l13,c03,13,Bảng loại từ (trang 13),,true
+c02-l1,c02,1,"ไหม, ใช่ไหม, บ่อยไหม",g-c02-mai|g-c02-chai-mai|g-c02-boi-mai,true
+c02-l2,c02,2,"หรือ, หรือยัง, เคย … หรือยัง",g-c02-rue|g-c02-rue-yang|g-c02-khoei,true
+c02-l3,c02,3,"ใคร, อะไร, ที่ไหน",g-c02-khrai|g-c02-arai|g-c02-thinai,true
+c02-l4,c02,4,"เมื่อไหร่, เท่าไหร่, อย่างไร, กี่",g-c02-muearai|g-c02-thaorai|g-c02-yangrai|g-c02-ki,true
