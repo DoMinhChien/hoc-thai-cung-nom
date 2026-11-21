@@ -836,3 +836,93 @@ b04-w42,b04,b04-l5,ห้อง,,phòng,,,noun,,,,,,plernpin-b04#p48,true
 b04-w43,b04,b04-l5,อายุ,,tuổi,,,noun,,,,,,plernpin-b04#p48,true
 b04-w44,b04,b04-l5,นักศึกษาผู้หญิง,,sinh viên nữ,,,noun,,,,,,plernpin-b04#p49,true
 b04-w45,b04,b04-l5,นักศึกษาผู้ชาย,,sinh viên nam,,,noun,,,,,,plernpin-b04#p49,true
+b03-w01,b03,b03-l1,ศูนย์,,0 (không),số Thái: ๐,,num,,,,,,plernpin-b03#p3,true
+b03-w02,b03,b03-l1,หนึ่ง,,1 (một),số Thái: ๑,,num,,,,,,plernpin-b03#p3,true
+b03-w03,b03,b03-l1,สอง,,2 (hai),số Thái: ๒,,num,,,,,,plernpin-b03#p3,true
+b03-w04,b03,b03-l1,สาม,,3 (ba),số Thái: ๓,,num,,,,,,plernpin-b03#p3,true
+b03-w05,b03,b03-l1,สี่,,4 (bốn),số Thái: ๔,,num,,,,,,plernpin-b03#p4,true
+b03-w06,b03,b03-l1,ห้า,,5 (năm),số Thái: ๕,,num,,,,,,plernpin-b03#p4,true
+b03-w07,b03,b03-l1,หก,,6 (sáu),số Thái: ๖,,num,,,,,,plernpin-b03#p4,true
+b03-w08,b03,b03-l1,เจ็ด,,7 (bảy),số Thái: ๗,,num,,,,,,plernpin-b03#p4,true
+b03-w09,b03,b03-l1,แปด,,8 (tám),số Thái: ๘,,num,,,,,,plernpin-b03#p5,true
+b03-w10,b03,b03-l1,เก้า,,9 (chín),số Thái: ๙,,num,,,,,,plernpin-b03#p5,true
+b03-w11,b03,b03-l1,สิบ,,10 (mười),số Thái: ๑๐,,num,,,,,,plernpin-b03#p5,true
+b03-w12,b03,b03-l2,สิบเอ็ด,,11 (mười một),số Thái: ๑๑,,num,,,,,,plernpin-b03#p5,true
+b03-w13,b03,b03-l2,ยี่สิบ,,20 (hai mươi),số Thái: ๒๐,,num,,,,,,plernpin-b03#p6,true
+b03-w14,b03,b03-l2,ยี่สิบเอ็ด,,21 (hai mươi mốt),số Thái: ๒๑,,num,,,,,,plernpin-b03#p6,true
+b03-w15,b03,b03-l2,หนึ่งร้อย,,100 (một trăm),số Thái: ๑๐๐,,num,,,,,,plernpin-b03#p7,true
+b03-w16,b03,b03-l2,หนึ่งพัน,,1.000 (một nghìn),"số Thái: ๑,๐๐๐",,num,,,,,,plernpin-b03#p9,true
+b03-w17,b03,b03-l2,หนึ่งหมื่น,,10.000 (mười nghìn),"số Thái: ๑๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w18,b03,b03-l2,หนึ่งแสน,,100.000 (một trăm nghìn),"số Thái: ๑๐๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w19,b03,b03-l2,หนึ่งล้าน,,1.000.000 (một triệu),"số Thái: ๑,๐๐๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w20,b03,b03-l2,ล้านล้าน,,1.000.000.000.000 (một nghìn tỷ),"số Thái: ๑,๐๐๐,๐๐๐,๐๐๐,๐๐๐",,num,,,,,,plernpin-b03#p12,true
+b03-w21,b03,b03-l3,จุด,,dấu “.” (khi đọc số),Dấu “.” đọc là จุด,,noun,,,,,,plernpin-b03#p24,true
+b03-w22,b03,b03-l3,ทับ,,dấu “/” (khi đọc số),Dấu “/” đọc là ทับ,,noun,,,,,,plernpin-b03#p24,true
+b03-w23,b03,b03-l3,ถึง,,dấu “-” (khi đọc số); đến,Dấu “-” đọc là ถึง,,prep,,,,,,plernpin-b03#p24,true
+b03-w24,b03,b03-l3,ต่อ,,dấu “:” (khi đọc số),Dấu “:” đọc là ต่อ,,prep,,,,,,plernpin-b03#p24,true
+b03-w25,b03,b03-l3,บ้านเลขที่,,số nhà,,,noun,,,,,,plernpin-b03#p25,true
+b03-w26,b03,b03-l3,เปอร์เซ็นต์,,phần trăm,,,noun,,,,,,plernpin-b03#p28,true
+b03-w27,b03,b03-l3,สตางค์,,xu (stang; 100 สตางค์ = 1 บาท),,,noun,,,,,,plernpin-b03#p34,true
+b03-w28,b03,b03-l3,หมายเลขทางหลวง,,số đường quốc lộ,,,noun,,,,,,plernpin-b03#p35,true
+b03-w29,b03,b03-l3,เศษส่วน,,phân số,,,noun,,,,,,plernpin-b03#p37,true
+b03-w30,b03,b03-l3,ครึ่ง,,một nửa (1/2),,,noun,,,,,,plernpin-b03#p37,true
+b03-w31,b03,b03-l3,ขวบ,,tuổi (trẻ dưới 12 tuổi),,,noun,,,,,,plernpin-b03#p46,true
+b03-w32,b03,b03-l4,เลข,,số,,,noun,,,,,,plernpin-b03#p47,true
+b03-w33,b03,b03-l4,นับ,,đếm,,,verb,,,,,,plernpin-b03#p47,true
+b03-w34,b03,b03-l4,จำนวน,,số lượng,,,noun,,,,,,plernpin-b03#p47,true
+b03-w35,b03,b03-l4,ลำดับที่,,số thứ tự,,,noun,,,,,,plernpin-b03#p47,true
+b03-w36,b03,b03-l4,มาก,,nhiều,,,adj,,,,,,plernpin-b03#p47,true
+b03-w37,b03,b03-l4,น้อย,,ít,,,adj,,,,,,plernpin-b03#p48,true
+b03-w38,b03,b03-l4,เท่ากับ,,bằng với,,,verb,,,,,,plernpin-b03#p48,true
+b03-w39,b03,b03-l4,กี่,,mấy,,,adv,,,,,,plernpin-b03#p48,true
+b03-w40,b03,b03-l4,เท่าไร,,bao nhiêu,,,adv,,,,,,plernpin-b03#p48,true
+b03-w41,b03,b03-l4,คน,,người,,,noun,,,,,,plernpin-b03#p48,true
+b03-w42,b03,b03-l5,มี,,có,,,verb,,,,,,plernpin-b03#p49,true
+b03-w43,b03,b03-l5,ไม่มี,,không có,,,verb,,,,,,plernpin-b03#p49,true
+b03-w44,b03,b03-l5,แรก,,đầu tiên,,,adj,,,,,,plernpin-b03#p49,true
+b03-w45,b03,b03-l5,สุดท้าย,,cuối cùng,,,adj,,,,,,plernpin-b03#p49,true
+b03-w46,b03,b03-l5,บวก,,cộng,,,verb,,,,,,plernpin-b03#p49,true
+b03-w47,b03,b03-l5,ลบ,,trừ,,,verb,,,,,,plernpin-b03#p50,true
+b03-w48,b03,b03-l5,คูณ,,nhân,,,verb,,,,,,plernpin-b03#p50,true
+b03-w49,b03,b03-l5,หาร,,chia,,,verb,,,,,,plernpin-b03#p50,true
+b03-w50,b03,b03-l5,เท่ากัน,,bằng nhau,,,adv,,,,,,plernpin-b03#p50,true
+b03-w51,b03,b03-l5,ส่วนมาก,,phần nhiều; đa số,,,noun,,,,,,plernpin-b03#p50,true
+b03-w52,b03,b03-l6,ส่วนน้อย,,phần ít; thiểu số,,,noun,,,,,,plernpin-b03#p51,true
+b03-w53,b03,b03-l6,เหลือ,,thừa; còn,,,verb,,,,,,plernpin-b03#p51,true
+b03-w54,b03,b03-l6,หมด,,hết,,,verb,,,,,,plernpin-b03#p51,true
+b03-w55,b03,b03-l6,ทั้งหมด,,tất cả,,,adv,,,,,,plernpin-b03#p51,true
+b03-w56,b03,b03-l6,ทั้งสอง,,cả hai,,,pron,,,,,,plernpin-b03#p51,true
+b03-w57,b03,b03-l6,เกิน,,hơn; quá,,,verb,,,,,,plernpin-b03#p52,true
+b03-w58,b03,b03-l6,ขาด,,thiếu,,,verb,,,,,,plernpin-b03#p52,true
+b03-w59,b03,b03-l6,เต็ม,,đầy; tối đa,,,adj,,,,,,plernpin-b03#p52,true
+b03-w60,b03,b03-l6,ครบ,,đủ,,,adj,,,,,,plernpin-b03#p52,true
+b03-w61,b03,b03-l6,ได้,,được,,,verb,,,,,,plernpin-b03#p52,true
+b03-w62,b03,b03-l7,เสีย,,mất; hỏng,,,verb,,,,,,plernpin-b03#p53,true
+b03-w63,b03,b03-l7,ร้อยละ,,phần trăm,,,noun,,,,,,plernpin-b03#p53,true
+b03-w64,b03,b03-l7,ประมาณ,,khoảng,,,adv,,,,,,plernpin-b03#p53,true
+b03-w65,b03,b03-l7,หมายเลข,,số; mã số; số hiệu,,,noun,,,,,,plernpin-b03#p53,true
+b03-w66,b03,b03-l7,เบอร์,,số,,,noun,,,,,,plernpin-b03#p53,true
+b03-w67,b03,b03-l7,โทรศัพท์,โทรศัพท์มือถือ,điện thoại (di động),(มือถือ) = di động,,noun,,,,,,plernpin-b03#p54,true
+b03-w68,b03,b03-l7,ต่อไป,,tiếp theo; kế tiếp,,,adv,,,,,,plernpin-b03#p54,true
+b03-w69,b03,b03-l7,เพิ่ม,,thêm,,,verb,,,,,,plernpin-b03#p54,true
+b03-w70,b03,b03-l7,ลด,,bớt; giảm,,,verb,,,,,,plernpin-b03#p54,true
+b03-w71,b03,b03-l7,เท่า,,gấp … lần,(สอง/สาม) เท่า = gấp 2 / gấp 3 lần,,noun,,,,,,plernpin-b03#p54,true
+b03-w72,b03,b03-l8,นับไม่ถ้วน,,đếm không xuể,,,phrase,,,,,,plernpin-b03#p55,true
+b03-w73,b03,b03-l8,ทุก,,mọi,,,adj,,,,,,plernpin-b03#p55,true
+b03-w74,b03,b03-l8,บาง,,một số; một vài,,,adj,,,,,,plernpin-b03#p55,true
+b03-w75,b03,b03-l8,อีก,,nữa,,,adv,,,,,,plernpin-b03#p55,true
+b03-w76,b03,b03-l8,หลาย,,nhiều,,,adj,,,,,,plernpin-b03#p55,true
+b03-w77,b03,b03-l8,เยอะ,,nhiều,,,adj,,,,,,plernpin-b03#p56,true
+b03-w78,b03,b03-l8,เงิน,,tiền,,,noun,,,,,,plernpin-b03#p56,true
+b03-w79,b03,b03-l8,อายุ,,tuổi,,,noun,,,,,,plernpin-b03#p56,true
+b03-w80,b03,b03-l8,รวม,,tổng cộng,,,verb,,,,,,plernpin-b03#p56,true
+b03-w81,b03,b03-l8,คู่,,đôi; cặp,,,noun,,,,,,plernpin-b03#p56,true
+b03-w82,b03,b03-l9,โหล,,tá; lố,,,noun,,,,,,plernpin-b03#p57,true
+b03-w83,b03,b03-l9,ใหญ่,,lớn; to,,,adj,,,,,,plernpin-b03#p57,true
+b03-w84,b03,b03-l9,เล็ก,,nhỏ; bé,,,adj,,,,,,plernpin-b03#p57,true
+b03-w85,b03,b03-l9,เกินไป,,quá (nhiều),,,adv,,,,,,plernpin-b03#p57,true
+b03-w86,b03,b03-l9,น้ำหนัก,,trọng lượng,,,noun,,,,,,plernpin-b03#p57,true
+b03-w87,b03,b03-l9,เลขไทย,,số Thái,,,noun,,,,,,plernpin-b03#p58,true
+b03-w88,b03,b03-l9,เลขคู่,,số chẵn,,,noun,,,,,,plernpin-b03#p58,true
+b03-w89,b03,b03-l9,เลขคี่,,số lẻ,,,noun,,,,,,plernpin-b03#p58,true
+b03-w90,b03,b03-l9,เบอร์โทรศัพท์,หมายเลขโทรศัพท์,số điện thoại,cũng nói: หมายเลขโทรศัพท์,,noun,,,,,,plernpin-b03#p58,true

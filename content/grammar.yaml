@@ -488,3 +488,130 @@
     - { th: "เดือนอายุน้อยที่สุดในห้องนี้", vi: "Đươn ít tuổi nhất trong phòng này" }
   source: plernpin-b04#p47
   draft: true
+- id: g-b03-et-yi
+  unit_id: b03
+  title_vi: Đọc số 1 ở hàng đơn vị (เอ็ด) và số 2 ở hàng chục (ยี่)
+  pattern: … + เอ็ด (1 ở hàng đơn vị) · ยี่ + สิบ (2 ở hàng chục)
+  explain_vi: Số “1” mà rơi vào hàng đơn vị thì sẽ đọc là “เอ็ด”. Số “2” mà rơi vào hàng chục thì sẽ đọc là “ยี่”.
+  examples:
+    - { th: "สิบเอ็ด", vi: "11" }
+    - { th: "ยี่สิบ", vi: "20" }
+    - { th: "ยี่สิบเอ็ด", vi: "21" }
+    - { th: "หนึ่งร้อยเอ็ด", vi: "101" }
+  source: plernpin-b03#p13
+  draft: true
+- id: g-b03-lak
+  unit_id: b03
+  title_vi: Thứ tự các hàng và đơn vị
+  pattern: สิบ → ร้อย → พัน → หมื่น → แสน → ล้าน → สิบล้าน → ร้อยล้าน → พันล้าน → หมื่นล้าน → แสนล้าน → ล้านล้าน
+  explain_vi: Đọc số lớn theo thứ tự các hàng — chục (สิบ), trăm (ร้อย), nghìn (พัน), chục nghìn (หมื่น), trăm nghìn (แสน), triệu (ล้าน)… Tiếng Thái có từ riêng cho hàng chục nghìn (หมื่น) và trăm nghìn (แสน).
+  examples:
+    - { th: "หนึ่งร้อยยี่สิบสาม", vi: "123" }
+    - { th: "หนึ่งพันสองร้อยสามสิบ", vi: "1,230" }
+    - { th: "หนึ่งพันสามร้อยยี่สิบสี่", vi: "1,324" }
+    - { th: "หนึ่งหมื่นเอ็ด", vi: "10,001" }
+    - { th: "สิบล้าน", vi: "10,000,000" }
+  source: plernpin-b03#p23
+  draft: true
+- id: g-b03-doc-dau
+  unit_id: b03
+  title_vi: Một số quy tắc đọc (จุด, ทับ, ถึง, ต่อ, ที่ + số)
+  pattern: “.” → จุด · “/” → ทับ · “-” → ถึง · “:” → ต่อ · ที่ + con số
+  explain_vi: Dấu “.” đọc là จุด, dấu “/” đọc là ทับ, dấu “-” đọc là ถึง, dấu “:” đọc là ต่อ. ที่ + con số chỉ về số thứ tự.
+  examples:
+    - { th: "ที่หนึ่ง", vi: "Thứ nhất" }
+    - { th: "บ้านเลขที่ 33/551", vi: "Số nhà 33/551 (/ đọc là ทับ)" }
+    - { th: "25-50 เปอร์เซ็นต์", vi: "25-50% (- đọc là ถึง)" }
+  source: plernpin-b03#p24
+  draft: true
+- id: g-b03-ban-lek-thi
+  unit_id: b03
+  title_vi: Đọc số nhà
+  pattern: บ้านเลขที่ + số
+  explain_vi: Số nhà nói บ้านเลขที่ + số; dấu “/” đọc là ทับ.
+  examples:
+    - { th: "บ้านเลขที่ 33/551", vi: "Số nhà 33/551" }
+    - { th: "บ้านเลขที่ 150/7", vi: "Số nhà 150/7" }
+  source: plernpin-b03#p25-26
+  draft: true
+- id: g-b03-zero
+  unit_id: b03
+  title_vi: Số có số 0 dẫn trước
+  pattern: 0 … → đọc từng con số
+  explain_vi: Trong trường hợp mà số nhà có số 0 dẫn trước thì phải đọc theo thứ tự từng con số.
+  examples:
+    - { th: "บ้านเลขที่ 0864/1108", vi: "Số nhà 0864/1108 (đọc từng con số)" }
+  source: plernpin-b03#p27
+  draft: true
+- id: g-b03-percent
+  unit_id: b03
+  title_vi: Đọc phần trăm
+  pattern: Số + เปอร์เซ็นต์
+  explain_vi: Phần trăm nói số + เปอร์เซ็นต์ (cũng nói ร้อยละ + số).
+  examples:
+    - { th: "30 เปอร์เซ็นต์", vi: "30%" }
+    - { th: "25-50 เปอร์เซ็นต์", vi: "25-50%" }
+  source: plernpin-b03#p28-29
+  draft: true
+- id: g-b03-tho
+  unit_id: b03
+  title_vi: Đọc số điện thoại
+  pattern: โทรศัพท์ (โทร.) + Số ĐT
+  explain_vi: Số điện thoại nói โทรศัพท์ hoặc viết tắt โทร. + số điện thoại, đọc từng con số.
+  examples:
+    - { th: "โทรศัพท์ 084 989 1952", vi: "Điện thoại 084 989 1952" }
+    - { th: "โทร. 084 989 1952", vi: "ĐT 084 989 1952" }
+  source: plernpin-b03#p30-31
+  draft: true
+- id: g-b03-thot-sa-niyom
+  unit_id: b03
+  title_vi: Đọc số thập phân (การอ่านตัวเลขที่มีจุดทศนิยม)
+  pattern: số nguyên + จุด + từng con số
+  explain_vi: Các số ở phía trước dấu thập phân được đọc như một số nguyên, còn các số sau dấu thập phân được đọc theo thứ tự từng số một. Lưu ý (GV) — với đơn vị tiền, đo lường thì đọc theo đơn vị nhỏ hơn.
+  examples:
+    - { th: "ห้าบาทเจ็ดสิบห้าสตางค์", vi: "5.75 บาท (5 bạt 75 stang)" }
+    - { th: "สามเมตรห้าสิบแปดเซนติเมตร", vi: "3.58 เมตร (3 m 58 cm)" }
+    - { th: "สองกิโลกรัมสองร้อยห้ากรัม", vi: "2.205 กิโลกรัม (2 kg 205 gam)" }
+  source: plernpin-b03#p32-34
+  draft: true
+- id: g-b03-thang-luang
+  unit_id: b03
+  title_vi: Đọc số đường quốc lộ (การอ่านหมายเลขทางหลวง)
+  pattern: หมายเลขทางหลวง + số (đọc từng con số một)
+  explain_vi: Cách đọc — đọc từng con số một.
+  examples:
+    - { th: "หมายเลขทางหลวง ๒๑", vi: "Quốc lộ 21" }
+    - { th: "หมายเลขทางหลวง ๓๑๔", vi: "Quốc lộ 314" }
+  source: plernpin-b03#p35-36
+  draft: true
+- id: g-b03-set-suan
+  unit_id: b03
+  title_vi: Đọc phân số (เศษส่วน)
+  pattern: เศษ + tử số + ส่วน + mẫu số
+  explain_vi: Phân số thành lập bằng cách thêm เศษ vào trước tử số và thêm ส่วน vào trước mẫu số. Nếu tử số bằng 1 thì เศษ có thể bỏ đi. 1/2 còn có nghĩa là một nửa nên có từ riêng là “ครึ่ง”. Trong một số trường hợp dùng để nhấn mạnh người ta có thể nói 3/4 là “สามในสี่”.
+  examples:
+    - { th: "เศษสองส่วนสาม", vi: "2/3" }
+    - { th: "ครึ่ง", vi: "1/2 (một nửa)" }
+    - { th: "ประชาชนสามในสี่", vi: "3/4 dân số" }
+  source: plernpin-b03#p37-40
+  draft: true
+- id: g-b03-thao
+  unit_id: b03
+  title_vi: Đọc bội số (gấp … lần)
+  pattern: Tính từ / Trạng từ + กว่า + NUMBER + เท่า
+  explain_vi: Nói gấp bao nhiêu lần — tính từ / trạng từ + กว่า + số + เท่า.
+  examples:
+    - { th: "ใหญ่กว่าสามเท่า", vi: "To hơn gấp 3 lần" }
+    - { th: "สนุกกว่าพันเท่า", vi: "Vui hơn gấp ngàn lần" }
+  source: plernpin-b03#p43-44
+  draft: true
+- id: g-b03-ayu
+  unit_id: b03
+  title_vi: Đọc số tuổi (ปี / ขวบ)
+  pattern: S + อายุ + NUMBER (≥ 12) + ปี · S + อายุ + NUMBER (< 12) + ขวบ
+  explain_vi: Từ 12 tuổi trở lên dùng ปี; dưới 12 tuổi dùng ขวบ.
+  examples:
+    - { th: "ฉันอายุยี่สิบปี", vi: "Tôi 20 tuổi" }
+    - { th: "หนูอายุห้าขวบ", vi: "Em 5 tuổi" }
+  source: plernpin-b03#p45-46
+  draft: true

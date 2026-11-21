@@ -100,3 +100,12 @@ b04-l2,b04,2,"Loại từ (2): quần áo, ấm chén, trứng, xe ô tô, đũa
 b04-l3,b04,3,"Loại từ (3): cây, sách, thuốc, đồ uống, xe lửa",,true
 b04-l4,b04,4,"Loại từ (4): công ty, bút, ngón tay, giấy, máy giặt",,true
 b04-l5,b04,5,"So sánh bằng, hơn, nhất; lớp học",g-b04-thao-kap|g-b04-thao-kan|g-b04-kwa|g-b04-thi-sut,true
+b03-l1,b03,1,Số đếm từ 0 đến 10,,true
+b03-l2,b03,2,"Số lớn: mười một, hai mươi, trăm, nghìn, triệu",g-b03-et-yi|g-b03-lak,true
+b03-l3,b03,3,"Đọc số nhà, phần trăm, điện thoại, thập phân, phân số",g-b03-doc-dau|g-b03-ban-lek-thi|g-b03-zero|g-b03-percent|g-b03-tho|g-b03-thot-sa-niyom|g-b03-thang-luang,true
+b03-l4,b03,4,"Số, đếm, số lượng; ít, nhiều, mấy, bao nhiêu",g-b03-set-suan|g-b03-thao|g-b03-ayu,true
+b03-l5,b03,5,"Có, không có; cộng, trừ, nhân, chia",,true
+b03-l6,b03,6,"Thiểu số, còn, hết, tất cả; thừa, thiếu, đủ",,true
+b03-l7,b03,7,"Phần trăm, khoảng, số hiệu; thêm, bớt, gấp",,true
+b03-l8,b03,8,"Đếm không xuể, mọi, một số; tiền, tuổi, tổng cộng",,true
+b03-l9,b03,9,"Tá, to, nhỏ, trọng lượng; số chẵn, số lẻ, số điện thoại",,true
