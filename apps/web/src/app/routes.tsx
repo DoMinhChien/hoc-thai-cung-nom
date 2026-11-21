@@ -18,6 +18,7 @@ import { UnitsPage } from '@/pages/units/UnitsPage';
 import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { HomePage } from '@/pages/home/HomePage';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 
 const page = (path: string, title: MessageKey, testId: string): RouteObject => ({
@@ -78,7 +79,7 @@ export const routes: RouteObject[] = [
         index: true,
         element: (
           <FirstVisitGate>
-            <PlaceholderPage title="pages.dashboard" testId="dashboard" />
+            <HomePage />
           </FirstVisitGate>
         ),
       },
