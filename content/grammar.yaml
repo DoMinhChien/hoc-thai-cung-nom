@@ -949,3 +949,59 @@
     - { th: "ความไม่สะอาด", vi: "Sự bẩn thỉu, sự nhơ nhuốc, sự không sạch sẽ" }
   source: plernpin-c07#p5
   draft: true
+- id: g-c06-hanh-dong
+  unit_id: c06
+  title_vi: "การ + động từ chỉ hành động = danh từ"
+  pattern: "การ + Động từ chỉ hành động = Danh từ"
+  explain_vi: "การ được dùng để thêm vào trước động từ để tạo thành danh từ. Động từ ở đây phải thể hiện hoạt động cụ thể của cơ thể, lời nói hoặc động từ thể hiện tình trạng, tình cảm."
+  examples:
+    - { th: "การกิน", vi: "Việc ăn" }
+    - { th: "การนอน", vi: "Việc ngủ" }
+    - { th: "การเดินทาง", vi: "Việc đi lại, chuyến đi" }
+  source: plernpin-c06#p1
+  draft: true
+- id: g-c06-tinh-cam
+  unit_id: c06
+  title_vi: "การ + động từ chỉ tình trạng, tình cảm = danh từ"
+  pattern: "การ + Động từ chỉ tình trạng, tình cảm = Danh từ"
+  explain_vi: "การ đứng trước động từ chỉ tình trạng, tình cảm cũng tạo thành danh từ (việc …)."
+  examples:
+    - { th: "การรัก", vi: "Việc yêu (một ai đó)" }
+    - { th: "การรู้", vi: "Việc biết (một điều gì)" }
+    - { th: "การพยายาม", vi: "Việc cố gắng (việc nỗ lực làm một cái gì đó)" }
+  source: plernpin-c06#p1
+  draft: true
+- id: g-c06-mot-minh
+  unit_id: c06
+  title_vi: "การ đứng một mình: việc, chuyện, vấn đề"
+  pattern: "การ (đứng một mình)"
+  explain_vi: "การ đứng một mình với nghĩa là “Việc/chuyện/vấn đề”."
+  examples:
+    - { th: "ในการนี้", vi: "Trong chuyện này, trong vấn đề này" }
+    - { th: "เป็นการยาก", vi: "Là việc khó, là vấn đề khó" }
+    - { th: "การนี้ต้องทำให้สำเร็จ", vi: "Việc này phải làm cho thành công" }
+  source: plernpin-c06#p3
+  draft: true
+- id: g-c06-hau-to
+  unit_id: c06
+  title_vi: "การ làm hậu tố trong từ gốc Phạn"
+  pattern: "… + การ"
+  explain_vi: "การ còn được sử dụng như thành phần hậu tố trong việc pha trộn ngôn ngữ gốc phạn."
+  examples:
+    - { th: "กรรมการ", vi: "Hội đồng, ban giám khảo (chấm thi)/ủy viên, thành viên trong ban quản trị (ban tổ chức, ban quản lý)" }
+    - { th: "กิจการ", vi: "Công việc kinh doanh, doanh nghiệp, cơ sở làm ăn" }
+    - { th: "โครงการ", vi: "Dự án, đề án" }
+  source: plernpin-c06#p4
+  draft: true
+- id: g-c06-danh-tu
+  unit_id: c06
+  title_vi: "การ + danh từ: từ với nghĩa hoàn toàn khác"
+  pattern: "การ + danh từ"
+  explain_vi: "การ còn đứng trước danh từ làm tiền tố để dẫn xuất danh từ đó thành một từ với nghĩa hoàn toàn khác. Trường hợp này không được xếp vào nhóm “biến đổi từ động từ thành danh từ bằng cách thêm tiền tố การ”."
+  examples:
+    - { th: "การบ้าน", vi: "Bài tập về nhà" }
+    - { th: "การเมือง", vi: "Chính trị" }
+    - { th: "การศึกษา", vi: "Giáo dục, nền giáo dục" }
+    - { th: "การเงิน", vi: "Tài chính" }
+  source: plernpin-c06#p4
+  draft: true

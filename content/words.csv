@@ -1165,3 +1165,69 @@ c07-w69,c07,c07-l5,ความแพ่ง,,dân sự,,,noun,,,,,,plernpin-c07#
 c07-w70,c07,c07-l5,ความอาญา,,hình sự,,,noun,,,,,,plernpin-c07#p5,true
 c07-w71,c07,c07-l5,ความไม่จริง,,không đúng sự thật,,,noun,,,,,,plernpin-c07#p6,true
 c07-w72,c07,c07-l5,ความไม่สะอาด,,sự bẩn thỉu; sự nhơ nhuốc; sự không sạch sẽ,,,noun,,,,,,plernpin-c07#p6,true
+c06-w01,c06,c06-l1,การกิน,,việc ăn,,,noun,,,,,,plernpin-c06#p1,true
+c06-w02,c06,c06-l1,การนอน,,việc ngủ,,,noun,,,,,,plernpin-c06#p1,true
+c06-w03,c06,c06-l1,การเดินทาง,,việc đi lại; chuyến đi,,,noun,,,,,,plernpin-c06#p1,true
+c06-w04,c06,c06-l1,การรัก,,việc yêu,một ai đó,,noun,,,,,,plernpin-c06#p1,true
+c06-w05,c06,c06-l1,การรู้,,việc biết,một điều gì,,noun,,,,,,plernpin-c06#p1,true
+c06-w06,c06,c06-l1,การเกลียด,,việc ghét,một ai đó,,noun,,,,,,plernpin-c06#p1,true
+c06-w07,c06,c06-l1,การคิด,,việc nghĩ,,,noun,,,,,,plernpin-c06#p1,true
+c06-w08,c06,c06-l1,การคิดถึง,,việc nhớ,,,noun,,,,,,plernpin-c06#p1,true
+c06-w09,c06,c06-l1,การฝัน,,việc mơ,,,noun,,,,,,plernpin-c06#p1,true
+c06-w10,c06,c06-l1,การโกรธ,,việc giận,,,noun,,,,,,plernpin-c06#p1,true
+c06-w11,c06,c06-l1,การพยายาม,,việc cố gắng,việc nỗ lực làm một cái gì đó,,noun,,,,,,plernpin-c06#p1,true
+c06-w12,c06,c06-l2,การบิน,,việc bay; hàng không,,,noun,,,,,,plernpin-c06#p2,true
+c06-w13,c06,c06-l2,การรบ,,việc chiến đấu; trận chiến,,,noun,,,,,,plernpin-c06#p2,true
+c06-w14,c06,c06-l2,การช่วยเหลือ,,việc giúp đỡ; sự giúp đỡ,,,noun,,,,,,plernpin-c06#p2,true
+c06-w15,c06,c06-l2,การตรวจ,,việc kiểm tra,,,noun,,,,,,plernpin-c06#p2,true
+c06-w16,c06,c06-l2,การจัดการ,,việc quản lý; sự quản lý; việc xử lý; việc giải quyết,,,noun,,,,,,plernpin-c06#p2,true
+c06-w17,c06,c06-l2,การใช้,,việc sử dụng,,,noun,,,,,,plernpin-c06#p2,true
+c06-w18,c06,c06-l2,การปราศรัย,,việc trình bày; việc diễn thuyết; việc phát biểu,,,noun,,,,,,plernpin-c06#p2,true
+c06-w19,c06,c06-l2,การเจรจา,,việc đàm phán; việc thương lượng,,,noun,,,,,,plernpin-c06#p2,true
+c06-w20,c06,c06-l2,การตกแต่ง,,việc trang trí; sự trang trí,,,noun,,,,,,plernpin-c06#p2,true
+c06-w21,c06,c06-l2,การพัฒนา,,việc phát triển; sự phát triển,,,noun,,,,,,plernpin-c06#p2,true
+c06-w22,c06,c06-l2,การผลิต,,việc sản xuất; việc chế tạo,,,noun,,,,,,plernpin-c06#p2,true
+c06-w23,c06,c06-l2,การค้นคว้า,,việc nghiên cứu; việc tìm tòi học hỏi,,,noun,,,,,,plernpin-c06#p2,true
+c06-w24,c06,c06-l2,การท่องเที่ยว,,việc du lịch,,,noun,,,,,,plernpin-c06#p2,true
+c06-w25,c06,c06-l2,การดูแล,,việc chăm sóc,,,noun,,,,,,plernpin-c06#p2,true
+c06-w26,c06,c06-l2,การรักษา,,việc điều trị; việc chữa trị,,,noun,,,,,,plernpin-c06#p2,true
+c06-w27,c06,c06-l2,การฝึกฝน,,việc rèn luyện; việc luyện tập,,,noun,,,,,,plernpin-c06#p2,true
+c06-w28,c06,c06-l2,การค้าขาย,,việc buôn bán,,,noun,,,,,,plernpin-c06#p2,true
+c06-w29,c06,c06-l2,การก่อสร้าง,,việc xây dựng,,,noun,,,,,,plernpin-c06#p2,true
+c06-w30,c06,c06-l2,การปฏิรูป,,sự cải cách; sự cải tổ,,,noun,,,,,,plernpin-c06#p2,true
+c06-w31,c06,c06-l3,การปฏิบัติ,,việc thực hiện; việc thực hành; việc thi hành,,,noun,,,,,,plernpin-c06#p3,true
+c06-w32,c06,c06-l3,การกระทำ,,việc làm; hành động,,,noun,,,,,,plernpin-c06#p3,true
+c06-w33,c06,c06-l3,การปฏิวัติ,,cuộc cách mạng,"ปฏิวัติ: lật đổ, đạp đổ",,noun,,,,,,plernpin-c06#p3,true
+c06-w34,c06,c06-l3,การดื่มน้ำ,,việc uống nước,,,noun,,,,,,plernpin-c06#p3,true
+c06-w35,c06,c06-l3,การเลี้ยงลูก,,việc nuôi con,,,noun,,,,,,plernpin-c06#p3,true
+c06-w36,c06,c06-l3,การทำอาหาร,,việc nấu ăn,,,noun,,,,,,plernpin-c06#p3,true
+c06-w37,c06,c06-l3,การร้องเพลง,,việc hát,,,noun,,,,,,plernpin-c06#p3,true
+c06-w38,c06,c06-l3,การออกเสียง,,việc phát âm,,,noun,,,,,,plernpin-c06#p3,true
+c06-w39,c06,c06-l3,การสอน,,việc dạy; giảng dạy,,,noun,,,,,,plernpin-c06#p3,true
+c06-w40,c06,c06-l3,การพักผ่อน,,việc nghỉ ngơi; sự nghỉ ngơi,,,noun,,,,,,plernpin-c06#p3,true
+c06-w41,c06,c06-l3,การเล่น,,việc chơi,,,noun,,,,,,plernpin-c06#p3,true
+c06-w42,c06,c06-l3,การทำงาน,,việc làm; sự làm việc,,,noun,,,,,,plernpin-c06#p3,true
+c06-w43,c06,c06-l3,การพูด,,việc nói; kỹ năng nói,,,noun,,,,,,plernpin-c06#p3,true
+c06-w44,c06,c06-l3,การขับรถ,,việc lái xe,,,noun,,,,,,plernpin-c06#p3,true
+c06-w45,c06,c06-l3,การแสดง,,việc biểu diễn; sự biểu diễn,,,noun,,,,,,plernpin-c06#p3,true
+c06-w46,c06,c06-l4,การ,,việc; chuyện; vấn đề,khi đứng một mình,,noun,,,,,,plernpin-c06#p3,true
+c06-w47,c06,c06-l4,กรรมการ,,hội đồng; ban giám khảo; ủy viên; thành viên trong ban quản trị,"ban giám khảo (chấm thi); ban quản trị (ban tổ chức, ban quản lý)",,noun,,,,,,plernpin-c06#p4,true
+c06-w48,c06,c06-l4,กิจการ,,công việc kinh doanh; doanh nghiệp; cơ sở làm ăn,,,noun,,,,,,plernpin-c06#p4,true
+c06-w49,c06,c06-l4,โครงการ,,dự án; đề án,,,noun,,,,,,plernpin-c06#p4,true
+c06-w50,c06,c06-l4,การบ้าน,,bài tập về nhà,,,noun,,,,,,plernpin-c06#p4,true
+c06-w51,c06,c06-l4,การเมือง,,chính trị,,,noun,,,,,,plernpin-c06#p4,true
+c06-w52,c06,c06-l4,การศึกษา,,giáo dục; nền giáo dục,,,noun,,,,,,plernpin-c06#p4,true
+c06-w53,c06,c06-l4,การไฟฟ้า,,điện lực; điện thế,,,noun,,,,,,plernpin-c06#p4,true
+c06-w54,c06,c06-l4,การรถไฟ,,đường sắt,,,noun,,,,,,plernpin-c06#p4,true
+c06-w55,c06,c06-l4,การตลาด,,marketing; ngành tiếp thị,,,noun,,,,,,plernpin-c06#p4,true
+c06-w56,c06,c06-l4,การกีฬา,,ngành thể thao,,,noun,,,,,,plernpin-c06#p4,true
+c06-w57,c06,c06-l4,การทหาร,,quân đội; lực lượng vũ trang,,,noun,,,,,,plernpin-c06#p4,true
+c06-w58,c06,c06-l4,การแพทย์,,y học; y khoa; ngành y,,,noun,,,,,,plernpin-c06#p4,true
+c06-w59,c06,c06-l4,การป่าไม้,,lâm nghiệp,"công việc trồng rừng, công việc quản lý rừng",,noun,,,,,,plernpin-c06#p5,true
+c06-w60,c06,c06-l4,การงาน,,công việc; nhiệm vụ,,,noun,,,,,,plernpin-c06#p5,true
+c06-w61,c06,c06-l4,การเงิน,,tài chính,,,noun,,,,,,plernpin-c06#p5,true
+c06-w62,c06,c06-l4,การพาณิชย์,,thương mại; ngành thương mại,,,noun,,,,,,plernpin-c06#p5,true
+c06-w63,c06,c06-l4,การอุตสาหกรรม,,ngành công nghiệp,,,noun,,,,,,plernpin-c06#p5,true
+c06-w64,c06,c06-l4,การอาหาร,,ngành thực phẩm,,,noun,,,,,,plernpin-c06#p5,true
+c06-w65,c06,c06-l4,การช่าง,,kỹ thuật; các công việc kỹ thuật; nghề thợ; nghề thủ công; nghề cơ khí,,,noun,,,,,,plernpin-c06#p5,true
+c06-w66,c06,c06-l4,การธนาคาร,,ngành ngân hàng,,,noun,,,,,,plernpin-c06#p5,true

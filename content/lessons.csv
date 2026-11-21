@@ -133,3 +133,7 @@ c07-l2,c07,2,ความ + tính từ,g-c07-tinh-tu,true
 c07-l3,c07,3,Tổng hợp danh từ với ความ (1),g-c07-dong-tu|g-c07-tinh-tu,true
 c07-l4,c07,4,Tổng hợp danh từ với ความ (2),g-c07-dong-tu|g-c07-tinh-tu,true
 c07-l5,c07,5,ความ + danh từ; ความ + phủ định,g-c07-danh-tu|g-c07-phu-dinh,true
+c06-l1,c06,1,การ + động từ,g-c06-hanh-dong|g-c06-tinh-cam,true
+c06-l2,c06,2,Tổng hợp danh từ với การ (1),g-c06-hanh-dong,true
+c06-l3,c06,3,Tổng hợp danh từ với การ (2),g-c06-hanh-dong,true
+c06-l4,c06,4,"การ đứng một mình, hậu tố gốc Phạn, การ + danh từ",g-c06-mot-minh|g-c06-hau-to|g-c06-danh-tu,true
