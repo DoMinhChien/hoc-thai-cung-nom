@@ -24,7 +24,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useUnitTopic } from '@/components/fun';
 import { useUnit } from '@/content/hooks';
 import { unitLabel } from '@/content/labels';
-import { useRepositories, useRepositoryQuery } from '@/data';
+import { useRepositories, useRepositoryQuery, useStudySession } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { Badge, LoadError } from './parts';
@@ -97,6 +97,7 @@ function Lesson({
   const navigate = useNavigate();
   const repos = useRepositories();
   const [step, setStep] = useState<LessonStep | 'finished' | undefined>(initial);
+  useStudySession('lesson', step !== 'finished');
   const exit = () => navigate(`/units/${bundle.unit.unit_id}`);
   const steps = lesson.steps;
   const index = typeof step === 'string' ? steps.indexOf(step as LessonStep) : -1;

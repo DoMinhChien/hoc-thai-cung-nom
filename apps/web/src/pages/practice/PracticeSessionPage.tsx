@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useStudySession } from '@/data';
 import { t } from '@/i18n';
 import { PracticeResult } from './PracticeResult';
 import { PracticeRunner, type PracticeSummary } from './PracticeRunner';
@@ -90,6 +91,7 @@ function Session({
   params: URLSearchParams;
   voice: boolean;
 }) {
+  useStudySession('practice');
   const navigate = useNavigate();
   const [questions] = useState(() => {
     const { mode, size } = modeOf(params, data);
