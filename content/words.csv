@@ -1061,3 +1061,35 @@ c10-w28,c10,c10-l2,ขี้โกหก,,hay nói điêu; hay nói dối,,,adj,
 c10-w29,c10,c10-l2,ขี้โกรธ,,hay nổi giận; dễ nổi giận,,,adj,,,,,,plernpin-c10#p2,true
 c10-w30,c10,c10-l2,ขี้โมโห,,hay nổi nóng; hay nóng tính; dễ cáu,,,adj,,,,,,plernpin-c10#p2,true
 c10-w31,c10,c10-l2,ขี้งอน,,hay hờn dỗi; hay giận hờn,,,adj,,,,,,plernpin-c10#p2,true
+c09-w01,c09,c09-l1,ใจกว้าง,,rộng rãi; hào phóng; rộng lượng,,,adj,,,,,,plernpin-c09#p1,true
+c09-w02,c09,c09-l1,ใจแคบ,,hẹp hòi; nhỏ nhen,,,adj,,,,,,plernpin-c09#p1,true
+c09-w03,c09,c09-l1,ใจร้อน,,nóng tính; thiếu kiên nhẫn,,,adj,,,,,,plernpin-c09#p1,true
+c09-w04,c09,c09-l1,ใจเย็น,,bình tĩnh,,,adj,,,,,,plernpin-c09#p1,true
+c09-w05,c09,c09-l1,ใจแข็ง,,cứng rắn; kiên định; không dễ dàng bị khuất phục,,,adj,,,,,,plernpin-c09#p1,true
+c09-w06,c09,c09-l1,ใจอ่อน,,dễ mềm lòng; hay nhân nhượng,,,adj,,,,,,plernpin-c09#p1,true
+c09-w07,c09,c09-l1,ใจดำ,ใจร้าย,độc ác; tàn nhẫn,ใจดำ = ใจร้าย,,adj,,,,,,plernpin-c09#p1,true
+c09-w08,c09,c09-l1,ใจดี,,tốt bụng,,,adj,,,,,,plernpin-c09#p1,true
+c09-w09,c09,c09-l1,ใจลอย,,lơ đễnh; mất tập trung; tâm trí để đâu đâu; hồn bay phách lạc,,,adj,,,,,,plernpin-c09#p1,true
+c09-w10,c09,c09-l2,เบาใจ,,yên tâm; an tâm; nhẹ nhõm; nhẹ lòng,,,adj,,,,,,plernpin-c09#p1,true
+c09-w11,c09,c09-l2,หนักใจ,,nặng lòng; bận tâm; canh cánh trong lòng; cắn rứt,,,adj,,,,,,plernpin-c09#p1,true
+c09-w12,c09,c09-l2,ชื่นใจ,,sảng khoái; khoan khoái,,,adj,,,,,,plernpin-c09#p1,true
+c09-w13,c09,c09-l2,สบายใจ,,thoải mái trong lòng,,,adj,,,,,,plernpin-c09#p1,true
+c09-w14,c09,c09-l2,ภูมิใจ,,tự hào; hãnh diện,,,adj,,,,,,plernpin-c09#p1,true
+c09-w15,c09,c09-l2,นอกใจ,,phản bội; ngoại tình; không chung thủy,,,verb,,,,,,plernpin-c09#p1,true
+c09-w16,c09,c09-l2,พอใจ,,hài lòng; mãn nguyện; vừa ý,,,adj,,,,,,plernpin-c09#p1,true
+c09-w17,c09,c09-l2,ตกใจ,,giật mình; hoảng hốt; hoảng sợ,,,verb,,,,,,plernpin-c09#p1,true
+c09-w18,c09,c09-l2,มั่นใจ,,tự tin,,,adj,,,,,,plernpin-c09#p1,true
+c09-w19,c09,c09-l2,แน่ใจ,,chắc chắn,,,adj,,,,,,plernpin-c09#p1,true
+c09-w20,c09,c09-l2,เสียใจ,,buồn; đau lòng; hối tiếc; lấy làm tiếc; tổn thương,,,adj,,,,,,plernpin-c09#p1,true
+c09-w21,c09,c09-l3,เอาใจ,,lấy lòng; chiều lòng; nịnh,,,verb,,,,,,plernpin-c09#p2,true
+c09-w22,c09,c09-l3,ตัดสินใจ,,quyết định; đưa ra quyết định,,,verb,,,,,,plernpin-c09#p2,true
+c09-w23,c09,c09-l3,ตั้งใจ,,tập trung; quyết tâm; chăm chú,,,verb,,,,,,plernpin-c09#p2,true
+c09-w24,c09,c09-l3,สนใจ,,quan tâm; hứng thú,thích nên có ý định tìm hiểu,,verb,,,,,,plernpin-c09#p2,true
+c09-w25,c09,c09-l3,เกรงใจ,,e; e ngại rằng,"khép nép vì nể nang, không dám làm phiền",,verb,,,,,,plernpin-c09#p2,true
+c09-w26,c09,c09-l3,ตามใจ,,nuông chiều; chiều chuộng,,,verb,,,,,,plernpin-c09#p2,true
+c09-w27,c09,c09-l3,เจ็บใจ,,đau lòng,"mang sắc thái uất ức, tức nghẹn",,adj,,,,,,plernpin-c09#p2,true
+c09-w28,c09,c09-l3,กลุ้มใจ,,phiền lòng; phiền muộn; ưu phiền,lòng nặng trĩu vì lo lắng hoặc bận tâm đến một vấn đề gì đó,,adj,,,,,,plernpin-c09#p2,true
+c09-w29,c09,c09-l3,เปลี่ยนใจ,,đổi ý,,,verb,,,,,,plernpin-c09#p2,true
+c09-w30,c09,c09-l3,แปลกใจ,,ngạc nhiên; bất ngờ,,,adj,,,,,,plernpin-c09#p2,true
+c09-w31,c09,c09-l3,ไว้ใจ,,tin tưởng; tin cậy,,,verb,,,,,,plernpin-c09#p2,true
+c09-w32,c09,c09-l3,หายใจ,,thở; hít thở,,,verb,,,,,,plernpin-c09#p2,true

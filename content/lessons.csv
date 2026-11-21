@@ -123,3 +123,6 @@ c11-l1,c11,1,Các trường hợp của น่า (1),g-c11-na,true
 c11-l2,c11,2,Các trường hợp của น่า (2),g-c11-na|g-c11-mai-na,true
 c10-l1,c10,1,Các trường hợp của ขี้ (1),g-c10-khi-n|g-c10-khi-tinh,true
 c10-l2,c10,2,Các trường hợp của ขี้ (2),g-c10-khi-tinh,true
+c09-l1,c09,1,ใจ + … (tính cách),g-c09-jai-truoc,true
+c09-l2,c09,2,… + ใจ (cảm xúc) (1),g-c09-jai-sau,true
+c09-l3,c09,3,… + ใจ (cảm xúc) (2),g-c09-jai-sau,true

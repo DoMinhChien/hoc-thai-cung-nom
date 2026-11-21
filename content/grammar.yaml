@@ -862,3 +862,25 @@
     - { th: "ขี้หึง", vi: "Hay ghen, dễ ghen" }
   source: plernpin-c10#p1
   draft: true
+- id: g-c09-jai-truoc
+  unit_id: c09
+  title_vi: "ใจ + tính từ: tính cách"
+  pattern: "ใจ + tính từ"
+  explain_vi: "ใจ (lòng, tâm) đứng trước tính từ tạo từ chỉ tính cách, tâm tính: ใจกว้าง (rộng lượng), ใจแคบ (hẹp hòi), ใจร้อน (nóng tính), ใจเย็น (bình tĩnh), ใจแข็ง (cứng rắn), ใจอ่อน (dễ mềm lòng), ใจดำ = ใจร้าย (độc ác), ใจดี (tốt bụng), ใจลอย (lơ đễnh)."
+  examples:
+    - { th: "ใจกว้าง", vi: "Rộng rãi, hào phóng, rộng lượng" }
+    - { th: "ใจเย็น", vi: "Bình tĩnh" }
+    - { th: "ใจดี", vi: "Tốt bụng" }
+  source: plernpin-c09#p1
+  draft: true
+- id: g-c09-jai-sau
+  unit_id: c09
+  title_vi: "Động từ / tính từ + ใจ: cảm xúc, trạng thái"
+  pattern: "động từ / tính từ + ใจ"
+  explain_vi: "ใจ đứng sau động từ hoặc tính từ tạo từ chỉ cảm xúc, trạng thái của lòng: เบาใจ (yên tâm), สบายใจ (thoải mái trong lòng), ภูมิใจ (tự hào), พอใจ (hài lòng), ตกใจ (giật mình), เสียใจ (buồn), ตัดสินใจ (quyết định), ตั้งใจ (tập trung), เปลี่ยนใจ (đổi ý), ไว้ใจ (tin tưởng)…"
+  examples:
+    - { th: "สบายใจ", vi: "Thoải mái trong lòng" }
+    - { th: "ภูมิใจ", vi: "Tự hào, hãnh diện" }
+    - { th: "ตัดสินใจ", vi: "Quyết định, đưa ra quyết định" }
+  source: plernpin-c09#p1
+  draft: true
