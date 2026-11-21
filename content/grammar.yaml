@@ -686,3 +686,13 @@
     - { th: "อย่ามาพูดแบบนี้นะ", vi: "Đừng nói kiểu này nhé (đang xảy ra)" }
   source: plernpin-c15#p4
   draft: true
+- id: g-c14-som
+  unit_id: c14
+  title_vi: "Cách sử dụng của từ สม"
+  pattern: "สม + …"
+  explain_vi: "Các từ ghép với สม: สมน้ำหน้า (đáng đời), สมพรปาก (mong được như bạn nói, mong ứng nghiệm như bạn nói), สมหวัง (đạt được ý nguyện — ได้อย่างที่หวัง), สมควร (xứng đáng, đáng, nên), สมบูรณ์ (hoàn chỉnh, trọn vẹn, đầy đặn, hoàn hảo), สมเหตุสมผล (hợp lý, có lý — có lý do chính đáng = มีเหตุผลที่ดี), สมรู้ร่วมคิด (âm mưu, hiệp lực), สมส่วน (cân đối, cân xứng)."
+  examples:
+    - { th: "สมน้ำหน้า", vi: "Đáng đời" }
+    - { th: "สมพรปาก", vi: "Mong được như bạn nói" }
+  source: plernpin-c14#p1
+  draft: true
