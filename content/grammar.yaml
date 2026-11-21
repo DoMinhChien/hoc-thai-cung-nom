@@ -97,13 +97,75 @@
     - { th: "พระสมชาย", vi: "Sư Somchai (พระ + pháp danh)" }
   source: plernpin-c01#p3
   draft: true
+- id: g-b10-thao-rai
+  unit_id: b10
+  title_vi: Hỏi giá (… ราคาเท่าไร)
+  pattern: Danh từ (+ loại từ + นี้) + (ราคา) + เท่าไร
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi giá một món hàng: đặt เท่าไร (bao nhiêu) cuối câu, có thể thêm ราคา (giá) phía trước. Trả lời: (ราคา) + số + บาท. Văn nói thường đọc/viết เท่าไหร่."
+  examples:
+    - { th: "เสื้อตัวนี้ราคาเท่าไรครับ", vi: "Cái áo này giá bao nhiêu ạ?" }
+    - { th: "ราคาสามร้อยบาทค่ะ", vi: "Giá 300 bạt ạ." }
+    - { th: "รองเท้าคู่นี้เท่าไรคะ", vi: "Đôi giày này bao nhiêu ạ?" }
+    - { th: "ทั้งหมดเท่าไรครับ", vi: "Tất cả bao nhiêu ạ?" }
+  source: claude-b10
+  draft: true
+- id: g-b10-lot
+  unit_id: b10
+  title_vi: Mặc cả (ลด … ได้ไหม)
+  pattern: ลด (+ หน่อย / ให้หน่อย) + ได้ไหม
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Xin giảm giá khi mua hàng ở chợ, cửa hàng nhỏ. หน่อย (một chút) làm câu nhẹ nhàng hơn; ลดให้เหลือ + giá = giảm còn …. Người bán đồng ý: ลดให้ได้; không giảm: ลดไม่ได้."
+  examples:
+    - { th: "ลดได้ไหมครับ", vi: "Giảm giá được không ạ?" }
+    - { th: "แพงไป ลดหน่อยได้ไหมคะ", vi: "Đắt quá, giảm một chút được không ạ?" }
+    - { th: "ลดให้เหลือสองร้อยบาทได้ไหมครับ", vi: "Giảm còn 200 bạt được không ạ?" }
+    - { th: "ลดไม่ได้ค่ะ", vi: "Không giảm được ạ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-khor
+  unit_id: b10
+  title_vi: Mua theo số lượng (ขอ/เอา + Danh từ + số + loại từ)
+  pattern: ขอ / เอา + Danh từ + số + loại từ (ลูก, ตัว, ขวด…) / đơn vị (กิโล)
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói muốn mua bao nhiêu: số đếm đứng SAU danh từ, theo sau là loại từ hoặc đơn vị đo. ขอ (xin) lịch sự hơn, เอา (lấy) thân mật hơn. Nửa cân: ครึ่งกิโล."
+  examples:
+    - { th: "ขอมะพร้าวสองลูกครับ", vi: "Cho tôi hai quả dừa." }
+    - { th: "เอาเนื้อหมูหนึ่งกิโลค่ะ", vi: "Lấy cho tôi một cân thịt lợn." }
+    - { th: "ขอน้ำปลาหนึ่งขวดครับ", vi: "Cho tôi một chai nước mắm." }
+    - { th: "ขอถั่วงอกครึ่งกิโลค่ะ", vi: "Cho tôi nửa cân giá đỗ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-mi-mai
+  unit_id: b10
+  title_vi: Hỏi có hàng không (มี … ไหม)
+  pattern: มี + Danh từ (+ tính từ / อื่น / กว่านี้) + ไหม
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi cửa hàng có món, cỡ, màu, kiểu mình cần không. อื่น = khác (สีอื่น màu khác, แบบอื่น mẫu khác); ใหญ่กว่านี้ / เล็กกว่านี้ = lớn hơn / nhỏ hơn cái này. Trả lời: มีครับ/ค่ะ hoặc ไม่มีครับ/ค่ะ."
+  examples:
+    - { th: "มีไซส์ใหญ่กว่านี้ไหมครับ", vi: "Có cỡ lớn hơn cái này không ạ?" }
+    - { th: "มีสีอื่นไหมคะ", vi: "Có màu khác không ạ?" }
+    - { th: "มีแบบอื่นไหมครับ", vi: "Có mẫu khác không ạ?" }
+    - { th: "ไม่มีค่ะ", vi: "Không có ạ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-chai
+  unit_id: b10
+  title_vi: Thanh toán (จ่าย + ด้วย/เป็น + cách trả)
+  pattern: จ่าย + ด้วย / เป็น + เงินสด / บัตรเครดิต (+ ได้ไหม)
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói hoặc hỏi cách trả tiền: จ่ายด้วย… / จ่ายเป็น… = trả bằng …. Hỏi cửa hàng có nhận thẻ không: รับบัตรเครดิตไหม."
+  examples:
+    - { th: "จ่ายด้วยบัตรเครดิตได้ไหมคะ", vi: "Trả bằng thẻ tín dụng được không ạ?" }
+    - { th: "ผมจะจ่ายเป็นเงินสดครับ", vi: "Tôi sẽ trả bằng tiền mặt." }
+    - { th: "รับบัตรเครดิตไหมครับ", vi: "Có nhận thẻ tín dụng không ạ?" }
+  source: claude-b10
+  draft: true
 - id: g-b10-la
   unit_id: b10
   title_vi: Mỗi … (Danh từ + ละ)
   pattern: Danh từ + ละ
-  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …".
+  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …". Hay dùng khi nói giá theo đơn vị — กิโลละ … (mỗi cân …), ตัวละ … (mỗi cái …). Ví dụ 1 của GV; ví dụ 2–4 Claude soạn, cần GV duyệt.
   examples:
     - { th: "คนละ", vi: "Mỗi người" }
+    - { th: "มะม่วงกิโลละเท่าไรครับ", vi: "Xoài mỗi cân bao nhiêu ạ?" }
+    - { th: "กิโลละหกสิบบาทค่ะ", vi: "60 bạt một cân ạ." }
+    - { th: "เสื้อตัวละสามร้อยบาท", vi: "Áo 300 bạt mỗi cái." }
   source: plernpin-b10#p38
   draft: true
 - id: g-b09-khoei

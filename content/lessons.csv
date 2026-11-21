@@ -29,19 +29,19 @@ b11-l5,b11,5,Tham quan chùa Phật Ngọc,,true
 b11-l6,b11,6,Đi chợ nổi,,true
 b11-l7,b11,7,Hỏi đường đến ngân hàng,,true
 b11-l8,b11,8,Hỏi tuyến xe buýt,,true
-b10-l1,b10,1,Quần áo và giày dép,,true
-b10-l2,b10,2,Phụ kiện và đồ dùng,,true
-b10-l3,b10,3,Trái cây (1),,true
-b10-l4,b10,4,Trái cây (2),,true
-b10-l5,b10,5,Thịt và hải sản,,true
-b10-l6,b10,6,Rau (1),,true
-b10-l7,b10,7,Rau (2),,true
-b10-l8,b10,8,Rau (3),,true
-b10-l9,b10,9,Gia vị,,true
-b10-l10,b10,10,Đi mua sắm,,true
-b10-l11,b10,11,Thanh toán và giao hàng,,true
-b10-l12,b10,12,"Hóa đơn, chợ và siêu thị",,true
-b10-l13,b10,13,"Chọn hàng: loại, kiểu, cỡ",g-b10-la,true
+b10-l1,b10,1,Quần áo và giày dép,g-b10-thao-rai,true
+b10-l2,b10,2,Phụ kiện và đồ dùng,g-b10-lot,true
+b10-l3,b10,3,Trái cây (1),g-b10-la,true
+b10-l4,b10,4,Trái cây (2),g-b10-khor,true
+b10-l5,b10,5,Thịt và hải sản,g-b10-khor,true
+b10-l6,b10,6,Rau (1),g-b10-thao-rai,true
+b10-l7,b10,7,Rau (2),g-b10-la,true
+b10-l8,b10,8,Rau (3),g-b10-mi-mai,true
+b10-l9,b10,9,Gia vị,g-b10-khor,true
+b10-l10,b10,10,Đi mua sắm,g-b10-lot,true
+b10-l11,b10,11,Thanh toán và giao hàng,g-b10-chai,true
+b10-l12,b10,12,"Hóa đơn, chợ và siêu thị",g-b10-chai,true
+b10-l13,b10,13,"Chọn hàng: loại, kiểu, cỡ",g-b10-mi-mai|g-b10-la,true
 b09-l1,b09,1,Nhà hàng và thực đơn,g-b09-kho,true
 b09-l2,b09,2,Bát đĩa và món Thái,g-b09-mai-phet,true
 b09-l3,b09,3,Món Thái và món Âu,g-b09-ao,true
