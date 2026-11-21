@@ -309,7 +309,7 @@ function MatchQuestion({ question, answered, onAnswer }: QuestionViewProps & { q
   };
   const matchedRight = new Set(question.pairs.filter((p) => done.has(p.left)).map((p) => p.right));
   const cell =
-    'min-h-14 rounded-lg border-2 px-3 py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default motion-safe:transition-colors';
+    'min-h-14 rounded-xl border-2 bg-surface px-3 py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default motion-safe:transition-colors';
   return (
     <div className="grid grid-cols-2 gap-4" data-testid="match-board">
       <div role="group" aria-label={t('practice.matchLeft')} className="flex flex-col gap-2">

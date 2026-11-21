@@ -36,6 +36,7 @@ Thư mục này chứa **6 file mẫu**. Mỗi file có đủ cột/trường v�
 - **`unit_id` / `order`** (units.csv): nên theo **số chuyên đề** của giáo viên, vd. chuyên đề 3 → `u03`, `order` = 3. Thứ tự lộ trình trong app theo `order`.
 - **`level`**: `A1`, `A2`, `B1` hoặc để trống.
 - **`kind`**: `theme` (từ vựng theo chủ đề, mặc định khi để trống) hoặc `grammar` (điểm ngữ pháp / cách dùng, vd. "Các trường hợp của น่า"). Unit `grammar` cho phép bài dài (tối đa 40 từ) và học Mẫu câu trước Từ vựng.
+- **`emoji`** (units.csv, tùy chọn — cột có thể không có): 1 emoji minh họa của bài/chuyên đề trên Lộ trình (vd. `📅`). Trống → mặc định 📘 (Giáo trình) / 🧩 (Chuyên đề).
 - **`draft`**: `true` = nội dung chưa được duyệt; để trống hoặc `false` khi đã duyệt. Mục `draft: true` **được thiếu** `meaning_vi` (words.csv) và `th` (sentences.csv); bỏ `draft` thì bắt buộc điền.
 - **`thai_alt`** (words.csv): cách viết/từ khác cùng nghĩa, ngăn bằng `|` (vd. ภาษิต → `สุภาษิต`).
 - **`note_vi`**: ghi chú cách dùng (vd. "dùng cho thuyền lớn", "trong quân sự").

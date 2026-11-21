@@ -39,7 +39,7 @@ export function GamesPage() {
   return (
     <section data-testid="page-games" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold">{t('pages.games')}</h1>
+        <h1 className="text-4xl font-bold">{t('pages.games')}</h1>
         <p className="text-muted-foreground">{t('games.intro')}</p>
       </header>
 

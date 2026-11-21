@@ -55,7 +55,10 @@ export function GameResult({
   useEffect(() => {
     if (!repos || saved.current) return;
     saved.current = true;
-    void saveGameResult(repos.progress, summary, sourceKey, new Date()).then(setRecord);
+    const now = new Date();
+    void saveGameResult(repos.progress, summary, sourceKey, now).then(setRecord);
+    // Lượt chơi là một ngày học của chuỗi (M0.5c Q4).
+    void repos.sessions.start('game', now).then((s) => repos.sessions.end(s.id, new Date()));
   }, [repos, summary, sourceKey]);
 
   const toggle = (item: GameItemRef, on: boolean) => {
@@ -87,9 +90,7 @@ export function GameResult({
         </Button>
       </header>
       <div className="mx-auto flex w-full max-w-[720px] flex-col gap-6 motion-safe:animate-enter">
-        <h1 className="text-3xl font-semibold">
-          {t('games.resultTitle', { game: gameName(gameId) })}
-        </h1>
+        <h1 className="text-4xl font-bold">{t('games.resultTitle', { game: gameName(gameId) })}</h1>
         {stars > 0 && <Stars n={stars} />}
         <dl className="flex flex-wrap gap-10">
           <Stat

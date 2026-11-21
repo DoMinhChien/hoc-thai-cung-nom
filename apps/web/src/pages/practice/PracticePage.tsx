@@ -10,6 +10,7 @@ import {
 } from '@nom/core';
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
+import { StreakCard, useStudyStreak } from '@/components/fun';
 import { useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -29,9 +30,10 @@ export function PracticePage() {
   return (
     <section data-testid="page-practice" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold">{t('pages.practice')}</h1>
+        <h1 className="text-4xl font-bold">{t('pages.practice')}</h1>
         <p className="text-muted-foreground">{t('practice.intro')}</p>
       </header>
+      <PracticeStreak />
       {state.status === 'loading' ? (
         <Skeleton className="h-40" role="status" aria-label={t('practice.loading')} />
       ) : state.status === 'error' ? (
@@ -255,4 +257,11 @@ function Hub({ data }: { data: PracticeData }) {
       )}
     </>
   );
+}
+
+/** Khối chuỗi ngày học đầu trang Bài tập (M0.5c hướng B); chưa học ngày nào → ẩn. */
+function PracticeStreak() {
+  const streak = useStudyStreak();
+  if (!streak || (streak.count === 0 && !streak.week.some((d) => d.studied))) return null;
+  return <StreakCard streak={streak} />;
 }

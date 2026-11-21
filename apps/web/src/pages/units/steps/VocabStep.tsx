@@ -146,10 +146,13 @@ function Cards({
         key={pos}
         data-testid="flashcard"
         data-revealed={revealed}
-        className="flex flex-col items-center gap-3 rounded-xl border p-8 shadow-sm motion-safe:animate-enter"
+        className="flex flex-col items-center gap-3 rounded-xl border bg-surface p-8 shadow-card motion-safe:animate-enter"
       >
         {icon && (
-          <span aria-hidden className="text-6xl">
+          <span
+            aria-hidden
+            className="nom-emoji flex size-28 items-center justify-center rounded-full bg-topic-subtle text-[64px]"
+          >
             {icon}
           </span>
         )}

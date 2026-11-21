@@ -256,6 +256,16 @@ export const vi = {
     fsrsNote:
       'Trò chơi không đổi lịch ôn FSRS; chỉ lưu điểm, kỷ lục (theo trò + nguồn) và đánh dấu "cần ôn".',
   },
+  streak: {
+    label: 'Chuỗi ngày học',
+    days: '{n} ngày',
+    unit: 'ngày liên tiếp',
+    done: 'Hôm nay đã học.',
+    keep: 'Học hôm nay để giữ chuỗi',
+    week: 'Tuần này',
+    studied: 'đã học',
+    notStudied: 'chưa học',
+  },
   units: {
     intro: 'Học giáo trình trước, rồi các chuyên đề — theo thứ tự hoặc chọn bất kỳ.',
     continue: 'Học tiếp',
@@ -276,6 +286,8 @@ export const vi = {
     },
     bookN: 'Bài {n}',
     topicN: 'Chuyên đề {n}',
+    grammarTag: 'CĐ',
+    progressLabel: 'Tiến độ {title}',
     stats: '{lessons} bài học · {words} từ · {sentences} câu',
     notStarted: 'Chưa học',
     inProgress: 'Đang học · {x}/{y} bài',

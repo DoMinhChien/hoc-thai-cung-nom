@@ -27,6 +27,9 @@
     "can_do": {
       "type": "string"
     },
+    "emoji": {
+      "type": "string"
+    },
     "draft": {
       "type": "string",
       "enum": [
