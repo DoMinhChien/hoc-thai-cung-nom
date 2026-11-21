@@ -271,7 +271,6 @@ export const vi = {
     },
     whackPrompt: 'Đập từ có nghĩa:',
     whackHint: 'Phím 1–9 theo bàn phím số (hoặc Q W E · A S D · Z X C) để đập',
-    hole: 'Ô {n}',
     questionOf: 'Câu {i}/{n}',
     showType: {
       'E-01': 'Chọn nghĩa đúng',

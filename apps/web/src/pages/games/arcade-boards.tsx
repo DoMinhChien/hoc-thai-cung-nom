@@ -148,9 +148,6 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
               data-testid={`whack-hole-${hole}`}
               data-mole={mole ? mole.th : undefined}
               aria-keyshortcuts={key}
-              aria-label={
-                mole ? `${t('games.hole', { n: key })}: ${mole.th}` : t('games.hole', { n: key })
-              }
               onClick={() => input({ hit: hole })}
               className="relative flex h-[112px] w-[168px] flex-col items-center justify-end rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
@@ -177,10 +174,7 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
                 aria-hidden
                 className="absolute bottom-0 h-8 w-full rounded-[50%] bg-scene-ground shadow-inner"
               />
-              <kbd
-                aria-hidden
-                className="absolute bottom-1 left-2 z-10 rounded bg-surface/90 px-1.5 font-sans text-xs font-semibold"
-              >
+              <kbd className="absolute bottom-1 left-2 z-10 rounded bg-surface/90 px-1.5 font-sans text-xs font-semibold">
                 {key}
                 <span className="ml-1 text-muted-foreground uppercase">{HOLE_ALT_KEYS[hole]}</span>
               </kbd>
@@ -421,6 +415,9 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
 
 // ───────────────────────── F-17 Máy bay ─────────────────────────
 
+/** Bề rộng mây (px) — SCR-08 v2 §B.3. */
+const CLOUD_W = 180;
+
 export function AirplaneBoard({ source, seed, theme, reduced, children }: ArcadeBoardProps) {
   const run = useArcadeRun(airplane, source, seed, { manual: reduced });
   const { state, started, start, input, advanceBy } = run;
@@ -446,7 +443,7 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
       </Panel>
       <div
         data-testid="plane-sky"
-        className="relative h-[480px] w-full max-w-[1040px] overflow-hidden rounded-xl"
+        className="relative h-[420px] w-full max-w-[1040px] overflow-hidden rounded-xl"
       >
         {q.clouds.map((cloud, lane) => (
           <div
@@ -459,7 +456,8 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
               data-testid={`plane-cloud-${lane}`}
               lang="th"
               className="absolute top-1/2 flex min-h-20 w-[180px] -translate-y-1/2 items-center justify-center rounded-[40px] bg-surface px-4 py-2 text-center text-[28px] leading-snug shadow-md"
-              style={{ left: `${state.cloudX * 100}%` }}
+              // cloudX = 1 → mây sát mép phải (vẫn thấy); chạm máy bay khi tới `PLANE_X`.
+              style={{ left: `calc(${state.cloudX * 100}% - ${state.cloudX * CLOUD_W}px)` }}
             >
               {cloud}
             </span>

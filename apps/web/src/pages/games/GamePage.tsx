@@ -92,7 +92,11 @@ export function GamePage() {
   let content;
   if (!isGameId(id)) content = message(t('games.unavailable'));
   else if (state.status === 'loading')
-    content = <p className="text-muted-foreground">{t('games.loading')}</p>;
+    content = (
+      <Panel>
+        <p className="text-muted-foreground">{t('games.loading')}</p>
+      </Panel>
+    );
   else if (state.status === 'error') content = message(t('games.loadError'));
   else {
     const source = round.only ? subsetSource(state.source, round.only) : state.source;
@@ -101,22 +105,26 @@ export function GamePage() {
       const next = (only: GameItemRef[] | null) =>
         setRound((r) => ({ n: r.n + 1, seed: randomSeed(), only }));
       const result = (summary: GameSummary<AnyGameId>, detail: string | null) => (
-        <GameResult
-          gameId={id}
-          summary={summary}
-          sourceKey={state.source.key}
-          source={state.source}
-          detail={detail}
-          canReplayMistakes={gameAvailability(id, subsetSource(state.source, summary.mistakes)).ok}
-          onExit={exit}
-          onAgain={() => next(null)}
-          onAgainMistakes={(items) => next(items)}
-          onPick={(g) =>
-            navigate(`/games/${g}?source=${encodeURIComponent(state.source.key)}`, {
-              replace: true,
-            })
-          }
-        />
+        <Panel className="p-6">
+          <GameResult
+            gameId={id}
+            summary={summary}
+            sourceKey={state.source.key}
+            source={state.source}
+            detail={detail}
+            canReplayMistakes={
+              gameAvailability(id, subsetSource(state.source, summary.mistakes)).ok
+            }
+            onExit={exit}
+            onAgain={() => next(null)}
+            onAgainMistakes={(items) => next(items)}
+            onPick={(g) =>
+              navigate(`/games/${g}?source=${encodeURIComponent(state.source.key)}`, {
+                replace: true,
+              })
+            }
+          />
+        </Panel>
       );
       const frame = {
         id,
