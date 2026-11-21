@@ -97,6 +97,28 @@ CI:        <xanh/đỏ/chưa chạy>
 - Commit theo **Conventional Commits**: `feat(auth): ...`, `fix(core): ...`, `test(e2e): ...`, `docs: ...`, `chore: ...`.
 - PR mô tả: milestone, requirement IDs đã làm, ảnh chụp màn hình (nếu có UI), checklist DoD.
 
+### 8.1 Agent tự merge PR (owner đồng ý 2026-11-21)
+
+**Được tự merge** (`gh pr merge --merge`) khi **đủ cả 4 điều kiện**: CI xanh · không conflict · base là `main` · PR chỉ thuộc các loại:
+- nội dung `content/` (giữ `draft: true` — publish vẫn cần giáo viên/owner duyệt);
+- tài liệu, ROADMAP, nhật ký;
+- sửa lỗi, test, refactor không đổi hành vi;
+- task của milestone đã có spec / thiết kế được owner duyệt.
+
+**Phải chờ owner duyệt — không tự merge:**
+- PR đổi giao diện lớn: hướng thiết kế mới, hoặc baseline screenshot đổi trên **nhiều màn** (owner xem preview / ảnh trước);
+- PR thêm hoặc sửa **spec thiết kế** (`docs/design/`) hay còn **câu hỏi cho owner**;
+- PR đổi **phạm vi** trong plan (thêm/bỏ requirement, đổi milestone);
+- PR đụng tài khoản, secret, cấu hình cloud (Azure, Firebase, Google, GitHub Actions secrets/variables), `staticwebapp.config.json`, CI/CD.
+
+**Cách làm:**
+1. Merge theo thứ tự phụ thuộc; nếu conflict → rebase lên `main`, chạy lại `pnpm test` (+ `pnpm e2e` khi có UI), push, chờ CI xanh rồi mới merge.
+2. Không dùng `--admin`, không bỏ qua check, không force-push lên `main`.
+3. Sau merge: `git checkout main && git pull`, xóa nhánh đã merge (`--delete-branch`), ghi **1 dòng nhật ký** ROADMAP: "tự merge #x (loại …)".
+4. PR bị loại khỏi tự merge → thêm vào mục **"Việc chờ owner"** của ROADMAP kèm lý do.
+
+Khi owner bật bảo vệ `main` (SETUP S1): yêu cầu CI xanh, **không** bắt buộc review — để quy trình này vẫn chạy.
+
 ## 9. Definition of Done (mỗi milestone)
 
 - [ ] Tất cả task của milestone đã tick, tiêu chí nghiệm thu đạt.

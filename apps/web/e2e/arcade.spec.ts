@@ -78,13 +78,14 @@ test('Đập chuột: đập đúng bằng phím, hết 60 giây → kết quả
   await page.keyboard.press(keys[hole]!);
   await expect(page.getByTestId('feedback-bar')).toHaveAttribute('data-correct', 'true');
   await expectNoSevereViolations(page);
+  // WebKit: đồng hồ giả không dừng requestAnimationFrame → chuột vẫn chạy, ảnh không ổn định.
+  if (browserName === 'webkit') return;
   await expect(page).toHaveScreenshot('game-whack.png', {
     fullPage: true,
-    mask: [page.getByTestId('game-clock'), page.locator('[data-mole]')],
+    // Vị trí chuột + thanh thời gian phụ thuộc số khung hình đã chạy → che.
+    mask: [page.getByTestId('time-bar'), page.locator('[data-testid^="whack-hole-"]')],
   });
 
-  // Đồng hồ giả của Playwright không điều khiển requestAnimationFrame trên WebKit (Windows).
-  if (browserName === 'webkit') return;
   await page.clock.runFor(61_000);
   await expect(page.getByTestId('game-result')).toBeVisible();
   await expect(page.getByTestId('result-detail')).toContainText('Đập nhầm');

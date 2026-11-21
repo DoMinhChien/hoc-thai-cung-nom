@@ -13,17 +13,18 @@
 
 > **🟢 M9.5 — Phản hồi người học** (3/3 task trong phạm vi — T9.5.1, T9.5.2, **T9.5.4 ✅ 2026-11-21** hướng B; T9.5.3 ⏸ **tạm loại** (owner 2026-11-21)): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe, giao diện **"Nắng nhiệt đới"** (nền kem, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, hiệu ứng `fb-*`). T9.5.4 trên nhánh `m9.6-games` (PR #25).
 
-> **🟢 M9.6 — Trò chơi mở rộng** (6/6 task, xong 2026-11-21; nhánh `m9.6-games` → **PR #25**, gồm cả PR #27): `/games` 8 trò theo SCR-08 v2, 4 màn arcade, 3 theme có cảnh nền, sao + "Đổi trò", E2E + baseline. Chờ owner: xem baseline, merge. **Kế tiếp: M10** (chờ owner duyệt SCR-03/07/09 — PR #26).
+> **🟢 M9.6 — Trò chơi mở rộng** (6/6 task, xong 2026-11-21; **PR #25 đã merge** vào `main`, gồm cả #27): `/games` 8 trò theo SCR-08 v2, 4 màn arcade, 3 theme có cảnh nền, sao + "Đổi trò", E2E + baseline. **Kế tiếp: M10** (chờ owner duyệt SCR-03/07/09 — PR #26).
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
 > - [ ] **Azure SWA hết chỗ preview:** deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
 > - [ ] ⏸ *(tạm loại 2026-11-21 — owner bật lại khi cần)* **SETUP S13** (Azure AI Speech F0) cho **T9.5.3**: tạo resource Speech (Southeast Asia, F0), ghi `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` vào `.env.local` (không commit, không gửi chat), nghe thử Premwadee / Achara → báo agent "S13 xong, giọng: …".
 > - [ ] **Xem baseline:** mới `settings-*`; đổi theo nội dung thật `units-*`, `unit-*`, `lesson-*`, `practice-*`, `practice-arrange-*` (Windows đã commit; Linux lấy từ artifact CI `screenshot-baselines-linux`).
-> - [x] **M0.5c / SCR-08 v2** — owner chọn **B** (Q1–Q4 theo đề xuất), SCR-08 v2 làm theo đề xuất (2026-11-21). Đã áp dụng trên `m9.6-games`; PR #25 gồm cả commit của PR #27 → merge #25 thì đóng #27.
-> - [ ] **Merge PR #25** (`m9.6-games`: T9.5.4 + UI M9.6 + docs M0.5c) — xem baseline mới: **toàn bộ** `*-win32.png` đổi vì nền kem (hướng B) + mới `games-v2`, `game-whack`, `game-gameshow`, `game-airplane`, `game-maze`; Linux lấy từ artifact CI `screenshot-baselines-linux`.
+> - [x] **M0.5c / SCR-08 v2** — owner chọn **B** (Q1–Q4 theo đề xuất), SCR-08 v2 làm theo đề xuất (2026-11-21). **#25 merge 2026-11-21** (gồm cả #27, #27 cũng đã đóng ở trạng thái merged).
+> - [ ] **Xem baseline hướng B** (đã vào `main` qua #25): `units-*`, `unit-*`, `practice-*`, `games-*`, `game-match-*` đổi; mới `games-v2`, `game-whack` (che lưới hố), `game-gameshow`, `game-airplane`, `game-maze`; Linux lấy từ artifact CI `screenshot-baselines-linux`.
+> - [ ] **E2E chập chờn trên WebKit (Linux CI):** `settings.spec` — ô chọn giọng có lúc không hiện trong 5 s (giọng giả nạp chậm); `auth.spec` popup emulator. Không chặn merge khi chạy lại xanh; agent sẽ xem lại khi có thời gian.
 > - [ ] **SCR-03 / SCR-07 / SCR-09** — đã soạn, **PR #26**: owner duyệt + trả lời 11 câu hỏi → mở **M10**.
-> - [ ] **Nội dung:** Bài 11 → 6 (**PR #28**) và **Bài 5 → 3 (PR #29, gồm cả #28 — merge #28 trước)** đã nhập, draft — GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
+> - [ ] **Nội dung (giáo viên duyệt):** Bài 11 → 6 (**#28**) và Bài 5 → 3 (**#29**) **đã merge 2026-11-21** (draft) — giáo trình Bài 1–12 đủ; GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
@@ -524,6 +525,8 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | Quy trình + Nội dung | Owner merge #25 (gồm #27). **Tự merge #28, #29 (loại nội dung `draft`, AGENTS 8.1, owner đồng ý lần này)** — rebase lên `main`, sinh lại baseline `/units` trên giao diện B, CI xanh. Sửa ảnh `game-whack` không ổn định (che lưới hố; bỏ trên WebKit) | #30 (docs 8.1 + sửa test) chờ CI | M10 chờ owner duyệt #26 (không tự merge: spec thiết kế + câu hỏi cho owner) | #28, #29 đã merge; `docs-auto-merge` → #30 |
+| 2026-11-21 | Quy trình | Owner đồng ý **agent tự merge PR** theo `AGENTS.md` mục 8.1 (CI xanh, không conflict, base `main`; loại PR được phép / phải chờ owner). SETUP S1: bảo vệ `main` không bắt buộc review | — | — | — (docs chưa commit) |
 | 2026-11-21 | M9.5 + M9.6 + Nội dung | Owner chọn **hướng B** (Q1–Q4 theo đề xuất). **T9.5.4** giao diện "Nắng nhiệt đới" (token, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, `fb-*`); **T9.6.3–T9.6.6** `/games` 8 trò + 4 màn arcade + theme + sao + Đổi trò + E2E; nhập **Bài 5 → 3** (PR #29) | — | M10 chờ owner duyệt SCR-03/07/09 (#26) | `m9.6-games` → PR #25; `content-b03-b05` → PR #29 |
 | 2026-11-21 | M0.5b-2 / M0.5c / Nội dung | Owner giao cho agent: soạn **SCR-03/07/09** + wireframe (PR #26), **M0.5c** 3 hướng giao diện + **SCR-08 v2** + mockup (PR #27), nhập **Bài 11 → 6** (PR #28; 0 lỗi content:check, baseline `/units`) | Nhập Bài 5 → 3 | M10, T9.5.4, UI M9.6 chờ owner duyệt #26 / #27 | `m0.5b-scr-03-07-09`, `m0.5c-design`, `content-b06-b11` |
 | 2026-11-21 | M9.6 (+ M9.5) | Owner tạm loại **T9.5.3** (Azure Speech). Sửa 8 điểm review PR #23. Logic chờ UI: danh mục 8 trò + nhãn kỹ năng + lọc, kỷ lục / "cần ôn" cho trò arcade, hook `useArcadeRun` | — | T9.5.4, T9.6.3 phần còn lại, T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c); M10 chờ SCR-03/07/09 | `m9.6-games` → PR mới vào `main` (#23 đã merge vào `m9.5-feedback`) |
