@@ -107,3 +107,228 @@
     - { th: "พระสมชาย", vi: "Sư Somchai (พระ + pháp danh)" }
   source: plernpin-c01#p3
   draft: true
+- id: g-b10-la
+  unit_id: b10
+  title_vi: Mỗi … (Danh từ + ละ)
+  pattern: Danh từ + ละ
+  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …".
+  examples:
+    - { th: "คนละ", vi: "Mỗi người" }
+  source: plernpin-b10#p38
+  draft: true
+- id: g-b09-khoei
+  unit_id: b09
+  title_vi: Đã từng … chưa?
+  pattern: Chủ ngữ + เคย + Động từ + … ไหม/หรือยัง
+  explain_vi: Hỏi người nghe đã từng làm việc gì chưa. เคย (đã từng) đứng trước động từ, cuối câu dùng ไหม hoặc หรือยัง.
+  examples:
+    - { th: "คุณเคยกินส้มตำไหม", vi: "Bạn đã từng ăn Som Tam chưa?" }
+    - { th: "คุณเคยกินส้มตำหรือยัง", vi: "Bạn đã từng ăn Som Tam chưa?" }
+  source: plernpin-b09#p30
+  draft: true
+- id: g-b09-mai-dai
+  unit_id: b09
+  title_vi: Không … được
+  pattern: Chủ ngữ + Động từ + … ไม่ได้
+  explain_vi: ไม่ได้ đứng sau động từ (cuối câu) — không thể làm được việc đó.
+  examples:
+    - { th: "ฉันทำไม่ได้", vi: "Tôi không làm được." }
+  source: plernpin-b09#p31
+  draft: true
+- id: g-b09-mai-pen
+  unit_id: b09
+  title_vi: Không biết (làm) …
+  pattern: Chủ ngữ + Động từ + … ไม่เป็น
+  explain_vi: ไม่เป็น đứng sau động từ (cuối câu) — không biết cách làm việc đó.
+  examples:
+    - { th: "ฉันทำไม่เป็น", vi: "Tôi không biết làm." }
+  source: plernpin-b09#p32
+  draft: true
+- id: g-b08-yak
+  unit_id: b08
+  title_vi: Muốn + động từ
+  pattern: Chủ ngữ + อยาก + Động từ
+  explain_vi: อยาก (muốn) đứng trước động từ để nói mình muốn làm gì.
+  examples:
+    - { th: "ฉันอยากจองห้องพัก", vi: "Tôi muốn đặt phòng nghỉ." }
+  source: plernpin-b08#p23
+  draft: true
+- id: g-b08-yak-dai
+  unit_id: b08
+  title_vi: Muốn có + danh từ
+  pattern: Chủ ngữ + อยากได้ + Danh từ
+  explain_vi: อยากได้ (muốn có) đứng trước danh từ để nói mình muốn có vật gì.
+  examples:
+    - { th: "ฉันอยากได้ห้องแบบเตียงคู่ค่ะ", vi: "Tôi muốn phòng kiểu giường đôi ạ." }
+  source: plernpin-b08#p24
+  draft: true
+- id: g-b08-karuna
+  unit_id: b08
+  title_vi: Làm ơn … (cho tôi) với
+  pattern: กรุณา + Động từ + … + (ให้ฉัน/ให้ผม) ด้วย
+  explain_vi: Nhờ người khác làm việc gì một cách lịch sự. กรุณา (làm ơn) đứng đầu câu, ด้วย ở cuối câu; ให้ฉัน / ให้ผม (cho tôi) có thể thêm hoặc bỏ.
+  examples:
+    - { th: "กรุณาเปลี่ยนผ้าปูเตียงให้ฉันด้วย", vi: "Làm ơn đổi ga trải giường (cho tôi) với ạ." }
+    - { th: "กรุณาเปลี่ยนผ้าปูเตียงให้ผมด้วย", vi: "Làm ơn đổi ga trải giường (cho tôi) với ạ." }
+  source: plernpin-b08#p25
+  draft: true
+- id: g-b08-yak-kho
+  unit_id: b08
+  title_vi: Muốn xin thêm …
+  pattern: Chủ ngữ + อยากขอ + Danh từ + เพิ่ม
+  explain_vi: Xin thêm vật gì. อยากขอ (muốn xin) đứng trước danh từ, เพิ่ม (thêm) ở cuối câu.
+  examples:
+    - { th: "ฉันอยากขอผ้าเช็ดตัวเพิ่ม", vi: "Tôi muốn xin thêm khăn tắm." }
+  source: plernpin-b08#p26
+  draft: true
+- id: g-b07-klai-chak
+  unit_id: b07
+  title_vi: A cách B bao xa?
+  pattern: Địa điểm 1 + ไกลจาก + Địa điểm 2 + แค่ไหน
+  explain_vi: Hỏi khoảng cách giữa hai địa điểm. ไกลจาก (xa từ) đứng giữa hai địa điểm, แค่ไหน (bao nhiêu) ở cuối câu.
+  examples:
+    - { th: "บ้านคุณไกลจากโรงเรียนแค่ไหน", vi: "Nhà bạn cách trường học bao xa?" }
+  source: plernpin-b07#p30
+  draft: true
+- id: g-b07-chak-thueng
+  unit_id: b07
+  title_vi: Từ A đến B bao xa?
+  pattern: จาก + Địa điểm 1 + ถึง + Địa điểm 2 + ไกลแค่ไหน
+  explain_vi: Cách hỏi khoảng cách khác — จาก (từ) … ถึง (đến) …, cuối câu là ไกลแค่ไหน (xa bao nhiêu).
+  examples:
+    - { th: "จากบ้านคุณถึงโรงเรียนไกลแค่ไหน", vi: "Từ nhà bạn đến trường học bao xa?" }
+  source: plernpin-b07#p31
+  draft: true
+- id: g-b07-chuai-bok-thang
+  unit_id: b07
+  title_vi: Giúp chỉ đường đến … cho tôi được không?
+  pattern: ช่วยบอกทาง + ไป + Địa điểm + ให้ + S + หน่อยได้ไหม
+  explain_vi: Nhờ người khác chỉ đường. ช่วยบอกทาง (giúp chỉ đường) + ไป + địa điểm, ให้ + người được giúp (cho …), cuối câu หน่อยได้ไหม (một chút được không).
+  examples:
+    - { th: "ช่วยบอกทางไปสถานีรถไฟให้ฉันหน่อยได้ไหม", vi: "Giúp chỉ đường đi đến nhà ga xe lửa cho tôi một chút được không?" }
+  source: plernpin-b07#p32
+  draft: true
+- id: g-b07-kho-tham
+  unit_id: b07
+  title_vi: Xin hỏi chút ạ! … ở chỗ nào / đi lối nào?
+  pattern: ขอถามหน่อยค่ะ + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Mở đầu lịch sự khi hỏi đường. ขอถามหน่อยค่ะ (nam nói ขอถามหน่อยครับ) + địa điểm; อยู่ที่ไหน hỏi ở chỗ nào, ไปทางไหน hỏi đi lối nào.
+  examples:
+    - { th: "ขอถามหน่อยค่ะ สถานีรถไฟอยู่ที่ไหน", vi: "Xin hỏi chút ạ! Nhà ga xe lửa ở chỗ nào?" }
+    - { th: "ขอถามหน่อยค่ะ สถานีรถไฟไปทางไหน", vi: "Xin hỏi chút ạ! Nhà ga xe lửa đi lối nào?" }
+  source: plernpin-b07#p33-34
+  draft: true
+- id: g-b07-sap-mai-wa
+  unit_id: b07
+  title_vi: Bạn có biết … ở chỗ nào / đi lối nào không?
+  pattern: คุณทราบ/รู้ไหมว่า + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Hỏi người nghe có biết địa điểm ở đâu không. ทราบ và รู้ đều là "biết" (ทราบ lịch sự hơn); ไหมว่า + địa điểm + อยู่ที่ไหน / ไปทางไหน.
+  examples:
+    - { th: "คุณทราบไหมว่าสถานีรถไฟอยู่ที่ไหน", vi: "Bạn có biết nhà ga xe lửa ở chỗ nào không?" }
+    - { th: "คุณรู้ไหมว่าสถานีรถไฟไปทางไหน", vi: "Bạn có biết nhà ga xe lửa đi lối nào không?" }
+  source: plernpin-b07#p35-36
+  draft: true
+- id: g-b07-mai-sap-wa
+  unit_id: b07
+  title_vi: Không biết là … ở chỗ nào / đi lối nào?
+  pattern: ไม่ทราบ/รู้ว่า + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Cách hỏi đường mềm mỏng — "không biết là … ở đâu ạ?". ไม่ทราบว่า hoặc ไม่รู้ว่า + địa điểm + อยู่ที่ไหน / ไปทางไหน.
+  examples:
+    - { th: "ไม่ทราบว่าสถานีรถไฟอยู่ที่ไหน", vi: "Không biết là nhà ga xe lửa ở chỗ nào?" }
+    - { th: "ไม่รู้ว่าสถานีรถไฟไปทางไหน", vi: "Không biết là nhà ga xe lửa đi lối nào?" }
+  source: plernpin-b07#p37-38
+  draft: true
+- id: g-b06-ti
+  unit_id: b06
+  title_vi: Giờ từ 1 đến 5 giờ sáng
+  pattern: ตี + số giờ
+  explain_vi: Từ 1 giờ đến 5 giờ sáng, nói ตี trước số giờ.
+  examples:
+    - { th: "ตีหนึ่ง", vi: "1:00 (1 giờ sáng)" }
+    - { th: "ตีสอง", vi: "2:00" }
+    - { th: "ตีสาม", vi: "3:00" }
+    - { th: "ตีสี่", vi: "4:00" }
+    - { th: "ตีห้า", vi: "5:00" }
+  source: plernpin-b06#p7
+  draft: true
+- id: g-b06-mong-chao
+  unit_id: b06
+  title_vi: Giờ từ 6 đến 11 giờ sáng
+  pattern: số giờ + โมงเช้า
+  explain_vi: Từ 6 giờ đến 11 giờ sáng, nói số giờ rồi thêm โมงเช้า.
+  examples:
+    - { th: "หกโมงเช้า", vi: "6:00" }
+    - { th: "เจ็ดโมงเช้า", vi: "7:00" }
+    - { th: "แปดโมงเช้า", vi: "8:00" }
+    - { th: "เก้าโมงเช้า", vi: "9:00" }
+    - { th: "สิบโมงเช้า", vi: "10:00" }
+    - { th: "สิบเอ็ดโมงเช้า", vi: "11:00" }
+  source: plernpin-b06#p8
+  draft: true
+- id: g-b06-bai
+  unit_id: b06
+  title_vi: 12 giờ trưa và từ 1 đến 4 giờ chiều
+  pattern: เที่ยงวัน / เที่ยง (12 giờ trưa) · บ่าย + số giờ + โมง
+  explain_vi: 12 giờ trưa là เที่ยงวัน hoặc เที่ยง. Từ 1 giờ đến 4 giờ chiều, nói บ่าย + số giờ + โมง; 1 giờ chiều còn nói gọn là บ่ายโมง.
+  examples:
+    - { th: "เที่ยงวัน", vi: "12:00" }
+    - { th: "บ่ายหนึ่งโมง", vi: "13:00 (บ่ายโมง)" }
+    - { th: "บ่ายสองโมง", vi: "14:00" }
+    - { th: "บ่ายสามโมง", vi: "15:00" }
+    - { th: "บ่ายสี่โมง", vi: "16:00" }
+  source: plernpin-b06#p9
+  draft: true
+- id: g-b06-mong-yen
+  unit_id: b06
+  title_vi: Giờ từ 5 đến 6 giờ chiều
+  pattern: số giờ + โมงเย็น
+  explain_vi: 5 giờ và 6 giờ chiều, nói số giờ rồi thêm โมงเย็น.
+  examples:
+    - { th: "ห้าโมงเย็น", vi: "17:00" }
+    - { th: "หกโมงเย็น", vi: "18:00" }
+  source: plernpin-b06#p10
+  draft: true
+- id: g-b06-thum
+  unit_id: b06
+  title_vi: Giờ từ 7 đến 12 giờ tối
+  pattern: số giờ + ทุ่ม
+  explain_vi: Từ 7 giờ đến 12 giờ tối, đếm lại từ 1 rồi thêm ทุ่ม (19:00 = หนึ่งทุ่ม). 24:00 là หกทุ่ม hoặc เที่ยงคืน. Lưu ý (GV) — cách nói cũ theo canh — ยามหนึ่ง = 9 giờ tối, สองยาม = nửa đêm (24h), สามยาม = 3 giờ sáng.
+  examples:
+    - { th: "หนึ่งทุ่ม", vi: "19:00" }
+    - { th: "สองทุ่ม", vi: "20:00" }
+    - { th: "สามทุ่ม", vi: "21:00" }
+    - { th: "สี่ทุ่ม", vi: "22:00" }
+    - { th: "ห้าทุ่ม", vi: "23:00" }
+    - { th: "หกทุ่ม", vi: "24:00 (เที่ยงคืน)" }
+  source: plernpin-b06#p11
+  draft: true
+- id: g-b06-nathi
+  unit_id: b06
+  title_vi: Giờ + phút (kiểu Thái)
+  pattern: giờ + số phút + นาที
+  explain_vi: Nói giờ theo kiểu Thái trước, rồi thêm số phút + นาที.
+  examples:
+    - { th: "เก้าโมงเช้าสิบห้านาที", vi: "9 giờ 15 phút sáng" }
+  source: plernpin-b06#p12
+  draft: true
+- id: g-b06-nalika
+  unit_id: b06
+  title_vi: Nói giờ kiểu quốc tế
+  pattern: số giờ (0–24) + นาฬิกา (+ số phút + นาที)
+  explain_vi: Kiểu quốc tế dùng số giờ 24h + นาฬิกา, viết tắt น. (vd. 21.00 น.). Muốn nói phút thì thêm số phút + นาที.
+  examples:
+    - { th: "เก้านาฬิกา", vi: "9 giờ sáng (9.00 น.)" }
+    - { th: "ยี่สิบเอ็ดนาฬิกา", vi: "9 giờ tối (21.00 น.)" }
+    - { th: "ยี่สิบเอ็ดนาฬิกาสิบนาที", vi: "9 giờ 10 phút tối (21.10 น.)" }
+  source: plernpin-b06#p13-15
+  draft: true
+- id: g-b06-ik
+  unit_id: b06
+  title_vi: Giờ kém
+  pattern: อีก + số phút + นาที + giờ
+  explain_vi: Nói giờ kém — อีก (còn) + số phút + giờ sắp tới. Dùng được với cả kiểu Thái và kiểu quốc tế.
+  examples:
+    - { th: "อีกห้านาทีบ่ายสี่โมง", vi: "4 giờ kém 5 phút chiều" }
+    - { th: "อีกห้านาทีสิบหกนาฬิกา", vi: "4 giờ kém 5 phút chiều (kiểu quốc tế)" }
+  source: plernpin-b06#p16-17
+  draft: true
