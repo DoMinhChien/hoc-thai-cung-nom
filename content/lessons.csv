@@ -109,3 +109,53 @@ b03-l6,b03,6,"Thiểu số, còn, hết, tất cả; thừa, thiếu, đủ",,tr
 b03-l7,b03,7,"Phần trăm, khoảng, số hiệu; thêm, bớt, gấp",,true
 b03-l8,b03,8,"Đếm không xuể, mọi, một số; tiền, tuổi, tổng cộng",,true
 b03-l9,b03,9,"Tá, to, nhỏ, trọng lượng; số chẵn, số lẻ, số điện thoại",,true
+c15-l1,c15,1,Cách dùng của ไป,g-c15-pai|g-c15-pai-laeo,true
+c15-l2,c15,2,Cách dùng của มา,g-c15-ma|g-c15-ma-da,true
+c15-l3,c15,3,Khác biệt giữa ไป và มา,g-c15-pai-ma|g-c15-ya,true
+c14-l1,c14,1,Các từ ghép với สม,g-c14-som,true
+c13-l1,c13,1,"ว่า: nói, bảo; là, rằng (1)",g-c13-wa-noi|g-c13-wa-rang,true
+c13-l2,c13,2,Các trường hợp của ว่า (2),g-c13-wa-rang,true
+c13-l3,c13,3,"ถูก: rẻ, đúng, chạm, hợp ý",g-c13-thuk,true
+c13-l4,c13,4,"Câu bị động: ถูก, โดน, ได้รับ",g-c13-thuk-bi|g-c13-dairap-v|g-c13-dairap-n,true
+c12-l1,c12,1,"ที่: ở, tại; nơi, chỗ",g-c12-tai|g-c12-noi,true
+c12-l2,c12,2,"ที่: phần, suất; đất; số thứ tự; đại từ quan hệ",g-c12-suat|g-c12-din|g-c12-thutu|g-c12-quanhe,true
+c11-l1,c11,1,Các trường hợp của น่า (1),g-c11-na,true
+c11-l2,c11,2,Các trường hợp của น่า (2),g-c11-na|g-c11-mai-na,true
+c10-l1,c10,1,Các trường hợp của ขี้ (1),g-c10-khi-n|g-c10-khi-tinh,true
+c10-l2,c10,2,Các trường hợp của ขี้ (2),g-c10-khi-tinh,true
+c09-l1,c09,1,ใจ + … (tính cách),g-c09-jai-truoc,true
+c09-l2,c09,2,… + ใจ (cảm xúc) (1),g-c09-jai-sau,true
+c09-l3,c09,3,… + ใจ (cảm xúc) (2),g-c09-jai-sau,true
+c08-l1,c08,1,Dịch câu với การ và ความ (1),,true
+c08-l2,c08,2,Dịch câu với การ và ความ (2),,true
+c07-l1,c07,1,ความ đứng một mình; ความ + động từ,g-c07-vu-an|g-c07-noi-dung|g-c07-dong-tu,true
+c07-l2,c07,2,ความ + tính từ,g-c07-tinh-tu,true
+c07-l3,c07,3,Tổng hợp danh từ với ความ (1),g-c07-dong-tu|g-c07-tinh-tu,true
+c07-l4,c07,4,Tổng hợp danh từ với ความ (2),g-c07-dong-tu|g-c07-tinh-tu,true
+c07-l5,c07,5,ความ + danh từ; ความ + phủ định,g-c07-danh-tu|g-c07-phu-dinh,true
+c06-l1,c06,1,การ + động từ,g-c06-hanh-dong|g-c06-tinh-cam,true
+c06-l2,c06,2,Tổng hợp danh từ với การ (1),g-c06-hanh-dong,true
+c06-l3,c06,3,Tổng hợp danh từ với การ (2),g-c06-hanh-dong,true
+c06-l4,c06,4,"การ đứng một mình, hậu tố gốc Phạn, การ + danh từ",g-c06-mot-minh|g-c06-hau-to|g-c06-danh-tu,true
+c05-l1,c05,1,"Đại từ chỉ định bộ 1: นี่, นั่น, โน่น, นู่น",g-c05-bo1,true
+c05-l2,c05,2,"Đại từ chỉ định bộ 2: นี้, นั้น, โน้น, นู้น",g-c05-bo2|g-c05-lao|g-c05-thanh-ngu,true
+c05-l3,c05,3,Đại từ sở hữu ของ và đại từ nhấn mạnh เอง,g-c05-khong|g-c05-eng,true
+c04-l1,c04,1,Từ vựng cần biết và bài tập loại từ (1),,true
+c04-l2,c04,2,Bài tập loại từ (2),,true
+c03-l1,c03,1,Bảng loại từ (trang 1),g-c03-clf,true
+c03-l2,c03,2,Bảng loại từ (trang 2),,true
+c03-l3,c03,3,Bảng loại từ (trang 3),,true
+c03-l4,c03,4,Bảng loại từ (trang 4),,true
+c03-l5,c03,5,Bảng loại từ (trang 5),,true
+c03-l6,c03,6,Bảng loại từ (trang 6),,true
+c03-l7,c03,7,Bảng loại từ (trang 7),,true
+c03-l8,c03,8,Bảng loại từ (trang 8),,true
+c03-l9,c03,9,Bảng loại từ (trang 9),,true
+c03-l10,c03,10,Bảng loại từ (trang 10),,true
+c03-l11,c03,11,Bảng loại từ (trang 11),,true
+c03-l12,c03,12,Bảng loại từ (trang 12),,true
+c03-l13,c03,13,Bảng loại từ (trang 13),,true
+c02-l1,c02,1,"ไหม, ใช่ไหม, บ่อยไหม",g-c02-mai|g-c02-chai-mai|g-c02-boi-mai,true
+c02-l2,c02,2,"หรือ, หรือยัง, เคย … หรือยัง",g-c02-rue|g-c02-rue-yang|g-c02-khoei,true
+c02-l3,c02,3,"ใคร, อะไร, ที่ไหน",g-c02-khrai|g-c02-arai|g-c02-thinai,true
+c02-l4,c02,4,"เมื่อไหร่, เท่าไหร่, อย่างไร, กี่",g-c02-muearai|g-c02-thaorai|g-c02-yangrai|g-c02-ki,true
