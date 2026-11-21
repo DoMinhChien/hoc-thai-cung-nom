@@ -1005,3 +1005,69 @@
     - { th: "การเงิน", vi: "Tài chính" }
   source: plernpin-c06#p4
   draft: true
+- id: g-c05-bo1
+  unit_id: c05
+  title_vi: "Đại từ chỉ định bộ 1: นี่ < นั่น < โน่น < นู่น"
+  pattern: "นี่ (đây) < นั่น (đó) < โน่น (kia) < นู่น (kia kìa)"
+  explain_vi: "Đại từ chỉ định là đại từ dùng để chỉ khoảng cách xa gần. Đại từ chỉ định trong tiếng Thái gồm có 8 từ và chia ra làm 2 bộ. Cách sử dụng của bộ 1: a. dùng theo sau động từ; b. dùng bắt đầu câu và đứng trước động từ; c. bắt đầu câu và đứng trước danh từ; d. đứng sau danh từ; e. được nói với giọng hạ thấp, được dùng làm đại từ."
+  examples:
+    - { th: "นั่งนี่ไหม", vi: "Ngồi đây không?" }
+    - { th: "นี่คืออะไร", vi: "Đây là cái gì?" }
+  source: plernpin-c05#p1
+  draft: true
+- id: g-c05-bo2
+  unit_id: c05
+  title_vi: "Đại từ chỉ định bộ 2: นี้ < นั้น < โน้น < นู้น"
+  pattern: "นี้ (này) < นั้น (đấy) < โน้น (kìa) < นู้น (kia kìa)"
+  explain_vi: "Giữa bộ 2 và bộ 1, thì mức độ của bộ 2 sẽ xa hơn so với bộ 1. Cách sử dụng của bộ 2: a. luôn được sử dụng theo sau giới từ; b. đứng sau danh từ; c. đứng sau loại từ."
+  examples:
+    - { th: "อะไรอยู่ในนี้", vi: "Cái gì ở trong này?" }
+    - { th: "เสื้อตัวนี้ราคาถูกมาก", vi: "Chiếc áo này giá rẻ lắm" }
+  source: plernpin-c05#p1
+  draft: true
+- id: g-c05-lao
+  unit_id: c05
+  title_vi: "เหล่า + นี้/นั้น: số nhiều"
+  pattern: "(danh từ) + เหล่า + นี้ / นั้น"
+  explain_vi: "Thêm เหล่า vào trước để tạo thành số nhiều và phát âm với thanh điệu cao."
+  examples:
+    - { th: "ไก่เหล่านี้", vi: "Các con gà này" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-thanh-ngu
+  unit_id: c05
+  title_vi: "Một số trường hợp khác của đại từ chỉ định"
+  pattern: "นี่ยังไง · นั่นนะสิ · แต่นั่นแหละ"
+  explain_vi: "Đại từ chỉ định còn xảy ra trong một số trường hợp sau: นี่ยังไง (đây này, đây nè, đây chứ gì), นั่นนะสิ (chính xác, chuẩn rồi), แต่นั่นแหละ (nhưng mà đó)."
+  examples:
+    - { th: "นี่ยังไง", vi: "Đây này, đây nè, đây chứ gì" }
+    - { th: "นั่นนะสิ", vi: "Chính xác, chuẩn rồi" }
+    - { th: "แต่นั่นแหละ", vi: "Nhưng mà đó" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-khong
+  unit_id: c05
+  title_vi: "Đại từ sở hữu ของ"
+  pattern: "danh từ + ของ + người sở hữu"
+  explain_vi: "Từ ของ được dùng để chỉ sở hữu. Lưu ý: ของ cũng có thể được dùng như danh từ, mang nghĩa “món, thứ, đồ”."
+  examples:
+    - { th: "กระเป๋าของฉัน", vi: "Túi của tôi" }
+    - { th: "เขาไปซื้อของแล้ว", vi: "Anh ấy đi mua đồ rồi" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-eng
+  unit_id: c05
+  title_vi: "Đại từ nhấn mạnh เอง"
+  pattern: "S + เอง + V · S + V + เอง · S + เอง + เป็นคน + V · ตัว + S + เอง + V · đại từ chỉ định + เอง"
+  explain_vi: "Đại từ nhấn mạnh “เอง” mang nghĩa “tự, chính”, nó xảy ra trong các mẫu sau, mỗi mẫu truyền tải một mức độ nhấn mạnh hơi khác nhau. เอง còn được xảy ra sau đại từ chỉ định."
+  examples:
+    - { th: "ผมเองทำ", vi: "Tôi tự làm" }
+    - { th: "ผมทำเอง", vi: "Tôi tự làm, chính tôi làm" }
+    - { th: "ผมเองเป็นคนทำ", vi: "Tôi chính là người làm" }
+    - { th: "ตัวผมเองทำ", vi: "Bản thân tôi tự làm" }
+    - { th: "เพื่อนคนนี้เอง", vi: "Chính người bạn này" }
+    - { th: "วันนั้นเอง", vi: "Chính ngày hôm đó" }
+    - { th: "เดี๋ยวนี้เอง", vi: "Ngay bây giờ, ngay lúc này thôi" }
+    - { th: "สามร้อยบาทเท่านั้นเอง", vi: "Chỉ 300 bạt mà thôi" }
+  source: plernpin-c05#p5
+  draft: true

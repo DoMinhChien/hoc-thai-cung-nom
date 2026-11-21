@@ -1231,3 +1231,20 @@ c06-w63,c06,c06-l4,การอุตสาหกรรม,,ngành công nghiệ
 c06-w64,c06,c06-l4,การอาหาร,,ngành thực phẩm,,,noun,,,,,,plernpin-c06#p5,true
 c06-w65,c06,c06-l4,การช่าง,,kỹ thuật; các công việc kỹ thuật; nghề thợ; nghề thủ công; nghề cơ khí,,,noun,,,,,,plernpin-c06#p5,true
 c06-w66,c06,c06-l4,การธนาคาร,,ngành ngân hàng,,,noun,,,,,,plernpin-c06#p5,true
+c05-w01,c05,c05-l1,นี่,,đây,bộ 1 (gần nhất),,pron,,,,,,plernpin-c05#p1,true
+c05-w02,c05,c05-l1,นั่น,,đó,bộ 1,,pron,,,,,,plernpin-c05#p1,true
+c05-w03,c05,c05-l1,โน่น,,kia,bộ 1,,pron,,,,,,plernpin-c05#p1,true
+c05-w04,c05,c05-l1,นู่น,,kia kìa,bộ 1 (xa nhất),,pron,,,,,,plernpin-c05#p1,true
+c05-w05,c05,c05-l2,นี้,,này,bộ 2 (gần nhất),,pron,,,,,,plernpin-c05#p1,true
+c05-w06,c05,c05-l2,นั้น,,đấy,bộ 2,,pron,,,,,,plernpin-c05#p1,true
+c05-w07,c05,c05-l2,โน้น,,kìa,bộ 2,,pron,,,,,,plernpin-c05#p1,true
+c05-w08,c05,c05-l2,นู้น,,kia kìa,bộ 2 (xa nhất),,pron,,,,,,plernpin-c05#p1,true
+c05-w09,c05,c05-l2,เหล่า,,các (số nhiều),"thêm trước đại từ chỉ định để tạo thành số nhiều (เหล่านี้, เหล่านั้น)",,particle,,,,,,plernpin-c05#p4,true
+c05-w10,c05,c05-l2,นี่ยังไง,,đây này; đây nè; đây chứ gì,,,phrase,,,,,,plernpin-c05#p4,true
+c05-w11,c05,c05-l2,นั่นนะสิ,,chính xác; chuẩn rồi,,,phrase,,,,,,plernpin-c05#p4,true
+c05-w12,c05,c05-l2,แต่นั่นแหละ,,nhưng mà đó,,,phrase,,,,,,plernpin-c05#p4,true
+c05-w13,c05,c05-l3,ของ,,của; món; thứ; đồ,"chỉ sở hữu; cũng có thể được dùng như danh từ, mang nghĩa “món, thứ, đồ”",,prep,,,,,,plernpin-c05#p4,true
+c05-w14,c05,c05-l3,เอง,,tự; chính,đại từ nhấn mạnh,,pron,,,,,,plernpin-c05#p5,true
+c05-w15,c05,c05-l3,เพื่อนคนนี้เอง,,chính người bạn này,,,phrase,,,,,,plernpin-c05#p6,true
+c05-w16,c05,c05-l3,วันนั้นเอง,,chính ngày hôm đó,,,phrase,,,,,,plernpin-c05#p6,true
+c05-w17,c05,c05-l3,เดี๋ยวนี้เอง,,ngay bây giờ; ngay lúc này thôi,,,phrase,,,,,,plernpin-c05#p6,true
