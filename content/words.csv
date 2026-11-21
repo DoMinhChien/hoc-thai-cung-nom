@@ -1093,3 +1093,75 @@ c09-w29,c09,c09-l3,เปลี่ยนใจ,,đổi ý,,,verb,,,,,,plernpin-c
 c09-w30,c09,c09-l3,แปลกใจ,,ngạc nhiên; bất ngờ,,,adj,,,,,,plernpin-c09#p2,true
 c09-w31,c09,c09-l3,ไว้ใจ,,tin tưởng; tin cậy,,,verb,,,,,,plernpin-c09#p2,true
 c09-w32,c09,c09-l3,หายใจ,,thở; hít thở,,,verb,,,,,,plernpin-c09#p2,true
+c07-w01,c07,c07-l1,ความ,,vụ án; vụ kiện; vụ việc; nội dung; thông tin,khi đứng một mình,,noun,,,,,,plernpin-c07#p1,true
+c07-w02,c07,c07-l1,สู้ความ,,tranh kiện,,,verb,,,,,,plernpin-c07#p1,true
+c07-w03,c07,c07-l1,ชนะความ,,thắng kiện,,,verb,,,,,,plernpin-c07#p1,true
+c07-w04,c07,c07-l1,จำกัดความ,,định nghĩa,,,verb,,,,,,plernpin-c07#p1,true
+c07-w05,c07,c07-l1,ย่อความ,,tóm tắt nội dung,,,verb,,,,,,plernpin-c07#p1,true
+c07-w06,c07,c07-l1,ความรัก,,tình yêu,,,noun,,,,,,plernpin-c07#p2,true
+c07-w07,c07,c07-l1,ความรู้,,kiến thức,,,noun,,,,,,plernpin-c07#p2,true
+c07-w08,c07,c07-l1,ความเกลียด,,lòng căm ghét,,,noun,,,,,,plernpin-c07#p2,true
+c07-w09,c07,c07-l1,ความคิด,,suy nghĩ; ý tưởng,,,noun,,,,,,plernpin-c07#p2,true
+c07-w10,c07,c07-l1,ความคิดถึง,,nỗi nhớ,,,noun,,,,,,plernpin-c07#p2,true
+c07-w11,c07,c07-l1,ความฝัน,,giấc mơ,,,noun,,,,,,plernpin-c07#p2,true
+c07-w12,c07,c07-l1,ความโกรธ,,cơn giận,,,noun,,,,,,plernpin-c07#p2,true
+c07-w13,c07,c07-l1,ความพยายาม,,sự cố gắng; sự nỗ lực,,,noun,,,,,,plernpin-c07#p2,true
+c07-w14,c07,c07-l2,ความสูง,,chiều cao,,,noun,,,,,,plernpin-c07#p3,true
+c07-w15,c07,c07-l2,ความจริง,,sự thật,,,noun,,,,,,plernpin-c07#p3,true
+c07-w16,c07,c07-l2,ความดี,,lòng tốt; điều tốt,,,noun,,,,,,plernpin-c07#p3,true
+c07-w17,c07,c07-l2,ความงาม,,vẻ đẹp,bên trong,,noun,,,,,,plernpin-c07#p3,true
+c07-w18,c07,c07-l2,ความสวย,,sự xinh đẹp; sắc đẹp,bên ngoài,,noun,,,,,,plernpin-c07#p3,true
+c07-w19,c07,c07-l2,ความหล่อ,,sự đẹp trai,,,noun,,,,,,plernpin-c07#p3,true
+c07-w20,c07,c07-l2,ความสุข,,hạnh phúc,,,noun,,,,,,plernpin-c07#p3,true
+c07-w21,c07,c07-l2,ความทุกข์,,nỗi khổ; sự đau khổ,,,noun,,,,,,plernpin-c07#p3,true
+c07-w22,c07,c07-l2,ความรวย,,sự giàu có,,,noun,,,,,,plernpin-c07#p3,true
+c07-w23,c07,c07-l2,ความจน,,sự nghèo khó,,,noun,,,,,,plernpin-c07#p3,true
+c07-w24,c07,c07-l2,ความฉลาด,,sự thông minh; trí thông minh,,,noun,,,,,,plernpin-c07#p3,true
+c07-w25,c07,c07-l3,ความปรารถนา,,ước muốn; mong muốn; nguyện vọng,,,noun,,,,,,plernpin-c07#p3,true
+c07-w26,c07,c07-l3,ความภูมิใจ,,lòng tự hào,,,noun,,,,,,plernpin-c07#p3,true
+c07-w27,c07,c07-l3,ความดีใจ,,niềm vui; sự vui mừng,,,noun,,,,,,plernpin-c07#p3,true
+c07-w28,c07,c07-l3,ความเสียใจ,,nỗi buồn; sự tiếc nuối,,,noun,,,,,,plernpin-c07#p3,true
+c07-w29,c07,c07-l3,ความยินดี,,niềm hân hoan; sự hân hoan,,,noun,,,,,,plernpin-c07#p3,true
+c07-w30,c07,c07-l3,ความสนุก,,sự thích thú,,,noun,,,,,,plernpin-c07#p3,true
+c07-w31,c07,c07-l3,ความประหม่า,,sự lúng túng; sự lo lắng; sự rụt rè,,,noun,,,,,,plernpin-c07#p3,true
+c07-w32,c07,c07-l3,ความขยัน,,sự siêng năng; sự chăm chỉ,,,noun,,,,,,plernpin-c07#p3,true
+c07-w33,c07,c07-l3,ความเกียจคร้าน,,sự lười biếng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w34,c07,c07-l3,ความตั้งใจ,,sự quyết tâm; lòng quyết tâm,,,noun,,,,,,plernpin-c07#p4,true
+c07-w35,c07,c07-l3,ความมักง่าย,,sự bất cẩn; sự qua loa; sự xuề xòa; sự tùy tiện,,,noun,,,,,,plernpin-c07#p4,true
+c07-w36,c07,c07-l3,ความสนใจ,,sự quan tâm; sự hứng thú,,,noun,,,,,,plernpin-c07#p4,true
+c07-w37,c07,c07-l3,ความรอบคอบ,,sự cẩn thận; sự thận trọng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w38,c07,c07-l3,ความอดทน,,lòng kiên nhẫn; sự nhẫn nại; sự chịu đựng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w39,c07,c07-l3,ความสดชื่น,,sự tươi mới; sự sảng khoái,,,noun,,,,,,plernpin-c07#p4,true
+c07-w40,c07,c07-l3,ความอิสระ,,sự tự do,,,noun,,,,,,plernpin-c07#p4,true
+c07-w41,c07,c07-l3,ความพอดี,,sự vừa vặn; sự vừa đủ; sự vừa phải,,,noun,,,,,,plernpin-c07#p4,true
+c07-w42,c07,c07-l3,ความเหมาะสม,,sự phù hợp,,,noun,,,,,,plernpin-c07#p4,true
+c07-w43,c07,c07-l3,ความเครียด,,sự căng thẳng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w44,c07,c07-l3,ความตื่นเต้น,,sự hồi hộp; sự phấn khích,,,noun,,,,,,plernpin-c07#p4,true
+c07-w45,c07,c07-l4,ความประทับใจ,,sự ấn tượng,tài liệu ghi “ความประทับ”,,noun,,,,,,plernpin-c07#p4,true
+c07-w46,c07,c07-l4,ความรู้สึก,,cảm xúc; sự xúc động; sự cảm động,,,noun,,,,,,plernpin-c07#p4,true
+c07-w47,c07,c07-l4,ความหวัง,,niềm hy vọng; nguồn hy vọng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w48,c07,c07-l4,ความยากจน,,sự nghèo khổ,,,noun,,,,,,plernpin-c07#p4,true
+c07-w49,c07,c07-l4,ความยุติธรรม,,sự công bằng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w50,c07,c07-l4,ความยาว,,chiều dài,,,noun,,,,,,plernpin-c07#p4,true
+c07-w51,c07,c07-l4,ความกว้าง,,chiều rộng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w52,c07,c07-l4,ความเร็ว,,tốc độ,,,noun,,,,,,plernpin-c07#p4,true
+c07-w53,c07,c07-l4,ความเจริญ,,sự phát triển; sự thịnh vượng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w54,c07,c07-l4,ความเสื่อม,,sự suy giảm; sự xuống cấp; sự suy tàn,,,noun,,,,,,plernpin-c07#p4,true
+c07-w55,c07,c07-l4,ความเคยชิน,,sự quen thuộc,,,noun,,,,,,plernpin-c07#p5,true
+c07-w56,c07,c07-l4,ความสมหวัง,,sự viên mãn; sự mãn nguyện,,,noun,,,,,,plernpin-c07#p5,true
+c07-w57,c07,c07-l4,ความชั่ว,,sự ác độc; sự đồi bại; sự tàn ác,,,noun,,,,,,plernpin-c07#p5,true
+c07-w58,c07,c07-l4,ความเลว,,sự xấu xa,,,noun,,,,,,plernpin-c07#p5,true
+c07-w59,c07,c07-l4,ความหวาน,,sự ngọt ngào; vị ngọt; độ ngọt,,,noun,,,,,,plernpin-c07#p5,true
+c07-w60,c07,c07-l4,ความเค็ม,,vị mặn; độ mặn,,,noun,,,,,,plernpin-c07#p5,true
+c07-w61,c07,c07-l4,ความร้อน,,độ nóng; sức nóng,,,noun,,,,,,plernpin-c07#p5,true
+c07-w62,c07,c07-l4,ความหนาว,,độ lạnh; cái rét,,,noun,,,,,,plernpin-c07#p5,true
+c07-w63,c07,c07-l4,ความเย็น,,độ mát,,,noun,,,,,,plernpin-c07#p5,true
+c07-w64,c07,c07-l4,ความไพเราะ,,sự du dương; sự êm ái,,,noun,,,,,,plernpin-c07#p5,true
+c07-w65,c07,c07-l4,ความดัง,,độ to; âm lượng; độ ồn ào; sự nổi tiếng,,,noun,,,,,,plernpin-c07#p5,true
+c07-w66,c07,c07-l4,ความใหม่,,độ mới mẻ; sự mới mẻ,,,noun,,,,,,plernpin-c07#p5,true
+c07-w67,c07,c07-l4,ความหรูหรา,,sự sang trọng,,,noun,,,,,,plernpin-c07#p5,true
+c07-w68,c07,c07-l5,ความเมือง,,việc chính trị,những vấn đề liên quan đến quốc gia,,noun,,,,,,plernpin-c07#p5,true
+c07-w69,c07,c07-l5,ความแพ่ง,,dân sự,,,noun,,,,,,plernpin-c07#p5,true
+c07-w70,c07,c07-l5,ความอาญา,,hình sự,,,noun,,,,,,plernpin-c07#p5,true
+c07-w71,c07,c07-l5,ความไม่จริง,,không đúng sự thật,,,noun,,,,,,plernpin-c07#p6,true
+c07-w72,c07,c07-l5,ความไม่สะอาด,,sự bẩn thỉu; sự nhơ nhuốc; sự không sạch sẽ,,,noun,,,,,,plernpin-c07#p6,true

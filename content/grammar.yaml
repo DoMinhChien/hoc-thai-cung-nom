@@ -884,3 +884,68 @@
     - { th: "ตัดสินใจ", vi: "Quyết định, đưa ra quyết định" }
   source: plernpin-c09#p1
   draft: true
+- id: g-c07-vu-an
+  unit_id: c07
+  title_vi: "ความ đứng một mình: vụ án, vụ kiện, vụ việc"
+  pattern: "ความ (đứng một mình)"
+  explain_vi: "“ความ” đứng một mình với ý nghĩa “vụ án, vụ kiện, vụ việc”."
+  examples:
+    - { th: "ความแตกเมื่อนักข่าวตามไปเห็น", vi: "Vụ việc vỡ nở khi nhà báo theo đi bắt gặp được" }
+    - { th: "ทนายว่าความในศาล", vi: "Luật sư nói vụ án trong tòa án" }
+    - { th: "สู้ความ", vi: "Tranh kiện" }
+    - { th: "ชนะความ", vi: "Thắng kiện" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-noi-dung
+  unit_id: c07
+  title_vi: "ความ đứng một mình: nội dung, thông tin"
+  pattern: "động từ + ความ"
+  explain_vi: "“ความ” đứng một mình còn mang ý nghĩa “nội dung, thông tin”."
+  examples:
+    - { th: "จำกัดความ", vi: "Định nghĩa" }
+    - { th: "ย่อความ", vi: "Tóm tắt nội dung" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-dong-tu
+  unit_id: c07
+  title_vi: "ความ + động từ chỉ tình cảm/tình trạng = danh từ"
+  pattern: "ความ + Động từ chỉ tình cảm/tình trạng = Danh từ"
+  explain_vi: "“ความ” được sử dụng để thêm vào trước động từ của hoạt động trừu tượng hoặc động từ liên quan đến tâm lý để thành lập danh từ. Lưu ý: Trong 1 số trường hợp การ và ความ đều có thể đứng trước cùng một động từ, nhưng ý nghĩa lại hoàn toàn khác nhau. “การ” thường thể hiện quá trình trong việc thực hiện hành động. Còn “ความ” thể hiện tình trạng của động từ. Khi “การ” đứng trước động từ thường trở thành danh từ cụ thể, còn “ความ” đứng trước động từ lại trở thành danh từ trừu tượng."
+  examples:
+    - { th: "ความรัก", vi: "Tình yêu" }
+    - { th: "ความคิดถึง", vi: "Nỗi nhớ" }
+    - { th: "ความรักเป็นสิ่งสวยงาม แต่การรักใครสักคนไม่ใช่เรื่องง่าย", vi: "Tình yêu là thứ đẹp đẽ nhưng việc yêu một ai đó không phải là chuyện dễ dàng" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-tinh-tu
+  unit_id: c07
+  title_vi: "ความ + tính từ = danh từ (chỉ tính chất, đặc điểm)"
+  pattern: "ความ + Tính từ = Danh từ (chỉ tính chất, đặc điểm)"
+  explain_vi: "“ความ” được sử dụng để thêm vào trước tính từ để thành lập danh từ chỉ tính chất, đặc điểm."
+  examples:
+    - { th: "ความสูง", vi: "Chiều cao" }
+    - { th: "ความจริง", vi: "Sự thật" }
+    - { th: "ความสุข", vi: "Hạnh phúc" }
+  source: plernpin-c07#p2
+  draft: true
+- id: g-c07-danh-tu
+  unit_id: c07
+  title_vi: "ความ + danh từ: từ với nghĩa khác"
+  pattern: "ความ + danh từ"
+  explain_vi: "“ความ” còn đứng trước danh từ làm tiền tố để dẫn xuất danh từ đó thành một từ với nghĩa khác. Trường hợp này không được xếp vào nhóm “Biến đổi từ động từ, tính từ thành danh từ bằng cách thêm tiền tố ความ”."
+  examples:
+    - { th: "ความเมือง", vi: "Việc chính trị (những vấn đề liên quan đến quốc gia)" }
+    - { th: "ความแพ่ง", vi: "Dân sự" }
+    - { th: "ความอาญา", vi: "Hình sự" }
+  source: plernpin-c07#p5
+  draft: true
+- id: g-c07-phu-dinh
+  unit_id: c07
+  title_vi: "ความ đứng trước yếu tố phủ định"
+  pattern: "ความ + ไม่ + tính từ / động từ"
+  explain_vi: "“ความ” còn đứng trước yếu tố phủ định."
+  examples:
+    - { th: "ความไม่จริง", vi: "Không đúng sự thật" }
+    - { th: "ความไม่สะอาด", vi: "Sự bẩn thỉu, sự nhơ nhuốc, sự không sạch sẽ" }
+  source: plernpin-c07#p5
+  draft: true

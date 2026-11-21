@@ -128,3 +128,8 @@ c09-l2,c09,2,… + ใจ (cảm xúc) (1),g-c09-jai-sau,true
 c09-l3,c09,3,… + ใจ (cảm xúc) (2),g-c09-jai-sau,true
 c08-l1,c08,1,Dịch câu với การ và ความ (1),,true
 c08-l2,c08,2,Dịch câu với การ và ความ (2),,true
+c07-l1,c07,1,ความ đứng một mình; ความ + động từ,g-c07-vu-an|g-c07-noi-dung|g-c07-dong-tu,true
+c07-l2,c07,2,ความ + tính từ,g-c07-tinh-tu,true
+c07-l3,c07,3,Tổng hợp danh từ với ความ (1),g-c07-dong-tu|g-c07-tinh-tu,true
+c07-l4,c07,4,Tổng hợp danh từ với ความ (2),g-c07-dong-tu|g-c07-tinh-tu,true
+c07-l5,c07,5,ความ + danh từ; ความ + phủ định,g-c07-danh-tu|g-c07-phu-dinh,true
