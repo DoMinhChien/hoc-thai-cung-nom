@@ -47,7 +47,12 @@ export function MnemonicBlock({
   className?: string;
 }) {
   const repos = useRepositories();
-  const note = useRepositoryQuery((r) => r.progress.getWordNote(wordId), [wordId]);
+  // Bọc trong object: `undefined` = đang tải, `{ note: undefined }` = từ chưa có mẹo.
+  const loaded = useRepositoryQuery(
+    async (r) => ({ note: await r.progress.getWordNote(wordId) }),
+    [wordId],
+  );
+  const note = loaded?.note;
   const [editing, setEditing] = useState<string | null>(null);
   const [showSuggested, setShowSuggested] = useState(false);
   const [confirm, setConfirm] = useState(false);
@@ -62,7 +67,7 @@ export function MnemonicBlock({
   }
 
   const open = () => setEditing(mine ?? '');
-  useKeyShortcut('m', open, shortcuts && editing === null && note !== undefined);
+  useKeyShortcut('m', open, shortcuts && editing === null && loaded !== undefined);
 
   const save = async (value: string) => {
     if (!repos) return;

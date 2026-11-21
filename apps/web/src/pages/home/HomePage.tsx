@@ -111,7 +111,7 @@ function Dashboard({ data }: { data: PracticeData }) {
           <h2 id="home-today" className="text-lg font-semibold">
             {t('home.today')}
           </h2>
-          {streak && <StreakCard streak={streak} className="border-0 p-0 shadow-none" />}
+          {streak && <StreakCard streak={streak} stacked className="border-0 p-0 shadow-none" />}
           {streak && streak.count === 0 && !started && (
             <p className="text-sm text-muted-foreground">{t('home.streakStart')}</p>
           )}

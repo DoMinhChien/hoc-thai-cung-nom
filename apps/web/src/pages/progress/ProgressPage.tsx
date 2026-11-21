@@ -34,7 +34,7 @@ import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '@/auth/useAuth';
 import { useKeyShortcut } from '@/components/interactive';
-import { MasteryLegend, ProgressRing, StackedProgressBar } from '@/components/progress';
+import { ProgressRing, StackedProgressBar } from '@/components/progress';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAllUnits } from '@/content/hooks';
@@ -49,13 +49,9 @@ import { BarChart } from './charts';
 const SHOW_TABLE_KEY = 'progressShowTable';
 const EPOCH = new Date(0);
 const numberFormat = new Intl.NumberFormat('vi-VN');
-const ddmm = new Intl.DateTimeFormat('vi-VN', {
-  day: '2-digit',
-  month: '2-digit',
-  timeZone: 'UTC',
-});
 const WEEKDAY = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'] as const;
-const dayLabel = (day: string) => ddmm.format(new Date(`${day}T00:00:00Z`));
+/** `YYYY-MM-DD` → `dd/MM` (SCR-09 §Quy tắc biểu đồ #7). */
+const dayLabel = (day: string) => `${day.slice(8, 10)}/${day.slice(5, 7)}`;
 const weekday = (day: string) => WEEKDAY[new Date(`${day}T00:00:00Z`).getUTCDay()]!;
 
 /** `/progress` — Tiến độ (SCR-09, P-01..P-12, R-01'..R-07): báo cáo tính hoàn toàn trên máy. */
@@ -486,7 +482,6 @@ function Memory({
             <span className="tabular-nums">{counts.total}</span>
           </p>
           <StackedProgressBar counts={counts} label={t(label)} />
-          <MasteryLegend counts={counts} />
         </div>
       ))}
       <p className="text-sm" data-testid="report-retention">

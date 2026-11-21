@@ -440,12 +440,6 @@ function Book({
                       aria-selected={active}
                       data-testid={`word-row-${r.word.id}`}
                       data-level={r.level}
-                      aria-label={[
-                        r.word.thai,
-                        r.word.meaning_vi.join('; ') || '—',
-                        t(`progress.level.${r.level}`),
-                        ...(r.review ? [t('words.review')] : []),
-                      ].join(', ')}
                       onClick={() => select(r.word.id)}
                       className={cn(
                         'flex min-h-[52px] cursor-pointer items-center gap-3 border-b px-4 py-1.5 last:border-b-0',
@@ -453,6 +447,10 @@ function Book({
                       )}
                     >
                       <LevelDot level={r.level} />
+                      <span className="sr-only">
+                        {t(`progress.level.${r.level}`)}
+                        {r.review && `, ${t('words.review')}`}:{' '}
+                      </span>
                       <span className="w-7 text-center">
                         {icon && (
                           <Emoji size="sm" className="text-2xl">
@@ -465,7 +463,7 @@ function Book({
                           {r.word.thai}
                         </span>
                         {phonetic && r.word.phonetic && (
-                          <span className="text-xs text-subtle-foreground">{r.word.phonetic}</span>
+                          <span className="text-xs text-muted-foreground">{r.word.phonetic}</span>
                         )}
                       </span>
                       <span className="min-w-0 flex-1 truncate">
@@ -477,7 +475,7 @@ function Book({
                         </span>
                       )}
                       {r.word.draft && (
-                        <span className="text-xs text-subtle-foreground">{t('units.draft')}</span>
+                        <span className="text-xs text-muted-foreground">{t('units.draft')}</span>
                       )}
                       {r.review && (
                         <Bookmark className="size-4 fill-current text-primary" aria-hidden />
@@ -546,7 +544,9 @@ function LevelDot({ level }: { level: MasteryLevel }) {
   );
 }
 
-const dateFormat = new Intl.DateTimeFormat('vi-VN', { day: '2-digit', month: '2-digit' });
+/** Ngày `dd/MM` theo giờ máy. */
+const ddmm = (d: Date) =>
+  `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
 
 function Detail({
   row,
@@ -686,7 +686,7 @@ function Detail({
               <p>
                 {isDue(nextDue.fsrs, new Date())
                   ? t('words.dueToday')
-                  : t('words.nextReview', { date: dateFormat.format(new Date(nextDue.fsrs.due)) })}
+                  : t('words.nextReview', { date: ddmm(new Date(nextDue.fsrs.due)) })}
               </p>
             )}
             {stats && <p>{t('words.reviewStats', { n: stats.reviews, m: stats.lapses })}</p>}

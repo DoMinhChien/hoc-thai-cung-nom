@@ -28,7 +28,16 @@ export function StreakBadge() {
 const WEEKDAYS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'] as const;
 
 /** Khối chuỗi ngày học (hướng B): 🔥 + số lớn + 7 chấm của tuần (đầu trang Bài tập, Tổng quan). */
-export function StreakCard({ streak, className }: { streak: StudyStreak; className?: string }) {
+export function StreakCard({
+  streak,
+  stacked = false,
+  className,
+}: {
+  streak: StudyStreak;
+  /** Cột hẹp (Tổng quan): 7 chấm tuần xuống hàng riêng. */
+  stacked?: boolean;
+  className?: string;
+}) {
   return (
     <section
       data-testid="streak-card"
@@ -36,6 +45,7 @@ export function StreakCard({ streak, className }: { streak: StudyStreak; classNa
       aria-label={t('streak.label')}
       className={cn(
         'flex items-center gap-4 rounded-xl border bg-surface px-5 py-4 shadow-card',
+        stacked && 'flex-wrap',
         className,
       )}
     >
@@ -48,7 +58,7 @@ export function StreakCard({ streak, className }: { streak: StudyStreak; classNa
       >
         🔥
       </Emoji>
-      <div className="flex flex-col">
+      <div className="flex min-w-0 flex-1 flex-col">
         <p className="flex items-baseline gap-2">
           <span
             key={streak.count}
@@ -65,7 +75,10 @@ export function StreakCard({ streak, className }: { streak: StudyStreak; classNa
           {streak.today ? t('streak.done') : t('streak.keep')}
         </p>
       </div>
-      <ol className="ml-auto flex gap-2" aria-label={t('streak.week')}>
+      <ol
+        className={cn('flex gap-2', stacked ? 'w-full justify-between' : 'ml-auto')}
+        aria-label={t('streak.week')}
+      >
         {streak.week.map((d, i) => (
           <li key={d.day} className="flex flex-col items-center gap-1">
             <span
