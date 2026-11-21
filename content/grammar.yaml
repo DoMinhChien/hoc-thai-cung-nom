@@ -332,3 +332,98 @@
     - { th: "อีกห้านาทีสิบหกนาฬิกา", vi: "4 giờ kém 5 phút chiều (kiểu quốc tế)" }
   source: plernpin-b06#p16-17
   draft: true
+- id: g-b05-wan-arai
+  unit_id: b05
+  title_vi: Hỏi và trả lời về thứ
+  pattern: Trạng từ chỉ TG + วัน + อะไร + คะ/ครับ · Trạng từ chỉ TG + thứ + ค่ะ/ครับ
+  explain_vi: Hỏi thứ — trạng từ chỉ thời gian (วันนี้, พรุ่งนี้…) + วันอะไร. Trả lời — trạng từ chỉ thời gian + tên thứ.
+  examples:
+    - { th: "วันนี้วันอะไรคะ", vi: "Hôm nay thứ mấy ạ?" }
+    - { th: "วันนี้วันจันทร์ค่ะ", vi: "Hôm nay thứ hai ạ" }
+  source: plernpin-b05#p7-8
+  draft: true
+- id: g-b05-wan-thi
+  unit_id: b05
+  title_vi: Hỏi và trả lời ngày dương lịch
+  pattern: Trạng từ chỉ TG + (เป็น) วันที่ + เท่าไหร่ / con số + คะ/ครับ
+  explain_vi: Hỏi ngày — trạng từ chỉ thời gian + (เป็น) วันที่เท่าไหร่. Trả lời — thay เท่าไหร่ bằng con số. เป็น có thể bỏ.
+  examples:
+    - { th: "วันนี้เป็นวันที่เท่าไหร่คะ", vi: "Hôm nay (là) ngày bao nhiêu ạ?" }
+    - { th: "วันนี้เป็นวันที่สิบสองค่ะ", vi: "Hôm nay (là) ngày 12 ạ" }
+  source: plernpin-b05#p9-10
+  draft: true
+- id: g-b05-khuen-raem
+  unit_id: b05
+  title_vi: Nói ngày âm lịch (ขึ้น … ค่ำ / แรม … ค่ำ)
+  pattern: Trạng từ chỉ TG + (เป็น) ขึ้น … ค่ำ / แรม … ค่ำ + ค่ะ/ครับ
+  explain_vi: 15 ngày đầu tháng âm lịch nói ขึ้น + số + ค่ำ (ขึ้น 15 ค่ำ = ngày rằm). 15 ngày sau nói แรม + số + ค่ำ (แรม 2 ค่ำ = ngày 17).
+  examples:
+    - { th: "วันนี้เป็นขึ้น 15 ค่ำค่ะ", vi: "Hôm nay (là) ngày rằm ạ" }
+    - { th: "วันนี้เป็นแรม 2 ค่ำค่ะ", vi: "Hôm nay (là) ngày 17 ạ" }
+  source: plernpin-b05#p11-12
+  draft: true
+- id: g-b05-duean-suffix
+  unit_id: b05
+  title_vi: Hậu tố tên tháng (คม / ยน / พันธ์)
+  pattern: tên tháng + คม (31 ngày) / ยน (30 ngày) / พันธ์ (tháng 2)
+  explain_vi: Các tháng có 31 ngày có hậu tố คม, các tháng có 30 ngày có hậu tố ยน (riêng tháng 2 có hậu tố พันธ์). Trong cách nói chuyện hằng ngày, người Thái thường bỏ các hậu tố này, vì thế เดือนมกราคม sẽ trở thành เดือนมกราฯ.
+  examples:
+    - { th: "เดือนมกราคม", vi: "Tháng 1 (31 ngày → คม)" }
+    - { th: "เดือนเมษายน", vi: "Tháng 4 (30 ngày → ยน)" }
+    - { th: "เดือนกุมภาพันธ์", vi: "Tháng 2 (→ พันธ์)" }
+    - { th: "เดือนมกราฯ", vi: "Tháng 1 (văn nói, bỏ hậu tố)" }
+  source: plernpin-b05#p16
+  draft: true
+- id: g-b05-duean-arai
+  unit_id: b05
+  title_vi: Hỏi và trả lời về tháng
+  pattern: Trạng từ chỉ TG + เดือน + อะไร + คะ/ครับ · Trạng từ chỉ TG + tháng + ค่ะ/ครับ
+  explain_vi: Hỏi tháng — trạng từ chỉ thời gian (เดือนนี้, เดือนหน้า…) + เดือนอะไร. Trả lời — trạng từ chỉ thời gian + เดือน + tên tháng.
+  examples:
+    - { th: "เดือนนี้เดือนอะไรคะ", vi: "Tháng này tháng mấy ạ?" }
+    - { th: "เดือนนี้เดือนมีนาคมค่ะ", vi: "Tháng này tháng 3 ạ" }
+  source: plernpin-b05#p22-23
+  draft: true
+- id: g-b05-duean-chan
+  unit_id: b05
+  title_vi: Tháng theo âm lịch (เดือนตามจันทรคติ)
+  pattern: เดือนอ้าย · เดือนยี่ · เดือน + số (từ tháng 3)
+  explain_vi: Âm lịch có 12 tháng. Tháng 1 là เดือนอ้าย, tháng 2 là เดือนยี่; từ tháng 3 đến tháng 12 nói เดือน + số (tài liệu viết bằng chữ số Thái ๓ … ๑๒).
+  examples:
+    - { th: "เดือนอ้าย", vi: "Tháng 1 (âm lịch)" }
+    - { th: "เดือนยี่", vi: "Tháng 2 (âm lịch)" }
+    - { th: "เดือน ๓", vi: "Tháng 3 (âm lịch)" }
+    - { th: "เดือน ๑๒", vi: "Tháng 12 (âm lịch)" }
+  source: plernpin-b05#p17-19
+  draft: true
+- id: g-b05-pi-naksat
+  unit_id: b05
+  title_vi: Hỏi và trả lời về năm con giáp
+  pattern: Trạng từ chỉ TG + ปีนักษัตร + อะไร + คะ/ครับ · Trạng từ chỉ TG + năm con giáp + ค่ะ/ครับ
+  explain_vi: Hỏi năm con giáp — ปีนี้ปีนักษัตรอะไร. Trả lời — ปีนี้ + tên năm con giáp (ปีชวด … ปีกุน).
+  examples:
+    - { th: "ปีนี้ปีนักษัตรอะไรคะ", vi: "Năm nay năm con giáp gì ạ?" }
+    - { th: "ปีนี้ปีมะเส็งค่ะ", vi: "Năm nay năm tỵ ạ" }
+  source: plernpin-b05#p34-35
+  draft: true
+- id: g-b05-pi
+  unit_id: b05
+  title_vi: Hỏi và trả lời về năm (phật lịch / công lịch)
+  pattern: Trạng từ chỉ TG + ปี + อะไร + คะ/ครับ · Trạng từ chỉ TG + ปี พ.ศ./ปี ค.ศ. + năm + ค่ะ/ครับ
+  explain_vi: (p24) Năm chính thức ở Thái Lan được tính kể từ 543 trước công nguyên, bắt đầu kỉ nguyên đạo phật. Do đó, 2000 sau công nguyên tương tự 2543 theo phật lịch (năm phật lịch = năm công lịch + 543). Ví dụ — bạn sinh năm 1978 thì theo phật lịch sẽ là 2521.
+  examples:
+    - { th: "ปีนี้ปีอะไรคะ", vi: "Năm nay năm gì ạ?" }
+    - { th: "ปีนี้ปีค.ศ. 2025 ค่ะ", vi: "Năm nay năm công lịch 2025 ạ" }
+    - { th: "ปีนี้ปีพ.ศ. 2568 ค่ะ", vi: "Năm nay năm phật lịch 2568 ạ" }
+  source: plernpin-b05#p31-33
+  draft: true
+- id: g-b05-rudu
+  unit_id: b05
+  title_vi: Hỏi và trả lời về mùa
+  pattern: Trạng từ chỉ TG + S + V + ใน + ฤดูไหน + คะ/ครับ · Trạng từ chỉ TG + S + V + ใน + tên mùa + ค่ะ/ครับ
+  explain_vi: Hỏi đang ở mùa nào — ตอนนี้เราอยู่ในฤดูไหน. Trả lời — thay ฤดูไหน bằng tên mùa.
+  examples:
+    - { th: "ตอนนี้เราอยู่ในฤดูไหนคะ", vi: "Bây giờ chúng ta ở trong mùa nào ạ?" }
+    - { th: "ตอนนี้เราอยู่ในฤดูร้อนค่ะ", vi: "Bây giờ chúng ta ở trong mùa hè ạ" }
+  source: plernpin-b05#p38-39
+  draft: true

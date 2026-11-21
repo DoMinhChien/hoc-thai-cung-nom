@@ -81,3 +81,17 @@ b06-l6,b06,6,Khoảng thời gian và tần suất,,true
 b06-l7,b06,7,"Luôn luôn, đúng giờ, kịp giờ",,true
 b06-l8,b06,8,"Hẹn, quá giờ, mở cửa, đóng cửa",,true
 b06-l9,b06,9,"Mãi mãi, suốt; sân bay, ngân hàng",,true
+b05-l1,b05,1,Bảy ngày trong tuần,g-b05-wan-arai,true
+b05-l2,b05,2,"Hôm nay, ngày mai, hôm qua; ngày dương lịch và âm lịch",g-b05-wan-thi|g-b05-khuen-raem,true
+b05-l3,b05,3,Mười hai tháng trong năm,g-b05-duean-suffix|g-b05-duean-arai,true
+b05-l4,b05,4,"Tháng âm lịch; tháng này, tháng sau, đầu tháng, cuối tháng",g-b05-duean-chan,true
+b05-l5,b05,5,Mười hai con giáp,g-b05-pi-naksat,true
+b05-l6,b05,6,"Năm nay, năm sau; phật lịch và công lịch",g-b05-pi,true
+b05-l7,b05,7,"Các mùa; trùng với, khi nào, lâu",g-b05-rudu,true
+b05-l8,b05,8,"Mời, về, chắc là; cũ, mới, dài, ngắn",,true
+b05-l9,b05,9,"Học kỳ; quá khứ, hiện tại, tương lai; thời đại",,true
+b05-l10,b05,10,"Hiện đại, lạc hậu, thay đổi; ngày sinh",,true
+b05-l11,b05,11,"Ngày nghỉ, ngày làm việc, cuối tuần; lễ hội (1)",,true
+b05-l12,b05,12,Lễ hội và ngày lễ (2),,true
+b05-l13,b05,13,Ngày lễ (3); thời gian biểu,,true
+b05-l14,b05,14,"Lịch, quý, giờ hành chính",,true
