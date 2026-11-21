@@ -23,3 +23,61 @@ b12-l4,b12,4,Kế hoạch du lịch cuối tuần,,true
 b12-l5,b12,5,Thời tiết và gọi taxi,,true
 b12-l6,b12,6,Xem phòng nghỉ,,true
 b12-l7,b12,7,Hỏi giá và tiện nghi phòng,,true
+b11-l1,b11,1,"Làm quen: tên, họ, quê và tuổi",,true
+b11-l2,b11,2,Học tiếng Thái và chào tạm biệt,,true
+b11-l3,b11,3,Đi đâu đấy? Đi công tác và đi họp,,true
+b11-l4,b11,4,Rủ đi thư viện,,true
+b11-l5,b11,5,Tham quan chùa Phật Ngọc,,true
+b11-l6,b11,6,Đi chợ nổi,,true
+b11-l7,b11,7,Hỏi đường đến ngân hàng,,true
+b11-l8,b11,8,Hỏi tuyến xe buýt,,true
+b10-l1,b10,1,Quần áo và giày dép,,true
+b10-l2,b10,2,Phụ kiện và đồ dùng,,true
+b10-l3,b10,3,Trái cây (1),,true
+b10-l4,b10,4,Trái cây (2),,true
+b10-l5,b10,5,Thịt và hải sản,,true
+b10-l6,b10,6,Rau (1),,true
+b10-l7,b10,7,Rau (2),,true
+b10-l8,b10,8,Rau (3),,true
+b10-l9,b10,9,Gia vị,,true
+b10-l10,b10,10,Đi mua sắm,,true
+b10-l11,b10,11,Thanh toán và giao hàng,,true
+b10-l12,b10,12,"Hóa đơn, chợ và siêu thị",,true
+b10-l13,b10,13,"Chọn hàng: loại, kiểu, cỡ",g-b10-la,true
+b09-l1,b09,1,Nhà hàng và thực đơn,,true
+b09-l2,b09,2,Bát đĩa và món Thái,,true
+b09-l3,b09,3,Món Thái và món Âu,,true
+b09-l4,b09,4,Tráng miệng và món Âu,,true
+b09-l5,b09,5,Bữa sáng kiểu Tây,,true
+b09-l6,b09,6,Đồ uống (1),,true
+b09-l7,b09,7,"Đồ uống (2) và cốc, đá",,true
+b09-l8,b09,8,Gọi món và hương vị,,true
+b09-l9,b09,9,Nước uống và đồ ăn nhanh,,true
+b09-l10,b09,10,"Trả tiền, đã từng, được / biết",g-b09-khoei|g-b09-mai-dai|g-b09-mai-pen,true
+b08-l1,b08,1,Phòng nghỉ và phòng tắm,g-b08-yak|g-b08-yak-dai,true
+b08-l2,b08,2,"Phòng ăn, bể bơi và sảnh",,true
+b08-l3,b08,3,"Đồ dùng cá nhân, chăn gối",g-b08-yak-kho,true
+b08-l4,b08,4,Nhân viên khách sạn và thẻ tín dụng,,true
+b08-l5,b08,5,"Tiền mặt, đổi phòng và dịch vụ",,true
+b08-l6,b08,6,"Loại phòng, giá phòng",,true
+b08-l7,b08,7,"Nhận, trả phòng và đăng ký",,true
+b08-l8,b08,8,"Đặt cọc, rời đi, làm ơn",g-b08-karuna,true
+b07-l1,b07,1,Địa điểm trong thành phố (1),,true
+b07-l2,b07,2,Địa điểm trong thành phố (2),,true
+b07-l3,b07,3,Địa điểm trong thành phố (3),,true
+b07-l4,b07,4,Phương tiện giao thông (1),,true
+b07-l5,b07,5,Phương tiện giao thông (2) và hướng đi,,true
+b07-l6,b07,6,Trong thành phố và giao thông,,true
+b07-l7,b07,7,"Lên xe, xuống xe, vé và lịch trình",,true
+b07-l8,b07,8,"Vị trí, hỏi đường và chỉ đường",g-b07-kho-tham|g-b07-chuai-bok-thang|g-b07-sap-mai-wa|g-b07-mai-sap-wa,true
+b07-l9,b07,9,"Trong, ngoài, khoảng cách",,true
+b07-l10,b07,10,"Xa, đối diện, bao xa",g-b07-klai-chak|g-b07-chak-thueng,true
+b06-l1,b06,1,Các buổi trong ngày,,true
+b06-l2,b06,2,"Giờ, phút và cách nói giờ kiểu Thái",g-b06-ti|g-b06-mong-chao|g-b06-bai|g-b06-mong-yen|g-b06-thum,true
+b06-l3,b06,3,"Giờ phút, giờ quốc tế, giờ kém; bây giờ, chưa, xong",g-b06-nathi|g-b06-nalika|g-b06-ik,true
+b06-l4,b06,4,"Một lát, trước, sau, nhanh, chậm",,true
+b06-l5,b06,5,"Ngay lập tức, đến muộn, bắt đầu, kết thúc",,true
+b06-l6,b06,6,Khoảng thời gian và tần suất,,true
+b06-l7,b06,7,"Luôn luôn, đúng giờ, kịp giờ",,true
+b06-l8,b06,8,"Hẹn, quá giờ, mở cửa, đóng cửa",,true
+b06-l9,b06,9,"Mãi mãi, suốt; sân bay, ngân hàng",,true

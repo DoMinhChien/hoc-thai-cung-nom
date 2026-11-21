@@ -171,3 +171,478 @@ c01-w16,c01,c01-l2,โยม,,phật tử; con,nhà sư gọi người thường
 c01-w17,c01,c01-l2,โยมพ่อ,,bố (của nhà sư),nhà sư gọi bố đẻ; bố tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
 c01-w18,c01,c01-l2,โยมแม่,,mẹ (của nhà sư),nhà sư gọi mẹ đẻ; mẹ tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
 c01-w19,c01,c01-l2,พระ,,nhà sư; sư,พระ + pháp danh (vd. พระสมชาย),,noun,,,,,,plernpin-c01#p3,true
+b10-w01,b10,b10-l1,ถุงช็อปปิ้ง,,túi mua sắm,,,noun,,,,,,plernpin-b10#p3,true
+b10-w02,b10,b10-l1,นาฬิกา,,đồng hồ,,,noun,,,,,,plernpin-b10#p3,true
+b10-w03,b10,b10-l1,เสื้อ,,áo,,,noun,,,,,,plernpin-b10#p3,true
+b10-w04,b10,b10-l1,กระโปรง,,váy,,,noun,,,,,,plernpin-b10#p4,true
+b10-w05,b10,b10-l1,กางเกงยีนส์,,quần jean,,,noun,,,,,,plernpin-b10#p4,true
+b10-w06,b10,b10-l1,กางเกงขายาว,,quần dài,,,noun,,,,,,plernpin-b10#p4,true
+b10-w07,b10,b10-l1,แว่นตา,,kính mắt,,,noun,,,,,,plernpin-b10#p5,true
+b10-w08,b10,b10-l1,ถุงเท้า,,tất; vớ,,,noun,,,,,,plernpin-b10#p5,true
+b10-w09,b10,b10-l1,รองเท้า,,giày,,,noun,,,,,,plernpin-b10#p5,true
+b10-w10,b10,b10-l2,เสื้อเชิ้ต,,áo sơ mi,,,noun,,,,,,plernpin-b10#p6,true
+b10-w11,b10,b10-l2,เน็กไท,,cà vạt,,,noun,,,,,,plernpin-b10#p6,true
+b10-w12,b10,b10-l2,หมวก,,mũ,,,noun,,,,,,plernpin-b10#p6,true
+b10-w13,b10,b10-l2,เครื่องสำอาง,,mỹ phẩm,,,noun,,,,,,plernpin-b10#p7,true
+b10-w14,b10,b10-l2,ของเล่น,,đồ chơi,,,noun,,,,,,plernpin-b10#p7,true
+b10-w15,b10,b10-l2,เข็มขัด,,thắt lưng,,,noun,,,,,,plernpin-b10#p7,true
+b10-w16,b10,b10-l2,ผ้าพันคอ,,khăn quàng cổ,,,noun,,,,,,plernpin-b10#p8,true
+b10-w17,b10,b10-l3,แอปเปิล,,táo,,,noun,,,,,,plernpin-b10#p8,true
+b10-w18,b10,b10-l3,มะม่วง,,xoài,,,noun,,,,,,plernpin-b10#p8,true
+b10-w19,b10,b10-l3,ส้ม,,cam,,,noun,,,,,,plernpin-b10#p9,true
+b10-w20,b10,b10-l3,ส้มจีน,,quýt,,,noun,,,,,,plernpin-b10#p9,true
+b10-w21,b10,b10-l3,ลูกแพร์,,lê,,,noun,,,,,,plernpin-b10#p9,true
+b10-w22,b10,b10-l3,สาลี่,,"lê (lê châu Á, vỏ nâu vàng)",,,noun,,,,,,plernpin-b10#p10,true
+b10-w23,b10,b10-l3,มะพร้าว,,dừa,,,noun,,,,,,plernpin-b10#p10,true
+b10-w24,b10,b10-l3,กล้วย,,chuối,,,noun,,,,,,plernpin-b10#p10,true
+b10-w25,b10,b10-l3,สับปะรด,,dứa; thơm,,,noun,,,,,,plernpin-b10#p11,true
+b10-w26,b10,b10-l3,ลูกพีช,,đào,,,noun,,,,,,plernpin-b10#p11,true
+b10-w27,b10,b10-l4,มะละกอ,,đu đủ,,,noun,,,,,,plernpin-b10#p11,true
+b10-w28,b10,b10-l4,เลมอน,,chanh vàng,,,noun,,,,,,plernpin-b10#p12,true
+b10-w29,b10,b10-l4,มะนาว,,chanh,,,noun,,,,,,plernpin-b10#p12,true
+b10-w30,b10,b10-l4,ลิ้นจี่,,vải,,,noun,,,,,,plernpin-b10#p12,true
+b10-w31,b10,b10-l4,ลำไย,,nhãn,,,noun,,,,,,plernpin-b10#p13,true
+b10-w32,b10,b10-l4,สตรอว์เบอร์รี่,,dâu tây,,,noun,,,,,,plernpin-b10#p13,true
+b10-w33,b10,b10-l4,องุ่น,,nho,,,noun,,,,,,plernpin-b10#p13,true
+b10-w34,b10,b10-l4,แคนตาลูป,,dưa lưới,,,noun,,,,,,plernpin-b10#p14,true
+b10-w35,b10,b10-l4,พลับ,,hồng (quả),,,noun,,,,,,plernpin-b10#p14,true
+b10-w36,b10,b10-l4,แตงโม,,dưa hấu,,,noun,,,,,,plernpin-b10#p14,true
+b10-w37,b10,b10-l5,เนื้อเป็ด,,thịt vịt,,,noun,,,,,,plernpin-b10#p15,true
+b10-w38,b10,b10-l5,เนื้อไก่,,thịt gà,,,noun,,,,,,plernpin-b10#p15,true
+b10-w39,b10,b10-l5,เนื้อวัว,,thịt bò,,,noun,,,,,,plernpin-b10#p15,true
+b10-w40,b10,b10-l5,เนื้อหมู,,thịt lợn; thịt heo,,,noun,,,,,,plernpin-b10#p16,true
+b10-w41,b10,b10-l5,เนื้อแกะ,,thịt cừu,,,noun,,,,,,plernpin-b10#p16,true
+b10-w42,b10,b10-l5,เนื้อลูกแกะ,,thịt cừu non,,,noun,,,,,,plernpin-b10#p16,true
+b10-w43,b10,b10-l5,ปลา,,cá,,,noun,,,,,,plernpin-b10#p18,true
+b10-w44,b10,b10-l5,ปลาหมึก,,mực,,,noun,,,,,,plernpin-b10#p18,true
+b10-w45,b10,b10-l5,กุ้ง,,tôm,,,noun,,,,,,plernpin-b10#p18,true
+b10-w46,b10,b10-l6,ผักชี,,rau mùi; ngò,,,noun,,,,,,plernpin-b10#p17,true
+b10-w47,b10,b10-l6,ผักชีฝรั่ง,,mùi tàu; ngò gai,,,noun,,,,,,plernpin-b10#p17,true
+b10-w48,b10,b10-l6,ผักชีลาว,,thì là,,,noun,,,,,,plernpin-b10#p17,true
+b10-w49,b10,b10-l6,คะน้า,,cải làn,,,noun,,,,,,plernpin-b10#p19,true
+b10-w50,b10,b10-l6,ผักกาดฮ่องเต้,,cải chíp,,,noun,,,,,,plernpin-b10#p19,true
+b10-w51,b10,b10-l6,กวางตุ้ง,,cải ngọt,,,noun,,,,,,plernpin-b10#p19,true
+b10-w52,b10,b10-l6,ปวยเล้ง,,rau chân vịt; cải bó xôi,,,noun,,,,,,plernpin-b10#p20,true
+b10-w53,b10,b10-l6,ถั่วงอก,,giá đỗ,,,noun,,,,,,plernpin-b10#p20,true
+b10-w54,b10,b10-l6,กุยช่าย,,hẹ,,,noun,,,,,,plernpin-b10#p20,true
+b10-w55,b10,b10-l6,พริกหยวก,,ớt chuông,,,noun,,,,,,plernpin-b10#p21,true
+b10-w56,b10,b10-l7,มะเขือม่วง,,cà tím,,,noun,,,,,,plernpin-b10#p21,true
+b10-w57,b10,b10-l7,มะเขือเทศ,,cà chua,,,noun,,,,,,plernpin-b10#p21,true
+b10-w58,b10,b10-l7,ขึ้นฉ่าย,,cần tây,,,noun,,,,,,plernpin-b10#p22,true
+b10-w59,b10,b10-l7,กระเทียม,,tỏi,,,noun,,,,,,plernpin-b10#p22,true
+b10-w60,b10,b10-l7,ขิง,,gừng,,,noun,,,,,,plernpin-b10#p22,true
+b10-w61,b10,b10-l7,กะหล่ำปลี,,bắp cải,,,noun,,,,,,plernpin-b10#p23,true
+b10-w62,b10,b10-l7,เห็ด,,nấm,,,noun,,,,,,plernpin-b10#p23,true
+b10-w63,b10,b10-l7,แตงกวา,,dưa chuột; dưa leo,,,noun,,,,,,plernpin-b10#p23,true
+b10-w64,b10,b10-l7,บรอกโคลี,,súp lơ xanh; bông cải xanh,,,noun,,,,,,plernpin-b10#p24,true
+b10-w65,b10,b10-l7,แครอท,,cà rốt,,,noun,,,,,,plernpin-b10#p24,true
+b10-w66,b10,b10-l8,หัวหอม,,hành tây,,,noun,,,,,,plernpin-b10#p24,true
+b10-w67,b10,b10-l8,พริก,,ớt,,,noun,,,,,,plernpin-b10#p25,true
+b10-w68,b10,b10-l8,ต้นหอม,,hành lá,,,noun,,,,,,plernpin-b10#p25,true
+b10-w69,b10,b10-l8,ฟักเขียว,,bí xanh; bí đao,,,noun,,,,,,plernpin-b10#p25,true
+b10-w70,b10,b10-l8,มะระ,,mướp đắng; khổ qua,,,noun,,,,,,plernpin-b10#p26,true
+b10-w71,b10,b10-l8,เต้าหู้,,đậu phụ,,,noun,,,,,,plernpin-b10#p26,true
+b10-w72,b10,b10-l8,กะหล่ำดอก,,súp lơ trắng; bông cải trắng,,,noun,,,,,,plernpin-b10#p26,true
+b10-w73,b10,b10-l8,ถั่วแขก,,đậu cô ve,,,noun,,,,,,plernpin-b10#p27,true
+b10-w74,b10,b10-l8,ฟักทอง,,bí đỏ; bí ngô,,,noun,,,,,,plernpin-b10#p27,true
+b10-w75,b10,b10-l8,โหระพา,,húng quế,,,noun,,,,,,plernpin-b10#p27,true
+b10-w76,b10,b10-l9,น้ำปลา,,nước mắm,,,noun,,,,,,plernpin-b10#p28,true
+b10-w77,b10,b10-l9,น้ำมันพืช,,dầu ăn,,,noun,,,,,,plernpin-b10#p28,true
+b10-w78,b10,b10-l9,น้ำมันหอย,,dầu hào,,,noun,,,,,,plernpin-b10#p28,true
+b10-w79,b10,b10-l9,ขมิ้น,,nghệ,,,noun,,,,,,plernpin-b10#p29,true
+b10-w80,b10,b10-l9,น้ำส้มสายชู,,giấm,,,noun,,,,,,plernpin-b10#p29,true
+b10-w81,b10,b10-l9,ผงชูรส,,mì chính; bột ngọt,,,noun,,,,,,plernpin-b10#p29,true
+b10-w82,b10,b10-l10,ไปช็อปปิ้ง,,đi mua sắm,,,phrase,,,,,,plernpin-b10#p30,true
+b10-w83,b10,b10-l10,ซื้อ,,mua,,,verb,,,,,,plernpin-b10#p30,true
+b10-w84,b10,b10-l10,ขาย,,bán,,,verb,,,,,,plernpin-b10#p30,true
+b10-w85,b10,b10-l10,ซื้อของ,,mua đồ,,,phrase,,,,,,plernpin-b10#p30,true
+b10-w86,b10,b10-l10,เสื้อผ้า,,quần áo,,,noun,,,,,,plernpin-b10#p30,true
+b10-w87,b10,b10-l10,ลดราคา,,giảm giá,,,verb,,,,,,plernpin-b10#p31,true
+b10-w88,b10,b10-l10,ห้างสรรพสินค้า,ศูนย์การค้า,trung tâm thương mại,,,noun,,,,,,plernpin-b10#p31,true
+b10-w89,b10,b10-l10,บูติก,,cửa hàng nhỏ bán quần áo và các mặt hàng mới ra,,,noun,,,,,,plernpin-b10#p31,true
+b10-w90,b10,b10-l10,พนักงานขาย,,nhân viên bán hàng,,,noun,,,,,,plernpin-b10#p31,true
+b10-w91,b10,b10-l10,พนักงานเก็บเงิน,แคชเชียร์,nhân viên thu tiền; nhân viên thu ngân,,,noun,,,,,,plernpin-b10#p31,true
+b10-w92,b10,b10-l11,ส่งถึงบ้าน,,giao đến tận nhà; gửi đến tận nhà,,,phrase,,,,,,plernpin-b10#p32,true
+b10-w93,b10,b10-l11,เปรียบเทียบราคา,,so sánh giá,,,phrase,,,,,,plernpin-b10#p32,true
+b10-w94,b10,b10-l11,ซื้อของออนไลน์,,mua đồ online,,,phrase,,,,,,plernpin-b10#p32,true
+b10-w95,b10,b10-l11,บัตรเครดิต,,thẻ tín dụng,,,noun,,,,,,plernpin-b10#p32,true
+b10-w96,b10,b10-l11,เหมือนกับ,,giống với,,,phrase,,,,,,plernpin-b10#p32,true
+b10-w97,b10,b10-l11,ทั้งหมด,,tất cả,,,adj,,,,,,plernpin-b10#p33,true
+b10-w98,b10,b10-l11,แน่นอน,,chắc chắn,,,adv,,,,,,plernpin-b10#p33,true
+b10-w99,b10,b10-l11,โดยทั่วไป,,nhìn chung; nói chung,,,adv,,,,,,plernpin-b10#p33,true
+b10-w100,b10,b10-l11,ยิ่งกว่า,,hơn cả; còn hơn cả,,,adv,,,,,,plernpin-b10#p33,true
+b10-w101,b10,b10-l11,ตัดสินใจ,,quyết định,,,verb,,,,,,plernpin-b10#p33,true
+b10-w102,b10,b10-l12,สิ่งของ,,đồ đạc; vật dụng,,,noun,,,,,,plernpin-b10#p34,true
+b10-w103,b10,b10-l12,บิล,ใบเสร็จ|ใบแจ้งราคา,hóa đơn; giấy thông báo giá,,,noun,,,,,,plernpin-b10#p34,true
+b10-w104,b10,b10-l12,ไม่เสียภาษี,,không mất thuế; miễn thuế,,,phrase,,,,,,plernpin-b10#p34,true
+b10-w105,b10,b10-l12,คืนเงิน,,hoàn tiền; trả tiền lại,,,verb,,,,,,plernpin-b10#p34,true
+b10-w106,b10,b10-l12,ไปตลาด,,đi chợ,,,phrase,,,,,,plernpin-b10#p34,true
+b10-w107,b10,b10-l12,ห้องลอง,,phòng thử đồ,,,noun,,,,,,plernpin-b10#p35,true
+b10-w108,b10,b10-l12,เครื่องปรุง,,gia vị,,,noun,,,,,,plernpin-b10#p35,true
+b10-w109,b10,b10-l12,ตลาดท้องถิ่น,,chợ địa phương,,,noun,,,,,,plernpin-b10#p35,true
+b10-w110,b10,b10-l12,ซูเปอร์มาร์เก็ต,,siêu thị,,,noun,,,,,,plernpin-b10#p35,true
+b10-w111,b10,b10-l12,ง่าย,,dễ; dễ dàng,,,adj,,,,,,plernpin-b10#p35,true
+b10-w112,b10,b10-l13,มองหา,,tìm; tìm kiếm,,,verb,,,,,,plernpin-b10#p36,true
+b10-w113,b10,b10-l13,ต้องการ,,cần,,,verb,,,,,,plernpin-b10#p36,true
+b10-w114,b10,b10-l13,แบบ,,kiểu; mẫu,,,noun,,,,,,plernpin-b10#p36,true
+b10-w115,b10,b10-l13,ประเภท,,loại,,,noun,,,,,,plernpin-b10#p36,true
+b10-w116,b10,b10-l13,รูปทรง,,hình dáng; hình dạng,,,noun,,,,,,plernpin-b10#p36,true
+b10-w117,b10,b10-l13,ยี่ห้อ,,thương hiệu,,,noun,,,,,,plernpin-b10#p37,true
+b10-w118,b10,b10-l13,ไซส์,,cỡ; size,,,noun,,,,,,plernpin-b10#p37,true
+b09-w01,b09,b09-l1,ร้านอาหารไทย,,nhà hàng Thái,,,noun,,,,,,plernpin-b09#p3,true
+b09-w02,b09,b09-l1,พนักงานเสิร์ฟ,เด็กเสิร์ฟ,nhân viên phục vụ,,,noun,,,,,,plernpin-b09#p3,true
+b09-w03,b09,b09-l1,พ่อครัว,แม่ครัว|เชฟ,đầu bếp,พ่อครัว: nam; แม่ครัว: nữ,,noun,,,,,,plernpin-b09#p3,true
+b09-w04,b09,b09-l1,เมนู,,thực đơn,,,noun,,,,,,plernpin-b09#p4,true
+b09-w05,b09,b09-l1,ผัดไทย,,pad Thái (phở xào kiểu Thái),,,noun,,,,,,plernpin-b09#p4,true
+b09-w06,b09,b09-l1,ข้าวผัด,,cơm rang; cơm chiên,,,noun,,,,,,plernpin-b09#p4,true
+b09-w07,b09,b09-l1,ขนมปัง,,bánh mì,,,noun,,,,,,plernpin-b09#p5,true
+b09-w08,b09,b09-l1,ตะเกียบ,,đũa,,,noun,,,,,,plernpin-b09#p5,true
+b09-w09,b09,b09-l1,ถ้วย,,bát; chén,,,noun,,,,,,plernpin-b09#p5,true
+b09-w10,b09,b09-l2,ข้าว,,cơm,,,noun,,,,,,plernpin-b09#p6,true
+b09-w11,b09,b09-l2,จาน,,đĩa,,,noun,,,,,,plernpin-b09#p6,true
+b09-w12,b09,b09-l2,ส้อม,,dĩa; nĩa,,,noun,,,,,,plernpin-b09#p6,true
+b09-w13,b09,b09-l2,มีด,,dao,,,noun,,,,,,plernpin-b09#p7,true
+b09-w14,b09,b09-l2,ช้อน,,thìa; muỗng,,,noun,,,,,,plernpin-b09#p7,true
+b09-w15,b09,b09-l2,แกงเขียวหวาน,,cà ri xanh,,,noun,,,,,,plernpin-b09#p7,true
+b09-w16,b09,b09-l2,ต้มยำกุ้ง,,tom yum tôm (canh chua cay nấu tôm),,,noun,,,,,,plernpin-b09#p8,true
+b09-w17,b09,b09-l2,ส้มตำ,,nộm đu đủ giã (som tam),,,noun,,,,,,plernpin-b09#p8,true
+b09-w18,b09,b09-l2,ไก่ย่าง,,gà nướng,,,noun,,,,,,plernpin-b09#p8,true
+b09-w19,b09,b09-l3,ข้าวเหนียว,,xôi; cơm nếp,,,noun,,,,,,plernpin-b09#p9,true
+b09-w20,b09,b09-l3,ไข่เจียวหมูสับ,,trứng chiên thịt lợn băm,,,noun,,,,,,plernpin-b09#p9,true
+b09-w21,b09,b09-l3,ผัดกะเพราหมู,,thịt lợn xào lá húng quế (kaprao),,,noun,,,,,,plernpin-b09#p9,true
+b09-w22,b09,b09-l3,ก๋วยเตี๋ยวเนื้อ,,hủ tiếu bò,,,noun,,,,,,plernpin-b09#p10,true
+b09-w23,b09,b09-l3,ฮอทดอก,,hot dog (bánh mì kẹp xúc xích),,,noun,,,,,,plernpin-b09#p10,true
+b09-w24,b09,b09-l3,แซนด์วิช,,bánh sandwich,,,noun,,,,,,plernpin-b09#p10,true
+b09-w25,b09,b09-l3,พิซซ่า,,pizza,,,noun,,,,,,plernpin-b09#p11,true
+b09-w26,b09,b09-l3,พาสต้า,สปาเก็ตตี้,mì Ý (pasta; spaghetti),,,noun,,,,,,plernpin-b09#p11,true
+b09-w27,b09,b09-l3,โดนัท,,bánh donut,,,noun,,,,,,plernpin-b09#p11,true
+b09-w28,b09,b09-l4,ไอศกรีม,ไอติม,kem,,,noun,,,,,,plernpin-b09#p12,true
+b09-w29,b09,b09-l4,พุดดิ้ง,,bánh pudding,,,noun,,,,,,plernpin-b09#p12,true
+b09-w30,b09,b09-l4,พายแอปเปิล,,bánh táo nướng (apple pie),,,noun,,,,,,plernpin-b09#p12,true
+b09-w31,b09,b09-l4,แฮม,,giăm bông,,,noun,,,,,,plernpin-b09#p13,true
+b09-w32,b09,b09-l4,สลัด,,sa lát,,,noun,,,,,,plernpin-b09#p13,true
+b09-w33,b09,b09-l4,สเต็ก,,bít tết,,,noun,,,,,,plernpin-b09#p13,true
+b09-w34,b09,b09-l4,ไส้กรอก,,xúc xích,,,noun,,,,,,plernpin-b09#p14,true
+b09-w35,b09,b09-l4,น้ำผลไม้,,nước ép trái cây,,,noun,,,,,,plernpin-b09#p14,true
+b09-w36,b09,b09-l4,กาแฟ,,cà phê,,,noun,,,,,,plernpin-b09#p14,true
+b09-w37,b09,b09-l5,ไข่ดาวไม่สุก,,trứng ốp la lòng đào,,,noun,,,,,,plernpin-b09#p15,true
+b09-w38,b09,b09-l5,ขนมปังปิ้ง,,bánh mì nướng,,,noun,,,,,,plernpin-b09#p15,true
+b09-w39,b09,b09-l5,เค้ก,,bánh kem; bánh ngọt,,,noun,,,,,,plernpin-b09#p15,true
+b09-w40,b09,b09-l5,ชีส,,phô mai,,,noun,,,,,,plernpin-b09#p16,true
+b09-w41,b09,b09-l5,แฮมเบอร์เกอร์,,hamburger,,,noun,,,,,,plernpin-b09#p16,true
+b09-w42,b09,b09-l5,มันฝรั่งทอด,,khoai tây chiên,,,noun,,,,,,plernpin-b09#p16,true
+b09-w43,b09,b09-l5,เนย,,bơ,,,noun,,,,,,plernpin-b09#p17,true
+b09-w44,b09,b09-l5,โยเกิร์ต,,sữa chua,,,noun,,,,,,plernpin-b09#p17,true
+b09-w45,b09,b09-l5,ซอสมะเขือเทศ,,tương cà,,,noun,,,,,,plernpin-b09#p17,true
+b09-w46,b09,b09-l6,เครื่องดื่ม,,đồ uống,,,noun,,,,,,plernpin-b09#p18,true
+b09-w47,b09,b09-l6,น้ำแร่,,nước khoáng,,,noun,,,,,,plernpin-b09#p18,true
+b09-w48,b09,b09-l6,น้ำส้ม,,nước cam,,,noun,,,,,,plernpin-b09#p18,true
+b09-w49,b09,b09-l6,นม,,sữa,,,noun,,,,,,plernpin-b09#p19,true
+b09-w50,b09,b09-l6,ชา,,trà,,,noun,,,,,,plernpin-b09#p19,true
+b09-w51,b09,b09-l6,ชาเย็น,,trà sữa Thái (trà lạnh),,,noun,,,,,,plernpin-b09#p19,true
+b09-w52,b09,b09-l6,นมถั่วเหลือง,,sữa đậu nành,,,noun,,,,,,plernpin-b09#p20,true
+b09-w53,b09,b09-l6,โค้ก,,coca,,,noun,,,,,,plernpin-b09#p20,true
+b09-w54,b09,b09-l6,น้ำประปา,,nước máy,,,noun,,,,,,plernpin-b09#p20,true
+b09-w55,b09,b09-l7,เครื่องดื่มชูกำลัง,,nước tăng lực,,,noun,,,,,,plernpin-b09#p21,true
+b09-w56,b09,b09-l7,เครื่องดื่มเกลือแร่,,nước bù khoáng; nước điện giải,,,noun,,,,,,plernpin-b09#p21,true
+b09-w57,b09,b09-l7,น้ำตาล,,đường,,,noun,,,,,,plernpin-b09#p21,true
+b09-w58,b09,b09-l7,ค็อกเทล,,cocktail,,,noun,,,,,,plernpin-b09#p22,true
+b09-w59,b09,b09-l7,ไวน์แดง,,rượu vang đỏ,,,noun,,,,,,plernpin-b09#p22,true
+b09-w60,b09,b09-l7,ไวน์ขาว,,rượu vang trắng,,,noun,,,,,,plernpin-b09#p22,true
+b09-w61,b09,b09-l7,เหล้า,,rượu,,,noun,,,,,,plernpin-b09#p23,true
+b09-w62,b09,b09-l7,เบียร์,,bia,,,noun,,,,,,plernpin-b09#p23,true
+b09-w63,b09,b09-l7,สาโท,,rượu gạo (sato),,,noun,,,,,,plernpin-b09#p23,true
+b09-w64,b09,b09-l7,ตู้กดน้ำ,,cây nước nóng lạnh,,,noun,,,,,,plernpin-b09#p24,true
+b09-w65,b09,b09-l7,แก้ว,,cốc; ly,,,noun,,,,,,plernpin-b09#p24,true
+b09-w66,b09,b09-l7,น้ำแข็งก้อน,,đá viên,,,noun,,,,,,plernpin-b09#p24,true
+b09-w67,b09,b09-l8,น้ำซุป,,canh; xúp,không có thịt,,noun,,,,,,plernpin-b09#p25,true
+b09-w68,b09,b09-l8,แกง,,canh; xúp,có thịt,,noun,,,,,,plernpin-b09#p25,true
+b09-w69,b09,b09-l8,สั่ง,,đặt; gọi (món),,,verb,,,,,,plernpin-b09#p25,true
+b09-w70,b09,b09-l8,ตัวเลือก,,lựa chọn; phương án; option,,,noun,,,,,,plernpin-b09#p25,true
+b09-w71,b09,b09-l8,พิเศษ,,đặc biệt,,,adj,,,,,,plernpin-b09#p25,true
+b09-w72,b09,b09-l8,บางที,,đôi khi; thỉnh thoảng,,,adv,,,,,,plernpin-b09#p26,true
+b09-w73,b09,b09-l8,เกือบ,,suýt; gần; sắp sửa,,,adv,,,,,,plernpin-b09#p26,true
+b09-w74,b09,b09-l8,อาหารแบบตะวันตก,,đồ ăn kiểu phương tây,,,noun,,,,,,plernpin-b09#p26,true
+b09-w75,b09,b09-l8,อร่อย,,ngon,,,adj,,,,,,plernpin-b09#p26,true
+b09-w76,b09,b09-l8,อบ,,nướng,trong lò,,verb,,,,,,plernpin-b09#p26,true
+b09-w77,b09,b09-l9,หิวน้ำ,,khát nước,,,verb,,,,,,plernpin-b09#p27,true
+b09-w78,b09,b09-l9,โซดา,,soda,,,noun,,,,,,plernpin-b09#p27,true
+b09-w79,b09,b09-l9,น้ำร้อน,,nước nóng,,,noun,,,,,,plernpin-b09#p27,true
+b09-w80,b09,b09-l9,น้ำเย็น,,nước lạnh,,,noun,,,,,,plernpin-b09#p27,true
+b09-w81,b09,b09-l9,อย่า,,đừng,,,adv,,,,,,plernpin-b09#p27,true
+b09-w82,b09,b09-l9,แมคโดนัลด์,,McDonalds,,,noun,,,,,,plernpin-b09#p28,true
+b09-w83,b09,b09-l9,อาหารฟาสต์ฟู้ด,,đồ ăn nhanh,,,noun,,,,,,plernpin-b09#p28,true
+b09-w84,b09,b09-l9,ยอดนิยม,,được ưa chuộng; phổ biến; thịnh hành,,,adj,,,,,,plernpin-b09#p28,true
+b09-w85,b09,b09-l9,สตาร์บัคส์,,Starbucks,,,noun,,,,,,plernpin-b09#p28,true
+b09-w86,b09,b09-l9,คิดเงิน,เก็บเงิน,tính tiền,,,verb,,,,,,plernpin-b09#p28,true
+b09-w87,b09,b09-l10,จ่ายเงิน,,trả tiền,,,verb,,,,,,plernpin-b09#p29,true
+b09-w88,b09,b09-l10,ทอนเงิน,,thối tiền,,,verb,,,,,,plernpin-b09#p29,true
+b09-w89,b09,b09-l10,เงินทอน,,tiền thối,,,noun,,,,,,plernpin-b09#p29,true
+b09-w90,b09,b09-l10,พอกินได้,,tạm được,về đồ ăn,,phrase,,,,,,plernpin-b09#p29,true
+b09-w91,b09,b09-l10,รสชาติ,,vị,,,noun,,,,,,plernpin-b09#p29,true
+b08-w01,b08,b08-l1,ฝักบัว,,vòi hoa sen,,,noun,,,,,,plernpin-b08#p3,true
+b08-w02,b08,b08-l1,ลิฟท์,,thang máy,,,noun,,,,,,plernpin-b08#p3,true
+b08-w03,b08,b08-l1,อ่างอาบน้ำ,,bồn tắm,,,noun,,,,,,plernpin-b08#p3,true
+b08-w04,b08,b08-l1,ห้องพัก,,phòng nghỉ,,,noun,,,,,,plernpin-b08#p4,true
+b08-w05,b08,b08-l1,ห้องน้ำ,,phòng tắm; nhà vệ sinh,,,noun,,,,,,plernpin-b08#p4,true
+b08-w06,b08,b08-l1,เตียงเดี่ยว,,giường đơn,,,noun,,,,,,plernpin-b08#p4,true
+b08-w07,b08,b08-l1,เตียงคู่,,giường đôi,,,noun,,,,,,plernpin-b08#p5,true
+b08-w08,b08,b08-l1,หนังสือเดินทาง,พาสปอร์ต,hộ chiếu,,,noun,,,,,,plernpin-b08#p5,true
+b08-w09,b08,b08-l1,กุญแจห้อง,,chìa khóa phòng,,,noun,,,,,,plernpin-b08#p5,true
+b08-w10,b08,b08-l2,คูปองอาหารเช้า,,phiếu ăn sáng,,,noun,,,,,,plernpin-b08#p6,true
+b08-w11,b08,b08-l2,ห้องอาหาร,,phòng ăn; nhà hàng,,,noun,,,,,,plernpin-b08#p6,true
+b08-w12,b08,b08-l2,พนักงานเคาน์เตอร์,,nhân viên quầy (lễ tân),,,noun,,,,,,plernpin-b08#p6,true
+b08-w13,b08,b08-l2,สัมภาระ,กระเป๋าเดินทาง,hành lý; vali,,,noun,,,,,,plernpin-b08#p7,true
+b08-w14,b08,b08-l2,เงิน,,tiền,,,noun,,,,,,plernpin-b08#p7,true
+b08-w15,b08,b08-l2,สระว่ายน้ำ,,bể bơi,,,noun,,,,,,plernpin-b08#p7,true
+b08-w16,b08,b08-l2,ห้องเต้นรำ,,phòng khiêu vũ,,,noun,,,,,,plernpin-b08#p8,true
+b08-w17,b08,b08-l2,ห้องจัดเลี้ยง,,phòng tiệc,,,noun,,,,,,plernpin-b08#p8,true
+b08-w18,b08,b08-l2,ห้องโถงกลาง,,sảnh chính,,,noun,,,,,,plernpin-b08#p8,true
+b08-w19,b08,b08-l3,แปรงสีฟัน,,bàn chải đánh răng,,,noun,,,,,,plernpin-b08#p9,true
+b08-w20,b08,b08-l3,ยาสีฟัน,,kem đánh răng,,,noun,,,,,,plernpin-b08#p9,true
+b08-w21,b08,b08-l3,กระดาษชำระ,,giấy vệ sinh,,,noun,,,,,,plernpin-b08#p9,true
+b08-w22,b08,b08-l3,ยาสระผม,แชมพู,dầu gội đầu,,,noun,,,,,,plernpin-b08#p10,true
+b08-w23,b08,b08-l3,สบู่,,xà phòng,,,noun,,,,,,plernpin-b08#p10,true
+b08-w24,b08,b08-l3,มีดโกน,,dao cạo,,,noun,,,,,,plernpin-b08#p10,true
+b08-w25,b08,b08-l3,หวี,,lược,,,noun,,,,,,plernpin-b08#p11,true
+b08-w26,b08,b08-l3,รองเท้าแตะ,,dép lê,,,noun,,,,,,plernpin-b08#p11,true
+b08-w27,b08,b08-l3,ผ้าเช็ดตัว,,khăn tắm,,,noun,,,,,,plernpin-b08#p11,true
+b08-w28,b08,b08-l3,หมอน,,gối,,,noun,,,,,,plernpin-b08#p12,true
+b08-w29,b08,b08-l3,ผ้าห่ม,,chăn,,,noun,,,,,,plernpin-b08#p12,true
+b08-w30,b08,b08-l3,ผ้าปูเตียง,,ga trải giường,,,noun,,,,,,plernpin-b08#p12,true
+b08-w31,b08,b08-l4,พนักงานบริการส่วนหน้า,,nhân viên phục vụ tiền sảnh,,,noun,,,,,,plernpin-b08#p13,true
+b08-w32,b08,b08-l4,พนักงานต้อนรับ,,nhân viên tiếp đón,,,noun,,,,,,plernpin-b08#p13,true
+b08-w33,b08,b08-l4,ผู้จัดการโรงแรม,,người quản lý khách sạn,,,noun,,,,,,plernpin-b08#p13,true
+b08-w34,b08,b08-l4,พนักงานยกกระเป๋า,,nhân viên khuân vác hành lý,,,noun,,,,,,plernpin-b08#p13,true
+b08-w35,b08,b08-l4,บริการถึงห้องพัก,,dịch vụ tận phòng; phục vụ đến tận phòng,,,noun,,,,,,plernpin-b08#p13,true
+b08-w36,b08,b08-l4,เคาน์เตอร์บริการส่วนหน้า,,quầy dịch vụ tiền sảnh,,,noun,,,,,,plernpin-b08#p14,true
+b08-w37,b08,b08-l4,บัตรเครดิต,,thẻ tín dụng,,,noun,,,,,,plernpin-b08#p14,true
+b08-w38,b08,b08-l4,รับบัตรเครดิตไหม,,nhận thẻ tín dụng không?,,,phrase,,,,,,plernpin-b08#p14,true
+b08-w39,b08,b08-l4,รับ,,nhận,,,verb,,,,,,plernpin-b08#p14,true
+b08-w40,b08,b08-l4,ไม่รับ,,không nhận,,,phrase,,,,,,plernpin-b08#p14,true
+b08-w41,b08,b08-l5,เงินสด,,tiền mặt,,,noun,,,,,,plernpin-b08#p15,true
+b08-w42,b08,b08-l5,ขอใบเสร็จรับเงิน,,xin biên lai thu tiền,giấy xác nhận số tiền đã trả,,phrase,,,,,,plernpin-b08#p15,true
+b08-w43,b08,b08-l5,เงินทอน,,tiền thừa; tiền thối,,,noun,,,,,,plernpin-b08#p15,true
+b08-w44,b08,b08-l5,เปลี่ยนห้อง,,đổi phòng,,,verb,,,,,,plernpin-b08#p15,true
+b08-w45,b08,b08-l5,แจ้ง,,thông báo,,,verb,,,,,,plernpin-b08#p15,true
+b08-w46,b08,b08-l5,ยกเลิก,,hủy bỏ,,,verb,,,,,,plernpin-b08#p16,true
+b08-w47,b08,b08-l5,ทำความสะอาดห้อง,,dọn phòng,,,verb,,,,,,plernpin-b08#p16,true
+b08-w48,b08,b08-l5,บริการปลุกตอนเช้า,,dịch vụ đánh thức buổi sáng,,,noun,,,,,,plernpin-b08#p16,true
+b08-w49,b08,b08-l5,บริการซักรีด,,dịch vụ giặt là,,,noun,,,,,,plernpin-b08#p16,true
+b08-w50,b08,b08-l5,ห้องว่าง,,phòng trống,,,noun,,,,,,plernpin-b08#p16,true
+b08-w51,b08,b08-l6,ห้องเต็ม,,phòng đầy; hết phòng,,,phrase,,,,,,plernpin-b08#p17,true
+b08-w52,b08,b08-l6,คืนห้อง,,trả phòng,,,verb,,,,,,plernpin-b08#p17,true
+b08-w53,b08,b08-l6,ค่าห้อง,,giá phòng,,,noun,,,,,,plernpin-b08#p17,true
+b08-w54,b08,b08-l6,ระเบียง,,ban công,,,noun,,,,,,plernpin-b08#p17,true
+b08-w55,b08,b08-l6,วิว,ทิวทัศน์,view; phong cảnh; cảnh sắc,,,noun,,,,,,plernpin-b08#p17,true
+b08-w56,b08,b08-l6,ห้องพัดลม,,phòng dùng quạt,,,noun,,,,,,plernpin-b08#p18,true
+b08-w57,b08,b08-l6,ห้องปรับอากาศ,,phòng có điều hòa,,,noun,,,,,,plernpin-b08#p18,true
+b08-w58,b08,b08-l6,ห้องธรรมดา,,phòng thường,,,noun,,,,,,plernpin-b08#p18,true
+b08-w59,b08,b08-l6,ห้องพิเศษ,,phòng đặc biệt,,,noun,,,,,,plernpin-b08#p18,true
+b08-w60,b08,b08-l6,เช็คอิน,,check in; nhận phòng,,,verb,,,,,,plernpin-b08#p18,true
+b08-w61,b08,b08-l7,เช็คเอาท์,,check out; trả phòng,,,verb,,,,,,plernpin-b08#p19,true
+b08-w62,b08,b08-l7,เต็มราคา,,giá đầy đủ; giá không giảm,nguyên giá,,phrase,,,,,,plernpin-b08#p19,true
+b08-w63,b08,b08-l7,ครึ่งราคา,,nửa giá,,,phrase,,,,,,plernpin-b08#p19,true
+b08-w64,b08,b08-l7,ติดกัน,,liền nhau,,,adj,,,,,,plernpin-b08#p19,true
+b08-w65,b08,b08-l7,ชั้นเดียว,,cùng tầng,,,phrase,,,,,,plernpin-b08#p19,true
+b08-w66,b08,b08-l7,บัตรลงทะเบียน,,thẻ đăng ký,,,noun,,,,,,plernpin-b08#p20,true
+b08-w67,b08,b08-l7,ใบเรียกเก็บเงิน,,hóa đơn thu tiền,phiếu yêu cầu thanh toán,,noun,,,,,,plernpin-b08#p20,true
+b08-w68,b08,b08-l7,เซ็นชื่อ,ลงนาม,ký tên,,,verb,,,,,,plernpin-b08#p20,true
+b08-w69,b08,b08-l7,จองห้องไว้,,đặt phòng trước,,,phrase,,,,,,plernpin-b08#p20,true
+b08-w70,b08,b08-l7,ใบลงทะเบียน,,giấy đăng ký; đơn đăng ký,,,noun,,,,,,plernpin-b08#p20,true
+b08-w71,b08,b08-l8,ค่ามัดจำ,,tiền đặt cọc,,,noun,,,,,,plernpin-b08#p21,true
+b08-w72,b08,b08-l8,วันสุดท้าย,,ngày cuối cùng,,,noun,,,,,,plernpin-b08#p21,true
+b08-w73,b08,b08-l8,จาก,ออกจาก,rời; rời khỏi,,,verb,,,,,,plernpin-b08#p21,true
+b08-w74,b08,b08-l8,กรุณา,,làm ơn,,,adv,,,,,,plernpin-b08#p21,true
+b08-w75,b08,b08-l8,ตรงนั้น,,ngay chỗ đó,,,adv,,,,,,plernpin-b08#p21,true
+b08-w76,b08,b08-l8,แต่ละ,,từng,,,adj,,,,,,plernpin-b08#p22,true
+b08-w77,b08,b08-l8,ประเภท,,loại,,,noun,,,,,,plernpin-b08#p22,true
+b07-w01,b07,b07-l1,โรงแรม,,khách sạn,,,noun,,,,,,plernpin-b07#p3,true
+b07-w02,b07,b07-l1,สนามบิน,,sân bay,,,noun,,,,,,plernpin-b07#p3,true
+b07-w03,b07,b07-l1,ร้าน,,cửa hàng; quán,,,noun,,,,,,plernpin-b07#p3,true
+b07-w04,b07,b07-l1,ถนน,,đường; phố,,,noun,,,,,,plernpin-b07#p4,true
+b07-w05,b07,b07-l1,ซูเปอร์มาร์เก็ต,,siêu thị,,,noun,,,,,,plernpin-b07#p4,true
+b07-w06,b07,b07-l1,ปั๊มน้ำมัน,,trạm xăng,,,noun,,,,,,plernpin-b07#p4,true
+b07-w07,b07,b07-l1,ธนาคาร,,ngân hàng,,,noun,,,,,,plernpin-b07#p5,true
+b07-w08,b07,b07-l1,ศูนย์ประชุม,,trung tâm hội nghị,,,noun,,,,,,plernpin-b07#p5,true
+b07-w09,b07,b07-l1,สถานีรถไฟ,,nhà ga xe lửa; ga tàu hỏa,,,noun,,,,,,plernpin-b07#p5,true
+b07-w10,b07,b07-l2,พิพิธภัณฑ์,,bảo tàng,,,noun,,,,,,plernpin-b07#p6,true
+b07-w11,b07,b07-l2,เมือง,,thành phố,,,noun,,,,,,plernpin-b07#p6,true
+b07-w12,b07,b07-l2,ตึกสูง,,tòa nhà cao tầng,,,noun,,,,,,plernpin-b07#p6,true
+b07-w13,b07,b07-l2,อพาร์ทเมนท์,,căn hộ,,,noun,,,,,,plernpin-b07#p7,true
+b07-w14,b07,b07-l2,พิพิธภัณฑ์ศิลปะ,,bảo tàng nghệ thuật,,,noun,,,,,,plernpin-b07#p7,true
+b07-w15,b07,b07-l2,สนามกีฬา,,sân vận động,,,noun,,,,,,plernpin-b07#p7,true
+b07-w16,b07,b07-l2,ไปรษณีย์,,bưu điện,,,noun,,,,,,plernpin-b07#p8,true
+b07-w17,b07,b07-l2,สถานีตำรวจ,,đồn cảnh sát,,,noun,,,,,,plernpin-b07#p8,true
+b07-w18,b07,b07-l2,ทางด่วน,,đường cao tốc,,,noun,,,,,,plernpin-b07#p8,true
+b07-w19,b07,b07-l3,เกสต์เฮาส์,,nhà nghỉ (guest house),,,noun,,,,,,plernpin-b07#p9,true
+b07-w20,b07,b07-l3,อนุสาวรีย์,,tượng đài,,,noun,,,,,,plernpin-b07#p9,true
+b07-w21,b07,b07-l3,วัด,,chùa,,,noun,,,,,,plernpin-b07#p9,true
+b07-w22,b07,b07-l3,ห้องยิม,ห้องฟิตเนส,phòng tập gym,,,noun,,,,,,plernpin-b07#p10,true
+b07-w23,b07,b07-l3,โรงหนัง,,rạp chiếu phim,,,noun,,,,,,plernpin-b07#p10,true
+b07-w24,b07,b07-l3,ศูนย์การค้า,ห้าง,trung tâm thương mại,,,noun,,,,,,plernpin-b07#p10,true
+b07-w25,b07,b07-l3,โบสถ์,,nhà thờ,,,noun,,,,,,plernpin-b07#p11,true
+b07-w26,b07,b07-l3,สะพาน,,cầu,,,noun,,,,,,plernpin-b07#p11,true
+b07-w27,b07,b07-l3,ทางม้าลาย,,vạch kẻ đường cho người đi bộ,,,noun,,,,,,plernpin-b07#p11,true
+b07-w28,b07,b07-l3,ไฟจราจร,,đèn giao thông,,,noun,,,,,,plernpin-b07#p12,true
+b07-w29,b07,b07-l4,รถยนต์,,ô tô,,,noun,,,,,,plernpin-b07#p12,true
+b07-w30,b07,b07-l4,แท็กซี่,,taxi,,,noun,,,,,,plernpin-b07#p12,true
+b07-w31,b07,b07-l4,เครื่องบิน,,máy bay,,,noun,,,,,,plernpin-b07#p13,true
+b07-w32,b07,b07-l4,รถบรรทุก,,xe tải,,,noun,,,,,,plernpin-b07#p13,true
+b07-w33,b07,b07-l4,รถขนขยะ,,xe chở rác,,,noun,,,,,,plernpin-b07#p13,true
+b07-w34,b07,b07-l4,รถตู้ส่งของ,,xe van giao hàng,,,noun,,,,,,plernpin-b07#p14,true
+b07-w35,b07,b07-l4,รถไฟความเร็วสูง,,tàu cao tốc,,,noun,,,,,,plernpin-b07#p14,true
+b07-w36,b07,b07-l4,รถมอเตอร์ไซค์,,xe máy,,,noun,,,,,,plernpin-b07#p14,true
+b07-w37,b07,b07-l4,รถสปอร์ต,,xe thể thao,,,noun,,,,,,plernpin-b07#p15,true
+b07-w38,b07,b07-l4,รถไฟใต้ดิน,,tàu điện ngầm,,,noun,,,,,,plernpin-b07#p15,true
+b07-w39,b07,b07-l4,รถเมล์,,xe buýt,,,noun,,,,,,plernpin-b07#p15,true
+b07-w40,b07,b07-l5,ป้ายรถเมล์,,trạm xe buýt,,,noun,,,,,,plernpin-b07#p16,true
+b07-w41,b07,b07-l5,เรือ,,thuyền; tàu thủy,,,noun,,,,,,plernpin-b07#p16,true
+b07-w42,b07,b07-l5,รถดับเพลิง,,xe cứu hỏa,,,noun,,,,,,plernpin-b07#p16,true
+b07-w43,b07,b07-l5,รถราง,,xe điện (tàu điện chạy trên đường),,,noun,,,,,,plernpin-b07#p17,true
+b07-w44,b07,b07-l5,รถสามล้อ,,xe ba bánh,,,noun,,,,,,plernpin-b07#p17,true
+b07-w45,b07,b07-l5,จักรยาน,,xe đạp,,,noun,,,,,,plernpin-b07#p17,true
+b07-w46,b07,b07-l5,รถม้า,,xe ngựa,,,noun,,,,,,plernpin-b07#p18,true
+b07-w47,b07,b07-l5,อูเบอร์,,Uber,,,noun,,,,,,plernpin-b07#p18,true
+b07-w48,b07,b07-l5,แกร็บ,,Grab,,,noun,,,,,,plernpin-b07#p18,true
+b07-w49,b07,b07-l5,เลี้ยวซ้าย,,rẽ trái,,,verb,,,,,,plernpin-b07#p19,true
+b07-w50,b07,b07-l5,เลี้ยวขวา,,rẽ phải,,,verb,,,,,,plernpin-b07#p19,true
+b07-w51,b07,b07-l5,ตรงไป,,đi thẳng,,,verb,,,,,,plernpin-b07#p19,true
+b07-w52,b07,b07-l6,ใจกลางเมือง,,trung tâm thành phố,,,noun,,,,,,plernpin-b07#p20,true
+b07-w53,b07,b07-l6,นอกเมือง,,ngoại ô; ngoài thành phố,,,noun,,,,,,plernpin-b07#p20,true
+b07-w54,b07,b07-l6,ทางเดิน,,đường đi bộ,,,noun,,,,,,plernpin-b07#p20,true
+b07-w55,b07,b07-l6,เพื่อนบ้าน,,hàng xóm,,,noun,,,,,,plernpin-b07#p20,true
+b07-w56,b07,b07-l6,หัวมุมถนน,,góc đường; góc phố,,,noun,,,,,,plernpin-b07#p20,true
+b07-w57,b07,b07-l6,จราจร,,giao thông,,,noun,,,,,,plernpin-b07#p21,true
+b07-w58,b07,b07-l6,คนเดินถนน,,người đi đường,,,noun,,,,,,plernpin-b07#p21,true
+b07-w59,b07,b07-l6,คนขับ,,người lái,,,noun,,,,,,plernpin-b07#p21,true
+b07-w60,b07,b07-l6,ผู้โดยสาร,,hành khách,,,noun,,,,,,plernpin-b07#p21,true
+b07-w61,b07,b07-l6,นั่ง,,ngồi,,,verb,,,,,,plernpin-b07#p21,true
+b07-w62,b07,b07-l7,ขึ้นรถ,,lên xe,,,verb,,,,,,plernpin-b07#p22,true
+b07-w63,b07,b07-l7,ลงรถ,,xuống xe,,,verb,,,,,,plernpin-b07#p22,true
+b07-w64,b07,b07-l7,ขี่จักรยาน,,đi xe đạp; đạp xe đạp,,,verb,,,,,,plernpin-b07#p22,true
+b07-w65,b07,b07-l7,ช้าลง,,chậm xuống,,,verb,,,,,,plernpin-b07#p22,true
+b07-w66,b07,b07-l7,ไปเร็วๆ,,đi nhanh nhanh,,,phrase,,,,,,plernpin-b07#p22,true
+b07-w67,b07,b07-l7,ตารางรถไฟ,,lịch trình tàu hỏa,,,noun,,,,,,plernpin-b07#p23,true
+b07-w68,b07,b07-l7,ช่องขายตั๋ว,,quầy bán vé,,,noun,,,,,,plernpin-b07#p23,true
+b07-w69,b07,b07-l7,เส้นทางรถเมล์,,tuyến đường xe bus,,,noun,,,,,,plernpin-b07#p23,true
+b07-w70,b07,b07-l7,เรียกแท็กซี่,,gọi taxi,,,verb,,,,,,plernpin-b07#p23,true
+b07-w71,b07,b07-l7,ที่ไหน,,ở đâu?; chỗ nào?,,,pron,,,,,,plernpin-b07#p23,true
+b07-w72,b07,b07-l8,ที่นี่,,ở đây,,,pron,,,,,,plernpin-b07#p24,true
+b07-w73,b07,b07-l8,ที่นั่น,,ở đó,,,pron,,,,,,plernpin-b07#p24,true
+b07-w74,b07,b07-l8,ข้างบน,,bên trên,,,prep,,,,,,plernpin-b07#p24,true
+b07-w75,b07,b07-l8,ข้างล่าง,,bên dưới,,,prep,,,,,,plernpin-b07#p24,true
+b07-w76,b07,b07-l8,ข้างหน้า,,đằng trước,,,prep,,,,,,plernpin-b07#p24,true
+b07-w77,b07,b07-l8,ข้างหลัง,,đằng sau,,,prep,,,,,,plernpin-b07#p25,true
+b07-w78,b07,b07-l8,ถามทาง,,hỏi đường,,,verb,,,,,,plernpin-b07#p25,true
+b07-w79,b07,b07-l8,บอกทาง,,chỉ đường,,,verb,,,,,,plernpin-b07#p25,true
+b07-w80,b07,b07-l8,อยู่ทางซ้าย,,ở bên trái,,,phrase,,,,,,plernpin-b07#p25,true
+b07-w81,b07,b07-l8,อยู่ทางขวา,,ở bên phải,,,phrase,,,,,,plernpin-b07#p25,true
+b07-w82,b07,b07-l9,อยู่ติดกับ,,ở sát với; ở cạnh với,,,phrase,,,,,,plernpin-b07#p26,true
+b07-w83,b07,b07-l9,ตรงกลาง,,chính giữa,,,prep,,,,,,plernpin-b07#p26,true
+b07-w84,b07,b07-l9,ข้างใน,,bên trong,,,prep,,,,,,plernpin-b07#p26,true
+b07-w85,b07,b07-l9,ข้างนอก,,bên ngoài,,,prep,,,,,,plernpin-b07#p26,true
+b07-w86,b07,b07-l9,หลงทาง,,lạc đường,,,verb,,,,,,plernpin-b07#p26,true
+b07-w87,b07,b07-l9,ระยะทาง,,khoảng cách; quãng đường,,,noun,,,,,,plernpin-b07#p27,true
+b07-w88,b07,b07-l9,กิโลเมตร,,ki lô mét; km,,,noun,,,,,,plernpin-b07#p27,true
+b07-w89,b07,b07-l9,ไมล์,,dặm,"1 dặm = 1,609 km",,noun,,,,,,plernpin-b07#p27,true
+b07-w90,b07,b07-l9,เมตร,,mét; m,,,noun,,,,,,plernpin-b07#p27,true
+b07-w91,b07,b07-l9,ใกล้,,gần,,,adj,,,,,,plernpin-b07#p27,true
+b07-w92,b07,b07-l10,ไกล,,xa,,,adj,,,,,,plernpin-b07#p28,true
+b07-w93,b07,b07-l10,ตรงข้าม,,đối diện,,,prep,,,,,,plernpin-b07#p28,true
+b07-w94,b07,b07-l10,สถานที่,,địa điểm,,,noun,,,,,,plernpin-b07#p28,true
+b07-w95,b07,b07-l10,ผ่าน,,qua; đi qua,,,verb,,,,,,plernpin-b07#p28,true
+b07-w96,b07,b07-l10,นานเท่าไหร่,,bao nhiêu lâu,,,phrase,,,,,,plernpin-b07#p28,true
+b07-w97,b07,b07-l10,เดี๋ยวนี้,,ngay bây giờ; ngay lúc này,,,adv,,,,,,plernpin-b07#p29,true
+b07-w98,b07,b07-l10,ยอมให้,,chấp nhận cho,,,verb,,,,,,plernpin-b07#p29,true
+b07-w99,b07,b07-l10,พิจารณา,,xem xét; cân nhắc,,,verb,,,,,,plernpin-b07#p29,true
+b07-w100,b07,b07-l10,ช่วย,,giúp,,,verb,,,,,,plernpin-b07#p29,true
+b07-w101,b07,b07-l10,กังวลใจ,,lo lắng; băn khoăn,,,adj,,,,,,plernpin-b07#p29,true
+b06-w01,b06,b06-l1,เช้า,ตอนเช้า,buổi sáng,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w02,b06,b06-l1,เที่ยงวัน,ตอนเที่ยงวัน|เที่ยง,buổi trưa,(ตอน) có thể thêm phía trước; เที่ยงวัน / เที่ยง = 12 giờ trưa,,noun,,,,,,plernpin-b06#p3,true
+b06-w03,b06,b06-l1,บ่าย,ตอนบ่าย,buổi chiều,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w04,b06,b06-l1,เย็น,ตอนเย็น,buổi chiều tối; buổi chiều muộn,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w05,b06,b06-l1,ค่ำ,ตอนค่ำ,buổi tối,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w06,b06,b06-l1,ดึก,ตอนดึก,đêm khuya,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
+b06-w07,b06,b06-l1,เที่ยงคืน,ตอนเที่ยงคืน,nửa đêm; giữa đêm,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
+b06-w08,b06,b06-l1,กลางวัน,ตอนกลางวัน,ban ngày,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
+b06-w09,b06,b06-l1,กลางคืน,ตอนกลางคืน,ban đêm,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
+b06-w10,b06,b06-l1,เวลาพระอาทิตย์ขึ้น,รุ่ง|รุ่งเช้า,mặt trời mọc; bình minh; rạng đông,,,noun,,,,,,plernpin-b06#p4,true
+b06-w11,b06,b06-l1,เวลาพระอาทิตย์ตก,,mặt trời lặn; hoàng hôn,,,noun,,,,,,plernpin-b06#p5,true
+b06-w12,b06,b06-l2,ชั่วโมง,,tiếng đồng hồ,,,noun,,,,,,plernpin-b06#p5,true
+b06-w13,b06,b06-l2,โมง,,giờ,,,noun,,,,,,plernpin-b06#p5,true
+b06-w14,b06,b06-l2,นาที,,phút,,,noun,,,,,,plernpin-b06#p5,true
+b06-w15,b06,b06-l2,วินาที,,giây,,,noun,,,,,,plernpin-b06#p5,true
+b06-w16,b06,b06-l2,ครึ่ง,,nửa; rưỡi,,,noun,,,,,,plernpin-b06#p6,true
+b06-w17,b06,b06-l2,ตอน,,lúc,,,noun,,,,,,plernpin-b06#p6,true
+b06-w18,b06,b06-l2,ตอนสาย,,buổi sáng muộn (9h–11h sáng),dùng trong văn nói,,noun,,,,,,plernpin-b06#p6,true
+b06-w19,b06,b06-l2,ยามสาย,,buổi sáng muộn (9h–11h sáng),dùng trong văn đọc viết,,noun,,,,,,plernpin-b06#p6,true
+b06-w20,b06,b06-l2,ยามหนึ่ง,,9 giờ tối,,,noun,,,,,,plernpin-b06#p18,true
+b06-w21,b06,b06-l2,สองยาม,,nửa đêm (24h),,,noun,,,,,,plernpin-b06#p18,true
+b06-w22,b06,b06-l2,สามยาม,,3 giờ sáng,,,noun,,,,,,plernpin-b06#p18,true
+b06-w23,b06,b06-l3,นาฬิกา,,đồng hồ; giờ,viết tắt: น.,,noun,,,,,,plernpin-b06#p6,true
+b06-w24,b06,b06-l3,ตอนนี้,,bây giờ,,,adv,,,,,,plernpin-b06#p23,true
+b06-w25,b06,b06-l3,หรือยัง,,chưa?,,,particle,,,,,,plernpin-b06#p23,true
+b06-w26,b06,b06-l3,ยัง,,chưa (làm),,,adv,,,,,,plernpin-b06#p23,true
+b06-w27,b06,b06-l3,เสร็จ,,xong,,,verb,,,,,,plernpin-b06#p23,true
+b06-w28,b06,b06-l3,เคย,,từng; đã từng,,,adv,,,,,,plernpin-b06#p23,true
+b06-w29,b06,b06-l3,วันละ,,mỗi ngày,per day,,adv,,,,,,plernpin-b06#p24,true
+b06-w30,b06,b06-l3,เกือบ,,gần; suýt,thời gian,,adv,,,,,,plernpin-b06#p24,true
+b06-w31,b06,b06-l3,เพิ่ง,,mới; vừa mới,,,adv,,,,,,plernpin-b06#p24,true
+b06-w32,b06,b06-l3,เดี๋ยวนี้,,lúc này; ngay bây giờ,,,adv,,,,,,plernpin-b06#p24,true
+b06-w33,b06,b06-l3,ขณะนี้,,lúc này,,,adv,,,,,,plernpin-b06#p24,true
+b06-w34,b06,b06-l4,สักครู่,,một lát,,,adv,,,,,,plernpin-b06#p25,true
+b06-w35,b06,b06-l4,รอ,,đợi,,,verb,,,,,,plernpin-b06#p25,true
+b06-w36,b06,b06-l4,ประมาณ,,khoảng,,,adv,,,,,,plernpin-b06#p25,true
+b06-w37,b06,b06-l4,ก่อน,,trước,,,adv,,,,,,plernpin-b06#p25,true
+b06-w38,b06,b06-l4,หลัง,,sau,,,adv,,,,,,plernpin-b06#p25,true
+b06-w39,b06,b06-l4,ตั้งแต่,,từ (thời gian),,,prep,,,,,,plernpin-b06#p26,true
+b06-w40,b06,b06-l4,ช้า,,chậm,,,adj,,,,,,plernpin-b06#p26,true
+b06-w41,b06,b06-l4,เร็ว,,nhanh,,,adj,,,,,,plernpin-b06#p26,true
+b06-w42,b06,b06-l4,ไวๆ,,nhanh nhanh,,,adv,,,,,,plernpin-b06#p26,true
+b06-w43,b06,b06-l4,ด่วน,,gấp,,,adj,,,,,,plernpin-b06#p26,true
+b06-w44,b06,b06-l5,ทันที,,ngay lập tức,,,adv,,,,,,plernpin-b06#p27,true
+b06-w45,b06,b06-l5,เลย,,luôn,,,adv,,,,,,plernpin-b06#p27,true
+b06-w46,b06,b06-l5,ถึง,,đến (thời gian),GV ghi: ถึง (เวลา),,prep,,,,,,plernpin-b06#p27,true
+b06-w47,b06,b06-l5,นะ,,nhé!,,,particle,,,,,,plernpin-b06#p27,true
+b06-w48,b06,b06-l5,มาช้า,,đến muộn; đến chậm,,,verb,,,,,,plernpin-b06#p27,true
+b06-w49,b06,b06-l5,มาสาย,,đến muộn (so với giờ hẹn),,,verb,,,,,,plernpin-b06#p28,true
+b06-w50,b06,b06-l5,จะ,,định; sẽ,,,adv,,,,,,plernpin-b06#p28,true
+b06-w51,b06,b06-l5,ทุก,,mọi,,,adj,,,,,,plernpin-b06#p28,true
+b06-w52,b06,b06-l5,เริ่ม,,bắt đầu,,,verb,,,,,,plernpin-b06#p28,true
+b06-w53,b06,b06-l5,เลิก,,tan; kết thúc,,,verb,,,,,,plernpin-b06#p28,true
+b06-w54,b06,b06-l6,ระยะ,ระยะเวลา,khoảng (thời gian); giai đoạn,GV ghi: ระยะ (เวลา),,noun,,,,,,plernpin-b06#p29,true
+b06-w55,b06,b06-l6,มืด,,tối; u tối,,,adj,,,,,,plernpin-b06#p29,true
+b06-w56,b06,b06-l6,เช้ามืด,,tờ mờ sáng; rạng sáng,,,noun,,,,,,plernpin-b06#p29,true
+b06-w57,b06,b06-l6,หัวค่ำ,,sẩm tối; đầu giờ tối,,,noun,,,,,,plernpin-b06#p29,true
+b06-w58,b06,b06-l6,ครั้ง,,lần,,,noun,,,,,,plernpin-b06#p29,true
+b06-w59,b06,b06-l6,ระหว่าง,,trong suốt khoảng (thời gian),GV ghi: ระหว่าง (เวลา),,prep,,,,,,plernpin-b06#p30,true
+b06-w60,b06,b06-l6,ทุกครั้ง,,mọi lúc; mỗi lúc,,,adv,,,,,,plernpin-b06#p30,true
+b06-w61,b06,b06-l6,บางครั้ง,,đôi khi; thỉnh thoảng,,,adv,,,,,,plernpin-b06#p30,true
+b06-w62,b06,b06-l6,นานๆครั้ง,,lâu lâu một lần,,,adv,,,,,,plernpin-b06#p30,true
+b06-w63,b06,b06-l6,บ่อย,,hay; thường xuyên,,,adv,,,,,,plernpin-b06#p30,true
+b06-w64,b06,b06-l7,บ่อยๆ,,hay; thường xuyên,nhấn mạnh,,adv,,,,,,plernpin-b06#p31,true
+b06-w65,b06,b06-l7,เสมอ,,luôn luôn,,,adv,,,,,,plernpin-b06#p31,true
+b06-w66,b06,b06-l7,เสมอๆ,,luôn luôn,nhấn mạnh,,adv,,,,,,plernpin-b06#p31,true
+b06-w67,b06,b06-l7,มักจะ,,thường hay,,,adv,,,,,,plernpin-b06#p31,true
+b06-w68,b06,b06-l7,ตรงเวลา,,đúng giờ,,,adj,,,,,,plernpin-b06#p31,true
+b06-w69,b06,b06-l7,ทัน,ทันเวลา,kịp; kịp thời gian,,,verb,,,,,,plernpin-b06#p32,true
+b06-w70,b06,b06-l7,เสียเวลา,,tốn thì giờ; mất thời gian,,,verb,,,,,,plernpin-b06#p32,true
+b06-w71,b06,b06-l7,ได้เวลา,,đến giờ,thời gian phù hợp để làm gì đó,,phrase,,,,,,plernpin-b06#p32,true
+b06-w72,b06,b06-l7,ถึงเวลา,,đến giờ,,,phrase,,,,,,plernpin-b06#p32,true
+b06-w73,b06,b06-l7,หมดเวลา,,hết giờ,,,phrase,,,,,,plernpin-b06#p32,true
+b06-w74,b06,b06-l8,ไม่มีเวลา,,không có thời gian,,,phrase,,,,,,plernpin-b06#p33,true
+b06-w75,b06,b06-l8,เกินเวลา,,quá giờ,,,phrase,,,,,,plernpin-b06#p33,true
+b06-w76,b06,b06-l8,นอกเวลา,,ngoài giờ,,,phrase,,,,,,plernpin-b06#p33,true
+b06-w77,b06,b06-l8,นัด,,hẹn,,,verb,,,,,,plernpin-b06#p33,true
+b06-w78,b06,b06-l8,ผิดนัด,,sai hẹn,,,verb,,,,,,plernpin-b06#p33,true
+b06-w79,b06,b06-l8,ผิดเวลา,,sai giờ,,,phrase,,,,,,plernpin-b06#p34,true
+b06-w80,b06,b06-l8,ฆ่าเวลา,,giết thời gian,,,verb,,,,,,plernpin-b06#p34,true
+b06-w81,b06,b06-l8,เปิด,,mở cửa (thời gian),GV ghi: เปิด (เวลา),,verb,,,,,,plernpin-b06#p34,true
+b06-w82,b06,b06-l8,ปิด,,đóng cửa (thời gian),GV ghi: ปิด (เวลา),,verb,,,,,,plernpin-b06#p34,true
+b06-w83,b06,b06-l8,ใช้เวลา,,dành bao nhiêu thời gian vào làm việc gì đó,,,verb,,,,,,plernpin-b06#p34,true
+b06-w84,b06,b06-l9,ตลอดไป,,mãi mãi,,,adv,,,,,,plernpin-b06#p35,true
+b06-w85,b06,b06-l9,ตลอดเวลา,,suốt,,,adv,,,,,,plernpin-b06#p35,true
+b06-w86,b06,b06-l9,สนามบิน,,sân bay,,,noun,,,,,,plernpin-b06#p35,true
+b06-w87,b06,b06-l9,ธนาคาร,,ngân hàng,,,noun,,,,,,plernpin-b06#p35,true
+b06-w88,b06,b06-l9,ฉาย,,chiếu,,,verb,,,,,,plernpin-b06#p35,true
