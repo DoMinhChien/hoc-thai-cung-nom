@@ -23,6 +23,8 @@ export default defineConfig({
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: 'on-first-retry',
+    // Service worker PWA (M12) chặn mặc định để mỗi test tải bản mới; test offline bật riêng.
+    serviceWorkers: 'block',
   },
   expect: {
     toHaveScreenshot: { maxDiffPixelRatio: 0.01 },
