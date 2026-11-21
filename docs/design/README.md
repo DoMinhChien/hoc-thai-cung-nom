@@ -13,6 +13,9 @@
 | `screens/SCR-04-units.md` | Bài học: Lộ trình + Chi tiết chuyên đề (M7) | ✅ Duyệt 2026-11-19 |
 | `screens/SCR-05-lesson.md` | Bài học nhiều bước: Từ vựng, Mẫu câu, Hội thoại, Bài tập (M7) | ✅ Duyệt 2026-11-19 |
 | `screens/SCR-06-practice.md` | Bài tập: trang, phiên làm bài (E-01..E-14), kết quả (M9) | ✅ Duyệt 2026-11-20 |
+| `screens/SCR-03-home.md` | Tổng quan `/` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
+| `screens/SCR-07-words.md` | Sổ từ `/words` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
+| `screens/SCR-09-progress.md` | Tiến độ `/progress` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
 | `screens/SCR-08-games.md` | Trò chơi: danh sách, 4 màn chơi, kết quả (M7.5 — ưu tiên) | ✅ Duyệt 2026-11-18 (gồm v7.3: màu từng trò, 3 tim, đọc lại câu) |
 
 **Figma:** https://www.figma.com/design/iYEX3wxXphmrjDCxtiSuPD (team cá nhân "chiend's team", gói Starter — tối đa 3 page: `Wireframes`, `Components & Tokens`, `Archive`)
@@ -28,6 +31,9 @@
 | `SCR-04-units.png` · `SCR-04-unit-detail.png` | Lộ trình · Chi tiết chuyên đề (Figma) |
 | `SCR-05-lesson-vocab.png` (Figma) · `SCR-05-lesson-dialogue.png` (HTML) | Bài học: bước Từ vựng · bước Hội thoại + tra từ |
 | `SCR-06-practice.png` · `-session-arrange.png` · `-session-typing.png` · `-result.png` (HTML) | Bài tập: trang · phiên E-06 · phiên E-07 + phản hồi · kết quả |
+| `SCR-03-home.png` · `SCR-03-home-empty.png` (HTML) | Tổng quan · người học mới |
+| `SCR-07-words.png` · `SCR-07-word-detail.png` (HTML) | Sổ từ · chi tiết từ |
+| `SCR-09-progress.png` (HTML) | Tiến độ |
 | `SCR-08-games.png` · `-play-match.png` · `-play-truefalse.png` · `-play-classifier.png` · `-result.png` (HTML) | Trò chơi: danh sách · Ghép cặp · Đúng hay sai? · Đoán loại từ · kết quả |
 
 > **2026-11-18:** Figma MCP gói Starter hết lượt gọi giữa đợt M0.5b → 3 wireframe đầu vẽ trong Figma (page `Wireframes`, hàng y = 2500), 5 wireframe còn lại dựng bằng HTML cùng phong cách lo-fi rồi chụp PNG. Spec `.md` vẫn là nguồn chính.
