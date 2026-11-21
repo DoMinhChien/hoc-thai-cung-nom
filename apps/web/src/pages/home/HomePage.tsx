@@ -180,7 +180,7 @@ function Dashboard({ data }: { data: PracticeData }) {
             onClick={goPractice}
           >
             {today.count > 0 ? t('home.practice') : t('practice.more')}
-            <kbd aria-hidden className="rounded bg-current/15 px-1.5 font-sans text-xs">
+            <kbd aria-hidden className="rounded bg-muted px-1.5 font-sans text-xs text-foreground">
               {practiceFirst ? '↵' : 'B'}
             </kbd>
           </Button>
@@ -326,7 +326,7 @@ function ContinueCard({
             : target.kind === 'done'
               ? t('home.reviewFirst', { unit: unitLabel(units[0]!.unit) })
               : t('units.start')}
-          <kbd aria-hidden className="rounded bg-current/15 px-1.5 font-sans text-xs">
+          <kbd aria-hidden className="rounded bg-muted px-1.5 font-sans text-xs text-foreground">
             {primary ? '↵' : 'H'}
           </kbd>
         </Button>

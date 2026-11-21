@@ -13,7 +13,9 @@ const H = 3_600_000;
 const at = (hoursAgo: number) => new Date(NOW.getTime() - hoursAgo * H).toISOString();
 
 test.beforeEach(async ({ page }) => {
+  // Đồng hồ bắt đầu ở NOW rồi chạy tiếp: thời gian đứng yên làm axe trên Firefox treo tới crash.
   await page.clock.install({ time: NOW });
+  await page.clock.resume();
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await chooseGuest(page);
 });

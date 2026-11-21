@@ -8,7 +8,7 @@ import {
   type MasteryLevel,
   type UnitBundle,
 } from '@nom/core';
-import { Bookmark, Search } from 'lucide-react';
+import { Bookmark, Search, Volume2 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useAudio } from '@/audio/useAudio';
@@ -480,8 +480,18 @@ function Book({
                       {r.review && (
                         <Bookmark className="size-4 fill-current text-primary" aria-hidden />
                       )}
-                      <span onClick={(e) => e.stopPropagation()} role="presentation">
-                        <SpeakButton text={r.word.thai} />
+                      {/* 🔊 trên dòng chỉ cho chuột (không lồng nút trong `option` — a11y); bàn phím:
+                          chọn dòng rồi Space (SCR-07 §Hành động). */}
+                      <span
+                        aria-hidden
+                        title={t('units.listen', { text: r.word.thai })}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          void audio.speak(r.word.thai).catch(() => {});
+                        }}
+                        className="flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
+                      >
+                        <Volume2 className="size-4" />
                       </span>
                     </div>
                   </div>
