@@ -71,6 +71,7 @@ export const WordJsonSchema = z.object({
   example_th: ThaiTextSchema.optional(),
   example_vi: z.string().optional(),
   image: ImageSchema.optional(),
+  mnemonic_vi: z.string().optional(),
   tags: z.array(z.string()),
   source: z.string().optional(),
   draft: z.boolean(),

@@ -28,6 +28,8 @@ export const WordSchema = z
     example_th: optionalCell.pipe(ThaiTextSchema.optional()),
     example_vi: optionalCell,
     image: optionalCell.pipe(ImageSchema.optional()),
+    /** Mẹo nhớ gợi ý (V-04, SCR-07 Q1 — cột tùy chọn, có thể vắng). */
+    mnemonic_vi: optionalCell,
     tags: optionalListCell(';'),
     source: optionalCell,
     draft: draftCell,

@@ -16,6 +16,7 @@ import type {
   ReviewLogRecord,
   SentenceLevelRecord,
   SessionRecord,
+  WordNoteRecord,
 } from './records';
 
 export interface CardFilter {
@@ -51,6 +52,13 @@ export interface ProgressRepository {
   /** Ghi theo `itemType` + `itemId` (một cờ mỗi mục). */
   putNeedsReview(record: NeedsReviewRecord): Promise<void>;
   deleteNeedsReview(itemType: ItemType, itemId: string): Promise<void>;
+
+  /** Mẹo nhớ của người học (V-04, M10). */
+  getWordNote(itemId: string): Promise<WordNoteRecord | undefined>;
+  listWordNotes(): Promise<WordNoteRecord[]>;
+  /** Ghi theo `itemId` (một mẹo mỗi từ). */
+  putWordNote(record: WordNoteRecord): Promise<void>;
+  deleteWordNote(itemId: string): Promise<void>;
 
   getSentenceLevel(sentenceId: string): Promise<SentenceLevelRecord | undefined>;
   listSentenceLevels(): Promise<SentenceLevelRecord[]>;

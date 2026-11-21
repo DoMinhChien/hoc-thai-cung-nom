@@ -206,6 +206,28 @@ export function describeRepositories(
         expect(await ids()).toEqual(['c']);
       });
 
+      it('mẹo nhớ của người học: một mẹo mỗi từ, sửa / xoá được (M10)', async () => {
+        const note = (id: string, itemId: string, mnemonic: string) => ({
+          id,
+          itemType: 'word' as const,
+          itemId,
+          mnemonic,
+          updatedAt: at(0).toISOString(),
+        });
+        expect(await repos.progress.getWordNote('w1')).toBeUndefined();
+        await repos.progress.putWordNote(note('a', 'w1', 'meo'));
+        await repos.progress.putWordNote(note('b', 'w2', 'chó'));
+        await repos.progress.putWordNote(note('c', 'w1', 'mèo kêu meo'));
+        expect(await repos.progress.getWordNote('w1')).toMatchObject({
+          id: 'c',
+          mnemonic: 'mèo kêu meo',
+        });
+        expect((await repos.progress.listWordNotes()).map((n) => n.id).sort()).toEqual(['b', 'c']);
+        await repos.progress.deleteWordNote('w2');
+        await repos.progress.deleteWordNote('khong-co');
+        expect((await repos.progress.listWordNotes()).map((n) => n.itemId)).toEqual(['w1']);
+      });
+
       it('saveGameResult: lượt đầu là kỷ lục, kém hơn giữ kỷ lục cũ, cộng số lượt', async () => {
         const first = await saveGameResult(
           repos.progress,

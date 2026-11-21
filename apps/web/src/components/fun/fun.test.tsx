@@ -37,7 +37,11 @@ describe('chuỗi ngày học (M0.5c hướng B)', () => {
       studied: i < 3,
       isToday: i === 3,
     }));
-    render(<StreakCard streak={{ count: 3, today: false, week, milestone: null }} />);
+    render(
+      <StreakCard
+        streak={{ count: 3, today: false, week, milestone: null, longest: 3, days: [] }}
+      />,
+    );
     const card = screen.getByTestId('streak-card');
     expect(card).toHaveAttribute('data-count', '3');
     expect(card).toHaveTextContent('Học hôm nay để giữ chuỗi');

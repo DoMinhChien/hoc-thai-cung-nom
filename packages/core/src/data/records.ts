@@ -50,7 +50,7 @@ export interface ListeningStatRecord {
   updatedAt: string;
 }
 
-/** Phiên học (R-02). */
+/** Phiên học (R-02; M10: `lesson` / `practice` / `game` — thời gian học + chuỗi ngày, SCR-09 Q2). */
 export interface SessionRecord {
   id: string;
   module: string;
@@ -106,11 +106,24 @@ export interface NeedsReviewRecord {
   id: string;
   itemType: ItemType;
   itemId: string;
-  /** Nơi sinh cờ (P-09: số mục "cần ôn" sinh ra từ trò chơi). */
-  origin: 'game';
+  /** Nơi sinh cờ: trò chơi (P-09) hoặc người học bật tay ở Sổ từ (SCR-07 Q5, M10). */
+  origin: 'game' | 'manual';
   flaggedAt: string;
   updatedAt: string;
 }
+
+/** Mẹo nhớ của người học cho một mục (V-04, SCR-07) — một bản ghi mỗi mục. */
+export interface WordNoteRecord {
+  id: string;
+  itemType: 'word';
+  itemId: string;
+  /** Văn bản thuần, tối đa `WORD_NOTE_MAX` ký tự. */
+  mnemonic: string;
+  updatedAt: string;
+}
+
+/** Độ dài tối đa mẹo nhớ của người học (SCR-07 §D). */
+export const WORD_NOTE_MAX = 200;
 
 /** Bậc dịch của câu (E-11): 2 cụm/câu (E-05, E-04) · 3 sắp xếp có thẻ nhiễu (E-06) · 4 gõ (E-07). */
 export const SENTENCE_LEVELS = [2, 3, 4] as const;

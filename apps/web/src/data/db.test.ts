@@ -21,7 +21,7 @@ async function createV1(userKey: string) {
     { id: 'c1', itemType: 'consonant', itemId: 'ko-kai' },
     { id: 'c2', itemType: 'word', itemId: 'di', updatedAt: '2026-01-02T00:00:00.000Z' },
   ]);
-  await old.table('settings').put({ key: 'newPerDay', value: 5 });
+  await old.table('settings').put({ key: 'newPerDay', value: 6 });
   await old.table('meta').put({ key: 'guestChosen', value: true });
   old.close();
 }
@@ -31,7 +31,7 @@ describe('NomDatabase schema (plan 7.3)', () => {
     const db = new NomDatabase('moi');
     await db.open();
     expect(db.verno).toBe(SCHEMA_VERSION);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 5 });
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 6 });
     db.close();
   });
 
@@ -40,8 +40,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
     const db = new NomDatabase('u1');
     await db.open();
 
-    expect(db.verno).toBe(5);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
+    expect(db.verno).toBe(6);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
     expect(await db.meta.get('guestChosen')).toMatchObject({ value: true });
 
     const [c1, c2] = await db.cards.bulkGet(['c1', 'c2']);
@@ -54,7 +54,7 @@ describe('NomDatabase schema (plan 7.3)', () => {
     });
 
     const setting = await db.settings.get('newPerDay');
-    expect(setting).toMatchObject({ value: 5 });
+    expect(setting).toMatchObject({ value: 6 });
     expect(setting!.updatedAt).toEqual(expect.any(String));
 
     // Index mới dùng được sau khi nâng cấp.
@@ -80,8 +80,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u2');
     await db.open();
-    expect(db.verno).toBe(5);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
+    expect(db.verno).toBe(6);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
     expect(await db.cards.get('c1')).toMatchObject({ itemId: 'di' });
 
     const lesson = {
@@ -116,8 +116,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u3');
     await db.open();
-    expect(db.verno).toBe(5);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
+    expect(db.verno).toBe(6);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
     expect(await db.lessons.get('l1')).toMatchObject({ lessonId: 'u01-l1' });
 
     const ts = '2026-03-01T00:00:00.000Z';
@@ -163,8 +163,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u4');
     await db.open();
-    expect(db.verno).toBe(5);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 5 });
+    expect(db.verno).toBe(6);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
     expect(await db.needsReview.get('f1')).toMatchObject({ itemId: 'chue' });
 
     const ts = '2026-03-01T00:00:00.000Z';
