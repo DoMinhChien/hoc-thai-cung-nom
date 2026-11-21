@@ -23,6 +23,7 @@ const cardCount = async (page: Page) => (await readStore(page, DB, 'cards')).len
 test.describe('học & tiến độ', () => {
   test.beforeEach(async ({ page }) => {
     await page.clock.install({ time: T0 });
+    await page.clock.resume();
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await chooseGuest(page);
   });
