@@ -46,6 +46,7 @@ export const privacyVi: LegalDocument = {
       title: 'Tiến độ học lưu ở đâu',
       paragraphs: [
         'Tiến độ học (thẻ đã học, lịch ôn, kết quả luyện tập) chỉ được lưu trên trình duyệt của bạn (IndexedDB), tách riêng theo từng tài khoản. Chúng tôi không gửi tiến độ học lên máy chủ.',
+        'Bạn có thể tự xuất tiến độ ra một tệp JSON (Cài đặt › Dữ liệu tiến độ) và nhập lại sau. Tệp này nằm trên máy của bạn; chúng tôi không nhận được tệp.',
       ],
     },
     {
