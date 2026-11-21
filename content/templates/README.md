@@ -33,7 +33,7 @@ Thư mục này chứa **6 file mẫu**. Mỗi file có đủ cột/trường v�
 
 ## Các cột cần chú ý
 
-- **`unit_id` / `order`** (units.csv): nên theo **số chuyên đề** của giáo viên, vd. chuyên đề 3 → `u03`, `order` = 3. Thứ tự lộ trình trong app theo `order`.
+- **`unit_id` / `order`** (units.csv): nên theo **số chuyên đề** của giáo viên, vd. Bài 3 → `b03`, Chuyên đề 3 → `c03` (`kind: grammar`), `order` = 3. Thứ tự lộ trình trong app theo `order`.
 - **`level`**: `A1`, `A2`, `B1` hoặc để trống.
 - **`kind`**: `theme` (từ vựng theo chủ đề, mặc định khi để trống) hoặc `grammar` (điểm ngữ pháp / cách dùng, vd. "Các trường hợp của น่า"). Unit `grammar` cho phép bài dài (tối đa 40 từ) và học Mẫu câu trước Từ vựng.
 - **`emoji`** (units.csv, tùy chọn — cột có thể không có): 1 emoji minh họa của bài/chuyên đề trên Lộ trình (vd. `📅`). Trống → mặc định 📘 (Giáo trình) / 🧩 (Chuyên đề).

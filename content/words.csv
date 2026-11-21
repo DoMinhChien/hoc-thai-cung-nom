@@ -1,21 +1,4 @@
 id,unit_id,lesson_id,thai,thai_alt,meaning_vi,note_vi,classifier,pos,phonetic,example_th,example_vi,image,tags,source,draft
-tukkata,u03,u03-l1,ตุ๊กตา,,búp bê,,ตัว,noun,,,,,,plernpin-03#p1,true
-thung-thao,u03,u03-l1,ถุงเท้า,,tất,,คู่,noun,,,,,,plernpin-03#p1,true
-rong-thao,u03,u03-l1,รองเท้า,,giày,,คู่,noun,,,,,,plernpin-03#p1,true
-takiap,u03,u03-l1,ตะเกียบ,,đũa,,คู่,noun,,,,,,plernpin-03#p1,true
-chon,u03,u03-l1,ช้อน,,,,คัน,noun,,,,,,plernpin-03#p1,true
-rom,u03,u03-l1,ร่ม,,ô; dù,,คัน,noun,,,,,,plernpin-03#p1,true
-kaeo,u03,u03-l1,แก้ว,,cốc; ly,,ใบ,noun,,,,,,plernpin-03#p1,true
-jaan,u03,u03-l1,จาน,,đĩa,,ใบ,noun,,,,,,plernpin-03#p1,true
-nangsue,u03,u03-l1,หนังสือ,,sách,,เล่ม,noun,,,,,,plernpin-03#p6,true
-pakka,u03,u03-l1,ปากกา,,bút bi,,ด้าม,noun,,,,,,plernpin-03#p4,true
-rot,u03,u03-l1,รถ,,xe,,คัน,noun,,,,,,plernpin-03#p1,true
-khai,u03,u03-l1,ไข่,,trứng,,ฟอง,noun,,,,,,plernpin-03#p1,true
-na-kin,u11,u11-l1,น่ากิน,,trông ngon,rất đáng để ăn,,adj,,,,,,plernpin-11#p1,true
-na-rak,u11,u11-l1,น่ารัก,,đáng yêu; dễ thương,,,adj,,,,,,plernpin-11#p1,true
-na-du,u11,u11-l1,น่าดู,,đáng xem; nên xem,,,adj,,,,,,plernpin-11#p1,true
-na-klua,u11,u11-l1,น่ากลัว,,đáng sợ,,,adj,,,,,,plernpin-11#p1,true
-na-buea,u11,u11-l1,น่าเบื่อ,,nhàm chán; trông nhàm chán,,,adj,,,,,,plernpin-11#p1,true
 b02-w01,b02,b02-l1,สวัสดี,,xin chào,,,interj,,,,,,plernpin-b02#p3,true
 b02-w02,b02,b02-l1,ค่ะ,,ạ; dạ; vâng,"nữ dùng, đứng cuối câu trả lời / câu kể",,particle,,,,,,plernpin-b02#p3,true
 b02-w03,b02,b02-l1,คะ,,ạ,"nữ dùng, đứng cuối câu hỏi",,particle,,,,,,plernpin-b02#p3,true
