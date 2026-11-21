@@ -524,6 +524,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | Quy trình | Owner đồng ý **agent tự merge PR** theo `AGENTS.md` mục 8.1 (CI xanh, không conflict, base `main`; loại PR được phép / phải chờ owner). SETUP S1: bảo vệ `main` không bắt buộc review | — | — | — (docs chưa commit) |
 | 2026-11-21 | M9.5 + M9.6 + Nội dung | Owner chọn **hướng B** (Q1–Q4 theo đề xuất). **T9.5.4** giao diện "Nắng nhiệt đới" (token, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, `fb-*`); **T9.6.3–T9.6.6** `/games` 8 trò + 4 màn arcade + theme + sao + Đổi trò + E2E; nhập **Bài 5 → 3** (PR #29) | — | M10 chờ owner duyệt SCR-03/07/09 (#26) | `m9.6-games` → PR #25; `content-b03-b05` → PR #29 |
 | 2026-11-21 | M0.5b-2 / M0.5c / Nội dung | Owner giao cho agent: soạn **SCR-03/07/09** + wireframe (PR #26), **M0.5c** 3 hướng giao diện + **SCR-08 v2** + mockup (PR #27), nhập **Bài 11 → 6** (PR #28; 0 lỗi content:check, baseline `/units`) | Nhập Bài 5 → 3 | M10, T9.5.4, UI M9.6 chờ owner duyệt #26 / #27 | `m0.5b-scr-03-07-09`, `m0.5c-design`, `content-b06-b11` |
 | 2026-11-21 | M9.6 (+ M9.5) | Owner tạm loại **T9.5.3** (Azure Speech). Sửa 8 điểm review PR #23. Logic chờ UI: danh mục 8 trò + nhãn kỹ năng + lọc, kỷ lục / "cần ôn" cho trò arcade, hook `useArcadeRun` | — | T9.5.4, T9.6.3 phần còn lại, T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c); M10 chờ SCR-03/07/09 | `m9.6-games` → PR mới vào `main` (#23 đã merge vào `m9.5-feedback`) |
