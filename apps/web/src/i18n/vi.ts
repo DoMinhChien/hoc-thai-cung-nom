@@ -705,6 +705,9 @@ export const vi = {
   },
   settings: {
     practiceTitle: 'Bài tập',
+    displayTitle: 'Hiển thị',
+    phonetic: 'Hiện phiên âm Latin mặc định',
+    phoneticHint: 'Tắt: phiên âm ẩn, bấm P để xem từng từ. Nên tập đọc chữ Thái trước.',
     sessionSize: 'Số câu mỗi phiên / mục tiêu ngày',
     sessionSizeOption: '{n} câu',
     sessionSizeHint: 'Mục tiêu ngày ở Tổng quan và Bài tập tính theo số câu này.',

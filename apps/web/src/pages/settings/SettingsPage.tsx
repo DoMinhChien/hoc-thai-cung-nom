@@ -20,6 +20,7 @@ import { useFeedbackSound, webAudioTone, type FeedbackSoundKind } from '@/compon
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useRepositories, useRepositoryQuery } from '@/data';
+import { SHOW_PHONETIC_KEY, useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
 
 const rateFormat = new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 });
@@ -42,6 +43,7 @@ export function SettingsPage() {
       <SoundSettings />
       <VoiceSettings />
       <PracticeSettings />
+      <DisplaySettings />
       <p className="text-sm text-muted-foreground">{t('settings.later')}</p>
     </section>
   );
@@ -311,6 +313,30 @@ function PracticeSettings() {
         ))}
       </select>
       <p className="text-sm text-muted-foreground">{t('settings.sessionSizeHint')}</p>
+    </Card>
+  );
+}
+
+/** Hiển thị (G-01): phiên âm Latin — mặc định ẩn (plan 0.2), bật/tắt riêng từng thẻ bằng `P`. */
+function DisplaySettings() {
+  const repos = useRepositories();
+  const show = useShowPhonetic();
+  if (show === undefined) {
+    return <Skeleton className="h-24" role="status" aria-label={t('settings.displayTitle')} />;
+  }
+  return (
+    <Card title={t('settings.displayTitle')} testId="settings-display">
+      <label className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          data-testid="settings-phonetic"
+          checked={show}
+          onChange={(e) => void repos?.settings.set(SHOW_PHONETIC_KEY, e.target.checked)}
+          className="size-4 accent-primary"
+        />
+        {t('settings.phonetic')}
+      </label>
+      <p className="text-sm text-muted-foreground">{t('settings.phoneticHint')}</p>
     </Card>
   );
 }

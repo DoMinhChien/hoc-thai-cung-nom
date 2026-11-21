@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { MnemonicBlock } from '@/components/words/MnemonicBlock';
 import { imageEmoji } from '@/content/labels';
 import { useRepositories } from '@/data';
+import { useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { SpeakButton } from '../parts';
@@ -88,7 +89,9 @@ function Cards({
   const [queue, setQueue] = useState(() => words.map((_, i) => i));
   const [pos, setPos] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  const [phonetic, setPhonetic] = useState(false);
+  const showDefault = useShowPhonetic();
+  const [override, setPhonetic] = useState<boolean | null>(null);
+  const phonetic = override ?? !!showDefault;
   const [hard, setHard] = useState<Set<number>>(new Set());
 
   const finished = pos >= queue.length;
@@ -111,14 +114,14 @@ function Cards({
     }
     setPos(pos + 1);
     setRevealed(false);
-    setPhonetic(false);
+    setPhonetic(null);
   };
 
   useKeyShortcut(' ', reveal, !finished && !revealed);
   useKeyShortcut('1', () => advance(false), revealed);
   useKeyShortcut('2', () => advance(true), revealed);
   useKeyShortcut('r', speak, !finished);
-  useKeyShortcut('p', () => setPhonetic((p) => !p), revealed);
+  useKeyShortcut('p', () => setPhonetic(!phonetic), revealed);
   useKeyShortcut('Enter', onDone, finished);
 
   if (finished) {
