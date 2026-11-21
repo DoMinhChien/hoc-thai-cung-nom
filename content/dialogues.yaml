@@ -216,3 +216,55 @@
     - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Không có gì ạ!" }
   source: plernpin-b11#p19-21
   draft: true
+- id: d-b10-quan-ao
+  lesson_id: b10-l10
+  lines:
+    - { speaker: A, th: "ขอโทษค่ะ เสื้อตัวนี้ราคาเท่าไรคะ", vi: "Xin lỗi, cái áo này giá bao nhiêu ạ?" }
+    - { speaker: B, th: "ตัวละสามร้อยห้าสิบบาทครับ", vi: "350 bạt một cái ạ." }
+    - { speaker: A, th: "มีไซส์ใหญ่กว่านี้ไหมคะ", vi: "Có cỡ lớn hơn cái này không ạ?" }
+    - { speaker: B, th: "มีครับ ไซส์แอลครับ", vi: "Có ạ, cỡ L ạ." }
+    - { speaker: A, th: "ขอลองได้ไหมคะ ห้องลองอยู่ที่ไหนคะ", vi: "Tôi mặc thử được không? Phòng thử đồ ở đâu ạ?" }
+    - { speaker: B, th: "ได้ครับ ห้องลองอยู่ทางขวามือครับ", vi: "Được ạ, phòng thử đồ ở bên tay phải ạ." }
+    - { speaker: A, th: "ใส่สบายดีค่ะ แต่แพงไปหน่อย ลดได้ไหมคะ", vi: "Mặc thoải mái lắm, nhưng hơi đắt. Giảm giá được không ạ?" }
+    - { speaker: B, th: "ลดให้เหลือสามร้อยบาทครับ", vi: "Tôi giảm cho chị còn 300 bạt ạ." }
+  source: claude-b10
+  draft: true
+- id: d-b10-cho-trai-cay
+  lesson_id: b10-l3
+  lines:
+    - { speaker: A, th: "แม่ค้าครับ มะม่วงกิโลละเท่าไรครับ", vi: "Chị bán hàng ơi, xoài mỗi cân bao nhiêu ạ?" }
+    - { speaker: B, th: "กิโลละแปดสิบบาทค่ะ หวานมากนะคะ", vi: "80 bạt một cân ạ. Ngọt lắm đấy." }
+    - { speaker: A, th: "แพงจัง ลดได้ไหมครับ", vi: "Đắt quá, giảm được không ạ?" }
+    - { speaker: B, th: "ถ้าซื้อสองกิโล ให้กิโลละเจ็ดสิบบาทค่ะ", vi: "Nếu mua 2 cân thì tôi để 70 bạt một cân." }
+    - { speaker: A, th: "ตกลงครับ เอาสองกิโล แล้วกล้วยหวีละเท่าไรครับ", vi: "Đồng ý, tôi lấy 2 cân. Còn chuối mỗi nải bao nhiêu ạ?" }
+    - { speaker: B, th: "หวีละสี่สิบบาทค่ะ", vi: "40 bạt một nải ạ." }
+    - { speaker: A, th: "เอากล้วยหนึ่งหวีด้วยครับ ทั้งหมดเท่าไรครับ", vi: "Lấy thêm một nải chuối nữa. Tất cả bao nhiêu ạ?" }
+    - { speaker: B, th: "ทั้งหมดหนึ่งร้อยแปดสิบบาทค่ะ", vi: "Tất cả 180 bạt ạ." }
+  source: claude-b10
+  draft: true
+- id: d-b10-cho-thit-ca
+  lesson_id: b10-l5
+  lines:
+    - { speaker: A, th: "กุ้งสดไหมคะ", vi: "Tôm có tươi không ạ?" }
+    - { speaker: B, th: "สดครับ เพิ่งมาเมื่อเช้าครับ", vi: "Tươi ạ, vừa mới về sáng nay." }
+    - { speaker: A, th: "กุ้งกิโลละเท่าไรคะ", vi: "Tôm mỗi cân bao nhiêu ạ?" }
+    - { speaker: B, th: "กิโลละสามร้อยบาทครับ", vi: "300 bạt một cân ạ." }
+    - { speaker: A, th: "ขอกุ้งครึ่งกิโล แล้วก็เนื้อหมูหนึ่งกิโลค่ะ", vi: "Cho tôi nửa cân tôm và một cân thịt lợn." }
+    - { speaker: B, th: "เนื้อหมูกิโลละหนึ่งร้อยแปดสิบบาท ทั้งหมดสามร้อยสามสิบบาทครับ", vi: "Thịt lợn 180 bạt một cân, tất cả 330 bạt ạ." }
+    - { speaker: A, th: "ลดให้หน่อยได้ไหมคะ", vi: "Bớt cho tôi một chút được không ạ?" }
+    - { speaker: B, th: "ได้ครับ สามร้อยบาทพอครับ", vi: "Được ạ, 300 bạt thôi." }
+  source: claude-b10
+  draft: true
+- id: d-b10-sieu-thi
+  lesson_id: b10-l11
+  lines:
+    - { speaker: A, th: "ทั้งหมดหกร้อยห้าสิบบาทครับ", vi: "Tất cả 650 bạt ạ." }
+    - { speaker: B, th: "จ่ายด้วยบัตรเครดิตได้ไหมคะ", vi: "Trả bằng thẻ tín dụng được không ạ?" }
+    - { speaker: A, th: "ได้ครับ รับถุงไหมครับ", vi: "Được ạ. Chị có lấy túi không ạ?" }
+    - { speaker: B, th: "ไม่ต้องค่ะ ฉันมีถุงช็อปปิ้งแล้ว ที่นี่ส่งถึงบ้านไหมคะ", vi: "Không cần ạ, tôi có túi mua sắm rồi. Ở đây có giao tận nhà không ạ?" }
+    - { speaker: A, th: "ส่งครับ ถ้าซื้อเกินห้าร้อยบาท ส่งฟรีครับ", vi: "Có ạ. Mua trên 500 bạt thì giao miễn phí ạ." }
+    - { speaker: B, th: "ดีจังเลยค่ะ ช่วยส่งพรุ่งนี้เช้าได้ไหมคะ", vi: "Tốt quá. Giao giúp tôi sáng mai được không ạ?" }
+    - { speaker: A, th: "ได้ครับ นี่ใบเสร็จครับ ขอบคุณครับ", vi: "Được ạ. Hóa đơn của chị đây ạ. Cảm ơn chị." }
+    - { speaker: B, th: "ขอบคุณค่ะ", vi: "Cảm ơn anh." }
+  source: claude-b10
+  draft: true
