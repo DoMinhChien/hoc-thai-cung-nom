@@ -6,12 +6,12 @@
  * Sửa token: sửa tokens.json trước → cập nhật file này (test tokens.test.ts kiểm tra khớp).
  */
 :root {
-  /* Nền & chữ — trung tính (D1) */
-  --nom-bg: #ffffff;
-  --nom-bg-subtle: #f7f7f8;
+  /* Nền & chữ — nền kem ấm, thẻ trắng (M0.5c hướng B, owner chọn 2026-11-21) */
+  --nom-bg: #fffbf5;
+  --nom-bg-subtle: #fbf3e8;
   --nom-surface: #ffffff;
-  --nom-border: #e4e4e7;
-  --nom-border-strong: #c9cbd1;
+  --nom-border: #ede3d6;
+  --nom-border-strong: #d9cbb8;
   --nom-fg: #1f2328;
   --nom-fg-muted: #656d76;
   --nom-fg-subtle: #8b929a;
@@ -29,6 +29,30 @@
   --nom-danger-subtle: #fdecec;
   --nom-warning: #9a6700;
   --nom-warning-subtle: #fff4d6;
+
+  /* Hiệu ứng / thành tích (M0.5c §2.4–2.5): highlight chỉ làm nền/tô, không làm chữ */
+  --nom-highlight: #ffb627;
+  --nom-streak: #c2410c;
+  --nom-star-fill: #ffb627;
+  --nom-star-stroke: #a35200;
+
+  /* Màu chuyên đề (M0.5c §2.1) — gán theo vị trí trong lộ trình (`topicColors`) */
+  --nom-topic-1: #b53b27;
+  --nom-topic-1-subtle: #fef0ec;
+  --nom-topic-2: #a35200;
+  --nom-topic-2-subtle: #fff4e0;
+  --nom-topic-3: #2a7330;
+  --nom-topic-3-subtle: #ebf6ec;
+  --nom-topic-4: #0f766e;
+  --nom-topic-4-subtle: #e6f6f3;
+  --nom-topic-5: #1b65a8;
+  --nom-topic-5-subtle: #eaf2fb;
+  --nom-topic-6: #7b3fbf;
+  --nom-topic-6-subtle: #f4eefc;
+  --nom-topic-7: #b4235a;
+  --nom-topic-7-subtle: #fdedf3;
+  --nom-topic-8: #8a5a2b;
+  --nom-topic-8-subtle: #f7f0e7;
 
   /* Mức thuộc (P-xx) — sắc độ của accent */
   --nom-mastery-none: #ffffff;
@@ -51,16 +75,46 @@
   --nom-game-classifier-rush: #be185d;
   --nom-game-classifier-rush-subtle: #fdecf4;
   --nom-game-classifier-rush-fg: #ffffff;
-  /* Chủ đề màn chơi arcade (M9.6, tạm — chờ SCR-08 v2) */
-  --nom-game-theme-sea: #0e7490;
-  --nom-game-theme-sea-subtle: #e3f6fa;
+  --nom-game-whack-a-mole: #9a5b0b;
+  --nom-game-whack-a-mole-subtle: #fbf1e1;
+  --nom-game-whack-a-mole-fg: #ffffff;
+  --nom-game-gameshow: #1d4ed8;
+  --nom-game-gameshow-subtle: #eaf0fd;
+  --nom-game-gameshow-fg: #ffffff;
+  --nom-game-airplane: #0369a1;
+  --nom-game-airplane-subtle: #e5f3fa;
+  --nom-game-airplane-fg: #ffffff;
+  --nom-game-maze: #15803d;
+  --nom-game-maze-subtle: #f0f9f3;
+  --nom-game-maze-fg: #ffffff;
+  /* Chủ đề màn chơi arcade (SCR-08 v2): cảnh nền + chữ thanh trên; chữ Thái luôn trên panel trắng */
+  --nom-game-theme-sea: #0b6e8a;
+  --nom-game-theme-sea-subtle: #e2f4f8;
   --nom-game-theme-sea-fg: #ffffff;
-  --nom-game-theme-space: #312e81;
-  --nom-game-theme-space-subtle: #ecebfb;
+  --nom-game-theme-sea-scene-top: #bfe8f2;
+  --nom-game-theme-sea-scene-bottom: #8fd3e6;
+  --nom-game-theme-sea-ground: #f3e3b5;
+  --nom-game-theme-sea-hud-fg: #0b2a36;
+  --nom-game-theme-sea-hud-fg-muted: rgba(11, 42, 54, 0.75);
+  --nom-game-theme-sea-panel: #ffffff;
+  --nom-game-theme-space: #5b3cc4;
+  --nom-game-theme-space-subtle: #eeeafb;
   --nom-game-theme-space-fg: #ffffff;
-  --nom-game-theme-garden: #3f6212;
-  --nom-game-theme-garden-subtle: #eef6e2;
+  --nom-game-theme-space-scene-top: #141a3a;
+  --nom-game-theme-space-scene-bottom: #232b5e;
+  --nom-game-theme-space-ground: #3a3f6e;
+  --nom-game-theme-space-hud-fg: #ffffff;
+  --nom-game-theme-space-hud-fg-muted: #c9ccf2;
+  --nom-game-theme-space-panel: #ffffff;
+  --nom-game-theme-garden: #2f6b1f;
+  --nom-game-theme-garden-subtle: #eaf5e1;
   --nom-game-theme-garden-fg: #ffffff;
+  --nom-game-theme-garden-scene-top: #dff3d2;
+  --nom-game-theme-garden-scene-bottom: #a9d98a;
+  --nom-game-theme-garden-ground: #8b5e34;
+  --nom-game-theme-garden-hud-fg: #17330f;
+  --nom-game-theme-garden-hud-fg-muted: rgba(23, 51, 15, 0.75);
+  --nom-game-theme-garden-panel: #ffffff;
 
   /* Nút đăng nhập theo guideline của hãng (ngoại lệ duy nhất ngoài bảng màu) */
   --nom-google-bg: #ffffff;
@@ -76,6 +130,8 @@
   --nom-text-th-md: 32px;
   --nom-text-th-lg: 64px;
   --nom-text-th-xl: 96px;
+  --nom-text-4xl: 32px;
+  --nom-weight-bold: 700;
   --nom-leading-vi: 1.5;
   --nom-leading-th: 1.75;
   --nom-leading-heading: 1.25;
@@ -84,10 +140,18 @@
   --nom-radius-sm: 4px;
   --nom-radius-md: 8px;
   --nom-radius-lg: 12px;
+  --nom-radius-xl: 16px;
 
   /* Shadow */
   --nom-shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.06);
   --nom-shadow-md: 0 4px 16px rgba(31, 35, 40, 0.1);
+  --nom-shadow-card: 0 1px 0 rgba(31, 35, 40, 0.04), 0 6px 20px rgba(163, 82, 0, 0.08);
+
+  /* Minh họa emoji (M0.5c §2.2) */
+  --nom-illustration-sm: 32px;
+  --nom-illustration-md: 48px;
+  --nom-illustration-lg: 64px;
+  --nom-illustration-xl: 96px;
 
   /* Layout */
   --nom-layout-sidebar-width: 240px;
@@ -99,4 +163,7 @@
   --nom-motion-fast: 120ms;
   --nom-motion-base: 200ms;
   --nom-motion-easing: cubic-bezier(0.2, 0, 0, 1);
+  --nom-motion-slow: 320ms;
+  --nom-motion-celebrate: 600ms;
+  --nom-motion-easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }

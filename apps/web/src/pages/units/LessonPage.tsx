@@ -21,6 +21,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useUnitTopic } from '@/components/fun';
 import { useUnit } from '@/content/hooks';
 import { unitLabel } from '@/content/labels';
 import { useRepositories, useRepositoryQuery } from '@/data';
@@ -39,6 +40,7 @@ let voiceBannerShown = false;
 export function LessonPage() {
   const { unitId = '', lessonId = '' } = useParams();
   const content = useUnit(unitId);
+  const topic = useUnitTopic(unitId);
   const records = useRepositoryQuery((r) => r.progress.listLessonProgress(unitId), [unitId]);
   const lesson =
     content.status === 'ready'
@@ -74,7 +76,11 @@ export function LessonPage() {
         )}
       />
     );
-  return <section data-testid="page-lesson">{body}</section>;
+  return (
+    <section data-testid="page-lesson" data-topic={topic}>
+      {body}
+    </section>
+  );
 }
 
 function Lesson({
@@ -152,7 +158,7 @@ function Lesson({
                 className={cn(
                   'flex items-center gap-1 rounded px-1 py-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring',
                   step === s
-                    ? 'border-b-2 border-primary font-medium text-primary'
+                    ? 'border-b-[3px] border-topic font-semibold text-topic'
                     : 'text-muted-foreground',
                 )}
               >

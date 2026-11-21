@@ -35,6 +35,15 @@ export {
   type FrameScheduler,
   type GameLoop,
 } from './hooks';
+export {
+  GAME_MUSIC_KEY,
+  MUSIC_LOOPS,
+  MUSIC_VOLUME_RATIO,
+  useBackgroundMusic,
+  webAudioMusic,
+  type BackgroundMusic,
+  type MusicPlayer,
+} from './music';
 export { TokenBank, TokenChip } from './TokenBank';
 export { ReviewList } from './ReviewList';
 export {

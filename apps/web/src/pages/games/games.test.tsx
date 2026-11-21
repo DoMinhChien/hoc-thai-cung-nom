@@ -136,7 +136,10 @@ describe('/games (SCR-08 §A)', () => {
       'Cần chuyên đề có loại từ',
     );
     expect(screen.queryByTestId('game-locked-match')).toBeNull();
-    expect(screen.getByTestId('game-card-match')).toHaveAttribute('data-game', 'match');
+    expect(screen.getByTestId('game-card-match').closest('li')).toHaveAttribute(
+      'data-game',
+      'match',
+    );
     expect(screen.getByTestId('game-record-match')).toHaveTextContent('Chưa chơi');
 
     fireEvent.change(screen.getByTestId('game-source'), { target: { value: 'unit:u03' } });
@@ -303,5 +306,242 @@ describe('GameResult — sao (M9.6)', () => {
   it('Ghép cặp không ghép sai thật → 3 sao dù tỉ lệ lật 50%', () => {
     result({ gameId: 'match', correct: 6, total: 12, accuracy: 0.5 });
     expect(screen.getByTestId('result-stars')).toHaveAttribute('data-stars', '3');
+  });
+});
+
+/** Giả lập `prefers-reduced-motion: reduce` (chế độ từng bước — SCR-08 v2 §B). */
+function reduceMotion() {
+  const original = window.matchMedia;
+  window.matchMedia = ((query: string) => ({
+    matches: query.includes('reduce'),
+    media: query,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  })) as unknown as typeof window.matchMedia;
+  return () => {
+    window.matchMedia = original;
+  };
+}
+
+const startGame = async () => {
+  expect(await screen.findByTestId('count-in')).toBeInTheDocument();
+  fireEvent.keyDown(window, { key: ' ' });
+};
+
+describe('/games v2 — 8 trò (SCR-08 v2 §A)', () => {
+  it('8 card theo thứ tự phím 1–8, nhãn kỹ năng; S lọc (số không đánh lại), T đổi theme', async () => {
+    const router = renderAt('/games');
+    expect(await screen.findByTestId('games-grid')).toBeInTheDocument();
+    const ids = screen
+      .getAllByTestId(/^game-card-/)
+      .map((c) => c.getAttribute('data-testid')!.replace('game-card-', ''));
+    expect(ids).toEqual([
+      'match',
+      'true-false',
+      'sentence-rush',
+      'classifier-rush',
+      'whack-a-mole',
+      'gameshow',
+      'airplane',
+      'maze',
+    ]);
+    expect(screen.getByTestId('game-card-airplane')).toHaveAttribute('aria-keyshortcuts', '7');
+    expect(screen.getByTestId('game-skill-gameshow-classifier')).toBeInTheDocument();
+
+    // S: Tất cả → Từ vựng → Câu.
+    fireEvent.keyDown(window, { key: 's' });
+    await waitFor(() => expect(router.state.location.search).toBe('?skill=vocab'));
+    expect(screen.queryByTestId('game-card-sentence-rush')).toBeNull();
+    fireEvent.keyDown(window, { key: 's' });
+    await waitFor(() => expect(router.state.location.search).toBe('?skill=sentence'));
+    expect(screen.getAllByTestId(/^game-card-/)).toHaveLength(3);
+    expect(screen.getByTestId('game-card-airplane')).toHaveAttribute('aria-keyshortcuts', '7');
+    // Trò bị lọc ẩn: phím số của nó không có tác dụng.
+    fireEvent.keyDown(window, { key: '1' });
+    expect(router.state.location.pathname).toBe('/games');
+
+    // T: Biển → Không gian (lưu theo người dùng).
+    expect(screen.getByTestId('game-theme-sea')).toHaveAttribute('aria-checked', 'true');
+    fireEvent.keyDown(window, { key: 't' });
+    await waitFor(() =>
+      expect(screen.getByTestId('game-theme-space')).toHaveAttribute('aria-checked', 'true'),
+    );
+    expect(await guestRepos().settings.get('gameTheme', 'sea')).toBe('space');
+  });
+
+  it('trò khóa: card aria-disabled + lý do; phím số báo lý do, không mở', async () => {
+    const router = renderAt('/games');
+    fireEvent.change(await screen.findByTestId('game-source'), { target: { value: 'unit:u03' } });
+    await waitFor(() => expect(screen.queryByTestId('game-locked-classifier-rush')).toBeNull());
+    // Unit 3 không có câu: Máy bay vẫn đủ 8 từ; Xếp câu tốc độ khóa.
+    expect(screen.getByTestId('game-card-sentence-rush')).toHaveAttribute('aria-disabled', 'true');
+    fireEvent.keyDown(window, { key: '3' });
+    expect(await screen.findByText(/Xếp câu tốc độ: Cần ít nhất 5 câu/)).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe('/games');
+    fireEvent.keyDown(window, { key: '5' });
+    await waitFor(() => expect(router.state.location.pathname).toBe('/games/whack-a-mole'));
+  });
+});
+
+describe('/games/:id — 4 trò arcade (SCR-08 v2 §B)', () => {
+  it('Đập chuột: phím theo bàn phím số đập con đang thò lên → phản hồi; P tạm dừng, Space tiếp', async () => {
+    const router = renderAt('/games/whack-a-mole?source=unit:u01&seed=7');
+    await startGame();
+    expect(await screen.findByTestId('game-scene')).toBeInTheDocument();
+    const prompt = (await screen.findByTestId('whack-prompt')).textContent!;
+    const target = WORDS.find(([, , m]) => m === prompt)![1];
+    // Con đầu tiên thò lên ngay (lịch theo seed) — đợi tới khi có con đúng rồi đập bằng phím.
+    const keys = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
+    const hole = await waitFor(
+      () => {
+        const el = document.querySelector(`[data-mole="${target}"]`);
+        expect(el).not.toBeNull();
+        return Number(el!.getAttribute('data-testid')!.replace('whack-hole-', ''));
+      },
+      { timeout: 8000 },
+    );
+    fireEvent.keyDown(window, { key: keys[hole]! });
+    expect(await screen.findByTestId('feedback-bar')).toHaveAttribute('data-correct', 'true');
+    expect(screen.getByTestId('game-score')).toHaveTextContent('100');
+
+    fireEvent.keyDown(window, { key: 'p' });
+    expect(await screen.findByTestId('game-paused')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: ' ' });
+    await waitFor(() => expect(screen.queryByTestId('game-paused')).toBeNull());
+    fireEvent.keyDown(window, { key: 'Escape' });
+    await waitFor(() => expect(router.state.location.pathname).toBe('/games'));
+    expect(await guestRepos().progress.listGameResults()).toEqual([]);
+  }, 15_000);
+
+  it('Đố vui truyền hình: 50:50 bỏ 2 đáp án, chọn → phản hồi + Tiếp; +10 giây dùng một lần', async () => {
+    renderAt('/games/gameshow?source=unit:u01&seed=3');
+    await startGame();
+    expect(await screen.findByTestId('show-prompt')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'f' });
+    await waitFor(() =>
+      expect(document.querySelectorAll('[data-removed="true"]').length).toBeGreaterThan(0),
+    );
+    expect(screen.getByTestId('show-lifeline-fifty')).toBeDisabled();
+    const left = screen
+      .getAllByTestId(/^show-option-/)
+      .find((b) => b.getAttribute('data-removed') === 'false')!;
+    await userEvent.click(left);
+    expect(await screen.findByTestId('feedback-bar')).toBeInTheDocument();
+    expect(
+      screen.getByTestId('show-ladder').querySelector('[aria-current="step"]'),
+    ).toHaveTextContent('1');
+    await userEvent.click(screen.getByTestId('show-next'));
+    await waitFor(() =>
+      expect(
+        screen.getByTestId('show-ladder').querySelector('[aria-current="step"]'),
+      ).toHaveTextContent('2'),
+    );
+    // Câu mới: 50:50 không còn, +10 giây vẫn dùng được.
+    expect(document.querySelectorAll('[data-removed="true"]')).toHaveLength(0);
+    fireEvent.keyDown(window, { key: 't' });
+    await waitFor(() => expect(screen.getByTestId('show-lifeline-time')).toBeDisabled());
+  });
+
+  it('Máy bay (giảm chuyển động → từng bước): ↑↓ đổi làn, "Bay" chấm làn hiện tại; 3 sai → kết quả', async () => {
+    const restore = reduceMotion();
+    try {
+      renderAt('/games/airplane?source=unit:u01&seed=5');
+      // Giảm chuyển động: bỏ màn đếm 3·2·1.
+      expect(await screen.findByTestId('game-status')).toHaveTextContent('Từng bước');
+      const plane = await screen.findByTestId('plane');
+      const lane = Number(plane.getAttribute('data-lane'));
+      fireEvent.keyDown(window, { key: 'ArrowUp' });
+      await waitFor(() =>
+        expect(plane).toHaveAttribute('data-lane', String(Math.max(0, lane - 1))),
+      );
+
+      // Luôn bay vào làn sai → mất tim tới hết.
+      for (let i = 0; i < 3; i++) {
+        const prompt = screen.getByTestId('plane-prompt').textContent!;
+        const clouds = screen.getAllByTestId(/^plane-cloud-/).map((c) => c.textContent);
+        const right = clouds.findIndex((th) => meaningOf.get(th!) === prompt);
+        const wrong = right === 0 ? 1 : 0;
+        const current = Number(screen.getByTestId('plane').getAttribute('data-lane'));
+        for (let k = 0; k < Math.abs(current - wrong); k++) {
+          fireEvent.keyDown(window, { key: current > wrong ? 'ArrowUp' : 'ArrowDown' });
+        }
+        await waitFor(() =>
+          expect(screen.getByTestId('plane')).toHaveAttribute('data-lane', String(wrong)),
+        );
+        fireEvent.keyDown(window, { key: 'ArrowRight' });
+        if (i < 2) {
+          await waitFor(() =>
+            expect(screen.getByTestId('game-lives')).toHaveAttribute('data-lives', String(2 - i)),
+          );
+        }
+      }
+      expect(await screen.findByTestId('game-result')).toBeInTheDocument();
+      expect(screen.getByTestId('result-detail')).toHaveTextContent('Bay qua 3 hàng mây');
+      await waitFor(async () =>
+        expect(await guestRepos().progress.listNeedsReview()).toHaveLength(3),
+      );
+    } finally {
+      restore();
+    }
+  });
+
+  it('Mê cung: mũi tên đi trong lưới (tường chặn), B bật "Từng bước" và nhớ lựa chọn', async () => {
+    renderAt('/games/maze?source=unit:u01&seed=11');
+    await startGame();
+    const grid = await screen.findByTestId('maze-grid');
+    expect(grid).toHaveAttribute('data-player', '4,3');
+    expect(screen.getAllByTestId(/^maze-answer-/)).toHaveLength(4);
+    const before = grid.getAttribute('data-player');
+    for (const key of ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']) {
+      fireEvent.keyDown(window, { key });
+      if (grid.getAttribute('data-player') !== before) break;
+    }
+    expect(grid.getAttribute('data-player')).not.toBe(before);
+
+    expect(screen.getByTestId('game-status')).toHaveTextContent('Từng bước: tắt');
+    fireEvent.keyDown(window, { key: 'b' });
+    await waitFor(() =>
+      expect(screen.getByTestId('game-status')).toHaveTextContent('Từng bước: bật'),
+    );
+    await waitFor(async () =>
+      expect(await guestRepos().settings.get('mazeStepMode', false)).toBe(true),
+    );
+  });
+});
+
+describe('GameResult v2 — Đổi trò, dòng riêng trò (SCR-08 v2 §C)', () => {
+  it('G mở dialog 8 trò (trò vừa chơi có nhãn), phím số chọn trò khác', async () => {
+    const picked: string[] = [];
+    render(
+      <AppProviders authService={new MockAuthService()}>
+        <GameResult
+          gameId="whack-a-mole"
+          summary={{
+            gameId: 'whack-a-mole',
+            score: 300,
+            correct: 3,
+            total: 5,
+            accuracy: 0.6,
+            maxCombo: 2,
+            durationMs: 60_000,
+            mistakes: [],
+          }}
+          detail="Đập nhầm 2 lần"
+          sourceKey="learned"
+          canReplayMistakes={false}
+          onExit={() => {}}
+          onAgain={() => {}}
+          onAgainMistakes={() => {}}
+          onPick={(id) => picked.push(id)}
+        />
+      </AppProviders>,
+    );
+    expect(screen.getByTestId('result-detail')).toHaveTextContent('Đập nhầm 2 lần');
+    expect(screen.getByTestId('result-stars')).toHaveAttribute('data-stars', '2');
+    fireEvent.keyDown(window, { key: 'g' });
+    const dialog = await screen.findByTestId('change-game');
+    expect(within(dialog).getByTestId('change-game-whack-a-mole')).toHaveTextContent('Vừa chơi');
+    fireEvent.keyDown(window, { key: '8' });
+    expect(picked).toEqual(['maze']);
   });
 });

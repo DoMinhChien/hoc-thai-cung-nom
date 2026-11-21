@@ -44,7 +44,8 @@ export interface GameSummary<Id extends string = GameId> extends GameStats {
 }
 
 /** Lý do khóa trò: nguồn thiếu từ có nghĩa / câu có thẻ từ / từ có loại từ. */
-export type GameLockReason = 'words' | 'sentences' | 'classifiers';
+/** `items` = từ hoặc câu (Máy bay, Đố vui truyền hình — SCR-08 v2 Q3). */
+export type GameLockReason = 'words' | 'sentences' | 'classifiers' | 'items';
 export type GameAvailability =
   { ok: true } | { ok: false; reason: GameLockReason; need: number; have: number };
 

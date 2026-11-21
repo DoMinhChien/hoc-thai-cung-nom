@@ -2,16 +2,17 @@ import {
   compareUnits,
   continueTarget,
   unitLessonProgress,
+  unitEmoji,
   unitStatus,
   type ContinueTarget,
+  type TopicColor,
   type LessonProgressRecord,
   type UnitSummary,
 } from '@nom/core';
-import { Check, ChevronRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
+import { Emoji, TopicTile, useTopicColors } from '@/components/fun';
 import { useKeyShortcut } from '@/components/interactive';
-import { ProgressRing } from '@/components/progress';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useUnits } from '@/content/hooks';
@@ -23,6 +24,14 @@ import { Badge, LoadError } from './parts';
 
 type Kind = 'theme' | 'grammar';
 
+/** Lưới 2 cột (hướng B): ←→ sang thẻ bên, ↑↓ sang hàng (SCR-04 §A, phím giữ nguyên). */
+const GRID_KEYS: Record<string, number> = {
+  ArrowLeft: -1,
+  ArrowRight: 1,
+  ArrowUp: -2,
+  ArrowDown: 2,
+};
+
 /** `/units` — lộ trình Giáo trình → Chuyên đề (SCR-04 §A, P-04, P-10, plan 0.11 #1, 0.12 #1). */
 export function UnitsPage() {
   const content = useUnits();
@@ -33,13 +42,13 @@ export function UnitsPage() {
   return (
     <section data-testid="page-units" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold">{t('pages.units')}</h1>
+        <h1 className="text-4xl font-bold">{t('pages.units')}</h1>
         <p className="text-muted-foreground">{t('units.intro')}</p>
       </header>
       {content.status === 'loading' || records === undefined ? (
-        <div className="flex flex-col gap-3" aria-label={t('units.loading')}>
+        <div className="grid grid-cols-2 gap-4" aria-label={t('units.loading')}>
           {[0, 1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-[72px]" />
+            <Skeleton key={i} className="h-[176px] rounded-xl" />
           ))}
         </div>
       ) : content.status === 'error' ? (
@@ -70,6 +79,7 @@ function Path({
   onKind: (kind: Kind | null) => void;
 }) {
   const navigate = useNavigate();
+  const colors = useTopicColors(units);
   const sorted = [...units].sort(compareUnits);
   const target = continueTarget(sorted, records);
   const kinds = new Set(sorted.map((u) => u.kind));
@@ -91,7 +101,13 @@ function Path({
   return (
     <>
       {target && (
-        <ContinueCard target={target} units={sorted} records={records} onGo={goContinue} />
+        <ContinueCard
+          target={target}
+          units={sorted}
+          records={records}
+          color={colors.get(target.unitId)}
+          onGo={goContinue}
+        />
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -99,7 +115,7 @@ function Path({
           <div
             role="group"
             aria-label={t('units.filterLabel')}
-            className="flex rounded-md border p-0.5"
+            className="flex rounded-lg border bg-surface p-0.5"
           >
             {([null, 'theme', 'grammar'] as const).map((k) => (
               <button
@@ -131,12 +147,13 @@ function Path({
         </span>
       </div>
 
-      <ul data-testid="unit-path" className="divide-y rounded-lg border">
+      <ul data-testid="unit-path" className="grid grid-cols-2 gap-4">
         {shown.map((unit, i) => {
           const status = unitStatus(unit.lessons, records);
           const progress = unitLessonProgress(unit.lessons, records);
+          const color = colors.get(unit.unit_id);
           return (
-            <li key={unit.unit_id}>
+            <li key={unit.unit_id} data-topic={color}>
               <Link
                 ref={(el) => {
                   rows.current[i] = el;
@@ -147,35 +164,43 @@ function Path({
                 tabIndex={i === focus ? 0 : -1}
                 onFocus={() => setFocus(i)}
                 onKeyDown={(e) => {
-                  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                  const delta = GRID_KEYS[e.key];
+                  if (delta) {
                     e.preventDefault();
-                    move(e.key === 'ArrowDown' ? 1 : -1);
+                    move(delta);
                   }
                 }}
-                className="flex min-h-[72px] items-center gap-4 px-4 py-3 outline-none hover:bg-secondary focus-visible:bg-secondary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+                className="flex h-full flex-col overflow-hidden rounded-xl border bg-surface shadow-card outline-none hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-safe:transition-shadow"
               >
-                <ProgressRing
-                  percent={progress.percent}
-                  label={unit.title_vi}
-                  size={40}
-                  className="shrink-0 [&>span]:text-xs"
-                >
-                  {status === 'completed' ? <Check className="size-4 text-primary" /> : unit.order}
-                </ProgressRing>
-                <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                  <span className="flex flex-wrap items-center gap-2">
-                    <span className="text-sm text-muted-foreground" data-testid="unit-label">
+                <span className="flex h-[88px] items-center gap-4 bg-topic-subtle px-5">
+                  <Emoji size="md">{unitEmoji(unit)}</Emoji>
+                  <span className="flex flex-col">
+                    <span className="text-sm font-semibold text-topic" data-testid="unit-label">
                       {unitLabel(unit)}
                     </span>
-                    <span className="font-medium">{unit.title_vi}</span>
-                    {unit.title_th && (
-                      <span lang="th" className="truncate text-muted-foreground">
-                        {unit.title_th}
-                      </span>
-                    )}
+                    <span
+                      className="text-sm font-medium"
+                      data-testid={`unit-status-${unit.unit_id}`}
+                    >
+                      {status === 'completed'
+                        ? t('units.done')
+                        : status === 'in-progress'
+                          ? t('units.inProgress', { x: progress.completed, y: progress.total })
+                          : t('units.notStarted')}
+                    </span>
+                  </span>
+                  <span className="ml-auto flex gap-1.5">
                     {unit.level && <Badge>{unit.level}</Badge>}
                     {unit.draft && <Badge muted>{t('units.draft')}</Badge>}
                   </span>
+                </span>
+                <span className="flex flex-1 flex-col gap-1 px-5 pt-3 pb-4">
+                  <span className="text-lg font-semibold">{unit.title_vi}</span>
+                  {unit.title_th && (
+                    <span lang="th" className="text-th-sm text-muted-foreground">
+                      {unit.title_th}
+                    </span>
+                  )}
                   <span className="text-sm text-muted-foreground">
                     {t('units.stats', {
                       lessons: unit.lessons.length,
@@ -183,15 +208,20 @@ function Path({
                       sentences: unit.sentences,
                     })}
                   </span>
+                  <span
+                    role="progressbar"
+                    aria-label={t('units.progressLabel', { title: unit.title_vi })}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={progress.percent}
+                    className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted"
+                  >
+                    <span
+                      className="block h-full rounded-full bg-topic"
+                      style={{ width: `${progress.percent}%` }}
+                    />
+                  </span>
                 </span>
-                <span className="shrink-0 text-sm" data-testid={`unit-status-${unit.unit_id}`}>
-                  {status === 'completed'
-                    ? t('units.done')
-                    : status === 'in-progress'
-                      ? t('units.inProgress', { x: progress.completed, y: progress.total })
-                      : t('units.notStarted')}
-                </span>
-                <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
               </Link>
             </li>
           );
@@ -206,11 +236,13 @@ function ContinueCard({
   target,
   units,
   records,
+  color,
   onGo,
 }: {
   target: ContinueTarget;
   units: UnitSummary[];
   records: LessonProgressRecord[];
+  color: TopicColor | undefined;
   onGo: () => void;
 }) {
   const unit = units.find((u) => u.unit_id === target.unitId)!;
@@ -232,36 +264,41 @@ function ContinueCard({
     <div
       data-testid="continue-card"
       data-kind={target.kind}
-      className="flex flex-col gap-3 rounded-lg bg-accent p-6"
+      data-topic={color}
+      className="flex items-center gap-6 rounded-xl bg-topic-subtle p-6"
     >
-      <p className="font-medium">{text}</p>
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        {target.kind === 'continue' && (
-          <p className="text-sm text-muted-foreground">
-            {t('units.continueLine', {
-              n: lesson.order,
-              title: lesson.title_vi,
-              done: record?.stepsDone.length ?? 0,
-              total: lesson.steps.length,
-            })}
-          </p>
-        )}
-        <Button
-          data-testid="continue-button"
-          className="ml-auto"
-          aria-keyshortcuts="Enter"
-          onClick={onGo}
-        >
-          {target.kind === 'done'
-            ? t('units.practice')
-            : target.kind === 'start'
-              ? t('units.start')
-              : t('units.continue')}
-          <kbd aria-hidden className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs">
-            ↵
-          </kbd>
-        </Button>
+      <div className="flex flex-1 flex-col gap-3">
+        <p className="text-lg font-semibold">{text}</p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {target.kind === 'continue' && (
+            <p className="text-sm text-muted-foreground">
+              {t('units.continueLine', {
+                n: lesson.order,
+                title: lesson.title_vi,
+                done: record?.stepsDone.length ?? 0,
+                total: lesson.steps.length,
+              })}
+            </p>
+          )}
+          <Button
+            data-testid="continue-button"
+            size="lg"
+            className="ml-auto"
+            aria-keyshortcuts="Enter"
+            onClick={onGo}
+          >
+            {target.kind === 'done'
+              ? t('units.practice')
+              : target.kind === 'start'
+                ? t('units.start')
+                : t('units.continue')}
+            <kbd aria-hidden className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs">
+              ↵
+            </kbd>
+          </Button>
+        </div>
       </div>
+      <TopicTile unit={unit} color={color} size="xl" className="bg-surface/60" />
     </div>
   );
 }

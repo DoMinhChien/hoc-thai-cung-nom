@@ -18,6 +18,8 @@ Web app giúp **người Việt** học tiếng Thái qua **flashcard + trò ch�
 - Phần sinh động nằm ở **hình minh họa nội dung** (emoji Noto) và **cơ chế chơi**, không ở trang trí.
 - Không mascot, không confetti, không gradient, không bóng đổ đậm.
 
+> **2026-11-21 (M0.5c, owner chọn hướng B "Nắng nhiệt đới"):** tính cách mới — *ấm, vui, có khối màu* nhưng chữ Thái vẫn là trung tâm: nền kem `#FFFBF5`, thẻ trắng bo 16px, mỗi bài/chuyên đề một màu (`color.topic.*`, chỉ nền dải + icon + thanh tiến độ), emoji minh họa lớn, chuỗi ngày học nổi bật, hiệu ứng phản hồi `fb-*` ngắn (≤ 0,8 s, tắt khi reduced-motion). Accent chàm vẫn là màu hành động duy nhất. Chi tiết: `M0.5c-directions.md`. D1/D2 bên dưới được nới theo plan 7.6.1 v7.8.
+
 ## 4. Nguyên tắc (tóm tắt plan 7.6.1)
 | # | Nguyên tắc |
 |---|---|

@@ -93,6 +93,7 @@ CI:        <xanh/đỏ/chưa chạy>
 ## 8. Git & Pull Request
 
 - Không push thẳng `main`. Mỗi milestone một nhánh: `m<số>-<tên-ngắn>` (vd. `m1-auth`).
+- **PR luôn có base `main`.** Không tạo PR xếp chồng (base là nhánh milestone khác) — đã 3 lần (#2/#3, #16, #23) PR bị merge vào nhánh trung gian thay vì `main`. Nếu buộc phải tách từ nhánh chưa merge: mở PR với base `main` (PR sẽ gồm cả commit của nhánh trước) và ghi rõ trong mô tả "gồm cả PR #x".
 - Commit theo **Conventional Commits**: `feat(auth): ...`, `fix(core): ...`, `test(e2e): ...`, `docs: ...`, `chore: ...`.
 - PR mô tả: milestone, requirement IDs đã làm, ảnh chụp màn hình (nếu có UI), checklist DoD.
 

@@ -111,7 +111,7 @@ export const airplane: ArcadeGame<AirplaneRound, AirplaneInput, AirplaneState> =
   id: 'airplane',
 
   availability: (source) =>
-    availability('words', AIRPLANE_MIN_ITEMS, new Set(items(source).map((i) => i.th)).size),
+    availability('items', AIRPLANE_MIN_ITEMS, new Set(items(source).map((i) => i.th)).size),
 
   generateRound(source, seed) {
     assertAvailable(this.id, this.availability(source));

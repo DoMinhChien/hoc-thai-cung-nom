@@ -874,6 +874,8 @@ Mong đợi của người học: **UI tối giản, hạn chế màu mè**. Kh�
 
 > **v7.3 (owner chốt 2026-11-18, phương án B) — ngoại lệ cho khu Trò chơi:** `/games`, màn chơi và kết quả được **sinh động hơn**: mỗi trò **một màu riêng** thay accent (token `color.game.*`: Ghép cặp tím, Đúng hay sai? cam, Xếp câu tốc độ xanh ngọc, Đoán loại từ hồng; tương phản ≥ 4.5:1) và **chuyển động phản hồi rõ** (đếm 3·2·1, rung khi sai, nảy khi đúng, "+điểm" bay lên, combo nảy, đồng hồ cảnh báo khi sắp hết giờ, hiệu ứng mạnh hơn khi **phá kỷ lục**). Vẫn không mascot; mọi chuyển động tắt khi `prefers-reduced-motion`. Bài học, Bài tập, Tổng quan… giữ nguyên D1/D2 (chỉ accent).
 
+> **v7.8 (owner chọn 2026-11-21, M0.5c hướng B "Nắng nhiệt đới") — nới D1/D2 cho toàn app:** nền kem ấm (`bg #FFFBF5`, thẻ `surface` trắng), **màu chuyên đề** `color.topic.1..8` gán theo vị trí trong lộ trình (nền dải thẻ, icon, thanh tiến độ — không thay accent), emoji minh họa lớn cho bài/chuyên đề (cột tùy chọn `emoji` trong `units.csv`), **chuỗi ngày học** (mọi hoạt động có chấm điểm), hiệu ứng phản hồi/hoàn thành dùng chung `fb-*` (≤ 0,8 s, tắt khi reduced-motion), Lộ trình dạng lưới 2 cột. Giữ: chữ Thái luôn trên nền trắng, accent chàm là màu hành động duy nhất, đúng/sai có icon + chữ, không mascot/confetti. Chi tiết: `docs/design/M0.5c-directions.md`.
+
 **Nguyên tắc**
 | # | Nguyên tắc | Cụ thể |
 |---|---|---|
