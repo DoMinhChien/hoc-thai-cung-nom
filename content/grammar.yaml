@@ -615,3 +615,597 @@
     - { th: "หนูอายุห้าขวบ", vi: "Em 5 tuổi" }
   source: plernpin-b03#p45-46
   draft: true
+- id: g-c15-pai
+  unit_id: c15
+  title_vi: "Cách sử dụng của ไป"
+  pattern: "เข้า / ออก / ผ่าน / ลง / ขึ้น + ไป"
+  explain_vi: "ไป đứng sau động từ chỉ hướng: hướng di chuyển ra xa người nói. เข้าไป: đi vào (đứng bên ngoài nhìn). ออกไป: đi ra (đứng bên trong nhìn). ผ่านไป: trôi đi, qua đi. ลงไป: đi xuống. ขึ้นไป: đi lên."
+  examples:
+    - { th: "เขากำลังเข้าไปข้างใน", vi: "Anh ấy đang đi vào bên trong" }
+    - { th: "เขากำลังออกไปข้างนอก", vi: "Anh ấy đang đi ra bên ngoài" }
+    - { th: "เวลาผ่านไปอย่างรวดเร็ว", vi: "Thời gian trôi đi một cách nhanh chóng" }
+    - { th: "ลงบันไดไป แล้วเลี้ยวขวา ห้องน้ำจะอยู่ทางขวามือ", vi: "Đi xuống cầu thang, rồi rẽ phải. Phòng vệ sinh sẽ ở bên tay phải" }
+    - { th: "เดินขึ้นบันไดไปชั้นแปด", vi: "Đi bộ đi lên cầu thang tầng 8" }
+  source: plernpin-c15#p1
+  draft: true
+- id: g-c15-pai-laeo
+  unit_id: c15
+  title_vi: "V + แล้ว và V + ไปแล้ว"
+  pattern: "V + แล้ว · V + ไปแล้ว"
+  explain_vi: "V + แล้ว: cái gì vừa mới … rồi. V + ไปแล้ว: cái gì đã … từ lâu rồi."
+  examples:
+    - { th: "ร้านนี้ปิดแล้ว", vi: "Cửa hàng này đóng rồi (vì giờ làm việc từ 9h-17h)" }
+    - { th: "ร้านนี้ปิดไปแล้ว", vi: "Quán này đã đóng rồi (đóng từ lâu rồi, ngừng kinh doanh rồi)" }
+  source: plernpin-c15#p1
+  draft: true
+- id: g-c15-ma
+  unit_id: c15
+  title_vi: "Cách sử dụng của มา"
+  pattern: "เข้า / ออก / ผ่าน / ลง / ขึ้น + มา"
+  explain_vi: "มา đứng sau động từ chỉ hướng: hướng di chuyển lại gần người nói. เข้ามา: vào đến, vào đây (đứng bên trong nhìn). ออกมา: đi ra, ra đây (đứng bên ngoài nhìn). ผ่านมา: vừa qua. ลงมา: xuống đến, xuống đây. ขึ้นมา: lên đến, lên đây."
+  examples:
+    - { th: "เขากำลังเข้ามาข้างใน", vi: "Anh ấy đang vào đến bên trong" }
+    - { th: "เขากำลังออกมาข้างนอก", vi: "Anh ấy đang đi ra bên ngoài" }
+    - { th: "ขอบคุณทุกคนที่ช่วยเหลือหนูตลอดปีที่ผ่านมา", vi: "Cảm ơn mọi người cái mà đã giúp đỡ em suốt năm vừa qua" }
+    - { th: "เดินลงบันไดมา", vi: "Đi bộ xuống đến cầu thang" }
+    - { th: "เดินขึ้นบันไดมา", vi: "Đi bộ lên đến cầu thang" }
+  source: plernpin-c15#p2
+  draft: true
+- id: g-c15-ma-da
+  unit_id: c15
+  title_vi: "มา mang nghĩa “đã”, มาก่อน, เสมอมา = มาตลอด"
+  pattern: "V + มา (นาน) แล้ว · V + มาก่อน · V + เสมอมา / มาตลอด"
+  explain_vi: "Từ มา mang nghĩa “đã”. Trong cụm từ มาก่อน, มา mang nghĩa “trước đây”. เสมอมา = มาตลอด: suốt, luôn luôn; trong đó เสมอมา: từ trước đến nay vẫn vậy (thể hiện sự ổn định, không đổi); มาตลอด: suốt từ đầu đến nay (nhấn mạnh vào quá trình liên tục, diễn ra liên tục)."
+  examples:
+    - { th: "เขาแต่งงานกับเธอมานานแล้ว แต่ปัจจุบันนี้เขาหย่าแล้ว", vi: "Anh ấy kết hôn với cô ấy đã lâu rồi, nhưng hiện tại họ ly hôn rồi" }
+    - { th: "คุณเคยทำงานนี้มาก่อนไหม", vi: "Bạn đã từng làm việc này trước đây chưa?" }
+    - { th: "เขาดีกับฉันเสมอมา", vi: "Anh ấy luôn luôn tốt với tôi" }
+    - { th: "ชาวนาทำงานหนักมาตลอด", vi: "Người nông dân làm việc vất vả suốt" }
+  source: plernpin-c15#p2
+  draft: true
+- id: g-c15-pai-ma
+  unit_id: c15
+  title_vi: "Sự khác biệt giữa ไป và มา"
+  pattern: "ไป (đi, xa người nói) · มา (về / đến, gần người nói)"
+  explain_vi: "ไป: cả người nghe và người nói chưa ở địa điểm đó; มา: cả người nghe và người nói đang ở địa điểm đó rồi. ไป: hướng của hành động xuất phát từ người nói; มา: hướng của hành động hướng tới người nói. ไป: mang nghĩa gốc là “đi”; มา: mang nghĩa gốc là “về”."
+  examples:
+    - { th: "เธอไปทำงานยังไง", vi: "Bạn đi làm việc bằng gì?" }
+    - { th: "หนูมาเรียนยังไง", vi: "Em đến học bằng gì?" }
+    - { th: "ฉันไปหาหมอที่โรงพยาบาล", vi: "Tôi đi tìm bác sĩ ở bệnh viện" }
+    - { th: "เพื่อนมาหาฉันที่บ้าน", vi: "Bạn đến tìm tôi ở nhà" }
+    - { th: "ไปๆมาๆระหว่างไทยกับเวียดนาม", vi: "Đi đi về về giữa Thái Lan với Việt Nam" }
+  source: plernpin-c15#p3
+  draft: true
+- id: g-c15-ya
+  unit_id: c15
+  title_vi: "อย่าไป và อย่ามา"
+  pattern: "อย่าไป + V · อย่ามา + V"
+  explain_vi: "อย่าไป: đừng (dặn trước nhưng chưa xảy ra). อย่ามา: đừng (sự việc đang xảy ra)."
+  examples:
+    - { th: "อย่าไปเชื่อเขานะ", vi: "Đừng tin anh ấy nhé (dặn trước)" }
+    - { th: "อย่ามาพูดแบบนี้นะ", vi: "Đừng nói kiểu này nhé (đang xảy ra)" }
+  source: plernpin-c15#p4
+  draft: true
+- id: g-c14-som
+  unit_id: c14
+  title_vi: "Cách sử dụng của từ สม"
+  pattern: "สม + …"
+  explain_vi: "Các từ ghép với สม: สมน้ำหน้า (đáng đời), สมพรปาก (mong được như bạn nói, mong ứng nghiệm như bạn nói), สมหวัง (đạt được ý nguyện — ได้อย่างที่หวัง), สมควร (xứng đáng, đáng, nên), สมบูรณ์ (hoàn chỉnh, trọn vẹn, đầy đặn, hoàn hảo), สมเหตุสมผล (hợp lý, có lý — có lý do chính đáng = มีเหตุผลที่ดี), สมรู้ร่วมคิด (âm mưu, hiệp lực), สมส่วน (cân đối, cân xứng)."
+  examples:
+    - { th: "สมน้ำหน้า", vi: "Đáng đời" }
+    - { th: "สมพรปาก", vi: "Mong được như bạn nói" }
+  source: plernpin-c14#p1
+  draft: true
+- id: g-c13-wa-noi
+  unit_id: c13
+  title_vi: "Từ ว่า mang nghĩa “nói, bảo”"
+  pattern: "S + ว่า + …"
+  explain_vi: "ว่า đứng sau chủ ngữ, mang nghĩa “nói, bảo”."
+  examples:
+    - { th: "เธอว่าอะไรนะ ฉันฟังไม่ทัน", vi: "Cô ấy nói gì? Tôi chưa kịp nghe" }
+    - { th: "เขาว่าที่นี่ฝนตกทุกวัน", vi: "Anh ấy nói ở đây ngày nào cũng mưa" }
+  source: plernpin-c13#p1
+  draft: true
+- id: g-c13-wa-rang
+  unit_id: c13
+  title_vi: "Từ ว่า mang nghĩa “là, rằng” (theo sau động từ)"
+  pattern: "S + động từ + ว่า + mệnh đề"
+  explain_vi: "ว่า mang nghĩa “là, rằng”, được sử dụng theo sau động từ. Các trường hợp của ว่า: พูดว่า (nói là, nói rằng), บอกว่า (bảo là, bảo rằng), รู้ว่า (biết là, biết rằng), ได้ยินว่า (nghe thấy là, nghe thấy rằng), ฝันว่า (mơ là), เข้าใจว่า (hiểu là, hiểu rằng), สัญญาว่า (hứa là, hứa rằng), ถามว่า (hỏi là, hỏi rằng), ดูว่า (xem là), แปลว่า (dịch là), อ่านว่า (đọc là), เรียกว่า (gọi là), ถึงแม้ว่า (mặc dù là), เพื่อว่า (để mà), จำได้ว่า (nhớ được là), เชื่อว่า (tin tưởng là), เห็นว่า (thấy là), กลัวว่า (sợ là), คิดว่า (nghĩ là), แน่ใจว่า (chắc chắn là), เป็นห่วงว่า (lo lắng là), รู้สึกว่า (cảm thấy là), ทราบว่า (biết là), สงสัยว่า (nghi ngờ là), หวังว่า (hy vọng là)."
+  examples:
+    - { th: "เขาพูดว่าเขาชอบประเทศไทย", vi: "Anh ấy nói là anh ấy thích nước Thái" }
+    - { th: "ฉันคิดว่าจะกลับพรุ่งนี้", vi: "Tôi nghĩ là sẽ quay trở về vào ngày mai" }
+  source: plernpin-c13#p1
+  draft: true
+- id: g-c13-thuk
+  unit_id: c13
+  title_vi: "Từ ถูก mang nghĩa “rẻ”, “đúng”, “đụng, chạm”, “hợp ý”"
+  pattern: "ถูก · ถูก + danh từ (ถูกตัว, ถูกใจ, ถูกคอ, ถูกชะตา…)"
+  explain_vi: "ถูก mang nghĩa “rẻ”; “đúng, chính xác”; “đụng, chạm, tiếp xúc” (ถูกตัว: tiếp xúc cơ thể, chạm vào người; ถูกลอตเตอรี่: trúng xổ số); “hợp gu, đúng gu, hợp ý, ăn ý” (ถูกใจ: đúng gu, hợp gu; ถูกคอ: hợp ý, ăn ý; ถูกชะตา: đúng định mệnh)."
+  examples:
+    - { th: "ถูกตัว", vi: "Tiếp xúc cơ thể, chạm vào người" }
+    - { th: "ถูกลอตเตอรี่", vi: "Trúng xổ số" }
+    - { th: "ถูกใจ", vi: "Đúng gu, hợp gu" }
+    - { th: "ถูกคอ", vi: "Hợp ý, ăn ý" }
+    - { th: "ถูกชะตา", vi: "Đúng định mệnh" }
+  source: plernpin-c13#p3
+  draft: true
+- id: g-c13-thuk-bi
+  unit_id: c13
+  title_vi: "ถูก mang nghĩa “bị” (câu bị động); โดน"
+  pattern: "S + ถูก/โดน + (tác nhân) + động từ"
+  explain_vi: "Từ ถูก mang nghĩa “bị”, sử dụng trong câu bị động. Lưu ý 1: โดน được sử dụng y chang như ถูก, nhưng โดน ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng."
+  examples:
+    - { th: "เขาถูกรถชน", vi: "Anh ấy bị xe đâm" }
+    - { th: "เขาโดนตี", vi: "Anh ấy bị đánh" }
+  source: plernpin-c13#p4
+  draft: true
+- id: g-c13-dairap-v
+  unit_id: c13
+  title_vi: "ได้รับ mang nghĩa “được” (tích cực)"
+  pattern: "S + ได้รับ/ถูก + Động từ"
+  explain_vi: "Lưu ý 2: ได้รับ được sử dụng thay thế cho ถูก, trong trường hợp mang nghĩa tích cực. Được dịch với nghĩa “Được”."
+  examples:
+    - { th: "เขาได้รับเชิญไปงานเลี้ยงประจำปี", vi: "Anh ấy được mời đi tiệc đồng niên" }
+  source: plernpin-c13#p6
+  draft: true
+- id: g-c13-dairap-n
+  unit_id: c13
+  title_vi: "ได้รับ mang nghĩa “được nhận”"
+  pattern: "S + ได้รับ + Danh từ"
+  explain_vi: "Lưu ý 3: Cấu trúc S + ได้รับ + Danh từ, ได้รับ mang nghĩa “Được nhận”."
+  examples:
+    - { th: "เขาได้รับทุนการศึกษาจากอเมริกา", vi: "Anh ấy được nhận học bổng từ Mỹ" }
+  source: plernpin-c13#p6
+  draft: true
+- id: g-c12-tai
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “ở, tại”"
+  pattern: "(อยู่) + ที่ + địa điểm"
+  explain_vi: "ที่ đứng trước địa điểm, mang nghĩa “ở, tại”."
+  examples:
+    - { th: "เขาอยู่ที่บ้าน", vi: "Anh ấy ở tại nhà" }
+    - { th: "ที่นี่ที่ไหนคะ", vi: "Ở đây ở đâu ạ?" }
+  source: plernpin-c12#p1
+  draft: true
+- id: g-c12-noi
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “nơi, chỗ”"
+  pattern: "ที่ + động từ / danh từ"
+  explain_vi: "ที่ mang nghĩa “nơi, chỗ”. Các trường hợp của ที่: ที่เขี่ยบุหรี่ (gạt tàn thuốc lá), ที่นั่ง (chỗ ngồi/ghế ngồi), ที่เกิด (nơi sinh), ที่เก็บของ (nơi cất đồ, chỗ cất đồ), ที่จอดรถ (chỗ đậu xe), ที่ตั้ง (vị trí, địa điểm), ที่ทำงาน (chỗ làm việc), ที่เที่ยว (chỗ vui chơi, địa điểm du lịch, địa điểm tham quan), ที่นอน (chỗ nằm, nệm, đệm), ที่ว่าง (chỗ trống, chỗ bỏ không), ที่อยู่ (địa chỉ), ที่นา (đồng ruộng), ที่ประชุม (hội nghị), ที่พัก (chỗ nghỉ ngơi, chỗ lưu trú)."
+  examples:
+    - { th: "ที่นั่ง", vi: "Chỗ ngồi/ghế ngồi" }
+    - { th: "ที่จอดรถ", vi: "Chỗ đậu xe" }
+    - { th: "ที่อยู่", vi: "Địa chỉ" }
+  source: plernpin-c12#p1
+  draft: true
+- id: g-c12-suat
+  unit_id: c12
+  title_vi: "Từ ที่ là loại từ mang nghĩa “phần, suất”"
+  pattern: "Danh từ + số + ที่"
+  explain_vi: "ที่ là loại từ (ลักษณนาม) mang nghĩa “phần, suất”, dùng khi đếm suất ăn, chỗ ngồi."
+  examples:
+    - { th: "ข้าวสองที่", vi: "2 suất cơm" }
+    - { th: "ที่นั่งสามที่", vi: "3 ghế ngồi/3 chỗ ngồi" }
+  source: plernpin-c12#p2
+  draft: true
+- id: g-c12-din
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “đất, đất đai”"
+  pattern: "ที่ = ที่ดิน"
+  explain_vi: "Từ ที่ là biểu mẫu viết tắt của ที่ดิน, mang nghĩa “đất, đất đai”."
+  examples:
+    - { th: "เขาซื้อที่ที่ประเทศไทย", vi: "Anh ấy mua đất ở nước Thái" }
+  source: plernpin-c12#p3
+  draft: true
+- id: g-c12-thutu
+  unit_id: c12
+  title_vi: "Từ ที่ với hàm nghĩa chỉ số thứ tự"
+  pattern: "ที่ + số"
+  explain_vi: "ที่ đứng trước số, chỉ số thứ tự (thứ …, ngày mùng …)."
+  examples:
+    - { th: "ฉันนัดหมอวันที่สิบ", vi: "Tôi hẹn gặp bác sĩ ngày mùng 10" }
+    - { th: "เขาวิ่งเข้าเส้นชัยเป็นคนที่สาม", vi: "Anh ấy chạy về là người thứ ba" }
+  source: plernpin-c12#p3
+  draft: true
+- id: g-c12-quanhe
+  unit_id: c12
+  title_vi: "Từ ที่ đóng vai trò là đại từ quan hệ"
+  pattern: "Danh từ + ที่ + mệnh đề"
+  explain_vi: "ที่ đóng vai trò là đại từ quan hệ, nghĩa là “mà”."
+  examples:
+    - { th: "คนที่มาชื่อสมชาย", vi: "Người mà đến tên Somchai" }
+    - { th: "หนังสือที่ฉันชอบอยู่บนโต๊ะ", vi: "Quyển sách mà tôi thích ở trên bàn" }
+  source: plernpin-c12#p3
+  draft: true
+- id: g-c11-na
+  unit_id: c11
+  title_vi: "Các trường hợp của น่า"
+  pattern: "น่า + động từ / tính từ"
+  explain_vi: "น่า đứng trước động từ (hoặc tính từ) tạo nghĩa “đáng …”, “trông …”, “nên …” (đáng để làm việc đó). Ví dụ: น่ากิน (trông ngon, rất đáng để ăn), น่ารัก (đáng yêu, dễ thương), น่าดู (đáng xem, nên xem), น่ากลัว (đáng sợ), น่าเบื่อ (nhàm chán), น่าเสียดาย (đáng tiếc), น่าไว้ใจ (đáng tin cậy)."
+  examples:
+    - { th: "น่ากิน", vi: "Trông ngon (rất đáng để ăn)" }
+    - { th: "น่ารัก", vi: "Đáng yêu, dễ thương" }
+    - { th: "น่าดู", vi: "Đáng xem, nên xem" }
+    - { th: "น่ากลัว", vi: "Đáng sợ" }
+  source: plernpin-c11#p1
+  draft: true
+- id: g-c11-mai-na
+  unit_id: c11
+  title_vi: "ไม่น่าเลย và ไม่น่าล่ะ"
+  pattern: "ไม่น่า + V + เลย · ไม่น่าล่ะ"
+  explain_vi: "ไม่น่าเลย: (đáng lẽ) không nên như vậy chút nào. ไม่น่าล่ะ: thảo nào, hèn chi, bảo sao mà."
+  examples:
+    - { th: "ไม่น่าเลย", vi: "(Đáng lẽ) không nên như vậy chút nào" }
+    - { th: "ไม่น่าล่ะ", vi: "Thảo nào, hèn chi, bảo sao mà" }
+  source: plernpin-c11#p2
+  draft: true
+- id: g-c10-khi-n
+  unit_id: c10
+  title_vi: "ขี้ + danh từ: phân, chất bẩn, cặn"
+  pattern: "ขี้ + danh từ"
+  explain_vi: "ขี้ đứng trước danh từ (con vật, bộ phận cơ thể…) chỉ phân, chất bẩn hoặc cặn: ขี้หมู (phân lợn), ขี้หมา (phân chó), ขี้ตา (gỉ mắt), ขี้หู (ráy tai), ขี้เถ้า (tro tàn, tro hỏa táng)."
+  examples:
+    - { th: "ขี้หมู", vi: "Phân lợn" }
+    - { th: "ขี้ตา", vi: "Gỉ mắt" }
+    - { th: "ขี้หู", vi: "Ráy tai" }
+  source: plernpin-c10#p1
+  draft: true
+- id: g-c10-khi-tinh
+  unit_id: c10
+  title_vi: "ขี้ + động từ / tính từ: hay …, dễ …"
+  pattern: "ขี้ + động từ / tính từ"
+  explain_vi: "ขี้ đứng trước động từ hoặc tính từ tạo tính từ chỉ tính cách, thói quen: “hay …, dễ …” (thường mang nghĩa chê), vd. ขี้อาย (hay xấu hổ), ขี้ลืม (hay quên), ขี้เหนียว (keo kiệt), ขี้หึง (hay ghen), ขี้โมโห (hay nổi nóng)."
+  examples:
+    - { th: "ขี้อาย", vi: "Hay xấu hổ, hay ngại ngùng" }
+    - { th: "ขี้ลืม", vi: "Hay quên, đãng trí" }
+    - { th: "ขี้เหนียว", vi: "Keo kiệt, bủn xỉn, hà tiện" }
+    - { th: "ขี้หึง", vi: "Hay ghen, dễ ghen" }
+  source: plernpin-c10#p1
+  draft: true
+- id: g-c09-jai-truoc
+  unit_id: c09
+  title_vi: "ใจ + tính từ: tính cách"
+  pattern: "ใจ + tính từ"
+  explain_vi: "ใจ (lòng, tâm) đứng trước tính từ tạo từ chỉ tính cách, tâm tính: ใจกว้าง (rộng lượng), ใจแคบ (hẹp hòi), ใจร้อน (nóng tính), ใจเย็น (bình tĩnh), ใจแข็ง (cứng rắn), ใจอ่อน (dễ mềm lòng), ใจดำ = ใจร้าย (độc ác), ใจดี (tốt bụng), ใจลอย (lơ đễnh)."
+  examples:
+    - { th: "ใจกว้าง", vi: "Rộng rãi, hào phóng, rộng lượng" }
+    - { th: "ใจเย็น", vi: "Bình tĩnh" }
+    - { th: "ใจดี", vi: "Tốt bụng" }
+  source: plernpin-c09#p1
+  draft: true
+- id: g-c09-jai-sau
+  unit_id: c09
+  title_vi: "Động từ / tính từ + ใจ: cảm xúc, trạng thái"
+  pattern: "động từ / tính từ + ใจ"
+  explain_vi: "ใจ đứng sau động từ hoặc tính từ tạo từ chỉ cảm xúc, trạng thái của lòng: เบาใจ (yên tâm), สบายใจ (thoải mái trong lòng), ภูมิใจ (tự hào), พอใจ (hài lòng), ตกใจ (giật mình), เสียใจ (buồn), ตัดสินใจ (quyết định), ตั้งใจ (tập trung), เปลี่ยนใจ (đổi ý), ไว้ใจ (tin tưởng)…"
+  examples:
+    - { th: "สบายใจ", vi: "Thoải mái trong lòng" }
+    - { th: "ภูมิใจ", vi: "Tự hào, hãnh diện" }
+    - { th: "ตัดสินใจ", vi: "Quyết định, đưa ra quyết định" }
+  source: plernpin-c09#p1
+  draft: true
+- id: g-c07-vu-an
+  unit_id: c07
+  title_vi: "ความ đứng một mình: vụ án, vụ kiện, vụ việc"
+  pattern: "ความ (đứng một mình)"
+  explain_vi: "“ความ” đứng một mình với ý nghĩa “vụ án, vụ kiện, vụ việc”."
+  examples:
+    - { th: "ความแตกเมื่อนักข่าวตามไปเห็น", vi: "Vụ việc vỡ nở khi nhà báo theo đi bắt gặp được" }
+    - { th: "ทนายว่าความในศาล", vi: "Luật sư nói vụ án trong tòa án" }
+    - { th: "สู้ความ", vi: "Tranh kiện" }
+    - { th: "ชนะความ", vi: "Thắng kiện" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-noi-dung
+  unit_id: c07
+  title_vi: "ความ đứng một mình: nội dung, thông tin"
+  pattern: "động từ + ความ"
+  explain_vi: "“ความ” đứng một mình còn mang ý nghĩa “nội dung, thông tin”."
+  examples:
+    - { th: "จำกัดความ", vi: "Định nghĩa" }
+    - { th: "ย่อความ", vi: "Tóm tắt nội dung" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-dong-tu
+  unit_id: c07
+  title_vi: "ความ + động từ chỉ tình cảm/tình trạng = danh từ"
+  pattern: "ความ + Động từ chỉ tình cảm/tình trạng = Danh từ"
+  explain_vi: "“ความ” được sử dụng để thêm vào trước động từ của hoạt động trừu tượng hoặc động từ liên quan đến tâm lý để thành lập danh từ. Lưu ý: Trong 1 số trường hợp การ và ความ đều có thể đứng trước cùng một động từ, nhưng ý nghĩa lại hoàn toàn khác nhau. “การ” thường thể hiện quá trình trong việc thực hiện hành động. Còn “ความ” thể hiện tình trạng của động từ. Khi “การ” đứng trước động từ thường trở thành danh từ cụ thể, còn “ความ” đứng trước động từ lại trở thành danh từ trừu tượng."
+  examples:
+    - { th: "ความรัก", vi: "Tình yêu" }
+    - { th: "ความคิดถึง", vi: "Nỗi nhớ" }
+    - { th: "ความรักเป็นสิ่งสวยงาม แต่การรักใครสักคนไม่ใช่เรื่องง่าย", vi: "Tình yêu là thứ đẹp đẽ nhưng việc yêu một ai đó không phải là chuyện dễ dàng" }
+  source: plernpin-c07#p1
+  draft: true
+- id: g-c07-tinh-tu
+  unit_id: c07
+  title_vi: "ความ + tính từ = danh từ (chỉ tính chất, đặc điểm)"
+  pattern: "ความ + Tính từ = Danh từ (chỉ tính chất, đặc điểm)"
+  explain_vi: "“ความ” được sử dụng để thêm vào trước tính từ để thành lập danh từ chỉ tính chất, đặc điểm."
+  examples:
+    - { th: "ความสูง", vi: "Chiều cao" }
+    - { th: "ความจริง", vi: "Sự thật" }
+    - { th: "ความสุข", vi: "Hạnh phúc" }
+  source: plernpin-c07#p2
+  draft: true
+- id: g-c07-danh-tu
+  unit_id: c07
+  title_vi: "ความ + danh từ: từ với nghĩa khác"
+  pattern: "ความ + danh từ"
+  explain_vi: "“ความ” còn đứng trước danh từ làm tiền tố để dẫn xuất danh từ đó thành một từ với nghĩa khác. Trường hợp này không được xếp vào nhóm “Biến đổi từ động từ, tính từ thành danh từ bằng cách thêm tiền tố ความ”."
+  examples:
+    - { th: "ความเมือง", vi: "Việc chính trị (những vấn đề liên quan đến quốc gia)" }
+    - { th: "ความแพ่ง", vi: "Dân sự" }
+    - { th: "ความอาญา", vi: "Hình sự" }
+  source: plernpin-c07#p5
+  draft: true
+- id: g-c07-phu-dinh
+  unit_id: c07
+  title_vi: "ความ đứng trước yếu tố phủ định"
+  pattern: "ความ + ไม่ + tính từ / động từ"
+  explain_vi: "“ความ” còn đứng trước yếu tố phủ định."
+  examples:
+    - { th: "ความไม่จริง", vi: "Không đúng sự thật" }
+    - { th: "ความไม่สะอาด", vi: "Sự bẩn thỉu, sự nhơ nhuốc, sự không sạch sẽ" }
+  source: plernpin-c07#p5
+  draft: true
+- id: g-c06-hanh-dong
+  unit_id: c06
+  title_vi: "การ + động từ chỉ hành động = danh từ"
+  pattern: "การ + Động từ chỉ hành động = Danh từ"
+  explain_vi: "การ được dùng để thêm vào trước động từ để tạo thành danh từ. Động từ ở đây phải thể hiện hoạt động cụ thể của cơ thể, lời nói hoặc động từ thể hiện tình trạng, tình cảm."
+  examples:
+    - { th: "การกิน", vi: "Việc ăn" }
+    - { th: "การนอน", vi: "Việc ngủ" }
+    - { th: "การเดินทาง", vi: "Việc đi lại, chuyến đi" }
+  source: plernpin-c06#p1
+  draft: true
+- id: g-c06-tinh-cam
+  unit_id: c06
+  title_vi: "การ + động từ chỉ tình trạng, tình cảm = danh từ"
+  pattern: "การ + Động từ chỉ tình trạng, tình cảm = Danh từ"
+  explain_vi: "การ đứng trước động từ chỉ tình trạng, tình cảm cũng tạo thành danh từ (việc …)."
+  examples:
+    - { th: "การรัก", vi: "Việc yêu (một ai đó)" }
+    - { th: "การรู้", vi: "Việc biết (một điều gì)" }
+    - { th: "การพยายาม", vi: "Việc cố gắng (việc nỗ lực làm một cái gì đó)" }
+  source: plernpin-c06#p1
+  draft: true
+- id: g-c06-mot-minh
+  unit_id: c06
+  title_vi: "การ đứng một mình: việc, chuyện, vấn đề"
+  pattern: "การ (đứng một mình)"
+  explain_vi: "การ đứng một mình với nghĩa là “Việc/chuyện/vấn đề”."
+  examples:
+    - { th: "ในการนี้", vi: "Trong chuyện này, trong vấn đề này" }
+    - { th: "เป็นการยาก", vi: "Là việc khó, là vấn đề khó" }
+    - { th: "การนี้ต้องทำให้สำเร็จ", vi: "Việc này phải làm cho thành công" }
+  source: plernpin-c06#p3
+  draft: true
+- id: g-c06-hau-to
+  unit_id: c06
+  title_vi: "การ làm hậu tố trong từ gốc Phạn"
+  pattern: "… + การ"
+  explain_vi: "การ còn được sử dụng như thành phần hậu tố trong việc pha trộn ngôn ngữ gốc phạn."
+  examples:
+    - { th: "กรรมการ", vi: "Hội đồng, ban giám khảo (chấm thi)/ủy viên, thành viên trong ban quản trị (ban tổ chức, ban quản lý)" }
+    - { th: "กิจการ", vi: "Công việc kinh doanh, doanh nghiệp, cơ sở làm ăn" }
+    - { th: "โครงการ", vi: "Dự án, đề án" }
+  source: plernpin-c06#p4
+  draft: true
+- id: g-c06-danh-tu
+  unit_id: c06
+  title_vi: "การ + danh từ: từ với nghĩa hoàn toàn khác"
+  pattern: "การ + danh từ"
+  explain_vi: "การ còn đứng trước danh từ làm tiền tố để dẫn xuất danh từ đó thành một từ với nghĩa hoàn toàn khác. Trường hợp này không được xếp vào nhóm “biến đổi từ động từ thành danh từ bằng cách thêm tiền tố การ”."
+  examples:
+    - { th: "การบ้าน", vi: "Bài tập về nhà" }
+    - { th: "การเมือง", vi: "Chính trị" }
+    - { th: "การศึกษา", vi: "Giáo dục, nền giáo dục" }
+    - { th: "การเงิน", vi: "Tài chính" }
+  source: plernpin-c06#p4
+  draft: true
+- id: g-c05-bo1
+  unit_id: c05
+  title_vi: "Đại từ chỉ định bộ 1: นี่ < นั่น < โน่น < นู่น"
+  pattern: "นี่ (đây) < นั่น (đó) < โน่น (kia) < นู่น (kia kìa)"
+  explain_vi: "Đại từ chỉ định là đại từ dùng để chỉ khoảng cách xa gần. Đại từ chỉ định trong tiếng Thái gồm có 8 từ và chia ra làm 2 bộ. Cách sử dụng của bộ 1: a. dùng theo sau động từ; b. dùng bắt đầu câu và đứng trước động từ; c. bắt đầu câu và đứng trước danh từ; d. đứng sau danh từ; e. được nói với giọng hạ thấp, được dùng làm đại từ."
+  examples:
+    - { th: "นั่งนี่ไหม", vi: "Ngồi đây không?" }
+    - { th: "นี่คืออะไร", vi: "Đây là cái gì?" }
+  source: plernpin-c05#p1
+  draft: true
+- id: g-c05-bo2
+  unit_id: c05
+  title_vi: "Đại từ chỉ định bộ 2: นี้ < นั้น < โน้น < นู้น"
+  pattern: "นี้ (này) < นั้น (đấy) < โน้น (kìa) < นู้น (kia kìa)"
+  explain_vi: "Giữa bộ 2 và bộ 1, thì mức độ của bộ 2 sẽ xa hơn so với bộ 1. Cách sử dụng của bộ 2: a. luôn được sử dụng theo sau giới từ; b. đứng sau danh từ; c. đứng sau loại từ."
+  examples:
+    - { th: "อะไรอยู่ในนี้", vi: "Cái gì ở trong này?" }
+    - { th: "เสื้อตัวนี้ราคาถูกมาก", vi: "Chiếc áo này giá rẻ lắm" }
+  source: plernpin-c05#p1
+  draft: true
+- id: g-c05-lao
+  unit_id: c05
+  title_vi: "เหล่า + นี้/นั้น: số nhiều"
+  pattern: "(danh từ) + เหล่า + นี้ / นั้น"
+  explain_vi: "Thêm เหล่า vào trước để tạo thành số nhiều và phát âm với thanh điệu cao."
+  examples:
+    - { th: "ไก่เหล่านี้", vi: "Các con gà này" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-thanh-ngu
+  unit_id: c05
+  title_vi: "Một số trường hợp khác của đại từ chỉ định"
+  pattern: "นี่ยังไง · นั่นนะสิ · แต่นั่นแหละ"
+  explain_vi: "Đại từ chỉ định còn xảy ra trong một số trường hợp sau: นี่ยังไง (đây này, đây nè, đây chứ gì), นั่นนะสิ (chính xác, chuẩn rồi), แต่นั่นแหละ (nhưng mà đó)."
+  examples:
+    - { th: "นี่ยังไง", vi: "Đây này, đây nè, đây chứ gì" }
+    - { th: "นั่นนะสิ", vi: "Chính xác, chuẩn rồi" }
+    - { th: "แต่นั่นแหละ", vi: "Nhưng mà đó" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-khong
+  unit_id: c05
+  title_vi: "Đại từ sở hữu ของ"
+  pattern: "danh từ + ของ + người sở hữu"
+  explain_vi: "Từ ของ được dùng để chỉ sở hữu. Lưu ý: ของ cũng có thể được dùng như danh từ, mang nghĩa “món, thứ, đồ”."
+  examples:
+    - { th: "กระเป๋าของฉัน", vi: "Túi của tôi" }
+    - { th: "เขาไปซื้อของแล้ว", vi: "Anh ấy đi mua đồ rồi" }
+  source: plernpin-c05#p4
+  draft: true
+- id: g-c05-eng
+  unit_id: c05
+  title_vi: "Đại từ nhấn mạnh เอง"
+  pattern: "S + เอง + V · S + V + เอง · S + เอง + เป็นคน + V · ตัว + S + เอง + V · đại từ chỉ định + เอง"
+  explain_vi: "Đại từ nhấn mạnh “เอง” mang nghĩa “tự, chính”, nó xảy ra trong các mẫu sau, mỗi mẫu truyền tải một mức độ nhấn mạnh hơi khác nhau. เอง còn được xảy ra sau đại từ chỉ định."
+  examples:
+    - { th: "ผมเองทำ", vi: "Tôi tự làm" }
+    - { th: "ผมทำเอง", vi: "Tôi tự làm, chính tôi làm" }
+    - { th: "ผมเองเป็นคนทำ", vi: "Tôi chính là người làm" }
+    - { th: "ตัวผมเองทำ", vi: "Bản thân tôi tự làm" }
+    - { th: "เพื่อนคนนี้เอง", vi: "Chính người bạn này" }
+    - { th: "วันนั้นเอง", vi: "Chính ngày hôm đó" }
+    - { th: "เดี๋ยวนี้เอง", vi: "Ngay bây giờ, ngay lúc này thôi" }
+    - { th: "สามร้อยบาทเท่านั้นเอง", vi: "Chỉ 300 bạt mà thôi" }
+  source: plernpin-c05#p5
+  draft: true
+- id: g-c03-clf
+  unit_id: c03
+  title_vi: "Loại từ (ลักษณนาม): danh từ + số + loại từ"
+  pattern: "Danh từ + số + loại từ"
+  explain_vi: "Khi đếm, tiếng Thái đặt loại từ (ลักษณนาม) sau số: danh từ + số + loại từ. Mỗi danh từ đi với một loại từ riêng; người (เกี่ยวกับคน) dùng คน, con vật (สัตว์) dùng ตัว."
+  examples:
+    - { th: "ตุ๊กตาสองตัว", vi: "2 con búp bê" }
+    - { th: "รองเท้าหนึ่งคู่", vi: "1 đôi giày" }
+    - { th: "หนังสือสามเล่ม", vi: "3 quyển sách" }
+  source: plernpin-c03#p1
+  draft: true
+- id: g-c02-mai
+  unit_id: c02
+  title_vi: "ไหม/มั้ย: Không?"
+  pattern: "Câu + ไหม/มั้ย"
+  explain_vi: "ไหม/มั้ย đứng cuối câu để hỏi “… không?”. Lưu ý 1: ม่ะ/มะ là cách nói ngắn gọn, thân mật của ไหม, dùng khi chát chít với nhau, thể hiện sự thân mật khi giao tiếp: ชอบมะ (Thích không?) dùng trong văn nói, xuồng xã hơn, dùng với bạn bè, người thân; ชอบม่ะ (Thích không?) dùng trong văn nói có chút ngọt ngào, xuất hiện nhiều trong tin nhắn, chat. Lưu ý 2: หรือไม่/หรือเปล่า/รึเปล่า/ป่าว/ป่ะ đôi khi được dùng thay thế cho ไหม/มั้ย."
+  examples:
+    - { th: "ชอบมะ", vi: "Thích không?" }
+    - { th: "ชอบม่ะ", vi: "Thích không?" }
+    - { th: "อยากกินข้าวเหนียวมะม่วงหรือเปล่าคะ", vi: "Muốn ăn xôi xoài không ạ?" }
+    - { th: "อร่อยป่ะ", vi: "Ngon không?" }
+    - { th: "ชอบรึเปล่า", vi: "Thích không?" }
+  source: plernpin-c02#p1
+  draft: true
+- id: g-c02-chai-mai
+  unit_id: c02
+  title_vi: "ใช่ไหม: Phải không?"
+  pattern: "Câu + ใช่ไหม"
+  explain_vi: "ใช่ไหม: Phải không? => Dự đoán được câu trả lời rồi nhưng cần sự khẳng định của người nghe. Lưu ý: Bạn có thể sử dụng ใช่ป่ะ/ใช่ป่าว để thay thế ใช่ไหม."
+  examples:
+    - { th: "คุณเป็นนักศึกษาใช่ไหม", vi: "Bạn là sinh viên phải không?" }
+  source: plernpin-c02#p2
+  draft: true
+- id: g-c02-boi-mai
+  unit_id: c02
+  title_vi: "บ่อยไหม: Thường xuyên không?"
+  pattern: "Câu + บ่อยไหม"
+  explain_vi: "บ่อยไหม đứng cuối câu để hỏi “… thường xuyên không?”."
+  examples:
+    - { th: "คุณดูทีวีบ่อยไหม", vi: "Bạn xem tivi thường xuyên không?" }
+  source: plernpin-c02#p2
+  draft: true
+- id: g-c02-rue
+  unit_id: c02
+  title_vi: "หรือ: Chứ, à? · Hay/hoặc (câu hỏi lựa chọn)"
+  pattern: "Câu + หรือ · A + หรือ + B"
+  explain_vi: "หรือ cuối câu: chứ, à? Lưu ý: หรือ: Hay/hoặc (câu hỏi lựa chọn)."
+  examples:
+    - { th: "จริงหรือ", vi: "Thật à?" }
+    - { th: "คุณจะไปกับเขาหรือจะไปกับฉัน", vi: "Bạn định đi với anh ấy hay sẽ đi với tôi" }
+  source: plernpin-c02#p3
+  draft: true
+- id: g-c02-rue-yang
+  unit_id: c02
+  title_vi: "แล้วหรือยัง/หรือยัง/ยัง: Chưa?"
+  pattern: "Câu + แล้วหรือยัง / หรือยัง / ยัง"
+  explain_vi: "แล้วหรือยัง/หรือยัง/ยัง: Chưa? => Để hỏi điều gì đó đã xảy ra hay chưa?"
+  examples:
+    - { th: "คุณแต่งงานแล้วหรือยัง", vi: "Bạn kết hôn chưa?" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-khoei
+  unit_id: c02
+  title_vi: "เคย….หรือยัง/เคย….ไหม: Đã từng….chưa?"
+  pattern: "เคย + V + หรือยัง / ไหม"
+  explain_vi: "เคย….หรือยัง/เคย….ไหม: Đã từng….chưa?"
+  examples:
+    - { th: "คุณเคยไปเมืองไทยหรือยัง", vi: "Bạn đã từng đi Thái chưa?" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-khrai
+  unit_id: c02
+  title_vi: "ใคร: Ai?"
+  pattern: "… ใคร …"
+  explain_vi: "ใคร: Ai? Lưu ý: ใคร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời (ai đó, không ai)."
+  examples:
+    - { th: "คุณอยู่กับใคร", vi: "Bạn ở với ai?" }
+    - { th: "ไม่มีใครรู้", vi: "Không có ai biết" }
+  source: plernpin-c02#p4
+  draft: true
+- id: g-c02-arai
+  unit_id: c02
+  title_vi: "อะไร: Cái gì?"
+  pattern: "… อะไร …"
+  explain_vi: "อะไร: Cái gì? Lưu ý: อะไร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời (gì cũng…, không có gì)."
+  examples:
+    - { th: "อะไรอยู่ในตู้", vi: "Cái gì ở trong tủ" }
+    - { th: "คุณอยากกินอะไรก็ได้", vi: "Bạn muốn ăn gì cũng được" }
+  source: plernpin-c02#p6
+  draft: true
+- id: g-c02-thinai
+  unit_id: c02
+  title_vi: "ที่ไหน/ไหน: Ở đâu?, chỗ nào?/Đâu?"
+  pattern: "… ที่ไหน / ไหน"
+  explain_vi: "ที่ไหน/ไหน: Ở đâu?, chỗ nào?/Đâu? Lưu ý: ที่ไหน còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "บ้านของคุณอยู่ที่ไหน", vi: "Nhà của bạn ở đâu?" }
+    - { th: "อยู่ที่ไหนก็ไม่สะดวกเท่าอยู่บ้าน", vi: "Ở đâu cũng không tiện bằng ở nhà" }
+  source: plernpin-c02#p7
+  draft: true
+- id: g-c02-muearai
+  unit_id: c02
+  title_vi: "เมื่อไหร่/เมื่อไร/เมื่อใด: Khi nào? Bao giờ?"
+  pattern: "… เมื่อไหร่ / เมื่อไร / เมื่อใด"
+  explain_vi: "เมื่อไหร่/เมื่อไร/เมื่อใด: Khi nào? Bao giờ? Lưu ý: เมื่อไหร่/เมื่อไร/เมื่อใด còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "เครื่องบินจะลงจอดเมื่อไหร่", vi: "Máy bay sẽ hạ cánh khi nào?" }
+    - { th: "เธอจะมาเมื่อไหร่ก็ได้", vi: "Cô ấy định đến lúc nào cũng được" }
+  source: plernpin-c02#p8
+  draft: true
+- id: g-c02-thaorai
+  unit_id: c02
+  title_vi: "เท่าไหร่/เท่าไร: Bao nhiêu?"
+  pattern: "… เท่าไหร่ / เท่าไร"
+  explain_vi: "เท่าไหร่/เท่าไร: Bao nhiêu? Lưu ý: เท่าไหร่/เท่าไร còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "วันนี้วันที่เท่าไหร่", vi: "Ngày hôm nay là ngày bao nhiêu?" }
+  source: plernpin-c02#p9
+  draft: true
+- id: g-c02-yangrai
+  unit_id: c02
+  title_vi: "อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง/ทำไฉน: Như thế nào? Bằng cách nào?/Làm sao, làm thế nào?"
+  pattern: "… อย่างไร / ยังไง / เป็นยังไง(บ้าง)"
+  explain_vi: "อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง/ทำไฉน: Như thế nào? Bằng cách nào?/Làm sao, làm thế nào? Lưu ý: còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "คุณมาเรียนยังไง", vi: "Bạn đến học bằng cách nào?" }
+    - { th: "วันนี้คุณเป็นยังไงบ้าง", vi: "Ngày hôm nay bạn như thế nào?" }
+  source: plernpin-c02#p9
+  draft: true
+- id: g-c02-ki
+  unit_id: c02
+  title_vi: "กี่: Mấy?"
+  pattern: "กี่ + loại từ / đơn vị"
+  explain_vi: "กี่: Mấy? Lưu ý: กี่ còn giống như một đại từ không xác định => Mẫu câu không cần câu trả lời."
+  examples:
+    - { th: "คุณพูดได้กี่ภาษา", vi: "Bạn nói được mấy ngôn ngữ?" }
+  source: plernpin-c02#p10
+  draft: true
