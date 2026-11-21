@@ -16,13 +16,13 @@
 > **🔵 M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall; nhánh `m9.6-games` tách từ `m9.5-feedback`): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
-> - [ ] **Merge** ~~#21~~ ✅ → ~~#22~~ ✅ → ~~#23~~ ✅ — nhưng #23 được merge vào nhánh `m9.5-feedback` (base cũ), **chưa vào `main`** → merge PR mới `m9.6-games` → `main` (M9.6 core + phần logic UI 2026-11-21).
+> - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
 > - [ ] **Azure SWA hết chỗ preview:** deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
 > - [ ] ⏸ *(tạm loại 2026-11-21 — owner bật lại khi cần)* **SETUP S13** (Azure AI Speech F0) cho **T9.5.3**: tạo resource Speech (Southeast Asia, F0), ghi `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` vào `.env.local` (không commit, không gửi chat), nghe thử Premwadee / Achara → báo agent "S13 xong, giọng: …".
 > - [ ] **Xem baseline:** mới `settings-*`; đổi theo nội dung thật `units-*`, `unit-*`, `lesson-*`, `practice-*`, `practice-arrange-*` (Windows đã commit; Linux lấy từ artifact CI `screenshot-baselines-linux`).
-> - [ ] **M0.5c / SCR-08 v2** (Claude Desktop → owner chọn): mở khóa T9.5.4 (giao diện sinh động), T9.6.3 phần còn lại (asset CC0 + `LICENSE.md`, âm nền), T9.6.4–T9.6.6 (UI 4 trò mới), thay màu tạm `color.game-theme.*`.
-> - [ ] **SCR-03 / SCR-07 / SCR-09** (đợt M0.5b-2) để mở **M10**.
-> - [ ] **Nội dung:** Claude Desktop nhập tiếp (Bài 11 → 3, rồi CĐ 15 → 2); khi có `c03`, `c11` → agent làm **TC.2b**.
+> - [ ] **M0.5c / SCR-08 v2** — đã soạn, **PR #27**: owner chọn hướng A / B / C (đề xuất B) + duyệt SCR-08 v2 + trả lời câu hỏi trong PR → mở khóa T9.5.4 (giao diện sinh động), T9.6.3 phần còn lại (asset CC0 + `LICENSE.md`, âm nền), T9.6.4–T9.6.6 (UI 4 trò mới), thay màu tạm `color.game-theme.*`.
+> - [ ] **SCR-03 / SCR-07 / SCR-09** — đã soạn, **PR #26**: owner duyệt + trả lời 11 câu hỏi → mở **M10**.
+> - [ ] **Nội dung:** Bài 11 → 6 đã nhập (**PR #28**, draft — GV xem 230 từ thẻ hình, tên riêng b11); còn Bài 5 → 3, rồi CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
@@ -509,6 +509,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | M0.5b-2 / M0.5c / Nội dung | Owner giao cho agent: soạn **SCR-03/07/09** + wireframe (PR #26), **M0.5c** 3 hướng giao diện + **SCR-08 v2** + mockup (PR #27), nhập **Bài 11 → 6** (PR #28; 0 lỗi content:check, baseline `/units`) | Nhập Bài 5 → 3 | M10, T9.5.4, UI M9.6 chờ owner duyệt #26 / #27 | `m0.5b-scr-03-07-09`, `m0.5c-design`, `content-b06-b11` |
 | 2026-11-21 | M9.6 (+ M9.5) | Owner tạm loại **T9.5.3** (Azure Speech). Sửa 8 điểm review PR #23. Logic chờ UI: danh mục 8 trò + nhãn kỹ năng + lọc, kỷ lục / "cần ôn" cho trò arcade, hook `useArcadeRun` | — | T9.5.4, T9.6.3 phần còn lại, T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c); M10 chờ SCR-03/07/09 | `m9.6-games` → PR mới vào `main` (#23 đã merge vào `m9.5-feedback`) |
 | 2026-11-20 | M9.6 | **T9.6.1** khung arcade + Đập chuột + Đố vui truyền hình, **T9.6.2** Máy bay + Mê cung (core, seed + đồng hồ giả, coverage 100%); T9.6.3 một phần: `useGameLoop`, token 3 theme + `useGameTheme`, sao kết quả + "Đổi trò" cho 4 trò cũ | T9.6.3 (asset CC0 + âm nền) | T9.6.3 phần còn lại + T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c) | `m9.6-games` (xếp chồng trên `m9.5-feedback`) |
 | 2026-11-20 | M9.5 + TC.2a | **T9.5.1** âm phản hồi mới ở mọi nơi (cả khi sai), **T9.5.2** xếp hạng giọng Thái + `/settings` âm lượng / giọng / tốc độ / nghe thử (owner cho làm khi chưa có SCR); **TC.2a** xóa `u01`/`u02`, test chuyển sang `b01`/`c01`/`b12`; sửa engine: phương án nhiễu trùng đề (từ cùng nghĩa); merge `content-b12` vào nhánh (tránh xung đột `dialogues.yaml`) | M9.6 T9.6.1–T9.6.3 | T9.5.3 chờ S13; T9.5.4 + UI M9.6 chờ M0.5c | `m9.5-feedback` |
