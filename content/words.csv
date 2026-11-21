@@ -951,3 +951,37 @@ c14-w05,c14,c14-l1,สมบูรณ์,,hoàn chỉnh; trọn vẹn; đầy đ
 c14-w06,c14,c14-l1,สมเหตุสมผล,,hợp lý; có lý,có lý do chính đáng; = มีเหตุผลที่ดี,,adj,,,,,,plernpin-c14#p3,true
 c14-w07,c14,c14-l1,สมรู้ร่วมคิด,,âm mưu; hiệp lực,,,verb,,,,,,plernpin-c14#p3,true
 c14-w08,c14,c14-l1,สมส่วน,,cân đối; cân xứng,,,adj,,,,,,plernpin-c14#p4,true
+c13-w01,c13,c13-l1,ว่า,,nói; bảo; là; rằng,"nghĩa “là, rằng” được sử dụng theo sau động từ",,verb,,,,,,plernpin-c13#p1,true
+c13-w02,c13,c13-l1,พูดว่า,,nói là; nói rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w03,c13,c13-l1,บอกว่า,,bảo là; bảo rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w04,c13,c13-l1,รู้ว่า,,biết là; biết rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w05,c13,c13-l1,ได้ยินว่า,,nghe thấy là; nghe thấy rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w06,c13,c13-l1,ฝันว่า,,mơ là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w07,c13,c13-l1,เข้าใจว่า,,hiểu là; hiểu rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w08,c13,c13-l1,สัญญาว่า,,hứa là; hứa rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w09,c13,c13-l1,ถามว่า,,hỏi là; hỏi rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w10,c13,c13-l1,ดูว่า,,xem là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w11,c13,c13-l1,แปลว่า,,dịch là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w12,c13,c13-l1,อ่านว่า,,đọc là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w13,c13,c13-l1,เรียกว่า,,gọi là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w14,c13,c13-l2,ถึงแม้ว่า,,mặc dù là,,,conj,,,,,,plernpin-c13#p2,true
+c13-w15,c13,c13-l2,เพื่อว่า,,để mà,,,conj,,,,,,plernpin-c13#p2,true
+c13-w16,c13,c13-l2,จำได้ว่า,,nhớ được là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w17,c13,c13-l2,เชื่อว่า,,tin tưởng là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w18,c13,c13-l2,เห็นว่า,,thấy là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w19,c13,c13-l2,กลัวว่า,,sợ là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w20,c13,c13-l2,คิดว่า,,nghĩ là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w21,c13,c13-l2,แน่ใจว่า,,chắc chắn là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w22,c13,c13-l2,เป็นห่วงว่า,,lo lắng là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w23,c13,c13-l2,รู้สึกว่า,,cảm thấy là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w24,c13,c13-l2,ทราบว่า,,biết là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w25,c13,c13-l2,สงสัยว่า,,nghi ngờ là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w26,c13,c13-l2,หวังว่า,,hy vọng là,,,phrase,,,,,,plernpin-c13#p3,true
+c13-w27,c13,c13-l3,ถูก,,rẻ; đúng; chính xác; đụng; chạm; tiếp xúc; bị,,,adj,,,,,,plernpin-c13#p3,true
+c13-w28,c13,c13-l3,ถูกตัว,,tiếp xúc cơ thể; chạm vào người,,,verb,,,,,,plernpin-c13#p3,true
+c13-w29,c13,c13-l3,ถูกลอตเตอรี่,,trúng xổ số,,,verb,,,,,,plernpin-c13#p3,true
+c13-w30,c13,c13-l3,ถูกใจ,,đúng gu; hợp gu,,,verb,,,,,,plernpin-c13#p4,true
+c13-w31,c13,c13-l3,ถูกคอ,,hợp ý; ăn ý,,,verb,,,,,,plernpin-c13#p4,true
+c13-w32,c13,c13-l3,ถูกชะตา,,đúng định mệnh,,,verb,,,,,,plernpin-c13#p4,true
+c13-w33,c13,c13-l4,โดน,,bị,"được sử dụng y chang như ถูก, nhưng ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng",,verb,,,,,,plernpin-c13#p5,true
+c13-w34,c13,c13-l4,ได้รับ,,được; được nhận,thay thế cho ถูก trong trường hợp mang nghĩa tích cực,,verb,,,,,,plernpin-c13#p6,true

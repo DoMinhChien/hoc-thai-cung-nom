@@ -696,3 +696,64 @@
     - { th: "สมพรปาก", vi: "Mong được như bạn nói" }
   source: plernpin-c14#p1
   draft: true
+- id: g-c13-wa-noi
+  unit_id: c13
+  title_vi: "Từ ว่า mang nghĩa “nói, bảo”"
+  pattern: "S + ว่า + …"
+  explain_vi: "ว่า đứng sau chủ ngữ, mang nghĩa “nói, bảo”."
+  examples:
+    - { th: "เธอว่าอะไรนะ ฉันฟังไม่ทัน", vi: "Cô ấy nói gì? Tôi chưa kịp nghe" }
+    - { th: "เขาว่าที่นี่ฝนตกทุกวัน", vi: "Anh ấy nói ở đây ngày nào cũng mưa" }
+  source: plernpin-c13#p1
+  draft: true
+- id: g-c13-wa-rang
+  unit_id: c13
+  title_vi: "Từ ว่า mang nghĩa “là, rằng” (theo sau động từ)"
+  pattern: "S + động từ + ว่า + mệnh đề"
+  explain_vi: "ว่า mang nghĩa “là, rằng”, được sử dụng theo sau động từ. Các trường hợp của ว่า: พูดว่า (nói là, nói rằng), บอกว่า (bảo là, bảo rằng), รู้ว่า (biết là, biết rằng), ได้ยินว่า (nghe thấy là, nghe thấy rằng), ฝันว่า (mơ là), เข้าใจว่า (hiểu là, hiểu rằng), สัญญาว่า (hứa là, hứa rằng), ถามว่า (hỏi là, hỏi rằng), ดูว่า (xem là), แปลว่า (dịch là), อ่านว่า (đọc là), เรียกว่า (gọi là), ถึงแม้ว่า (mặc dù là), เพื่อว่า (để mà), จำได้ว่า (nhớ được là), เชื่อว่า (tin tưởng là), เห็นว่า (thấy là), กลัวว่า (sợ là), คิดว่า (nghĩ là), แน่ใจว่า (chắc chắn là), เป็นห่วงว่า (lo lắng là), รู้สึกว่า (cảm thấy là), ทราบว่า (biết là), สงสัยว่า (nghi ngờ là), หวังว่า (hy vọng là)."
+  examples:
+    - { th: "เขาพูดว่าเขาชอบประเทศไทย", vi: "Anh ấy nói là anh ấy thích nước Thái" }
+    - { th: "ฉันคิดว่าจะกลับพรุ่งนี้", vi: "Tôi nghĩ là sẽ quay trở về vào ngày mai" }
+  source: plernpin-c13#p1
+  draft: true
+- id: g-c13-thuk
+  unit_id: c13
+  title_vi: "Từ ถูก mang nghĩa “rẻ”, “đúng”, “đụng, chạm”, “hợp ý”"
+  pattern: "ถูก · ถูก + danh từ (ถูกตัว, ถูกใจ, ถูกคอ, ถูกชะตา…)"
+  explain_vi: "ถูก mang nghĩa “rẻ”; “đúng, chính xác”; “đụng, chạm, tiếp xúc” (ถูกตัว: tiếp xúc cơ thể, chạm vào người; ถูกลอตเตอรี่: trúng xổ số); “hợp gu, đúng gu, hợp ý, ăn ý” (ถูกใจ: đúng gu, hợp gu; ถูกคอ: hợp ý, ăn ý; ถูกชะตา: đúng định mệnh)."
+  examples:
+    - { th: "ถูกตัว", vi: "Tiếp xúc cơ thể, chạm vào người" }
+    - { th: "ถูกลอตเตอรี่", vi: "Trúng xổ số" }
+    - { th: "ถูกใจ", vi: "Đúng gu, hợp gu" }
+    - { th: "ถูกคอ", vi: "Hợp ý, ăn ý" }
+    - { th: "ถูกชะตา", vi: "Đúng định mệnh" }
+  source: plernpin-c13#p3
+  draft: true
+- id: g-c13-thuk-bi
+  unit_id: c13
+  title_vi: "ถูก mang nghĩa “bị” (câu bị động); โดน"
+  pattern: "S + ถูก/โดน + (tác nhân) + động từ"
+  explain_vi: "Từ ถูก mang nghĩa “bị”, sử dụng trong câu bị động. Lưu ý 1: โดน được sử dụng y chang như ถูก, nhưng โดน ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng."
+  examples:
+    - { th: "เขาถูกรถชน", vi: "Anh ấy bị xe đâm" }
+    - { th: "เขาโดนตี", vi: "Anh ấy bị đánh" }
+  source: plernpin-c13#p4
+  draft: true
+- id: g-c13-dairap-v
+  unit_id: c13
+  title_vi: "ได้รับ mang nghĩa “được” (tích cực)"
+  pattern: "S + ได้รับ/ถูก + Động từ"
+  explain_vi: "Lưu ý 2: ได้รับ được sử dụng thay thế cho ถูก, trong trường hợp mang nghĩa tích cực. Được dịch với nghĩa “Được”."
+  examples:
+    - { th: "เขาได้รับเชิญไปงานเลี้ยงประจำปี", vi: "Anh ấy được mời đi tiệc đồng niên" }
+  source: plernpin-c13#p6
+  draft: true
+- id: g-c13-dairap-n
+  unit_id: c13
+  title_vi: "ได้รับ mang nghĩa “được nhận”"
+  pattern: "S + ได้รับ + Danh từ"
+  explain_vi: "Lưu ý 3: Cấu trúc S + ได้รับ + Danh từ, ได้รับ mang nghĩa “Được nhận”."
+  examples:
+    - { th: "เขาได้รับทุนการศึกษาจากอเมริกา", vi: "Anh ấy được nhận học bổng từ Mỹ" }
+  source: plernpin-c13#p6
+  draft: true
