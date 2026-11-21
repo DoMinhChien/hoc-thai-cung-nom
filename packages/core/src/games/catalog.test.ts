@@ -52,7 +52,10 @@ describe('danh mục 8 trò (plan 0.14)', () => {
     }
     for (const id of ARCADE_GAME_IDS) {
       expect(gameAvailability(id, greetings)).toEqual(ARCADE_GAMES[id].availability(greetings));
-      expect(gameAvailability(id, empty)).toMatchObject({ ok: false, reason: 'words' });
+      expect(gameAvailability(id, empty)).toMatchObject({
+        ok: false,
+        reason: id === 'airplane' || id === 'gameshow' ? 'items' : 'words',
+      });
     }
   });
 });

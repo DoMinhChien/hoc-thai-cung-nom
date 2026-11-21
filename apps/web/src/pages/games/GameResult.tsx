@@ -1,20 +1,32 @@
 import {
+  gameAvailability,
   resultStars,
   saveGameResult,
   setNeedsReview,
-  type GameId,
+  type AnyGameId,
   type GameItemRef,
+  type GameSource,
   type GameStats,
   type GameSummary,
 } from '@nom/core';
-import { Star, X } from 'lucide-react';
+import { Trophy, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { Burst, Stars } from '@/components/fun';
 import { itemKey, ReviewList, useCompletionSound, useKeyShortcut } from '@/components/interactive';
 import { formatClock } from '@/components/interactive/format';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { useRepositories } from '@/data';
 import { t } from '@/i18n';
-import { formatRecord, gameName } from './catalog';
+import { cn } from '@/lib/utils';
+import { formatRecord, GAME_ORDER, gameName, lockReason } from './catalog';
+import { Thumbnail } from './Thumbnail';
 
 /** Ít nhất chừng này mục sai mới hiện "Chơi với mục sai" (SCR-08 §C). */
 export const MIN_MISTAKES_REPLAY = 4;
@@ -22,8 +34,12 @@ export const MIN_MISTAKES_REPLAY = 4;
 const numberFormat = new Intl.NumberFormat('vi-VN');
 
 export interface GameResultProps {
-  gameId: GameId;
-  summary: GameSummary;
+  gameId: AnyGameId;
+  summary: GameSummary<AnyGameId>;
+  /** Dòng riêng trò (SCR-08 v2 §C), vd. "Đập nhầm 4 lần". */
+  detail?: string | null;
+  /** Nguồn hiện tại — dialog "Đổi trò" khóa trò không chơi được (giữ nguồn). */
+  source?: GameSource;
   /** Khóa nguồn để lưu kỷ lục (`learned` / `unit:<id>`). */
   sourceKey: string;
   /** Đủ dữ liệu để chơi lại chỉ với mục sai (nút ẩn khi `false`). */
@@ -31,6 +47,8 @@ export interface GameResultProps {
   onExit: () => void;
   onAgain: () => void;
   onAgainMistakes: (items: GameItemRef[]) => void;
+  /** "Đổi trò" (`G`): mở trò khác với cùng nguồn. */
+  onPick?: (id: AnyGameId) => void;
 }
 
 /**
@@ -40,12 +58,16 @@ export interface GameResultProps {
 export function GameResult({
   gameId,
   summary,
+  detail,
+  source,
   sourceKey,
   canReplayMistakes,
   onExit,
   onAgain,
   onAgainMistakes,
+  onPick,
 }: GameResultProps) {
+  const [picking, setPicking] = useState(false);
   const repos = useRepositories();
   const [record, setRecord] = useState<{ newBest: boolean; previous: GameStats | null }>();
   const [flagged, setFlagged] = useState(() => new Set(summary.mistakes.map(itemKey)));
@@ -72,9 +94,10 @@ export function GameResult({
   };
 
   const replay = canReplayMistakes && summary.mistakes.length >= MIN_MISTAKES_REPLAY;
-  useKeyShortcut('Escape', onExit);
-  useKeyShortcut('Enter', onAgain);
-  useKeyShortcut('w', () => onAgainMistakes(summary.mistakes), replay);
+  useKeyShortcut('Escape', onExit, !picking);
+  useKeyShortcut('Enter', onAgain, !picking);
+  useKeyShortcut('w', () => onAgainMistakes(summary.mistakes), replay && !picking);
+  useKeyShortcut('g', () => setPicking(true), !!onPick && !picking);
 
   const pct = Math.round(summary.accuracy * 100);
   const stars = resultStars(summary);
@@ -119,19 +142,26 @@ export function GameResult({
         {record?.newBest && (
           <p
             data-testid="result-new-record"
-            className="relative flex items-center gap-3 self-start rounded-full bg-game px-5 py-2 text-lg font-semibold text-game-fg motion-safe:animate-pop"
+            className="relative flex items-center gap-3 self-start rounded-full bg-highlight px-5 py-2 text-lg font-bold text-foreground motion-safe:animate-fb-complete"
           >
-            <span
-              aria-hidden
-              className="absolute inset-0 rounded-full bg-game opacity-40 motion-safe:animate-ping"
-            />
-            <Star className="relative size-6 fill-current" aria-hidden />
+            <Burst record className="text-game" />
+            <Trophy className="relative size-6" aria-hidden />
             <span className="relative">{t('games.newRecord')}</span>
             {record.previous && (
-              <span className="relative text-sm font-normal opacity-90">
+              <span className="relative text-sm font-normal">
                 {t('games.previous', { value: formatRecord(gameId, record.previous) })}
               </span>
             )}
+          </p>
+        )}
+        {record && !record.newBest && record.previous && (
+          <p data-testid="result-best" className="text-muted-foreground">
+            {t('games.record', { value: formatRecord(gameId, record.previous) })}
+          </p>
+        )}
+        {detail && (
+          <p data-testid="result-detail" className="text-muted-foreground">
+            {detail}
           </p>
         )}
 
@@ -174,38 +204,112 @@ export function GameResult({
               </kbd>
             </Button>
           )}
-          <Button variant="outline" data-testid="result-other" onClick={onExit}>
-            {t('games.other')}
+          {onPick && (
+            <Button
+              variant="outline"
+              data-testid="result-other"
+              aria-keyshortcuts="G"
+              onClick={() => setPicking(true)}
+            >
+              {t('games.other')}
+              <kbd aria-hidden className="rounded bg-muted px-1.5 font-sans text-xs">
+                G
+              </kbd>
+            </Button>
+          )}
+          <Button variant="ghost" data-testid="result-list" onClick={onExit}>
+            {t('games.toList')}
+            <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+              Esc
+            </kbd>
           </Button>
         </div>
         <p className="text-xs text-muted-foreground">{t('games.fsrsNote')}</p>
       </div>
+      {onPick && (
+        <ChangeGameDialog
+          open={picking}
+          current={gameId}
+          source={source}
+          onClose={() => setPicking(false)}
+          onPick={onPick}
+        />
+      )}
     </div>
   );
 }
 
-/** 1–3 sao theo tỉ lệ đúng (plan 0.14). */
-function Stars({ n }: { n: number }) {
+/** "Đổi trò" (SCR-08 v2 §C): lưới 4×2 thumbnail nhỏ, giữ nguồn, phím `1`–`8`, `Esc` đóng. */
+function ChangeGameDialog({
+  open,
+  current,
+  source,
+  onClose,
+  onPick,
+}: {
+  open: boolean;
+  current: AnyGameId;
+  source: GameSource | undefined;
+  onClose: () => void;
+  onPick: (id: AnyGameId) => void;
+}) {
+  const reasonOf = (id: AnyGameId) => (source ? lockReason(gameAvailability(id, source)) : null);
+  const pick = (id: AnyGameId) => {
+    if (reasonOf(id)) return;
+    onClose();
+    onPick(id);
+  };
+  useKeyShortcut(
+    GAME_ORDER.map((_, i) => String(i + 1)),
+    (e) => pick(GAME_ORDER[Number(e.key) - 1]!),
+    open,
+  );
   return (
-    <p
-      data-testid="result-stars"
-      data-stars={n}
-      role="img"
-      aria-label={t('games.stars', { n })}
-      className="flex gap-1"
-    >
-      {[1, 2, 3].map((i) => (
-        <Star
-          key={i}
-          aria-hidden
-          className={
-            i <= n
-              ? 'size-9 fill-current text-game motion-safe:animate-pop'
-              : 'size-9 text-border-strong'
-          }
-        />
-      ))}
-    </p>
+    <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
+      <DialogContent data-testid="change-game" className="sm:max-w-[640px]">
+        <DialogHeader>
+          <DialogTitle>{t('games.changeTitle')}</DialogTitle>
+          <DialogDescription>{t('games.changeHint')}</DialogDescription>
+        </DialogHeader>
+        <ul className="grid grid-cols-4 gap-3">
+          {GAME_ORDER.map((id, i) => {
+            const reason = reasonOf(id);
+            return (
+              <li key={id} data-game={id}>
+                <button
+                  type="button"
+                  data-testid={`change-game-${id}`}
+                  aria-disabled={!!reason}
+                  aria-keyshortcuts={String(i + 1)}
+                  title={reason ?? undefined}
+                  onClick={() => pick(id)}
+                  className={cn(
+                    'flex w-full flex-col overflow-hidden rounded-lg border bg-surface text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    reason && 'cursor-not-allowed opacity-60',
+                  )}
+                >
+                  <span className="relative">
+                    <Thumbnail id={id} locked={!!reason} className="[&>*]:scale-75" />
+                    <kbd
+                      aria-hidden
+                      className="absolute top-1 right-1 rounded bg-surface px-1.5 font-sans text-xs font-semibold"
+                    >
+                      {i + 1}
+                    </kbd>
+                  </span>
+                  <span className="flex flex-col px-2 py-1.5">
+                    <span className="font-medium">{gameName(id)}</span>
+                    {id === current && (
+                      <span className="text-xs text-muted-foreground">{t('games.justPlayed')}</span>
+                    )}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </DialogContent>
+    </Dialog>
   );
 }
 

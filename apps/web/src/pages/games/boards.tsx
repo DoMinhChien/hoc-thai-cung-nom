@@ -46,6 +46,10 @@ export interface TopBarExtra {
   /** Ghép cặp: thanh trên hiện số lượt lật thay điểm. */
   scoreLabel?: string;
   scoreValue?: number;
+  /** Trò arcade: đồng hồ đếm ngược riêng (ms). */
+  timeMs?: number;
+  /** Dòng trạng thái cạnh tên trò ("Từng bước", "Tốc độ ×1,3"). */
+  status?: string;
 }
 
 function Feedback({ state }: { state: GameState }) {

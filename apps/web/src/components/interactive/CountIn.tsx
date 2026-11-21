@@ -7,7 +7,7 @@ const STEP_MS = 700;
 /**
  * Màn đếm "3 · 2 · 1" trước khi chơi (SCR-08 §B). `Space` bắt đầu ngay; giảm chuyển động → bỏ qua.
  */
-export function CountIn({ onDone }: { onDone: () => void }) {
+export function CountIn({ onDone, hint }: { onDone: () => void; hint?: string }) {
   const reduced = useReducedMotion();
   const [n, setN] = useState(3);
   useKeyShortcut(' ', onDone);
@@ -24,7 +24,7 @@ export function CountIn({ onDone }: { onDone: () => void }) {
   return (
     <div
       data-testid="count-in"
-      className="flex flex-col items-center justify-center gap-4 rounded-xl bg-game-subtle py-16"
+      className="flex flex-col items-center justify-center gap-4 rounded-xl bg-surface py-16 shadow-md"
     >
       <span
         key={n}
@@ -33,6 +33,7 @@ export function CountIn({ onDone }: { onDone: () => void }) {
       >
         {Math.max(n, 1)}
       </span>
+      {hint && <p className="text-base font-medium">{hint}</p>}
       <p className="text-sm text-muted-foreground">{t('play.countIn')}</p>
     </div>
   );

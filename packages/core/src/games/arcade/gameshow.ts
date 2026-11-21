@@ -145,7 +145,7 @@ export const gameshow: ArcadeGame<GameshowRound, GameshowInput, GameshowState> =
   id: 'gameshow',
 
   availability(source) {
-    return availability('words', GAMESHOW_MIN_ITEMS, candidates(source, sourcePool(source)).length);
+    return availability('items', GAMESHOW_MIN_ITEMS, candidates(source, sourcePool(source)).length);
   },
 
   generateRound(source, seed) {
