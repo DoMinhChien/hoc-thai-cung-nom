@@ -95,3 +95,8 @@ b05-l11,b05,11,"Ngày nghỉ, ngày làm việc, cuối tuần; lễ hội (1)",
 b05-l12,b05,12,Lễ hội và ngày lễ (2),,true
 b05-l13,b05,13,Ngày lễ (3); thời gian biểu,,true
 b05-l14,b05,14,"Lịch, quý, giờ hành chính",,true
+b04-l1,b04,1,"Loại từ (1): xà phòng, nhẫn, đồng hồ, nhà, bàn ghế",g-b04-laksananam|g-b04-nueng,true
+b04-l2,b04,2,"Loại từ (2): quần áo, ấm chén, trứng, xe ô tô, đũa",,true
+b04-l3,b04,3,"Loại từ (3): cây, sách, thuốc, đồ uống, xe lửa",,true
+b04-l4,b04,4,"Loại từ (4): công ty, bút, ngón tay, giấy, máy giặt",,true
+b04-l5,b04,5,"So sánh bằng, hơn, nhất; lớp học",g-b04-thao-kap|g-b04-thao-kan|g-b04-kwa|g-b04-thi-sut,true

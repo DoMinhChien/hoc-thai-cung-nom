@@ -427,3 +427,64 @@
     - { th: "ตอนนี้เราอยู่ในฤดูร้อนค่ะ", vi: "Bây giờ chúng ta ở trong mùa hè ạ" }
   source: plernpin-b05#p38-39
   draft: true
+- id: g-b04-laksananam
+  unit_id: b04
+  title_vi: Loại từ (ลักษณนาม)
+  pattern: Danh từ + Số từ (từ 2 trở lên) + Loại từ
+  explain_vi: Loại từ giữ chức năng biểu thị các đặc trưng về hình dáng, chủng loại hoặc số lượng của danh từ đi cùng với nó. Không giống như loại từ trong tiếng Việt, loại từ trong tiếng Thái luôn đi sau danh từ.
+  examples:
+    - { th: "สบู่ 2 ก้อน", vi: "2 cục bánh xà phòng" }
+    - { th: "หมา 2 ตัว", vi: "2 con chó" }
+    - { th: "หนังสือ 2 เล่ม", vi: "2 quyển sách" }
+    - { th: "รถยนต์ 2 คัน", vi: "2 chiếc xe ô tô" }
+  source: plernpin-b04#p3
+  draft: true
+- id: g-b04-nueng
+  unit_id: b04
+  title_vi: Số lượng “1” với loại từ
+  pattern: Danh từ + Số từ + Loại từ · Danh từ + Loại từ + Số từ · Danh từ + Loại từ + เดียว
+  explain_vi: Nếu số từ chỉ số lượng mà rơi vào “1” thì có 3 cách diễn đạt như trên.
+  examples:
+    - { th: "ผู้หญิงหนึ่งคน", vi: "1 người phụ nữ" }
+    - { th: "ผู้หญิงคนหนึ่ง", vi: "1 người phụ nữ" }
+    - { th: "ผู้หญิงคนเดียว", vi: "1 người phụ nữ (chỉ một)" }
+  source: plernpin-b04#p4-5
+  draft: true
+- id: g-b04-thao-kap
+  unit_id: b04
+  title_vi: So sánh bằng (เท่ากับ)
+  pattern: S1 + đặc tính so sánh + เท่ากับ + S2
+  explain_vi: So sánh bằng — đặt เท่ากับ giữa đặc tính so sánh và S2.
+  examples:
+    - { th: "ดาวอายุเท่ากับเดือน", vi: "Đao bằng tuổi với Đươn" }
+  source: plernpin-b04#p44
+  draft: true
+- id: g-b04-thao-kan
+  unit_id: b04
+  title_vi: So sánh bằng (… และ … เท่ากัน)
+  pattern: S1 + และ + S2 + đặc tính so sánh + เท่ากัน
+  explain_vi: So sánh bằng — nối S1 và S2 bằng และ, đặt เท่ากัน ở cuối.
+  examples:
+    - { th: "ดาวและเดือนอายุเท่ากัน", vi: "Đao và Đươn bằng tuổi nhau" }
+  source: plernpin-b04#p45
+  draft: true
+- id: g-b04-kwa
+  unit_id: b04
+  title_vi: So sánh hơn (กว่า)
+  pattern: S1 + đặc tính so sánh + (มาก/น้อย) กว่า + S2 + (phần bổ sung mức độ)
+  explain_vi: So sánh hơn — đặc tính so sánh + (มาก/น้อย) กว่า + S2; có thể thêm mức độ chênh lệch ở cuối.
+  examples:
+    - { th: "ดาวอายุมากกว่าเดือน 2 ปี", vi: "Đao nhiều hơn Đươn 2 tuổi" }
+    - { th: "เดือนอายุน้อยกว่าดาว 2 ปี", vi: "Đươn ít hơn Đao 2 tuổi" }
+  source: plernpin-b04#p46
+  draft: true
+- id: g-b04-thi-sut
+  unit_id: b04
+  title_vi: So sánh nhất (ที่สุด)
+  pattern: S1 + đặc tính so sánh + (มาก/น้อย) ที่สุด + …
+  explain_vi: So sánh nhất — đặc tính so sánh + (มาก/น้อย) ที่สุด, sau đó có thể thêm phạm vi so sánh.
+  examples:
+    - { th: "ดาวอายุมากที่สุดในห้องนี้", vi: "Đao nhiều tuổi nhất trong phòng này" }
+    - { th: "เดือนอายุน้อยที่สุดในห้องนี้", vi: "Đươn ít tuổi nhất trong phòng này" }
+  source: plernpin-b04#p47
+  draft: true

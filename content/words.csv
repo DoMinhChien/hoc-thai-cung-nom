@@ -791,3 +791,48 @@ b05-w142,b05,b05-l14,ปฏิทินสากล,,lịch quốc tế,,,noun,,
 b05-w143,b05,b05-l14,เวลาราชการ,,giờ hành chính; thời gian hành chính,,,noun,,,,,,plernpin-b05#p54,true
 b05-w144,b05,b05-l14,เวลาทำงานราชการ,,giờ làm việc hành chính,,,noun,,,,,,plernpin-b05#p54,true
 b05-w145,b05,b05-l14,วันสิริมงคล,,ngày an khang thịnh vượng,,,noun,,,,,,plernpin-b05#p54,true
+b04-w01,b04,b04-l1,สบู่,,bánh xà phòng,,ก้อน,noun,,สบู่ 2 ก้อน,2 cục bánh xà phòng,,,plernpin-b04#p6,true
+b04-w02,b04,b04-l1,ช็อกโกแลต,ช็อคโกแลต,chocolate,tài liệu viết ช็อคโกแลต,กล่อง,noun,,ช็อกโกแลต 2 กล่อง,2 hộp chocolate,,,plernpin-b04#p7,true
+b04-w03,b04,b04-l1,แหวน,,nhẫn,,วง,noun,,แหวน 2 วง,2 cái nhẫn,,,plernpin-b04#p8,true
+b04-w04,b04,b04-l1,นาฬิกา,,đồng hồ,,เรือน,noun,,นาฬิกา 2 เรือน,2 cái đồng hồ,,,plernpin-b04#p9,true
+b04-w05,b04,b04-l1,บ้าน,,nhà,,หลัง,noun,,บ้าน 2 หลัง,2 căn nhà,,,plernpin-b04#p10,true
+b04-w06,b04,b04-l1,กระเป๋า,,túi xách,,อัน,noun,,กระเป๋า 2 อัน,2 cái túi xách,,,plernpin-b04#p11,true
+b04-w07,b04,b04-l1,เค้ก,,bánh,,ชิ้น,noun,,เค้ก 2 ชิ้น,2 miếng bánh,,,plernpin-b04#p12,true
+b04-w08,b04,b04-l1,หมา,,chó,,ตัว,noun,,หมา 2 ตัว,2 con chó,,,plernpin-b04#p13,true
+b04-w09,b04,b04-l1,โต๊ะ,,bàn,,ตัว,noun,,โต๊ะ 2 ตัว,2 cái bàn,,,plernpin-b04#p14,true
+b04-w10,b04,b04-l1,เก้าอี้,,ghế,,ตัว,noun,,เก้าอี้ 2 ตัว,2 cái ghế,,,plernpin-b04#p15,true
+b04-w11,b04,b04-l2,เสื้อผ้า,,quần áo,,ชุด,noun,,เสื้อผ้า 2 ชุด,2 bộ quần áo,,,plernpin-b04#p16,true
+b04-w12,b04,b04-l2,กาชงชา,,ấm chén,,ชุด,noun,,กาชงชา 2 ชุด,2 bộ ấm chén,,,plernpin-b04#p17,true
+b04-w13,b04,b04-l2,หม้อ,,nồi,,ใบ,noun,,หม้อ 2 ใบ,2 cái nồi,,,plernpin-b04#p18,true
+b04-w14,b04,b04-l2,เด็ก,,trẻ; đứa trẻ,,ลูก,noun,,เด็ก 2 ลูก,2 đứa trẻ,,,plernpin-b04#p19,true
+b04-w15,b04,b04-l2,ไข่,,trứng,loại từ: ลูก hoặc ฟอง,ฟอง,noun,,ไข่ 2 ลูก/ฟอง,2 quả trứng,,,plernpin-b04#p20,true
+b04-w16,b04,b04-l2,แตงโม,,dưa hấu,,ลูก,noun,,แตงโม 2 ลูก,2 quả dưa hấu,,,plernpin-b04#p21,true
+b04-w17,b04,b04-l2,รถยนต์,,xe ô tô,,คัน,noun,,รถยนต์ 2 คัน,2 chiếc xe ô tô,,,plernpin-b04#p22,true
+b04-w18,b04,b04-l2,ผ้าพันคอ,,khăn quàng cổ,,ผืน,noun,,ผ้าพันคอ 2 ผืน,2 chiếc khăn quàng cổ,,,plernpin-b04#p23,true
+b04-w19,b04,b04-l2,ตะเกียบ,,đũa,,คู่,noun,,ตะเกียบ 2 คู่,2 đôi đũa,,,plernpin-b04#p24,true
+b04-w20,b04,b04-l2,ผู้ชาย,,người đàn ông,,คน,noun,,ผู้ชาย 2 คน,2 người đàn ông,,,plernpin-b04#p25,true
+b04-w21,b04,b04-l3,ต้นไม้,,cây,,ต้น,noun,,ต้นไม้ 10 ต้น,10 cái cây,,,plernpin-b04#p26,true
+b04-w22,b04,b04-l3,หนังสือ,,sách,,เล่ม,noun,,หนังสือ 2 เล่ม,2 quyển sách,,,plernpin-b04#p27,true
+b04-w23,b04,b04-l3,ยา,,thuốc,,เม็ด,noun,,ยา 10 เม็ด,10 viên thuốc,,,plernpin-b04#p28,true
+b04-w24,b04,b04-l3,น้ำส้ม,,nước cam,,แก้ว,noun,,น้ำส้ม 2 แก้ว,2 cốc nước cam,,,plernpin-b04#p29,true
+b04-w25,b04,b04-l3,ข้าวผัด,,cơm rang,,จาน,noun,,ข้าวผัด 2 จาน,2 đĩa cơm rang,,,plernpin-b04#p30,true
+b04-w26,b04,b04-l3,กระดาษชำระ,,giấy vệ sinh,,ม้วน,noun,,กระดาษชำระ 2 ม้วน,2 cuộn giấy vệ sinh,,,plernpin-b04#p31,true
+b04-w27,b04,b04-l3,รถไฟ,,xe lửa,,ขบวน,noun,,รถไฟ 2 ขบวน,2 chuyến xe lửa,,,plernpin-b04#p32,true
+b04-w28,b04,b04-l3,เบียร์,,bia,,ขวด,noun,,เบียร์ 2 ขวด,2 chai bia,,,plernpin-b04#p33,true
+b04-w29,b04,b04-l3,สร้อยคอ,,dây chuyền,,เส้น,noun,,สร้อยคอ 2 เส้น,2 sợi dây chuyền,,,plernpin-b04#p34,true
+b04-w30,b04,b04-l3,หนัง,,phim,,เรื่อง,noun,,หนัง 2 เรื่อง,2 bộ phim,,,plernpin-b04#p35,true
+b04-w31,b04,b04-l4,บริษัท,,công ty,,แห่ง,noun,,บริษัท 2 แห่ง,2 công ty,,,plernpin-b04#p36,true
+b04-w32,b04,b04-l4,ดินสอ,,bút chì,,แท่ง,noun,,ดินสอ 2 แท่ง,2 cái bút chì,,,plernpin-b04#p37,true
+b04-w33,b04,b04-l4,ยางลบ,,tẩy,,แท่ง,noun,,ยางลบ 2 แท่ง,2 cục tẩy,,,plernpin-b04#p38,true
+b04-w34,b04,b04-l4,ปากกา,,bút bi,,ด้าม,noun,,ปากกา 2 ด้าม,2 cái bút bi,,,plernpin-b04#p39,true
+b04-w35,b04,b04-l4,นิ้วมือ,,ngón tay,,นิ้ว,noun,,นิ้วมือ 5 นิ้ว,5 ngón tay,,,plernpin-b04#p40,true
+b04-w36,b04,b04-l4,กระดาษ,,giấy,,แผ่น,noun,,กระดาษ 2 แผ่น,2 tờ giấy,,,plernpin-b04#p41,true
+b04-w37,b04,b04-l4,รายการวิทยุ,,chương trình đài phát thanh,,รายการ,noun,,รายการวิทยุ 2 รายการ,2 chương trình đài phát thanh,,,plernpin-b04#p42,true
+b04-w38,b04,b04-l4,เครื่องซักเสื้อผ้า,,máy giặt,,เครื่อง,noun,,เครื่องซักเสื้อผ้า 2 เครื่อง,2 chiếc máy giặt,,,plernpin-b04#p43,true
+b04-w39,b04,b04-l5,นักเรียน,,học sinh,,,noun,,,,,,plernpin-b04#p48,true
+b04-w40,b04,b04-l5,เทอมนี้,,kỳ này,,,noun,,,,,,plernpin-b04#p48,true
+b04-w41,b04,b04-l5,วิชา,,môn học,,,noun,,,,,,plernpin-b04#p48,true
+b04-w42,b04,b04-l5,ห้อง,,phòng,,,noun,,,,,,plernpin-b04#p48,true
+b04-w43,b04,b04-l5,อายุ,,tuổi,,,noun,,,,,,plernpin-b04#p48,true
+b04-w44,b04,b04-l5,นักศึกษาผู้หญิง,,sinh viên nữ,,,noun,,,,,,plernpin-b04#p49,true
+b04-w45,b04,b04-l5,นักศึกษาผู้ชาย,,sinh viên nam,,,noun,,,,,,plernpin-b04#p49,true
