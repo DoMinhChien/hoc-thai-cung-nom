@@ -757,3 +757,63 @@
     - { th: "เขาได้รับทุนการศึกษาจากอเมริกา", vi: "Anh ấy được nhận học bổng từ Mỹ" }
   source: plernpin-c13#p6
   draft: true
+- id: g-c12-tai
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “ở, tại”"
+  pattern: "(อยู่) + ที่ + địa điểm"
+  explain_vi: "ที่ đứng trước địa điểm, mang nghĩa “ở, tại”."
+  examples:
+    - { th: "เขาอยู่ที่บ้าน", vi: "Anh ấy ở tại nhà" }
+    - { th: "ที่นี่ที่ไหนคะ", vi: "Ở đây ở đâu ạ?" }
+  source: plernpin-c12#p1
+  draft: true
+- id: g-c12-noi
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “nơi, chỗ”"
+  pattern: "ที่ + động từ / danh từ"
+  explain_vi: "ที่ mang nghĩa “nơi, chỗ”. Các trường hợp của ที่: ที่เขี่ยบุหรี่ (gạt tàn thuốc lá), ที่นั่ง (chỗ ngồi/ghế ngồi), ที่เกิด (nơi sinh), ที่เก็บของ (nơi cất đồ, chỗ cất đồ), ที่จอดรถ (chỗ đậu xe), ที่ตั้ง (vị trí, địa điểm), ที่ทำงาน (chỗ làm việc), ที่เที่ยว (chỗ vui chơi, địa điểm du lịch, địa điểm tham quan), ที่นอน (chỗ nằm, nệm, đệm), ที่ว่าง (chỗ trống, chỗ bỏ không), ที่อยู่ (địa chỉ), ที่นา (đồng ruộng), ที่ประชุม (hội nghị), ที่พัก (chỗ nghỉ ngơi, chỗ lưu trú)."
+  examples:
+    - { th: "ที่นั่ง", vi: "Chỗ ngồi/ghế ngồi" }
+    - { th: "ที่จอดรถ", vi: "Chỗ đậu xe" }
+    - { th: "ที่อยู่", vi: "Địa chỉ" }
+  source: plernpin-c12#p1
+  draft: true
+- id: g-c12-suat
+  unit_id: c12
+  title_vi: "Từ ที่ là loại từ mang nghĩa “phần, suất”"
+  pattern: "Danh từ + số + ที่"
+  explain_vi: "ที่ là loại từ (ลักษณนาม) mang nghĩa “phần, suất”, dùng khi đếm suất ăn, chỗ ngồi."
+  examples:
+    - { th: "ข้าวสองที่", vi: "2 suất cơm" }
+    - { th: "ที่นั่งสามที่", vi: "3 ghế ngồi/3 chỗ ngồi" }
+  source: plernpin-c12#p2
+  draft: true
+- id: g-c12-din
+  unit_id: c12
+  title_vi: "Từ ที่ mang nghĩa “đất, đất đai”"
+  pattern: "ที่ = ที่ดิน"
+  explain_vi: "Từ ที่ là biểu mẫu viết tắt của ที่ดิน, mang nghĩa “đất, đất đai”."
+  examples:
+    - { th: "เขาซื้อที่ที่ประเทศไทย", vi: "Anh ấy mua đất ở nước Thái" }
+  source: plernpin-c12#p3
+  draft: true
+- id: g-c12-thutu
+  unit_id: c12
+  title_vi: "Từ ที่ với hàm nghĩa chỉ số thứ tự"
+  pattern: "ที่ + số"
+  explain_vi: "ที่ đứng trước số, chỉ số thứ tự (thứ …, ngày mùng …)."
+  examples:
+    - { th: "ฉันนัดหมอวันที่สิบ", vi: "Tôi hẹn gặp bác sĩ ngày mùng 10" }
+    - { th: "เขาวิ่งเข้าเส้นชัยเป็นคนที่สาม", vi: "Anh ấy chạy về là người thứ ba" }
+  source: plernpin-c12#p3
+  draft: true
+- id: g-c12-quanhe
+  unit_id: c12
+  title_vi: "Từ ที่ đóng vai trò là đại từ quan hệ"
+  pattern: "Danh từ + ที่ + mệnh đề"
+  explain_vi: "ที่ đóng vai trò là đại từ quan hệ, nghĩa là “mà”."
+  examples:
+    - { th: "คนที่มาชื่อสมชาย", vi: "Người mà đến tên Somchai" }
+    - { th: "หนังสือที่ฉันชอบอยู่บนโต๊ะ", vi: "Quyển sách mà tôi thích ở trên bàn" }
+  source: plernpin-c12#p3
+  draft: true

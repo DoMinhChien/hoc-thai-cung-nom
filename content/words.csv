@@ -985,3 +985,19 @@ c13-w31,c13,c13-l3,ถูกคอ,,hợp ý; ăn ý,,,verb,,,,,,plernpin-c13#p4
 c13-w32,c13,c13-l3,ถูกชะตา,,đúng định mệnh,,,verb,,,,,,plernpin-c13#p4,true
 c13-w33,c13,c13-l4,โดน,,bị,"được sử dụng y chang như ถูก, nhưng ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng",,verb,,,,,,plernpin-c13#p5,true
 c13-w34,c13,c13-l4,ได้รับ,,được; được nhận,thay thế cho ถูก trong trường hợp mang nghĩa tích cực,,verb,,,,,,plernpin-c13#p6,true
+c12-w01,c12,c12-l1,ที่,,ở; tại; nơi; chỗ; phần; suất; đất,còn dùng chỉ số thứ tự và làm đại từ quan hệ (mà),,prep,,,,,,plernpin-c12#p1,true
+c12-w02,c12,c12-l1,ที่เขี่ยบุหรี่,,gạt tàn thuốc lá,,,noun,,,,,,plernpin-c12#p1,true
+c12-w03,c12,c12-l1,ที่นั่ง,,chỗ ngồi; ghế ngồi,,,noun,,,,,,plernpin-c12#p1,true
+c12-w04,c12,c12-l1,ที่เกิด,,nơi sinh,chỗ mình sinh ra,,noun,,,,,,plernpin-c12#p2,true
+c12-w05,c12,c12-l1,ที่เก็บของ,,nơi cất đồ; chỗ cất đồ,,,noun,,,,,,plernpin-c12#p2,true
+c12-w06,c12,c12-l1,ที่จอดรถ,,chỗ đậu xe,,,noun,,,,,,plernpin-c12#p2,true
+c12-w07,c12,c12-l1,ที่ตั้ง,,vị trí; địa điểm,chỗ tọa lạc,,noun,,,,,,plernpin-c12#p2,true
+c12-w08,c12,c12-l1,ที่ทำงาน,,chỗ làm việc,"cơ quan, văn phòng",,noun,,,,,,plernpin-c12#p2,true
+c12-w09,c12,c12-l2,ที่เที่ยว,,chỗ vui chơi; địa điểm du lịch; địa điểm tham quan,,,noun,,,,,,plernpin-c12#p2,true
+c12-w10,c12,c12-l2,ที่นอน,,chỗ nằm; nệm; đệm,,,noun,,,,,,plernpin-c12#p2,true
+c12-w11,c12,c12-l2,ที่ว่าง,,chỗ trống; chỗ bỏ không,,,noun,,,,,,plernpin-c12#p2,true
+c12-w12,c12,c12-l2,ที่อยู่,,địa chỉ,,,noun,,,,,,plernpin-c12#p2,true
+c12-w13,c12,c12-l2,ที่นา,,đồng ruộng,,,noun,,,,,,plernpin-c12#p2,true
+c12-w14,c12,c12-l2,ที่ประชุม,,hội nghị,,,noun,,,,,,plernpin-c12#p2,true
+c12-w15,c12,c12-l2,ที่พัก,,chỗ nghỉ ngơi; chỗ lưu trú,,,noun,,,,,,plernpin-c12#p2,true
+c12-w16,c12,c12-l2,ที่ดิน,,đất; đất đai,ที่ là biểu mẫu viết tắt của ที่ดิน,,noun,,,,,,plernpin-c12#p3,true

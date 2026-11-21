@@ -117,3 +117,5 @@ c13-l1,c13,1,"ว่า: nói, bảo; là, rằng (1)",g-c13-wa-noi|g-c13-wa-ran
 c13-l2,c13,2,Các trường hợp của ว่า (2),g-c13-wa-rang,true
 c13-l3,c13,3,"ถูก: rẻ, đúng, chạm, hợp ý",g-c13-thuk,true
 c13-l4,c13,4,"Câu bị động: ถูก, โดน, ได้รับ",g-c13-thuk-bi|g-c13-dairap-v|g-c13-dairap-n,true
+c12-l1,c12,1,"ที่: ở, tại; nơi, chỗ",g-c12-tai|g-c12-noi,true
+c12-l2,c12,2,"ที่: phần, suất; đất; số thứ tự; đại từ quan hệ",g-c12-suat|g-c12-din|g-c12-thutu|g-c12-quanhe,true
