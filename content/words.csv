@@ -926,3 +926,20 @@ b03-w87,b03,b03-l9,เลขไทย,,số Thái,,,noun,,,,,,plernpin-b03#p58,t
 b03-w88,b03,b03-l9,เลขคู่,,số chẵn,,,noun,,,,,,plernpin-b03#p58,true
 b03-w89,b03,b03-l9,เลขคี่,,số lẻ,,,noun,,,,,,plernpin-b03#p58,true
 b03-w90,b03,b03-l9,เบอร์โทรศัพท์,หมายเลขโทรศัพท์,số điện thoại,cũng nói: หมายเลขโทรศัพท์,,noun,,,,,,plernpin-b03#p58,true
+c15-w01,c15,c15-l1,เข้าไป,,đi vào,người nói đứng bên ngoài nhìn,,verb,,เขากำลังเข้าไปข้างใน,Anh ấy đang đi vào bên trong,,,plernpin-c15#p1,true
+c15-w02,c15,c15-l1,ออกไป,,đi ra,người nói đứng bên trong nhìn,,verb,,เขากำลังออกไปข้างนอก,Anh ấy đang đi ra bên ngoài,,,plernpin-c15#p1,true
+c15-w03,c15,c15-l1,ผ่านไป,,trôi đi; qua đi,,,verb,,เวลาผ่านไปอย่างรวดเร็ว,Thời gian trôi đi một cách nhanh chóng,,,plernpin-c15#p1,true
+c15-w04,c15,c15-l1,ลงไป,,đi xuống,hướng di chuyển ra xa người nói,,verb,,ลงบันไดไป แล้วเลี้ยวขวา ห้องน้ำจะอยู่ทางขวามือ,"Đi xuống cầu thang, rồi rẽ phải. Phòng vệ sinh sẽ ở bên tay phải",,,plernpin-c15#p1,true
+c15-w05,c15,c15-l1,ขึ้นไป,,đi lên,hướng di chuyển ra xa người nói,,verb,,เดินขึ้นบันไดไปชั้นแปด,Đi bộ đi lên cầu thang tầng 8,,,plernpin-c15#p1,true
+c15-w06,c15,c15-l1,ไปแล้ว,,đã … từ lâu rồi,V + ไปแล้ว: cái gì đã … từ lâu rồi (khác V + แล้ว: cái gì vừa mới … rồi),,phrase,,ร้านนี้ปิดไปแล้ว,"Quán này đã đóng rồi (đóng từ lâu rồi, ngừng kinh doanh rồi)",,,plernpin-c15#p1,true
+c15-w07,c15,c15-l2,เข้ามา,,vào đến; vào đây,người nói đứng bên trong nhìn,,verb,,เขากำลังเข้ามาข้างใน,Anh ấy đang vào đến bên trong,,,plernpin-c15#p2,true
+c15-w08,c15,c15-l2,ออกมา,,đi ra; ra đây,người nói đứng bên ngoài nhìn,,verb,,เขากำลังออกมาข้างนอก,Anh ấy đang đi ra bên ngoài,,,plernpin-c15#p2,true
+c15-w09,c15,c15-l2,ผ่านมา,,vừa qua,,,verb,,ขอบคุณทุกคนที่ช่วยเหลือหนูตลอดปีที่ผ่านมา,Cảm ơn mọi người cái mà đã giúp đỡ em suốt năm vừa qua,,,plernpin-c15#p2,true
+c15-w10,c15,c15-l2,ลงมา,,xuống đến; xuống đây,hướng di chuyển lại gần người nói,,verb,,เดินลงบันไดมา,Đi bộ xuống đến cầu thang,,,plernpin-c15#p2,true
+c15-w11,c15,c15-l2,ขึ้นมา,,lên đến; lên đây,hướng di chuyển lại gần người nói,,verb,,เดินขึ้นบันไดมา,Đi bộ lên đến cầu thang,,,plernpin-c15#p2,true
+c15-w12,c15,c15-l2,มาก่อน,,trước đây,มา trong cụm từ มาก่อน mang nghĩa “trước đây”,,adv,,คุณเคยทำงานนี้มาก่อนไหม,Bạn đã từng làm việc này trước đây chưa?,,,plernpin-c15#p2,true
+c15-w13,c15,c15-l2,เสมอมา,,suốt; luôn luôn,"เสมอมา: từ trước đến nay vẫn vậy (thể hiện sự ổn định, không đổi)",,adv,,เขาดีกับฉันเสมอมา,Anh ấy luôn luôn tốt với tôi,,,plernpin-c15#p2,true
+c15-w14,c15,c15-l2,มาตลอด,,suốt; luôn luôn,"มาตลอด: suốt từ đầu đến nay (nhấn mạnh vào quá trình liên tục, diễn ra liên tục); = เสมอมา",,adv,,ชาวนาทำงานหนักมาตลอด,Người nông dân làm việc vất vả suốt,,,plernpin-c15#p3,true
+c15-w15,c15,c15-l3,ไปๆ มาๆ,,đi đi về về,theo ví dụ của GV,,phrase,,ไปๆมาๆระหว่างไทยกับเวียดนาม,Đi đi về về giữa Thái Lan với Việt Nam,,,plernpin-c15#p4,true
+c15-w16,c15,c15-l3,อย่าไป,,đừng,dặn trước nhưng chưa xảy ra,,phrase,,อย่าไปเชื่อเขานะ,Đừng tin anh ấy nhé (dặn trước),,,plernpin-c15#p4,true
+c15-w17,c15,c15-l3,อย่ามา,,đừng,sự việc đang xảy ra,,phrase,,อย่ามาพูดแบบนี้นะ,Đừng nói kiểu này nhé (đang xảy ra),,,plernpin-c15#p4,true

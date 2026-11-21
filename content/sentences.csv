@@ -425,3 +425,57 @@ s-b03-008,b03,b03-l4,Anh ý thi được thứ hạng bao nhiêu?,เขาส�
 s-b03-009,b03,b03-l4,Anh ấy thi được thứ nhất,เขาสอบได้ที่หนึ่งครับ,เขาสอบได้ที่หนึ่งค่ะ,เขา|สอบ|ได้|ที่|หนึ่ง|ครับ,สุดท้าย,g-b03-doc-dau,,plernpin-b03#p61,true
 s-b03-010,b03,b03-l7,Sinh viên thi trượt 30%,นักศึกษาสอบตกสามสิบเปอร์เซ็นต์ครับ,นักศึกษาสอบตกสามสิบเปอร์เซ็นต์ค่ะ|นักศึกษาสอบตกร้อยละสามสิบครับ,นักศึกษา|สอบ|ตก|สามสิบ|เปอร์เซ็นต์|ครับ,ผ่าน,g-b03-percent,,plernpin-b03#p61,true
 s-b03-011,b03,b03-l5,Tôi đến học là người đầu tiên,ผมมาเรียนเป็นคนแรกครับ,ฉันมาเรียนเป็นคนแรกค่ะ,ผม|มา|เรียน|เป็น|คน|แรก|ครับ,สุดท้าย,,,plernpin-b03#p61,true
+s-c15-001,c15,c15-l1,Anh ấy đang đi vào trong phòng học (người nói đứng bên ngoài hoặc không ở trong phòng học),เขากำลังเข้าไปในห้องเรียน,,เขา|กำลัง|เข้าไป|ใน|ห้องเรียน,เข้ามา,g-c15-pai,,plernpin-c15#p4,true
+s-c15-002,c15,c15-l1,Anh ấy đang đi vào trong nhà của bạn (người nói đứng bên ngoài hoặc ko ở trong nhà của bạn),เขากำลังเข้าไปในบ้านของเพื่อน,เขากำลังเข้าไปในบ้านของคุณ,เขา|กำลัง|เข้าไป|ใน|บ้าน|ของ|เพื่อน,เข้ามา,g-c15-pai,,plernpin-c15#p4,true
+s-c15-003,c15,c15-l1,Anh ấy đang đi vào trong thư viện (người nói đứng bên ngoài hoặc không ở trong thư viện),เขากำลังเข้าไปในห้องสมุด,,เขา|กำลัง|เข้าไป|ใน|ห้องสมุด,เข้ามา,g-c15-pai,,plernpin-c15#p4,true
+s-c15-004,c15,c15-l1,Anh ấy đang đi vào trong ngân hàng (người nói đứng bên ngoài hoặc không ở trong ngân hàng),เขากำลังเข้าไปในธนาคาร,,เขา|กำลัง|เข้าไป|ใน|ธนาคาร,เข้ามา,g-c15-pai,,plernpin-c15#p4,true
+s-c15-005,c15,c15-l1,Anh ấy đang đi vào trong khách sạn (người nói đứng bên ngoài hoặc không ở trong khách sạn),เขากำลังเข้าไปในโรงแรม,,เขา|กำลัง|เข้าไป|ใน|โรงแรม,เข้ามา,g-c15-pai,,plernpin-c15#p5,true
+s-c15-006,c15,c15-l1,Anh ấy đang đi vào trong quán ăn (người nói đứng bên ngoài hoặc không ở trong quán ăn),เขากำลังเข้าไปในร้านอาหาร,,เขา|กำลัง|เข้าไป|ใน|ร้านอาหาร,เข้ามา,g-c15-pai,,plernpin-c15#p5,true
+s-c15-007,c15,c15-l1,Học sinh đang đi ra bên ngoài (người nói đứng bên trong),นักเรียนกำลังออกไปข้างนอก,,นักเรียน|กำลัง|ออกไป|ข้างนอก,ออกมา,g-c15-pai,,plernpin-c15#p5,true
+s-c15-008,c15,c15-l1,"Anh chuẩn bị đi ra chợ, lát nữa sẽ mua trà sữa về cho nhé (người nói ở trong nhà)",พี่กำลังจะไปตลาด เดี๋ยวจะซื้อชานมมาให้นะ,พี่จะไปตลาด เดี๋ยวจะซื้อชานมมาฝากนะ,พี่|กำลัง|จะ|ไป|ตลาด|เดี๋ยว|จะ|ซื้อ|ชานม|มา|ให้|นะ,ออกมา,g-c15-pai-ma,,plernpin-c15#p5,true
+s-c15-009,c15,c15-l1,Vợ của anh ấy đang đi ra bên ngoài (người nói đứng bên trong),ภรรยาของเขากำลังออกไปข้างนอก,,ภรรยา|ของ|เขา|กำลัง|ออกไป|ข้างนอก,ออกมา,g-c15-pai,,plernpin-c15#p5,true
+s-c15-010,c15,c15-l1,"Lúc covid qua đi, thì chúng tôi quay trở lại làm việc như cũ",พอโควิดผ่านไป พวกเราก็กลับมาทำงานเหมือนเดิม,เมื่อโควิดผ่านไป เราก็กลับมาทำงานเหมือนเดิม,พอ|โควิด|ผ่านไป|พวกเรา|ก็|กลับมา|ทำงาน|เหมือนเดิม,ผ่านมา,g-c15-pai,,plernpin-c15#p6,true
+s-c15-011,c15,c15-l1,Đi cầu thang máy xuống tầng 2 (người nói đang ở bên trên),นั่งลิฟต์ลงไปชั้นสอง,ขึ้นลิฟต์ลงไปชั้นสอง,นั่ง|ลิฟต์|ลงไป|ชั้น|สอง,ลงมา,g-c15-pai,,plernpin-c15#p6,true
+s-c15-012,c15,c15-l1,Đi cầu thang máy lên bên trên (người nói đang ở bên dưới),นั่งลิฟต์ขึ้นไปข้างบน,,นั่ง|ลิฟต์|ขึ้นไป|ข้างบน,ขึ้นมา,g-c15-pai,,plernpin-c15#p6,true
+s-c15-013,c15,c15-l1,Em quên mất rồi,หนูลืมไปแล้ว,ผมลืมไปแล้ว,หนู|ลืม|ไปแล้ว,มาแล้ว,g-c15-pai-laeo,,plernpin-c15#p8,true
+s-c15-014,c15,c15-l1,"Tôi xin lỗi, tôi làm sai mất rồi",ขอโทษ ฉันทำผิดไปแล้ว,ขอโทษครับ ผมทำผิดไปแล้ว,ขอโทษ|ฉัน|ทำ|ผิด|ไปแล้ว,มาแล้ว,g-c15-pai-laeo,,plernpin-c15#p8,true
+s-c15-015,c15,c15-l1,Anh ấy chết rồi (anh ấy vừa mới chết được 1 lúc),เขาตายแล้ว,,เขา|ตาย|แล้ว,ไปแล้ว,g-c15-pai-laeo,,plernpin-c15#p10,true
+s-c15-016,c15,c15-l1,Anh ấy đã chết rồi (chết được 1 lúc lâu rồi),เขาตายไปแล้ว,,เขา|ตาย|ไปแล้ว,มาแล้ว,g-c15-pai-laeo,,plernpin-c15#p10,true
+s-c15-017,c15,c15-l2,Anh ấy đang đi vào trong thư viện (người nói đứng bên trong),เขากำลังเข้ามาในห้องสมุด,,เขา|กำลัง|เข้ามา|ใน|ห้องสมุด,เข้าไป,g-c15-ma,,plernpin-c15#p6,true
+s-c15-018,c15,c15-l2,Anh ấy đang đi vào trong phòng học (người nói đứng bên trong),เขากำลังเข้ามาในห้องเรียน,,เขา|กำลัง|เข้ามา|ใน|ห้องเรียน,เข้าไป,g-c15-ma,,plernpin-c15#p6,true
+s-c15-019,c15,c15-l2,Anh ấy đang đi vào trong bưu điện (người nói đứng bên trong),เขากำลังเข้ามาในไปรษณีย์,เขากำลังเข้ามาในที่ทำการไปรษณีย์,เขา|กำลัง|เข้ามา|ใน|ไปรษณีย์,เข้าไป,g-c15-ma,,plernpin-c15#p6,true
+s-c15-020,c15,c15-l2,Cô giáo đang đi ra bên ngoài (người nói đứng bên ngoài),ครูกำลังออกมาข้างนอก,,ครู|กำลัง|ออกมา|ข้างนอก,ออกไป,g-c15-ma,,plernpin-c15#p6,true
+s-c15-021,c15,c15-l2,Cảnh sát đi ra chưa? (người nói đứng bên ngoài),ตำรวจออกมาหรือยัง,,ตำรวจ|ออกมา|หรือ|ยัง,ออกไป,g-c15-ma,,plernpin-c15#p6,true
+s-c15-022,c15,c15-l2,"Cô giáo đã từng dạy rồi, tại sao không nhớ được",ครูเคยสอนมาแล้ว ทำไมจำไม่ได้,,ครู|เคย|สอน|มาแล้ว|ทำไม|จำ|ไม่ได้,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p8,true
+s-c15-023,c15,c15-l2,Em đã từng kể cho em Kày nghe rồi,หนูเคยเล่าให้น้องไข่ฟังมาแล้ว,,หนู|เคย|เล่า|ให้|น้องไข่|ฟัง|มาแล้ว,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p8,true
+s-c15-024,c15,c15-l2,"Anh ấy kết hôn với cô ấy đã lâu rồi, và vẫn ở với nhau hạnh phúc",เขาแต่งงานกับเธอมานานแล้ว และยังอยู่ด้วยกันอย่างมีความสุข,,เขา|แต่งงาน|กับ|เธอ|มา|นาน|แล้ว|และ|ยัง|อยู่|ด้วยกัน|อย่าง|มี|ความสุข,ไป,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-025,c15,c15-l2,Tôi không có trở về nhà đã 2 năm rồi,ฉันไม่ได้กลับบ้านมาสองปีแล้ว,ผมไม่ได้กลับบ้านมาสองปีแล้ว,ฉัน|ไม่ได้|กลับ|บ้าน|มา|สอง|ปี|แล้ว,ไป,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-026,c15,c15-l2,"Tôi tán cô ấy đã lâu rồi, nhưng cô ấy cũng chưa đồng ý chấp nhận tôi là người yêu",ผมจีบเธอมานานแล้ว แต่เธอก็ยังไม่ยอมรับผมเป็นแฟน,,ผม|จีบ|เธอ|มา|นาน|แล้ว|แต่|เธอ|ก็|ยัง|ไม่|ยอมรับ|ผม|เป็น|แฟน,ไป,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-027,c15,c15-l2,Bạn đã từng học tiếng Thái trước đây chưa?,คุณเคยเรียนภาษาไทยมาก่อนไหม,คุณเคยเรียนภาษาไทยมาก่อนหรือเปล่า,คุณ|เคย|เรียน|ภาษาไทย|มาก่อน|ไหม,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-028,c15,c15-l2,Bạn biết anh ấy trước đây không?,คุณรู้จักเขามาก่อนไหม,,คุณ|รู้จัก|เขา|มาก่อน|ไหม,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-029,c15,c15-l2,Bạn đã từng làm phúc trước đây chưa?,คุณเคยทำบุญมาก่อนไหม,,คุณ|เคย|ทำบุญ|มาก่อน|ไหม,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p9,true
+s-c15-030,c15,c15-l2,Tôi đọc sách tiếng Thái suốt cả đêm,ฉันอ่านหนังสือภาษาไทยมาตลอดทั้งคืน,ผมอ่านหนังสือภาษาไทยมาตลอดทั้งคืน,ฉัน|อ่าน|หนังสือ|ภาษาไทย|มาตลอด|ทั้ง|คืน,เสมอมา,g-c15-ma-da,,plernpin-c15#p10,true
+s-c15-031,c15,c15-l2,Cô ấy vẫn luôn là người tốt,เธอเป็นคนดีเสมอมา,เธอเป็นคนดีมาตลอด,เธอ|เป็น|คน|ดี|เสมอมา,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p10,true
+s-c15-032,c15,c15-l2,Anh ấy luôn giúp đỡ tôi,เขาช่วยเหลือฉันมาตลอด,เขาช่วยเหลือฉันเสมอมา|เขาช่วยเหลือผมมาตลอด,เขา|ช่วยเหลือ|ฉัน|มาตลอด,ไปแล้ว,g-c15-ma-da,,plernpin-c15#p10,true
+s-c15-033,c15,c15-l3,Anh ấy đang đi bộ đi đến chỗ phòng thư viện (người nói ở bên ngoài hoặc không ở trong phòng thư viện),เขากำลังเดินไปที่ห้องสมุด,,เขา|กำลัง|เดิน|ไป|ที่|ห้องสมุด,มา,g-c15-pai-ma,,plernpin-c15#p6,true
+s-c15-034,c15,c15-l3,Anh ấy đang đi bộ đi đến chỗ phòng thư viện (người nói đang ở trong phòng thư viện rồi),เขากำลังเดินมาที่ห้องสมุด,,เขา|กำลัง|เดิน|มา|ที่|ห้องสมุด,ไป,g-c15-pai-ma,,plernpin-c15#p6,true
+s-c15-035,c15,c15-l3,Chúng tôi đến làm phúc ở chùa (cả người nghe và người nói đều ở chùa rồi),พวกเรามาทำบุญที่วัด,,พวกเรา|มา|ทำบุญ|ที่|วัด,ไป,g-c15-pai-ma,,plernpin-c15#p6,true
+s-c15-036,c15,c15-l3,Tôi thích đến siêu thị này (cả người nghe và người nói đều ở siêu thị rồi),ฉันชอบมาซูเปอร์มาร์เก็ตนี้,ผมชอบมาซูเปอร์มาร์เก็ตนี้,ฉัน|ชอบ|มา|ซูเปอร์มาร์เก็ต|นี้,ไป,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-037,c15,c15-l3,Em muốn đến sở thú nữa (cả người nghe và người nói đều ở sở thú rồi),หนูอยากมาสวนสัตว์อีก,,หนู|อยาก|มา|สวนสัตว์|อีก,ไป,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-038,c15,c15-l3,Tôi đã từng đi Thái lúc 3 năm trước (cả người nghe và người nói không có ở Thái),ฉันเคยไปเมืองไทยเมื่อสามปีก่อน,ผมเคยไปเมืองไทยเมื่อสามปีก่อน|ฉันเคยไปประเทศไทยเมื่อสามปีก่อน,ฉัน|เคย|ไป|เมืองไทย|เมื่อ|สาม|ปี|ก่อน,มา,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-039,c15,c15-l3,Tôi đã từng đến Thái lúc 3 năm trước (cả người nghe và người nói đang ở Thái),ฉันเคยมาเมืองไทยเมื่อสามปีก่อน,ผมเคยมาเมืองไทยเมื่อสามปีก่อน|ฉันเคยมาประเทศไทยเมื่อสามปีก่อน,ฉัน|เคย|มา|เมืองไทย|เมื่อ|สาม|ปี|ก่อน,ไป,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-040,c15,c15-l3,Tôi đi bộ đi tìm anh ấy,ฉันเดินไปหาเขา,ผมเดินไปหาเขา,ฉัน|เดิน|ไป|หา|เขา,มา,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-041,c15,c15-l3,Anh ấy đi bộ đến tìm tôi,เขาเดินมาหาฉัน,เขาเดินมาหาผม,เขา|เดิน|มา|หา|ฉัน,ไป,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-042,c15,c15-l3,"A: Dạo này bạn đẹp lên nhé, có gì mới phải không?",ช่วงนี้เธอสวยขึ้นนะ มีอะไรใหม่หรือเปล่า,ช่วงนี้เธอสวยขึ้นนะ มีอะไรใหม่ใช่ไหม,ช่วงนี้|เธอ|สวย|ขึ้น|นะ|มี|อะไร|ใหม่|หรือเปล่า,ลง,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-043,c15,c15-l3,"B: Đâu, Kể ra đây đi chứ.",ไหน เล่ามาสิ,ไหน เล่ามาเลยสิ,ไหน|เล่า|มา|สิ,ไป,g-c15-pai-ma,,plernpin-c15#p7,true
+s-c15-044,c15,c15-l3,"Ngồi xe lửa đi, rồi ngồi máy bay quay về",นั่งรถไฟไป แล้วนั่งเครื่องบินกลับมา,,นั่ง|รถไฟ|ไป|แล้ว|นั่ง|เครื่องบิน|กลับมา,กลับไป,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-045,c15,c15-l3,Tôi đi ăn cơm về rồi,ฉันไปกินข้าวมาแล้ว,ผมไปกินข้าวมาแล้ว,ฉัน|ไป|กิน|ข้าว|มาแล้ว,ไปแล้ว,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-046,c15,c15-l3,Tôi đi qua đi lại 10 phút,ฉันเดินไปเดินมาสิบนาที,ผมเดินไปเดินมาสิบนาที,ฉัน|เดิน|ไป|เดิน|มา|สิบ|นาที,ผ่าน,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-047,c15,c15-l3,Anh ấy thích thay đổi đi thay đổi lại,เขาชอบเปลี่ยนไปเปลี่ยนมา,,เขา|ชอบ|เปลี่ยน|ไป|เปลี่ยน|มา,ผ่าน,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-048,c15,c15-l3,Đi đâu về?,ไปไหนมา,,ไป|ไหน|มา,ที่,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-049,c15,c15-l3,Cô ấy đi làm gì về?,เธอไปทำอะไรมา,,เธอ|ไป|ทำ|อะไร|มา,ที่ไหน,g-c15-pai-ma,,plernpin-c15#p8,true
+s-c15-050,c15,c15-l3,Tôi đi vệ sinh về,ฉันไปเข้าห้องน้ำมา,ผมไปเข้าห้องน้ำมา,ฉัน|ไป|เข้า|ห้องน้ำ|มา,ออก,g-c15-pai-ma,,plernpin-c15#p9,true
+s-c15-051,c15,c15-l3,Không có mua gì về luôn?,ไม่ได้ซื้ออะไรมาเลยเหรอ,ไม่ได้ซื้ออะไรมาเลยหรือ,ไม่ได้|ซื้อ|อะไร|มา|เลย|เหรอ,ไป,g-c15-pai-ma,,plernpin-c15#p9,true
+s-c15-052,c15,c15-l3,Đừng yêu người đa tình (nhắc trước),อย่าไปรักคนเจ้าชู้,,อย่าไป|รัก|คน|เจ้าชู้,อย่ามา,g-c15-ya,,plernpin-c15#p9,true
+s-c15-053,c15,c15-l3,Đừng đến làm phiền tôi (đang xảy ra),อย่ามากวนฉัน,อย่ามากวนผม,อย่ามา|กวน|ฉัน,อย่าไป,g-c15-ya,,plernpin-c15#p9,true
+s-c15-054,c15,c15-l3,Đừng tiêu tiền thay tôi (đang xảy ra),อย่ามาใช้เงินแทนฉัน,อย่ามาใช้เงินแทนผม,อย่ามา|ใช้|เงิน|แทน|ฉัน,อย่าไป,g-c15-ya,,plernpin-c15#p10,true

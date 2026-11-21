@@ -615,3 +615,74 @@
     - { th: "หนูอายุห้าขวบ", vi: "Em 5 tuổi" }
   source: plernpin-b03#p45-46
   draft: true
+- id: g-c15-pai
+  unit_id: c15
+  title_vi: "Cách sử dụng của ไป"
+  pattern: "เข้า / ออก / ผ่าน / ลง / ขึ้น + ไป"
+  explain_vi: "ไป đứng sau động từ chỉ hướng: hướng di chuyển ra xa người nói. เข้าไป: đi vào (đứng bên ngoài nhìn). ออกไป: đi ra (đứng bên trong nhìn). ผ่านไป: trôi đi, qua đi. ลงไป: đi xuống. ขึ้นไป: đi lên."
+  examples:
+    - { th: "เขากำลังเข้าไปข้างใน", vi: "Anh ấy đang đi vào bên trong" }
+    - { th: "เขากำลังออกไปข้างนอก", vi: "Anh ấy đang đi ra bên ngoài" }
+    - { th: "เวลาผ่านไปอย่างรวดเร็ว", vi: "Thời gian trôi đi một cách nhanh chóng" }
+    - { th: "ลงบันไดไป แล้วเลี้ยวขวา ห้องน้ำจะอยู่ทางขวามือ", vi: "Đi xuống cầu thang, rồi rẽ phải. Phòng vệ sinh sẽ ở bên tay phải" }
+    - { th: "เดินขึ้นบันไดไปชั้นแปด", vi: "Đi bộ đi lên cầu thang tầng 8" }
+  source: plernpin-c15#p1
+  draft: true
+- id: g-c15-pai-laeo
+  unit_id: c15
+  title_vi: "V + แล้ว và V + ไปแล้ว"
+  pattern: "V + แล้ว · V + ไปแล้ว"
+  explain_vi: "V + แล้ว: cái gì vừa mới … rồi. V + ไปแล้ว: cái gì đã … từ lâu rồi."
+  examples:
+    - { th: "ร้านนี้ปิดแล้ว", vi: "Cửa hàng này đóng rồi (vì giờ làm việc từ 9h-17h)" }
+    - { th: "ร้านนี้ปิดไปแล้ว", vi: "Quán này đã đóng rồi (đóng từ lâu rồi, ngừng kinh doanh rồi)" }
+  source: plernpin-c15#p1
+  draft: true
+- id: g-c15-ma
+  unit_id: c15
+  title_vi: "Cách sử dụng của มา"
+  pattern: "เข้า / ออก / ผ่าน / ลง / ขึ้น + มา"
+  explain_vi: "มา đứng sau động từ chỉ hướng: hướng di chuyển lại gần người nói. เข้ามา: vào đến, vào đây (đứng bên trong nhìn). ออกมา: đi ra, ra đây (đứng bên ngoài nhìn). ผ่านมา: vừa qua. ลงมา: xuống đến, xuống đây. ขึ้นมา: lên đến, lên đây."
+  examples:
+    - { th: "เขากำลังเข้ามาข้างใน", vi: "Anh ấy đang vào đến bên trong" }
+    - { th: "เขากำลังออกมาข้างนอก", vi: "Anh ấy đang đi ra bên ngoài" }
+    - { th: "ขอบคุณทุกคนที่ช่วยเหลือหนูตลอดปีที่ผ่านมา", vi: "Cảm ơn mọi người cái mà đã giúp đỡ em suốt năm vừa qua" }
+    - { th: "เดินลงบันไดมา", vi: "Đi bộ xuống đến cầu thang" }
+    - { th: "เดินขึ้นบันไดมา", vi: "Đi bộ lên đến cầu thang" }
+  source: plernpin-c15#p2
+  draft: true
+- id: g-c15-ma-da
+  unit_id: c15
+  title_vi: "มา mang nghĩa “đã”, มาก่อน, เสมอมา = มาตลอด"
+  pattern: "V + มา (นาน) แล้ว · V + มาก่อน · V + เสมอมา / มาตลอด"
+  explain_vi: "Từ มา mang nghĩa “đã”. Trong cụm từ มาก่อน, มา mang nghĩa “trước đây”. เสมอมา = มาตลอด: suốt, luôn luôn; trong đó เสมอมา: từ trước đến nay vẫn vậy (thể hiện sự ổn định, không đổi); มาตลอด: suốt từ đầu đến nay (nhấn mạnh vào quá trình liên tục, diễn ra liên tục)."
+  examples:
+    - { th: "เขาแต่งงานกับเธอมานานแล้ว แต่ปัจจุบันนี้เขาหย่าแล้ว", vi: "Anh ấy kết hôn với cô ấy đã lâu rồi, nhưng hiện tại họ ly hôn rồi" }
+    - { th: "คุณเคยทำงานนี้มาก่อนไหม", vi: "Bạn đã từng làm việc này trước đây chưa?" }
+    - { th: "เขาดีกับฉันเสมอมา", vi: "Anh ấy luôn luôn tốt với tôi" }
+    - { th: "ชาวนาทำงานหนักมาตลอด", vi: "Người nông dân làm việc vất vả suốt" }
+  source: plernpin-c15#p2
+  draft: true
+- id: g-c15-pai-ma
+  unit_id: c15
+  title_vi: "Sự khác biệt giữa ไป và มา"
+  pattern: "ไป (đi, xa người nói) · มา (về / đến, gần người nói)"
+  explain_vi: "ไป: cả người nghe và người nói chưa ở địa điểm đó; มา: cả người nghe và người nói đang ở địa điểm đó rồi. ไป: hướng của hành động xuất phát từ người nói; มา: hướng của hành động hướng tới người nói. ไป: mang nghĩa gốc là “đi”; มา: mang nghĩa gốc là “về”."
+  examples:
+    - { th: "เธอไปทำงานยังไง", vi: "Bạn đi làm việc bằng gì?" }
+    - { th: "หนูมาเรียนยังไง", vi: "Em đến học bằng gì?" }
+    - { th: "ฉันไปหาหมอที่โรงพยาบาล", vi: "Tôi đi tìm bác sĩ ở bệnh viện" }
+    - { th: "เพื่อนมาหาฉันที่บ้าน", vi: "Bạn đến tìm tôi ở nhà" }
+    - { th: "ไปๆมาๆระหว่างไทยกับเวียดนาม", vi: "Đi đi về về giữa Thái Lan với Việt Nam" }
+  source: plernpin-c15#p3
+  draft: true
+- id: g-c15-ya
+  unit_id: c15
+  title_vi: "อย่าไป và อย่ามา"
+  pattern: "อย่าไป + V · อย่ามา + V"
+  explain_vi: "อย่าไป: đừng (dặn trước nhưng chưa xảy ra). อย่ามา: đừng (sự việc đang xảy ra)."
+  examples:
+    - { th: "อย่าไปเชื่อเขานะ", vi: "Đừng tin anh ấy nhé (dặn trước)" }
+    - { th: "อย่ามาพูดแบบนี้นะ", vi: "Đừng nói kiểu này nhé (đang xảy ra)" }
+  source: plernpin-c15#p4
+  draft: true

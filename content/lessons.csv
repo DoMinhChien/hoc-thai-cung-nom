@@ -109,3 +109,6 @@ b03-l6,b03,6,"Thiểu số, còn, hết, tất cả; thừa, thiếu, đủ",,tr
 b03-l7,b03,7,"Phần trăm, khoảng, số hiệu; thêm, bớt, gấp",,true
 b03-l8,b03,8,"Đếm không xuể, mọi, một số; tiền, tuổi, tổng cộng",,true
 b03-l9,b03,9,"Tá, to, nhỏ, trọng lượng; số chẵn, số lẻ, số điện thoại",,true
+c15-l1,c15,1,Cách dùng của ไป,g-c15-pai|g-c15-pai-laeo,true
+c15-l2,c15,2,Cách dùng của มา,g-c15-ma|g-c15-ma-da,true
+c15-l3,c15,3,Khác biệt giữa ไป và มา,g-c15-pai-ma|g-c15-ya,true

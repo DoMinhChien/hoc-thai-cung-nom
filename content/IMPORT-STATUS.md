@@ -41,6 +41,6 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 | 12 | `c12` | `12. CÁCH SỬ DỤNG CỦA ที่_bản quyền.pdf` | 3 |  |  | ⬜ |
 | 13 | `c13` | `13. CÁCH SỬ DỤNG CỦA ว่า VÀ ถูก_bản quyền.pdf` | 6 |  |  | ⬜ |
 | 14 | `c14` | `14. CÁCH SỬ DỤNG CỦA TỪ สม_bản quyền.pdf` | 4 |  |  | ⬜ |
-| 15 | `c15` | `15. CÁCH SỬ DỤNG CỦA ไป & มา_bản quyền.pdf` | 10 |  |  | ⬜ |
+| 15 | `c15` | `15. CÁCH SỬ DỤNG CỦA ไป & มา_bản quyền.pdf` | 10 | 17 | 54 | 🟡 2026-11-21 · 3 bài học (ไป / มา / khác biệt ไป–มา) · 6 mẫu câu (เข้า/ออก/ผ่าน/ลง/ขึ้น + ไป, V + แล้ว / V + ไปแล้ว, เข้า/ออก/ผ่าน/ลง/ขึ้น + มา, มา = “đã” / มาก่อน / เสมอมา = มาตลอด, khác biệt ไป–มา, อย่าไป / อย่ามา; ví dụ của GV, có sẵn tiếng Thái) · 17 từ = các mục cách dùng (p1–4), nghĩa chép nguyên GV, câu VD của GV ở `example_th`/`example_vi`; ไปๆ มาๆ “đi đi về về” lấy từ câu ví dụ p4. 54 câu bài tập vận dụng (p4–10, VD1–53, VD27 có 2 lượt A/B): `vi` giữ nguyên chú thích ngữ cảnh trong ngoặc (người nói đứng đâu); Claude dịch Thái + `th_alt` + `tokens` + 1 thẻ nhiễu (cặp ไป↔มา, chờ GV duyệt). **Cần GV xem:** VD27 B “Đâu, Kể ra đây đi chứ.” tạm dịch ไหน เล่ามาสิ; VD29 tên “em Kày” phiên âm น้องไข่; VD48 “tiêu tiền thay tôi” dịch อย่ามาใช้เงินแทนฉัน; VD8 “mua trà sữa về cho” dịch ซื้อชานมมาให้ (`th_alt` มาฝาก); VD2 “nhà của bạn” dịch บ้านของเพื่อน (`th_alt` บ้านของคุณ); `title_th` ไป และ มา do Claude ghi. Không bỏ trang nào |
 
 > `03-loai-tu.pdf` trùng CĐ 3. CĐ 11 chỉ có bản mẫu gửi trước (thư mục Drive không có file “11.”).
