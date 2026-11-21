@@ -839,3 +839,26 @@
     - { th: "ไม่น่าล่ะ", vi: "Thảo nào, hèn chi, bảo sao mà" }
   source: plernpin-c11#p2
   draft: true
+- id: g-c10-khi-n
+  unit_id: c10
+  title_vi: "ขี้ + danh từ: phân, chất bẩn, cặn"
+  pattern: "ขี้ + danh từ"
+  explain_vi: "ขี้ đứng trước danh từ (con vật, bộ phận cơ thể…) chỉ phân, chất bẩn hoặc cặn: ขี้หมู (phân lợn), ขี้หมา (phân chó), ขี้ตา (gỉ mắt), ขี้หู (ráy tai), ขี้เถ้า (tro tàn, tro hỏa táng)."
+  examples:
+    - { th: "ขี้หมู", vi: "Phân lợn" }
+    - { th: "ขี้ตา", vi: "Gỉ mắt" }
+    - { th: "ขี้หู", vi: "Ráy tai" }
+  source: plernpin-c10#p1
+  draft: true
+- id: g-c10-khi-tinh
+  unit_id: c10
+  title_vi: "ขี้ + động từ / tính từ: hay …, dễ …"
+  pattern: "ขี้ + động từ / tính từ"
+  explain_vi: "ขี้ đứng trước động từ hoặc tính từ tạo tính từ chỉ tính cách, thói quen: “hay …, dễ …” (thường mang nghĩa chê), vd. ขี้อาย (hay xấu hổ), ขี้ลืม (hay quên), ขี้เหนียว (keo kiệt), ขี้หึง (hay ghen), ขี้โมโห (hay nổi nóng)."
+  examples:
+    - { th: "ขี้อาย", vi: "Hay xấu hổ, hay ngại ngùng" }
+    - { th: "ขี้ลืม", vi: "Hay quên, đãng trí" }
+    - { th: "ขี้เหนียว", vi: "Keo kiệt, bủn xỉn, hà tiện" }
+    - { th: "ขี้หึง", vi: "Hay ghen, dễ ghen" }
+  source: plernpin-c10#p1
+  draft: true
