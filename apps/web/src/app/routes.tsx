@@ -19,6 +19,7 @@ import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { HomePage } from '@/pages/home/HomePage';
+import { WordsPage } from '@/pages/words/WordsPage';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 
 const page = (path: string, title: MessageKey, testId: string): RouteObject => ({
@@ -94,7 +95,7 @@ export const routes: RouteObject[] = [
       { path: '/units', element: <UnitsPage /> },
       { path: '/units/:unitId', element: <UnitPage /> },
       { path: '/practice', element: <PracticePage /> },
-      page('/words', 'pages.words', 'words'),
+      { path: '/words', element: <WordsPage /> },
       { path: '/games', element: <GamesPage /> },
       page('/progress', 'pages.progress', 'progress'),
       { path: '/settings', element: <SettingsPage /> },

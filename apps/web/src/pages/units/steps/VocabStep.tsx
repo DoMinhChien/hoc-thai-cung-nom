@@ -3,18 +3,14 @@ import { useRef, useState } from 'react';
 import { useAudio } from '@/audio/useAudio';
 import { useAutoSpeech, useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
+import { MnemonicBlock } from '@/components/words/MnemonicBlock';
+import { imageEmoji } from '@/content/labels';
 import { useRepositories } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { SpeakButton } from '../parts';
 
 type Word = UnitBundle['words'][number];
-
-/** Hình minh họa `noto:<codepoint>` (Noto Emoji, D2a) → ký tự emoji. */
-function emoji(image: string | undefined): string | null {
-  const m = image?.match(/^noto:([0-9a-f]+(?:_[0-9a-f]+)*)$/i);
-  return m ? String.fromCodePoint(...m[1]!.split('_').map((h) => parseInt(h, 16))) : null;
-}
 
 /**
  * Từ đưa vào SRS khi người học xem nghĩa (B-03/B-04) — không chấm FSRS. Mỗi từ một lần trong bước:
@@ -136,7 +132,7 @@ function Cards({
     );
   }
   const w = word!;
-  const icon = emoji(w.image);
+  const icon = imageEmoji(w.image);
   return (
     <div className="flex flex-col gap-4">
       <p className="text-center text-sm text-muted-foreground" data-testid="vocab-counter">
@@ -185,6 +181,7 @@ function Cards({
                 {t('lesson.alt')} <span lang="th">{w.thai_alt.join(', ')}</span>
               </p>
             )}
+            <MnemonicBlock wordId={w.id} suggested={w.mnemonic_vi} className="text-left" />
             {w.phonetic && (
               <div>
                 {phonetic ? (
