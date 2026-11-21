@@ -119,3 +119,5 @@ c13-l3,c13,3,"ถูก: rẻ, đúng, chạm, hợp ý",g-c13-thuk,true
 c13-l4,c13,4,"Câu bị động: ถูก, โดน, ได้รับ",g-c13-thuk-bi|g-c13-dairap-v|g-c13-dairap-n,true
 c12-l1,c12,1,"ที่: ở, tại; nơi, chỗ",g-c12-tai|g-c12-noi,true
 c12-l2,c12,2,"ที่: phần, suất; đất; số thứ tự; đại từ quan hệ",g-c12-suat|g-c12-din|g-c12-thutu|g-c12-quanhe,true
+c11-l1,c11,1,Các trường hợp của น่า (1),g-c11-na,true
+c11-l2,c11,2,Các trường hợp của น่า (2),g-c11-na|g-c11-mai-na,true

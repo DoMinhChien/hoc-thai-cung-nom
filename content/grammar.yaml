@@ -817,3 +817,25 @@
     - { th: "หนังสือที่ฉันชอบอยู่บนโต๊ะ", vi: "Quyển sách mà tôi thích ở trên bàn" }
   source: plernpin-c12#p3
   draft: true
+- id: g-c11-na
+  unit_id: c11
+  title_vi: "Các trường hợp của น่า"
+  pattern: "น่า + động từ / tính từ"
+  explain_vi: "น่า đứng trước động từ (hoặc tính từ) tạo nghĩa “đáng …”, “trông …”, “nên …” (đáng để làm việc đó). Ví dụ: น่ากิน (trông ngon, rất đáng để ăn), น่ารัก (đáng yêu, dễ thương), น่าดู (đáng xem, nên xem), น่ากลัว (đáng sợ), น่าเบื่อ (nhàm chán), น่าเสียดาย (đáng tiếc), น่าไว้ใจ (đáng tin cậy)."
+  examples:
+    - { th: "น่ากิน", vi: "Trông ngon (rất đáng để ăn)" }
+    - { th: "น่ารัก", vi: "Đáng yêu, dễ thương" }
+    - { th: "น่าดู", vi: "Đáng xem, nên xem" }
+    - { th: "น่ากลัว", vi: "Đáng sợ" }
+  source: plernpin-c11#p1
+  draft: true
+- id: g-c11-mai-na
+  unit_id: c11
+  title_vi: "ไม่น่าเลย và ไม่น่าล่ะ"
+  pattern: "ไม่น่า + V + เลย · ไม่น่าล่ะ"
+  explain_vi: "ไม่น่าเลย: (đáng lẽ) không nên như vậy chút nào. ไม่น่าล่ะ: thảo nào, hèn chi, bảo sao mà."
+  examples:
+    - { th: "ไม่น่าเลย", vi: "(Đáng lẽ) không nên như vậy chút nào" }
+    - { th: "ไม่น่าล่ะ", vi: "Thảo nào, hèn chi, bảo sao mà" }
+  source: plernpin-c11#p2
+  draft: true
