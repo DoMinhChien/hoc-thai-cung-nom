@@ -646,3 +646,283 @@ b06-w85,b06,b06-l9,ตลอดเวลา,,suốt,,,adv,,,,,,plernpin-b06#p35,
 b06-w86,b06,b06-l9,สนามบิน,,sân bay,,,noun,,,,,,plernpin-b06#p35,true
 b06-w87,b06,b06-l9,ธนาคาร,,ngân hàng,,,noun,,,,,,plernpin-b06#p35,true
 b06-w88,b06,b06-l9,ฉาย,,chiếu,,,verb,,,,,,plernpin-b06#p35,true
+b05-w01,b05,b05-l1,วันจันทร์,,thứ hai,đọc: วัน-จัน,,noun,,,,,,plernpin-b05#p3,true
+b05-w02,b05,b05-l1,วันอังคาร,,thứ ba,đọc: วัน-อัง-คาน,,noun,,,,,,plernpin-b05#p3,true
+b05-w03,b05,b05-l1,วันพุธ,,thứ tư,đọc: วัน-พุด,,noun,,,,,,plernpin-b05#p3,true
+b05-w04,b05,b05-l1,วันพฤหัสบดี,,thứ năm,đọc: วัน-พะ-รึ-หัด-สะ-บอ-ดี,,noun,,,,,,plernpin-b05#p3,true
+b05-w05,b05,b05-l1,วันศุกร์,,thứ sáu,đọc: วัน-สุก,,noun,,,,,,plernpin-b05#p3,true
+b05-w06,b05,b05-l1,วันเสาร์,,thứ bảy,đọc: วัน-เสา,,noun,,,,,,plernpin-b05#p4,true
+b05-w07,b05,b05-l1,วันอาทิตย์,,chủ nhật,đọc: วัน-อา-ทิด,,noun,,,,,,plernpin-b05#p4,true
+b05-w08,b05,b05-l1,สัปดาห์,อาทิตย์,tuần,สัปดาห์ = อาทิตย์,,noun,,,,,,plernpin-b05#p5,true
+b05-w09,b05,b05-l2,วันนี้,,hôm nay,,,noun,,,,,,plernpin-b05#p5,true
+b05-w10,b05,b05-l2,พรุ่งนี้,,ngày mai,,,noun,,,,,,plernpin-b05#p5,true
+b05-w11,b05,b05-l2,มะรืนนี้,,ngày kia,,,noun,,,,,,plernpin-b05#p5,true
+b05-w12,b05,b05-l2,มะเรื่องนี้,,ngày thứ 3 (tính từ ngày hôm nay),,,noun,,,,,,plernpin-b05#p5,true
+b05-w13,b05,b05-l2,เมื่อวาน,,hôm qua,,,noun,,,,,,plernpin-b05#p6,true
+b05-w14,b05,b05-l2,เมื่อวานซืน,,hôm kia,,,noun,,,,,,plernpin-b05#p6,true
+b05-w15,b05,b05-l2,สามวันก่อน,,ba ngày trước,,,noun,,,,,,plernpin-b05#p6,true
+b05-w16,b05,b05-l2,อีกสามวัน,,ba ngày nữa,,,noun,,,,,,plernpin-b05#p6,true
+b05-w17,b05,b05-l2,สองสามวัน,,2-3 ngày,,,noun,,,,,,plernpin-b05#p6,true
+b05-w18,b05,b05-l3,มกราคม,,tháng 1,đọc: มะ-กะ-รา-คม; viết tắt: ม.ค.,,noun,,,,,,plernpin-b05#p13,true
+b05-w19,b05,b05-l3,กุมภาพันธ์,,tháng 2,đọc: กุม-พา-พัน; viết tắt: ก.พ.,,noun,,,,,,plernpin-b05#p13,true
+b05-w20,b05,b05-l3,มีนาคม,,tháng 3,đọc: มี-นา-คม; viết tắt: มี.ค.,,noun,,,,,,plernpin-b05#p13,true
+b05-w21,b05,b05-l3,เมษายน,,tháng 4,đọc: เม-สา-ยน; viết tắt: เม.ย.,,noun,,,,,,plernpin-b05#p13,true
+b05-w22,b05,b05-l3,พฤษภาคม,,tháng 5,đọc: พรึด-สะ-พา-คม; viết tắt: พ.ค.,,noun,,,,,,plernpin-b05#p14,true
+b05-w23,b05,b05-l3,มิถุนายน,,tháng 6,đọc: มิ-ถุ-นา-ยน; viết tắt: มิ.ย.,,noun,,,,,,plernpin-b05#p14,true
+b05-w24,b05,b05-l3,กรกฎาคม,,tháng 7,đọc: กะ-ระ-กะ-ดา-คม; viết tắt: ก.ค.,,noun,,,,,,plernpin-b05#p14,true
+b05-w25,b05,b05-l3,สิงหาคม,,tháng 8,đọc: สิง-หา-คม; viết tắt: ส.ค.,,noun,,,,,,plernpin-b05#p14,true
+b05-w26,b05,b05-l3,กันยายน,,tháng 9,đọc: กัน-ยา-ยน; viết tắt: ก.ย.,,noun,,,,,,plernpin-b05#p15,true
+b05-w27,b05,b05-l3,ตุลาคม,,tháng 10,đọc: ตุ-ลา-คม; viết tắt: ต.ค.,,noun,,,,,,plernpin-b05#p15,true
+b05-w28,b05,b05-l3,พฤศจิกายน,,tháng 11,đọc: พรึด-สะ-จิ-กา-ยน; viết tắt: พ.ย.,,noun,,,,,,plernpin-b05#p15,true
+b05-w29,b05,b05-l3,ธันวาคม,,tháng 12,đọc: ทัน-วา-คม; viết tắt: ธ.ค.,,noun,,,,,,plernpin-b05#p15,true
+b05-w30,b05,b05-l4,เดือนอ้าย,,tháng 1 (âm lịch),tháng theo âm lịch (เดือนตามจันทรคติ),,noun,,,,,,plernpin-b05#p17,true
+b05-w31,b05,b05-l4,เดือนยี่,,tháng 2 (âm lịch),tháng theo âm lịch (เดือนตามจันทรคติ),,noun,,,,,,plernpin-b05#p17,true
+b05-w32,b05,b05-l4,เดือนนี้,,tháng này,,,noun,,,,,,plernpin-b05#p20,true
+b05-w33,b05,b05-l4,เดือนหน้า,,tháng sau,,,noun,,,,,,plernpin-b05#p20,true
+b05-w34,b05,b05-l4,เดือนที่จะถึง,,tháng tới,,,noun,,,,,,plernpin-b05#p20,true
+b05-w35,b05,b05-l4,เดือนที่แล้ว,,tháng vừa rồi,,,noun,,,,,,plernpin-b05#p20,true
+b05-w36,b05,b05-l4,เดือนก่อน,,tháng trước,,,noun,,,,,,plernpin-b05#p20,true
+b05-w37,b05,b05-l4,ต้นเดือน,,đầu tháng,,,noun,,,,,,plernpin-b05#p21,true
+b05-w38,b05,b05-l4,กลางเดือน,,giữa tháng,,,noun,,,,,,plernpin-b05#p21,true
+b05-w39,b05,b05-l4,ปลายเดือน,,cuối tháng,,,noun,,,,,,plernpin-b05#p21,true
+b05-w40,b05,b05-l4,สิ้นเดือน,,cuối tháng,,,noun,,,,,,plernpin-b05#p21,true
+b05-w41,b05,b05-l5,ปีชวด,,năm tý,,,noun,,,,,,plernpin-b05#p25,true
+b05-w42,b05,b05-l5,ปีฉลู,,năm sửu,,,noun,,,,,,plernpin-b05#p25,true
+b05-w43,b05,b05-l5,ปีขาล,,năm dần,,,noun,,,,,,plernpin-b05#p25,true
+b05-w44,b05,b05-l5,ปีเถาะ,,năm mão (năm thỏ),,,noun,,,,,,plernpin-b05#p25,true
+b05-w45,b05,b05-l5,ปีมะโรง,,năm thìn,,,noun,,,,,,plernpin-b05#p25,true
+b05-w46,b05,b05-l5,ปีมะเส็ง,,năm tỵ,,,noun,,,,,,plernpin-b05#p26,true
+b05-w47,b05,b05-l5,ปีมะเมีย,,năm ngọ,,,noun,,,,,,plernpin-b05#p26,true
+b05-w48,b05,b05-l5,ปีมะแม,,năm mùi,,,noun,,,,,,plernpin-b05#p26,true
+b05-w49,b05,b05-l5,ปีวอก,,năm thân,,,noun,,,,,,plernpin-b05#p26,true
+b05-w50,b05,b05-l5,ปีระกา,,năm dậu,,,noun,,,,,,plernpin-b05#p26,true
+b05-w51,b05,b05-l5,ปีจอ,,năm tuất,,,noun,,,,,,plernpin-b05#p27,true
+b05-w52,b05,b05-l5,ปีกุน,,năm hợi,,,noun,,,,,,plernpin-b05#p27,true
+b05-w53,b05,b05-l5,ปีนักษัตร,,năm con giáp,,,noun,,,,,,plernpin-b05#p30,true
+b05-w54,b05,b05-l6,ปีนี้,,năm nay,,,noun,,,,,,plernpin-b05#p28,true
+b05-w55,b05,b05-l6,ปีหน้า,,năm sau,,,noun,,,,,,plernpin-b05#p28,true
+b05-w56,b05,b05-l6,ปีที่จะถึง,,năm tới,,,noun,,,,,,plernpin-b05#p28,true
+b05-w57,b05,b05-l6,ปีที่แล้ว,,năm vừa rồi,,,noun,,,,,,plernpin-b05#p28,true
+b05-w58,b05,b05-l6,ปีก่อน,,năm ngoái,,,noun,,,,,,plernpin-b05#p28,true
+b05-w59,b05,b05-l6,ต้นปี,,đầu năm,,,noun,,,,,,plernpin-b05#p29,true
+b05-w60,b05,b05-l6,กลางปี,,giữa năm,,,noun,,,,,,plernpin-b05#p29,true
+b05-w61,b05,b05-l6,ปลายปี,,cuối năm,,,noun,,,,,,plernpin-b05#p29,true
+b05-w62,b05,b05-l6,สิ้นปี,,cuối năm,,,noun,,,,,,plernpin-b05#p29,true
+b05-w63,b05,b05-l6,ปีสากล,,năm quốc tế,,,noun,,,,,,plernpin-b05#p29,true
+b05-w64,b05,b05-l6,ปีพุทธศักราช,,năm phật lịch,viết tắt: ปี พ.ศ.,,noun,,,,,,plernpin-b05#p30,true
+b05-w65,b05,b05-l6,ปีคริสต์ศักราช,,năm công lịch,viết tắt: ปี ค.ศ.,,noun,,,,,,plernpin-b05#p30,true
+b05-w66,b05,b05-l7,ฤดูร้อน,หน้าร้อน,mùa hè,cũng nói: หน้าร้อน,,noun,,,,,,plernpin-b05#p36,true
+b05-w67,b05,b05-l7,ฤดูฝน,หน้าฝน,mùa mưa,cũng nói: หน้าฝน,,noun,,,,,,plernpin-b05#p36,true
+b05-w68,b05,b05-l7,ฤดูหนาว,หน้าหนาว,mùa đông,cũng nói: หน้าหนาว,,noun,,,,,,plernpin-b05#p36,true
+b05-w69,b05,b05-l7,ฤดูใบไม้ผลิ,,mùa xuân,,,noun,,,,,,plernpin-b05#p37,true
+b05-w70,b05,b05-l7,ฤดูใบไม้ร่วง,,mùa thu,,,noun,,,,,,plernpin-b05#p37,true
+b05-w71,b05,b05-l7,ฤดูแล้ง,หน้าแล้ง,mùa khô,cũng nói: หน้าแล้ง,,noun,,,,,,plernpin-b05#p37,true
+b05-w72,b05,b05-l7,ตรงกับ,,trùng với,,,verb,,,,,,plernpin-b05#p40,true
+b05-w73,b05,b05-l7,โอกาส,,cơ hội; dịp,,,noun,,,,,,plernpin-b05#p40,true
+b05-w74,b05,b05-l7,เมื่อไร,,khi nào,,,adv,,,,,,plernpin-b05#p40,true
+b05-w75,b05,b05-l7,นาน,,lâu,,,adj,,,,,,plernpin-b05#p40,true
+b05-w76,b05,b05-l7,ไปเที่ยว,,đi chơi,,,verb,,,,,,plernpin-b05#p40,true
+b05-w77,b05,b05-l8,เชิญ,,mời,,,verb,,,,,,plernpin-b05#p41,true
+b05-w78,b05,b05-l8,กลับ,,về,,,verb,,,,,,plernpin-b05#p41,true
+b05-w79,b05,b05-l8,คง,,chắc là,,,adv,,,,,,plernpin-b05#p41,true
+b05-w80,b05,b05-l8,ยินดีต้อนรับ,,hân hạnh đón tiếp,,,phrase,,,,,,plernpin-b05#p41,true
+b05-w81,b05,b05-l8,และ,,và,,,conj,,,,,,plernpin-b05#p41,true
+b05-w82,b05,b05-l8,เก่า,,cũ; xưa,,,adj,,,,,,plernpin-b05#p42,true
+b05-w83,b05,b05-l8,ใหม่,,mới,,,adj,,,,,,plernpin-b05#p42,true
+b05-w84,b05,b05-l8,ยาว,,dài,,,adj,,,,,,plernpin-b05#p42,true
+b05-w85,b05,b05-l8,ไปส่ง,,đi tiễn,,,verb,,,,,,plernpin-b05#p42,true
+b05-w86,b05,b05-l8,สั้น,,ngắn,,,adj,,,,,,plernpin-b05#p42,true
+b05-w87,b05,b05-l9,ภาคเรียน,เทอม,học kỳ,cũng nói: เทอม,,noun,,,,,,plernpin-b05#p43,true
+b05-w88,b05,b05-l9,เมื่อก่อน,,lúc trước; hồi trước,,,noun,,,,,,plernpin-b05#p43,true
+b05-w89,b05,b05-l9,หลังจาก,,sau khi,,,conj,,,,,,plernpin-b05#p43,true
+b05-w90,b05,b05-l9,ปัจจุบัน,,hiện tại,,,noun,,,,,,plernpin-b05#p43,true
+b05-w91,b05,b05-l9,อดีต,,quá khứ,,,noun,,,,,,plernpin-b05#p44,true
+b05-w92,b05,b05-l9,อนาคต,,tương lai,,,noun,,,,,,plernpin-b05#p44,true
+b05-w93,b05,b05-l9,ยุค,,thời; thời đại,,,noun,,,,,,plernpin-b05#p44,true
+b05-w94,b05,b05-l9,สมัย,,thời kỳ,,,noun,,,,,,plernpin-b05#p44,true
+b05-w95,b05,b05-l9,สมัยโบราณ,,thời kỳ cổ xưa,,,noun,,,,,,plernpin-b05#p44,true
+b05-w96,b05,b05-l9,สมัยก่อน,,thời trước,,,noun,,,,,,plernpin-b05#p45,true
+b05-w97,b05,b05-l9,สมัยใหม่,,thời đại mới,,,noun,,,,,,plernpin-b05#p45,true
+b05-w98,b05,b05-l10,ทันสมัย,,hiện đại; theo kịp thời đại,,,adj,,,,,,plernpin-b05#p45,true
+b05-w99,b05,b05-l10,ล้าสมัย,,lạc hậu; không kịp thời đại,,,adj,,,,,,plernpin-b05#p45,true
+b05-w100,b05,b05-l10,เปลี่ยน,,thay đổi,,,verb,,,,,,plernpin-b05#p45,true
+b05-w101,b05,b05-l10,เหมือนเดิม,,như cũ; như trước,,,adv,,,,,,plernpin-b05#p46,true
+b05-w102,b05,b05-l10,สัก,,khoảng,,,adv,,,,,,plernpin-b05#p46,true
+b05-w103,b05,b05-l10,เร็วๆนี้,,sắp tới,,,adv,,,,,,plernpin-b05#p46,true
+b05-w104,b05,b05-l10,เรื่อยๆ,,"cứ (cứ làm đi, cứ đi đi)",,,adv,,,,,,plernpin-b05#p46,true
+b05-w105,b05,b05-l10,วันสำคัญ,,ngày quan trọng,,,noun,,,,,,plernpin-b05#p46,true
+b05-w106,b05,b05-l10,วันเกิด,,ngày sinh,,,noun,,,,,,plernpin-b05#p47,true
+b05-w107,b05,b05-l10,วันคล้ายวันเกิด,,ngày sinh nhật,,,noun,,,,,,plernpin-b05#p47,true
+b05-w108,b05,b05-l11,วันหยุด,,ngày nghỉ,,,noun,,,,,,plernpin-b05#p47,true
+b05-w109,b05,b05-l11,วันหยุดราชการ,,ngày nghỉ hành chính,,,noun,,,,,,plernpin-b05#p47,true
+b05-w110,b05,b05-l11,วันทำงาน,,ngày làm việc,,,noun,,,,,,plernpin-b05#p47,true
+b05-w111,b05,b05-l11,วันธรรมดา,,ngày thường,,,noun,,,,,,plernpin-b05#p48,true
+b05-w112,b05,b05-l11,วันสุดสัปดาห์,,ngày cuối tuần,,,noun,,,,,,plernpin-b05#p48,true
+b05-w113,b05,b05-l11,วันเสาร์อาทิตย์,,thứ 7 chủ nhật,,,noun,,,,,,plernpin-b05#p48,true
+b05-w114,b05,b05-l11,วันพระจันทร์เต็มดวง,,ngày rằm,,,noun,,,,,,plernpin-b05#p48,true
+b05-w115,b05,b05-l11,วันเด็กสากล,,ngày quốc tế thiếu nhi,,,noun,,,,,,plernpin-b05#p48,true
+b05-w116,b05,b05-l11,เทศกาลภาพยนตร์,,liên hoan phim,,,noun,,,,,,plernpin-b05#p49,true
+b05-w117,b05,b05-l11,เทศกาลมหาพรต,,mùa chay,,,noun,,,,,,plernpin-b05#p49,true
+b05-w118,b05,b05-l12,เทศกาลเช็งเม้ง,,lễ thanh minh,,,noun,,,,,,plernpin-b05#p49,true
+b05-w119,b05,b05-l12,เทศกาลวันไหว้พระจันทร์,เทศกาลกลางฤดูใบไม้ร่วง,tết trung thu,cũng nói: เทศกาลกลางฤดูใบไม้ร่วง,,noun,,,,,,plernpin-b05#p49,true
+b05-w120,b05,b05-l12,เทศกาลกินเจ,,lễ hội ăn chay,,,noun,,,,,,plernpin-b05#p49,true
+b05-w121,b05,b05-l12,วันสตรีโลก,,ngày phụ nữ quốc tế (thế giới),,,noun,,,,,,plernpin-b05#p50,true
+b05-w122,b05,b05-l12,วันมหาชัยของเวียดนาม,,ngày đại thắng của Việt Nam (30/4),,,noun,,,,,,plernpin-b05#p50,true
+b05-w123,b05,b05-l12,วันชาติ,,ngày quốc khánh,,,noun,,,,,,plernpin-b05#p50,true
+b05-w124,b05,b05-l12,วันแรงงานแห่งชาติ,วันแรงงานสากล,ngày quốc tế lao động,cũng nói: วันแรงงานสากล,,noun,,,,,,plernpin-b05#p50,true
+b05-w125,b05,b05-l12,วันชาติของเวียดนาม,,ngày quốc khánh của Việt Nam (2/9),,,noun,,,,,,plernpin-b05#p50,true
+b05-w126,b05,b05-l12,วันปีใหม่,,ngày đầu năm (Tết),,,noun,,,,,,plernpin-b05#p51,true
+b05-w127,b05,b05-l12,วันขึ้นปีใหม่สากล,,ngày đầu năm mới quốc tế (1/1); Tết dương lịch,,,noun,,,,,,plernpin-b05#p51,true
+b05-w128,b05,b05-l13,วันตรุษ,,ngày tết cổ truyền,,,noun,,,,,,plernpin-b05#p51,true
+b05-w129,b05,b05-l13,วันสงกรานต์,,ngày tết cổ truyền Thái; tết té nước của Thái,,,noun,,,,,,plernpin-b05#p51,true
+b05-w130,b05,b05-l13,วันลอยกระทง,,ngày Loy Krathong (lễ hội thả đèn hoa đăng của Thái),,,noun,,,,,,plernpin-b05#p51,true
+b05-w131,b05,b05-l13,วันคริสต์มาส,,ngày giáng sinh; Noel,tài liệu viết วันคริสมาส,,noun,,,,,,plernpin-b05#p52,true
+b05-w132,b05,b05-l13,วันแม่,,ngày của mẹ,,,noun,,,,,,plernpin-b05#p52,true
+b05-w133,b05,b05-l13,วันพ่อ,,ngày của bố,,,noun,,,,,,plernpin-b05#p52,true
+b05-w134,b05,b05-l13,วันครู,,ngày nhà giáo,,,noun,,,,,,plernpin-b05#p52,true
+b05-w135,b05,b05-l13,ตารางเวลา,,thời gian biểu,,,noun,,,,,,plernpin-b05#p52,true
+b05-w136,b05,b05-l13,ตามสุริยคติ,,theo dương lịch,,,phrase,,,,,,plernpin-b05#p53,true
+b05-w137,b05,b05-l13,ตามจันทรคติ,,theo âm lịch,,,phrase,,,,,,plernpin-b05#p53,true
+b05-w138,b05,b05-l14,ไตรมาส,,quý,,,noun,,,,,,plernpin-b05#p53,true
+b05-w139,b05,b05-l14,ปฏิทิน,,lịch,,,noun,,,,,,plernpin-b05#p53,true
+b05-w140,b05,b05-l14,ปฏิทินจันทรคติ,ปฏิทินแบบจันทรคติ,lịch âm,,,noun,,,,,,plernpin-b05#p53,true
+b05-w141,b05,b05-l14,ปฏิทินสุริยคติ,ปฏิทินแบบสุริยคติ,lịch dương,,,noun,,,,,,plernpin-b05#p54,true
+b05-w142,b05,b05-l14,ปฏิทินสากล,,lịch quốc tế,,,noun,,,,,,plernpin-b05#p54,true
+b05-w143,b05,b05-l14,เวลาราชการ,,giờ hành chính; thời gian hành chính,,,noun,,,,,,plernpin-b05#p54,true
+b05-w144,b05,b05-l14,เวลาทำงานราชการ,,giờ làm việc hành chính,,,noun,,,,,,plernpin-b05#p54,true
+b05-w145,b05,b05-l14,วันสิริมงคล,,ngày an khang thịnh vượng,,,noun,,,,,,plernpin-b05#p54,true
+b04-w01,b04,b04-l1,สบู่,,bánh xà phòng,,ก้อน,noun,,สบู่ 2 ก้อน,2 cục bánh xà phòng,,,plernpin-b04#p6,true
+b04-w02,b04,b04-l1,ช็อกโกแลต,ช็อคโกแลต,chocolate,tài liệu viết ช็อคโกแลต,กล่อง,noun,,ช็อกโกแลต 2 กล่อง,2 hộp chocolate,,,plernpin-b04#p7,true
+b04-w03,b04,b04-l1,แหวน,,nhẫn,,วง,noun,,แหวน 2 วง,2 cái nhẫn,,,plernpin-b04#p8,true
+b04-w04,b04,b04-l1,นาฬิกา,,đồng hồ,,เรือน,noun,,นาฬิกา 2 เรือน,2 cái đồng hồ,,,plernpin-b04#p9,true
+b04-w05,b04,b04-l1,บ้าน,,nhà,,หลัง,noun,,บ้าน 2 หลัง,2 căn nhà,,,plernpin-b04#p10,true
+b04-w06,b04,b04-l1,กระเป๋า,,túi xách,,อัน,noun,,กระเป๋า 2 อัน,2 cái túi xách,,,plernpin-b04#p11,true
+b04-w07,b04,b04-l1,เค้ก,,bánh,,ชิ้น,noun,,เค้ก 2 ชิ้น,2 miếng bánh,,,plernpin-b04#p12,true
+b04-w08,b04,b04-l1,หมา,,chó,,ตัว,noun,,หมา 2 ตัว,2 con chó,,,plernpin-b04#p13,true
+b04-w09,b04,b04-l1,โต๊ะ,,bàn,,ตัว,noun,,โต๊ะ 2 ตัว,2 cái bàn,,,plernpin-b04#p14,true
+b04-w10,b04,b04-l1,เก้าอี้,,ghế,,ตัว,noun,,เก้าอี้ 2 ตัว,2 cái ghế,,,plernpin-b04#p15,true
+b04-w11,b04,b04-l2,เสื้อผ้า,,quần áo,,ชุด,noun,,เสื้อผ้า 2 ชุด,2 bộ quần áo,,,plernpin-b04#p16,true
+b04-w12,b04,b04-l2,กาชงชา,,ấm chén,,ชุด,noun,,กาชงชา 2 ชุด,2 bộ ấm chén,,,plernpin-b04#p17,true
+b04-w13,b04,b04-l2,หม้อ,,nồi,,ใบ,noun,,หม้อ 2 ใบ,2 cái nồi,,,plernpin-b04#p18,true
+b04-w14,b04,b04-l2,เด็ก,,trẻ; đứa trẻ,,ลูก,noun,,เด็ก 2 ลูก,2 đứa trẻ,,,plernpin-b04#p19,true
+b04-w15,b04,b04-l2,ไข่,,trứng,loại từ: ลูก hoặc ฟอง,ฟอง,noun,,ไข่ 2 ลูก/ฟอง,2 quả trứng,,,plernpin-b04#p20,true
+b04-w16,b04,b04-l2,แตงโม,,dưa hấu,,ลูก,noun,,แตงโม 2 ลูก,2 quả dưa hấu,,,plernpin-b04#p21,true
+b04-w17,b04,b04-l2,รถยนต์,,xe ô tô,,คัน,noun,,รถยนต์ 2 คัน,2 chiếc xe ô tô,,,plernpin-b04#p22,true
+b04-w18,b04,b04-l2,ผ้าพันคอ,,khăn quàng cổ,,ผืน,noun,,ผ้าพันคอ 2 ผืน,2 chiếc khăn quàng cổ,,,plernpin-b04#p23,true
+b04-w19,b04,b04-l2,ตะเกียบ,,đũa,,คู่,noun,,ตะเกียบ 2 คู่,2 đôi đũa,,,plernpin-b04#p24,true
+b04-w20,b04,b04-l2,ผู้ชาย,,người đàn ông,,คน,noun,,ผู้ชาย 2 คน,2 người đàn ông,,,plernpin-b04#p25,true
+b04-w21,b04,b04-l3,ต้นไม้,,cây,,ต้น,noun,,ต้นไม้ 10 ต้น,10 cái cây,,,plernpin-b04#p26,true
+b04-w22,b04,b04-l3,หนังสือ,,sách,,เล่ม,noun,,หนังสือ 2 เล่ม,2 quyển sách,,,plernpin-b04#p27,true
+b04-w23,b04,b04-l3,ยา,,thuốc,,เม็ด,noun,,ยา 10 เม็ด,10 viên thuốc,,,plernpin-b04#p28,true
+b04-w24,b04,b04-l3,น้ำส้ม,,nước cam,,แก้ว,noun,,น้ำส้ม 2 แก้ว,2 cốc nước cam,,,plernpin-b04#p29,true
+b04-w25,b04,b04-l3,ข้าวผัด,,cơm rang,,จาน,noun,,ข้าวผัด 2 จาน,2 đĩa cơm rang,,,plernpin-b04#p30,true
+b04-w26,b04,b04-l3,กระดาษชำระ,,giấy vệ sinh,,ม้วน,noun,,กระดาษชำระ 2 ม้วน,2 cuộn giấy vệ sinh,,,plernpin-b04#p31,true
+b04-w27,b04,b04-l3,รถไฟ,,xe lửa,,ขบวน,noun,,รถไฟ 2 ขบวน,2 chuyến xe lửa,,,plernpin-b04#p32,true
+b04-w28,b04,b04-l3,เบียร์,,bia,,ขวด,noun,,เบียร์ 2 ขวด,2 chai bia,,,plernpin-b04#p33,true
+b04-w29,b04,b04-l3,สร้อยคอ,,dây chuyền,,เส้น,noun,,สร้อยคอ 2 เส้น,2 sợi dây chuyền,,,plernpin-b04#p34,true
+b04-w30,b04,b04-l3,หนัง,,phim,,เรื่อง,noun,,หนัง 2 เรื่อง,2 bộ phim,,,plernpin-b04#p35,true
+b04-w31,b04,b04-l4,บริษัท,,công ty,,แห่ง,noun,,บริษัท 2 แห่ง,2 công ty,,,plernpin-b04#p36,true
+b04-w32,b04,b04-l4,ดินสอ,,bút chì,,แท่ง,noun,,ดินสอ 2 แท่ง,2 cái bút chì,,,plernpin-b04#p37,true
+b04-w33,b04,b04-l4,ยางลบ,,tẩy,,แท่ง,noun,,ยางลบ 2 แท่ง,2 cục tẩy,,,plernpin-b04#p38,true
+b04-w34,b04,b04-l4,ปากกา,,bút bi,,ด้าม,noun,,ปากกา 2 ด้าม,2 cái bút bi,,,plernpin-b04#p39,true
+b04-w35,b04,b04-l4,นิ้วมือ,,ngón tay,,นิ้ว,noun,,นิ้วมือ 5 นิ้ว,5 ngón tay,,,plernpin-b04#p40,true
+b04-w36,b04,b04-l4,กระดาษ,,giấy,,แผ่น,noun,,กระดาษ 2 แผ่น,2 tờ giấy,,,plernpin-b04#p41,true
+b04-w37,b04,b04-l4,รายการวิทยุ,,chương trình đài phát thanh,,รายการ,noun,,รายการวิทยุ 2 รายการ,2 chương trình đài phát thanh,,,plernpin-b04#p42,true
+b04-w38,b04,b04-l4,เครื่องซักเสื้อผ้า,,máy giặt,,เครื่อง,noun,,เครื่องซักเสื้อผ้า 2 เครื่อง,2 chiếc máy giặt,,,plernpin-b04#p43,true
+b04-w39,b04,b04-l5,นักเรียน,,học sinh,,,noun,,,,,,plernpin-b04#p48,true
+b04-w40,b04,b04-l5,เทอมนี้,,kỳ này,,,noun,,,,,,plernpin-b04#p48,true
+b04-w41,b04,b04-l5,วิชา,,môn học,,,noun,,,,,,plernpin-b04#p48,true
+b04-w42,b04,b04-l5,ห้อง,,phòng,,,noun,,,,,,plernpin-b04#p48,true
+b04-w43,b04,b04-l5,อายุ,,tuổi,,,noun,,,,,,plernpin-b04#p48,true
+b04-w44,b04,b04-l5,นักศึกษาผู้หญิง,,sinh viên nữ,,,noun,,,,,,plernpin-b04#p49,true
+b04-w45,b04,b04-l5,นักศึกษาผู้ชาย,,sinh viên nam,,,noun,,,,,,plernpin-b04#p49,true
+b03-w01,b03,b03-l1,ศูนย์,,0 (không),số Thái: ๐,,num,,,,,,plernpin-b03#p3,true
+b03-w02,b03,b03-l1,หนึ่ง,,1 (một),số Thái: ๑,,num,,,,,,plernpin-b03#p3,true
+b03-w03,b03,b03-l1,สอง,,2 (hai),số Thái: ๒,,num,,,,,,plernpin-b03#p3,true
+b03-w04,b03,b03-l1,สาม,,3 (ba),số Thái: ๓,,num,,,,,,plernpin-b03#p3,true
+b03-w05,b03,b03-l1,สี่,,4 (bốn),số Thái: ๔,,num,,,,,,plernpin-b03#p4,true
+b03-w06,b03,b03-l1,ห้า,,5 (năm),số Thái: ๕,,num,,,,,,plernpin-b03#p4,true
+b03-w07,b03,b03-l1,หก,,6 (sáu),số Thái: ๖,,num,,,,,,plernpin-b03#p4,true
+b03-w08,b03,b03-l1,เจ็ด,,7 (bảy),số Thái: ๗,,num,,,,,,plernpin-b03#p4,true
+b03-w09,b03,b03-l1,แปด,,8 (tám),số Thái: ๘,,num,,,,,,plernpin-b03#p5,true
+b03-w10,b03,b03-l1,เก้า,,9 (chín),số Thái: ๙,,num,,,,,,plernpin-b03#p5,true
+b03-w11,b03,b03-l1,สิบ,,10 (mười),số Thái: ๑๐,,num,,,,,,plernpin-b03#p5,true
+b03-w12,b03,b03-l2,สิบเอ็ด,,11 (mười một),số Thái: ๑๑,,num,,,,,,plernpin-b03#p5,true
+b03-w13,b03,b03-l2,ยี่สิบ,,20 (hai mươi),số Thái: ๒๐,,num,,,,,,plernpin-b03#p6,true
+b03-w14,b03,b03-l2,ยี่สิบเอ็ด,,21 (hai mươi mốt),số Thái: ๒๑,,num,,,,,,plernpin-b03#p6,true
+b03-w15,b03,b03-l2,หนึ่งร้อย,,100 (một trăm),số Thái: ๑๐๐,,num,,,,,,plernpin-b03#p7,true
+b03-w16,b03,b03-l2,หนึ่งพัน,,1.000 (một nghìn),"số Thái: ๑,๐๐๐",,num,,,,,,plernpin-b03#p9,true
+b03-w17,b03,b03-l2,หนึ่งหมื่น,,10.000 (mười nghìn),"số Thái: ๑๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w18,b03,b03-l2,หนึ่งแสน,,100.000 (một trăm nghìn),"số Thái: ๑๐๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w19,b03,b03-l2,หนึ่งล้าน,,1.000.000 (một triệu),"số Thái: ๑,๐๐๐,๐๐๐",,num,,,,,,plernpin-b03#p10,true
+b03-w20,b03,b03-l2,ล้านล้าน,,1.000.000.000.000 (một nghìn tỷ),"số Thái: ๑,๐๐๐,๐๐๐,๐๐๐,๐๐๐",,num,,,,,,plernpin-b03#p12,true
+b03-w21,b03,b03-l3,จุด,,dấu “.” (khi đọc số),Dấu “.” đọc là จุด,,noun,,,,,,plernpin-b03#p24,true
+b03-w22,b03,b03-l3,ทับ,,dấu “/” (khi đọc số),Dấu “/” đọc là ทับ,,noun,,,,,,plernpin-b03#p24,true
+b03-w23,b03,b03-l3,ถึง,,dấu “-” (khi đọc số); đến,Dấu “-” đọc là ถึง,,prep,,,,,,plernpin-b03#p24,true
+b03-w24,b03,b03-l3,ต่อ,,dấu “:” (khi đọc số),Dấu “:” đọc là ต่อ,,prep,,,,,,plernpin-b03#p24,true
+b03-w25,b03,b03-l3,บ้านเลขที่,,số nhà,,,noun,,,,,,plernpin-b03#p25,true
+b03-w26,b03,b03-l3,เปอร์เซ็นต์,,phần trăm,,,noun,,,,,,plernpin-b03#p28,true
+b03-w27,b03,b03-l3,สตางค์,,xu (stang; 100 สตางค์ = 1 บาท),,,noun,,,,,,plernpin-b03#p34,true
+b03-w28,b03,b03-l3,หมายเลขทางหลวง,,số đường quốc lộ,,,noun,,,,,,plernpin-b03#p35,true
+b03-w29,b03,b03-l3,เศษส่วน,,phân số,,,noun,,,,,,plernpin-b03#p37,true
+b03-w30,b03,b03-l3,ครึ่ง,,một nửa (1/2),,,noun,,,,,,plernpin-b03#p37,true
+b03-w31,b03,b03-l3,ขวบ,,tuổi (trẻ dưới 12 tuổi),,,noun,,,,,,plernpin-b03#p46,true
+b03-w32,b03,b03-l4,เลข,,số,,,noun,,,,,,plernpin-b03#p47,true
+b03-w33,b03,b03-l4,นับ,,đếm,,,verb,,,,,,plernpin-b03#p47,true
+b03-w34,b03,b03-l4,จำนวน,,số lượng,,,noun,,,,,,plernpin-b03#p47,true
+b03-w35,b03,b03-l4,ลำดับที่,,số thứ tự,,,noun,,,,,,plernpin-b03#p47,true
+b03-w36,b03,b03-l4,มาก,,nhiều,,,adj,,,,,,plernpin-b03#p47,true
+b03-w37,b03,b03-l4,น้อย,,ít,,,adj,,,,,,plernpin-b03#p48,true
+b03-w38,b03,b03-l4,เท่ากับ,,bằng với,,,verb,,,,,,plernpin-b03#p48,true
+b03-w39,b03,b03-l4,กี่,,mấy,,,adv,,,,,,plernpin-b03#p48,true
+b03-w40,b03,b03-l4,เท่าไร,,bao nhiêu,,,adv,,,,,,plernpin-b03#p48,true
+b03-w41,b03,b03-l4,คน,,người,,,noun,,,,,,plernpin-b03#p48,true
+b03-w42,b03,b03-l5,มี,,có,,,verb,,,,,,plernpin-b03#p49,true
+b03-w43,b03,b03-l5,ไม่มี,,không có,,,verb,,,,,,plernpin-b03#p49,true
+b03-w44,b03,b03-l5,แรก,,đầu tiên,,,adj,,,,,,plernpin-b03#p49,true
+b03-w45,b03,b03-l5,สุดท้าย,,cuối cùng,,,adj,,,,,,plernpin-b03#p49,true
+b03-w46,b03,b03-l5,บวก,,cộng,,,verb,,,,,,plernpin-b03#p49,true
+b03-w47,b03,b03-l5,ลบ,,trừ,,,verb,,,,,,plernpin-b03#p50,true
+b03-w48,b03,b03-l5,คูณ,,nhân,,,verb,,,,,,plernpin-b03#p50,true
+b03-w49,b03,b03-l5,หาร,,chia,,,verb,,,,,,plernpin-b03#p50,true
+b03-w50,b03,b03-l5,เท่ากัน,,bằng nhau,,,adv,,,,,,plernpin-b03#p50,true
+b03-w51,b03,b03-l5,ส่วนมาก,,phần nhiều; đa số,,,noun,,,,,,plernpin-b03#p50,true
+b03-w52,b03,b03-l6,ส่วนน้อย,,phần ít; thiểu số,,,noun,,,,,,plernpin-b03#p51,true
+b03-w53,b03,b03-l6,เหลือ,,thừa; còn,,,verb,,,,,,plernpin-b03#p51,true
+b03-w54,b03,b03-l6,หมด,,hết,,,verb,,,,,,plernpin-b03#p51,true
+b03-w55,b03,b03-l6,ทั้งหมด,,tất cả,,,adv,,,,,,plernpin-b03#p51,true
+b03-w56,b03,b03-l6,ทั้งสอง,,cả hai,,,pron,,,,,,plernpin-b03#p51,true
+b03-w57,b03,b03-l6,เกิน,,hơn; quá,,,verb,,,,,,plernpin-b03#p52,true
+b03-w58,b03,b03-l6,ขาด,,thiếu,,,verb,,,,,,plernpin-b03#p52,true
+b03-w59,b03,b03-l6,เต็ม,,đầy; tối đa,,,adj,,,,,,plernpin-b03#p52,true
+b03-w60,b03,b03-l6,ครบ,,đủ,,,adj,,,,,,plernpin-b03#p52,true
+b03-w61,b03,b03-l6,ได้,,được,,,verb,,,,,,plernpin-b03#p52,true
+b03-w62,b03,b03-l7,เสีย,,mất; hỏng,,,verb,,,,,,plernpin-b03#p53,true
+b03-w63,b03,b03-l7,ร้อยละ,,phần trăm,,,noun,,,,,,plernpin-b03#p53,true
+b03-w64,b03,b03-l7,ประมาณ,,khoảng,,,adv,,,,,,plernpin-b03#p53,true
+b03-w65,b03,b03-l7,หมายเลข,,số; mã số; số hiệu,,,noun,,,,,,plernpin-b03#p53,true
+b03-w66,b03,b03-l7,เบอร์,,số,,,noun,,,,,,plernpin-b03#p53,true
+b03-w67,b03,b03-l7,โทรศัพท์,โทรศัพท์มือถือ,điện thoại (di động),(มือถือ) = di động,,noun,,,,,,plernpin-b03#p54,true
+b03-w68,b03,b03-l7,ต่อไป,,tiếp theo; kế tiếp,,,adv,,,,,,plernpin-b03#p54,true
+b03-w69,b03,b03-l7,เพิ่ม,,thêm,,,verb,,,,,,plernpin-b03#p54,true
+b03-w70,b03,b03-l7,ลด,,bớt; giảm,,,verb,,,,,,plernpin-b03#p54,true
+b03-w71,b03,b03-l7,เท่า,,gấp … lần,(สอง/สาม) เท่า = gấp 2 / gấp 3 lần,,noun,,,,,,plernpin-b03#p54,true
+b03-w72,b03,b03-l8,นับไม่ถ้วน,,đếm không xuể,,,phrase,,,,,,plernpin-b03#p55,true
+b03-w73,b03,b03-l8,ทุก,,mọi,,,adj,,,,,,plernpin-b03#p55,true
+b03-w74,b03,b03-l8,บาง,,một số; một vài,,,adj,,,,,,plernpin-b03#p55,true
+b03-w75,b03,b03-l8,อีก,,nữa,,,adv,,,,,,plernpin-b03#p55,true
+b03-w76,b03,b03-l8,หลาย,,nhiều,,,adj,,,,,,plernpin-b03#p55,true
+b03-w77,b03,b03-l8,เยอะ,,nhiều,,,adj,,,,,,plernpin-b03#p56,true
+b03-w78,b03,b03-l8,เงิน,,tiền,,,noun,,,,,,plernpin-b03#p56,true
+b03-w79,b03,b03-l8,อายุ,,tuổi,,,noun,,,,,,plernpin-b03#p56,true
+b03-w80,b03,b03-l8,รวม,,tổng cộng,,,verb,,,,,,plernpin-b03#p56,true
+b03-w81,b03,b03-l8,คู่,,đôi; cặp,,,noun,,,,,,plernpin-b03#p56,true
+b03-w82,b03,b03-l9,โหล,,tá; lố,,,noun,,,,,,plernpin-b03#p57,true
+b03-w83,b03,b03-l9,ใหญ่,,lớn; to,,,adj,,,,,,plernpin-b03#p57,true
+b03-w84,b03,b03-l9,เล็ก,,nhỏ; bé,,,adj,,,,,,plernpin-b03#p57,true
+b03-w85,b03,b03-l9,เกินไป,,quá (nhiều),,,adv,,,,,,plernpin-b03#p57,true
+b03-w86,b03,b03-l9,น้ำหนัก,,trọng lượng,,,noun,,,,,,plernpin-b03#p57,true
+b03-w87,b03,b03-l9,เลขไทย,,số Thái,,,noun,,,,,,plernpin-b03#p58,true
+b03-w88,b03,b03-l9,เลขคู่,,số chẵn,,,noun,,,,,,plernpin-b03#p58,true
+b03-w89,b03,b03-l9,เลขคี่,,số lẻ,,,noun,,,,,,plernpin-b03#p58,true
+b03-w90,b03,b03-l9,เบอร์โทรศัพท์,หมายเลขโทรศัพท์,số điện thoại,cũng nói: หมายเลขโทรศัพท์,,noun,,,,,,plernpin-b03#p58,true
