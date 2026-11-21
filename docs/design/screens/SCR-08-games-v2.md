@@ -1,6 +1,6 @@
 # SCR-08 v2 Trò chơi: Danh sách 8 trò, Màn chơi, Kết quả — Requirements: plan 0.14 (F-15..F-18), 0.6 (F-01, F-02', F-03', F-04'), F-10..F-14, P-09, 7.2; ROADMAP T9.6.3–T9.6.6
 
-> Trạng thái: **⏳ Chờ owner duyệt** (soạn 2026-11-21, đợt M0.5c). Thay `SCR-08-games.md` (v1) khi được duyệt; luật chơi 4 trò cũ **không đổi** (xem v1 §B) — v2 chỉ thêm theme, sao, "Đổi trò", thumbnail.
+> Trạng thái: **✅ Duyệt 2026-11-21** cùng hướng B (owner giao làm UI M9.6; câu hỏi mở theo đề xuất). Thay `SCR-08-games.md` (v1); luật chơi 4 trò cũ **không đổi** (xem v1 §B) — v2 chỉ thêm theme, sao, "Đổi trò", thumbnail.
 > Wireframe (mid-fi, 1280×800): `SCR-08v2-games.png`, `SCR-08v2-play-whack.png`, `SCR-08v2-play-gameshow.png`, `SCR-08v2-play-airplane.png`, `SCR-08v2-play-maze.png`, `SCR-08v2-result.png`. Chữ Thái trong hình là **mẫu**.
 > Khớp code: core `games/catalog.ts` (`ALL_GAME_IDS`, `SKILLS_BY_GAME`, `gameAvailability`), `games/arcade/*` (hằng số trích ở từng trò bên dưới), `results.ts` (`resultStars`), web `useArcadeRun`, `useGameLoop`, `useGameTheme`.
 > Hiệu ứng phản hồi `fb-*` và màu `highlight` / sao: `docs/design/M0.5c-directions.md` §2.3–2.5 (dùng chung toàn app).
@@ -275,8 +275,8 @@ mô tả: "Lật thẻ, ghép từ Thái với nghĩa." · "Từ + nghĩa: đún
 ## Ngoài phạm vi
 Bảng xếp hạng chung, XP, thử thách ngày (Phase 2); trò ra đề bằng audio / nhãn "Nghe"; theme thứ 4+ hoặc theme do người dùng tạo; chỉnh tốc độ/độ khó; nhiều người chơi; mobile/cảm ứng tối ưu; pháo hoa/confetti; mascot dẫn chuyện; nhạc nền ngoài 3 vòng lặp CC0.
 
-## Câu hỏi mở cho owner
-| # | Câu hỏi | Đề xuất |
+## Câu hỏi mở cho owner — áp dụng đề xuất (2026-11-21)
+| # | Câu hỏi | Đề xuất (= quyết định) |
 |---|---|---|
 | Q1 | Âm nền mặc định bật hay tắt? | **Tắt** (người học thường học nơi công cộng); nhớ khi bật |
 | Q2 | Thumbnail ở `/games` đổi theo theme đang chọn? | Không — nhận diện trò ổn định; theme chỉ cho màn chơi |
