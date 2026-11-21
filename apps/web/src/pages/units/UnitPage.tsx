@@ -13,6 +13,7 @@ import { useKeyShortcut } from '@/components/interactive';
 import { ProgressRing } from '@/components/progress';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { TopicTile, useUnitTopic } from '@/components/fun';
 import { useUnit } from '@/content/hooks';
 import { unitLabel } from '@/content/labels';
 import { useMastery, useRepositories, useRepositoryQuery } from '@/data';
@@ -87,59 +88,67 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
   };
   useKeyShortcut('Enter', primary, records !== undefined && (status === 'completed' || !!current));
   const goals = canDoChecklist({ can_do: unit.can_do, lessons }, recs, ticks ?? []);
+  const color = useUnitTopic(unit.unit_id);
 
   return (
     <>
-      <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold">{unit.title_vi}</h1>
-        <div className="flex flex-wrap items-center gap-2">
-          {unit.title_th && (
-            <span lang="th" className="text-th-sm text-muted-foreground">
-              {unit.title_th}
-            </span>
-          )}
-          {unit.level && <Badge>{unit.level}</Badge>}
-          <Badge>
-            {unit.kind === 'grammar' ? t('units.filterGrammar') : t('units.filterTheme')}
-          </Badge>
-          {unit.draft && <Badge muted>{t('units.draft')}</Badge>}
-        </div>
-        <div className="mt-2 flex flex-wrap items-center gap-4">
-          <ProgressRing
-            percent={progress.percent}
-            label={unit.title_vi}
-            size={48}
-            className="[&>span]:text-xs"
-          />
-          <p className="text-sm text-muted-foreground" data-testid="unit-progress">
-            {status === 'completed'
-              ? t('units.unitDone', { unit: unitLabel(unit) })
-              : t('units.progressLine', {
-                  done: progress.completed,
-                  total: progress.total,
-                  known,
-                  words: words.length,
-                })}
-          </p>
-          {(status === 'completed' || current) && (
-            <Button
-              className="ml-auto"
-              data-testid="unit-primary"
-              aria-keyshortcuts="Enter"
-              onClick={primary}
-            >
+      <header
+        data-topic={color}
+        className="flex min-h-40 items-center gap-6 rounded-xl bg-topic-subtle px-6 py-5"
+      >
+        <div className="flex flex-1 flex-col gap-2">
+          <p className="text-sm font-semibold text-topic">{unitLabel(unit)}</p>
+          <h1 className="text-4xl font-bold">{unit.title_vi}</h1>
+          <div className="flex flex-wrap items-center gap-2">
+            {unit.title_th && (
+              <span lang="th" className="text-th-sm text-muted-foreground">
+                {unit.title_th}
+              </span>
+            )}
+            {unit.level && <Badge>{unit.level}</Badge>}
+            <Badge>
+              {unit.kind === 'grammar' ? t('units.filterGrammar') : t('units.filterTheme')}
+            </Badge>
+            {unit.draft && <Badge muted>{t('units.draft')}</Badge>}
+          </div>
+          <div className="mt-2 flex flex-wrap items-center gap-4">
+            <ProgressRing
+              percent={progress.percent}
+              label={unit.title_vi}
+              size={48}
+              className="text-topic [&>span]:text-xs"
+            />
+            <p className="text-sm text-muted-foreground" data-testid="unit-progress">
               {status === 'completed'
-                ? t('units.practiceUnit', { unit: unitLabel(unit) })
-                : t('units.continueLesson', { n: current!.order })}
-              <kbd
-                aria-hidden
-                className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs"
+                ? t('units.unitDone', { unit: unitLabel(unit) })
+                : t('units.progressLine', {
+                    done: progress.completed,
+                    total: progress.total,
+                    known,
+                    words: words.length,
+                  })}
+            </p>
+            {(status === 'completed' || current) && (
+              <Button
+                className="ml-auto"
+                data-testid="unit-primary"
+                aria-keyshortcuts="Enter"
+                onClick={primary}
               >
-                ↵
-              </kbd>
-            </Button>
-          )}
+                {status === 'completed'
+                  ? t('units.practiceUnit', { unit: unitLabel(unit) })
+                  : t('units.continueLesson', { n: current!.order })}
+                <kbd
+                  aria-hidden
+                  className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs"
+                >
+                  ↵
+                </kbd>
+              </Button>
+            )}
+          </div>
         </div>
+        <TopicTile unit={unit} color={color} size="xl" className="bg-surface/60" />
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">

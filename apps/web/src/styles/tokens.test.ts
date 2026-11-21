@@ -10,7 +10,8 @@ type Group = Record<string, Leaf>;
 
 const json = JSON.parse(read('../../../../docs/design/tokens.json')) as {
   color: Record<string, Leaf | Record<string, Leaf>>;
-  font: { family: Group; size: Group; 'line-height': Group };
+  font: { family: Group; size: Group; weight: Group; 'line-height': Group };
+  illustration: { size: Group };
   radius: Group;
   shadow: Group;
   layout: Record<string, Leaf | Record<string, string>>;
@@ -35,8 +36,10 @@ function expectedVars(): [string, string][] {
       if (sub.startsWith('$')) continue;
       const prefix = key === 'brand-provider' ? sub.replace(/-bg$/, '') : `${key}-${sub}`;
       add(key === 'brand-provider' ? `${prefix}-bg` : prefix, leaf.value);
-      for (const extra of ['subtle', 'border', 'fg'] as const) {
-        if (typeof leaf[extra] === 'string') add(`${prefix}-${extra}`, leaf[extra]);
+      for (const [extra, value] of Object.entries(leaf)) {
+        if (extra !== 'value' && extra !== 'note' && typeof value === 'string') {
+          add(`${prefix}-${extra}`, value);
+        }
       }
     }
   }
@@ -46,11 +49,14 @@ function expectedVars(): [string, string][] {
     if (k.startsWith('th-')) add(`text-${k}`, v.value);
   }
   for (const [k, v] of Object.entries(json.font['line-height'])) add(`leading-${k}`, v.value);
+  add('text-4xl', json.font.size['4xl']!.value);
+  add('weight-bold', json.font.weight.bold!.value);
   for (const [k, v] of Object.entries(json.radius)) if (k !== 'full') add(`radius-${k}`, v.value);
   for (const [k, v] of Object.entries(json.shadow)) if (k !== 'none') add(`shadow-${k}`, v.value);
   for (const [k, v] of Object.entries(json.layout)) {
     if ('value' in v) add(`layout-${k}`, v.value);
   }
+  for (const [k, v] of Object.entries(json.illustration.size)) add(`illustration-${k}`, v.value);
   for (const [k, v] of Object.entries(json.motion)) {
     if (typeof v !== 'string') add(`motion-${k}`, v.value);
   }

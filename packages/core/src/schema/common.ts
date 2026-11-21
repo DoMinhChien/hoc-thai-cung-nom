@@ -40,6 +40,16 @@ export const ImageSchema = z
     'image phải dạng noto:<mã hex> hoặc img/<tên>.svg|png|webp|jpg',
   );
 
+/**
+ * Emoji minh họa của unit (cột tùy chọn `emoji` trong `units.csv`, M0.5c Q3): 1 emoji (có thể
+ * ghép ZWJ / biến thể), không chữ, không số.
+ */
+export const EmojiSchema = z
+  .string()
+  .trim()
+  .regex(/^(?:\p{Extended_Pictographic}|\u200D|\uFE0F|\p{Emoji_Modifier})+$/u, 'phải là 1 emoji')
+  .refine((v) => [...new Intl.Segmenter().segment(v)].length === 1, 'chỉ 1 emoji');
+
 /** File audio trong `content/audio/` (tùy chọn; không có thì TTS). */
 export const AudioSchema = z
   .string()

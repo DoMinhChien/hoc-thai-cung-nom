@@ -76,10 +76,23 @@
   --color-game: var(--game, var(--nom-accent));
   --color-game-subtle: var(--game-subtle, var(--nom-accent-subtle));
   --color-game-fg: var(--game-fg, var(--nom-accent-fg));
-  /* Chủ đề màn chơi arcade (`data-game-theme`, M9.6); ngoài màn chơi = nền phụ. */
+  /* Chủ đề màn chơi arcade (`data-game-theme`, SCR-08 v2); ngoài màn chơi = nền phụ. */
   --color-game-theme: var(--game-theme, var(--nom-bg-subtle));
   --color-game-theme-subtle: var(--game-theme-subtle, var(--nom-bg-subtle));
   --color-game-theme-fg: var(--game-theme-fg, var(--nom-fg));
+  --color-scene-top: var(--scene-top, var(--nom-bg-subtle));
+  --color-scene-bottom: var(--scene-bottom, var(--nom-bg-subtle));
+  --color-scene-ground: var(--scene-ground, var(--nom-border));
+  --color-hud: var(--hud-fg, var(--nom-fg));
+  --color-hud-muted: var(--hud-fg-muted, var(--nom-fg-muted));
+  /* Màu chuyên đề (`data-topic="1..8"`, M0.5c hướng B); ngoài thẻ chuyên đề = accent. */
+  --color-topic: var(--topic, var(--nom-accent));
+  --color-topic-subtle: var(--topic-subtle, var(--nom-accent-subtle));
+  --color-highlight: var(--nom-highlight);
+  --color-streak: var(--nom-streak);
+  --color-star-fill: var(--nom-star-fill);
+  --color-star-stroke: var(--nom-star-stroke);
+  --color-surface: var(--nom-surface);
   --color-mastery-none: var(--nom-mastery-none);
   --color-mastery-learning: var(--nom-mastery-learning);
   --color-mastery-known: var(--nom-mastery-known);
@@ -88,9 +101,12 @@
   --radius-sm: var(--nom-radius-sm);
   --radius-md: var(--nom-radius-md);
   --radius-lg: var(--nom-radius-lg);
-  --radius-xl: var(--nom-radius-lg);
+  --radius-xl: var(--nom-radius-xl);
   --shadow-sm: var(--nom-shadow-sm);
   --shadow-md: var(--nom-shadow-md);
+  --shadow-card: var(--nom-shadow-card);
+  --text-4xl: var(--nom-text-4xl);
+  --font-weight-bold: var(--nom-weight-bold);
 
   --font-sans: var(--nom-font-vi);
   --font-thai: var(--nom-font-th);
@@ -106,6 +122,14 @@
   --animate-rise: nom-rise 700ms var(--nom-motion-easing) forwards;
   --animate-enter: nom-enter var(--nom-motion-base) var(--nom-motion-easing);
   --animate-urgent: nom-urgent 600ms ease-in-out infinite alternate;
+  /* Hiệu ứng phản hồi dùng chung (M0.5c §2.3) — cũng chỉ qua `motion-safe:`. */
+  --animate-fb-correct: nom-fb-correct 240ms var(--nom-motion-easing-bounce);
+  --animate-fb-wrong: nom-shake 300ms var(--nom-motion-easing);
+  --animate-fb-points: nom-fb-points var(--nom-motion-celebrate) var(--nom-motion-easing) forwards;
+  --animate-fb-complete: nom-fb-complete var(--nom-motion-celebrate) var(--nom-motion-easing-bounce);
+  --animate-fb-burst: nom-fb-burst var(--nom-motion-celebrate) var(--nom-motion-easing) forwards;
+  --animate-fb-streak: nom-fb-streak 400ms var(--nom-motion-easing-bounce);
+  --animate-star: nom-fb-complete 320ms var(--nom-motion-easing-bounce) both;
 
   @keyframes nom-shake {
     0%,
@@ -155,6 +179,61 @@
       transform: translateY(0);
     }
   }
+  @keyframes nom-fb-correct {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.04);
+    }
+  }
+  @keyframes nom-fb-points {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    15% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-24px);
+    }
+  }
+  @keyframes nom-fb-complete {
+    0% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    70% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes nom-fb-burst {
+    0% {
+      opacity: 1;
+      transform: rotate(var(--burst-angle, 0deg)) translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(var(--burst-angle, 0deg)) translateY(var(--burst-distance, -56px))
+        scale(0.5);
+    }
+  }
+  @keyframes nom-fb-streak {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+  }
   @keyframes nom-urgent {
     from {
       opacity: 1;
@@ -202,21 +281,96 @@
   --game-subtle: var(--nom-game-classifier-rush-subtle);
   --game-fg: var(--nom-game-classifier-rush-fg);
 }
-/* Chủ đề màn chơi arcade (M9.6 T9.6.3) — xem `color.game-theme` trong tokens.json. */
+[data-game='whack-a-mole'] {
+  --game: var(--nom-game-whack-a-mole);
+  --game-subtle: var(--nom-game-whack-a-mole-subtle);
+  --game-fg: var(--nom-game-whack-a-mole-fg);
+}
+[data-game='gameshow'] {
+  --game: var(--nom-game-gameshow);
+  --game-subtle: var(--nom-game-gameshow-subtle);
+  --game-fg: var(--nom-game-gameshow-fg);
+}
+[data-game='airplane'] {
+  --game: var(--nom-game-airplane);
+  --game-subtle: var(--nom-game-airplane-subtle);
+  --game-fg: var(--nom-game-airplane-fg);
+}
+[data-game='maze'] {
+  --game: var(--nom-game-maze);
+  --game-subtle: var(--nom-game-maze-subtle);
+  --game-fg: var(--nom-game-maze-fg);
+}
+/* Chủ đề màn chơi (SCR-08 v2) — xem `color.game-theme` trong tokens.json. */
 [data-game-theme='sea'] {
   --game-theme: var(--nom-game-theme-sea);
   --game-theme-subtle: var(--nom-game-theme-sea-subtle);
   --game-theme-fg: var(--nom-game-theme-sea-fg);
+  --scene-top: var(--nom-game-theme-sea-scene-top);
+  --scene-bottom: var(--nom-game-theme-sea-scene-bottom);
+  --scene-ground: var(--nom-game-theme-sea-ground);
+  --hud-fg: var(--nom-game-theme-sea-hud-fg);
+  --hud-fg-muted: var(--nom-game-theme-sea-hud-fg-muted);
 }
 [data-game-theme='space'] {
   --game-theme: var(--nom-game-theme-space);
   --game-theme-subtle: var(--nom-game-theme-space-subtle);
   --game-theme-fg: var(--nom-game-theme-space-fg);
+  --scene-top: var(--nom-game-theme-space-scene-top);
+  --scene-bottom: var(--nom-game-theme-space-scene-bottom);
+  --scene-ground: var(--nom-game-theme-space-ground);
+  --hud-fg: var(--nom-game-theme-space-hud-fg);
+  --hud-fg-muted: var(--nom-game-theme-space-hud-fg-muted);
 }
 [data-game-theme='garden'] {
   --game-theme: var(--nom-game-theme-garden);
   --game-theme-subtle: var(--nom-game-theme-garden-subtle);
   --game-theme-fg: var(--nom-game-theme-garden-fg);
+  --scene-top: var(--nom-game-theme-garden-scene-top);
+  --scene-bottom: var(--nom-game-theme-garden-scene-bottom);
+  --scene-ground: var(--nom-game-theme-garden-ground);
+  --hud-fg: var(--nom-game-theme-garden-hud-fg);
+  --hud-fg-muted: var(--nom-game-theme-garden-hud-fg-muted);
+}
+
+/* Màu chuyên đề (M0.5c §2.1) — `data-topic` do `topicColors` gán theo vị trí trong lộ trình. */
+[data-topic='1'] {
+  --topic: var(--nom-topic-1);
+  --topic-subtle: var(--nom-topic-1-subtle);
+}
+[data-topic='2'] {
+  --topic: var(--nom-topic-2);
+  --topic-subtle: var(--nom-topic-2-subtle);
+}
+[data-topic='3'] {
+  --topic: var(--nom-topic-3);
+  --topic-subtle: var(--nom-topic-3-subtle);
+}
+[data-topic='4'] {
+  --topic: var(--nom-topic-4);
+  --topic-subtle: var(--nom-topic-4-subtle);
+}
+[data-topic='5'] {
+  --topic: var(--nom-topic-5);
+  --topic-subtle: var(--nom-topic-5-subtle);
+}
+[data-topic='6'] {
+  --topic: var(--nom-topic-6);
+  --topic-subtle: var(--nom-topic-6-subtle);
+}
+[data-topic='7'] {
+  --topic: var(--nom-topic-7);
+  --topic-subtle: var(--nom-topic-7-subtle);
+}
+[data-topic='8'] {
+  --topic: var(--nom-topic-8);
+  --topic-subtle: var(--nom-topic-8-subtle);
+}
+
+/* Emoji minh họa (Noto Color Emoji nếu máy có; M0.5c §2.2). */
+.nom-emoji {
+  font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  line-height: 1;
 }
 
 /*

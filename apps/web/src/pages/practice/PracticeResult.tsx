@@ -1,4 +1,5 @@
 import type { Question } from '@nom/core';
+import { Burst, Emoji } from '@/components/fun';
 import { useCompletionSound, useKeyShortcut } from '@/components/interactive';
 import { TypingFeedback } from '@/components/typing';
 import { Button } from '@/components/ui/button';
@@ -49,7 +50,13 @@ export function PracticeResult({
 
   return (
     <section className="flex flex-col gap-8" data-testid="practice-result">
-      <h1 className="text-3xl font-semibold">{t('practice.doneTitle')}</h1>
+      <div className="flex items-center gap-5">
+        <span className="relative flex size-24 shrink-0 items-center justify-center rounded-full bg-positive-subtle text-positive motion-safe:animate-fb-complete">
+          <Emoji size="lg">{pct >= 80 ? '🌟' : '🎯'}</Emoji>
+          <Burst />
+        </span>
+        <h1 className="text-4xl font-bold">{t('practice.doneTitle')}</h1>
+      </div>
       <dl className="flex flex-wrap gap-12">
         {[
           [`${pct}%`, t('practice.resultPct'), 'result-pct'],
@@ -57,7 +64,7 @@ export function PracticeResult({
           [t('practice.minutes', { n: minutes }), t('practice.resultTime'), 'result-time'],
         ].map(([value, label, id]) => (
           <div key={id} className="flex flex-col">
-            <dd className="order-1 text-[32px] font-semibold tabular-nums" data-testid={id}>
+            <dd className="order-1 text-[32px] font-bold tabular-nums" data-testid={id}>
               {value}
             </dd>
             {label && <dt className="order-2 text-sm text-muted-foreground">{label}</dt>}

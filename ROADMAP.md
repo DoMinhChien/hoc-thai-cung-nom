@@ -11,18 +11,20 @@
 
 > **🟢 M9 — Bài tập** (7/7 task, xong 2026-11-20, nhánh `m9-practice` — PR #20): `/practice`, `/practice/session`, 10 loại câu hỏi E-01..E-09, E-14, FSRS cho từ **và** câu, bậc dịch E-11, bước Bài tập của bài học dùng chung engine. Kế tiếp: **M10** (cần SCR-03/07/09 — đợt M0.5b-2).
 
-> **🟠 M9.5 — Phản hồi người học** (2/4 task — T9.5.1, T9.5.2 ✅ nhánh `m9.5-feedback`; T9.5.3 ⏸ **tạm loại** (owner 2026-11-21), T9.5.4 chờ **M0.5c**): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe (chọn giọng Natural + Cài đặt giọng; mp3 Azure neural để sau), giao diện sinh động hơn (chờ M0.5c). Nhánh `m9.5-feedback` tách từ `main` (sau khi merge PR nội dung + #20).
+> **🟢 M9.5 — Phản hồi người học** (3/3 task trong phạm vi — T9.5.1, T9.5.2, **T9.5.4 ✅ 2026-11-21** hướng B; T9.5.3 ⏸ **tạm loại** (owner 2026-11-21)): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe, giao diện **"Nắng nhiệt đới"** (nền kem, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, hiệu ứng `fb-*`). T9.5.4 trên nhánh `m9.6-games` (PR #25).
 
-> **🔵 M9.6 — Trò chơi mở rộng** (plan 0.14, tham khảo Wordwall; nhánh `m9.6-games` tách từ `m9.5-feedback`): +4 trò, theme, sao kết quả, "Đổi trò". Làm **sau M9.5**; logic T9.6.1–T9.6.3 làm ngay, UI chờ SCR-08 v2 (M0.5c).
+> **🟢 M9.6 — Trò chơi mở rộng** (6/6 task, xong 2026-11-21; **PR #25 đã merge** vào `main`, gồm cả #27): `/games` 8 trò theo SCR-08 v2, 4 màn arcade, 3 theme có cảnh nền, sao + "Đổi trò", E2E + baseline. **Kế tiếp: M10** (chờ owner duyệt SCR-03/07/09 — PR #26).
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
-> - [ ] **Merge** ~~#21~~ ✅ → ~~#22~~ ✅ → ~~#23~~ ✅ — nhưng #23 được merge vào nhánh `m9.5-feedback` (base cũ), **chưa vào `main`** → merge PR mới `m9.6-games` → `main` (M9.6 core + phần logic UI 2026-11-21).
+> - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
 > - [ ] **Azure SWA hết chỗ preview:** deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
 > - [ ] ⏸ *(tạm loại 2026-11-21 — owner bật lại khi cần)* **SETUP S13** (Azure AI Speech F0) cho **T9.5.3**: tạo resource Speech (Southeast Asia, F0), ghi `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` vào `.env.local` (không commit, không gửi chat), nghe thử Premwadee / Achara → báo agent "S13 xong, giọng: …".
 > - [ ] **Xem baseline:** mới `settings-*`; đổi theo nội dung thật `units-*`, `unit-*`, `lesson-*`, `practice-*`, `practice-arrange-*` (Windows đã commit; Linux lấy từ artifact CI `screenshot-baselines-linux`).
-> - [ ] **M0.5c / SCR-08 v2** (Claude Desktop → owner chọn): mở khóa T9.5.4 (giao diện sinh động), T9.6.3 phần còn lại (asset CC0 + `LICENSE.md`, âm nền), T9.6.4–T9.6.6 (UI 4 trò mới), thay màu tạm `color.game-theme.*`.
-> - [ ] **SCR-03 / SCR-07 / SCR-09** (đợt M0.5b-2) để mở **M10**.
-> - [ ] **Nội dung:** Claude Desktop nhập tiếp (Bài 11 → 3, rồi CĐ 15 → 2); khi có `c03`, `c11` → agent làm **TC.2b**.
+> - [x] **M0.5c / SCR-08 v2** — owner chọn **B** (Q1–Q4 theo đề xuất), SCR-08 v2 làm theo đề xuất (2026-11-21). **#25 merge 2026-11-21** (gồm cả #27, #27 cũng đã đóng ở trạng thái merged).
+> - [ ] **Xem baseline hướng B** (đã vào `main` qua #25): `units-*`, `unit-*`, `practice-*`, `games-*`, `game-match-*` đổi; mới `games-v2`, `game-whack` (che lưới hố), `game-gameshow`, `game-airplane`, `game-maze`; Linux lấy từ artifact CI `screenshot-baselines-linux`.
+> - [ ] **E2E chập chờn trên WebKit (Linux CI):** `settings.spec` — ô chọn giọng có lúc không hiện trong 5 s (giọng giả nạp chậm); `auth.spec` popup emulator. Không chặn merge khi chạy lại xanh; agent sẽ xem lại khi có thời gian.
+> - [ ] **SCR-03 / SCR-07 / SCR-09** — đã soạn, **PR #26**: owner duyệt + trả lời 11 câu hỏi → mở **M10**.
+> - [ ] **Nội dung (giáo viên duyệt):** Bài 11 → 6 (**#28**) và Bài 5 → 3 (**#29**) **đã merge 2026-11-21** (draft) — giáo trình Bài 1–12 đủ; GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
 > **🟢 M8 — Bàn phím ảo Thái + chấm gõ câu** (nhánh `m8-thai-keyboard`, làm song song M7 — owner chốt 2026-11-17): xong — PR #15 đã merge. M9 kế tiếp chờ M7 + SCR-06.
@@ -70,8 +72,8 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M7.5 | **Trò chơi** F-01, F-02', F-03', F-04' + component tương tác dùng chung (ưu tiên, v7.2) | 🟢 | SCR-08 ✅ — PR #16 ✅ merge vào `m7-lessons` 2026-11-19 |
 | M8 | Bàn phím ảo Thái + chấm gõ câu (G-06, E-07) | 🟢 | M5.5 ✅; song song M7 (owner chốt) |
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | 🟢 | M7, M7.5, M8 ✅, SCR-06 |
-| M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🟠 | M9 ✅; T9.5.3 ⏸ tạm loại (S13); T9.5.4 cần M0.5c |
-| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | 🔵 | M9.5; UI chờ SCR-08 v2 (M0.5c) |
+| M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🟢 | M9 ✅; T9.5.3 ⏸ tạm loại (S13); T9.5.4 ✅ hướng B — PR #25 |
+| M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | 🟢 | M9.5 ✅, SCR-08 v2 ✅ — PR #25 |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
@@ -425,7 +427,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
   - Badge Bài tập ở sidebar đọc DB của tài khoản ngay khi vào trang, nên DB có thể được tạo (rỗng). Test đăng nhập đổi sang kiểm tra "không chuyển thẻ".
   - Settings chưa có ô chỉnh "số câu mỗi phiên"; khóa `practiceSessionSize` đã có, mặc định 20, UI ở M12.
 
-### M9.5 — Phản hồi người học 🟠 (mở 2026-11-20, plan 0.13; T9.5.1–T9.5.2 xong, T9.5.3 ⏸ tạm loại, T9.5.4 chờ M0.5c) — **làm trước M10**
+### M9.5 — Phản hồi người học 🟢 (mở 2026-11-20, xong 2026-11-21, plan 0.13; T9.5.3 ⏸ tạm loại)
 
 **Nguồn:** feedback người học sau khi dùng Bài học / Bài tập / Trò chơi (owner chuyển, 2026-11-20). Claude Desktop đã review code hiện tại:
 - Âm đúng/sai **đã có** (`webAudioTone`, F-13) nhưng chỉ là tiếng bíp 0,12 s, âm lượng 0,08 (rất nhỏ); **Bài tập chỉ phát khi đúng** (`PracticeRunner`: `if (ok) sound.play(true)`) — sai không có âm.
@@ -440,7 +442,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
   - Phạm vi: `words.thai`, `sentences.th`, `grammar.examples[].th`, `dialogues.lines[].th`. Câu chưa có mp3 vẫn đọc bằng Web Speech (giọng + tốc độ trong Cài đặt T9.5.2).
   - `content:check` thêm **cảnh báo** mục chưa có audio → mỗi lần Claude Desktop nhập bài mới, owner chạy lại `pnpm audio:build` rồi commit mp3.
   - Budget alert $5 / $20 (S3) phòng trường hợp lỡ dùng gói trả phí. "Tắt mạng vẫn phát" chỉ đạt khi có PWA cache (M12).
-- [ ] T9.5.4 🟠 **Giao diện sinh động hơn toàn app** — chờ **M0.5c** (Claude Desktop đề xuất 2–3 hướng hi-fi cho Lộ trình, Bài học, Bài tập, Tổng quan → owner chọn → cập nhật tokens/spec). Sau khi chốt: agent áp dụng (màu theo nhánh/chuyên đề, thẻ có minh họa emoji lớn, hiệu ứng phản hồi + hoàn thành dùng chung với khu Trò chơi, chuỗi ngày học nổi bật…), cập nhật baseline.
+- [x] T9.5.4 **Giao diện sinh động hơn toàn app** — owner chọn **hướng B** (M0.5c, 2026-11-21) (Claude Desktop đề xuất 2–3 hướng hi-fi cho Lộ trình, Bài học, Bài tập, Tổng quan → owner chọn → cập nhật tokens/spec). Sau khi chốt: agent áp dụng (màu theo nhánh/chuyên đề, thẻ có minh họa emoji lớn, hiệu ứng phản hồi + hoàn thành dùng chung với khu Trò chơi, chuỗi ngày học nổi bật…), cập nhật baseline.
 
 **Tiêu chí nghiệm thu**
 - Trả lời đúng và sai ở Bài tập, bài học, trò chơi đều có âm khác nhau, nghe rõ ở âm lượng máy bình thường; tắt được trong Cài đặt.
@@ -454,9 +456,15 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - **Giọng đọc:** core `rankThaiVoices` (Natural/Online/Neural nữ → Natural nam → Google → giọng nữ → còn lại); `WebSpeechProvider` mặc định giọng xếp đầu, rate 0,95, pitch 1,05, thêm `thaiVoices()`. Cài đặt giọng/tốc độ áp cho mọi lần đọc qua `VoicePreferencesBoundary` (provider giữ nguyên danh tính → không dựng lại phiên đang làm).
 - **`/settings`** (owner cho agent làm khi chưa có SCR, 2026-11-20): mục Âm phản hồi (bật/tắt, âm lượng 0–100%, nghe âm đúng/sai) + Giọng đọc tiếng Thái (chọn giọng, "Tự động — <giọng tốt nhất>", tốc độ 0,7–1,2, Nghe thử `สวัสดีค่ะ ยินดีที่ได้รู้จัก`, gợi ý dùng Edge khi máy chỉ có giọng hệ thống, hướng dẫn cài khi không có giọng Thái). Phần còn lại của Cài đặt ở M12.
 - **Test:** unit (player giả, danh sách giọng giả), E2E spy Web Audio (âm sai 392→311 Hz, âm đúng + hoàn thành), `settings.spec` (giọng giả cố định, lưu sau reload, axe), baseline `settings-*` mới. Playwright WebKit trên Windows không có Web Audio / Web Speech → các kiểm tra âm/giọng bỏ qua trên webkit.
-- **Còn lại:** T9.5.3 ⏸ tạm loại (owner 2026-11-21; khi bật lại cần **SETUP S13**); T9.5.4 chờ **M0.5c**.
+- **Còn lại:** T9.5.3 ⏸ tạm loại (owner 2026-11-21; khi bật lại cần **SETUP S13**).
 
-### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) 🔵 (plan 0.14) — sau M9.5, trước M10
+**Kết quả T9.5.4 (2026-11-21, hướng B "Nắng nhiệt đới", nhánh `m9.6-games`):**
+- **Token:** nền kem `#FFFBF5`, sidebar `#FBF3E8`, viền ấm; `topic.1..8`, `highlight`, `streak`, `star`, `radius.xl` 16, `shadow.card`, H1 32px bold, motion `slow/celebrate/easing-bounce`, `illustration.size`. Mọi màn có H1 dùng cỡ mới.
+- **Core:** `topicColors` (Q1 — màu theo vị trí trong lộ trình đầy đủ, hai unit liền nhau không trùng màu), `unitEmoji` + cột **tùy chọn** `emoji` trong `units.csv` (Q3; mẫu + README cập nhật, chưa điền cho unit nào → mặc định 📘 / 🧩), `studyStreak` (Q4 — ngày có bài tập / ôn thẻ / bước bài học / lượt trò chơi; tuần T2–CN; mốc 3/7/30/100).
+- **Web:** Lộ trình **lưới 2 cột** (dải màu chuyên đề 88px + emoji, thanh tiến độ màu chuyên đề; ←→↑↓); thẻ Học tiếp và header Chi tiết chuyên đề nền `topic.subtle` + emoji lớn; thẻ từ trong vòng `topic.subtle`, stepper màu chuyên đề; chip 🔥 ở sidebar + khối chuỗi ngày (7 chấm tuần) đầu trang Bài tập; nút lựa chọn bo 16px, nảy khi đúng / rung khi sai; kết quả Bài tập có vòng hoàn thành + chấm tỏa. Lượt trò chơi ghi phiên `game` để tính chuỗi ngày.
+- **Chưa làm (thuộc M10):** khối streak + "Học tiếp" ở **Tổng quan** (SCR-03 chưa duyệt); hiệu ứng mốc streak `fb-record` chỉ có ở khối streak.
+
+### M9.6 — Trò chơi mở rộng (tham khảo Wordwall) 🟢 (plan 0.14, xong 2026-11-21)
 
 **Nguồn:** phản hồi người học "ít trò, giao diện trò chơi chưa thu hút"; owner chọn thêm 3–4 trò, UI tham khảo Wordwall (2026-11-20).
 
@@ -465,10 +473,10 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 **Task**
 - [x] T9.6.1 Core: vòng lặp game thuần (`tick(state, dtMs, input)`, đồng hồ/seed là tham số) dùng chung cho trò có chuyển động; **F-15 Đập chuột** (lịch xuất hiện 9 ô, combo, phạt đập nhầm) và **F-16 Đố vui truyền hình** (trộn câu hỏi từ engine Bài tập E-01/E-02/E-05/E-14, trợ giúp 50:50 + thêm giờ, vòng thưởng, điểm). Unit test.
 - [x] T9.6.2 Core: **F-17 Máy bay** (làn, tốc độ tăng dần, va chạm mây, 3 tim — dùng `rapidGame`) và **F-18 Mê cung** (sinh mê cung có seed, 4 ô đáp án, "ma đuổi" theo đường ngắn nhất, chế độ từng bước khi reduced-motion). Unit test.
-- [ ] T9.6.3 Hạ tầng web: hook `useGameLoop` (rAF, tạm dừng khi tab ẩn — dùng lại `useCountdown`), **theme trò chơi** (token `game.theme.*`: nền minh họa, màu, âm nền tắt được; 3 theme), bộ asset CC0 + `LICENSE.md`, **sao kết quả 1–3** + nút **"Đổi trò"** (giữ nguồn) cho cả 4 trò cũ.
-- [ ] T9.6.4 🟠 `/games` theo **SCR-08 v2**: lưới thumbnail minh họa lớn cho 8 trò, nhãn kỹ năng, lọc theo kỹ năng, kỷ lục, chọn theme, trò bị khóa có lý do.
-- [ ] T9.6.5 🟠 4 màn chơi mới + áp theme/sao cho 4 màn cũ theo SCR-08 v2 (bàn phím đầy đủ, âm M9.5, reduced-motion).
-- [ ] T9.6.6 🟠 E2E mỗi trò mới (seed cố định → điểm/kỷ lục, mục sai "cần ôn", FSRS không đổi), axe, baseline `/games` + 4 màn.
+- [x] T9.6.3 Hạ tầng web: hook `useGameLoop` (rAF, tạm dừng khi tab ẩn — dùng lại `useCountdown`), **theme trò chơi** (token `game.theme.*`: nền minh họa, màu, âm nền tắt được; 3 theme), bộ asset CC0 + `LICENSE.md`, **sao kết quả 1–3** + nút **"Đổi trò"** (giữ nguồn) cho cả 4 trò cũ.
+- [x] T9.6.4 `/games` theo **SCR-08 v2**: lưới thumbnail minh họa lớn cho 8 trò, nhãn kỹ năng, lọc theo kỹ năng, kỷ lục, chọn theme, trò bị khóa có lý do.
+- [x] T9.6.5 4 màn chơi mới + áp theme/sao cho 4 màn cũ theo SCR-08 v2 (bàn phím đầy đủ, âm M9.5, reduced-motion).
+- [x] T9.6.6 E2E mỗi trò mới (seed cố định → điểm/kỷ lục, mục sai "cần ôn", FSRS không đổi), axe, baseline `/games` + 4 màn.
 
 **Tiêu chí nghiệm thu**
 - `/games` có **8 trò**, mỗi trò thumbnail riêng, chơi được với nguồn "Từ đã học" và từng chuyên đề (trò thiếu dữ liệu bị khóa có lý do).
@@ -498,6 +506,14 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Web `useArcadeRun(game, source, seed)`: lượt theo seed, vòng lặp `useGameLoop` → `tick(state, dtMs)`, thao tác người chơi áp ngay (bỏ qua khi chưa bắt đầu / tạm dừng / đã xong), âm đúng/sai M9.5.
 - **Test:** core 417, web 307.
 
+**Kết quả T9.6.3 (phần còn lại) – T9.6.6 (2026-11-21, SCR-08 v2):**
+- **`/games`:** 8 card thumbnail 16:10 (emoji + khối CSS, nền màu trò, không đổi theo theme — Q2), phím `1`–`8`, nhãn kỹ năng, lọc `S` (`?skill=`, số trên card không đánh lại, trò ẩn không nhận phím), chọn theme `T` (3 ô tròn, lưu), kỷ lục 🏆, trò khóa: mờ + 🔒 + lý do, phím số báo toast. Lý do khóa mới `items` cho Máy bay / Đố vui (Q3).
+- **Màn chơi:** cảnh nền theo theme (2 dải màu + đường cong SVG + đồ trang trí emoji), panel trắng cho mọi chữ Thái; thanh trên có ⏸ `P`, 🎵 `M`, trạng thái ("Từng bước", "Tốc độ ×1,3"); lớp tạm dừng **Tiếp tục / Chơi lại / Thoát**; đếm 3·2·1 có dòng hướng dẫn phím. 4 trò cũ đặt trong panel trên cảnh nền.
+- **4 trò mới:** Đập chuột (phím numpad `7 8 9 / 4 5 6 / 1 2 3` + `QWE/ASD/ZXC`, click), Đố vui truyền hình (thang 12 câu, đồng hồ vòng, `A–D`/`1–4`, 50:50 `F`, +10 giây `T`, banner vòng thưởng, Tiếp `Enter`), Máy bay (`↑↓`/`WS`; giảm chuyển động → từng bước, `→`/Enter "Bay"), Mê cung (mũi tên/WASD, `B` bật/tắt từng bước — nhớ theo user, tự bật khi giảm chuyển động).
+- **Kết quả:** sao 1–3 tô `highlight` + viền, bật lần lượt; kỷ lục mới = huy hiệu `highlight` + chấm tỏa (fb-record); dòng riêng trò (Đập nhầm n lần, Trợ giúp đã dùng, Bay qua n hàng mây, Qua n màn); **"Đổi trò" `G`** mở dialog 8 trò (giữ nguồn, trò khóa mờ + lý do, "Vừa chơi", phím `1`–`8`) — Q5.
+- **Khác spec (cần owner biết):** âm nền là **vòng nhạc tổng hợp Web Audio** (như âm phản hồi M9.5) thay cho file OGG CC0, mặc định tắt (Q1), âm lượng = 30% âm phản hồi; cảnh nền và nhân vật dùng **emoji + CSS/SVG**, không dùng bộ Kenney → không có file asset, không cần `LICENSE.md`. Đập chuột khi giảm chuyển động: con hiện/ẩn tức thì, không có chế độ chậm (Q4).
+- **Test:** core 427, web 381 (thêm 8 test component cho `/games` v2 + 4 trò + Đổi trò); E2E `arcade.spec.ts` 5 test × 6 project (seed cố định → kỷ lục, "cần ôn", FSRS không đổi, axe, baseline `/games` + 4 màn).
+
 ### M10 → M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
@@ -509,6 +525,10 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | Quy trình + Nội dung | Owner merge #25 (gồm #27). **Tự merge #28, #29 (loại nội dung `draft`, AGENTS 8.1, owner đồng ý lần này)** — rebase lên `main`, sinh lại baseline `/units` trên giao diện B, CI xanh. Sửa ảnh `game-whack` không ổn định (che lưới hố; bỏ trên WebKit) | #30 (docs 8.1 + sửa test) chờ CI | M10 chờ owner duyệt #26 (không tự merge: spec thiết kế + câu hỏi cho owner) | #28, #29 đã merge; `docs-auto-merge` → #30 |
+| 2026-11-21 | Quy trình | Owner đồng ý **agent tự merge PR** theo `AGENTS.md` mục 8.1 (CI xanh, không conflict, base `main`; loại PR được phép / phải chờ owner). SETUP S1: bảo vệ `main` không bắt buộc review | — | — | — (docs chưa commit) |
+| 2026-11-21 | M9.5 + M9.6 + Nội dung | Owner chọn **hướng B** (Q1–Q4 theo đề xuất). **T9.5.4** giao diện "Nắng nhiệt đới" (token, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, `fb-*`); **T9.6.3–T9.6.6** `/games` 8 trò + 4 màn arcade + theme + sao + Đổi trò + E2E; nhập **Bài 5 → 3** (PR #29) | — | M10 chờ owner duyệt SCR-03/07/09 (#26) | `m9.6-games` → PR #25; `content-b03-b05` → PR #29 |
+| 2026-11-21 | M0.5b-2 / M0.5c / Nội dung | Owner giao cho agent: soạn **SCR-03/07/09** + wireframe (PR #26), **M0.5c** 3 hướng giao diện + **SCR-08 v2** + mockup (PR #27), nhập **Bài 11 → 6** (PR #28; 0 lỗi content:check, baseline `/units`) | Nhập Bài 5 → 3 | M10, T9.5.4, UI M9.6 chờ owner duyệt #26 / #27 | `m0.5b-scr-03-07-09`, `m0.5c-design`, `content-b06-b11` |
 | 2026-11-21 | M9.6 (+ M9.5) | Owner tạm loại **T9.5.3** (Azure Speech). Sửa 8 điểm review PR #23. Logic chờ UI: danh mục 8 trò + nhãn kỹ năng + lọc, kỷ lục / "cần ôn" cho trò arcade, hook `useArcadeRun` | — | T9.5.4, T9.6.3 phần còn lại, T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c); M10 chờ SCR-03/07/09 | `m9.6-games` → PR mới vào `main` (#23 đã merge vào `m9.5-feedback`) |
 | 2026-11-20 | M9.6 | **T9.6.1** khung arcade + Đập chuột + Đố vui truyền hình, **T9.6.2** Máy bay + Mê cung (core, seed + đồng hồ giả, coverage 100%); T9.6.3 một phần: `useGameLoop`, token 3 theme + `useGameTheme`, sao kết quả + "Đổi trò" cho 4 trò cũ | T9.6.3 (asset CC0 + âm nền) | T9.6.3 phần còn lại + T9.6.4–T9.6.6 chờ SCR-08 v2 (M0.5c) | `m9.6-games` (xếp chồng trên `m9.5-feedback`) |
 | 2026-11-20 | M9.5 + TC.2a | **T9.5.1** âm phản hồi mới ở mọi nơi (cả khi sai), **T9.5.2** xếp hạng giọng Thái + `/settings` âm lượng / giọng / tốc độ / nghe thử (owner cho làm khi chưa có SCR); **TC.2a** xóa `u01`/`u02`, test chuyển sang `b01`/`c01`/`b12`; sửa engine: phương án nhiễu trùng đề (từ cùng nghĩa); merge `content-b12` vào nhánh (tránh xung đột `dialogues.yaml`) | M9.6 T9.6.1–T9.6.3 | T9.5.3 chờ S13; T9.5.4 + UI M9.6 chờ M0.5c | `m9.5-feedback` |

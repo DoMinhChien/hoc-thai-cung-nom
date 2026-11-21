@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { AudioSchema, IdSchema, ImageSchema, LevelSchema, TextSchema, ThaiTextSchema } from '../schema/common';
+import { AudioSchema, EmojiSchema, IdSchema, ImageSchema, LevelSchema, TextSchema, ThaiTextSchema } from '../schema/common';
 import { UnitKindSchema } from '../schema/course';
 import { DialogueSchema, GrammarSchema } from '../schema/grammar';
 
@@ -42,6 +42,7 @@ export const UnitJsonSchema = z.object({
   title_vi: TextSchema,
   title_th: ThaiTextSchema.optional(),
   can_do: z.array(TextSchema),
+  emoji: EmojiSchema.optional(),
   draft: z.boolean(),
 });
 

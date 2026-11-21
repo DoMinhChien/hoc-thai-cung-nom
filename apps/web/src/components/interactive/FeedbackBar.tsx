@@ -42,14 +42,7 @@ export function FeedbackBar({ correct, answer, children, className }: FeedbackBa
         )}
       </p>
       {children && (
-        <div
-          className={cn(
-            'ml-auto text-sm font-semibold',
-            correct ? 'text-positive' : 'text-destructive',
-          )}
-        >
-          {children}
-        </div>
+        <div className={cn('ml-auto text-sm font-semibold text-foreground')}>{children}</div>
       )}
     </div>
   );

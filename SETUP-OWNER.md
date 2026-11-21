@@ -41,7 +41,7 @@
 ## S1 — GitHub repo
 1. Tạo repo **private** (vd. `hoc-thai-cung-nom`) trên tài khoản cá nhân.
 2. Đẩy nội dung thư mục này lên (`AGENTS.md`, `ROADMAP.md`, `SETUP-OWNER.md`, plan).
-3. Settings → Branches: bảo vệ `main` (bắt buộc PR, bắt buộc CI pass).
+3. Settings → Branches: bảo vệ `main` (bắt buộc PR, bắt buộc CI pass, **không** bắt buộc review — agent được tự merge theo AGENTS.md 8.1).
 
 **Đầu ra cho agent:** URL repo: https://github.com/DoMinhChien/hoc-thai-cung-nom
 

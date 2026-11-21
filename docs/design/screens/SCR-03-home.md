@@ -1,7 +1,7 @@
 # SCR-03 Tổng quan (route: `/` · App layout) — Requirements: plan 0.7, 0.8 (P-08, P-10), B-06, E-10, R-02' (streak)
 
-> Trạng thái: **Chờ owner duyệt** (M0.5b đợt 2, soạn 2026-11-21). Mở khóa **M10**. Wireframe: `SCR-03-home.png` (đang học), `SCR-03-home-empty.png` (người học mới).
-> Màu/không khí: dùng tokens hiện có (D1 — chỉ accent + sắc độ mức thuộc). Đợt **M0.5c** có thể đổi màu/minh họa cho cả app; spec này chốt **bố cục, dữ liệu, câu chữ, hành vi** — M0.5c chỉ "phủ màu" lên, không đổi cấu trúc.
+> Trạng thái: **✅ Owner duyệt 2026-11-21** — Q1 **a**, Q2 **b**, Q3 **a** (§Câu hỏi đã chốt). Mở khóa **M10**. Wireframe: `SCR-03-home.png` (đang học), `SCR-03-home-empty.png` (người học mới).
+> Màu/không khí: **hướng B M0.5c** (đã áp dụng) — card trắng `shadow.card` trên nền kem, card "Học tiếp" nền `topic.subtle` của chuyên đề đang học + emoji lớn (như thẻ Học tiếp ở `/units`), khối "Hôm nay" dùng `StreakCard` (màu `streak`, 7 chấm tuần). Spec này chốt **bố cục, dữ liệu, câu chữ, hành vi**.
 
 ---
 
@@ -15,16 +15,16 @@ Mở app là biết **hôm nay làm gì** trong ≤ 3 giây: học tiếp bài d
 | "Học tiếp" (bài, bước) | `continueTarget(units, listLessonProgress())` + `resumeStep(lesson.steps, record)` (`packages/core/progress/lessons.ts`); tên bài/unit từ `useAllUnits()` |
 | "Bài tập hôm nay" | `practiceOverview({cards, attempts, now, dayStart})` → `due.words`, `due.sentences`, `doneToday`, `dueTomorrow` (dùng chung trang Bài tập — **không tính lại theo cách khác**) |
 | Mục tiêu ngày | `doneToday` / cài đặt `PRACTICE_SESSION_SIZE_KEY` (mặc định 20) — giống thanh "Mục tiêu ngày" ở SCR-06 |
-| Chuỗi ngày (streak) | **Selector mới** `activityDays()` + `streak()` trong `packages/core/progress` (xem §Quy tắc chuỗi ngày) từ `ReviewLogRecord.review`, `ExerciseAttemptRecord.ts`, `CardRecord.createdAt` |
+| Chuỗi ngày (streak) | `studyStreak()` (`packages/core/progress/streak.ts`) — xem §Quy tắc chuỗi ngày |
 | Lộ trình (P-10) | `useAllUnits()` (thứ tự Giáo trình → Chuyên đề, rồi `order`) + `unitStatus()` / `unitLessonProgress()` theo `LessonProgressRecord`; `Unit.level` (A1/A2/B1, có thể trống) |
 | Tóm tắt (P-08) | `countMastery(wordIds đã có thẻ, cards)`; số câu có thẻ; số bài xong (`completedAt ≠ null`); `listNeedsReview().length` |
 
-### Quy tắc chuỗi ngày (streak) — dùng chung SCR-03 và SCR-09
-- **Ngày học** = ngày (giờ máy, như `startOfDay` của Bài tập) có ≥ 1 trong: lượt trả lời bài tập (`ExerciseAttemptRecord`), lượt ôn thẻ (`ReviewLogRecord`), từ mới vào học (`CardRecord.createdAt`, tức là học bước Từ vựng / "Thêm vào Sổ từ").
+### Quy tắc chuỗi ngày (streak) — dùng chung SCR-03, SCR-09 và chip/khối streak M0.5c
+> **Owner 2026-11-21 (Q2 = b, thống nhất M0.5c Q4):** trò chơi **tính** là ngày học. Không thêm bảng `gamePlays` riêng — dùng `SessionRecord` (SCR-09 Q2 b): từ M10 mỗi lượt bài học / bài tập / trò chơi ghi một phiên.
+- **Ngày học** = ngày (giờ máy) có ≥ 1 trong: lượt trả lời bài tập (`ExerciseAttemptRecord.ts`), lượt ôn thẻ (`ReviewLogRecord.review`), bước bài học xong (`LessonProgressRecord.updatedAt` khi có `stepsDone`), **phiên** `SessionRecord.startedAt` (module `lesson` / `practice` / `game`), và — cho dữ liệu cũ trước M10 — `GameResultRecord.lastPlayedAt`.
 - **Chuỗi hiện tại** = số ngày học liên tiếp kết thúc ở **hôm nay**, hoặc ở **hôm qua** nếu hôm nay chưa học (chuỗi chưa mất cho tới hết ngày).
 - **Chuỗi dài nhất** = chuỗi dài nhất trong toàn bộ lịch sử (SCR-09).
-- Trò chơi **chưa** tính (Phase 1 chỉ lưu kỷ lục + `lastPlayedAt`, không có lịch sử từng lượt) — xem Câu hỏi mở #2.
-- Selector thuần, nhận `now` + `utcOffsetMinutes` từ ngoài, unit test bằng đồng hồ giả (AGENTS §7).
+- Selector thuần `studyStreak()` (đã có từ T9.5.4, `packages/core/progress/streak.ts`; M10 thêm `longest`), nhận `now` + `utcOffsetMinutes` từ ngoài, unit test bằng đồng hồ giả (AGENTS §7).
 
 ## Bố cục (desktop 1440, vùng nội dung max 1040)
 ```
@@ -157,7 +157,7 @@ Phím tắt riêng luôn hoạt động bất kể nút nào là chính: `H` H�
 ## Ngoài phạm vi
 XP, huy hiệu, bảng xếp hạng, nhắc học qua email/push (Phase 2: E-01..E-06); đồng bộ nhiều thiết bị (Phase 2); widget tùy biến/kéo thả; "đóng băng chuỗi" (streak freeze); thông báo hệ thống; dự báo lịch ôn (ở SCR-09).
 
-## Câu hỏi mở cho owner
-1. **Nút chính khi vừa có bài dở vừa có câu đến hạn** — (a) *đề xuất*: Bài tập là chính khi còn đến hạn và chưa đạt mục tiêu ngày, ngược lại Học tiếp; (b) luôn là Học tiếp (bài mới trước); (c) luôn là Bài tập (ôn trước, giống Anki/WaniKani).
-2. **Trò chơi có tính là "ngày học" không** — (a) *đề xuất*: chưa tính ở M10 (không có lịch sử lượt chơi); (b) tính — cần thêm bảng `gamePlays` (mỗi lượt một bản ghi) ở M10.
-3. **Mục tiêu ngày đo bằng gì** — (a) *đề xuất*: số câu bài tập đã chấm hôm nay / số câu mỗi phiên (đúng như SCR-06 đang hiện); (b) số phút học; (c) số "lượt" gồm cả từ mới của bài học.
+## Câu hỏi đã chốt (owner 2026-11-21)
+1. **Nút chính khi vừa có bài dở vừa có câu đến hạn** — **chọn (a)**: Bài tập là chính khi còn đến hạn và chưa đạt mục tiêu ngày, ngược lại Học tiếp (bảng §C). Các phương án khác: (a) Bài tập là chính khi còn đến hạn và chưa đạt mục tiêu ngày, ngược lại Học tiếp; (b) luôn là Học tiếp (bài mới trước); (c) luôn là Bài tập (ôn trước, giống Anki/WaniKani).
+2. **Trò chơi có tính là "ngày học" không** — **chọn (b)**, thống nhất M0.5c Q4: tính; lịch sử lượt chơi lấy từ `SessionRecord` module `game` (SCR-09 Q2 b), không thêm bảng `gamePlays`. Các phương án khác: (a) chưa tính ở M10 (không có lịch sử lượt chơi); (b) tính — cần thêm bảng `gamePlays` (mỗi lượt một bản ghi) ở M10.
+3. **Mục tiêu ngày đo bằng gì** — **chọn (a)**: số câu bài tập đã chấm hôm nay / số câu mỗi phiên. Các phương án khác: (a) số câu bài tập đã chấm hôm nay / số câu mỗi phiên (đúng như SCR-06 đang hiện); (b) số phút học; (c) số "lượt" gồm cả từ mới của bài học.

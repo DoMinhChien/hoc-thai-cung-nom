@@ -16,9 +16,9 @@ export interface ChoiceButtonProps extends Omit<ComponentProps<'button'>, 'onSel
 }
 
 const STATUS = {
-  idle: 'border-border-strong bg-background hover:border-game hover:bg-game-subtle enabled:hover:-translate-y-0.5 enabled:hover:shadow-md enabled:active:translate-y-0',
-  correct: 'border-positive bg-positive-subtle text-positive motion-safe:animate-pop',
-  wrong: 'border-destructive bg-destructive-subtle text-destructive motion-safe:animate-shake',
+  idle: 'border-border-strong bg-surface hover:border-game hover:bg-game-subtle enabled:hover:-translate-y-0.5 enabled:hover:shadow-md enabled:active:translate-y-0',
+  correct: 'border-positive bg-positive-subtle text-positive motion-safe:animate-fb-correct',
+  wrong: 'border-destructive bg-destructive-subtle text-destructive motion-safe:animate-fb-wrong',
 } as const;
 
 /**
@@ -45,7 +45,7 @@ export function ChoiceButton({
       disabled={disabled}
       onClick={onSelect}
       className={cn(
-        'relative flex min-h-16 items-center justify-center gap-3 rounded-lg border-2 px-4 py-2 text-lg font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default motion-safe:transition-[color,background-color,border-color,transform,box-shadow] motion-safe:duration-150',
+        'relative flex min-h-16 items-center justify-center gap-3 rounded-xl border-2 bg-surface px-4 py-2 text-lg font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default motion-safe:transition-[color,background-color,border-color,transform,box-shadow] motion-safe:duration-150',
         STATUS[status],
         className,
       )}

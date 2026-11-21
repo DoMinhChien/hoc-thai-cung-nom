@@ -107,3 +107,511 @@
     - { th: "พระสมชาย", vi: "Sư Somchai (พระ + pháp danh)" }
   source: plernpin-c01#p3
   draft: true
+- id: g-b10-la
+  unit_id: b10
+  title_vi: Mỗi … (Danh từ + ละ)
+  pattern: Danh từ + ละ
+  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …".
+  examples:
+    - { th: "คนละ", vi: "Mỗi người" }
+  source: plernpin-b10#p38
+  draft: true
+- id: g-b09-khoei
+  unit_id: b09
+  title_vi: Đã từng … chưa?
+  pattern: Chủ ngữ + เคย + Động từ + … ไหม/หรือยัง
+  explain_vi: Hỏi người nghe đã từng làm việc gì chưa. เคย (đã từng) đứng trước động từ, cuối câu dùng ไหม hoặc หรือยัง.
+  examples:
+    - { th: "คุณเคยกินส้มตำไหม", vi: "Bạn đã từng ăn Som Tam chưa?" }
+    - { th: "คุณเคยกินส้มตำหรือยัง", vi: "Bạn đã từng ăn Som Tam chưa?" }
+  source: plernpin-b09#p30
+  draft: true
+- id: g-b09-mai-dai
+  unit_id: b09
+  title_vi: Không … được
+  pattern: Chủ ngữ + Động từ + … ไม่ได้
+  explain_vi: ไม่ได้ đứng sau động từ (cuối câu) — không thể làm được việc đó.
+  examples:
+    - { th: "ฉันทำไม่ได้", vi: "Tôi không làm được." }
+  source: plernpin-b09#p31
+  draft: true
+- id: g-b09-mai-pen
+  unit_id: b09
+  title_vi: Không biết (làm) …
+  pattern: Chủ ngữ + Động từ + … ไม่เป็น
+  explain_vi: ไม่เป็น đứng sau động từ (cuối câu) — không biết cách làm việc đó.
+  examples:
+    - { th: "ฉันทำไม่เป็น", vi: "Tôi không biết làm." }
+  source: plernpin-b09#p32
+  draft: true
+- id: g-b08-yak
+  unit_id: b08
+  title_vi: Muốn + động từ
+  pattern: Chủ ngữ + อยาก + Động từ
+  explain_vi: อยาก (muốn) đứng trước động từ để nói mình muốn làm gì.
+  examples:
+    - { th: "ฉันอยากจองห้องพัก", vi: "Tôi muốn đặt phòng nghỉ." }
+  source: plernpin-b08#p23
+  draft: true
+- id: g-b08-yak-dai
+  unit_id: b08
+  title_vi: Muốn có + danh từ
+  pattern: Chủ ngữ + อยากได้ + Danh từ
+  explain_vi: อยากได้ (muốn có) đứng trước danh từ để nói mình muốn có vật gì.
+  examples:
+    - { th: "ฉันอยากได้ห้องแบบเตียงคู่ค่ะ", vi: "Tôi muốn phòng kiểu giường đôi ạ." }
+  source: plernpin-b08#p24
+  draft: true
+- id: g-b08-karuna
+  unit_id: b08
+  title_vi: Làm ơn … (cho tôi) với
+  pattern: กรุณา + Động từ + … + (ให้ฉัน/ให้ผม) ด้วย
+  explain_vi: Nhờ người khác làm việc gì một cách lịch sự. กรุณา (làm ơn) đứng đầu câu, ด้วย ở cuối câu; ให้ฉัน / ให้ผม (cho tôi) có thể thêm hoặc bỏ.
+  examples:
+    - { th: "กรุณาเปลี่ยนผ้าปูเตียงให้ฉันด้วย", vi: "Làm ơn đổi ga trải giường (cho tôi) với ạ." }
+    - { th: "กรุณาเปลี่ยนผ้าปูเตียงให้ผมด้วย", vi: "Làm ơn đổi ga trải giường (cho tôi) với ạ." }
+  source: plernpin-b08#p25
+  draft: true
+- id: g-b08-yak-kho
+  unit_id: b08
+  title_vi: Muốn xin thêm …
+  pattern: Chủ ngữ + อยากขอ + Danh từ + เพิ่ม
+  explain_vi: Xin thêm vật gì. อยากขอ (muốn xin) đứng trước danh từ, เพิ่ม (thêm) ở cuối câu.
+  examples:
+    - { th: "ฉันอยากขอผ้าเช็ดตัวเพิ่ม", vi: "Tôi muốn xin thêm khăn tắm." }
+  source: plernpin-b08#p26
+  draft: true
+- id: g-b07-klai-chak
+  unit_id: b07
+  title_vi: A cách B bao xa?
+  pattern: Địa điểm 1 + ไกลจาก + Địa điểm 2 + แค่ไหน
+  explain_vi: Hỏi khoảng cách giữa hai địa điểm. ไกลจาก (xa từ) đứng giữa hai địa điểm, แค่ไหน (bao nhiêu) ở cuối câu.
+  examples:
+    - { th: "บ้านคุณไกลจากโรงเรียนแค่ไหน", vi: "Nhà bạn cách trường học bao xa?" }
+  source: plernpin-b07#p30
+  draft: true
+- id: g-b07-chak-thueng
+  unit_id: b07
+  title_vi: Từ A đến B bao xa?
+  pattern: จาก + Địa điểm 1 + ถึง + Địa điểm 2 + ไกลแค่ไหน
+  explain_vi: Cách hỏi khoảng cách khác — จาก (từ) … ถึง (đến) …, cuối câu là ไกลแค่ไหน (xa bao nhiêu).
+  examples:
+    - { th: "จากบ้านคุณถึงโรงเรียนไกลแค่ไหน", vi: "Từ nhà bạn đến trường học bao xa?" }
+  source: plernpin-b07#p31
+  draft: true
+- id: g-b07-chuai-bok-thang
+  unit_id: b07
+  title_vi: Giúp chỉ đường đến … cho tôi được không?
+  pattern: ช่วยบอกทาง + ไป + Địa điểm + ให้ + S + หน่อยได้ไหม
+  explain_vi: Nhờ người khác chỉ đường. ช่วยบอกทาง (giúp chỉ đường) + ไป + địa điểm, ให้ + người được giúp (cho …), cuối câu หน่อยได้ไหม (một chút được không).
+  examples:
+    - { th: "ช่วยบอกทางไปสถานีรถไฟให้ฉันหน่อยได้ไหม", vi: "Giúp chỉ đường đi đến nhà ga xe lửa cho tôi một chút được không?" }
+  source: plernpin-b07#p32
+  draft: true
+- id: g-b07-kho-tham
+  unit_id: b07
+  title_vi: Xin hỏi chút ạ! … ở chỗ nào / đi lối nào?
+  pattern: ขอถามหน่อยค่ะ + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Mở đầu lịch sự khi hỏi đường. ขอถามหน่อยค่ะ (nam nói ขอถามหน่อยครับ) + địa điểm; อยู่ที่ไหน hỏi ở chỗ nào, ไปทางไหน hỏi đi lối nào.
+  examples:
+    - { th: "ขอถามหน่อยค่ะ สถานีรถไฟอยู่ที่ไหน", vi: "Xin hỏi chút ạ! Nhà ga xe lửa ở chỗ nào?" }
+    - { th: "ขอถามหน่อยค่ะ สถานีรถไฟไปทางไหน", vi: "Xin hỏi chút ạ! Nhà ga xe lửa đi lối nào?" }
+  source: plernpin-b07#p33-34
+  draft: true
+- id: g-b07-sap-mai-wa
+  unit_id: b07
+  title_vi: Bạn có biết … ở chỗ nào / đi lối nào không?
+  pattern: คุณทราบ/รู้ไหมว่า + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Hỏi người nghe có biết địa điểm ở đâu không. ทราบ và รู้ đều là "biết" (ทราบ lịch sự hơn); ไหมว่า + địa điểm + อยู่ที่ไหน / ไปทางไหน.
+  examples:
+    - { th: "คุณทราบไหมว่าสถานีรถไฟอยู่ที่ไหน", vi: "Bạn có biết nhà ga xe lửa ở chỗ nào không?" }
+    - { th: "คุณรู้ไหมว่าสถานีรถไฟไปทางไหน", vi: "Bạn có biết nhà ga xe lửa đi lối nào không?" }
+  source: plernpin-b07#p35-36
+  draft: true
+- id: g-b07-mai-sap-wa
+  unit_id: b07
+  title_vi: Không biết là … ở chỗ nào / đi lối nào?
+  pattern: ไม่ทราบ/รู้ว่า + Địa điểm + อยู่ที่ไหน / ไปทางไหน
+  explain_vi: Cách hỏi đường mềm mỏng — "không biết là … ở đâu ạ?". ไม่ทราบว่า hoặc ไม่รู้ว่า + địa điểm + อยู่ที่ไหน / ไปทางไหน.
+  examples:
+    - { th: "ไม่ทราบว่าสถานีรถไฟอยู่ที่ไหน", vi: "Không biết là nhà ga xe lửa ở chỗ nào?" }
+    - { th: "ไม่รู้ว่าสถานีรถไฟไปทางไหน", vi: "Không biết là nhà ga xe lửa đi lối nào?" }
+  source: plernpin-b07#p37-38
+  draft: true
+- id: g-b06-ti
+  unit_id: b06
+  title_vi: Giờ từ 1 đến 5 giờ sáng
+  pattern: ตี + số giờ
+  explain_vi: Từ 1 giờ đến 5 giờ sáng, nói ตี trước số giờ.
+  examples:
+    - { th: "ตีหนึ่ง", vi: "1:00 (1 giờ sáng)" }
+    - { th: "ตีสอง", vi: "2:00" }
+    - { th: "ตีสาม", vi: "3:00" }
+    - { th: "ตีสี่", vi: "4:00" }
+    - { th: "ตีห้า", vi: "5:00" }
+  source: plernpin-b06#p7
+  draft: true
+- id: g-b06-mong-chao
+  unit_id: b06
+  title_vi: Giờ từ 6 đến 11 giờ sáng
+  pattern: số giờ + โมงเช้า
+  explain_vi: Từ 6 giờ đến 11 giờ sáng, nói số giờ rồi thêm โมงเช้า.
+  examples:
+    - { th: "หกโมงเช้า", vi: "6:00" }
+    - { th: "เจ็ดโมงเช้า", vi: "7:00" }
+    - { th: "แปดโมงเช้า", vi: "8:00" }
+    - { th: "เก้าโมงเช้า", vi: "9:00" }
+    - { th: "สิบโมงเช้า", vi: "10:00" }
+    - { th: "สิบเอ็ดโมงเช้า", vi: "11:00" }
+  source: plernpin-b06#p8
+  draft: true
+- id: g-b06-bai
+  unit_id: b06
+  title_vi: 12 giờ trưa và từ 1 đến 4 giờ chiều
+  pattern: เที่ยงวัน / เที่ยง (12 giờ trưa) · บ่าย + số giờ + โมง
+  explain_vi: 12 giờ trưa là เที่ยงวัน hoặc เที่ยง. Từ 1 giờ đến 4 giờ chiều, nói บ่าย + số giờ + โมง; 1 giờ chiều còn nói gọn là บ่ายโมง.
+  examples:
+    - { th: "เที่ยงวัน", vi: "12:00" }
+    - { th: "บ่ายหนึ่งโมง", vi: "13:00 (บ่ายโมง)" }
+    - { th: "บ่ายสองโมง", vi: "14:00" }
+    - { th: "บ่ายสามโมง", vi: "15:00" }
+    - { th: "บ่ายสี่โมง", vi: "16:00" }
+  source: plernpin-b06#p9
+  draft: true
+- id: g-b06-mong-yen
+  unit_id: b06
+  title_vi: Giờ từ 5 đến 6 giờ chiều
+  pattern: số giờ + โมงเย็น
+  explain_vi: 5 giờ và 6 giờ chiều, nói số giờ rồi thêm โมงเย็น.
+  examples:
+    - { th: "ห้าโมงเย็น", vi: "17:00" }
+    - { th: "หกโมงเย็น", vi: "18:00" }
+  source: plernpin-b06#p10
+  draft: true
+- id: g-b06-thum
+  unit_id: b06
+  title_vi: Giờ từ 7 đến 12 giờ tối
+  pattern: số giờ + ทุ่ม
+  explain_vi: Từ 7 giờ đến 12 giờ tối, đếm lại từ 1 rồi thêm ทุ่ม (19:00 = หนึ่งทุ่ม). 24:00 là หกทุ่ม hoặc เที่ยงคืน. Lưu ý (GV) — cách nói cũ theo canh — ยามหนึ่ง = 9 giờ tối, สองยาม = nửa đêm (24h), สามยาม = 3 giờ sáng.
+  examples:
+    - { th: "หนึ่งทุ่ม", vi: "19:00" }
+    - { th: "สองทุ่ม", vi: "20:00" }
+    - { th: "สามทุ่ม", vi: "21:00" }
+    - { th: "สี่ทุ่ม", vi: "22:00" }
+    - { th: "ห้าทุ่ม", vi: "23:00" }
+    - { th: "หกทุ่ม", vi: "24:00 (เที่ยงคืน)" }
+  source: plernpin-b06#p11
+  draft: true
+- id: g-b06-nathi
+  unit_id: b06
+  title_vi: Giờ + phút (kiểu Thái)
+  pattern: giờ + số phút + นาที
+  explain_vi: Nói giờ theo kiểu Thái trước, rồi thêm số phút + นาที.
+  examples:
+    - { th: "เก้าโมงเช้าสิบห้านาที", vi: "9 giờ 15 phút sáng" }
+  source: plernpin-b06#p12
+  draft: true
+- id: g-b06-nalika
+  unit_id: b06
+  title_vi: Nói giờ kiểu quốc tế
+  pattern: số giờ (0–24) + นาฬิกา (+ số phút + นาที)
+  explain_vi: Kiểu quốc tế dùng số giờ 24h + นาฬิกา, viết tắt น. (vd. 21.00 น.). Muốn nói phút thì thêm số phút + นาที.
+  examples:
+    - { th: "เก้านาฬิกา", vi: "9 giờ sáng (9.00 น.)" }
+    - { th: "ยี่สิบเอ็ดนาฬิกา", vi: "9 giờ tối (21.00 น.)" }
+    - { th: "ยี่สิบเอ็ดนาฬิกาสิบนาที", vi: "9 giờ 10 phút tối (21.10 น.)" }
+  source: plernpin-b06#p13-15
+  draft: true
+- id: g-b06-ik
+  unit_id: b06
+  title_vi: Giờ kém
+  pattern: อีก + số phút + นาที + giờ
+  explain_vi: Nói giờ kém — อีก (còn) + số phút + giờ sắp tới. Dùng được với cả kiểu Thái và kiểu quốc tế.
+  examples:
+    - { th: "อีกห้านาทีบ่ายสี่โมง", vi: "4 giờ kém 5 phút chiều" }
+    - { th: "อีกห้านาทีสิบหกนาฬิกา", vi: "4 giờ kém 5 phút chiều (kiểu quốc tế)" }
+  source: plernpin-b06#p16-17
+  draft: true
+- id: g-b05-wan-arai
+  unit_id: b05
+  title_vi: Hỏi và trả lời về thứ
+  pattern: Trạng từ chỉ TG + วัน + อะไร + คะ/ครับ · Trạng từ chỉ TG + thứ + ค่ะ/ครับ
+  explain_vi: Hỏi thứ — trạng từ chỉ thời gian (วันนี้, พรุ่งนี้…) + วันอะไร. Trả lời — trạng từ chỉ thời gian + tên thứ.
+  examples:
+    - { th: "วันนี้วันอะไรคะ", vi: "Hôm nay thứ mấy ạ?" }
+    - { th: "วันนี้วันจันทร์ค่ะ", vi: "Hôm nay thứ hai ạ" }
+  source: plernpin-b05#p7-8
+  draft: true
+- id: g-b05-wan-thi
+  unit_id: b05
+  title_vi: Hỏi và trả lời ngày dương lịch
+  pattern: Trạng từ chỉ TG + (เป็น) วันที่ + เท่าไหร่ / con số + คะ/ครับ
+  explain_vi: Hỏi ngày — trạng từ chỉ thời gian + (เป็น) วันที่เท่าไหร่. Trả lời — thay เท่าไหร่ bằng con số. เป็น có thể bỏ.
+  examples:
+    - { th: "วันนี้เป็นวันที่เท่าไหร่คะ", vi: "Hôm nay (là) ngày bao nhiêu ạ?" }
+    - { th: "วันนี้เป็นวันที่สิบสองค่ะ", vi: "Hôm nay (là) ngày 12 ạ" }
+  source: plernpin-b05#p9-10
+  draft: true
+- id: g-b05-khuen-raem
+  unit_id: b05
+  title_vi: Nói ngày âm lịch (ขึ้น … ค่ำ / แรม … ค่ำ)
+  pattern: Trạng từ chỉ TG + (เป็น) ขึ้น … ค่ำ / แรม … ค่ำ + ค่ะ/ครับ
+  explain_vi: 15 ngày đầu tháng âm lịch nói ขึ้น + số + ค่ำ (ขึ้น 15 ค่ำ = ngày rằm). 15 ngày sau nói แรม + số + ค่ำ (แรม 2 ค่ำ = ngày 17).
+  examples:
+    - { th: "วันนี้เป็นขึ้น 15 ค่ำค่ะ", vi: "Hôm nay (là) ngày rằm ạ" }
+    - { th: "วันนี้เป็นแรม 2 ค่ำค่ะ", vi: "Hôm nay (là) ngày 17 ạ" }
+  source: plernpin-b05#p11-12
+  draft: true
+- id: g-b05-duean-suffix
+  unit_id: b05
+  title_vi: Hậu tố tên tháng (คม / ยน / พันธ์)
+  pattern: tên tháng + คม (31 ngày) / ยน (30 ngày) / พันธ์ (tháng 2)
+  explain_vi: Các tháng có 31 ngày có hậu tố คม, các tháng có 30 ngày có hậu tố ยน (riêng tháng 2 có hậu tố พันธ์). Trong cách nói chuyện hằng ngày, người Thái thường bỏ các hậu tố này, vì thế เดือนมกราคม sẽ trở thành เดือนมกราฯ.
+  examples:
+    - { th: "เดือนมกราคม", vi: "Tháng 1 (31 ngày → คม)" }
+    - { th: "เดือนเมษายน", vi: "Tháng 4 (30 ngày → ยน)" }
+    - { th: "เดือนกุมภาพันธ์", vi: "Tháng 2 (→ พันธ์)" }
+    - { th: "เดือนมกราฯ", vi: "Tháng 1 (văn nói, bỏ hậu tố)" }
+  source: plernpin-b05#p16
+  draft: true
+- id: g-b05-duean-arai
+  unit_id: b05
+  title_vi: Hỏi và trả lời về tháng
+  pattern: Trạng từ chỉ TG + เดือน + อะไร + คะ/ครับ · Trạng từ chỉ TG + tháng + ค่ะ/ครับ
+  explain_vi: Hỏi tháng — trạng từ chỉ thời gian (เดือนนี้, เดือนหน้า…) + เดือนอะไร. Trả lời — trạng từ chỉ thời gian + เดือน + tên tháng.
+  examples:
+    - { th: "เดือนนี้เดือนอะไรคะ", vi: "Tháng này tháng mấy ạ?" }
+    - { th: "เดือนนี้เดือนมีนาคมค่ะ", vi: "Tháng này tháng 3 ạ" }
+  source: plernpin-b05#p22-23
+  draft: true
+- id: g-b05-duean-chan
+  unit_id: b05
+  title_vi: Tháng theo âm lịch (เดือนตามจันทรคติ)
+  pattern: เดือนอ้าย · เดือนยี่ · เดือน + số (từ tháng 3)
+  explain_vi: Âm lịch có 12 tháng. Tháng 1 là เดือนอ้าย, tháng 2 là เดือนยี่; từ tháng 3 đến tháng 12 nói เดือน + số (tài liệu viết bằng chữ số Thái ๓ … ๑๒).
+  examples:
+    - { th: "เดือนอ้าย", vi: "Tháng 1 (âm lịch)" }
+    - { th: "เดือนยี่", vi: "Tháng 2 (âm lịch)" }
+    - { th: "เดือน ๓", vi: "Tháng 3 (âm lịch)" }
+    - { th: "เดือน ๑๒", vi: "Tháng 12 (âm lịch)" }
+  source: plernpin-b05#p17-19
+  draft: true
+- id: g-b05-pi-naksat
+  unit_id: b05
+  title_vi: Hỏi và trả lời về năm con giáp
+  pattern: Trạng từ chỉ TG + ปีนักษัตร + อะไร + คะ/ครับ · Trạng từ chỉ TG + năm con giáp + ค่ะ/ครับ
+  explain_vi: Hỏi năm con giáp — ปีนี้ปีนักษัตรอะไร. Trả lời — ปีนี้ + tên năm con giáp (ปีชวด … ปีกุน).
+  examples:
+    - { th: "ปีนี้ปีนักษัตรอะไรคะ", vi: "Năm nay năm con giáp gì ạ?" }
+    - { th: "ปีนี้ปีมะเส็งค่ะ", vi: "Năm nay năm tỵ ạ" }
+  source: plernpin-b05#p34-35
+  draft: true
+- id: g-b05-pi
+  unit_id: b05
+  title_vi: Hỏi và trả lời về năm (phật lịch / công lịch)
+  pattern: Trạng từ chỉ TG + ปี + อะไร + คะ/ครับ · Trạng từ chỉ TG + ปี พ.ศ./ปี ค.ศ. + năm + ค่ะ/ครับ
+  explain_vi: (p24) Năm chính thức ở Thái Lan được tính kể từ 543 trước công nguyên, bắt đầu kỉ nguyên đạo phật. Do đó, 2000 sau công nguyên tương tự 2543 theo phật lịch (năm phật lịch = năm công lịch + 543). Ví dụ — bạn sinh năm 1978 thì theo phật lịch sẽ là 2521.
+  examples:
+    - { th: "ปีนี้ปีอะไรคะ", vi: "Năm nay năm gì ạ?" }
+    - { th: "ปีนี้ปีค.ศ. 2025 ค่ะ", vi: "Năm nay năm công lịch 2025 ạ" }
+    - { th: "ปีนี้ปีพ.ศ. 2568 ค่ะ", vi: "Năm nay năm phật lịch 2568 ạ" }
+  source: plernpin-b05#p31-33
+  draft: true
+- id: g-b05-rudu
+  unit_id: b05
+  title_vi: Hỏi và trả lời về mùa
+  pattern: Trạng từ chỉ TG + S + V + ใน + ฤดูไหน + คะ/ครับ · Trạng từ chỉ TG + S + V + ใน + tên mùa + ค่ะ/ครับ
+  explain_vi: Hỏi đang ở mùa nào — ตอนนี้เราอยู่ในฤดูไหน. Trả lời — thay ฤดูไหน bằng tên mùa.
+  examples:
+    - { th: "ตอนนี้เราอยู่ในฤดูไหนคะ", vi: "Bây giờ chúng ta ở trong mùa nào ạ?" }
+    - { th: "ตอนนี้เราอยู่ในฤดูร้อนค่ะ", vi: "Bây giờ chúng ta ở trong mùa hè ạ" }
+  source: plernpin-b05#p38-39
+  draft: true
+- id: g-b04-laksananam
+  unit_id: b04
+  title_vi: Loại từ (ลักษณนาม)
+  pattern: Danh từ + Số từ (từ 2 trở lên) + Loại từ
+  explain_vi: Loại từ giữ chức năng biểu thị các đặc trưng về hình dáng, chủng loại hoặc số lượng của danh từ đi cùng với nó. Không giống như loại từ trong tiếng Việt, loại từ trong tiếng Thái luôn đi sau danh từ.
+  examples:
+    - { th: "สบู่ 2 ก้อน", vi: "2 cục bánh xà phòng" }
+    - { th: "หมา 2 ตัว", vi: "2 con chó" }
+    - { th: "หนังสือ 2 เล่ม", vi: "2 quyển sách" }
+    - { th: "รถยนต์ 2 คัน", vi: "2 chiếc xe ô tô" }
+  source: plernpin-b04#p3
+  draft: true
+- id: g-b04-nueng
+  unit_id: b04
+  title_vi: Số lượng “1” với loại từ
+  pattern: Danh từ + Số từ + Loại từ · Danh từ + Loại từ + Số từ · Danh từ + Loại từ + เดียว
+  explain_vi: Nếu số từ chỉ số lượng mà rơi vào “1” thì có 3 cách diễn đạt như trên.
+  examples:
+    - { th: "ผู้หญิงหนึ่งคน", vi: "1 người phụ nữ" }
+    - { th: "ผู้หญิงคนหนึ่ง", vi: "1 người phụ nữ" }
+    - { th: "ผู้หญิงคนเดียว", vi: "1 người phụ nữ (chỉ một)" }
+  source: plernpin-b04#p4-5
+  draft: true
+- id: g-b04-thao-kap
+  unit_id: b04
+  title_vi: So sánh bằng (เท่ากับ)
+  pattern: S1 + đặc tính so sánh + เท่ากับ + S2
+  explain_vi: So sánh bằng — đặt เท่ากับ giữa đặc tính so sánh và S2.
+  examples:
+    - { th: "ดาวอายุเท่ากับเดือน", vi: "Đao bằng tuổi với Đươn" }
+  source: plernpin-b04#p44
+  draft: true
+- id: g-b04-thao-kan
+  unit_id: b04
+  title_vi: So sánh bằng (… และ … เท่ากัน)
+  pattern: S1 + และ + S2 + đặc tính so sánh + เท่ากัน
+  explain_vi: So sánh bằng — nối S1 và S2 bằng และ, đặt เท่ากัน ở cuối.
+  examples:
+    - { th: "ดาวและเดือนอายุเท่ากัน", vi: "Đao và Đươn bằng tuổi nhau" }
+  source: plernpin-b04#p45
+  draft: true
+- id: g-b04-kwa
+  unit_id: b04
+  title_vi: So sánh hơn (กว่า)
+  pattern: S1 + đặc tính so sánh + (มาก/น้อย) กว่า + S2 + (phần bổ sung mức độ)
+  explain_vi: So sánh hơn — đặc tính so sánh + (มาก/น้อย) กว่า + S2; có thể thêm mức độ chênh lệch ở cuối.
+  examples:
+    - { th: "ดาวอายุมากกว่าเดือน 2 ปี", vi: "Đao nhiều hơn Đươn 2 tuổi" }
+    - { th: "เดือนอายุน้อยกว่าดาว 2 ปี", vi: "Đươn ít hơn Đao 2 tuổi" }
+  source: plernpin-b04#p46
+  draft: true
+- id: g-b04-thi-sut
+  unit_id: b04
+  title_vi: So sánh nhất (ที่สุด)
+  pattern: S1 + đặc tính so sánh + (มาก/น้อย) ที่สุด + …
+  explain_vi: So sánh nhất — đặc tính so sánh + (มาก/น้อย) ที่สุด, sau đó có thể thêm phạm vi so sánh.
+  examples:
+    - { th: "ดาวอายุมากที่สุดในห้องนี้", vi: "Đao nhiều tuổi nhất trong phòng này" }
+    - { th: "เดือนอายุน้อยที่สุดในห้องนี้", vi: "Đươn ít tuổi nhất trong phòng này" }
+  source: plernpin-b04#p47
+  draft: true
+- id: g-b03-et-yi
+  unit_id: b03
+  title_vi: Đọc số 1 ở hàng đơn vị (เอ็ด) và số 2 ở hàng chục (ยี่)
+  pattern: … + เอ็ด (1 ở hàng đơn vị) · ยี่ + สิบ (2 ở hàng chục)
+  explain_vi: Số “1” mà rơi vào hàng đơn vị thì sẽ đọc là “เอ็ด”. Số “2” mà rơi vào hàng chục thì sẽ đọc là “ยี่”.
+  examples:
+    - { th: "สิบเอ็ด", vi: "11" }
+    - { th: "ยี่สิบ", vi: "20" }
+    - { th: "ยี่สิบเอ็ด", vi: "21" }
+    - { th: "หนึ่งร้อยเอ็ด", vi: "101" }
+  source: plernpin-b03#p13
+  draft: true
+- id: g-b03-lak
+  unit_id: b03
+  title_vi: Thứ tự các hàng và đơn vị
+  pattern: สิบ → ร้อย → พัน → หมื่น → แสน → ล้าน → สิบล้าน → ร้อยล้าน → พันล้าน → หมื่นล้าน → แสนล้าน → ล้านล้าน
+  explain_vi: Đọc số lớn theo thứ tự các hàng — chục (สิบ), trăm (ร้อย), nghìn (พัน), chục nghìn (หมื่น), trăm nghìn (แสน), triệu (ล้าน)… Tiếng Thái có từ riêng cho hàng chục nghìn (หมื่น) và trăm nghìn (แสน).
+  examples:
+    - { th: "หนึ่งร้อยยี่สิบสาม", vi: "123" }
+    - { th: "หนึ่งพันสองร้อยสามสิบ", vi: "1,230" }
+    - { th: "หนึ่งพันสามร้อยยี่สิบสี่", vi: "1,324" }
+    - { th: "หนึ่งหมื่นเอ็ด", vi: "10,001" }
+    - { th: "สิบล้าน", vi: "10,000,000" }
+  source: plernpin-b03#p23
+  draft: true
+- id: g-b03-doc-dau
+  unit_id: b03
+  title_vi: Một số quy tắc đọc (จุด, ทับ, ถึง, ต่อ, ที่ + số)
+  pattern: “.” → จุด · “/” → ทับ · “-” → ถึง · “:” → ต่อ · ที่ + con số
+  explain_vi: Dấu “.” đọc là จุด, dấu “/” đọc là ทับ, dấu “-” đọc là ถึง, dấu “:” đọc là ต่อ. ที่ + con số chỉ về số thứ tự.
+  examples:
+    - { th: "ที่หนึ่ง", vi: "Thứ nhất" }
+    - { th: "บ้านเลขที่ 33/551", vi: "Số nhà 33/551 (/ đọc là ทับ)" }
+    - { th: "25-50 เปอร์เซ็นต์", vi: "25-50% (- đọc là ถึง)" }
+  source: plernpin-b03#p24
+  draft: true
+- id: g-b03-ban-lek-thi
+  unit_id: b03
+  title_vi: Đọc số nhà
+  pattern: บ้านเลขที่ + số
+  explain_vi: Số nhà nói บ้านเลขที่ + số; dấu “/” đọc là ทับ.
+  examples:
+    - { th: "บ้านเลขที่ 33/551", vi: "Số nhà 33/551" }
+    - { th: "บ้านเลขที่ 150/7", vi: "Số nhà 150/7" }
+  source: plernpin-b03#p25-26
+  draft: true
+- id: g-b03-zero
+  unit_id: b03
+  title_vi: Số có số 0 dẫn trước
+  pattern: 0 … → đọc từng con số
+  explain_vi: Trong trường hợp mà số nhà có số 0 dẫn trước thì phải đọc theo thứ tự từng con số.
+  examples:
+    - { th: "บ้านเลขที่ 0864/1108", vi: "Số nhà 0864/1108 (đọc từng con số)" }
+  source: plernpin-b03#p27
+  draft: true
+- id: g-b03-percent
+  unit_id: b03
+  title_vi: Đọc phần trăm
+  pattern: Số + เปอร์เซ็นต์
+  explain_vi: Phần trăm nói số + เปอร์เซ็นต์ (cũng nói ร้อยละ + số).
+  examples:
+    - { th: "30 เปอร์เซ็นต์", vi: "30%" }
+    - { th: "25-50 เปอร์เซ็นต์", vi: "25-50%" }
+  source: plernpin-b03#p28-29
+  draft: true
+- id: g-b03-tho
+  unit_id: b03
+  title_vi: Đọc số điện thoại
+  pattern: โทรศัพท์ (โทร.) + Số ĐT
+  explain_vi: Số điện thoại nói โทรศัพท์ hoặc viết tắt โทร. + số điện thoại, đọc từng con số.
+  examples:
+    - { th: "โทรศัพท์ 084 989 1952", vi: "Điện thoại 084 989 1952" }
+    - { th: "โทร. 084 989 1952", vi: "ĐT 084 989 1952" }
+  source: plernpin-b03#p30-31
+  draft: true
+- id: g-b03-thot-sa-niyom
+  unit_id: b03
+  title_vi: Đọc số thập phân (การอ่านตัวเลขที่มีจุดทศนิยม)
+  pattern: số nguyên + จุด + từng con số
+  explain_vi: Các số ở phía trước dấu thập phân được đọc như một số nguyên, còn các số sau dấu thập phân được đọc theo thứ tự từng số một. Lưu ý (GV) — với đơn vị tiền, đo lường thì đọc theo đơn vị nhỏ hơn.
+  examples:
+    - { th: "ห้าบาทเจ็ดสิบห้าสตางค์", vi: "5.75 บาท (5 bạt 75 stang)" }
+    - { th: "สามเมตรห้าสิบแปดเซนติเมตร", vi: "3.58 เมตร (3 m 58 cm)" }
+    - { th: "สองกิโลกรัมสองร้อยห้ากรัม", vi: "2.205 กิโลกรัม (2 kg 205 gam)" }
+  source: plernpin-b03#p32-34
+  draft: true
+- id: g-b03-thang-luang
+  unit_id: b03
+  title_vi: Đọc số đường quốc lộ (การอ่านหมายเลขทางหลวง)
+  pattern: หมายเลขทางหลวง + số (đọc từng con số một)
+  explain_vi: Cách đọc — đọc từng con số một.
+  examples:
+    - { th: "หมายเลขทางหลวง ๒๑", vi: "Quốc lộ 21" }
+    - { th: "หมายเลขทางหลวง ๓๑๔", vi: "Quốc lộ 314" }
+  source: plernpin-b03#p35-36
+  draft: true
+- id: g-b03-set-suan
+  unit_id: b03
+  title_vi: Đọc phân số (เศษส่วน)
+  pattern: เศษ + tử số + ส่วน + mẫu số
+  explain_vi: Phân số thành lập bằng cách thêm เศษ vào trước tử số và thêm ส่วน vào trước mẫu số. Nếu tử số bằng 1 thì เศษ có thể bỏ đi. 1/2 còn có nghĩa là một nửa nên có từ riêng là “ครึ่ง”. Trong một số trường hợp dùng để nhấn mạnh người ta có thể nói 3/4 là “สามในสี่”.
+  examples:
+    - { th: "เศษสองส่วนสาม", vi: "2/3" }
+    - { th: "ครึ่ง", vi: "1/2 (một nửa)" }
+    - { th: "ประชาชนสามในสี่", vi: "3/4 dân số" }
+  source: plernpin-b03#p37-40
+  draft: true
+- id: g-b03-thao
+  unit_id: b03
+  title_vi: Đọc bội số (gấp … lần)
+  pattern: Tính từ / Trạng từ + กว่า + NUMBER + เท่า
+  explain_vi: Nói gấp bao nhiêu lần — tính từ / trạng từ + กว่า + số + เท่า.
+  examples:
+    - { th: "ใหญ่กว่าสามเท่า", vi: "To hơn gấp 3 lần" }
+    - { th: "สนุกกว่าพันเท่า", vi: "Vui hơn gấp ngàn lần" }
+  source: plernpin-b03#p43-44
+  draft: true
+- id: g-b03-ayu
+  unit_id: b03
+  title_vi: Đọc số tuổi (ปี / ขวบ)
+  pattern: S + อายุ + NUMBER (≥ 12) + ปี · S + อายุ + NUMBER (< 12) + ขวบ
+  explain_vi: Từ 12 tuổi trở lên dùng ปี; dưới 12 tuổi dùng ขวบ.
+  examples:
+    - { th: "ฉันอายุยี่สิบปี", vi: "Tôi 20 tuổi" }
+    - { th: "หนูอายุห้าขวบ", vi: "Em 5 tuổi" }
+  source: plernpin-b03#p45-46
+  draft: true

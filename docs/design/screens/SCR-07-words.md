@@ -1,7 +1,7 @@
 # SCR-07 Sổ từ (route: `/words` · App layout) — Requirements: plan 0.7, 0.8 (P-04), V-02, V-03, V-04, V-05, V-07, B-02, C-03, F-12 ("cần ôn")
 
-> Trạng thái: **Chờ owner duyệt** (M0.5b đợt 2, soạn 2026-11-21). Mở khóa **M10**. Wireframe: `SCR-07-words.png` (danh sách + chi tiết), `SCR-07-word-detail.png` (chi tiết đang viết mẹo nhớ của tôi).
-> Màu: tokens hiện có (D1, mức thuộc = 3 sắc độ accent). M0.5c có thể đổi màu, không đổi bố cục.
+> Trạng thái: **✅ Owner duyệt 2026-11-21** — Q1 **a**, Q2 **a**, Q3 **a**, Q4 **c**, Q5 **a** (§Câu hỏi đã chốt). Mở khóa **M10**. Wireframe: `SCR-07-words.png` (danh sách + chi tiết), `SCR-07-word-detail.png` (chi tiết đang viết mẹo nhớ của tôi).
+> Màu: hướng B M0.5c (card trắng trên nền kem, radius `xl`); mức thuộc vẫn 3 sắc độ accent; emoji minh họa dùng `Emoji` (Noto).
 > **Cần thay đổi dữ liệu ở M10** (spec dựa vào, chưa có trong code): (1) cột `mnemonic_vi` cho `words.csv` + `WordJsonSchema`; (2) bản ghi mới `WordNoteRecord` (mẹo nhớ của người học); (3) `NeedsReviewRecord.origin` thêm `'manual'`. Chi tiết ở §Dữ liệu.
 
 ---
@@ -79,7 +79,7 @@ H1 "Sổ từ" + dòng số "{n} từ đã học · {m} đã thuộc · {k} cầ
 - Dòng đang chọn: nền `accent-subtle`, viền trái 2px `accent`. Hover: nền `bg-subtle`.
 - **Danh sách lớn** (dự kiến 2 000–3 000 từ khi đủ 27 unit):
   - Lọc/tìm chạy trên mảng trong bộ nhớ (content đã tải + `listCards` một lần, cập nhật bằng live query) — không truy vấn IndexedDB theo từng phím.
-  - Hiển thị **100 dòng đầu**, nút "Hiện thêm 100 từ" (và tự tải thêm khi cuộn tới cuối); không thêm thư viện ảo hóa ở Phase 1. Xem Câu hỏi mở #3.
+  - Hiển thị **100 dòng đầu**, nút "Hiện thêm 100 từ" (và tự tải thêm khi cuộn tới cuối); không thêm thư viện ảo hóa ở Phase 1 (Q3 a).
   - Đổi bộ lọc → về đầu danh sách, giữ từ đang chọn nếu còn trong kết quả, không thì chọn từ đầu tiên.
   - Phải tải nội dung **mọi unit** (`useAllUnits`) — hiện skeleton danh sách tới khi xong; unit lỗi tải → bỏ qua + cảnh báo nhỏ "Chưa tải được {n} chuyên đề." + "Thử lại".
 
@@ -106,7 +106,7 @@ Thứ tự hiện (V-03: **hình → chữ Thái → nghĩa**, nhưng trong Sổ
 ### E. Liên kết với các màn khác (để M10 làm đồng bộ)
 - **SCR-05 (flashcard bước Từ vựng)**: V-04 yêu cầu mẹo nhớ ở **mặt sau thẻ** → M10 thêm khối Mẹo nhớ (cùng quy tắc ưu tiên + nút "Viết mẹo nhớ của tôi") vào mặt sau thẻ SCR-05; dùng chung component `MnemonicBlock`.
 - **SCR-04 B** khối Từ vựng: click từ → popover hiện thêm mẹo (rút gọn 1 dòng) — tùy chọn.
-- **V-03 chế độ "Hình → Thái"**: thuộc flashcard/bài tập, không ở Sổ từ — xem Câu hỏi mở #4.
+- **V-03 chế độ "Hình → Thái"**: **để Phase 2** (owner chọn Q4 c — content chưa có từ nào có `image`).
 
 ## Hành động
 | Thao tác | Kết quả |
@@ -159,9 +159,9 @@ Thứ tự hiện (V-03: **hình → chữ Thái → nghĩa**, nhưng trong Sổ
 ## Ngoài phạm vi
 Thêm/sửa/xoá từ của content (Phase 2, Module M); tạo bộ từ riêng / thư mục; xuất CSV/Anki; ảnh do người học tải lên; đồng bộ mẹo nhớ giữa thiết bị (Phase 2); Claude đề xuất mẹo nhớ trong app (V-07 chỉ là script cho owner); luyện riêng một từ từ Sổ từ (dùng "Cần ôn" → Bài tập); chế độ flashcard trong Sổ từ; tra từ ngoài lexicon.
 
-## Câu hỏi mở cho owner
-1. **Nguồn mẹo nhớ gợi ý** — (a) *đề xuất*: thêm cột `mnemonic_vi` vào `words.csv` (tùy chọn, `draft` khi Claude đề xuất, owner duyệt); (b) chưa có mẹo content ở M10, chỉ có "mẹo của tôi"; (c) file riêng `mnemonics.csv` (id → mẹo) để không làm rộng `words.csv`.
-2. **Sổ từ mặc định hiện gì** — (a) *đề xuất*: chỉ từ đã học, chọn chuyên đề thì hiện cả từ chưa học; (b) luôn hiện mọi từ (chip "Chưa học" luôn có); (c) chỉ từ đã học, không bao giờ hiện từ chưa học.
-3. **Danh sách lớn** — (a) *đề xuất*: hiện 100 + "Hiện thêm"/tự tải khi cuộn, không thêm thư viện; (b) ảo hóa bằng `@tanstack/react-virtual` (mượt với 3 000+ từ, thêm 1 dependency); (c) phân trang 50 từ/trang.
-4. **V-03 chế độ "Hình → Thái"** (đoán chữ từ hình) — (a) *đề xuất*: làm ở M10 như một tùy chọn thứ tự lớp trên flashcard SCR-05 (hình trước, che chữ Thái) cho từ có hình; (b) thành loại bài tập mới E-15 "Chọn từ cho hình" ở M9 engine; (c) để Phase 2 — hiện chưa có từ nào có `image` trong content.
-5. **Cờ "cần ôn" bật tay** — (a) *đề xuất*: thêm `origin: 'manual'`, dùng chung hàng đợi ưu tiên của Bài tập; (b) không cho bật tay (chỉ trò chơi sinh cờ), Sổ từ chỉ hiển thị.
+## Câu hỏi đã chốt (owner 2026-11-21)
+1. **Nguồn mẹo nhớ gợi ý** — **chọn (a)**: cột tùy chọn `mnemonic_vi` trong `words.csv` (`draft` khi Claude đề xuất, owner duyệt). Các phương án: (a) thêm cột `mnemonic_vi` vào `words.csv` (tùy chọn, `draft` khi Claude đề xuất, owner duyệt); (b) chưa có mẹo content ở M10, chỉ có "mẹo của tôi"; (c) file riêng `mnemonics.csv` (id → mẹo) để không làm rộng `words.csv`.
+2. **Sổ từ mặc định hiện gì** — **chọn (a)**: chỉ từ đã học; chọn chuyên đề thì hiện cả từ chưa học. Các phương án: (a) chỉ từ đã học, chọn chuyên đề thì hiện cả từ chưa học; (b) luôn hiện mọi từ (chip "Chưa học" luôn có); (c) chỉ từ đã học, không bao giờ hiện từ chưa học.
+3. **Danh sách lớn** — **chọn (a)**: 100 dòng + "Hiện thêm" / tự tải khi cuộn, không thêm thư viện. Các phương án: (a) hiện 100 + "Hiện thêm"/tự tải khi cuộn, không thêm thư viện; (b) ảo hóa bằng `@tanstack/react-virtual` (mượt với 3 000+ từ, thêm 1 dependency); (c) phân trang 50 từ/trang.
+4. **V-03 chế độ "Hình → Thái"** (đoán chữ từ hình) — **chọn (c)**: để Phase 2. Các phương án: (a) làm ở M10 như một tùy chọn thứ tự lớp trên flashcard SCR-05 (hình trước, che chữ Thái) cho từ có hình; (b) thành loại bài tập mới E-15 "Chọn từ cho hình" ở M9 engine; (c) để Phase 2 — hiện chưa có từ nào có `image` trong content.
+5. **Cờ "cần ôn" bật tay** — **chọn (a)**: `origin: 'manual'`, dùng chung hàng đợi ưu tiên của Bài tập. Các phương án: (a) thêm `origin: 'manual'`, dùng chung hàng đợi ưu tiên của Bài tập; (b) không cho bật tay (chỉ trò chơi sinh cờ), Sổ từ chỉ hiển thị.

@@ -1,4 +1,17 @@
-import { Heart, MessageSquareOff, Pause, Speech, Volume2, VolumeX, X, Zap } from 'lucide-react';
+import {
+  Heart,
+  MessageSquareOff,
+  Music,
+  Music2,
+  Pause,
+  Play,
+  RotateCcw,
+  Speech,
+  Volume2,
+  VolumeX,
+  X,
+  Zap,
+} from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { t } from '@/i18n';
@@ -25,6 +38,12 @@ export interface GameTopBarProps {
   speech?: { enabled: boolean; disabled?: boolean; onToggle: () => void };
   /** Trò "3 tim" (v7.3): số tim còn lại / tối đa; `delta` = vừa mất (−1) / được (+1). */
   lives?: { count: number; max: number; delta?: -1 | 0 | 1 };
+  /** Có thì hiện nút ⏸ tạm dừng (`P`, SCR-08 v2 §B.0). */
+  onPause?: () => void;
+  /** Có thì hiện nút 🎵 âm nền (`M`); `disabled` khi chưa phát được. */
+  music?: { enabled: boolean; disabled?: boolean; onToggle: () => void };
+  /** Dòng phụ cạnh tên trò (vd. "Từng bước", "Tốc độ ×1,3"). */
+  status?: string;
 }
 
 /** Đồng hồ đếm ngược ≤ mốc này (ms) → màu cảnh báo + nhấp nháy nhẹ. */
@@ -45,8 +64,13 @@ export function GameTopBar({
   sound,
   speech,
   lives,
+  onPause,
+  music,
+  status,
 }: GameTopBarProps) {
   useKeyShortcut('Escape', onExit);
+  useKeyShortcut('p', () => onPause?.(), !!onPause);
+  useKeyShortcut('m', () => music?.onToggle(), !!music && !music.disabled);
   // Lưu điểm trước để hiện phần vừa cộng (cập nhật state khi prop đổi — mẫu React chính thức).
   const [prev, setPrev] = useState(score);
   const [gain, setGain] = useState(0);
@@ -58,7 +82,7 @@ export function GameTopBar({
   return (
     <header
       data-testid="game-top-bar"
-      className="flex items-center gap-4 rounded-xl bg-game-subtle px-3 py-2"
+      className="flex min-h-14 items-center gap-4 rounded-xl bg-surface/90 px-3 py-2 shadow-sm"
     >
       <Button variant="ghost" size="sm" onClick={onExit} aria-keyshortcuts="Escape">
         <X aria-hidden />
@@ -68,6 +92,11 @@ export function GameTopBar({
         </kbd>
       </Button>
       <h1 className="text-lg font-semibold">{title}</h1>
+      {status && (
+        <span data-testid="game-status" className="text-sm text-muted-foreground">
+          {status}
+        </span>
+      )}
       <div className="ml-auto flex items-center gap-6 tabular-nums">
         {combo >= 2 && (
           <span
@@ -139,6 +168,21 @@ export function GameTopBar({
             )}
           </Button>
         )}
+        {music && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            data-testid="game-music"
+            aria-pressed={music.enabled && !music.disabled}
+            aria-keyshortcuts="M"
+            disabled={music.disabled}
+            aria-label={music.enabled ? t('play.musicOn') : t('play.musicOff')}
+            title={music.disabled ? t('play.musicUnavailable') : t('play.musicHint')}
+            onClick={music.onToggle}
+          >
+            {music.enabled && !music.disabled ? <Music aria-hidden /> : <Music2 aria-hidden />}
+          </Button>
+        )}
         {sound && (
           <Button
             variant="ghost"
@@ -149,6 +193,21 @@ export function GameTopBar({
             onClick={sound.onToggle}
           >
             {sound.enabled ? <Volume2 aria-hidden /> : <VolumeX aria-hidden />}
+          </Button>
+        )}
+        {onPause && (
+          <Button
+            variant="ghost"
+            size="sm"
+            data-testid="game-pause"
+            aria-keyshortcuts="P"
+            onClick={onPause}
+          >
+            <Pause aria-hidden />
+            <span className="sr-only">{t('play.pause')}</span>
+            <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+              P
+            </kbd>
           </Button>
         )}
       </div>
@@ -215,27 +274,74 @@ export function TimeBar({ totalMs, remainingMs, className }: TimeBarProps) {
   );
 }
 
-/** Lớp phủ khi đồng hồ tạm dừng (tab ẩn / mất focus) — `Space` để tiếp tục. */
-export function PausedOverlay({ onResume }: { onResume: () => void }) {
+/**
+ * Lớp phủ khi tạm dừng (`P`, tab ẩn / mất focus — SCR-08 v2 §B.0): Tiếp tục (`Space`) · Chơi lại
+ * (`R`) · Thoát (`Esc`, do thanh trên xử lý).
+ */
+export function PausedOverlay({
+  onResume,
+  onRestart,
+  onExit,
+}: {
+  onResume: () => void;
+  onRestart?: () => void;
+  onExit?: () => void;
+}) {
   useKeyShortcut(' ', onResume);
+  useKeyShortcut('r', () => onRestart?.(), !!onRestart);
+  const button =
+    'flex items-center justify-center gap-3 rounded-xl border-2 px-5 py-3 text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring';
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="game-paused-title"
       data-testid="game-paused"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/90"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60"
     >
-      <button
-        type="button"
-        autoFocus
-        onClick={onResume}
-        aria-keyshortcuts="Space"
-        className="flex items-center gap-3 rounded-lg border-2 border-border-strong bg-background px-6 py-4 text-lg font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        <Pause className="size-6" aria-hidden />
-        <span id="game-paused-title">{t('play.paused')}</span>
-      </button>
+      <div className="flex w-80 flex-col gap-3 rounded-xl bg-surface p-6 shadow-md">
+        <h2 id="game-paused-title" className="flex items-center gap-2 text-xl font-bold">
+          <Pause className="size-5" aria-hidden />
+          {t('play.paused')}
+        </h2>
+        <button
+          type="button"
+          autoFocus
+          onClick={onResume}
+          aria-keyshortcuts="Space"
+          data-testid="game-resume"
+          className={cn(button, 'border-primary bg-primary text-primary-foreground')}
+        >
+          <Play className="size-5" aria-hidden />
+          {t('play.resume')}
+          <kbd className="ml-auto font-sans text-xs opacity-80">Space</kbd>
+        </button>
+        {onRestart && (
+          <button
+            type="button"
+            onClick={onRestart}
+            aria-keyshortcuts="R"
+            data-testid="game-restart"
+            className={cn(button, 'border-border-strong bg-surface')}
+          >
+            <RotateCcw className="size-5" aria-hidden />
+            {t('play.restart')}
+            <kbd className="ml-auto font-sans text-xs text-muted-foreground">R</kbd>
+          </button>
+        )}
+        {onExit && (
+          <button
+            type="button"
+            onClick={onExit}
+            aria-keyshortcuts="Escape"
+            className={cn(button, 'border-border-strong bg-surface')}
+          >
+            <X className="size-5" aria-hidden />
+            {t('play.exit')}
+            <kbd className="ml-auto font-sans text-xs text-muted-foreground">Esc</kbd>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

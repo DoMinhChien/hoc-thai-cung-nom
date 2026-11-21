@@ -6,17 +6,19 @@
 |---|---|---|
 | `brief.md` | Định hướng, tính cách, phạm vi | ✅ Chốt định hướng (accent chàm, màn Chào mừng) |
 | `flows.md` | Sitemap + luồng đăng nhập / Guest / xoá tài khoản | ✅ Duyệt 2026-11-15 |
-| `tokens.json` | Màu, font, spacing, radius | ✅ Duyệt 2026-11-15 · font Thái → **Sarabun** (owner, 2026-11-18) |
+| `tokens.json` | Màu, font, spacing, radius | ✅ Duyệt 2026-11-15 · font Thái → **Sarabun** (owner, 2026-11-18) · **hướng B** M0.5c (2026-11-21) |
 | `screens/SCR-00-layout.md` | Khung chung | ✅ Duyệt 2026-11-15 |
 | `screens/SCR-01-login.md` | Đăng nhập | ✅ Duyệt 2026-11-15 |
 | `screens/SCR-02-account.md` | Tài khoản + trang pháp lý | ✅ Duyệt 2026-11-15 |
 | `screens/SCR-04-units.md` | Bài học: Lộ trình + Chi tiết chuyên đề (M7) | ✅ Duyệt 2026-11-19 |
 | `screens/SCR-05-lesson.md` | Bài học nhiều bước: Từ vựng, Mẫu câu, Hội thoại, Bài tập (M7) | ✅ Duyệt 2026-11-19 |
 | `screens/SCR-06-practice.md` | Bài tập: trang, phiên làm bài (E-01..E-14), kết quả (M9) | ✅ Duyệt 2026-11-20 |
-| `screens/SCR-03-home.md` | Tổng quan `/` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
-| `screens/SCR-07-words.md` | Sổ từ `/words` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
-| `screens/SCR-09-progress.md` | Tiến độ `/progress` (M10) | 🟡 Chờ owner duyệt (2026-11-21) |
+| `M0.5c-directions.md` | 3 hướng giao diện sinh động hơn cho cả app (M0.5c, mở khóa T9.5.4) | ✅ Owner chọn **B — Nắng nhiệt đới** 2026-11-21 (Q1–Q4 theo đề xuất) |
+| `screens/SCR-03-home.md` | Tổng quan `/` (M10) | ✅ Duyệt 2026-11-21 (Q1 a, Q2 b, Q3 a) |
+| `screens/SCR-07-words.md` | Sổ từ `/words` (M10) | ✅ Duyệt 2026-11-21 (Q1 a, Q2 a, Q3 a, Q4 c, Q5 a) |
+| `screens/SCR-09-progress.md` | Tiến độ `/progress` (M10) | ✅ Duyệt 2026-11-21 (Q1 a, Q2 a+b, Q3 a) |
 | `screens/SCR-08-games.md` | Trò chơi: danh sách, 4 màn chơi, kết quả (M7.5 — ưu tiên) | ✅ Duyệt 2026-11-18 (gồm v7.3: màu từng trò, 3 tim, đọc lại câu) |
+| `screens/SCR-08-games-v2.md` | Trò chơi v2: 8 trò, thumbnail, 3 theme, sao, "Đổi trò" (M9.6) — thay SCR-08 | ✅ Duyệt 2026-11-21 |
 
 **Figma:** https://www.figma.com/design/iYEX3wxXphmrjDCxtiSuPD (team cá nhân "chiend's team", gói Starter — tối đa 3 page: `Wireframes`, `Components & Tokens`, `Archive`)
 
@@ -35,6 +37,8 @@
 | `SCR-07-words.png` · `SCR-07-word-detail.png` (HTML) | Sổ từ · chi tiết từ |
 | `SCR-09-progress.png` (HTML) | Tiến độ |
 | `SCR-08-games.png` · `-play-match.png` · `-play-truefalse.png` · `-play-classifier.png` · `-result.png` (HTML) | Trò chơi: danh sách · Ghép cặp · Đúng hay sai? · Đoán loại từ · kết quả |
+| `M0.5c-direction-A.png` · `-B.png` · `-C.png` (HTML, hi-fi) | 3 hướng giao diện M0.5c |
+| `SCR-08v2-games.png` · `-play-whack.png` · `-play-gameshow.png` · `-play-airplane.png` · `-play-maze.png` · `-result.png` (HTML) | Trò chơi v2: danh sách · Đập chuột · Đố vui truyền hình · Máy bay · Mê cung · kết quả |
 
 > **2026-11-18:** Figma MCP gói Starter hết lượt gọi giữa đợt M0.5b → 3 wireframe đầu vẽ trong Figma (page `Wireframes`, hàng y = 2500), 5 wireframe còn lại dựng bằng HTML cùng phong cách lo-fi rồi chụp PNG. Spec `.md` vẫn là nguồn chính.
 
@@ -47,4 +51,6 @@
 | 2026-11-15 | M0.5a | Duyệt flows, tokens.json, SCR-00/01/02 + wireframe | Owner |
 | 2026-11-19 | M0.5b | Duyệt SCR-04 (Lộ trình, Chi tiết chuyên đề) + SCR-05 (Bài học) + wireframe; SCR-06 còn chờ | Owner |
 | 2026-11-18 | M0.5b | Duyệt SCR-08 Trò chơi (bản v7.3) | Owner |
+| 2026-11-21 | M0.5b-2 | Duyệt SCR-03 Tổng quan, SCR-07 Sổ từ, SCR-09 Tiến độ + wireframe (câu trả lời ghi trong từng spec) → mở M10 | Owner |
+| 2026-11-21 | M0.5c | Chọn hướng **B "Nắng nhiệt đới"** cho toàn app (nền kem, màu chuyên đề, Lộ trình dạng lưới, streak, hiệu ứng `fb-*`); Q1–Q4 theo đề xuất; duyệt SCR-08 v2 | Owner |
 | 2026-11-18 | M7.5 | Phương án B: khu Trò chơi có màu riêng từng trò (`color.game.*`, plan 7.6.1 v7.3) + chuyển động phản hồi; khu khác giữ tối giản | Owner |

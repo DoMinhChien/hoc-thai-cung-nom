@@ -11,6 +11,7 @@ import {
 import { Link, NavLink, Outlet } from 'react-router';
 import { AccountBlock } from '@/components/account/AccountBlock';
 import { AppLogo } from '@/components/AppLogo';
+import { StreakBadge } from '@/components/fun';
 import { DueBadge } from '@/components/layout/DueBadge';
 import { OfflineBadge } from '@/components/layout/OfflineBadge';
 import { t, type MessageKey } from '@/i18n';
@@ -61,6 +62,7 @@ export function AppLayout() {
         <Link to="/" className="self-start rounded-md px-2">
           <AppLogo />
         </Link>
+        <StreakBadge />
         <nav aria-label={t('nav.label')} className="flex flex-col gap-5">
           {NAV_GROUPS.map((group) => (
             <div key={group.label} className="flex flex-col gap-1">

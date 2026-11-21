@@ -87,7 +87,8 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   await expect(toggles.first()).toHaveAttribute('aria-pressed', 'false');
 
   // Về danh sách: kỷ lục + số mục "cần ôn" còn sau khi tải lại.
-  await page.getByTestId('result-other').click();
+  await page.getByTestId('result-list').click();
+  await expect(page).toHaveURL(/\/games$/);
   await page.reload();
   await expect(page.getByTestId('game-record-true-false')).toHaveText(`Kỷ lục: ${score} điểm`);
   await expect(page.getByTestId('game-review-count')).toContainText('2 mục cần ôn');

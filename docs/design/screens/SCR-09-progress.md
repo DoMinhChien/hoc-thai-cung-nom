@@ -1,8 +1,8 @@
 # SCR-09 Tiến độ (route: `/progress` · App layout) — Requirements: plan 0.8 (P-01, P-04, P-05, P-08, P-10, P-11, P-12), P-09, R1 v7 (R-01', R-02', R-03, R-04', R-05, R-06, R-07)
 
-> Trạng thái: **Chờ owner duyệt** (M0.5b đợt 2, soạn 2026-11-21). Mở khóa **M10**. Wireframe: `SCR-09-progress.png` (trang đầy đủ, cuộn dọc).
+> Trạng thái: **✅ Owner duyệt 2026-11-21** — Q1 **a**, Q2 **a + b**, Q3 **a** (§Câu hỏi đã chốt). Mở khóa **M10**. Wireframe: `SCR-09-progress.png` (trang đầy đủ, cuộn dọc).
 > ⛔ Không làm (plan 0.2, 4.9 v7): `MasteryGrid`, `HeatmapTable` / heatmap kiểu GitHub, `ToneBarChart`, R-04 thanh điệu, P-09 "độ chính xác theo nhóm chữ/thanh", R-01 "chữ cái / 44", P-06 (Phase 2).
-> Màu: tokens hiện có (D1). M0.5c có thể đổi màu, không đổi bố cục/biểu đồ.
+> Màu: hướng B M0.5c cho card/nền; biểu đồ theo §Quy tắc biểu đồ (chỉ accent + mastery).
 
 ---
 
@@ -30,7 +30,7 @@ Báo cáo cá nhân **tính hoàn toàn trên máy** (không gửi dữ liệu r
 | Nghe hiểu | E-08 |
 - < 10 lượt trong 30 ngày → thanh xám, chữ "Chưa đủ dữ liệu ({n} lượt)" thay cho %.
 
-**Thời gian học ước tính** (R-02): tổng `durationMs` của `ReviewLogRecord` nếu có, cộng 15 s × số lượt bài tập không có thời lượng; hiển thị làm tròn "khoảng {n} giờ {m} phút" (luôn có chữ "khoảng"). `SessionRepository` hiện chưa được UI ghi → không dùng (xem Câu hỏi mở #2).
+**Thời gian học** (R-02, owner Q2 = **a + b**): từ M10 mỗi lượt **bài học / bài tập / trò chơi** ghi một `SessionRecord` (`start` khi vào, `end` khi xong hoặc rời trang) — dùng chung cho thời gian học và chuỗi ngày (SCR-03 Q2 b). Thời gian = tổng thời lượng các phiên đã kết thúc (mỗi phiên tối đa 60 phút, phiên chưa `end` không tính) **+ ước tính** cho dữ liệu cũ trước phiên đầu tiên: 15 s × số lượt bài tập / ôn thẻ không thuộc phiên nào. Luôn hiển thị "khoảng {n} giờ {m} phút".
 
 ## Bố cục (desktop 1440, vùng nội dung max 1040 · trang cuộn dọc, các khối là card viền `border`, radius `lg`, padding 24, cách nhau 24)
 ```
@@ -171,7 +171,7 @@ Số 24px semibold + nhãn 14px `fg-muted`. Ô "từ đã thuộc" có `Progress
 ## Ngoài phạm vi
 Heatmap ngày kiểu GitHub, `MasteryGrid`, thống kê thanh điệu (⛔ v7); so sánh với người khác / bảng xếp hạng / XP / huy hiệu (Phase 2); báo cáo admin R-20..R-25 (Phase 2); xuất PDF/CSV báo cáo (G-02 export JSON nằm ở Cài đặt); đồng bộ nhiều thiết bị (Phase 2); bộ chọn khoảng thời gian tùy ý (cố định 7/30 ngày ở Phase 1); P-06 Đọc (Phase 2).
 
-## Câu hỏi mở cho owner
-1. **Nhóm kỹ năng P-12** — (a) *đề xuất*: theo bảng trên (bài chọn từ/nghĩa chia theo hướng dịch, E-14 vào Việt → Thái); (b) chỉ tính bài **câu** cho 2 thanh dịch (E-04..E-07, E-09), bài từ chỉ ảnh hưởng thanh Từ vựng; (c) thêm thanh thứ 5 "Loại từ" (E-14) cho nhóm chuyên đề loại từ.
-2. **Thời gian học** — (a) *đề xuất*: ước tính từ thời lượng trả lời (ghi chữ "khoảng"); (b) M10 bắt đầu ghi `SessionRecord` (bài học, bài tập, trò chơi) để có số chính xác hơn từ nay về sau; (c) bỏ số thời gian khỏi Phase 1.
-3. **"Luyện nhóm này" (R-06)** — (a) *đề xuất*: làm ở M10 (dùng lại `?items=` của phiên bài tập, gần như không tốn thêm); (b) thay bằng đánh dấu "cần ôn" cả nhóm (dùng hàng đợi sẵn có, không cần phiên mới); (c) chỉ hiển thị danh sách, không có nút.
+## Câu hỏi đã chốt (owner 2026-11-21)
+1. **Nhóm kỹ năng P-12** — **chọn (a)**: theo bảng `SKILL_GROUPS`. Các phương án: (a) theo bảng trên (bài chọn từ/nghĩa chia theo hướng dịch, E-14 vào Việt → Thái); (b) chỉ tính bài **câu** cho 2 thanh dịch (E-04..E-07, E-09), bài từ chỉ ảnh hưởng thanh Từ vựng; (c) thêm thanh thứ 5 "Loại từ" (E-14) cho nhóm chuyên đề loại từ.
+2. **Thời gian học** — **chọn (a + b)**: ước tính cho dữ liệu cũ, ghi `SessionRecord` từ M10 (dùng chung cho lượt chơi / chuỗi ngày). Các phương án: (a) ước tính từ thời lượng trả lời (ghi chữ "khoảng"); (b) M10 bắt đầu ghi `SessionRecord` (bài học, bài tập, trò chơi) để có số chính xác hơn từ nay về sau; (c) bỏ số thời gian khỏi Phase 1.
+3. **"Luyện nhóm này" (R-06)** — **chọn (a)**: làm ở M10 bằng `?items=`. Các phương án: (a) làm ở M10 (dùng lại `?items=` của phiên bài tập, gần như không tốn thêm); (b) thay bằng đánh dấu "cần ôn" cả nhóm (dùng hàng đợi sẵn có, không cần phiên mới); (c) chỉ hiển thị danh sách, không có nút.

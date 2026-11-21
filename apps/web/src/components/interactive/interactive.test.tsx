@@ -222,10 +222,20 @@ describe('GameTopBar, TimeBar, PausedOverlay', () => {
   it('PausedOverlay: Space hoặc bấm để tiếp tục', async () => {
     const onResume = vi.fn();
     render(<PausedOverlay onResume={onResume} />);
-    expect(screen.getByRole('dialog')).toHaveTextContent('Đã tạm dừng — Space để tiếp tục');
+    expect(screen.getByRole('dialog')).toHaveTextContent('Đã tạm dừng');
     press(' ', { target: document.body } as KeyboardEventInit);
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByTestId('game-resume'));
     expect(onResume).toHaveBeenCalled();
+  });
+
+  it('PausedOverlay v2: Chơi lại (R) và Thoát (SCR-08 v2 §B.0)', async () => {
+    const onRestart = vi.fn();
+    const onExit = vi.fn();
+    render(<PausedOverlay onResume={vi.fn()} onRestart={onRestart} onExit={onExit} />);
+    press('r');
+    expect(onRestart).toHaveBeenCalledTimes(1);
+    await userEvent.click(screen.getByRole('button', { name: /Thoát/ }));
+    expect(onExit).toHaveBeenCalled();
   });
 });
 
