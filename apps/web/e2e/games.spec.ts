@@ -4,7 +4,7 @@ import { chooseGuest, countCards } from './helpers';
 import { readStore } from './practice-helpers';
 
 /**
- * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Chọn nguồn rõ ràng (`b01`, `u03`)
+ * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Chọn nguồn rõ ràng (`b01`, `c03`)
  * thay vì dựa vào unit đầu lộ trình — nội dung thật (`b01`…) thêm dần sẽ đổi unit đầu. Giảm chuyển động → bỏ đếm 3·2·1 và hiệu ứng (ảnh chụp ổn định).
  */
 test.beforeEach(async ({ page }) => {
@@ -96,7 +96,7 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   expect(await countCards(page, 'hoc-thai-nom-guest')).toBe(0);
 });
 
-test('Đoán loại từ trên Chuyên đề 3: chọn nguồn (được nhớ), trả lời bằng phím 1–4, hết tim → kết quả', async ({
+test('Đoán loại từ trên Chuyên đề 3 (c03): chọn nguồn (được nhớ), trả lời bằng phím 1–4, hết tim → kết quả', async ({
   page,
 }) => {
   // Bài 1 (không có loại từ) → trò bị khóa kèm lý do.
@@ -105,17 +105,17 @@ test('Đoán loại từ trên Chuyên đề 3: chọn nguồn (được nhớ),
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );
-  await chooseSource(page, 'unit:u03');
+  await chooseSource(page, 'unit:c03');
   await expect(page.getByTestId('game-locked-classifier-rush')).toBeHidden();
   await page.reload();
-  await expect(page.getByTestId('game-source')).toHaveValue('unit:u03');
+  await expect(page.getByTestId('game-source')).toHaveValue('unit:c03');
 
-  const res = await page.request.get('/content/unit-u03.json');
+  const res = await page.request.get('/content/unit-c03.json');
   const unit = (await res.json()) as { words: { thai: string; classifier?: string }[] };
   const classifierOf = new Map(unit.words.map((w) => [w.thai, w.classifier]));
 
   await page.keyboard.press('4');
-  await expect(page).toHaveURL(/\/games\/classifier-rush\?source=unit%3Au03/);
+  await expect(page).toHaveURL(/\/games\/classifier-rush\?source=unit%3Ac03/);
   // Đúng 1 câu rồi cố ý sai tới khi hết tim.
   let correct = true;
   while (!(await page.getByTestId('game-result').isVisible())) {

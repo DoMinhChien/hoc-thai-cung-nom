@@ -1,14 +1,4 @@
-# DỮ LIỆU MẪU (draft: true) — chỉ để chạy pipeline M6. Owner/giáo viên thay (SETUP-OWNER S10).
-- id: g-u11-na
-  unit_id: u11
-  title_vi: น่า + động từ
-  pattern: น่า + động từ
-  explain_vi: น่า đứng trước động từ tạo nghĩa "đáng …" hoặc "trông …" (đáng để làm việc đó).
-  examples:
-    - { th: "น่ากิน", vi: "Trông ngon (rất đáng để ăn)." }
-    - { th: "น่ารัก", vi: "Đáng yêu, dễ thương." }
-  source: plernpin-11#p1
-  draft: true
+# Mẫu câu (plan 0.9) — nhập từ tài liệu giáo viên, `draft: true` chờ giáo viên duyệt (content/IMPORT-STATUS.md).
 - id: g-b02-laeo
   unit_id: b02
   title_vi: Còn … thì sao?

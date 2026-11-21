@@ -94,7 +94,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
   - *Kết quả:* core `compareUnits` (theme → grammar → `order` → id) dùng ở `content:build`, `/units`, nguồn Trò chơi; nhãn `unitLabel` ("Bài n" / "Chuyên đề n") ở lộ trình, card Học tiếp, breadcrumb, tiêu đề bài, màn hoàn thành, `/games`. Bài con trong unit đổi thành **"Bài học n"** (tránh "Bài 2 · Bài 2"). `b02`: sửa YAML (ví dụ có dấu phẩy chưa bọc ngoặc kép), bỏ tiền tố "Bài 2 · " khỏi `title_vi` (UI tự thêm nhãn); mẫu `u03` → `kind: grammar` (= CĐ 3). SCR-04/05/08 cập nhật câu chữ; E2E 2 nhánh + mở Bài 2, axe `/units/b02`, `/units/b02/b02-l1`; baseline `units-*` mới.
 - [x] TC.2a Xóa content mẫu `u01`, `u02` ngay (đã có `b01`, `b02` thật); chuyển test/E2E dùng `u01` sang `b01`/`b02`.
   - *Kết quả (2026-11-20, nhánh `m9.5-feedback`):* xóa `u01`, `u02` (2 unit, 2 bài học, 15 từ, 5 câu, 2 mẫu câu, 2 hội thoại); `content:check` 361 mục, 0 lỗi. E2E bài học học trọn **Chuyên đề 1** + bước Hội thoại **Bài 12**; Bài tập/Trò chơi dùng **Bài 1** thật. Chuyển sang nội dung thật lộ ra lỗi engine: **phương án nhiễu trùng đề** (Bài 1 có nhiều đại từ cùng nghĩa "tôi" → E-02 có 2 đáp án đúng; Đúng hay sai? có thể đề xuất nghĩa khác của cùng chữ làm "nghĩa sai") → đã sửa trong core + test.
-- [ ] TC.2b (khi nhập `c03`, `c11` — cuối hàng nhập, plan 0.12 #8) xóa `u03`, `u11`, chuyển test trò chơi Đoán loại từ / Xếp câu sang `c03` / `c11`.
+- [x] TC.2b (2026-11-21, sau PR #31) xóa `u03`, `u11` (2 unit, 2 bài học, 17 từ, 36 câu, 1 mẫu câu mẫu cũ); E2E Đoán loại từ chuyển sang `c03`; baseline `/units` (27 bài & chuyên đề).
 
 
 ### M0 — Khung dự án 🟢
