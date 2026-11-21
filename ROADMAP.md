@@ -17,7 +17,7 @@
 
 > **🟢 M10 — Tổng quan + Sổ từ + Tiến độ** (6/6 task, mở + xong 2026-11-21; nhánh `m10-home` → PR mới vào `main`): `/` Tổng quan (SCR-03), `/words` Sổ từ + mẹo nhớ của người học (SCR-07), `/progress` Tiến độ (SCR-09), ghi `SessionRecord`, Dexie v6. Owner duyệt + cho merge **#32** (2026-11-21).
 
-> **🔵 M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live** (5/6 task, mở 2026-11-21; nhánh `m12-golive` → PR mới, gồm cả #32): Cài đặt phiên âm mặc định (G-01), xuất / nhập / xoá tiến độ JSON (G-02), PWA offline (G-03), E2E luồng go-live, checklist go-live `docs/go-live.md`. **Chặn go-live:** việc tay của owner B1–B9 (mục "Việc chờ owner").
+> **🔵 M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live** (5/6 task, mở 2026-11-21; nhánh `m12-golive` → **PR #34**): Cài đặt phiên âm mặc định (G-01), xuất / nhập / xoá tiến độ JSON (G-02), PWA offline (G-03), E2E luồng go-live, checklist go-live `docs/go-live.md`. **Chặn go-live:** việc tay của owner B1–B9 (mục "Việc chờ owner").
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
@@ -41,7 +41,7 @@
 >   - [ ] B9 Xem đoạn mới ở `/privacy` (tệp xuất tiến độ nằm trên máy người dùng).
 >   - [ ] Sau B1–B5: smoke test thủ công trên production (`docs/go-live.md` mục C) → báo agent ghi nhật ký.
 > - [ ] **PR M12** (`m12-golive`): xem baseline đổi (`settings-*` — thêm khối Hiển thị, Dữ liệu tiến độ) + PWA (`staticwebapp`/service worker) — không tự merge (8.1: đụng cấu hình build/PWA, nhiều màn).
-> - [ ] **Chuyên đề 15 → 2 (PR #31, draft):** 14 chuyên đề, 50 bài học, 653 từ, 358 câu, 56 mẫu câu; CI + baseline `/units` xong. Đủ điều kiện tự merge (8.1, nội dung) khi CI xanh. GV duyệt: nghĩa + loại từ Claude điền ở c03 (144/310 từ không có nghĩa, cột loại từ trống), bản dịch Thái câu bài tập, `title_th` mọi chuyên đề. Sau merge → agent làm **TC.2b** (xóa `u03`/`u11` — hiện CĐ 3, CĐ 11 có 2 thẻ trên Lộ trình).
+> - [x] **Chuyên đề 15 → 2 (#31)** tự merge 2026-11-21 (8.1); **TC.2b (#33)** xoá `u03`/`u11`, tự merge. GV còn duyệt nội dung draft — xem dòng dưới.
 > - [ ] **Nội dung (giáo viên duyệt):** Bài 11 → 6 (**#28**) và Bài 5 → 3 (**#29**) **đã merge 2026-11-21** (draft) — giáo trình Bài 1–12 đủ; GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
@@ -582,7 +582,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
-| 2026-11-21 | M10 → M12 + TC.2b | Owner duyệt M10: sửa lỗi axe (nút 🔊 lồng trong `option` Sổ từ) rồi merge #32. **Tự merge #31** (nội dung Chuyên đề 15 → 2, 8.1). **TC.2b** xoá `u03`/`u11` (PR #33). Mở **M12**: T12.1–T12.5 xong (phiên âm mặc định, xuất/nhập/xoá tiến độ, PWA offline, E2E go-live, checklist). Firefox thỉnh thoảng crash khi axe chạy trên Tổng quan (~1/10, không do đồng hồ giả / luật contrast — đã dò); CI tự chạy lại → flaky | T12.6 go-live | B1–B9 việc tay owner (`docs/go-live.md`) | #32 ✅, #31 ✅, `tc2b-cleanup` → #33, `m12-golive` → PR mới |
+| 2026-11-21 | M10 → M12 + TC.2b | Owner duyệt M10: sửa lỗi axe (nút 🔊 lồng trong `option` Sổ từ) rồi merge #32. **Tự merge #31** (nội dung Chuyên đề 15 → 2, 8.1). **TC.2b** xoá `u03`/`u11` (#33, tự merge 8.1). Mở **M12**: T12.1–T12.5 xong (phiên âm mặc định, xuất/nhập/xoá tiến độ, PWA offline, E2E go-live, checklist). Firefox thỉnh thoảng crash khi axe chạy trên Tổng quan (~1/10, không do đồng hồ giả / luật contrast — đã dò); CI tự chạy lại → flaky | T12.6 go-live | B1–B9 việc tay owner (`docs/go-live.md`) | #32 ✅, #31 ✅, #33 ✅, `m12-golive` → #34 |
 | 2026-11-21 | M10 + Nội dung | Owner duyệt SCR-03/07/09 → ghi câu trả lời vào spec, **merge #26** (theo yêu cầu owner), tự merge #30 (8.1). **M10** T10.1–T10.6 xong (Tổng quan, Sổ từ + mẹo nhớ, Tiến độ, SessionRecord, Dexie v6, E2E). Nhập **Chuyên đề 15 → 2** (PR #31). Sửa test chập chờn `useFeedbackPause` | — | PR #32 chờ owner xem giao diện; TC.2b sau #31 | `m10-home` → #32; `content-c02-c15` → #31 |
 | 2026-11-21 | Quy trình + Nội dung | Owner merge #25 (gồm #27). **Tự merge #28, #29 (loại nội dung `draft`, AGENTS 8.1, owner đồng ý lần này)** — rebase lên `main`, sinh lại baseline `/units` trên giao diện B, CI xanh. Sửa ảnh `game-whack` không ổn định (che lưới hố; bỏ trên WebKit) | #30 (docs 8.1 + sửa test) chờ CI | M10 chờ owner duyệt #26 (không tự merge: spec thiết kế + câu hỏi cho owner) | #28, #29 đã merge; `docs-auto-merge` → #30 |
 | 2026-11-21 | Quy trình | Owner đồng ý **agent tự merge PR** theo `AGENTS.md` mục 8.1 (CI xanh, không conflict, base `main`; loại PR được phép / phải chờ owner). SETUP S1: bảo vệ `main` không bắt buộc review | — | — | — (docs chưa commit) |
