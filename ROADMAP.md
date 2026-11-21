@@ -21,7 +21,7 @@
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
-> - [ ] **Azure SWA hết chỗ preview:** deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
+> - [x] ~~**Azure SWA hết chỗ preview:**~~ đã dọn 2026-11-21 (B2). deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
 > - [ ] ⏸ *(tạm loại 2026-11-21 — owner bật lại khi cần)* **SETUP S13** (Azure AI Speech F0) cho **T9.5.3**: tạo resource Speech (Southeast Asia, F0), ghi `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` vào `.env.local` (không commit, không gửi chat), nghe thử Premwadee / Achara → báo agent "S13 xong, giọng: …".
 > - [ ] **Xem baseline:** mới `settings-*`; đổi theo nội dung thật `units-*`, `unit-*`, `lesson-*`, `practice-*`, `practice-arrange-*` (Windows đã commit; Linux lấy từ artifact CI `screenshot-baselines-linux`).
 > - [x] **M0.5c / SCR-08 v2** — owner chọn **B** (Q1–Q4 theo đề xuất), SCR-08 v2 làm theo đề xuất (2026-11-21). **#25 merge 2026-11-21** (gồm cả #27, #27 cũng đã đóng ở trạng thái merged).
@@ -31,8 +31,8 @@
 > - [x] **PR M10 (#32)** — owner duyệt 2026-11-21.
 > - [ ] **Go-live (M12 T12.6) — owner làm tay, chi tiết + cách làm ở `docs/go-live.md` mục B:**
 >   - [ ] B1 Bảo vệ `main`: bắt buộc PR + CI (`check`, `e2e`), **không** bắt buộc review (SETUP S1).
->   - [ ] B2 Dọn môi trường preview cũ của Static Web App (giới hạn staging environment — deploy preview lỗi).
->   - [ ] B3 Firebase Authorized domains có domain production `*.azurestaticapps.net` (S4).
+>   - [x] B2 Dọn môi trường preview cũ của Static Web App (giới hạn staging environment — deploy preview lỗi).
+>   - [x] B3 Firebase Authorized domains có domain production `*.azurestaticapps.net` (S4).
 >   - [ ] B4 Google OAuth consent screen: link `/privacy`, `/terms` production → **Publish / In production** (SETUP S5 bước 3).
 >   - [ ] B5 Giới hạn Firebase API key theo HTTP referrer: domain production + `localhost` (SETUP S8).
 >   - [ ] B6 Budget alert Azure (SETUP S3).
@@ -109,6 +109,16 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 - [x] TC.2a Xóa content mẫu `u01`, `u02` ngay (đã có `b01`, `b02` thật); chuyển test/E2E dùng `u01` sang `b01`/`b02`.
   - *Kết quả (2026-11-20, nhánh `m9.5-feedback`):* xóa `u01`, `u02` (2 unit, 2 bài học, 15 từ, 5 câu, 2 mẫu câu, 2 hội thoại); `content:check` 361 mục, 0 lỗi. E2E bài học học trọn **Chuyên đề 1** + bước Hội thoại **Bài 12**; Bài tập/Trò chơi dùng **Bài 1** thật. Chuyển sang nội dung thật lộ ra lỗi engine: **phương án nhiễu trùng đề** (Bài 1 có nhiều đại từ cùng nghĩa "tôi" → E-02 có 2 đáp án đúng; Đúng hay sai? có thể đề xuất nghĩa khác của cùng chữ làm "nghĩa sai") → đã sửa trong core + test.
 - [x] TC.2b (2026-11-21, sau PR #31) xóa `u03`, `u11` (2 unit, 2 bài học, 17 từ, 36 câu, 1 mẫu câu mẫu cũ); E2E Đoán loại từ chuyển sang `c03`; baseline `/units` (27 bài & chuyên đề).
+- [x] **TC.3 Rà soát & làm đầy đủ Bài 9 (`b09` Gọi món) và Bài 10 (`b10` Mua bán) — ƯU TIÊN, làm trước mọi việc khác** (owner 2026-11-21: người học đang học 2 bài này trên lớp). Hiện trạng (Claude Desktop kiểm tra trên `main`): b09 91 từ / 29 câu / 3 mẫu câu (đều ở bài học cuối) / 0 hội thoại; b10 118 từ / 20 câu / 1 mẫu câu / 0 hội thoại; **0 từ có hình**, 0 từ có ví dụ; bài học 1–9 (b09) và 1–12 (b10) **không có câu nào** → bước Bài tập và trò chơi theo bài chỉ có từ.
+  1. Đọc lại `sources/บทที่ 9_…pdf` (39 tr) và `บทที่ 10_…pdf` (44 tr) **từng trang**, đối chiếu từng từ / nghĩa / chính tả; sửa sai; từ thẻ hình Claude tự ghi nghĩa → kiểm lại theo hình, từ nào không chắc ghi `note_vi: "cần GV xác nhận"`. Bổ sung phần trong PDF chưa nhập (nếu có).
+  2. `image` (Noto Emoji, dạng `noto:<codepoint>` như content mẫu) cho mọi danh từ cụ thể có emoji phù hợp: món ăn, đồ uống, bát đĩa, trái cây, thịt/hải sản, rau, quần áo, phụ kiện — mục tiêu ≥ 70% danh từ cụ thể. Không có emoji đúng nghĩa thì để trống, **không** dùng emoji gần đúng gây hiểu sai.
+  3. `classifier` cho danh từ đếm được (vd. món: จาน / ชาม / ถ้วย; đồ uống: แก้ว / ขวด / กระป๋อง; trái cây: ลูก / ผล; quần áo: ตัว; giày, tất: คู่; túi: ใบ) — để Đoán loại từ dùng được 2 bài này.
+  4. Câu luyện: mỗi bài học **≥ 5 câu** (`vi`, `th`, `th_alt` ผม/ฉัน + ครับ/ค่ะ, `tokens` ≤ 9, 1 thẻ nhiễu) dùng đúng từ của bài học đó và mẫu câu của bài: gọi món (ขอ… / เอา… + loại từ, …หนึ่งที่, ไม่เผ็ด), hỏi giá (…เท่าไร, ราคา…บาท), mặc cả (ลดได้ไหม), hỏi cỡ/màu/loại (มีไซส์…ไหม, มีสีอื่นไหม), thanh toán (จ่ายด้วยบัตรได้ไหม, เก็บเงินด้วย).
+  5. Hội thoại: b09 ≥ 2 (vào nhà hàng – gọi món; gọi đồ uống – tính tiền), b10 ≥ 3 (mua quần áo – thử đồ – trả giá; mua trái cây ở chợ; siêu thị – thanh toán – giao hàng), mỗi đoạn 6–8 lượt, gắn vào bài học tương ứng.
+  6. Mẫu câu: rải về đúng bài học có liên quan (không dồn hết vào bài cuối); b10 thêm 3–5 mẫu câu thông dụng của chủ đề mua bán (ghi rõ "Claude soạn" trong `explain_vi` nếu không có trong PDF).
+  7. `example_th` / `example_vi` cho ít nhất các từ khóa của mỗi bài học (≥ 3 từ / bài học).
+  8. Toàn bộ giữ `draft: true`; `content:check` 0 lỗi; cập nhật `content/IMPORT-STATUS.md` (dòng b09, b10: những gì đã bổ sung, những gì cần GV xác nhận); baseline nếu đổi; tự merge theo 8.1 (loại nội dung).
+  - *Kết quả (2026-11-21, nhánh `content-b09-b10`):* đọc lại 83 trang PDF. **b09:** 91 từ (40 có hình, 48 loại từ, 36 ví dụ), câu 29 → 77 (≥ 6 / bài học), mẫu câu 3 → 11 (rải từng bài học, 8 Claude soạn), 2 hội thoại 8 lượt; sửa nghĩa พุดดิ้ง, เหล้า, rút 2 câu > 9 thẻ. **b10:** 118 từ (43 có hình, 72 loại từ theo quy ước GV ở c03, 48 ví dụ), câu 20 → 80 (≥ 5 / bài học), mẫu câu 1 → 6 (5 Claude soạn), 4 hội thoại; bổ sung 5 nghĩa (กระโปรง, หมวก, เข็มขัด, ผักกาดฮ่องเต้, น้ำมันพืช). **Hình chưa đạt 70%** (b09 ~56%, b10 ~49% danh từ cụ thể): không có emoji đúng nghĩa (ผัดไทย, ส้มตำ, đu đủ, phần lớn rau, gia vị…) → để trống theo yêu cầu. **GV xác nhận:** toàn bộ tiếng Thái Claude soạn (108 câu, 6 hội thoại, 13 mẫu câu, ví dụ, loại từ), 12 từ ghi "cần GV xác nhận" (chi tiết `content/IMPORT-STATUS.md`); đồ uống / vài trái cây có nhiều loại từ → trò Đoán loại từ đôi khi có phương án nhiễu cũng đúng.
 
 
 ### M0 — Khung dự án 🟢
@@ -582,6 +592,8 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | Nội dung (TC.3) | **TC.3** Bài 9, 10 làm đầy đủ: rà PDF, hình, loại từ, ví dụ, câu luyện (≥ 5 / bài học: b09 77, b10 80), mẫu câu rải theo bài học, 6 hội thoại — tự merge theo 8.1 (nội dung `draft`) | — | GV duyệt tiếng Thái Claude soạn | `content-b09-b10` → PR |
+| 2026-11-21 | Go-live + Nội dung | Owner: **B2** dọn preview, **merge #34 (M12)**, **B3** Firebase authorized domains OK. Yêu cầu **TC.3** rà soát & làm đầy đủ Bài 9, 10 (người học đang học) — ưu tiên số 1 | TC.3 | — | — (ROADMAP chưa commit) |
 | 2026-11-21 | M10 → M12 + TC.2b | Owner duyệt M10: sửa lỗi axe (nút 🔊 lồng trong `option` Sổ từ) rồi merge #32. **Tự merge #31** (nội dung Chuyên đề 15 → 2, 8.1). **TC.2b** xoá `u03`/`u11` (#33, tự merge 8.1). Mở **M12**: T12.1–T12.5 xong (phiên âm mặc định, xuất/nhập/xoá tiến độ, PWA offline, E2E go-live, checklist). Firefox thỉnh thoảng crash khi axe chạy trên Tổng quan (~1/10, không do đồng hồ giả / luật contrast — đã dò); CI tự chạy lại → flaky | T12.6 go-live | B1–B9 việc tay owner (`docs/go-live.md`) | #32 ✅, #31 ✅, #33 ✅, `m12-golive` → #34 |
 | 2026-11-21 | M10 + Nội dung | Owner duyệt SCR-03/07/09 → ghi câu trả lời vào spec, **merge #26** (theo yêu cầu owner), tự merge #30 (8.1). **M10** T10.1–T10.6 xong (Tổng quan, Sổ từ + mẹo nhớ, Tiến độ, SessionRecord, Dexie v6, E2E). Nhập **Chuyên đề 15 → 2** (PR #31). Sửa test chập chờn `useFeedbackPause` | — | PR #32 chờ owner xem giao diện; TC.2b sau #31 | `m10-home` → #32; `content-c02-c15` → #31 |
 | 2026-11-21 | Quy trình + Nội dung | Owner merge #25 (gồm #27). **Tự merge #28, #29 (loại nội dung `draft`, AGENTS 8.1, owner đồng ý lần này)** — rebase lên `main`, sinh lại baseline `/units` trên giao diện B, CI xanh. Sửa ảnh `game-whack` không ổn định (che lưới hố; bỏ trên WebKit) | #30 (docs 8.1 + sửa test) chờ CI | M10 chờ owner duyệt #26 (không tự merge: spec thiết kế + câu hỏi cho owner) | #28, #29 đã merge; `docs-auto-merge` → #30 |

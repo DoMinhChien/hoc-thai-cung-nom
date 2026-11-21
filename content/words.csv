@@ -154,215 +154,215 @@ c01-w16,c01,c01-l2,โยม,,phật tử; con,nhà sư gọi người thường
 c01-w17,c01,c01-l2,โยมพ่อ,,bố (của nhà sư),nhà sư gọi bố đẻ; bố tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
 c01-w18,c01,c01-l2,โยมแม่,,mẹ (của nhà sư),nhà sư gọi mẹ đẻ; mẹ tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
 c01-w19,c01,c01-l2,พระ,,nhà sư; sư,พระ + pháp danh (vd. พระสมชาย),,noun,,,,,,plernpin-c01#p3,true
-b10-w01,b10,b10-l1,ถุงช็อปปิ้ง,,túi mua sắm,,,noun,,,,,,plernpin-b10#p3,true
-b10-w02,b10,b10-l1,นาฬิกา,,đồng hồ,,,noun,,,,,,plernpin-b10#p3,true
-b10-w03,b10,b10-l1,เสื้อ,,áo,,,noun,,,,,,plernpin-b10#p3,true
-b10-w04,b10,b10-l1,กระโปรง,,váy,,,noun,,,,,,plernpin-b10#p4,true
-b10-w05,b10,b10-l1,กางเกงยีนส์,,quần jean,,,noun,,,,,,plernpin-b10#p4,true
-b10-w06,b10,b10-l1,กางเกงขายาว,,quần dài,,,noun,,,,,,plernpin-b10#p4,true
-b10-w07,b10,b10-l1,แว่นตา,,kính mắt,,,noun,,,,,,plernpin-b10#p5,true
-b10-w08,b10,b10-l1,ถุงเท้า,,tất; vớ,,,noun,,,,,,plernpin-b10#p5,true
-b10-w09,b10,b10-l1,รองเท้า,,giày,,,noun,,,,,,plernpin-b10#p5,true
-b10-w10,b10,b10-l2,เสื้อเชิ้ต,,áo sơ mi,,,noun,,,,,,plernpin-b10#p6,true
-b10-w11,b10,b10-l2,เน็กไท,,cà vạt,,,noun,,,,,,plernpin-b10#p6,true
-b10-w12,b10,b10-l2,หมวก,,mũ,,,noun,,,,,,plernpin-b10#p6,true
-b10-w13,b10,b10-l2,เครื่องสำอาง,,mỹ phẩm,,,noun,,,,,,plernpin-b10#p7,true
-b10-w14,b10,b10-l2,ของเล่น,,đồ chơi,,,noun,,,,,,plernpin-b10#p7,true
-b10-w15,b10,b10-l2,เข็มขัด,,thắt lưng,,,noun,,,,,,plernpin-b10#p7,true
-b10-w16,b10,b10-l2,ผ้าพันคอ,,khăn quàng cổ,,,noun,,,,,,plernpin-b10#p8,true
-b10-w17,b10,b10-l3,แอปเปิล,,táo,,,noun,,,,,,plernpin-b10#p8,true
-b10-w18,b10,b10-l3,มะม่วง,,xoài,,,noun,,,,,,plernpin-b10#p8,true
-b10-w19,b10,b10-l3,ส้ม,,cam,,,noun,,,,,,plernpin-b10#p9,true
-b10-w20,b10,b10-l3,ส้มจีน,,quýt,,,noun,,,,,,plernpin-b10#p9,true
-b10-w21,b10,b10-l3,ลูกแพร์,,lê,,,noun,,,,,,plernpin-b10#p9,true
-b10-w22,b10,b10-l3,สาลี่,,"lê (lê châu Á, vỏ nâu vàng)",,,noun,,,,,,plernpin-b10#p10,true
-b10-w23,b10,b10-l3,มะพร้าว,,dừa,,,noun,,,,,,plernpin-b10#p10,true
-b10-w24,b10,b10-l3,กล้วย,,chuối,,,noun,,,,,,plernpin-b10#p10,true
-b10-w25,b10,b10-l3,สับปะรด,,dứa; thơm,,,noun,,,,,,plernpin-b10#p11,true
-b10-w26,b10,b10-l3,ลูกพีช,,đào,,,noun,,,,,,plernpin-b10#p11,true
-b10-w27,b10,b10-l4,มะละกอ,,đu đủ,,,noun,,,,,,plernpin-b10#p11,true
-b10-w28,b10,b10-l4,เลมอน,,chanh vàng,,,noun,,,,,,plernpin-b10#p12,true
-b10-w29,b10,b10-l4,มะนาว,,chanh,,,noun,,,,,,plernpin-b10#p12,true
+b10-w01,b10,b10-l1,ถุงช็อปปิ้ง,,túi mua sắm,,ใบ,noun,,ขอถุงช็อปปิ้งหนึ่งใบ,Cho tôi xin một cái túi mua sắm.,noto:1f6cd-fe0f,,plernpin-b10#p3,true
+b10-w02,b10,b10-l1,นาฬิกา,,đồng hồ,,เรือน,noun,,,,noto:1f570-fe0f,,plernpin-b10#p3,true
+b10-w03,b10,b10-l1,เสื้อ,,áo,,ตัว,noun,,เสื้อตัวนี้สวยมาก,Cái áo này đẹp lắm.,noto:1f455,,plernpin-b10#p3,true
+b10-w04,b10,b10-l1,กระโปรง,,chân váy; váy,,ตัว,noun,,,,,,plernpin-b10#p4,true
+b10-w05,b10,b10-l1,กางเกงยีนส์,,quần jean,,ตัว,noun,,ฉันชอบใส่กางเกงยีนส์,Tôi thích mặc quần jean.,noto:1f456,,plernpin-b10#p4,true
+b10-w06,b10,b10-l1,กางเกงขายาว,,quần dài,,ตัว,noun,,,,,,plernpin-b10#p4,true
+b10-w07,b10,b10-l1,แว่นตา,,kính mắt,,อัน,noun,,,,noto:1f453,,plernpin-b10#p5,true
+b10-w08,b10,b10-l1,ถุงเท้า,,tất; vớ,,คู่,noun,,,,noto:1f9e6,,plernpin-b10#p5,true
+b10-w09,b10,b10-l1,รองเท้า,,giày,,คู่,noun,,รองเท้าคู่นี้ใส่สบาย,Đôi giày này đi thoải mái.,noto:1f45f,,plernpin-b10#p5,true
+b10-w10,b10,b10-l2,เสื้อเชิ้ต,,áo sơ mi,,ตัว,noun,,,,,,plernpin-b10#p6,true
+b10-w11,b10,b10-l2,เน็กไท,,cà vạt,,เส้น,noun,,พ่อใส่เน็กไทไปทำงาน,Bố đeo cà vạt đi làm.,noto:1f454,,plernpin-b10#p6,true
+b10-w12,b10,b10-l2,หมวก,,mũ; nón,,ใบ,noun,,หมวกใบนี้ราคาเท่าไร,Cái mũ này giá bao nhiêu?,noto:1f9e2,,plernpin-b10#p6,true
+b10-w13,b10,b10-l2,เครื่องสำอาง,,mỹ phẩm,,ชิ้น,noun,,,,,,plernpin-b10#p7,true
+b10-w14,b10,b10-l2,ของเล่น,,đồ chơi,,ชิ้น,noun,,ร้านนี้ขายของเล่นเด็ก,Cửa hàng này bán đồ chơi trẻ em.,,,plernpin-b10#p7,true
+b10-w15,b10,b10-l2,เข็มขัด,,thắt lưng; dây nịt,,เส้น,noun,,,,,,plernpin-b10#p7,true
+b10-w16,b10,b10-l2,ผ้าพันคอ,,khăn quàng cổ,,ผืน,noun,,หน้าหนาวฉันใช้ผ้าพันคอ,Mùa đông tôi dùng khăn quàng cổ.,noto:1f9e3,,plernpin-b10#p8,true
+b10-w17,b10,b10-l3,แอปเปิล,,táo,,ลูก,noun,,,,noto:1f34e,,plernpin-b10#p8,true
+b10-w18,b10,b10-l3,มะม่วง,,xoài,,ลูก,noun,,มะม่วงกิโลละหกสิบบาท,Xoài 60 bạt một cân.,noto:1f96d,,plernpin-b10#p8,true
+b10-w19,b10,b10-l3,ส้ม,,cam,,ลูก,noun,,ส้มลูกนี้หวานมาก,Quả cam này ngọt lắm.,noto:1f34a,,plernpin-b10#p9,true
+b10-w20,b10,b10-l3,ส้มจีน,,quýt,hình: quả quýt nhỏ vỏ cam — cần GV xác nhận,ลูก,noun,,,,,,plernpin-b10#p9,true
+b10-w21,b10,b10-l3,ลูกแพร์,,lê,"hình: lê vỏ vàng nhạt, ruột trắng (khác สาลี่?) — cần GV xác nhận",ลูก,noun,,,,noto:1f350,,plernpin-b10#p9,true
+b10-w22,b10,b10-l3,สาลี่,,"lê (lê châu Á, vỏ nâu vàng)",hình: lê nâu châu Á (nashi) — cần GV xác nhận,ลูก,noun,,,,,,plernpin-b10#p10,true
+b10-w23,b10,b10-l3,มะพร้าว,,dừa,,ลูก,noun,,น้ำมะพร้าวอร่อยมาก,Nước dừa ngon lắm.,noto:1f965,,plernpin-b10#p10,true
+b10-w24,b10,b10-l3,กล้วย,,chuối,1 quả: ลูก; 1 nải: หวี,หวี,noun,,ผมกินกล้วยทุกเช้า,Sáng nào tôi cũng ăn chuối.,noto:1f34c,,plernpin-b10#p10,true
+b10-w25,b10,b10-l3,สับปะรด,,dứa; thơm,,ลูก,noun,,,,noto:1f34d,,plernpin-b10#p11,true
+b10-w26,b10,b10-l3,ลูกพีช,,đào,,ลูก,noun,,,,noto:1f351,,plernpin-b10#p11,true
+b10-w27,b10,b10-l4,มะละกอ,,đu đủ,,ลูก,noun,,,,,,plernpin-b10#p11,true
+b10-w28,b10,b10-l4,เลมอน,,chanh vàng,,ลูก,noun,,,,noto:1f34b,,plernpin-b10#p12,true
+b10-w29,b10,b10-l4,มะนาว,,chanh,,ลูก,noun,,มะนาวเปรี้ยวมาก,Chanh chua lắm.,,,plernpin-b10#p12,true
 b10-w30,b10,b10-l4,ลิ้นจี่,,vải,,,noun,,,,,,plernpin-b10#p12,true
-b10-w31,b10,b10-l4,ลำไย,,nhãn,,,noun,,,,,,plernpin-b10#p13,true
-b10-w32,b10,b10-l4,สตรอว์เบอร์รี่,,dâu tây,,,noun,,,,,,plernpin-b10#p13,true
-b10-w33,b10,b10-l4,องุ่น,,nho,,,noun,,,,,,plernpin-b10#p13,true
-b10-w34,b10,b10-l4,แคนตาลูป,,dưa lưới,,,noun,,,,,,plernpin-b10#p14,true
-b10-w35,b10,b10-l4,พลับ,,hồng (quả),,,noun,,,,,,plernpin-b10#p14,true
-b10-w36,b10,b10-l4,แตงโม,,dưa hấu,,,noun,,,,,,plernpin-b10#p14,true
+b10-w31,b10,b10-l4,ลำไย,,nhãn,,,noun,,ลำไยกิโลละห้าสิบบาท,Nhãn 50 bạt một cân.,,,plernpin-b10#p13,true
+b10-w32,b10,b10-l4,สตรอว์เบอร์รี่,,dâu tây,,ลูก,noun,,,,noto:1f353,,plernpin-b10#p13,true
+b10-w33,b10,b10-l4,องุ่น,,nho,,พวง,noun,,ขอองุ่นหนึ่งพวง,Cho tôi một chùm nho.,noto:1f347,,plernpin-b10#p13,true
+b10-w34,b10,b10-l4,แคนตาลูป,,dưa lưới,,ลูก,noun,,,,noto:1f348,,plernpin-b10#p14,true
+b10-w35,b10,b10-l4,พลับ,,hồng (quả),,ลูก,noun,,,,,,plernpin-b10#p14,true
+b10-w36,b10,b10-l4,แตงโม,,dưa hấu,,ลูก,noun,,แตงโมลูกนี้ใหญ่มาก,Quả dưa hấu này to lắm.,noto:1f349,,plernpin-b10#p14,true
 b10-w37,b10,b10-l5,เนื้อเป็ด,,thịt vịt,,,noun,,,,,,plernpin-b10#p15,true
-b10-w38,b10,b10-l5,เนื้อไก่,,thịt gà,,,noun,,,,,,plernpin-b10#p15,true
-b10-w39,b10,b10-l5,เนื้อวัว,,thịt bò,,,noun,,,,,,plernpin-b10#p15,true
-b10-w40,b10,b10-l5,เนื้อหมู,,thịt lợn; thịt heo,,,noun,,,,,,plernpin-b10#p16,true
-b10-w41,b10,b10-l5,เนื้อแกะ,,thịt cừu,,,noun,,,,,,plernpin-b10#p16,true
-b10-w42,b10,b10-l5,เนื้อลูกแกะ,,thịt cừu non,,,noun,,,,,,plernpin-b10#p16,true
-b10-w43,b10,b10-l5,ปลา,,cá,,,noun,,,,,,plernpin-b10#p18,true
-b10-w44,b10,b10-l5,ปลาหมึก,,mực,,,noun,,,,,,plernpin-b10#p18,true
-b10-w45,b10,b10-l5,กุ้ง,,tôm,,,noun,,,,,,plernpin-b10#p18,true
-b10-w46,b10,b10-l6,ผักชี,,rau mùi; ngò,,,noun,,,,,,plernpin-b10#p17,true
-b10-w47,b10,b10-l6,ผักชีฝรั่ง,,mùi tàu; ngò gai,,,noun,,,,,,plernpin-b10#p17,true
+b10-w38,b10,b10-l5,เนื้อไก่,,thịt gà,,,noun,,เนื้อไก่ถูกกว่าเนื้อวัว,Thịt gà rẻ hơn thịt bò.,noto:1f357,,plernpin-b10#p15,true
+b10-w39,b10,b10-l5,เนื้อวัว,,thịt bò,,,noun,,,,noto:1f969,,plernpin-b10#p15,true
+b10-w40,b10,b10-l5,เนื้อหมู,,thịt lợn; thịt heo,,,noun,,ขอเนื้อหมูหนึ่งกิโล,Cho tôi một cân thịt lợn.,,,plernpin-b10#p16,true
+b10-w41,b10,b10-l5,เนื้อแกะ,,thịt cừu,hình p16 của เนื้อแกะ và เนื้อลูกแกะ gần giống nhau (sườn cừu) — cần GV xác nhận,,noun,,,,,,plernpin-b10#p16,true
+b10-w42,b10,b10-l5,เนื้อลูกแกะ,,thịt cừu non,hình p16 của เนื้อแกะ và เนื้อลูกแกะ gần giống nhau (sườn cừu) — cần GV xác nhận,,noun,,,,,,plernpin-b10#p16,true
+b10-w43,b10,b10-l5,ปลา,,cá,,ตัว,noun,,ปลาตัวนี้สดมาก,Con cá này tươi lắm.,noto:1f41f,,plernpin-b10#p18,true
+b10-w44,b10,b10-l5,ปลาหมึก,,mực,,ตัว,noun,,,,noto:1f991,,plernpin-b10#p18,true
+b10-w45,b10,b10-l5,กุ้ง,,tôm,,ตัว,noun,,กุ้งกิโลละสามร้อยบาท,Tôm 300 bạt một cân.,noto:1f990,,plernpin-b10#p18,true
+b10-w46,b10,b10-l6,ผักชี,,rau mùi; ngò,,,noun,,ไม่ใส่ผักชีนะ,Đừng cho rau mùi nhé.,,,plernpin-b10#p17,true
+b10-w47,b10,b10-l6,ผักชีฝรั่ง,,mùi tàu; ngò gai,hình: lá dài răng cưa (culantro) — cần GV xác nhận,,noun,,,,,,plernpin-b10#p17,true
 b10-w48,b10,b10-l6,ผักชีลาว,,thì là,,,noun,,,,,,plernpin-b10#p17,true
-b10-w49,b10,b10-l6,คะน้า,,cải làn,,,noun,,,,,,plernpin-b10#p19,true
-b10-w50,b10,b10-l6,ผักกาดฮ่องเต้,,cải chíp,,,noun,,,,,,plernpin-b10#p19,true
-b10-w51,b10,b10-l6,กวางตุ้ง,,cải ngọt,,,noun,,,,,,plernpin-b10#p19,true
-b10-w52,b10,b10-l6,ปวยเล้ง,,rau chân vịt; cải bó xôi,,,noun,,,,,,plernpin-b10#p20,true
-b10-w53,b10,b10-l6,ถั่วงอก,,giá đỗ,,,noun,,,,,,plernpin-b10#p20,true
+b10-w49,b10,b10-l6,คะน้า,,cải làn,,ต้น,noun,,ผมชอบกินคะน้าผัด,Tôi thích ăn cải làn xào.,,,plernpin-b10#p19,true
+b10-w50,b10,b10-l6,ผักกาดฮ่องเต้,,cải chíp; cải thìa,hình: bok choy — cần GV xác nhận,ต้น,noun,,,,noto:1f96c,,plernpin-b10#p19,true
+b10-w51,b10,b10-l6,กวางตุ้ง,,cải ngọt,"hình: cải có hoa vàng (choy sum, cải ngồng) — cần GV xác nhận",ต้น,noun,,,,,,plernpin-b10#p19,true
+b10-w52,b10,b10-l6,ปวยเล้ง,,rau chân vịt; cải bó xôi,,ต้น,noun,,,,,,plernpin-b10#p20,true
+b10-w53,b10,b10-l6,ถั่วงอก,,giá đỗ,,,noun,,ขอถั่วงอกครึ่งกิโล,Cho tôi nửa cân giá đỗ.,,,plernpin-b10#p20,true
 b10-w54,b10,b10-l6,กุยช่าย,,hẹ,,,noun,,,,,,plernpin-b10#p20,true
-b10-w55,b10,b10-l6,พริกหยวก,,ớt chuông,,,noun,,,,,,plernpin-b10#p21,true
-b10-w56,b10,b10-l7,มะเขือม่วง,,cà tím,,,noun,,,,,,plernpin-b10#p21,true
-b10-w57,b10,b10-l7,มะเขือเทศ,,cà chua,,,noun,,,,,,plernpin-b10#p21,true
-b10-w58,b10,b10-l7,ขึ้นฉ่าย,,cần tây,,,noun,,,,,,plernpin-b10#p22,true
-b10-w59,b10,b10-l7,กระเทียม,,tỏi,,,noun,,,,,,plernpin-b10#p22,true
-b10-w60,b10,b10-l7,ขิง,,gừng,,,noun,,,,,,plernpin-b10#p22,true
-b10-w61,b10,b10-l7,กะหล่ำปลี,,bắp cải,,,noun,,,,,,plernpin-b10#p23,true
-b10-w62,b10,b10-l7,เห็ด,,nấm,,,noun,,,,,,plernpin-b10#p23,true
-b10-w63,b10,b10-l7,แตงกวา,,dưa chuột; dưa leo,,,noun,,,,,,plernpin-b10#p23,true
-b10-w64,b10,b10-l7,บรอกโคลี,,súp lơ xanh; bông cải xanh,,,noun,,,,,,plernpin-b10#p24,true
-b10-w65,b10,b10-l7,แครอท,,cà rốt,,,noun,,,,,,plernpin-b10#p24,true
-b10-w66,b10,b10-l8,หัวหอม,,hành tây,,,noun,,,,,,plernpin-b10#p24,true
-b10-w67,b10,b10-l8,พริก,,ớt,,,noun,,,,,,plernpin-b10#p25,true
-b10-w68,b10,b10-l8,ต้นหอม,,hành lá,,,noun,,,,,,plernpin-b10#p25,true
-b10-w69,b10,b10-l8,ฟักเขียว,,bí xanh; bí đao,,,noun,,,,,,plernpin-b10#p25,true
-b10-w70,b10,b10-l8,มะระ,,mướp đắng; khổ qua,,,noun,,,,,,plernpin-b10#p26,true
-b10-w71,b10,b10-l8,เต้าหู้,,đậu phụ,,,noun,,,,,,plernpin-b10#p26,true
+b10-w55,b10,b10-l6,พริกหยวก,,ớt chuông,"hình: ớt chuông đỏ, vàng (tiếng Thái còn gọi พริกหวาน) — cần GV xác nhận",ลูก,noun,,,,noto:1fad1,,plernpin-b10#p21,true
+b10-w56,b10,b10-l7,มะเขือม่วง,,cà tím,,ลูก,noun,,,,noto:1f346,,plernpin-b10#p21,true
+b10-w57,b10,b10-l7,มะเขือเทศ,,cà chua,,ลูก,noun,,มะเขือเทศกิโลละสี่สิบบาท,Cà chua 40 bạt một cân.,noto:1f345,,plernpin-b10#p21,true
+b10-w58,b10,b10-l7,ขึ้นฉ่าย,,cần tây,,ต้น,noun,,,,,,plernpin-b10#p22,true
+b10-w59,b10,b10-l7,กระเทียม,,tỏi,,หัว,noun,,อาหารไทยใช้กระเทียมเยอะ,Món Thái dùng nhiều tỏi.,noto:1f9c4,,plernpin-b10#p22,true
+b10-w60,b10,b10-l7,ขิง,,gừng,,,noun,,,,noto:1fada,,plernpin-b10#p22,true
+b10-w61,b10,b10-l7,กะหล่ำปลี,,bắp cải,,หัว,noun,,,,,,plernpin-b10#p23,true
+b10-w62,b10,b10-l7,เห็ด,,nấm,,ดอก,noun,,,,noto:1f344,,plernpin-b10#p23,true
+b10-w63,b10,b10-l7,แตงกวา,,dưa chuột; dưa leo,,ลูก,noun,,,,noto:1f952,,plernpin-b10#p23,true
+b10-w64,b10,b10-l7,บรอกโคลี,,súp lơ xanh; bông cải xanh,,,noun,,,,noto:1f966,,plernpin-b10#p24,true
+b10-w65,b10,b10-l7,แครอท,,cà rốt,,หัว,noun,,ลูกของฉันไม่ชอบกินแครอท,Con tôi không thích ăn cà rốt.,noto:1f955,,plernpin-b10#p24,true
+b10-w66,b10,b10-l8,หัวหอม,,hành tây,,หัว,noun,,ขอหัวหอมสามหัว,Cho tôi ba củ hành tây.,noto:1f9c5,,plernpin-b10#p24,true
+b10-w67,b10,b10-l8,พริก,,ớt,,เม็ด,noun,,พริกเม็ดเล็กเผ็ดมาก,Ớt quả nhỏ cay lắm.,noto:1f336-fe0f,,plernpin-b10#p25,true
+b10-w68,b10,b10-l8,ต้นหอม,,hành lá,,ต้น,noun,,,,,,plernpin-b10#p25,true
+b10-w69,b10,b10-l8,ฟักเขียว,,bí xanh; bí đao,,ลูก,noun,,,,,,plernpin-b10#p25,true
+b10-w70,b10,b10-l8,มะระ,,mướp đắng; khổ qua,,ลูก,noun,,,,,,plernpin-b10#p26,true
+b10-w71,b10,b10-l8,เต้าหู้,,đậu phụ,,ก้อน,noun,,เต้าหู้ก้อนนี้ราคาสิบห้าบาท,Miếng đậu phụ này giá 15 bạt.,,,plernpin-b10#p26,true
 b10-w72,b10,b10-l8,กะหล่ำดอก,,súp lơ trắng; bông cải trắng,,,noun,,,,,,plernpin-b10#p26,true
-b10-w73,b10,b10-l8,ถั่วแขก,,đậu cô ve,,,noun,,,,,,plernpin-b10#p27,true
-b10-w74,b10,b10-l8,ฟักทอง,,bí đỏ; bí ngô,,,noun,,,,,,plernpin-b10#p27,true
+b10-w73,b10,b10-l8,ถั่วแขก,,đậu cô ve,,ฝัก,noun,,,,,,plernpin-b10#p27,true
+b10-w74,b10,b10-l8,ฟักทอง,,bí đỏ; bí ngô,,ลูก,noun,,,,,,plernpin-b10#p27,true
 b10-w75,b10,b10-l8,โหระพา,,húng quế,,,noun,,,,,,plernpin-b10#p27,true
-b10-w76,b10,b10-l9,น้ำปลา,,nước mắm,,,noun,,,,,,plernpin-b10#p28,true
-b10-w77,b10,b10-l9,น้ำมันพืช,,dầu ăn,,,noun,,,,,,plernpin-b10#p28,true
-b10-w78,b10,b10-l9,น้ำมันหอย,,dầu hào,,,noun,,,,,,plernpin-b10#p28,true
+b10-w76,b10,b10-l9,น้ำปลา,,nước mắm,,ขวด,noun,,ขอน้ำปลาหนึ่งขวด,Cho tôi một chai nước mắm.,,,plernpin-b10#p28,true
+b10-w77,b10,b10-l9,น้ำมันพืช,,dầu ăn; dầu thực vật,,ขวด,noun,,น้ำมันพืชขวดนี้เท่าไร,Chai dầu ăn này bao nhiêu tiền?,,,plernpin-b10#p28,true
+b10-w78,b10,b10-l9,น้ำมันหอย,,dầu hào,,ขวด,noun,,,,,,plernpin-b10#p28,true
 b10-w79,b10,b10-l9,ขมิ้น,,nghệ,,,noun,,,,,,plernpin-b10#p29,true
-b10-w80,b10,b10-l9,น้ำส้มสายชู,,giấm,,,noun,,,,,,plernpin-b10#p29,true
-b10-w81,b10,b10-l9,ผงชูรส,,mì chính; bột ngọt,,,noun,,,,,,plernpin-b10#p29,true
+b10-w80,b10,b10-l9,น้ำส้มสายชู,,giấm,,ขวด,noun,,,,,,plernpin-b10#p29,true
+b10-w81,b10,b10-l9,ผงชูรส,,mì chính; bột ngọt,,,noun,,ไม่ใส่ผงชูรสนะ,Đừng cho mì chính nhé.,,,plernpin-b10#p29,true
 b10-w82,b10,b10-l10,ไปช็อปปิ้ง,,đi mua sắm,,,phrase,,,,,,plernpin-b10#p30,true
-b10-w83,b10,b10-l10,ซื้อ,,mua,,,verb,,,,,,plernpin-b10#p30,true
-b10-w84,b10,b10-l10,ขาย,,bán,,,verb,,,,,,plernpin-b10#p30,true
+b10-w83,b10,b10-l10,ซื้อ,,mua,,,verb,,ผมจะไปซื้อเสื้อผ้า,Tôi sẽ đi mua quần áo.,,,plernpin-b10#p30,true
+b10-w84,b10,b10-l10,ขาย,,bán,,,verb,,ร้านนี้ขายรองเท้า,Cửa hàng này bán giày.,,,plernpin-b10#p30,true
 b10-w85,b10,b10-l10,ซื้อของ,,mua đồ,,,phrase,,,,,,plernpin-b10#p30,true
-b10-w86,b10,b10-l10,เสื้อผ้า,,quần áo,,,noun,,,,,,plernpin-b10#p30,true
-b10-w87,b10,b10-l10,ลดราคา,,giảm giá,,,verb,,,,,,plernpin-b10#p31,true
-b10-w88,b10,b10-l10,ห้างสรรพสินค้า,ศูนย์การค้า,trung tâm thương mại,,,noun,,,,,,plernpin-b10#p31,true
-b10-w89,b10,b10-l10,บูติก,,cửa hàng nhỏ bán quần áo và các mặt hàng mới ra,,,noun,,,,,,plernpin-b10#p31,true
-b10-w90,b10,b10-l10,พนักงานขาย,,nhân viên bán hàng,,,noun,,,,,,plernpin-b10#p31,true
-b10-w91,b10,b10-l10,พนักงานเก็บเงิน,แคชเชียร์,nhân viên thu tiền; nhân viên thu ngân,,,noun,,,,,,plernpin-b10#p31,true
-b10-w92,b10,b10-l11,ส่งถึงบ้าน,,giao đến tận nhà; gửi đến tận nhà,,,phrase,,,,,,plernpin-b10#p32,true
+b10-w86,b10,b10-l10,เสื้อผ้า,,quần áo,,ชุด,noun,,,,,,plernpin-b10#p30,true
+b10-w87,b10,b10-l10,ลดราคา,,giảm giá,,,verb,,ห้างนี้ลดราคาทุกวันเสาร์,Trung tâm này giảm giá vào mỗi thứ bảy.,,,plernpin-b10#p31,true
+b10-w88,b10,b10-l10,ห้างสรรพสินค้า,ศูนย์การค้า,trung tâm thương mại,,แห่ง,noun,,ห้างสรรพสินค้าเปิดสิบโมงเช้า,Trung tâm thương mại mở cửa lúc 10 giờ sáng.,noto:1f3ec,,plernpin-b10#p31,true
+b10-w89,b10,b10-l10,บูติก,,cửa hàng nhỏ bán quần áo và các mặt hàng mới ra,,ร้าน,noun,,,,,,plernpin-b10#p31,true
+b10-w90,b10,b10-l10,พนักงานขาย,,nhân viên bán hàng,,คน,noun,,,,,,plernpin-b10#p31,true
+b10-w91,b10,b10-l10,พนักงานเก็บเงิน,แคชเชียร์,nhân viên thu tiền; nhân viên thu ngân,,คน,noun,,,,,,plernpin-b10#p31,true
+b10-w92,b10,b10-l11,ส่งถึงบ้าน,,giao đến tận nhà; gửi đến tận nhà,,,phrase,,ร้านนี้ส่งถึงบ้านฟรี,Cửa hàng này giao tận nhà miễn phí.,,,plernpin-b10#p32,true
 b10-w93,b10,b10-l11,เปรียบเทียบราคา,,so sánh giá,,,phrase,,,,,,plernpin-b10#p32,true
 b10-w94,b10,b10-l11,ซื้อของออนไลน์,,mua đồ online,,,phrase,,,,,,plernpin-b10#p32,true
-b10-w95,b10,b10-l11,บัตรเครดิต,,thẻ tín dụng,,,noun,,,,,,plernpin-b10#p32,true
+b10-w95,b10,b10-l11,บัตรเครดิต,,thẻ tín dụng,,ใบ,noun,,จ่ายด้วยบัตรเครดิตได้ไหม,Trả bằng thẻ tín dụng được không?,noto:1f4b3,,plernpin-b10#p32,true
 b10-w96,b10,b10-l11,เหมือนกับ,,giống với,,,phrase,,,,,,plernpin-b10#p32,true
-b10-w97,b10,b10-l11,ทั้งหมด,,tất cả,,,adj,,,,,,plernpin-b10#p33,true
+b10-w97,b10,b10-l11,ทั้งหมด,,tất cả,,,adj,,ทั้งหมดสามร้อยบาท,Tất cả 300 bạt.,,,plernpin-b10#p33,true
 b10-w98,b10,b10-l11,แน่นอน,,chắc chắn,,,adv,,,,,,plernpin-b10#p33,true
 b10-w99,b10,b10-l11,โดยทั่วไป,,nhìn chung; nói chung,,,adv,,,,,,plernpin-b10#p33,true
 b10-w100,b10,b10-l11,ยิ่งกว่า,,hơn cả; còn hơn cả,,,adv,,,,,,plernpin-b10#p33,true
-b10-w101,b10,b10-l11,ตัดสินใจ,,quyết định,,,verb,,,,,,plernpin-b10#p33,true
+b10-w101,b10,b10-l11,ตัดสินใจ,,quyết định,,,verb,,ฉันยังไม่ได้ตัดสินใจ,Tôi vẫn chưa quyết định.,,,plernpin-b10#p33,true
 b10-w102,b10,b10-l12,สิ่งของ,,đồ đạc; vật dụng,,,noun,,,,,,plernpin-b10#p34,true
-b10-w103,b10,b10-l12,บิล,ใบเสร็จ|ใบแจ้งราคา,hóa đơn; giấy thông báo giá,,,noun,,,,,,plernpin-b10#p34,true
+b10-w103,b10,b10-l12,บิล,ใบเสร็จ|ใบแจ้งราคา,hóa đơn; giấy thông báo giá,,ใบ,noun,,ขอบิลด้วย,Cho tôi xin hóa đơn.,noto:1f9fe,,plernpin-b10#p34,true
 b10-w104,b10,b10-l12,ไม่เสียภาษี,,không mất thuế; miễn thuế,,,phrase,,,,,,plernpin-b10#p34,true
-b10-w105,b10,b10-l12,คืนเงิน,,hoàn tiền; trả tiền lại,,,verb,,,,,,plernpin-b10#p34,true
-b10-w106,b10,b10-l12,ไปตลาด,,đi chợ,,,phrase,,,,,,plernpin-b10#p34,true
-b10-w107,b10,b10-l12,ห้องลอง,,phòng thử đồ,,,noun,,,,,,plernpin-b10#p35,true
+b10-w105,b10,b10-l12,คืนเงิน,,hoàn tiền; trả tiền lại,,,verb,,ร้านนี้คืนเงินได้ภายในเจ็ดวัน,Cửa hàng này hoàn tiền trong vòng 7 ngày.,,,plernpin-b10#p34,true
+b10-w106,b10,b10-l12,ไปตลาด,,đi chợ,,,phrase,,แม่ไปตลาดทุกเช้า,Mẹ đi chợ mỗi sáng.,,,plernpin-b10#p34,true
+b10-w107,b10,b10-l12,ห้องลอง,,phòng thử đồ,,ห้อง,noun,,ห้องลองอยู่ทางซ้าย,Phòng thử đồ ở bên trái.,,,plernpin-b10#p35,true
 b10-w108,b10,b10-l12,เครื่องปรุง,,gia vị,,,noun,,,,,,plernpin-b10#p35,true
-b10-w109,b10,b10-l12,ตลาดท้องถิ่น,,chợ địa phương,,,noun,,,,,,plernpin-b10#p35,true
-b10-w110,b10,b10-l12,ซูเปอร์มาร์เก็ต,,siêu thị,,,noun,,,,,,plernpin-b10#p35,true
+b10-w109,b10,b10-l12,ตลาดท้องถิ่น,,chợ địa phương,,แห่ง,noun,,,,,,plernpin-b10#p35,true
+b10-w110,b10,b10-l12,ซูเปอร์มาร์เก็ต,,siêu thị,,แห่ง,noun,,,,,,plernpin-b10#p35,true
 b10-w111,b10,b10-l12,ง่าย,,dễ; dễ dàng,,,adj,,,,,,plernpin-b10#p35,true
-b10-w112,b10,b10-l13,มองหา,,tìm; tìm kiếm,,,verb,,,,,,plernpin-b10#p36,true
+b10-w112,b10,b10-l13,มองหา,,tìm; tìm kiếm,,,verb,,ผมกำลังมองหารองเท้า,Tôi đang tìm giày.,,,plernpin-b10#p36,true
 b10-w113,b10,b10-l13,ต้องการ,,cần,,,verb,,,,,,plernpin-b10#p36,true
-b10-w114,b10,b10-l13,แบบ,,kiểu; mẫu,,,noun,,,,,,plernpin-b10#p36,true
+b10-w114,b10,b10-l13,แบบ,,kiểu; mẫu,,,noun,,มีแบบอื่นไหม,Có mẫu khác không?,,,plernpin-b10#p36,true
 b10-w115,b10,b10-l13,ประเภท,,loại,,,noun,,,,,,plernpin-b10#p36,true
 b10-w116,b10,b10-l13,รูปทรง,,hình dáng; hình dạng,,,noun,,,,,,plernpin-b10#p36,true
-b10-w117,b10,b10-l13,ยี่ห้อ,,thương hiệu,,,noun,,,,,,plernpin-b10#p37,true
-b10-w118,b10,b10-l13,ไซส์,,cỡ; size,,,noun,,,,,,plernpin-b10#p37,true
-b09-w01,b09,b09-l1,ร้านอาหารไทย,,nhà hàng Thái,,,noun,,,,,,plernpin-b09#p3,true
-b09-w02,b09,b09-l1,พนักงานเสิร์ฟ,เด็กเสิร์ฟ,nhân viên phục vụ,,,noun,,,,,,plernpin-b09#p3,true
-b09-w03,b09,b09-l1,พ่อครัว,แม่ครัว|เชฟ,đầu bếp,พ่อครัว: nam; แม่ครัว: nữ,,noun,,,,,,plernpin-b09#p3,true
-b09-w04,b09,b09-l1,เมนู,,thực đơn,,,noun,,,,,,plernpin-b09#p4,true
-b09-w05,b09,b09-l1,ผัดไทย,,pad Thái (phở xào kiểu Thái),,,noun,,,,,,plernpin-b09#p4,true
-b09-w06,b09,b09-l1,ข้าวผัด,,cơm rang; cơm chiên,,,noun,,,,,,plernpin-b09#p4,true
-b09-w07,b09,b09-l1,ขนมปัง,,bánh mì,,,noun,,,,,,plernpin-b09#p5,true
-b09-w08,b09,b09-l1,ตะเกียบ,,đũa,,,noun,,,,,,plernpin-b09#p5,true
-b09-w09,b09,b09-l1,ถ้วย,,bát; chén,,,noun,,,,,,plernpin-b09#p5,true
-b09-w10,b09,b09-l2,ข้าว,,cơm,,,noun,,,,,,plernpin-b09#p6,true
-b09-w11,b09,b09-l2,จาน,,đĩa,,,noun,,,,,,plernpin-b09#p6,true
-b09-w12,b09,b09-l2,ส้อม,,dĩa; nĩa,,,noun,,,,,,plernpin-b09#p6,true
-b09-w13,b09,b09-l2,มีด,,dao,,,noun,,,,,,plernpin-b09#p7,true
-b09-w14,b09,b09-l2,ช้อน,,thìa; muỗng,,,noun,,,,,,plernpin-b09#p7,true
-b09-w15,b09,b09-l2,แกงเขียวหวาน,,cà ri xanh,,,noun,,,,,,plernpin-b09#p7,true
-b09-w16,b09,b09-l2,ต้มยำกุ้ง,,tom yum tôm (canh chua cay nấu tôm),,,noun,,,,,,plernpin-b09#p8,true
-b09-w17,b09,b09-l2,ส้มตำ,,nộm đu đủ giã (som tam),,,noun,,,,,,plernpin-b09#p8,true
-b09-w18,b09,b09-l2,ไก่ย่าง,,gà nướng,,,noun,,,,,,plernpin-b09#p8,true
-b09-w19,b09,b09-l3,ข้าวเหนียว,,xôi; cơm nếp,,,noun,,,,,,plernpin-b09#p9,true
-b09-w20,b09,b09-l3,ไข่เจียวหมูสับ,,trứng chiên thịt lợn băm,,,noun,,,,,,plernpin-b09#p9,true
-b09-w21,b09,b09-l3,ผัดกะเพราหมู,,thịt lợn xào lá húng quế (kaprao),,,noun,,,,,,plernpin-b09#p9,true
-b09-w22,b09,b09-l3,ก๋วยเตี๋ยวเนื้อ,,hủ tiếu bò,,,noun,,,,,,plernpin-b09#p10,true
-b09-w23,b09,b09-l3,ฮอทดอก,,hot dog (bánh mì kẹp xúc xích),,,noun,,,,,,plernpin-b09#p10,true
-b09-w24,b09,b09-l3,แซนด์วิช,,bánh sandwich,,,noun,,,,,,plernpin-b09#p10,true
-b09-w25,b09,b09-l3,พิซซ่า,,pizza,,,noun,,,,,,plernpin-b09#p11,true
-b09-w26,b09,b09-l3,พาสต้า,สปาเก็ตตี้,mì Ý (pasta; spaghetti),,,noun,,,,,,plernpin-b09#p11,true
-b09-w27,b09,b09-l3,โดนัท,,bánh donut,,,noun,,,,,,plernpin-b09#p11,true
-b09-w28,b09,b09-l4,ไอศกรีม,ไอติม,kem,,,noun,,,,,,plernpin-b09#p12,true
-b09-w29,b09,b09-l4,พุดดิ้ง,,bánh pudding,,,noun,,,,,,plernpin-b09#p12,true
-b09-w30,b09,b09-l4,พายแอปเปิล,,bánh táo nướng (apple pie),,,noun,,,,,,plernpin-b09#p12,true
-b09-w31,b09,b09-l4,แฮม,,giăm bông,,,noun,,,,,,plernpin-b09#p13,true
-b09-w32,b09,b09-l4,สลัด,,sa lát,,,noun,,,,,,plernpin-b09#p13,true
-b09-w33,b09,b09-l4,สเต็ก,,bít tết,,,noun,,,,,,plernpin-b09#p13,true
+b10-w117,b10,b10-l13,ยี่ห้อ,,thương hiệu,,,noun,,ยี่ห้อนี้ดังมาก,Thương hiệu này nổi tiếng lắm.,,,plernpin-b10#p37,true
+b10-w118,b10,b10-l13,ไซส์,,cỡ; size,,,noun,,คุณใส่ไซส์อะไร,Bạn mặc cỡ gì?,,,plernpin-b10#p37,true
+b09-w01,b09,b09-l1,ร้านอาหารไทย,,nhà hàng Thái,,ร้าน,noun,,,,,,plernpin-b09#p3,true
+b09-w02,b09,b09-l1,พนักงานเสิร์ฟ,เด็กเสิร์ฟ,nhân viên phục vụ,,คน,noun,,พนักงานเสิร์ฟเอาเมนูมาให้ครับ,Nhân viên phục vụ mang thực đơn đến.,,,plernpin-b09#p3,true
+b09-w03,b09,b09-l1,พ่อครัว,แม่ครัว|เชฟ,đầu bếp,พ่อครัว: nam; แม่ครัว: nữ,คน,noun,,พ่อครัวของร้านนี้เป็นคนไทยครับ,Đầu bếp của nhà hàng này là người Thái.,noto:1f9d1-200d-1f373,,plernpin-b09#p3,true
+b09-w04,b09,b09-l1,เมนู,,thực đơn,,,noun,,ขอเมนูหน่อยครับ,Xin thực đơn chút ạ,,,plernpin-b09#p4,true
+b09-w05,b09,b09-l1,ผัดไทย,,pad Thái (phở xào kiểu Thái),,จาน,noun,,ขอผัดไทยหนึ่งจานครับ,Xin một đĩa pad Thái ạ.,,,plernpin-b09#p4,true
+b09-w06,b09,b09-l1,ข้าวผัด,,cơm rang; cơm chiên,,จาน,noun,,ขอข้าวผัดหมูสองจานครับ,Xin 2 đĩa cơm rang thịt lợn,,,plernpin-b09#p4,true
+b09-w07,b09,b09-l1,ขนมปัง,,bánh mì,,,noun,,,,noto:1f35e,,plernpin-b09#p5,true
+b09-w08,b09,b09-l1,ตะเกียบ,,đũa,,คู่,noun,,ขอตะเกียบหนึ่งคู่ครับ,Xin cho tôi một đôi đũa.,noto:1f962,,plernpin-b09#p5,true
+b09-w09,b09,b09-l1,ถ้วย,,bát; chén,"cũng là tách, chén nhỏ (vd. ถ้วยกาแฟ); làm loại từ: ต้มยำหนึ่งถ้วย",ใบ,noun,,,,noto:1f963,,plernpin-b09#p5,true
+b09-w10,b09,b09-l2,ข้าว,,cơm,"cũng nghĩa: gạo; กินข้าว = ăn cơm, ăn bữa",,noun,,,,noto:1f35a,,plernpin-b09#p6,true
+b09-w11,b09,b09-l2,จาน,,đĩa,làm loại từ cho món ăn: ส้มตำหนึ่งจาน,ใบ,noun,,,,noto:1f37d,,plernpin-b09#p6,true
+b09-w12,b09,b09-l2,ส้อม,,dĩa; nĩa,,คัน,noun,,,,,,plernpin-b09#p6,true
+b09-w13,b09,b09-l2,มีด,,dao,,เล่ม,noun,,,,noto:1f52a,,plernpin-b09#p7,true
+b09-w14,b09,b09-l2,ช้อน,,thìa; muỗng,,คัน,noun,,ผมกินด้วยช้อนกับส้อมครับ,Tôi ăn bằng thìa và dĩa.,noto:1f944,,plernpin-b09#p7,true
+b09-w15,b09,b09-l2,แกงเขียวหวาน,,cà ri xanh,,,noun,,,,noto:1f35b,,plernpin-b09#p7,true
+b09-w16,b09,b09-l2,ต้มยำกุ้ง,,tom yum tôm (canh chua cay nấu tôm),,,noun,,ต้มยำกุ้งรสชาติเป็นอย่างไรครับ,Tom yam kung mùi vị như thế nào?,noto:1f372,,plernpin-b09#p8,true
+b09-w17,b09,b09-l2,ส้มตำ,,nộm đu đủ giã (som tam),,จาน,noun,,ผมอยากกินส้มตำครับ,Tôi muốn ăn nộm đu đủ giã,,,plernpin-b09#p8,true
+b09-w18,b09,b09-l2,ไก่ย่าง,,gà nướng,,,noun,,,,noto:1f357,,plernpin-b09#p8,true
+b09-w19,b09,b09-l3,ข้าวเหนียว,,xôi; cơm nếp,,,noun,,ผมอยากกินไข่เจียวหมูสับกับข้าวเหนียวครับ,Tôi muốn ăn trứng chiên thịt băm với xôi.,,,plernpin-b09#p9,true
+b09-w20,b09,b09-l3,ไข่เจียวหมูสับ,,trứng chiên thịt lợn băm,,จาน,noun,,,,,,plernpin-b09#p9,true
+b09-w21,b09,b09-l3,ผัดกะเพราหมู,,thịt lợn xào lá húng quế (kaprao),กะเพรา: lá húng quế Thái (holy basil) — cần GV xác nhận tên lá,จาน,noun,,เอาผัดกะเพราหมูหนึ่งที่ครับ,Cho tôi một suất thịt lợn xào lá húng quế.,,,plernpin-b09#p9,true
+b09-w22,b09,b09-l3,ก๋วยเตี๋ยวเนื้อ,,hủ tiếu bò,,ชาม,noun,,เอาก๋วยเตี๋ยวเนื้อหนึ่งชามครับ,Cho tôi một tô hủ tiếu bò.,noto:1f35c,,plernpin-b09#p10,true
+b09-w23,b09,b09-l3,ฮอทดอก,,hot dog (bánh mì kẹp xúc xích),,ชิ้น,noun,,,,noto:1f32d,,plernpin-b09#p10,true
+b09-w24,b09,b09-l3,แซนด์วิช,,bánh sandwich,,ชิ้น,noun,,,,noto:1f96a,,plernpin-b09#p10,true
+b09-w25,b09,b09-l3,พิซซ่า,,pizza,,,noun,,เด็กๆ ชอบพิซซ่ากับโดนัท,Trẻ con thích pizza và bánh donut.,noto:1f355,,plernpin-b09#p11,true
+b09-w26,b09,b09-l3,พาสต้า,สปาเก็ตตี้,mì Ý (pasta; spaghetti),,จาน,noun,,,,noto:1f35d,,plernpin-b09#p11,true
+b09-w27,b09,b09-l3,โดนัท,,bánh donut,,ชิ้น,noun,,,,noto:1f369,,plernpin-b09#p11,true
+b09-w28,b09,b09-l4,ไอศกรีม,ไอติม,kem,,,noun,,ของหวานผมอยากกินไอศกรีมครับ,"Tráng miệng, tôi muốn ăn kem.",noto:1f368,,plernpin-b09#p12,true
+b09-w29,b09,b09-l4,พุดดิ้ง,,bánh pudding; bánh flan,hình trong tài liệu là bánh flan (caramen) — cần GV xác nhận,ถ้วย,noun,,,,noto:1f36e,,plernpin-b09#p12,true
+b09-w30,b09,b09-l4,พายแอปเปิล,,bánh táo nướng (apple pie),,ชิ้น,noun,,คุณเคยกินพายแอปเปิลไหมครับ,Bạn đã từng ăn bánh táo nướng chưa?,noto:1f967,,plernpin-b09#p12,true
+b09-w31,b09,b09-l4,แฮม,,giăm bông,,แผ่น,noun,,,,,,plernpin-b09#p13,true
+b09-w32,b09,b09-l4,สลัด,,sa lát,,จาน,noun,,ขอสลัดหนึ่งจานกับน้ำผลไม้หนึ่งแก้วครับ,Xin một đĩa sa lát và một cốc nước ép trái cây.,noto:1f957,,plernpin-b09#p13,true
+b09-w33,b09,b09-l4,สเต็ก,,bít tết,,จาน,noun,,,,noto:1f969,,plernpin-b09#p13,true
 b09-w34,b09,b09-l4,ไส้กรอก,,xúc xích,,,noun,,,,,,plernpin-b09#p14,true
-b09-w35,b09,b09-l4,น้ำผลไม้,,nước ép trái cây,,,noun,,,,,,plernpin-b09#p14,true
-b09-w36,b09,b09-l4,กาแฟ,,cà phê,,,noun,,,,,,plernpin-b09#p14,true
-b09-w37,b09,b09-l5,ไข่ดาวไม่สุก,,trứng ốp la lòng đào,,,noun,,,,,,plernpin-b09#p15,true
-b09-w38,b09,b09-l5,ขนมปังปิ้ง,,bánh mì nướng,,,noun,,,,,,plernpin-b09#p15,true
-b09-w39,b09,b09-l5,เค้ก,,bánh kem; bánh ngọt,,,noun,,,,,,plernpin-b09#p15,true
-b09-w40,b09,b09-l5,ชีส,,phô mai,,,noun,,,,,,plernpin-b09#p16,true
-b09-w41,b09,b09-l5,แฮมเบอร์เกอร์,,hamburger,,,noun,,,,,,plernpin-b09#p16,true
-b09-w42,b09,b09-l5,มันฝรั่งทอด,,khoai tây chiên,,,noun,,,,,,plernpin-b09#p16,true
-b09-w43,b09,b09-l5,เนย,,bơ,,,noun,,,,,,plernpin-b09#p17,true
-b09-w44,b09,b09-l5,โยเกิร์ต,,sữa chua,,,noun,,,,,,plernpin-b09#p17,true
-b09-w45,b09,b09-l5,ซอสมะเขือเทศ,,tương cà,,,noun,,,,,,plernpin-b09#p17,true
-b09-w46,b09,b09-l6,เครื่องดื่ม,,đồ uống,,,noun,,,,,,plernpin-b09#p18,true
-b09-w47,b09,b09-l6,น้ำแร่,,nước khoáng,,,noun,,,,,,plernpin-b09#p18,true
-b09-w48,b09,b09-l6,น้ำส้ม,,nước cam,,,noun,,,,,,plernpin-b09#p18,true
-b09-w49,b09,b09-l6,นม,,sữa,,,noun,,,,,,plernpin-b09#p19,true
-b09-w50,b09,b09-l6,ชา,,trà,,,noun,,,,,,plernpin-b09#p19,true
-b09-w51,b09,b09-l6,ชาเย็น,,trà sữa Thái (trà lạnh),,,noun,,,,,,plernpin-b09#p19,true
-b09-w52,b09,b09-l6,นมถั่วเหลือง,,sữa đậu nành,,,noun,,,,,,plernpin-b09#p20,true
-b09-w53,b09,b09-l6,โค้ก,,coca,,,noun,,,,,,plernpin-b09#p20,true
-b09-w54,b09,b09-l6,น้ำประปา,,nước máy,,,noun,,,,,,plernpin-b09#p20,true
-b09-w55,b09,b09-l7,เครื่องดื่มชูกำลัง,,nước tăng lực,,,noun,,,,,,plernpin-b09#p21,true
-b09-w56,b09,b09-l7,เครื่องดื่มเกลือแร่,,nước bù khoáng; nước điện giải,,,noun,,,,,,plernpin-b09#p21,true
-b09-w57,b09,b09-l7,น้ำตาล,,đường,,,noun,,,,,,plernpin-b09#p21,true
-b09-w58,b09,b09-l7,ค็อกเทล,,cocktail,,,noun,,,,,,plernpin-b09#p22,true
-b09-w59,b09,b09-l7,ไวน์แดง,,rượu vang đỏ,,,noun,,,,,,plernpin-b09#p22,true
-b09-w60,b09,b09-l7,ไวน์ขาว,,rượu vang trắng,,,noun,,,,,,plernpin-b09#p22,true
-b09-w61,b09,b09-l7,เหล้า,,rượu,,,noun,,,,,,plernpin-b09#p23,true
-b09-w62,b09,b09-l7,เบียร์,,bia,,,noun,,,,,,plernpin-b09#p23,true
-b09-w63,b09,b09-l7,สาโท,,rượu gạo (sato),,,noun,,,,,,plernpin-b09#p23,true
-b09-w64,b09,b09-l7,ตู้กดน้ำ,,cây nước nóng lạnh,,,noun,,,,,,plernpin-b09#p24,true
-b09-w65,b09,b09-l7,แก้ว,,cốc; ly,,,noun,,,,,,plernpin-b09#p24,true
-b09-w66,b09,b09-l7,น้ำแข็งก้อน,,đá viên,,,noun,,,,,,plernpin-b09#p24,true
+b09-w35,b09,b09-l4,น้ำผลไม้,,nước ép trái cây,,แก้ว,noun,,,,noto:1f9c3,,plernpin-b09#p14,true
+b09-w36,b09,b09-l4,กาแฟ,,cà phê,loại từ theo đồ đựng: ถ้วย (tách) / แก้ว (cốc),,noun,,คุณดื่มกาแฟไหมครับ,Bạn uống cà phê không?,noto:2615,,plernpin-b09#p14,true
+b09-w37,b09,b09-l5,ไข่ดาวไม่สุก,,trứng ốp la lòng đào,,ฟอง,noun,,,,noto:1f373,,plernpin-b09#p15,true
+b09-w38,b09,b09-l5,ขนมปังปิ้ง,,bánh mì nướng,,แผ่น,noun,,ตอนเช้าผมกินขนมปังปิ้งกับเนยครับ,Buổi sáng tôi ăn bánh mì nướng với bơ.,,,plernpin-b09#p15,true
+b09-w39,b09,b09-l5,เค้ก,,bánh kem; bánh ngọt,loại từ: ชิ้น (miếng) / ก้อน (cả cái),,noun,,,,noto:1f370,,plernpin-b09#p15,true
+b09-w40,b09,b09-l5,ชีส,,phô mai,,,noun,,ผมกินชีสไม่ได้ครับ,Tôi không ăn phô mai được.,noto:1f9c0,,plernpin-b09#p16,true
+b09-w41,b09,b09-l5,แฮมเบอร์เกอร์,,hamburger,,ชิ้น,noun,,,,noto:1f354,,plernpin-b09#p16,true
+b09-w42,b09,b09-l5,มันฝรั่งทอด,,khoai tây chiên,,,noun,,,,noto:1f35f,,plernpin-b09#p16,true
+b09-w43,b09,b09-l5,เนย,,bơ,,,noun,,,,noto:1f9c8,,plernpin-b09#p17,true
+b09-w44,b09,b09-l5,โยเกิร์ต,,sữa chua,,ถ้วย,noun,,,,,,plernpin-b09#p17,true
+b09-w45,b09,b09-l5,ซอสมะเขือเทศ,,tương cà,,ขวด,noun,,ขอซอสมะเขือเทศหน่อยครับ,Cho tôi xin tương cà chút ạ.,,,plernpin-b09#p17,true
+b09-w46,b09,b09-l6,เครื่องดื่ม,,đồ uống,,,noun,,คุณจะสั่งเครื่องดื่มอะไรครับ,Bạn định gọi đồ uống gì?,noto:1f964,,plernpin-b09#p18,true
+b09-w47,b09,b09-l6,น้ำแร่,,nước khoáng,,ขวด,noun,,,,,,plernpin-b09#p18,true
+b09-w48,b09,b09-l6,น้ำส้ม,,nước cam,,แก้ว,noun,,ขอน้ำส้มหนึ่งแก้วครับ,Xin một cốc nước cam ạ.,,,plernpin-b09#p18,true
+b09-w49,b09,b09-l6,นม,,sữa,loại từ theo đồ đựng: แก้ว (cốc) / กล่อง (hộp),,noun,,,,noto:1f95b,,plernpin-b09#p19,true
+b09-w50,b09,b09-l6,ชา,,trà,loại từ theo đồ đựng: ถ้วย (tách) / แก้ว (cốc),,noun,,,,noto:1f375,,plernpin-b09#p19,true
+b09-w51,b09,b09-l6,ชาเย็น,,trà sữa Thái (trà lạnh),,แก้ว,noun,,,,,,plernpin-b09#p19,true
+b09-w52,b09,b09-l6,นมถั่วเหลือง,,sữa đậu nành,,แก้ว,noun,,,,,,plernpin-b09#p20,true
+b09-w53,b09,b09-l6,โค้ก,,coca,hình trong tài liệu là lon; chai thì dùng ขวด,กระป๋อง,noun,,เอาโค้กสองกระป๋องครับ,Cho tôi hai lon coca.,,,plernpin-b09#p20,true
+b09-w54,b09,b09-l6,น้ำประปา,,nước máy,,,noun,,,,noto:1f6b0,,plernpin-b09#p20,true
+b09-w55,b09,b09-l7,เครื่องดื่มชูกำลัง,,nước tăng lực,,ขวด,noun,,,,,,plernpin-b09#p21,true
+b09-w56,b09,b09-l7,เครื่องดื่มเกลือแร่,,nước bù khoáng; nước điện giải,,ขวด,noun,,,,,,plernpin-b09#p21,true
+b09-w57,b09,b09-l7,น้ำตาล,,đường,,,noun,,ขอกาแฟไม่ใส่น้ำตาลครับ,Xin cà phê không cho đường ạ.,,,plernpin-b09#p21,true
+b09-w58,b09,b09-l7,ค็อกเทล,,cocktail,,แก้ว,noun,,,,noto:1f378,,plernpin-b09#p22,true
+b09-w59,b09,b09-l7,ไวน์แดง,,rượu vang đỏ,,ขวด,noun,,,,noto:1f377,,plernpin-b09#p22,true
+b09-w60,b09,b09-l7,ไวน์ขาว,,rượu vang trắng,,ขวด,noun,,,,,,plernpin-b09#p22,true
+b09-w61,b09,b09-l7,เหล้า,,rượu; rượu mạnh,,ขวด,noun,,,,noto:1f943,,plernpin-b09#p23,true
+b09-w62,b09,b09-l7,เบียร์,,bia,gọi theo cốc thì dùng แก้ว,ขวด,noun,,ขอเบียร์สองขวดครับ,Xin hai chai bia ạ.,noto:1f37a,,plernpin-b09#p23,true
+b09-w63,b09,b09-l7,สาโท,,rượu gạo (sato),rượu gạo truyền thống của Thái — cần GV xác nhận,ขวด,noun,,,,noto:1f376,,plernpin-b09#p23,true
+b09-w64,b09,b09-l7,ตู้กดน้ำ,,cây nước nóng lạnh,,ตู้,noun,,,,,,plernpin-b09#p24,true
+b09-w65,b09,b09-l7,แก้ว,,cốc; ly,làm loại từ cho đồ uống: น้ำสามแก้ว,ใบ,noun,,เราควรดื่มน้ำวันละกี่แก้ว,Mỗi ngày chúng ta nên uống mấy cốc nước,,,plernpin-b09#p24,true
+b09-w66,b09,b09-l7,น้ำแข็งก้อน,,đá viên,,ก้อน,noun,,,,noto:1f9ca,,plernpin-b09#p24,true
 b09-w67,b09,b09-l8,น้ำซุป,,canh; xúp,không có thịt,,noun,,,,,,plernpin-b09#p25,true
-b09-w68,b09,b09-l8,แกง,,canh; xúp,có thịt,,noun,,,,,,plernpin-b09#p25,true
-b09-w69,b09,b09-l8,สั่ง,,đặt; gọi (món),,,verb,,,,,,plernpin-b09#p25,true
+b09-w68,b09,b09-l8,แกง,,canh; xúp,có thịt,ถ้วย,noun,,,,,,plernpin-b09#p25,true
+b09-w69,b09,b09-l8,สั่ง,,đặt; gọi (món),,,verb,,คุณจะสั่งอาหารอะไรครับ,Bạn định gọi thức ăn gì,,,plernpin-b09#p25,true
 b09-w70,b09,b09-l8,ตัวเลือก,,lựa chọn; phương án; option,,,noun,,,,,,plernpin-b09#p25,true
-b09-w71,b09,b09-l8,พิเศษ,,đặc biệt,,,adj,,,,,,plernpin-b09#p25,true
+b09-w71,b09,b09-l8,พิเศษ,,đặc biệt,,,adj,,วันนี้มีเมนูพิเศษไหมครับ,Hôm nay có món gì đặc biệt không?,,,plernpin-b09#p25,true
 b09-w72,b09,b09-l8,บางที,,đôi khi; thỉnh thoảng,,,adv,,,,,,plernpin-b09#p26,true
 b09-w73,b09,b09-l8,เกือบ,,suýt; gần; sắp sửa,,,adv,,,,,,plernpin-b09#p26,true
 b09-w74,b09,b09-l8,อาหารแบบตะวันตก,,đồ ăn kiểu phương tây,,,noun,,,,,,plernpin-b09#p26,true
-b09-w75,b09,b09-l8,อร่อย,,ngon,,,adj,,,,,,plernpin-b09#p26,true
+b09-w75,b09,b09-l8,อร่อย,,ngon,,,adj,,อาหารนี้อร่อยมากครับ,Món này ngon quá!,,,plernpin-b09#p26,true
 b09-w76,b09,b09-l8,อบ,,nướng,trong lò,,verb,,,,,,plernpin-b09#p26,true
-b09-w77,b09,b09-l9,หิวน้ำ,,khát nước,,,verb,,,,,,plernpin-b09#p27,true
-b09-w78,b09,b09-l9,โซดา,,soda,,,noun,,,,,,plernpin-b09#p27,true
+b09-w77,b09,b09-l9,หิวน้ำ,,khát nước,,,verb,,ผมหิวน้ำมากครับ,Tôi khát nước quá.,,,plernpin-b09#p27,true
+b09-w78,b09,b09-l9,โซดา,,soda,,ขวด,noun,,,,,,plernpin-b09#p27,true
 b09-w79,b09,b09-l9,น้ำร้อน,,nước nóng,,,noun,,,,,,plernpin-b09#p27,true
 b09-w80,b09,b09-l9,น้ำเย็น,,nước lạnh,,,noun,,,,,,plernpin-b09#p27,true
-b09-w81,b09,b09-l9,อย่า,,đừng,,,adv,,,,,,plernpin-b09#p27,true
+b09-w81,b09,b09-l9,อย่า,,đừng,,,adv,,อย่าใส่น้ำแข็งนะครับ,Đừng cho đá nhé.,,,plernpin-b09#p27,true
 b09-w82,b09,b09-l9,แมคโดนัลด์,,McDonalds,,,noun,,,,,,plernpin-b09#p28,true
 b09-w83,b09,b09-l9,อาหารฟาสต์ฟู้ด,,đồ ăn nhanh,,,noun,,,,,,plernpin-b09#p28,true
 b09-w84,b09,b09-l9,ยอดนิยม,,được ưa chuộng; phổ biến; thịnh hành,,,adj,,,,,,plernpin-b09#p28,true
 b09-w85,b09,b09-l9,สตาร์บัคส์,,Starbucks,,,noun,,,,,,plernpin-b09#p28,true
-b09-w86,b09,b09-l9,คิดเงิน,เก็บเงิน,tính tiền,,,verb,,,,,,plernpin-b09#p28,true
-b09-w87,b09,b09-l10,จ่ายเงิน,,trả tiền,,,verb,,,,,,plernpin-b09#p29,true
+b09-w86,b09,b09-l9,คิดเงิน,เก็บเงิน,tính tiền,,,verb,,น้องครับ คิดเงินด้วยครับ,"Em ơi, tính tiền!",,,plernpin-b09#p28,true
+b09-w87,b09,b09-l10,จ่ายเงิน,,trả tiền,,,verb,,จ่ายเงินด้วยบัตรได้ไหมครับ,Trả tiền bằng thẻ được không ạ?,,,plernpin-b09#p29,true
 b09-w88,b09,b09-l10,ทอนเงิน,,thối tiền,,,verb,,,,,,plernpin-b09#p29,true
-b09-w89,b09,b09-l10,เงินทอน,,tiền thối,,,noun,,,,,,plernpin-b09#p29,true
-b09-w90,b09,b09-l10,พอกินได้,,tạm được,về đồ ăn,,phrase,,,,,,plernpin-b09#p29,true
-b09-w91,b09,b09-l10,รสชาติ,,vị,,,noun,,,,,,plernpin-b09#p29,true
+b09-w89,b09,b09-l10,เงินทอน,,tiền thối,,,noun,,นี่คือเงินทอนของคุณครับ,Đây là tiền thối của bạn ạ.,,,plernpin-b09#p29,true
+b09-w90,b09,b09-l10,พอกินได้,,tạm được,về đồ ăn,,phrase,,อาหารนี้ก็พอกินได้ครับ,Món này cũng tạm được.,,,plernpin-b09#p29,true
+b09-w91,b09,b09-l10,รสชาติ,,vị,,,noun,,คุณชอบกินอาหารรสชาติแบบไหนครับ,Bạn thích ăn thức ăn vị gì?,,,plernpin-b09#p29,true
 b08-w01,b08,b08-l1,ฝักบัว,,vòi hoa sen,,,noun,,,,,,plernpin-b08#p3,true
 b08-w02,b08,b08-l1,ลิฟท์,,thang máy,,,noun,,,,,,plernpin-b08#p3,true
 b08-w03,b08,b08-l1,อ่างอาบน้ำ,,bồn tắm,,,noun,,,,,,plernpin-b08#p3,true

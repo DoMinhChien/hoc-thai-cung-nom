@@ -97,13 +97,75 @@
     - { th: "พระสมชาย", vi: "Sư Somchai (พระ + pháp danh)" }
   source: plernpin-c01#p3
   draft: true
+- id: g-b10-thao-rai
+  unit_id: b10
+  title_vi: Hỏi giá (… ราคาเท่าไร)
+  pattern: Danh từ (+ loại từ + นี้) + (ราคา) + เท่าไร
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi giá một món hàng: đặt เท่าไร (bao nhiêu) cuối câu, có thể thêm ราคา (giá) phía trước. Trả lời: (ราคา) + số + บาท. Văn nói thường đọc/viết เท่าไหร่."
+  examples:
+    - { th: "เสื้อตัวนี้ราคาเท่าไรครับ", vi: "Cái áo này giá bao nhiêu ạ?" }
+    - { th: "ราคาสามร้อยบาทค่ะ", vi: "Giá 300 bạt ạ." }
+    - { th: "รองเท้าคู่นี้เท่าไรคะ", vi: "Đôi giày này bao nhiêu ạ?" }
+    - { th: "ทั้งหมดเท่าไรครับ", vi: "Tất cả bao nhiêu ạ?" }
+  source: claude-b10
+  draft: true
+- id: g-b10-lot
+  unit_id: b10
+  title_vi: Mặc cả (ลด … ได้ไหม)
+  pattern: ลด (+ หน่อย / ให้หน่อย) + ได้ไหม
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Xin giảm giá khi mua hàng ở chợ, cửa hàng nhỏ. หน่อย (một chút) làm câu nhẹ nhàng hơn; ลดให้เหลือ + giá = giảm còn …. Người bán đồng ý: ลดให้ได้; không giảm: ลดไม่ได้."
+  examples:
+    - { th: "ลดได้ไหมครับ", vi: "Giảm giá được không ạ?" }
+    - { th: "แพงไป ลดหน่อยได้ไหมคะ", vi: "Đắt quá, giảm một chút được không ạ?" }
+    - { th: "ลดให้เหลือสองร้อยบาทได้ไหมครับ", vi: "Giảm còn 200 bạt được không ạ?" }
+    - { th: "ลดไม่ได้ค่ะ", vi: "Không giảm được ạ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-khor
+  unit_id: b10
+  title_vi: Mua theo số lượng (ขอ/เอา + Danh từ + số + loại từ)
+  pattern: ขอ / เอา + Danh từ + số + loại từ (ลูก, ตัว, ขวด…) / đơn vị (กิโล)
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói muốn mua bao nhiêu: số đếm đứng SAU danh từ, theo sau là loại từ hoặc đơn vị đo. ขอ (xin) lịch sự hơn, เอา (lấy) thân mật hơn. Nửa cân: ครึ่งกิโล."
+  examples:
+    - { th: "ขอมะพร้าวสองลูกครับ", vi: "Cho tôi hai quả dừa." }
+    - { th: "เอาเนื้อหมูหนึ่งกิโลค่ะ", vi: "Lấy cho tôi một cân thịt lợn." }
+    - { th: "ขอน้ำปลาหนึ่งขวดครับ", vi: "Cho tôi một chai nước mắm." }
+    - { th: "ขอถั่วงอกครึ่งกิโลค่ะ", vi: "Cho tôi nửa cân giá đỗ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-mi-mai
+  unit_id: b10
+  title_vi: Hỏi có hàng không (มี … ไหม)
+  pattern: มี + Danh từ (+ tính từ / อื่น / กว่านี้) + ไหม
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi cửa hàng có món, cỡ, màu, kiểu mình cần không. อื่น = khác (สีอื่น màu khác, แบบอื่น mẫu khác); ใหญ่กว่านี้ / เล็กกว่านี้ = lớn hơn / nhỏ hơn cái này. Trả lời: มีครับ/ค่ะ hoặc ไม่มีครับ/ค่ะ."
+  examples:
+    - { th: "มีไซส์ใหญ่กว่านี้ไหมครับ", vi: "Có cỡ lớn hơn cái này không ạ?" }
+    - { th: "มีสีอื่นไหมคะ", vi: "Có màu khác không ạ?" }
+    - { th: "มีแบบอื่นไหมครับ", vi: "Có mẫu khác không ạ?" }
+    - { th: "ไม่มีค่ะ", vi: "Không có ạ." }
+  source: claude-b10
+  draft: true
+- id: g-b10-chai
+  unit_id: b10
+  title_vi: Thanh toán (จ่าย + ด้วย/เป็น + cách trả)
+  pattern: จ่าย + ด้วย / เป็น + เงินสด / บัตรเครดิต (+ ได้ไหม)
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói hoặc hỏi cách trả tiền: จ่ายด้วย… / จ่ายเป็น… = trả bằng …. Hỏi cửa hàng có nhận thẻ không: รับบัตรเครดิตไหม."
+  examples:
+    - { th: "จ่ายด้วยบัตรเครดิตได้ไหมคะ", vi: "Trả bằng thẻ tín dụng được không ạ?" }
+    - { th: "ผมจะจ่ายเป็นเงินสดครับ", vi: "Tôi sẽ trả bằng tiền mặt." }
+    - { th: "รับบัตรเครดิตไหมครับ", vi: "Có nhận thẻ tín dụng không ạ?" }
+  source: claude-b10
+  draft: true
 - id: g-b10-la
   unit_id: b10
   title_vi: Mỗi … (Danh từ + ละ)
   pattern: Danh từ + ละ
-  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …".
+  explain_vi: ละ đứng sau danh từ, nghĩa là "mỗi …". Hay dùng khi nói giá theo đơn vị — กิโลละ … (mỗi cân …), ตัวละ … (mỗi cái …). Ví dụ 1 của GV; ví dụ 2–4 Claude soạn, cần GV duyệt.
   examples:
     - { th: "คนละ", vi: "Mỗi người" }
+    - { th: "มะม่วงกิโลละเท่าไรครับ", vi: "Xoài mỗi cân bao nhiêu ạ?" }
+    - { th: "กิโลละหกสิบบาทค่ะ", vi: "60 bạt một cân ạ." }
+    - { th: "เสื้อตัวละสามร้อยบาท", vi: "Áo 300 bạt mỗi cái." }
   source: plernpin-b10#p38
   draft: true
 - id: g-b09-khoei
@@ -114,6 +176,8 @@
   examples:
     - { th: "คุณเคยกินส้มตำไหม", vi: "Bạn đã từng ăn Som Tam chưa?" }
     - { th: "คุณเคยกินส้มตำหรือยัง", vi: "Bạn đã từng ăn Som Tam chưa?" }
+    - { th: "เคยกินแล้วครับ", vi: "Đã từng ăn rồi ạ" }
+    - { th: "ผมยังไม่เคยกินสเต็กครับ", vi: "Tôi chưa từng ăn bít tết." }
   source: plernpin-b09#p30
   draft: true
 - id: g-b09-mai-dai
@@ -123,6 +187,8 @@
   explain_vi: ไม่ได้ đứng sau động từ (cuối câu) — không thể làm được việc đó.
   examples:
     - { th: "ฉันทำไม่ได้", vi: "Tôi không làm được." }
+    - { th: "ผมกินเผ็ดไม่ได้ครับ", vi: "Tôi không ăn cay được" }
+    - { th: "ฉันกินชีสไม่ได้ค่ะ", vi: "Tôi không ăn phô mai được." }
   source: plernpin-b09#p31
   draft: true
 - id: g-b09-mai-pen
@@ -132,7 +198,97 @@
   explain_vi: ไม่เป็น đứng sau động từ (cuối câu) — không biết cách làm việc đó.
   examples:
     - { th: "ฉันทำไม่เป็น", vi: "Tôi không biết làm." }
+    - { th: "คุณทำอาหารเป็นไหมครับ", vi: "Bạn biết nấu ăn không?" }
+    - { th: "ผมทำอาหารไม่เป็นครับ", vi: "Tôi không biết nấu ạ" }
   source: plernpin-b09#p32
+  draft: true
+- id: g-b09-kho
+  unit_id: b09
+  title_vi: Xin / gọi món với ขอ
+  pattern: ขอ + món / đồ + (số + loại từ) + (หน่อย) + ครับ/ค่ะ
+  explain_vi: "Claude soạn (tổng hợp từ câu luyện 17–20 của GV). ขอ (xin) đứng đầu câu để xin đồ hoặc gọi món một cách lịch sự. Muốn nói số lượng: món + số + loại từ — จาน (đĩa), ชาม (tô), ถ้วย (bát), แก้ว (cốc), ขวด (chai). Thêm หน่อย (chút) cho mềm mỏng."
+  examples:
+    - { th: "ขอเมนูหน่อยครับ", vi: "Xin thực đơn chút ạ" }
+    - { th: "ขอข้าวผัดหมูสองจานครับ", vi: "Xin 2 đĩa cơm rang thịt lợn" }
+    - { th: "ขอก๋วยเตี๋ยวไก่หนึ่งชามค่ะ", vi: "Xin 1 tô hủ tiếu gà" }
+    - { th: "ขอน้ำเปล่าสามแก้วครับ", vi: "Xin 3 cốc nước lọc" }
+  source: plernpin-b09#p37-38
+  draft: true
+- id: g-b09-mai-phet
+  unit_id: b09
+  title_vi: Yêu cầu không cay / ít cay
+  pattern: (ขอ) + món + ไม่เผ็ด / เผ็ดน้อย + (số + loại từ)
+  explain_vi: "Claude soạn (từ câu luyện 21 của GV). Đặt ไม่เผ็ด (không cay) hoặc เผ็ดน้อย (ít cay) ngay sau tên món. Muốn bỏ hẳn một thứ: ไม่ใส่ + thứ đó (không cho …)."
+  examples:
+    - { th: "ส้มตำไม่เผ็ดหนึ่งจานและชาแดงสองแก้วครับ", vi: "Một xuất nộm đu đủ giã ko cay và 2 hồng trà" }
+    - { th: "ขอต้มยำกุ้งเผ็ดน้อยค่ะ", vi: "Xin tom yum tôm ít cay ạ." }
+    - { th: "ไม่ใส่พริกนะครับ", vi: "Đừng cho ớt nhé." }
+  source: plernpin-b09#p38
+  draft: true
+- id: g-b09-ao
+  unit_id: b09
+  title_vi: Lấy món với เอา … (หนึ่งที่)
+  pattern: เอา + món + số + ที่ / loại từ
+  explain_vi: "Claude soạn (mẫu thông dụng khi gọi món, không có trong tài liệu). เอา (lấy) dùng khi gọi món, thân mật hơn ขอ. ที่ = suất, phần — loại từ chung cho một phần ăn: ผัดไทยหนึ่งที่ = một suất pad Thái."
+  examples:
+    - { th: "เอาผัดกะเพราหมูหนึ่งที่ครับ", vi: "Cho tôi một suất thịt lợn xào lá húng quế." }
+    - { th: "เอาก๋วยเตี๋ยวเนื้อสองชามค่ะ", vi: "Cho tôi hai tô hủ tiếu bò." }
+    - { th: "เอาเหมือนกันครับ", vi: "Cho tôi món giống vậy." }
+  draft: true
+- id: g-b09-ja-sang
+  unit_id: b09
+  title_vi: Hỏi khách gọi gì
+  pattern: คุณจะ + สั่ง / รับ + (danh từ) + อะไร (ดี) + ครับ/คะ
+  explain_vi: "Câu hỏi của phục vụ (câu luyện 14–16 của GV; bản Thái Claude dịch). จะ = định, sẽ; สั่ง = gọi (món); รับ = dùng, lấy (lịch sự hơn); thêm ดี sau อะไร cho tự nhiên."
+  examples:
+    - { th: "คุณจะสั่งอาหารอะไรครับ", vi: "Bạn định gọi thức ăn gì" }
+    - { th: "คุณจะสั่งเครื่องดื่มอะไรคะ", vi: "Bạn định gọi đồ uống gì?" }
+    - { th: "คุณจะรับอะไรดีครับ", vi: "Bạn định lấy gì ạ?" }
+  source: plernpin-b09#p36-37
+  draft: true
+- id: g-b09-ki
+  unit_id: b09
+  title_vi: Hỏi số lượng với กี่
+  pattern: (Động từ) + danh từ + กี่ + loại từ
+  explain_vi: "Claude soạn (từ câu luyện 5 của GV). กี่ (mấy) luôn đi với loại từ của danh từ: กี่แก้ว (mấy cốc), กี่ขวด (mấy chai), กี่ท่าน (mấy vị — phục vụ hỏi khách)."
+  examples:
+    - { th: "เราควรดื่มน้ำวันละกี่แก้ว", vi: "Mỗi ngày chúng ta nên uống mấy cốc nước" }
+    - { th: "คุณดื่มเบียร์กี่ขวดครับ", vi: "Bạn uống mấy chai bia?" }
+    - { th: "มากี่ท่านครับ", vi: "Quý khách đi mấy người ạ?" }
+  source: plernpin-b09#p35
+  draft: true
+- id: g-b09-rot
+  unit_id: b09
+  title_vi: Hỏi và nhận xét mùi vị
+  pattern: món + รสชาติเป็นอย่างไร / อร่อยไหม → อร่อย (มาก) / พอกินได้
+  explain_vi: "Claude soạn (từ câu luyện 22 của GV). Hỏi mùi vị: … รสชาติเป็นอย่างไร (như thế nào) hoặc … อร่อยไหม (ngon không). Trả lời: อร่อยมาก (ngon lắm), พอกินได้ (tạm được)."
+  examples:
+    - { th: "ต้มยำกุ้งรสชาติเป็นอย่างไรครับ", vi: "Tom yam kung mùi vị như thế nào?" }
+    - { th: "อาหารนี้อร่อยไหมคะ", vi: "Món này có ngon không?" }
+    - { th: "อร่อยมากครับ", vi: "Ngon lắm ạ." }
+    - { th: "พอกินได้ค่ะ", vi: "Tạm được." }
+  source: plernpin-b09#p38
+  draft: true
+- id: g-b09-ya
+  unit_id: b09
+  title_vi: Đừng … (อย่า)
+  pattern: อย่า + Động từ + (นะ)
+  explain_vi: "Claude soạn (từ câu luyện 6 của GV và từ อย่า). อย่า (đừng) đứng trước động từ để khuyên hoặc dặn ai đừng làm gì; thêm นะ ở cuối cho nhẹ nhàng."
+  examples:
+    - { th: "ถ้าขับรถอย่าดื่ม ถ้าดื่มอย่าขับรถ", vi: "Nếu bạn lái xe đừng uống, nếu bạn uống, đừng lái xe" }
+    - { th: "อย่าใส่น้ำแข็งนะครับ", vi: "Đừng cho đá nhé." }
+  source: plernpin-b09#p35
+  draft: true
+- id: g-b09-kep-ngoen
+  unit_id: b09
+  title_vi: Gọi tính tiền và trả tiền
+  pattern: (น้อง / พี่) + เก็บเงิน / คิดเงิน + ด้วย · จ่าย(เงิน)ด้วย + บัตร / เงินสด + ได้ไหม
+  explain_vi: "Claude soạn (mẫu thông dụng, từ คิดเงิน/เก็บเงิน, จ่ายเงิน của GV). Gọi phục vụ (น้อง = em, พี่ = anh/chị) rồi nói เก็บเงินด้วย / คิดเงินด้วย (tính tiền giúp). Hỏi cách trả: จ่ายด้วยบัตรได้ไหม (trả bằng thẻ được không)."
+  examples:
+    - { th: "น้องครับ เก็บเงินด้วยครับ", vi: "Em ơi, tính tiền giúp anh." }
+    - { th: "ทั้งหมดเท่าไรคะ", vi: "Tất cả bao nhiêu tiền ạ?" }
+    - { th: "จ่ายด้วยบัตรได้ไหมครับ", vi: "Trả bằng thẻ được không ạ?" }
+  source: plernpin-b09#p28-29
   draft: true
 - id: g-b08-yak
   unit_id: b08
