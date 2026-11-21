@@ -104,3 +104,115 @@
     - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Dạ không có gì ạ." }
   source: plernpin-b12#p18-21
   draft: true
+- id: d-b11-l1
+  lesson_id: b11-l1
+  lines:
+    - { speaker: A, th: "สวัสดีครับ", vi: "Xin chào" }
+    - { speaker: B, th: "สวัสดีค่ะ", vi: "Xin chào" }
+    - { speaker: A, th: "คุณชื่ออะไรครับ", vi: "Bạn tên là gì?" }
+    - { speaker: B, th: "ฉันชื่อลานค่ะ แล้วคุณชื่ออะไรคะ", vi: "Tôi tên Lan. Còn bạn tên gì?" }
+    - { speaker: A, th: "ผมชื่อนามครับ แล้วคุณนามสกุลอะไรครับ", vi: "Tôi tên Nam. Thế họ của bạn là gì?" }
+    - { speaker: B, th: "ฉันนามสกุลเหงียนค่ะ แล้วคุณล่ะคะ", vi: "Tôi họ Nguyễn ạ. Còn bạn?" }
+    - { speaker: A, th: "ผมนามสกุลเจิ่นครับ คุณเป็นคนจังหวัดอะไรครับ", vi: "Tôi họ Trần ạ. Bạn là người tỉnh nào?" }
+    - { speaker: B, th: "ฉันเป็นคนจังหวัดบั๊กนิญค่ะ แล้วคุณล่ะคะ", vi: "Tôi là người tỉnh Bắc Ninh. Còn bạn?" }
+    - { speaker: A, th: "ผมเป็นคนจังหวัดไฮฟองครับ คุณอายุเท่าไรครับ", vi: "Tôi là người tỉnh Hải Phòng. Bạn bao nhiêu tuổi?" }
+    - { speaker: B, th: "ฉันอายุยี่สิบปีค่ะ แล้วคุณล่ะคะ", vi: "Tôi 20 tuổi, còn bạn?" }
+    - { speaker: A, th: "เหมือนกันเลยครับ", vi: "Giống hệt nhau luôn." }
+  source: plernpin-b11#p3-5
+  draft: true
+- id: d-b11-l2
+  lesson_id: b11-l2
+  lines:
+    - { speaker: B, th: "ฉันชอบภาษาไทยมากค่ะ คุณสนใจเรียนภาษาไทยไหมคะ", vi: "Tôi thích tiếng Thái lắm, bạn có hứng thú học tiếng Thái không?" }
+    - { speaker: A, th: "สนใจครับ ตอนนี้ผมกำลังเรียนอยู่ครับ", vi: "Hứng thú ạ. Hiện tại tôi đang học đó." }
+    - { speaker: B, th: "คุณพูดได้เยอะหรือยังคะ", vi: "Bạn nói được nhiều chưa?" }
+    - { speaker: A, th: "พูดได้นิดหน่อยครับ ยังเรียนอยู่ครับ แล้วคุณล่ะครับ", vi: "Nói được một chút ạ. Vẫn đang học ạ. Còn bạn?" }
+    - { speaker: B, th: "ฉันเรียนภาษาไทยมาสองปีแล้วค่ะ ฉันพูดภาษาไทยได้ดีค่ะ", vi: "Tôi học tiếng Thái được 2 năm rồi. Tôi nói tiếng Thái được tốt ạ." }
+    - { speaker: A, th: "คุณเก่งมากครับ", vi: "Bạn giỏi quá" }
+    - { speaker: B, th: "ขอบคุณมากค่ะ", vi: "Cảm ơn bạn nhiều." }
+    - { speaker: A, th: "ขอโทษครับ ผมมีธุระต้องไปก่อน ลาก่อนครับ", vi: "Xin lỗi, tôi có việc phải đi trước. Tạm biệt bạn." }
+    - { speaker: B, th: "โอเคค่ะ โอกาสหน้าเจอกันใหม่นะคะ", vi: "Okie. Dịp sau gặp lại nhé!" }
+  source: plernpin-b11#p5-7
+  draft: true
+- id: d-b11-l3
+  lesson_id: b11-l3
+  lines:
+    - { speaker: A, th: "พี่ฮวากำลังจะไปไหนครับ", vi: "Chị Hoa đang đi đâu đấy?" }
+    - { speaker: B, th: "สวัสดีจ้ะน้อง พี่กำลังจะไปสนามบินค่ะ", vi: "Chào em, chị đang đi sân bay." }
+    - { speaker: A, th: "พี่จะไปไหนครับ", vi: "Chị đi đâu ạ?" }
+    - { speaker: B, th: "พี่ไปกรุงเทพค่ะ", vi: "Chị đi BangKok." }
+    - { speaker: A, th: "พี่ไปเที่ยวใช่ไหมครับ", vi: "Chị đi du lịch phải không ạ?" }
+    - { speaker: B, th: "ไม่ใช่จ้ะ พี่ไปทำงานจ้ะน้อง", vi: "Không. Chị đi công tác em ạ." }
+    - { speaker: A, th: "พี่ไปนานเท่าไรครับ", vi: "Chị đi bao lâu?" }
+    - { speaker: B, th: "พี่ไปสามวันค่ะ แล้วน้องจะไปไหนคะ", vi: "Chị đi 3 ngày. Còn em, đi đâu đấy?" }
+    - { speaker: A, th: "ผมไปประชุมครับพี่", vi: "Em đi họp chị ạ." }
+    - { speaker: B, th: "น้องประชุมที่ไหนคะ", vi: "Em họp ở đâu?" }
+    - { speaker: A, th: "ผมประชุมที่โรงแรมเอบีซีครับพี่", vi: "Em họp ở khách sạn ABC chị ạ." }
+    - { speaker: B, th: "พี่ไปก่อนนะ อาทิตย์หน้าเจอกันนะคะ", vi: "Chị đi nhé, tuần sau gặp em sau nhé." }
+    - { speaker: A, th: "ครับ สวัสดีครับพี่ อาทิตย์หน้าเจอกันครับ", vi: "Vâng ạ. Em chào chị. Tuần sau gặp chị ạ." }
+    - { speaker: B, th: "บ๊ายบายจ้ะน้อง", vi: "Bye em." }
+  source: plernpin-b11#p8-11
+  draft: true
+- id: d-b11-l4
+  lesson_id: b11-l4
+  lines:
+    - { speaker: A, th: "พรุ่งนี้คุณว่างไหมครับ ไปห้องสมุดด้วยกันไหมครับ", vi: "Ngày mai bạn rảnh không? đi thư viện cùng nhau không ạ?" }
+    - { speaker: B, th: "ขอโทษค่ะ พรุ่งนี้ฉันไม่ว่างค่ะ ฉันนัดกับเพื่อนไปบางแสนแล้วค่ะ", vi: "Mình xin lỗi, ngày mai mình không rảnh ạ, mình có hẹn với bạn đi Bang Xẻn rồi ạ." }
+    - { speaker: A, th: "ไม่เป็นไรครับ วันอื่นก็ได้ครับ", vi: "Không sao, ngày khác cũng được ạ" }
+    - { speaker: B, th: "โอเคค่ะ", vi: "Okie ạ." }
+  source: plernpin-b11#p12
+  draft: true
+- id: d-b11-l5
+  lesson_id: b11-l5
+  lines:
+    - { speaker: A, th: "นี่คือวัดอะไรครับ สวยมากเลยครับ", vi: "Đây là chùa gì vậy ạ? đẹp quá ạ" }
+    - { speaker: B, th: "นี่คือวัดพระแก้วค่ะ เป็นวัดที่มีชื่อเสียงที่สุดในกรุงเทพค่ะ", vi: "Đây là chùa phật ngọc, là ngôi chùa nổi tiếng nhất ở Bangkok ạ" }
+    - { speaker: A, th: "อย่างนั้นเหรอครับ พรุ่งนี้ช่วยพาผมไปวัดพระแก้วได้ไหมครับ", vi: "Thế à, ngày mai giúp dẫn mình đi chùa phật ngọc được ko?" }
+    - { speaker: B, th: "ได้สิคะ เราชวนพี่นามไปด้วยก็ได้ค่ะ", vi: "Được chứ, chúng ta có thể rủ anh Nam đi cùng ạ" }
+  source: plernpin-b11#p13
+  draft: true
+- id: d-b11-l6
+  lesson_id: b11-l6
+  lines:
+    - { speaker: A, th: "คนไทยไม่ต้องซื้อตั๋วเข้าประตูใช่ไหมครับ", vi: "Người Thái không phải mua vé qua cổng đúng không ạ?" }
+    - { speaker: B, th: "ใช่ค่ะ คนไทยเข้าฟรีค่ะ", vi: "Đúng ạ, người Thái vào miễn phí ạ" }
+    - { speaker: A, th: "แล้วคุณเคยไปเที่ยวตลาดน้ำที่ไทยหรือยังครับ", vi: "Thế bạn đã đi chơi chợ nổi ở Thái bao giờ chưa ạ?" }
+    - { speaker: B, th: "ฉันยังไม่เคยไปเลยค่ะ", vi: "Mình chưa đi bao giờ ạ" }
+    - { speaker: A, th: "งั้นวันนี้ผมจะพาคุณไปเที่ยวตลาดน้ำของไทยนะครับ", vi: "Vậy hôm nay mình sẽ đưa bạn đi thăm chợ nổi ở Thái nhé!" }
+    - { speaker: B, th: "ได้ค่ะ เราจะขับรถไปเองหรือเรียกรถคะ", vi: "Được ạ, chúng ta tự lái xe hay đi xe ngoài ạ" }
+    - { speaker: A, th: "เราขับรถไปเองดีกว่าครับ เพราะตลาดน้ำอยู่ไม่ไกลมากครับ", vi: "Chúng ta tự lái xe đi thì tốt hơn ạ vì chợ nổi ở không quá xa" }
+    - { speaker: B, th: "โอเคค่ะ", vi: "Okie ạ" }
+    - { speaker: A, th: "ถึงตลาดน้ำแล้วครับ", vi: "Đến chợ nổi rồi ạ" }
+    - { speaker: B, th: "โอ้ ตลาดคึกคักมากเลยค่ะ", vi: "Ồ, chợ đông vui quá ạ" }
+    - { speaker: A, th: "ใช่ครับ ที่นี่มีทั้งอาหาร ของใช้ และของที่ระลึกหลากหลายมากให้นักท่องเที่ยวเลือกซื้อครับ", vi: "Đúng ạ, ở đây có đồ ăn, đồ dùng và đồ lưu niệm rất đa dạng cho khách du lịch chọn mua ạ" }
+    - { speaker: B, th: "งั้นเราเข้าไปดูกันเถอะค่ะ", vi: "Vậy chúng ta vào xem thôi ạ" }
+  source: plernpin-b11#p14-16
+  draft: true
+- id: d-b11-l7
+  lesson_id: b11-l7
+  lines:
+    - { speaker: A, th: "ขอโทษครับ", vi: "Xin lỗi!" }
+    - { speaker: B, th: "มีอะไรคะ", vi: "Gì thế ạ?" }
+    - { speaker: A, th: "ผมจะไปธนาคาร ไปทางไหนครับ", vi: "Tôi định đi ngân hàng, đi lối nào ạ?" }
+    - { speaker: B, th: "ตรงไปค่ะ ถึงปากซอยแล้วเลี้ยวซ้าย ธนาคารอยู่ข้างร้านกาแฟค่ะ", vi: "Đi thẳng đi, đến đầu ngõ rồi rẽ trái. Ngân hàng ở cạnh quán cà phê" }
+    - { speaker: A, th: "ต้องเดินไกลไหมครับ", vi: "Phải đi bộ xa không ạ?" }
+    - { speaker: B, th: "ไม่ไกลค่ะ เดินประมาณห้านาทีก็ถึงค่ะ", vi: "Không xa. Đi bộ khoảng 5 phút thì sẽ đến" }
+    - { speaker: A, th: "ขอบคุณมากครับ", vi: "Cảm ơn nhiều ạ!" }
+    - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Không có gì!" }
+  source: plernpin-b11#p17-18
+  draft: true
+- id: d-b11-l8
+  lesson_id: b11-l8
+  lines:
+    - { speaker: A, th: "รถเมล์สายอะไรไปอนุสาวรีย์ชัยสมรภูมิครับ", vi: "Xe buýt tuyến gì đi đến Đài Tưởng Niệm Chiến Thắng?" }
+    - { speaker: B, th: "สายห้าสิบเก้าค่ะ เป็นรถแอร์ค่ะ", vi: "Tuyến 59 ạ, là xe điều hòa" }
+    - { speaker: A, th: "ขึ้นที่ไหนครับ", vi: "Lên ở đâu?" }
+    - { speaker: B, th: "ขึ้นที่ป้ายหน้าเซเว่นค่ะ", vi: "Lên ở trạm trước 7/11" }
+    - { speaker: A, th: "ขอบคุณครับ แล้วผมต้องลงที่ไหนครับ", vi: "Cảm ơn ạ! Thế tôi phải xuống ở đâu?" }
+    - { speaker: B, th: "ลงที่ป้ายอนุสาวรีย์ชัยสมรภูมิค่ะ คนลงเยอะ สังเกตง่ายมากค่ะ", vi: "Xuống ở trạm Đài Tưởng Niệm Chiến Thắng ạ. Người xuống nhiều. Dễ nhận ra lắm ạ" }
+    - { speaker: A, th: "ค่ารถเท่าไรครับ", vi: "Phí đi lại bao nhiêu ạ?" }
+    - { speaker: B, th: "สิบบาทค่ะ", vi: "10 bạt ạ." }
+    - { speaker: A, th: "ขอบคุณมากครับ", vi: "Cảm ơn nhiều ạ." }
+    - { speaker: B, th: "ไม่เป็นไรค่ะ", vi: "Không có gì ạ!" }
+  source: plernpin-b11#p19-21
+  draft: true
