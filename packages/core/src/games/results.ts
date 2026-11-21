@@ -3,7 +3,7 @@
  * **Không** đụng thẻ SRS / log ôn — chỉ dùng phần kỷ lục + cờ của `ProgressRepository`.
  */
 import { newId } from '../data/memory';
-import type { GameResultRecord } from '../data/records';
+import type { GameResultRecord, NeedsReviewRecord } from '../data/records';
 import type { ProgressRepository } from '../data/repositories';
 import type { AnyGameId } from './catalog';
 import { isBetterResult, type GameItemRef, type GameStats, type GameSummary } from './game';
@@ -87,6 +87,7 @@ export async function setNeedsReview(
   item: GameItemRef,
   flagged: boolean,
   now: Date,
+  origin: NeedsReviewRecord['origin'] = 'game',
 ): Promise<void> {
   if (!flagged) {
     await progress.deleteNeedsReview(item.itemType, item.itemId);
@@ -96,7 +97,7 @@ export async function setNeedsReview(
   await progress.putNeedsReview({
     id: newId(),
     ...item,
-    origin: 'game',
+    origin,
     flaggedAt: ts,
     updatedAt: ts,
   });

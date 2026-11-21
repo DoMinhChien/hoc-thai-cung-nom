@@ -47,6 +47,9 @@
     "image": {
       "type": "string"
     },
+    "mnemonic_vi": {
+      "type": "string"
+    },
     "tags": {
       "type": "string"
     },

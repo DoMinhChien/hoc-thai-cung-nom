@@ -1,4 +1,9 @@
-import { voiceQuality, type VoiceInfo } from '@nom/core';
+import {
+  DEFAULT_PRACTICE_SESSION_SIZE,
+  PRACTICE_SESSION_SIZE_KEY,
+  voiceQuality,
+  type VoiceInfo,
+} from '@nom/core';
 import { Play, TriangleAlert } from 'lucide-react';
 import { useEffect, useId, useState, type ReactNode } from 'react';
 import { useAudio } from '@/audio/useAudio';
@@ -14,6 +19,7 @@ import { DEFAULT_SPEECH_RATE } from '@/audio/web-speech-provider';
 import { useFeedbackSound, webAudioTone, type FeedbackSoundKind } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useRepositories, useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 
 const rateFormat = new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 });
@@ -35,14 +41,29 @@ export function SettingsPage() {
       </header>
       <SoundSettings />
       <VoiceSettings />
+      <PracticeSettings />
       <p className="text-sm text-muted-foreground">{t('settings.later')}</p>
     </section>
   );
 }
 
-function Card({ title, testId, children }: { title: string; testId: string; children: ReactNode }) {
+function Card({
+  title,
+  testId,
+  id,
+  children,
+}: {
+  title: string;
+  testId: string;
+  id?: string;
+  children: ReactNode;
+}) {
   return (
-    <div data-testid={testId} className="flex flex-col gap-4 rounded-lg border border-border p-6">
+    <div
+      id={id}
+      data-testid={testId}
+      className="flex scroll-mt-6 flex-col gap-4 rounded-xl border border-border bg-surface p-6 shadow-card"
+    >
       <h2 className="text-lg font-semibold">{title}</h2>
       {children}
     </div>
@@ -251,6 +272,45 @@ function VoiceSettings() {
           {t('settings.test')} <span lang="th">{SPEECH_SAMPLE}</span>
         </Button>
       </div>
+    </Card>
+  );
+}
+
+/** Lựa chọn số câu mỗi phiên = mục tiêu ngày (SCR-03 §B, M10). */
+const SESSION_SIZES = [10, 20, 30, 50] as const;
+
+/** Bài tập: số câu mỗi phiên, cũng là mục tiêu ngày ở Tổng quan / Bài tập (SCR-03 Q3 a). */
+function PracticeSettings() {
+  const repos = useRepositories();
+  const id = useId();
+  const size = useRepositoryQuery(
+    (r) => r.settings.get(PRACTICE_SESSION_SIZE_KEY, DEFAULT_PRACTICE_SESSION_SIZE),
+    [],
+  );
+  if (size === undefined) {
+    return <Skeleton className="h-28" role="status" aria-label={t('settings.practiceTitle')} />;
+  }
+  return (
+    <Card title={t('settings.practiceTitle')} testId="settings-practice" id="bai-tap">
+      <label htmlFor={id} className="text-sm font-medium">
+        {t('settings.sessionSize')}
+      </label>
+      <select
+        id={id}
+        data-testid="settings-session-size"
+        value={size}
+        onChange={(e) =>
+          void repos?.settings.set(PRACTICE_SESSION_SIZE_KEY, Number(e.target.value))
+        }
+        className={`${field} w-40`}
+      >
+        {SESSION_SIZES.map((n) => (
+          <option key={n} value={n}>
+            {t('settings.sessionSizeOption', { n })}
+          </option>
+        ))}
+      </select>
+      <p className="text-sm text-muted-foreground">{t('settings.sessionSizeHint')}</p>
     </Card>
   );
 }

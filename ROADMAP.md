@@ -13,7 +13,9 @@
 
 > **🟢 M9.5 — Phản hồi người học** (3/3 task trong phạm vi — T9.5.1, T9.5.2, **T9.5.4 ✅ 2026-11-21** hướng B; T9.5.3 ⏸ **tạm loại** (owner 2026-11-21)): âm đúng/sai rõ ở mọi nơi, giọng đọc dễ nghe, giao diện **"Nắng nhiệt đới"** (nền kem, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, hiệu ứng `fb-*`). T9.5.4 trên nhánh `m9.6-games` (PR #25).
 
-> **🟢 M9.6 — Trò chơi mở rộng** (6/6 task, xong 2026-11-21; **PR #25 đã merge** vào `main`, gồm cả #27): `/games` 8 trò theo SCR-08 v2, 4 màn arcade, 3 theme có cảnh nền, sao + "Đổi trò", E2E + baseline. **Kế tiếp: M10** (chờ owner duyệt SCR-03/07/09 — PR #26).
+> **🟢 M9.6 — Trò chơi mở rộng** (6/6 task, xong 2026-11-21; **PR #25 đã merge** vào `main`, gồm cả #27): `/games` 8 trò theo SCR-08 v2, 4 màn arcade, 3 theme có cảnh nền, sao + "Đổi trò", E2E + baseline. **Kế tiếp: M10**.
+
+> **🟢 M10 — Tổng quan + Sổ từ + Tiến độ** (6/6 task, mở + xong 2026-11-21; nhánh `m10-home` → PR mới vào `main`): `/` Tổng quan (SCR-03), `/words` Sổ từ + mẹo nhớ của người học (SCR-07), `/progress` Tiến độ (SCR-09), ghi `SessionRecord`, Dexie v6. Chờ owner: xem baseline mới (`home`, `home-empty`, `words`, `progress`), merge PR (giao diện mới — không tự merge theo 8.1). **Kế tiếp: M12** (cần chi tiết hóa task; SETUP S5, S8).
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-21)** — agent không tự làm, tick khi xong:
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
@@ -23,7 +25,9 @@
 > - [x] **M0.5c / SCR-08 v2** — owner chọn **B** (Q1–Q4 theo đề xuất), SCR-08 v2 làm theo đề xuất (2026-11-21). **#25 merge 2026-11-21** (gồm cả #27, #27 cũng đã đóng ở trạng thái merged).
 > - [ ] **Xem baseline hướng B** (đã vào `main` qua #25): `units-*`, `unit-*`, `practice-*`, `games-*`, `game-match-*` đổi; mới `games-v2`, `game-whack` (che lưới hố), `game-gameshow`, `game-airplane`, `game-maze`; Linux lấy từ artifact CI `screenshot-baselines-linux`.
 > - [ ] **E2E chập chờn trên WebKit (Linux CI):** `settings.spec` — ô chọn giọng có lúc không hiện trong 5 s (giọng giả nạp chậm); `auth.spec` popup emulator. Không chặn merge khi chạy lại xanh; agent sẽ xem lại khi có thời gian.
-> - [ ] **SCR-03 / SCR-07 / SCR-09** — đã soạn, **PR #26**: owner duyệt + trả lời 11 câu hỏi → mở **M10**.
+> - [x] **SCR-03 / SCR-07 / SCR-09** — owner duyệt 2026-11-21 (câu trả lời ghi trong spec), **#26 đã merge** → M10 mở và làm xong.
+> - [ ] **PR M10** (`m10-home`): xem 3 màn mới + baseline `m10.spec.ts-snapshots` (Windows đã commit, Linux từ artifact CI), rồi merge.
+> - [ ] **Chuyên đề 15 → 2 (PR #31, draft):** 14 chuyên đề, 50 bài học, 653 từ, 358 câu, 56 mẫu câu; CI + baseline `/units` xong. Đủ điều kiện tự merge (8.1, nội dung) khi CI xanh. GV duyệt: nghĩa + loại từ Claude điền ở c03 (144/310 từ không có nghĩa, cột loại từ trống), bản dịch Thái câu bài tập, `title_th` mọi chuyên đề. Sau merge → agent làm **TC.2b** (xóa `u03`/`u11` — hiện CĐ 3, CĐ 11 có 2 thẻ trên Lộ trình).
 > - [ ] **Nội dung (giáo viên duyệt):** Bài 11 → 6 (**#28**) và Bài 5 → 3 (**#29**) **đã merge 2026-11-21** (draft) — giáo trình Bài 1–12 đủ; GV xem từ thẻ hình / số đếm Claude ghi nghĩa, chính tả (b08, b05, b04), tên riêng; còn CĐ 15 → 2; khi có `c03`, `c11` → agent làm **TC.2b**.
 
 > **⚠️ Đổi phạm vi v7 (2026-11-16) theo phản hồi demo khách hàng — đọc plan mục 0 trước.** Người học A1–A2 đã đọc được chữ Thái: bỏ Bảng chữ cái, bỏ hẳn thanh điệu, "Ôn tập" → "Bài tập", bỏ `MasteryGrid`/`HeatmapTable`; trọng tâm là từ vựng theo chủ đề + dịch câu.
@@ -74,7 +78,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M9 | Bài tập: E-01..E-14, `/practice`, SRS cho câu (dùng lại component M7.5, ưu tiên mục "cần ôn") | 🟢 | M7, M7.5, M8 ✅, SCR-06 |
 | M9.5 | **Phản hồi người học**: âm đúng/sai, giọng đọc, giao diện sinh động | 🟢 | M9 ✅; T9.5.3 ⏸ tạm loại (S13); T9.5.4 ✅ hướng B — PR #25 |
 | M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | 🟢 | M9.5 ✅, SCR-08 v2 ✅ — PR #25 |
-| M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | ⚪ | M9, SCR-03/07/09 |
+| M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | 🟢 | M9 ✅, SCR-03/07/09 ✅ (#26) — PR `m10-home` |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | ⚪ | S5 publish, S8 |
 
@@ -514,7 +518,28 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - **Khác spec (cần owner biết):** âm nền là **vòng nhạc tổng hợp Web Audio** (như âm phản hồi M9.5) thay cho file OGG CC0, mặc định tắt (Q1), âm lượng = 30% âm phản hồi; cảnh nền và nhân vật dùng **emoji + CSS/SVG**, không dùng bộ Kenney → không có file asset, không cần `LICENSE.md`. Đập chuột khi giảm chuyển động: con hiện/ẩn tức thì, không có chế độ chậm (Q4).
 - **Test:** core 427, web 381 (thêm 8 test component cho `/games` v2 + 4 trò + Đổi trò); E2E `arcade.spec.ts` 5 test × 6 project (seed cố định → kỷ lục, "cần ôn", FSRS không đổi, axe, baseline `/games` + 4 màn).
 
-### M10 → M12
+### M10 — Tổng quan + Sổ từ + Tiến độ 🟢 (mở + xong 2026-11-21; plan 0.7, 0.8, 4.9, 4.13)
+
+**Cần trước:** M9 ✅; SCR-03 / SCR-07 / SCR-09 ✅ (owner duyệt 2026-11-21, #26 — SCR-03 Q1 a, Q2 b, Q3 a · SCR-07 Q1 a, Q2 a, Q3 a, Q4 c, Q5 a · SCR-09 Q1 a, Q2 a+b, Q3 a).
+
+**Task**
+- [x] T10.1 Dữ liệu: `WordNoteRecord` + Dexie v6 `wordNotes` (repository, chuyển Guest → tài khoản), `NeedsReviewRecord.origin` thêm `'manual'` (Q5), cột tùy chọn `mnemonic_vi` trong `words.csv` (Q1), ghi `SessionRecord` cho bài học / phiên bài tập / lượt chơi (SCR-09 Q2 b — dùng chung cho thời gian học và chuỗi ngày, SCR-03 Q2 b), chuỗi dài nhất.
+- [x] T10.2 Core selector báo cáo (thuần, đồng hồ giả): hoạt động 30 ngày, thời gian học (phiên + ước tính dữ liệu cũ), nhớ đúng 7/30 ngày (R-05), dự báo đến hạn (P-04), kỹ năng `SKILL_GROUPS` (P-12, Q1 a), lỗi hay gặp theo mẫu câu / loại bài (R-04'), từ & câu khó (R-06), trò chơi (P-09); `searchWords` không dấu (SCR-07 §B).
+- [x] T10.3 `/` Tổng quan (SCR-03): Học tiếp (bước, `H`), Hôm nay (chuỗi ngày 7 chấm + mục tiêu ngày), Bài tập hôm nay (nút chính theo Q1 a, `B`), lộ trình gọn có "Bạn đang ở đây" + nhãn cấp độ, tóm tắt 4 ô, trạng thái người học mới; Cài đặt "Số câu mỗi phiên / mục tiêu ngày" (`/settings#bai-tap`, Q3 a).
+- [x] T10.4 `/words` Sổ từ (SCR-07): tìm Thái / Việt không dấu (`/`), lọc chuyên đề + mức thuộc + cần ôn, 4 cách sắp xếp, 100 dòng + tải thêm (Q3 a), danh sách `listbox` (↑↓ Home End), chi tiết (phát âm `Space`, phiên âm `P`, ví dụ, mức thuộc, lần ôn tới, số lần ôn/quên), **mẹo nhớ của tôi** (`M`, Ctrl+Enter, xoá có hỏi lại) ưu tiên hơn mẹo gợi ý — dùng chung ở mặt sau thẻ từ SCR-05; cần ôn bật tay (`C`). V-03 "Hình → Thái" để Phase 2 (Q4 c).
+- [x] T10.5 `/progress` Tiến độ (SCR-09): 5 ô tổng quan, hoạt động 30 ngày (biểu đồ cột tự vẽ — plan 7.1 "Recharts hoặc tương đương nhẹ", không thêm dependency — tooltip chuột + bàn phím, đường mục tiêu, "Xem dạng bảng" nhớ lựa chọn), trí nhớ + dự báo 7 ngày, kỹ năng P-12 (link "Luyện ›" đặt Kiểu bài), lộ trình & mục tiêu, lỗi hay gặp (`W`), từ & câu khó ("Luyện nhóm này" `?items=`, Q3 a), trò chơi.
+- [x] T10.6 E2E `m10.spec.ts` (người học mới; dữ liệu giả lập + đồng hồ cố định → số liệu chính xác, phím tắt, mẹo nhớ + cần ôn ghi đúng IndexedDB, axe) + baseline `home`, `home-empty`, `words`, `progress`.
+
+**Tiêu chí nghiệm thu**
+- Mở `/` biết ngay hôm nay làm gì: đúng 1 nút chính theo quy tắc Q1 a; chuỗi ngày tính cả trò chơi.
+- Sổ từ tìm được "cam on" → ขอบคุณ, ขอบใจ (thai_alt); mẹo nhớ của tôi lưu theo user, có ở mặt sau thẻ từ.
+- Tiến độ đọc được bằng bàn phím (tooltip cột, bảng), không lỗi axe serious/critical.
+
+**Kết quả (2026-11-21, nhánh `m10-home`):**
+- Test: core 440, web 382 (+ E2E M10 4 test × 6 project; full E2E 344 pass). Sửa test chập chờn `useFeedbackPause` (chờ cài đặt tự đọc nạp xong). Baseline `settings-*` đổi vì thêm khối Bài tập. `/` `/words` `/progress` thay trang tạm (`PlaceholderPage` đã xoá).
+- **Khác spec (owner xem):** biểu đồ cột tự vẽ bằng CSS (không Recharts); chuỗi ngày **không** tính "từ mới vào học" (`CardRecord.createdAt`) như bản nháp SCR-03 cũ — tính bài tập, ôn thẻ, bước bài học, phiên học, lượt chơi (đã ghi trong spec); 1024–1279px: chi tiết từ xếp dưới danh sách (chưa làm Sheet trượt).
+
+### M12
 Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone trước gần xong (agent đề xuất danh sách task từ requirement IDs trong plan → owner duyệt → ghi vào đây).
 
 ---
@@ -525,6 +550,7 @@ Theo plan mục 0 và mục 10 (v7). Chi tiết hóa thành task khi milestone t
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-21 | M10 + Nội dung | Owner duyệt SCR-03/07/09 → ghi câu trả lời vào spec, **merge #26** (theo yêu cầu owner), tự merge #30 (8.1). **M10** T10.1–T10.6 xong (Tổng quan, Sổ từ + mẹo nhớ, Tiến độ, SessionRecord, Dexie v6, E2E). Nhập **Chuyên đề 15 → 2** (PR #31). Sửa test chập chờn `useFeedbackPause` | — | PR #32 chờ owner xem giao diện; TC.2b sau #31 | `m10-home` → #32; `content-c02-c15` → #31 |
 | 2026-11-21 | Quy trình + Nội dung | Owner merge #25 (gồm #27). **Tự merge #28, #29 (loại nội dung `draft`, AGENTS 8.1, owner đồng ý lần này)** — rebase lên `main`, sinh lại baseline `/units` trên giao diện B, CI xanh. Sửa ảnh `game-whack` không ổn định (che lưới hố; bỏ trên WebKit) | #30 (docs 8.1 + sửa test) chờ CI | M10 chờ owner duyệt #26 (không tự merge: spec thiết kế + câu hỏi cho owner) | #28, #29 đã merge; `docs-auto-merge` → #30 |
 | 2026-11-21 | Quy trình | Owner đồng ý **agent tự merge PR** theo `AGENTS.md` mục 8.1 (CI xanh, không conflict, base `main`; loại PR được phép / phải chờ owner). SETUP S1: bảo vệ `main` không bắt buộc review | — | — | — (docs chưa commit) |
 | 2026-11-21 | M9.5 + M9.6 + Nội dung | Owner chọn **hướng B** (Q1–Q4 theo đề xuất). **T9.5.4** giao diện "Nắng nhiệt đới" (token, màu chuyên đề, Lộ trình lưới, chuỗi ngày học, `fb-*`); **T9.6.3–T9.6.6** `/games` 8 trò + 4 màn arcade + theme + sao + Đổi trò + E2E; nhập **Bài 5 → 3** (PR #29) | — | M10 chờ owner duyệt SCR-03/07/09 (#26) | `m9.6-games` → PR #25; `content-b03-b05` → PR #29 |

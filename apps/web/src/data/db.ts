@@ -11,6 +11,7 @@ import {
   type SentenceLevelRecord,
   type SessionRecord,
   type SettingRecord,
+  type WordNoteRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type Transaction } from 'dexie';
 
@@ -19,7 +20,7 @@ export const GUEST_KEY = 'guest';
 export const dbName = (userKey: string) => `hoc-thai-nom-${userKey}`;
 
 /** Phiên bản schema hiện tại — cũng ghi vào `meta.schemaVersion` (plan 7.3). */
-export const SCHEMA_VERSION = 5;
+export const SCHEMA_VERSION = 6;
 export const SCHEMA_VERSION_KEY = 'schemaVersion';
 
 export type KeyValueRecord = { key: string; value: unknown };
@@ -37,6 +38,7 @@ export const PROGRESS_TABLES = [
   'needsReview',
   'sentenceLevels',
   'exerciseAttempts',
+  'wordNotes',
 ] as const;
 
 /** v1 (M1): khung store, bản ghi chỉ có vài trường. */
@@ -80,6 +82,12 @@ const STORES_V5 = {
   exerciseAttempts: 'id, ts',
 };
 
+/** v6 (M10): mẹo nhớ của người học (một mẹo mỗi từ, SCR-07). */
+const STORES_V6 = {
+  ...STORES_V5,
+  wordNotes: 'id, &[itemType+itemId]',
+};
+
 /** v1 → v2: thẻ cũ thiếu trường thì bổ sung mặc định (thẻ mới, loại Thai → Việt). */
 async function upgradeToV2(tx: Transaction) {
   const now = new Date();
@@ -114,6 +122,7 @@ export class NomDatabase extends Dexie {
   needsReview!: EntityTable<NeedsReviewRecord, 'id'>;
   sentenceLevels!: EntityTable<SentenceLevelRecord, 'id'>;
   exerciseAttempts!: EntityTable<ExerciseAttemptRecord, 'id'>;
+  wordNotes!: EntityTable<WordNoteRecord, 'id'>;
   meta!: EntityTable<KeyValueRecord, 'key'>;
 
   constructor(userKey: string) {
@@ -132,6 +141,10 @@ export class NomDatabase extends Dexie {
     this.version(5)
       .stores(STORES_V5)
       .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 5 }));
+    // v5 → v6 chỉ thêm store rỗng.
+    this.version(6)
+      .stores(STORES_V6)
+      .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 6 }));
     this.on('populate', (tx) => {
       void tx.table('meta').add({ key: SCHEMA_VERSION_KEY, value: SCHEMA_VERSION });
     });

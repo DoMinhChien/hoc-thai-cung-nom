@@ -23,6 +23,10 @@ export interface StudyStreak {
   week: { day: string; studied: boolean; isToday: boolean }[];
   /** Hôm nay vừa đạt mốc (`STREAK_MILESTONES`) — chỉ khi `today`. */
   milestone: number | null;
+  /** Chuỗi dài nhất trong mọi mốc đã đưa vào (SCR-09). */
+  longest: number;
+  /** Mọi ngày có học (`YYYY-MM-DD`, tăng dần). */
+  days: string[];
 }
 
 /**
@@ -55,5 +59,13 @@ export function studyStreak(
   });
   const milestone =
     today && (STREAK_MILESTONES as readonly number[]).includes(count) ? count : null;
-  return { count, today, week, milestone };
+  const sorted = [...days].sort();
+  let longest = 0;
+  let run = 0;
+  sorted.forEach((day, i) => {
+    const prev = sorted[i - 1];
+    run = prev && Date.parse(day) - Date.parse(prev) === DAY_MS ? run + 1 : 1;
+    longest = Math.max(longest, run);
+  });
+  return { count, today, week, milestone, longest, days: sorted };
 }

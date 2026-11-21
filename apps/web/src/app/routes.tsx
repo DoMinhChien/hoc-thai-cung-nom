@@ -1,7 +1,6 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { FirstVisitGate, RequireAuth } from '@/app/guards';
 import { AppLayout, BareLayout, DevLayout, FocusLayout } from '@/components/layout/AppLayout';
-import type { MessageKey } from '@/i18n';
 import { deleteInstructionsVi, privacyVi, termsVi } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
@@ -18,12 +17,9 @@ import { UnitsPage } from '@/pages/units/UnitsPage';
 import { LegalPage } from '@/pages/legal/LegalPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { PlaceholderPage } from '@/pages/PlaceholderPage';
-
-const page = (path: string, title: MessageKey, testId: string): RouteObject => ({
-  path,
-  element: <PlaceholderPage title={title} testId={testId} />,
-});
+import { HomePage } from '@/pages/home/HomePage';
+import { WordsPage } from '@/pages/words/WordsPage';
+import { ProgressPage } from '@/pages/progress/ProgressPage';
 
 /** URL cũ trước v7 (plan mục 0.2, 0.7) → màn mới tương ứng, để link/bookmark cũ không 404. */
 export const LEGACY_REDIRECTS: Record<string, string> = {
@@ -78,7 +74,7 @@ export const routes: RouteObject[] = [
         index: true,
         element: (
           <FirstVisitGate>
-            <PlaceholderPage title="pages.dashboard" testId="dashboard" />
+            <HomePage />
           </FirstVisitGate>
         ),
       },
@@ -93,9 +89,9 @@ export const routes: RouteObject[] = [
       { path: '/units', element: <UnitsPage /> },
       { path: '/units/:unitId', element: <UnitPage /> },
       { path: '/practice', element: <PracticePage /> },
-      page('/words', 'pages.words', 'words'),
+      { path: '/words', element: <WordsPage /> },
       { path: '/games', element: <GamesPage /> },
-      page('/progress', 'pages.progress', 'progress'),
+      { path: '/progress', element: <ProgressPage /> },
       { path: '/settings', element: <SettingsPage /> },
       ...Object.entries(LEGACY_REDIRECTS).map(([path, to]) => ({
         path,

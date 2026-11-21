@@ -4,6 +4,7 @@ import type {
   GameResultRecord,
   LessonProgressRecord,
   NeedsReviewRecord,
+  WordNoteRecord,
   SentenceLevelRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type IndexableType } from 'dexie';
@@ -110,6 +111,13 @@ export class AccountDataRepository {
             await mergeUnique(
               user.needsReview,
               data as NeedsReviewRecord[],
+              '[itemType+itemId]',
+              (r) => [r.itemType, r.itemId],
+            );
+          } else if (name === 'wordNotes') {
+            await mergeUnique(
+              user.wordNotes,
+              data as WordNoteRecord[],
               '[itemType+itemId]',
               (r) => [r.itemType, r.itemId],
             );

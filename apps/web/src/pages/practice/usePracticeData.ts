@@ -1,7 +1,12 @@
 import {
   ACCURACY_WINDOW_DAYS,
+  buildPracticeSession,
   DEFAULT_PRACTICE_SESSION_SIZE,
   exercisePool,
+  practiceOverview,
+  questionItems,
+  SECONDS_PER_QUESTION,
+  type PracticeOverview,
   PRACTICE_FILTER_KEY,
   PRACTICE_SESSION_SIZE_KEY,
   type CardRecord,
@@ -62,4 +67,46 @@ export function usePracticeData(): PracticeDataState {
   if (content.status === 'error') return { status: 'error' };
   if (!bundles || !pool || !progress) return { status: 'loading' };
   return { status: 'ready', data: { bundles, pool, ...progress } };
+}
+
+export interface PracticeToday {
+  now: Date;
+  overview: PracticeOverview;
+  /** Phiên "hôm nay" nếu bắt đầu bây giờ (gồm "cần ôn", câu sai, thẻ mới). */
+  today: { count: number; words: number; sentences: number; minutes: number };
+  /** Đã học bài nào / có thẻ nào chưa. */
+  started: boolean;
+}
+
+/** "Bài tập hôm nay" — dùng chung trang Bài tập (SCR-06) và Tổng quan (SCR-03 §C). */
+export function usePracticeToday(
+  data: PracticeData,
+  filter: PracticeFilter = data.filter,
+): PracticeToday {
+  const now = useMemo(() => new Date(), []);
+  const overview = practiceOverview({
+    cards: data.cards,
+    attempts: data.attempts,
+    now,
+    dayStart: startOfDay(now),
+  });
+  const today = useMemo(() => {
+    const session = buildPracticeSession({
+      ...data,
+      mode: { kind: 'today' },
+      filter,
+      size: data.size,
+      now,
+      seed: 0,
+    });
+    const items = session.flatMap((q) => questionItems(q.question));
+    return {
+      count: session.length,
+      words: items.filter((i) => i.itemType === 'word').length,
+      sentences: items.filter((i) => i.itemType === 'sentence').length,
+      minutes: Math.max(1, Math.round((session.length * SECONDS_PER_QUESTION) / 60)),
+    };
+  }, [data, filter, now]);
+  const started = data.lessons.length > 0 || data.cards.length > 0;
+  return { now, overview, today, started };
 }

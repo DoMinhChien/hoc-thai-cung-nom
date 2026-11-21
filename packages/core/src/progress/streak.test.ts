@@ -51,4 +51,14 @@ describe('chuỗi ngày học (M0.5c §2.4, Q4)', () => {
     expect(s.week.map((d) => d.studied)).toEqual([true, false, false, false, false, false, false]);
     expect(s.week.findIndex((d) => d.isToday)).toBe(3);
   });
+
+  it('chuỗi dài nhất trong toàn lịch sử (SCR-09), không phụ thuộc chuỗi hiện tại', () => {
+    const s = studyStreak(
+      ['2026-10-01', '2026-10-02', '2026-10-03', '2026-10-04', '2026-11-18'].map((d) => at(d)),
+      NOW,
+      VN,
+    );
+    expect(s).toMatchObject({ count: 1, longest: 4 });
+    expect(s.days).toHaveLength(5);
+  });
 });

@@ -77,10 +77,7 @@ export function GameResult({
   useEffect(() => {
     if (!repos || saved.current) return;
     saved.current = true;
-    const now = new Date();
-    void saveGameResult(repos.progress, summary, sourceKey, now).then(setRecord);
-    // Lượt chơi là một ngày học của chuỗi (M0.5c Q4).
-    void repos.sessions.start('game', now).then((s) => repos.sessions.end(s.id, new Date()));
+    void saveGameResult(repos.progress, summary, sourceKey, new Date()).then(setRecord);
   }, [repos, summary, sourceKey]);
 
   const toggle = (item: GameItemRef, on: boolean) => {

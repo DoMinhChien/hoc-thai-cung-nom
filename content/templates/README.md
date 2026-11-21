@@ -42,6 +42,7 @@ Thư mục này chứa **6 file mẫu**. Mỗi file có đủ cột/trường v�
 - **`note_vi`**: ghi chú cách dùng (vd. "dùng cho thuyền lớn", "trong quân sự").
 - **`classifier`**: loại từ (ลักษณนาม) đi kèm danh từ khi đếm, vd. แมว → `ตัว`.
 - **`phonetic`** (words.csv): tùy chọn, chữ Latin thường không dấu, ngăn âm tiết bằng `-` (vd. `sa-wat-di`). App ẩn phiên âm mặc định.
+- **`mnemonic_vi`** (words.csv, tùy chọn — cột có thể không có): mẹo nhớ gợi ý hiện ở Sổ từ và mặt sau thẻ từ (V-04). Claude đề xuất thì giữ `draft: true` để owner duyệt.
 - **`image`**: emoji Noto `noto:<mã hex>` (vd. `noto:1f44b` = 👋) hoặc file `img/<tên>.svg|png|webp|jpg`.
 - **`tokens`** (sentences.csv): tách câu Thái thành các thẻ từ để người học sắp xếp. **Ghép các thẻ lại phải ra đúng `th`** (không tính khoảng trắng). Vd. `th = ผมชื่อสมชาย` → `tokens = ผม|ชื่อ|สมชาย`. Để trống thì app tự tách (có cảnh báo "cần duyệt").
 - **`distractors`**: thẻ nhiễu cho bài sắp xếp khó; **không được trùng** thẻ nào trong `tokens`.

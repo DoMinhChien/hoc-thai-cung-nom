@@ -1,14 +1,10 @@
 import {
-  buildPracticeSession,
   compareUnits,
   PRACTICE_FILTER_KEY,
   PRACTICE_FILTERS,
-  practiceOverview,
-  questionItems,
-  SECONDS_PER_QUESTION,
   type PracticeFilter,
 } from '@nom/core';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { StreakCard, useStudyStreak } from '@/components/fun';
 import { useKeyShortcut } from '@/components/interactive';
@@ -18,7 +14,7 @@ import { unitLabel } from '@/content/labels';
 import { useRepositories } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
-import { startOfDay, usePracticeData, type PracticeData } from './usePracticeData';
+import { usePracticeData, usePracticeToday, type PracticeData } from './usePracticeData';
 
 /** `/practice` — Bài tập (SCR-06 §A). `?unit=` mở thẳng phiên luyện của unit. */
 export function PracticePage() {
@@ -48,35 +44,11 @@ export function PracticePage() {
 function Hub({ data }: { data: PracticeData }) {
   const navigate = useNavigate();
   const repos = useRepositories();
-  const now = useMemo(() => new Date(), []);
   // Cập nhật ngay khi chọn (ghi cài đặt là bất đồng bộ).
   const [filter, setFilter] = useState(data.filter);
-  const overview = practiceOverview({
-    cards: data.cards,
-    attempts: data.attempts,
-    now,
-    dayStart: startOfDay(now),
-  });
-  // Phiên "hôm nay" nếu bắt đầu bây giờ (gồm "cần ôn", câu sai, thẻ mới): số câu, số từ / câu.
-  const today = useMemo(() => {
-    const session = buildPracticeSession({
-      ...data,
-      mode: { kind: 'today' },
-      filter,
-      size: data.size,
-      now,
-      seed: 0,
-    });
-    const items = session.flatMap((q) => questionItems(q.question));
-    return {
-      count: session.length,
-      words: items.filter((i) => i.itemType === 'word').length,
-      sentences: items.filter((i) => i.itemType === 'sentence').length,
-    };
-  }, [data, filter, now]);
+  const { overview, today, started } = usePracticeToday(data, filter);
   const todayCount = today.count;
   const learnedUnits = new Set(data.lessons.map((l) => l.unitId));
-  const started = learnedUnits.size > 0 || data.cards.length > 0;
   const start = () => navigate('/practice/session');
   const mistakes = () => navigate('/practice/session?mode=mistakes');
   useKeyShortcut('Enter', start, started && todayCount > 0);
@@ -117,7 +89,7 @@ function Hub({ data }: { data: PracticeData }) {
                 n: todayCount,
                 words: today.words,
                 sentences: today.sentences,
-                min: Math.max(1, Math.round((todayCount * SECONDS_PER_QUESTION) / 60)),
+                min: today.minutes,
               })}
             </p>
             <div className="flex flex-wrap items-center gap-4">

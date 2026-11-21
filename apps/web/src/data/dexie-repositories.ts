@@ -11,6 +11,7 @@ import {
   type LessonProgressRecord,
   type ListeningStatRecord,
   type NeedsReviewRecord,
+  type WordNoteRecord,
   type ProgressRepository,
   type Repositories,
   type ReviewLogRecord,
@@ -111,6 +112,22 @@ class DexieProgressRepository implements ProgressRepository {
   }
   async deleteNeedsReview(itemType: ItemType, itemId: string) {
     await this.db.needsReview.where('[itemType+itemId]').equals([itemType, itemId]).delete();
+  }
+
+  getWordNote(itemId: string) {
+    return this.db.wordNotes.where('[itemType+itemId]').equals(['word', itemId]).first();
+  }
+  listWordNotes() {
+    return this.db.wordNotes.toArray();
+  }
+  async putWordNote(record: WordNoteRecord) {
+    await this.db.transaction('rw', this.db.wordNotes, async () => {
+      await this.deleteWordNote(record.itemId);
+      await this.db.wordNotes.put(record);
+    });
+  }
+  async deleteWordNote(itemId: string) {
+    await this.db.wordNotes.where('[itemType+itemId]').equals(['word', itemId]).delete();
   }
   getSentenceLevel(sentenceId: string) {
     return this.db.sentenceLevels.where('sentenceId').equals(sentenceId).first();

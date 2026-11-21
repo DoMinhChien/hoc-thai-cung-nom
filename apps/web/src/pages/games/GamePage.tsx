@@ -22,6 +22,7 @@ import {
   type FeedbackSound,
   type GameTheme,
 } from '@/components/interactive';
+import { useStudySession } from '@/data';
 import { t } from '@/i18n';
 import {
   AirplaneBoard,
@@ -238,6 +239,8 @@ function PlayFrame({
   children: ReactNode;
 }) {
   const music = useBackgroundMusic(theme, !paused);
+  // Lượt chơi = một phiên học (thời gian học + chuỗi ngày, SCR-09 Q2 b).
+  useStudySession('game');
   return (
     <div className="flex flex-col gap-6">
       <GameTopBar

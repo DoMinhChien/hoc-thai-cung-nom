@@ -14,6 +14,7 @@ import type {
   LessonProgressRecord,
   ListeningStatRecord,
   NeedsReviewRecord,
+  WordNoteRecord,
   ReviewLogRecord,
   SentenceLevelRecord,
   SessionRecord,
@@ -120,6 +121,23 @@ export class MemoryProgressRepository implements ProgressRepository {
   }
   async deleteNeedsReview(itemType: ItemType, itemId: string) {
     this.needsReview.delete(JSON.stringify([itemType, itemId]));
+  }
+
+  /** Khóa theo `itemId`. */
+  readonly wordNotes = new Map<string, WordNoteRecord>();
+
+  async getWordNote(itemId: string) {
+    const record = this.wordNotes.get(itemId);
+    return record && clone(record);
+  }
+  async listWordNotes() {
+    return [...this.wordNotes.values()].map(clone);
+  }
+  async putWordNote(record: WordNoteRecord) {
+    this.wordNotes.set(record.itemId, clone(record));
+  }
+  async deleteWordNote(itemId: string) {
+    this.wordNotes.delete(itemId);
   }
 
   readonly sentenceLevels = new Map<string, SentenceLevelRecord>();
