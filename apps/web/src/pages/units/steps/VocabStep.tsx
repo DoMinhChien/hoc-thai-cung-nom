@@ -206,7 +206,7 @@ function Cards({
         )}
       </div>
       {revealed ? (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 max-lg:[&>button]:h-12">
           <Button
             variant="outline"
             data-testid="vocab-forgot"

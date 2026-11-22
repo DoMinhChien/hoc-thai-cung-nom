@@ -76,7 +76,7 @@ export function LoginPage() {
   return (
     <section data-testid="page-login" className="grid items-center gap-12 lg:grid-cols-[1fr_400px]">
       <div className="flex flex-col gap-6">
-        <h1 className="max-w-md text-[40px] leading-tight font-semibold tracking-tight">
+        <h1 className="max-w-md text-[32px] leading-tight tablet:text-[40px] font-semibold tracking-tight">
           {t('login.heading')}
         </h1>
         <p className="max-w-lg text-lg text-muted-foreground">{t('login.intro')}</p>

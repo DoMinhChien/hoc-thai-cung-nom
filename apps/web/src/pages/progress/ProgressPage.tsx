@@ -84,7 +84,7 @@ export function ProgressPage() {
   return (
     <section data-testid="page-progress" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">{t('pages.progress')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.progress')}</h1>
         <p className="text-muted-foreground">
           {t('report.intro')}
           {auth.status === 'guest' && ` · ${t('report.guest')}`}
@@ -182,7 +182,7 @@ function Report({
         <h2 id="report-overview" className="sr-only">
           {t('report.overview')}
         </h2>
-        <ul className="grid grid-cols-3 gap-4 xl:grid-cols-5">
+        <ul className="grid grid-cols-2 gap-3 tablet:grid-cols-3 tablet:gap-4 xl:grid-cols-5">
           <Tile
             to="/words?level=mastered"
             testId="report-words"
@@ -671,7 +671,7 @@ function Roadmap({
               <Link
                 to={`/units/${u.unit.unit_id}`}
                 data-testid={`report-unit-${u.unit.unit_id}`}
-                className="grid min-h-11 grid-cols-[1.5rem_minmax(0,1fr)_5rem_9rem_6rem] items-center gap-3 py-2 text-sm outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+                className="grid min-h-11 grid-cols-[1.5rem_minmax(0,1fr)_7rem] items-center gap-3 tablet:grid-cols-[1.5rem_minmax(0,1fr)_5rem_9rem_6rem] py-2 text-sm outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <span aria-hidden>
                   {status === 'completed' ? '●' : status === 'in-progress' ? '◐' : '○'}
@@ -680,7 +680,7 @@ function Roadmap({
                   <span className="sr-only">{t(`report.status.${status}`)} · </span>
                   <span className="font-medium">{unitLabel(u.unit)}</span> {u.unit.title_vi}
                 </span>
-                <span className="tabular-nums">
+                <span className="tabular-nums max-tablet:hidden">
                   {t('report.unitLessons', { x: p.completed, y: p.total })}
                 </span>
                 <span className="flex items-center gap-2">
@@ -694,7 +694,7 @@ function Roadmap({
                     {pct === null ? '—' : `${pct}%`}
                   </span>
                 </span>
-                <span className="tabular-nums">
+                <span className="tabular-nums max-tablet:hidden">
                   {t('report.unitGoals', {
                     x: goals.filter((g) => g.checked).length,
                     y: goals.length,

@@ -55,7 +55,9 @@ export function PracticeResult({
           <Emoji size="lg">{pct >= 80 ? '🌟' : '🎯'}</Emoji>
           <Burst />
         </span>
-        <h1 className="text-4xl font-bold">{t('practice.doneTitle')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">
+          {t('practice.doneTitle')}
+        </h1>
       </div>
       <dl className="flex flex-wrap gap-12">
         {[

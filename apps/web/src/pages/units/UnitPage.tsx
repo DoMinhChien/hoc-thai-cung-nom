@@ -98,7 +98,7 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
       >
         <div className="flex flex-1 flex-col gap-2">
           <p className="text-sm font-semibold text-topic">{unitLabel(unit)}</p>
-          <h1 className="text-4xl font-bold">{unit.title_vi}</h1>
+          <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{unit.title_vi}</h1>
           <div className="flex flex-wrap items-center gap-2">
             {unit.title_th && (
               <span lang="th" className="text-th-sm text-muted-foreground">
@@ -148,10 +148,15 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
             )}
           </div>
         </div>
-        <TopicTile unit={unit} color={color} size="xl" className="bg-surface/60" />
+        <TopicTile
+          unit={unit}
+          color={color}
+          size="xl"
+          className="bg-surface/60 max-tablet:hidden"
+        />
       </header>
 
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         <section className="flex flex-col gap-3">
           <h2 className="text-lg font-semibold">{t('units.lessons')}</h2>
           <ul className="divide-y rounded-lg border">

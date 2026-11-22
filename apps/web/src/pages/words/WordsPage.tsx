@@ -8,13 +8,14 @@ import {
   type MasteryLevel,
   type UnitBundle,
 } from '@nom/core';
-import { Bookmark, Search, Volume2 } from 'lucide-react';
+import { Bookmark, Search, SlidersHorizontal, Volume2 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useAudio } from '@/audio/useAudio';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
 import { Emoji } from '@/components/fun';
 import { useKeyShortcut } from '@/components/interactive';
+import { BottomSheet } from '@/components/layout/BottomSheet';
 import { MASTERY_BG, MASTERY_FG } from '@/components/progress/levels';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -24,6 +25,7 @@ import { imageEmoji, unitLabel } from '@/content/labels';
 import { useRepositories, useRepositoryQuery } from '@/data';
 import { useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
+import { useBreakpoint } from '@/lib/useBreakpoint';
 import { cn } from '@/lib/utils';
 import { SpeakButton } from '../units/parts';
 
@@ -67,14 +69,14 @@ export function WordsPage() {
     <section data-testid="page-words" className="flex flex-col gap-6">
       {content.status === 'error' ? (
         <>
-          <h1 className="text-4xl font-bold">{t('pages.words')}</h1>
+          <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.words')}</h1>
           <p role="alert" className="rounded-xl bg-destructive-subtle p-4">
             {t('words.loadError')}
           </p>
         </>
       ) : content.status === 'loading' || !data ? (
         <>
-          <h1 className="text-4xl font-bold">{t('pages.words')}</h1>
+          <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.words')}</h1>
           <div className="flex flex-col gap-2" role="status" aria-label={t('words.loading')}>
             {Array.from({ length: 8 }, (_, i) => (
               <Skeleton key={i} className="h-12 rounded-lg" />
@@ -116,6 +118,9 @@ function Book({
   const [override, setPhonetic] = useState<boolean | null>(null);
   const phonetic = override ?? !!showDefault;
   const searchRef = useRef<HTMLInputElement>(null);
+  const compact = useBreakpoint() !== 'desktop';
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const update = (next: Record<string, string | null>, keepWord = false) => {
     const p = new URLSearchParams(params);
@@ -220,10 +225,100 @@ function Book({
   const unlearnedMatches =
     !unit && q ? all.filter((r) => r.cards.length === 0 && matchesWord(r.word, q)) : [];
 
+  // Phone / tablet: bộ lọc thu vào nút "Lọc" (sheet), chi tiết từ mở trong sheet (SCR-00 v2 §4).
+  const activeFilters = Number(!!unit) + Number(level !== null) + Number(sort !== 'lesson');
+  const selects = (
+    <>
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        {t('words.unitLabel')}
+        <select
+          data-testid="words-unit"
+          value={unit?.unit.unit_id ?? ''}
+          onChange={(e) =>
+            update({
+              unit: e.target.value || null,
+              level: level === 'none' ? null : level,
+              word: null,
+            })
+          }
+          className="h-10 max-w-60 rounded-lg border border-border-strong bg-surface px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <option value="">{t('words.allUnits')}</option>
+          {units.map((u) => (
+            <option key={u.unit.unit_id} value={u.unit.unit_id}>
+              {unitLabel(u.unit)} · {u.unit.title_vi}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        {t('words.sortLabel')}
+        <select
+          data-testid="words-sort"
+          value={sort}
+          onChange={(e) => update({ sort: e.target.value === 'lesson' ? null : e.target.value })}
+          className="h-10 rounded-lg border border-border-strong bg-surface px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {SORTS.map((s) => (
+            <option key={s} value={s}>
+              {t(`words.sort.${s}`)}
+            </option>
+          ))}
+        </select>
+      </label>
+    </>
+  );
+  const levelRow = (
+    <div className="flex flex-wrap items-center gap-2">
+      <div role="radiogroup" aria-label={t('words.levelLabel')} className="flex flex-wrap gap-2">
+        {([null, ...LEVELS, ...(unit ? (['none'] as const) : [])] as (Level | null)[]).map((l) => (
+          <button
+            key={l ?? 'all'}
+            type="button"
+            role="radio"
+            aria-checked={level === l}
+            data-testid={`words-level-${l ?? 'all'}`}
+            onClick={() => update({ level: l })}
+            className={cn(
+              'flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              level === l
+                ? 'border-primary bg-accent font-medium text-accent-foreground'
+                : 'bg-surface text-muted-foreground',
+            )}
+          >
+            {l === 'review' ? (
+              <Bookmark className="size-3.5" aria-hidden />
+            ) : (
+              l && <span aria-hidden>{LEVEL_SYMBOL[l]}</span>
+            )}
+            {l === null
+              ? t('words.levelAll')
+              : l === 'review'
+                ? t('words.review')
+                : t(`progress.level.${l}`)}{' '}
+            <span className="tabular-nums">{counts[l ?? 'all']}</span>
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        aria-pressed={phonetic}
+        data-testid="words-phonetic"
+        onClick={() => setPhonetic(!phonetic)}
+        className={cn(
+          'ml-auto rounded-full border px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          phonetic ? 'border-primary bg-accent text-accent-foreground' : 'bg-surface',
+        )}
+      >
+        Aa {t('words.phonetic')}
+      </button>
+    </div>
+  );
+
   return (
     <>
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">{t('pages.words')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.words')}</h1>
         <p className="text-muted-foreground" data-testid="words-summary">
           {unit
             ? t('words.unitSummary', {
@@ -240,7 +335,7 @@ function Book({
 
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-3">
-          <label className="relative flex min-w-72 flex-1 items-center">
+          <label className="relative flex min-w-0 flex-1 items-center tablet:min-w-72">
             <Search className="absolute left-3 size-4 text-muted-foreground" aria-hidden />
             <span className="sr-only">{t('words.searchLabel')}</span>
             <input
@@ -255,103 +350,48 @@ function Book({
                 if (query) setQuery('');
                 else e.currentTarget.blur();
               }}
-              className="h-10 w-full rounded-lg border border-border-strong bg-surface pr-10 pl-9 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="h-11 w-full rounded-lg border border-border-strong bg-surface pr-10 pl-9 text-sm outline-none lg:h-10 focus-visible:ring-2 focus-visible:ring-ring"
             />
             <kbd aria-hidden className="absolute right-3 font-sans text-xs text-muted-foreground">
               /
             </kbd>
           </label>
-          <label className="flex items-center gap-2 text-sm text-muted-foreground">
-            {t('words.unitLabel')}
-            <select
-              data-testid="words-unit"
-              value={unit?.unit.unit_id ?? ''}
-              onChange={(e) =>
-                update({
-                  unit: e.target.value || null,
-                  level: level === 'none' ? null : level,
-                  word: null,
-                })
-              }
-              className="h-10 max-w-60 rounded-lg border border-border-strong bg-surface px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          {compact ? (
+            <Button
+              variant="outline"
+              data-testid="words-filter"
+              aria-haspopup="dialog"
+              onClick={() => setFiltersOpen(true)}
+              className="h-11"
             >
-              <option value="">{t('words.allUnits')}</option>
-              {units.map((u) => (
-                <option key={u.unit.unit_id} value={u.unit.unit_id}>
-                  {unitLabel(u.unit)} · {u.unit.title_vi}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex items-center gap-2 text-sm text-muted-foreground">
-            {t('words.sortLabel')}
-            <select
-              data-testid="words-sort"
-              value={sort}
-              onChange={(e) =>
-                update({ sort: e.target.value === 'lesson' ? null : e.target.value })
-              }
-              className="h-10 rounded-lg border border-border-strong bg-surface px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {SORTS.map((s) => (
-                <option key={s} value={s}>
-                  {t(`words.sort.${s}`)}
-                </option>
-              ))}
-            </select>
-          </label>
+              <SlidersHorizontal aria-hidden />
+              {t('words.filters')}
+              {activeFilters > 0 && (
+                <span className="rounded-full bg-primary px-1.5 text-xs text-primary-foreground tabular-nums">
+                  {activeFilters}
+                </span>
+              )}
+            </Button>
+          ) : (
+            selects
+          )}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <div
-            role="radiogroup"
-            aria-label={t('words.levelLabel')}
-            className="flex flex-wrap gap-2"
-          >
-            {([null, ...LEVELS, ...(unit ? (['none'] as const) : [])] as (Level | null)[]).map(
-              (l) => (
-                <button
-                  key={l ?? 'all'}
-                  type="button"
-                  role="radio"
-                  aria-checked={level === l}
-                  data-testid={`words-level-${l ?? 'all'}`}
-                  onClick={() => update({ level: l })}
-                  className={cn(
-                    'flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    level === l
-                      ? 'border-primary bg-accent font-medium text-accent-foreground'
-                      : 'bg-surface text-muted-foreground',
-                  )}
-                >
-                  {l === 'review' ? (
-                    <Bookmark className="size-3.5" aria-hidden />
-                  ) : (
-                    l && <span aria-hidden>{LEVEL_SYMBOL[l]}</span>
-                  )}
-                  {l === null
-                    ? t('words.levelAll')
-                    : l === 'review'
-                      ? t('words.review')
-                      : t(`progress.level.${l}`)}{' '}
-                  <span className="tabular-nums">{counts[l ?? 'all']}</span>
-                </button>
-              ),
-            )}
-          </div>
-          <button
-            type="button"
-            aria-pressed={phonetic}
-            data-testid="words-phonetic"
-            onClick={() => setPhonetic(!phonetic)}
-            className={cn(
-              'ml-auto rounded-full border px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
-              phonetic ? 'border-primary bg-accent text-accent-foreground' : 'bg-surface',
-            )}
-          >
-            Aa {t('words.phonetic')}
-          </button>
-        </div>
+        {!compact && levelRow}
       </div>
+
+      {compact && (
+        <BottomSheet
+          open={filtersOpen}
+          onOpenChange={setFiltersOpen}
+          title={t('words.filters')}
+          testId="words-filter-sheet"
+        >
+          <div className="flex flex-col items-start gap-4 px-2 [&_select]:h-11">
+            {selects}
+            {levelRow}
+          </div>
+        </BottomSheet>
+      )}
 
       <p className="sr-only" aria-live="polite">
         {t('words.resultCount', { n: rows.length })}
@@ -443,7 +483,10 @@ function Book({
                       aria-selected={active}
                       data-testid={`word-row-${r.word.id}`}
                       data-level={r.level}
-                      onClick={() => select(r.word.id)}
+                      onClick={() => {
+                        select(r.word.id);
+                        if (compact) setDetailOpen(true);
+                      }}
                       className={cn(
                         'flex min-h-[52px] cursor-pointer items-center gap-3 border-b px-4 py-1.5 last:border-b-0',
                         active ? 'border-l-2 border-l-primary bg-accent' : 'hover:bg-muted',
@@ -461,24 +504,29 @@ function Book({
                           </Emoji>
                         )}
                       </span>
-                      <span className="flex min-w-40 flex-col">
-                        <span lang="th" className="text-th-sm">
-                          {r.word.thai}
+                      {/* Phone: chữ Thái trên, nghĩa dưới (dạng thẻ); tablet trở lên: các cột. */}
+                      <span className="flex min-w-0 flex-1 flex-col tablet:contents">
+                        <span className="flex min-w-0 flex-col tablet:min-w-40">
+                          <span lang="th" className="text-th-sm">
+                            {r.word.thai}
+                          </span>
+                          {phonetic && r.word.phonetic && (
+                            <span className="text-xs text-muted-foreground">{r.word.phonetic}</span>
+                          )}
                         </span>
-                        {phonetic && r.word.phonetic && (
-                          <span className="text-xs text-muted-foreground">{r.word.phonetic}</span>
-                        )}
-                      </span>
-                      <span className="min-w-0 flex-1 truncate">
-                        {r.word.meaning_vi.length ? r.word.meaning_vi.join('; ') : '—'}
+                        <span className="min-w-0 truncate max-tablet:text-sm max-tablet:text-muted-foreground tablet:flex-1">
+                          {r.word.meaning_vi.length ? r.word.meaning_vi.join('; ') : '—'}
+                        </span>
                       </span>
                       {r.word.classifier && (
-                        <span lang="th" className="text-sm text-muted-foreground">
+                        <span lang="th" className="text-sm text-muted-foreground max-tablet:hidden">
                           {r.word.classifier}
                         </span>
                       )}
                       {r.word.draft && (
-                        <span className="text-xs text-muted-foreground">{t('units.draft')}</span>
+                        <span className="text-xs text-muted-foreground max-tablet:hidden">
+                          {t('units.draft')}
+                        </span>
                       )}
                       {r.review && (
                         <Bookmark className="size-4 fill-current text-primary" aria-hidden />
@@ -510,16 +558,35 @@ function Book({
             </div>
           )}
         </div>
-        {selected && (
-          <Detail
-            key={selected.word.id}
-            row={selected}
-            phonetic={phonetic}
-            onSpeak={speak}
-            onTogglePhonetic={() => setPhonetic(!phonetic)}
-            onToggleReview={toggleReview}
-          />
-        )}
+        {selected &&
+          (compact ? (
+            <BottomSheet
+              open={detailOpen}
+              onOpenChange={setDetailOpen}
+              title={selected.word.thai}
+              srTitle
+              testId="word-detail-sheet"
+              className="pt-10"
+            >
+              <Detail
+                key={selected.word.id}
+                row={selected}
+                phonetic={phonetic}
+                onSpeak={speak}
+                onTogglePhonetic={() => setPhonetic(!phonetic)}
+                onToggleReview={toggleReview}
+              />
+            </BottomSheet>
+          ) : (
+            <Detail
+              key={selected.word.id}
+              row={selected}
+              phonetic={phonetic}
+              onSpeak={speak}
+              onTogglePhonetic={() => setPhonetic(!phonetic)}
+              onToggleReview={toggleReview}
+            />
+          ))}
       </div>
     </>
   );
@@ -737,7 +804,7 @@ function Detail({
 function EmptyBook({ first }: { first: UnitBundle | undefined }) {
   return (
     <>
-      <h1 className="text-4xl font-bold">{t('pages.words')}</h1>
+      <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.words')}</h1>
       <div
         data-testid="words-empty"
         className="flex flex-col items-center gap-3 rounded-xl border bg-surface p-10 text-center shadow-card"

@@ -7,7 +7,9 @@ export function LegalPage({ doc, testId }: { doc: LegalDocument; testId: string 
   return (
     <article data-testid={`page-${testId}`} className="flex flex-col gap-8 leading-[1.6]">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold tracking-tight">{doc.title}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl tracking-tight">
+          {doc.title}
+        </h1>
         <p className="text-muted-foreground">{t('legal.updated', { date: LEGAL_UPDATED })}</p>
       </header>
 
