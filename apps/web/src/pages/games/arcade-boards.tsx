@@ -322,7 +322,7 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
               </p>
             )}
             {q.prompt.vi && (
-              <p className="text-2xl font-medium tablet:text-[28px]">{q.prompt.vi}</p>
+              <p className="text-[24px] font-medium tablet:text-[28px]">{q.prompt.vi}</p>
             )}
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -466,7 +466,7 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
     <div className="flex flex-col items-center gap-4">
       <Panel className="flex flex-wrap items-baseline gap-x-3 py-3">
         <span className="text-muted-foreground">{t('games.planePrompt')}</span>
-        <span data-testid="plane-prompt" className="text-2xl font-semibold tablet:text-[28px]">
+        <span data-testid="plane-prompt" className="text-[24px] font-semibold tablet:text-[28px]">
           {q.vi}
         </span>
       </Panel>
@@ -659,7 +659,7 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
     <div className="flex flex-col items-center gap-4">
       <Panel className="flex flex-wrap items-baseline gap-x-3 py-3">
         <span className="text-muted-foreground">{t('games.mazePrompt')}</span>
-        <span data-testid="maze-prompt" className="text-2xl font-semibold tablet:text-[28px]">
+        <span data-testid="maze-prompt" className="text-[24px] font-semibold tablet:text-[28px]">
           {q.vi}
         </span>
       </Panel>
