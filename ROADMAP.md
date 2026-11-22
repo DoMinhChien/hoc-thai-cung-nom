@@ -7,7 +7,7 @@
 
 ## Milestone đang mở
 
-> **📥 Nội dung thật (2026-11-19, plan 0.12):** owner đã đưa 27 PDF vào `sources/`. Claude Desktop nhập tay dần → `content/` (draft, GV duyệt); tiến độ ở **`content/IMPORT-STATUS.md`** (hiện: **Bài 1, 2, 12, Chuyên đề 1** đã nhập — 155 từ, 105 câu, 10 mẫu câu, 5 hội thoại; thứ tự tiếp: Bài 11 → 3, rồi CĐ 15 → 2). Agent: **TC.1 ✅** (nhánh `content-teacher`, PR #18); TC.2 chờ đủ nội dung.
+> **📥 Nội dung thật (cập nhật 2026-11-22, plan 0.12):** **27/27 file** trong `sources/` (12 bài giáo trình + 15 chuyên đề) đã nhập vào `content/` — 27 unit, 158 bài học, 1563 từ, 856 câu, 128 mẫu câu, 21 hội thoại; tất cả **`draft: true`, chờ giáo viên duyệt** (chi tiết + điểm cần GV xem ở **`content/IMPORT-STATUS.md`**). Agent: TC.1 ✅, TC.3 ✅.
 
 > **🟢 M9 — Bài tập** (7/7 task, xong 2026-11-20, nhánh `m9-practice` — PR #20): `/practice`, `/practice/session`, 10 loại câu hỏi E-01..E-09, E-14, FSRS cho từ **và** câu, bậc dịch E-11, bước Bài tập của bài học dùng chung engine. Kế tiếp: **M10** (cần SCR-03/07/09 — đợt M0.5b-2).
 
@@ -17,12 +17,12 @@
 
 > **🟢 M10 — Tổng quan + Sổ từ + Tiến độ** (6/6 task, mở + xong 2026-11-21; nhánh `m10-home` → PR mới vào `main`): `/` Tổng quan (SCR-03), `/words` Sổ từ + mẹo nhớ của người học (SCR-07), `/progress` Tiến độ (SCR-09), ghi `SessionRecord`, Dexie v6. Owner duyệt + cho merge **#32** (2026-11-21).
 
-> **🔵 M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live** (5/6 task, mở 2026-11-21; nhánh `m12-golive` → **PR #34**): Cài đặt phiên âm mặc định (G-01), xuất / nhập / xoá tiến độ JSON (G-02), PWA offline (G-03), E2E luồng go-live, checklist go-live `docs/go-live.md`. **Chặn go-live:** việc tay của owner B1–B9 (mục "Việc chờ owner").
+> **🟢 CAT M12 — Cài đặt, xuất/nhập, PWA offline, E2E đủ, go-live** (T12.1–T12.5 ✅, T12.6 ⏸; PR #34 đã merge): Cài đặt phiên âm mặc định (G-01), xuất / nhập / xoá tiến độ JSON (G-02), PWA offline (G-03), E2E luồng go-live, `docs/go-live.md`. Production là bản **CAT** (khách hàng nghiệm thu, owner 2026-11-21). **Công bố chính thức** chờ B1, B4–B7, B9 + smoke test + GV duyệt nội dung (mục "Việc chờ owner").
 
-> **🔵 M12.7 — Responsive iPhone & iPad** (mở 2026-11-22, phản hồi CAT, plan 0.15): spec **`docs/design/screens/SCR-00-responsive.md`** (owner duyệt hướng 2026-11-22). T12.7.2–T12.7.6 xong (nhánh `m12.7-responsive` → **PR #38**, 6/7 task). PR là thay đổi UI lớn → **owner thử trên iPhone + iPad thật qua link preview rồi merge** (không tự merge).
+> **🟢 M12.7 — Responsive iPhone & iPad** (7/7 task, mở + xong 2026-11-22, phản hồi CAT, plan 0.15, spec `docs/design/screens/SCR-00-responsive.md`; nhánh `m12.7-responsive` → **PR #38**): phone = thanh tab dưới + sheet "Thêm", tablet = rail, desktop giữ nguyên; trang 1 cột, Sổ từ dạng thẻ, 8 trò bằng chạm, nhập liệu iOS, meta PWA iOS. **Owner duyệt UI mobile trên iPhone thật 2026-11-22**; iPad theo dõi thêm trong CAT.
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-22)** — agent không tự làm, tick khi xong:
-> - [ ] **PR M12.7 #38 (`m12.7-responsive`) — T12.7.7:** preview https://ashy-tree-0524a9b03-38.westeurope.6.azurestaticapps.net — thử trên **iPhone + iPad thật** qua link preview của PR (thanh tab dưới + sheet "Thêm", rail iPad, Sổ từ dạng thẻ, 8 trò bằng chạm, gõ tiếng Thái bằng bàn phím iOS, "Thêm vào MH chính"); xem baseline mới `responsive.spec.ts-snapshots` (Windows đã commit, Linux từ artifact CI) → merge. Không tự merge (8.1: giao diện lớn, nhiều màn).
+> - [x] **PR M12.7 #38 — T12.7.7:** owner thử UI mobile trên **iPhone thật** ✅ (2026-11-22) → cho merge. **iPad:** theo dõi thêm trong CAT (báo agent nếu lỗi).
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
 > - [x] ~~**Azure SWA hết chỗ preview:**~~ đã dọn 2026-11-21 (B2). deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
 > - [ ] ⏸ *(tạm loại 2026-11-21 — owner bật lại khi cần)* **SETUP S13** (Azure AI Speech F0) cho **T9.5.3**: tạo resource Speech (Southeast Asia, F0), ghi `AZURE_SPEECH_KEY` + `AZURE_SPEECH_REGION` vào `.env.local` (không commit, không gửi chat), nghe thử Premwadee / Achara → báo agent "S13 xong, giọng: …".
@@ -97,7 +97,8 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | M9.6 | **Trò chơi mở rộng** (Wordwall): +4 trò (Đập chuột, Đố vui truyền hình, Máy bay, Mê cung), theme, sao, "Đổi trò" | 🟢 | M9.5 ✅, SCR-08 v2 ✅ — PR #25 |
 | M10 | Tổng quan + Sổ từ + Tiến độ (P-09..P-12, R1 v7) + hình & mẹo nhớ cho từ (V-02..V-04) | 🟢 | M9 ✅, SCR-03/07/09 ✅ (#26) — PR `m10-home` |
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
-| M12 | Settings, export/import, PWA, E2E đủ, go-live | 🔵 | M10 ✅; go-live cần owner B1–B9 (S1, S3, S4, S5, S8) |
+| M12 | Settings, export/import, PWA, E2E đủ, go-live | 🟢 CAT | M10 ✅; công bố chính thức cần owner B1, B4–B7, B9 + smoke test |
+| M12.7 | **Responsive iPhone & iPad** (phản hồi CAT, plan 0.15) | 🟢 | SCR-00 v2 ✅ — PR #38 |
 
 Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không làm cho tới khi Phase 1 xong.**
 
@@ -584,7 +585,7 @@ T6.1–T6.9 cũ bị hủy, chưa có code. M6 mới = Content model v7 (chi ti�
 - Tải app một lần rồi tắt mạng: mở bài học bất kỳ, học từ, Sổ từ, Tiến độ vẫn chạy; bản build mới tự cập nhật.
 - Smoke test production đăng nhập Google thật qua (B4 xong).
 
-### M12.7 — Responsive iPhone & iPad 🔵 (mở 2026-11-22, phản hồi CAT; plan 0.15, spec SCR-00 v2 responsive)
+### M12.7 — Responsive iPhone & iPad 🟢 (mở + xong 2026-11-22, phản hồi CAT; plan 0.15, spec SCR-00 v2 responsive)
 
 Nhánh gợi ý `m12.7-responsive` (base `main`). Có thể chia 2 PR: (1) khung + trang, (2) trò chơi + E2E thiết bị.
 - [x] T12.7.1 Spec `docs/design/screens/SCR-00-responsive.md` (Claude Desktop) — owner duyệt hướng 2026-11-22.
@@ -593,7 +594,7 @@ Nhánh gợi ý `m12.7-responsive` (base `main`). Có thể chia 2 PR: (1) khung
 - [x] T12.7.4 Trò chơi: `/games` (select nguồn full-width, chủ đề + kỹ năng cuộn ngang 1 dòng, thẻ 1 cột / 2 cột) + 8 màn chơi điều khiển bằng chạm (Máy bay ▲▼, Mê cung D-pad + vuốt, Đập chuột ô ≥ 88px, Xếp câu chạm-chọn); `touch-action: manipulation`.
 - [x] T12.7.5 Nhập liệu iOS: font ô nhập ≥ 16px; giữ ô nhập trong tầm nhìn khi bàn phím mở (`visualViewport`); bàn phím ảo Thái mặc định ẩn trên thiết bị cảm ứng + nút bật (dock đáy, `inputmode="none"`); meta PWA iOS (`apple-touch-icon` 180, status bar, `theme-color`).
 - [x] T12.7.6 E2E: project WebKit **iPhone 15**, **iPad mini dọc**, **iPad Pro 11 ngang**; test "không tràn ngang" mọi route, điều hướng tab + sheet, 1 ván Máy bay + Mê cung bằng chạm, axe; baseline ảnh phone/tablet. Giữ nguyên test desktop.
-- [ ] T12.7.7 Owner thử iPhone + iPad thật qua link preview → merge. Agent ghi nhật ký, cập nhật baseline cần xem.
+- [x] T12.7.7 Owner thử iPhone + iPad thật qua link preview → merge. Agent ghi nhật ký, cập nhật baseline cần xem. — **Owner duyệt UI mobile trên iPhone thật 2026-11-22**, cho merge #38; iPad theo dõi thêm trong CAT.
 
 ### Sau M12
 Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6) đầu Phase 2. Không làm trước khi owner mở.
@@ -606,6 +607,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-22 | M12.7 🟢 | T12.7.7: owner duyệt UI mobile trên iPhone thật → M12.7 xong (7/7), merge #38 (owner cho phép) → production có bản responsive. iPad theo dõi trong CAT. Dọn "Milestone đang mở": nội dung 27/27 file đã nhập (draft chờ GV duyệt), M12 → 🟢 CAT. CI #38 lần trước: `settings.spec` giọng đọc flaky trên WebKit, chạy lại xanh | — | Công bố chính thức: B1, B4–B7, B9, smoke test, GV duyệt nội dung | `m12.7-responsive` → #38 |
 | 2026-11-22 | M12.7 | **Tự merge #37** (docs M12.7: plan v7.9, SCR-00 v2, 8.1 theo lệnh owner). T12.7.2 khung phone (thanh trên + tab dưới + sheet "Thêm") / tablet (rail 72px) / desktop giữ nguyên · T12.7.3 trang 1 cột, Sổ từ dạng thẻ + sheet lọc/chi tiết, chữ Thái thu nhỏ ở phone · T12.7.4 `/games` 1–2 cột, 8 trò bằng chạm (▲▼ Máy bay, D-pad + vuốt Mê cung, ô Đập chuột ≥ 88px) · T12.7.5 ô nhập ≥ 16px, bàn phím Thái ảo ẩn mặc định trên cảm ứng (dock đáy + `inputmode=none`), `visualViewport`, meta PWA iOS + icon 180 · T12.7.6 E2E WebKit iPhone 15 / iPad mini dọc / iPad Pro 11 ngang (27 test). Baseline desktop không đổi | T12.7.7 | Owner thử máy thật + merge | `m12.7-responsive` → #38 |
 | 2026-11-22 | M12.7 mở | Phản hồi CAT: UI vỡ trên iPhone (sidebar 240px ép nội dung). Plan v7.9 §0.15 (thay G-04 desktop-first), spec `SCR-00-responsive.md`, milestone M12.7 (T12.7.1 ✅) | T12.7.2–T12.7.7 (agent) | — | — (docs chưa commit) |
 | 2026-11-21 | M12 → CAT | Owner: production hiện tại là bản **CAT** (khách hàng nghiệm thu). **B8 duyệt** (giữ câu ghi công). B1, B4–B7, B9, smoke test **⏸ hoãn** tới công bố chính thức. Phase 1 code hoàn tất (M0 → M12 T12.5, TC.3) | — | Công bố chính thức chờ B1, B4–B7, B9 + smoke test + GV duyệt nội dung | — (docs chưa commit) |
