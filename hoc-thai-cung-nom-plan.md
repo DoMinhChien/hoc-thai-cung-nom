@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.7** (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.9** (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -192,6 +192,18 @@ Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1)
 | **F-18** | **Mê cung** | Maze chase | Nhân vật đi trong mê cung bằng mũi tên tới ô chứa đáp án đúng (4 ô), tránh "ma đuổi"; trả lời đúng → màn tiếp | Nghĩa từ, loại từ |
 
 **Kỹ thuật:** chuyển động bằng DOM/SVG + `requestAnimationFrame` (không thêm game engine nặng); vòng lặp game là hàm thuần trong `packages/core` với đồng hồ là tham số (test được bằng seed + đồng hồ giả, như M7.5). `prefers-reduced-motion`: chuyển sang chế độ từng bước (không trôi/không đuổi). Hình: **Noto Emoji** + bộ asset **CC0** (vd. Kenney.nl), ghi nguồn trong `apps/web/public/games/LICENSE.md`. Thiết kế: **SCR-08 v2** (danh sách trò + 4 màn mới + 3 theme) trong đợt **M0.5c**.
+
+### 0.15 Responsive iPhone & iPad (2026-11-22, v7.9 — phản hồi CAT)
+
+**Phản hồi:** trên iPhone, sidebar 240px chiếm gần nửa màn hình, nội dung `/games` bị ép thành cột chữ hẹp, thẻ trò chơi vỡ. Người học dùng điện thoại/iPad là chính.
+
+**Quyết định (thay G-04 "desktop-first" ở 4.8, và các dòng "chưa làm mobile" ở mục 3, 7.4, 9):**
+- App phải dùng tốt trên **iPhone (dọc)** và **iPad (dọc + ngang)**, desktop giữ nguyên. Breakpoint: phone < 744px · tablet 744–1023px · desktop ≥ 1024px.
+- Phone: **thanh trên + thanh tab dưới** (Tổng quan · Bài học · Bài tập · Trò chơi · Thêm). Tablet: **rail icon 72px**. Luồng toàn màn hình (bài học, phiên bài tập, màn chơi) ẩn điều hướng.
+- Mọi trò chơi chơi được chỉ bằng chạm (Máy bay: nút ▲▼; Mê cung: D-pad ảo + vuốt). Không cuộn ngang trang ở mọi route.
+- iOS: safe area, `dvh`, ô nhập ≥ 16px, bàn phím ảo Thái mặc định ẩn trên thiết bị cảm ứng (bật bằng nút), meta PWA cho iOS.
+- E2E thêm WebKit iPhone 15, iPad mini dọc, iPad Pro 11 ngang.
+- Spec: `docs/design/screens/SCR-00-responsive.md`. Milestone **M12.7** (làm trong giai đoạn CAT, trước công bố chính thức).
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -525,7 +537,7 @@ Mục tiêu: **vui nhờ cơ chế chơi** (thời gian, combo, âm thanh phản
 - **G-01** Settings: số từ mới/ngày, hiện phiên âm mặc định, tốc độ audio, giọng TTS, bật/tắt loại thẻ gõ.
 - **G-02** Export / Import tiến độ ra JSON (Phase 1; vẫn giữ ở Phase 2).
 - **G-03** PWA, dùng offline sau lần tải đầu.
-- **G-04** **Desktop-first**: thiết kế & test cho màn hình ≥ 1280px; hỗ trợ tối thiểu 1024px. Mobile chưa nằm trong scope (chỉ đảm bảo không vỡ layout nghiêm trọng).
+- **G-04** ~~**Desktop-first**~~ (thay bởi 0.15 v7.9: responsive iPhone & iPad): thiết kế & test cho màn hình ≥ 1280px; hỗ trợ tối thiểu 1024px. Mobile chưa nằm trong scope (chỉ đảm bảo không vỡ layout nghiêm trọng).
 - **G-05** Font Thái self-host **Sarabun** (v7.4: kiểu chữ Thái **có đầu tròn** phổ thông, giống giáo trình/sách; không dùng kiểu không đầu tròn như Noto Sans Thai), dấu hiển thị đúng vị trí.
 - **G-06** **Gõ chữ Thái** (Phase 1):
   - Bàn phím ảo layout **Kedmanee** (chuẩn Thái), có thể ẩn/hiện; trên desktop hiển thị dưới ô nhập, hỗ trợ cả click chuột và bàn phím vật lý (map phím theo layout Kedmanee khi người dùng chưa cài bàn phím Thái).
@@ -1131,6 +1143,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.9 (2026-11-22):** Phản hồi CAT — **responsive iPhone & iPad** (mục 0.15, thay G-04 desktop-first); spec SCR-00 v2 responsive; milestone M12.7.
 - **v7.7 (2026-11-20):** Trò chơi mở rộng (mục 0.14): thêm F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; UI trò chơi tham khảo Wordwall (thumbnail minh họa, 3 theme, sao kết quả, "Đổi trò"); milestone **M9.6**; SCR-08 v2 thuộc M0.5c.
 - **v7.6 (2026-11-20):** Phản hồi người học (mục 0.13): âm đúng/sai toàn app, giọng đọc (chọn giọng + Azure TTS neural lên Phase 1), nới định hướng tối giản (M0.5c); milestone **M9.5**; thứ tự nhập tài liệu số lớn trước.
 - **v7.5 (2026-11-19):** Nhận 27 PDF giáo viên (mục 0.12): lộ trình 2 nhánh Giáo trình (`b01`–`b12`) / Chuyên đề (`c01`–`c15`); Claude Desktop chuyển tay, theo dõi ở `content/IMPORT-STATUS.md`; M4 hạ ưu tiên.
