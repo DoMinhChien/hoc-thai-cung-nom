@@ -97,7 +97,11 @@ export function MatchBoard({ source, seed, children }: BoardProps) {
   ) : (
     <div className="flex flex-col items-center gap-4">
       <p className="text-sm text-muted-foreground">{t('games.matchLeft', { n: pairsLeft })}</p>
-      <div role="group" aria-label={t('games.name.match')} className="grid grid-cols-4 gap-4">
+      <div
+        role="group"
+        aria-label={t('games.name.match')}
+        className="grid w-full max-w-[704px] grid-cols-3 gap-2 tablet:grid-cols-4 tablet:gap-4 lg:w-auto lg:max-w-none"
+      >
         {state.cards.map((card, i) => {
           const matched = state.matched.includes(card.wordId);
           const open = matched || state.open.includes(i);
@@ -117,7 +121,7 @@ export function MatchBoard({ source, seed, children }: BoardProps) {
                 answer(i);
               }}
               className={cn(
-                'flex h-24 w-40 items-center justify-center rounded-xl border-2 px-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:transition-[background-color,border-color,opacity,transform] motion-safe:duration-200',
+                'flex h-20 w-full items-center justify-center rounded-xl border-2 px-2 lg:h-24 lg:w-40 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:transition-[background-color,border-color,opacity,transform] motion-safe:duration-200',
                 !open &&
                   'border-transparent bg-game-subtle hover:border-game enabled:hover:-translate-y-0.5',
                 open && !matched && 'border-game bg-background motion-safe:animate-pop',
@@ -324,7 +328,7 @@ export function ClassifierBoard({ source, seed, children }: BoardProps) {
         </p>
         <p className="text-lg text-muted-foreground">{q.meaning}</p>
       </UrgencyCard>
-      <div data-testid="cr-options" className="grid grid-cols-4 gap-3">
+      <div data-testid="cr-options" className="grid grid-cols-2 gap-3 tablet:grid-cols-4">
         {q.options.map((option, i) => (
           <ChoiceButton
             key={`${state.index}-${option}`}

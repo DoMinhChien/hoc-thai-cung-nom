@@ -124,21 +124,22 @@ function Lesson({
   return (
     <div className="flex flex-col gap-6">
       <header className="flex flex-col gap-3 border-b pb-3">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 tablet:gap-4">
           <Button
             variant="ghost"
             size="sm"
             onClick={exit}
             aria-keyshortcuts="Escape"
             data-testid="lesson-exit"
+            className="max-lg:min-h-11 max-lg:min-w-11"
           >
             <X aria-hidden />
-            {t('lesson.exit')}
-            <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+            <span className="max-tablet:sr-only">{t('lesson.exit')}</span>
+            <kbd aria-hidden className="hidden font-sans text-xs text-muted-foreground lg:inline">
               Esc
             </kbd>
           </Button>
-          <h1 className="font-semibold">
+          <h1 className="min-w-0 font-semibold max-tablet:text-sm">
             {t('lesson.title', {
               unit: unitLabel(bundle.unit),
               lesson: lesson.order,
@@ -147,17 +148,21 @@ function Lesson({
           </h1>
           {lesson.draft && <Badge muted>{t('units.draft')}</Badge>}
         </div>
-        <ol aria-label={t('lesson.stepper')} className="flex flex-wrap items-center gap-2 text-sm">
+        {/* Phone: 1 dòng cuộn ngang (SCR-00 v2 §4). */}
+        <ol
+          aria-label={t('lesson.stepper')}
+          className="flex items-center gap-2 overflow-x-auto text-sm whitespace-nowrap lg:flex-wrap lg:overflow-visible"
+        >
           {steps.map((s, i) => (
             <li key={s} className="flex items-center gap-2">
-              {i > 0 && <span aria-hidden className="h-px w-6 bg-border-strong" />}
+              {i > 0 && <span aria-hidden className="h-px w-3 bg-border-strong tablet:w-6" />}
               <button
                 type="button"
                 data-testid={`step-${s}`}
                 aria-current={step === s ? 'step' : undefined}
                 onClick={() => setStep(s)}
                 className={cn(
-                  'flex items-center gap-1 rounded px-1 py-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  'flex items-center gap-1 rounded px-1 py-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring max-lg:min-h-11',
                   step === s
                     ? 'border-b-[3px] border-topic font-semibold text-topic'
                     : 'text-muted-foreground',
@@ -168,7 +173,7 @@ function Lesson({
               </button>
             </li>
           ))}
-          <li aria-hidden className="ml-auto text-xs text-muted-foreground">
+          <li aria-hidden className="ml-auto text-xs text-muted-foreground max-lg:hidden">
             [ ]
           </li>
         </ol>

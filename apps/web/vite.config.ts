@@ -12,7 +12,7 @@ export default defineConfig({
     // bộ content JSON được precache; bản build mới tự cập nhật ở lần mở sau.
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['brand/*.svg'],
+      includeAssets: ['brand/*.svg', 'brand/apple-touch-icon.png'],
       manifest: {
         name: 'Học Thai cùng Nôm',
         short_name: 'Nôm',
@@ -21,9 +21,10 @@ export default defineConfig({
         start_url: '/',
         display: 'standalone',
         background_color: '#fffbf5',
-        theme_color: '#3f4aa8',
+        theme_color: '#fffbf5',
         icons: [
           { src: '/brand/logo-mark.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: '/brand/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
         ],
       },
       workbox: {

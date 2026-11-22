@@ -92,12 +92,15 @@ export function GamesPage() {
   return (
     <section data-testid="page-games" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">{t('pages.games')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.games')}</h1>
         <p className="text-muted-foreground">{t('games.intro')}</p>
       </header>
 
       {state.status === 'loading' && (
-        <ul className="grid grid-cols-3 gap-4 xl:grid-cols-4" aria-label={t('games.loading')}>
+        <ul
+          className="grid grid-cols-1 gap-4 tablet:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          aria-label={t('games.loading')}
+        >
           {GAME_ORDER.map((id) => (
             <li key={id}>
               <Skeleton className="aspect-[16/12] rounded-xl" />
@@ -113,8 +116,8 @@ export function GamesPage() {
 
       {ready && (
         <>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8">
+            <div className="flex flex-col gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3">
               <label htmlFor={selectId} className="text-sm text-muted-foreground">
                 {t('games.source')}
               </label>
@@ -123,7 +126,7 @@ export function GamesPage() {
                 data-testid="game-source"
                 value={ready.fallback ? LEARNED_SOURCE : ready.choice}
                 onChange={(e) => void choose(e.target.value)}
-                className="h-10 rounded-lg border border-border-strong bg-surface px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="h-11 w-full min-w-0 rounded-lg border border-border-strong bg-surface px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-ring lg:h-10 lg:w-auto lg:text-sm"
               >
                 <option value={LEARNED_SOURCE}>{t('games.learned', ready.learned)}</option>
                 {[...ready.bundles]
@@ -147,12 +150,13 @@ export function GamesPage() {
             </p>
           )}
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3">
             <span className="text-sm text-muted-foreground">{t('games.skillLabel')}</span>
+            {/* Phone / tablet: 1 dòng cuộn ngang, chữ không xuống dòng (SCR-00 v2 §4). */}
             <div
               role="group"
               aria-label={t('games.skillLabel')}
-              className="flex rounded-lg border bg-surface p-0.5"
+              className="flex max-w-full self-start overflow-x-auto rounded-lg border bg-surface p-0.5"
             >
               {SKILL_CYCLE.map((k) => (
                 <button
@@ -162,7 +166,7 @@ export function GamesPage() {
                   data-testid={`games-skill-${k ?? 'all'}`}
                   onClick={() => setSkill(k)}
                   className={cn(
-                    'rounded-md px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    'shrink-0 rounded-md px-3 py-1.5 text-sm whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-ring max-lg:min-h-11',
                     skill === k
                       ? 'bg-accent font-medium text-accent-foreground'
                       : 'text-muted-foreground',
@@ -172,7 +176,7 @@ export function GamesPage() {
                 </button>
               ))}
             </div>
-            <kbd className="font-sans text-xs text-muted-foreground" aria-hidden>
+            <kbd className="hidden font-sans text-xs text-muted-foreground lg:inline" aria-hidden>
               S
             </kbd>
           </div>
@@ -180,7 +184,10 @@ export function GamesPage() {
           {shown.length === 0 ? (
             <p className="text-muted-foreground">{t('games.noSkillGames')}</p>
           ) : (
-            <ul className="grid grid-cols-3 gap-4 xl:grid-cols-4" data-testid="games-grid">
+            <ul
+              className="grid grid-cols-1 gap-4 tablet:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              data-testid="games-grid"
+            >
               {shown.map((id, i) => {
                 const reason = reasonOf(id);
                 const best = records?.find((r) => r.gameId === id && r.source === ready.source.key);
@@ -283,9 +290,16 @@ export function GamesPage() {
 /** Chọn chủ đề màn chơi (SCR-08 v2 §A): 3 ô tròn, `T` xoay vòng, lưu theo người dùng. */
 function ThemePicker({ theme, onChange }: { theme: GameTheme; onChange: (t: GameTheme) => void }) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-sm text-muted-foreground">{t('games.themeLabel')}</span>
-      <div role="radiogroup" aria-label={t('games.themeGroup')} className="flex gap-3">
+    <div className="flex min-w-0 flex-col gap-1.5 lg:flex-row lg:items-center lg:gap-3">
+      <span className="text-sm whitespace-nowrap text-muted-foreground">
+        {t('games.themeLabel')}
+      </span>
+      {/* Phone / tablet: hàng cuộn ngang (SCR-00 v2 §4). */}
+      <div
+        role="radiogroup"
+        aria-label={t('games.themeGroup')}
+        className="-mx-1 flex gap-3 overflow-x-auto p-1 lg:mx-0 lg:overflow-visible lg:p-0"
+      >
         {GAME_THEMES.map((th) => (
           <button
             key={th}
@@ -295,7 +309,7 @@ function ThemePicker({ theme, onChange }: { theme: GameTheme; onChange: (t: Game
             data-testid={`game-theme-${th}`}
             data-game-theme={th}
             onClick={() => onChange(th)}
-            className="flex items-center gap-2 rounded-full pr-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex shrink-0 items-center gap-2 rounded-full pr-2 text-sm whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span
               className={cn(
@@ -317,7 +331,7 @@ function ThemePicker({ theme, onChange }: { theme: GameTheme; onChange: (t: Game
           </button>
         ))}
       </div>
-      <kbd className="font-sans text-xs text-muted-foreground" aria-hidden>
+      <kbd className="hidden font-sans text-xs text-muted-foreground lg:inline" aria-hidden>
         T
       </kbd>
     </div>

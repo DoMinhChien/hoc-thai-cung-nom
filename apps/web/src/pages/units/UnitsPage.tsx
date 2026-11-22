@@ -42,11 +42,11 @@ export function UnitsPage() {
   return (
     <section data-testid="page-units" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">{t('pages.units')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.units')}</h1>
         <p className="text-muted-foreground">{t('units.intro')}</p>
       </header>
       {content.status === 'loading' || records === undefined ? (
-        <div className="grid grid-cols-2 gap-4" aria-label={t('units.loading')}>
+        <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2" aria-label={t('units.loading')}>
           {[0, 1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-[176px] rounded-xl" />
           ))}
@@ -147,7 +147,7 @@ function Path({
         </span>
       </div>
 
-      <ul data-testid="unit-path" className="grid grid-cols-2 gap-4">
+      <ul data-testid="unit-path" className="grid grid-cols-1 gap-4 tablet:grid-cols-2">
         {shown.map((unit, i) => {
           const status = unitStatus(unit.lessons, records);
           const progress = unitLessonProgress(unit.lessons, records);
@@ -298,7 +298,7 @@ function ContinueCard({
           </Button>
         </div>
       </div>
-      <TopicTile unit={unit} color={color} size="xl" className="bg-surface/60" />
+      <TopicTile unit={unit} color={color} size="xl" className="bg-surface/60 max-tablet:hidden" />
     </div>
   );
 }

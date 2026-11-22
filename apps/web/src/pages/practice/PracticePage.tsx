@@ -26,7 +26,7 @@ export function PracticePage() {
   return (
     <section data-testid="page-practice" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">{t('pages.practice')}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">{t('pages.practice')}</h1>
         <p className="text-muted-foreground">{t('practice.intro')}</p>
       </header>
       <PracticeStreak />

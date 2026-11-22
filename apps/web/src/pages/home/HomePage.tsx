@@ -28,7 +28,7 @@ export function HomePage() {
   return (
     <section data-testid="page-dashboard" className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">
           {name ? t('home.hello', { name }) : t('home.helloGuest')}
         </h1>
         {state.status === 'ready' && (
@@ -41,7 +41,7 @@ export function HomePage() {
       </header>
       {state.status === 'loading' ? (
         <div className="flex flex-col gap-4" role="status" aria-label={t('home.loading')}>
-          <div className="grid grid-cols-[3fr_2fr] gap-4">
+          <div className="grid grid-cols-1 gap-4 tablet:grid-cols-[3fr_2fr]">
             <Skeleton className="h-48 rounded-xl" />
             <Skeleton className="h-48 rounded-xl" />
           </div>
@@ -91,7 +91,7 @@ function Dashboard({ data }: { data: PracticeData }) {
 
   return (
     <>
-      <div className="grid grid-cols-[3fr_2fr] gap-4">
+      <div className="grid grid-cols-1 gap-4 tablet:grid-cols-[3fr_2fr]">
         {target ? (
           <ContinueCard
             target={target}
@@ -199,7 +199,7 @@ function Dashboard({ data }: { data: PracticeData }) {
           <h2 id="home-how" className="text-lg font-semibold">
             {t('home.howTitle')}
           </h2>
-          <ol className="grid grid-cols-3 gap-4">
+          <ol className="grid grid-cols-1 gap-4 tablet:grid-cols-3">
             {(['📖', '✍️', '🎮'] as const).map((e, i) => (
               <li key={e} className="flex items-center gap-3">
                 <Emoji size="sm">{e}</Emoji>
@@ -331,7 +331,12 @@ function ContinueCard({
           </kbd>
         </Button>
       </div>
-      <TopicTile unit={bundle.unit} color={color} size="lg" className="bg-surface/60" />
+      <TopicTile
+        unit={bundle.unit}
+        color={color}
+        size="lg"
+        className="bg-surface/60 max-tablet:hidden"
+      />
     </section>
   );
 }

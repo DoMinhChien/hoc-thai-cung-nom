@@ -6,13 +6,27 @@ const VIEWPORTS = [
   { name: '1280', viewport: { width: 1280, height: 800 } },
   { name: '1024', viewport: { width: 1024, height: 768 } },
 ];
+/** Thiết bị cảm ứng WebKit (M12.7, SCR-00 v2 §7) — chỉ chạy `responsive.spec.ts`. */
+const DEVICES = [
+  { name: 'webkit-iphone15', use: devices['iPhone 15'] },
+  {
+    name: 'webkit-ipad-mini',
+    use: {
+      ...devices['iPad Mini'],
+      viewport: { width: 744, height: 1133 },
+      screen: { width: 744, height: 1133 },
+    },
+  },
+  { name: 'webkit-ipad-pro11-landscape', use: devices['iPad Pro 11 landscape'] },
+];
+const RESPONSIVE_SPEC = /responsive\.spec\.ts/;
 const BROWSERS = [
   { name: 'chromium', device: devices['Desktop Chrome'] },
   { name: 'firefox', device: devices['Desktop Firefox'] },
   { name: 'webkit', device: devices['Desktop Safari'] },
 ];
 
-/** E2E trên bản build (plan 7.4): 3 trình duyệt × 2 viewport desktop. */
+/** E2E trên bản build (plan 7.4): 3 trình duyệt × 2 viewport desktop + 3 thiết bị iOS (M12.7). */
 export default defineConfig({
   testDir: './e2e',
   globalSetup: './e2e/global-setup.ts',
@@ -29,12 +43,16 @@ export default defineConfig({
   expect: {
     toHaveScreenshot: { maxDiffPixelRatio: 0.01 },
   },
-  projects: BROWSERS.flatMap((b) =>
-    VIEWPORTS.map((v) => ({
-      name: `${b.name}-${v.name}`,
-      use: { ...b.device, viewport: v.viewport },
-    })),
-  ),
+  projects: [
+    ...BROWSERS.flatMap((b) =>
+      VIEWPORTS.map((v) => ({
+        name: `${b.name}-${v.name}`,
+        use: { ...b.device, viewport: v.viewport },
+        testIgnore: RESPONSIVE_SPEC,
+      })),
+    ),
+    ...DEVICES.map((d) => ({ ...d, testMatch: RESPONSIVE_SPEC })),
+  ],
   webServer: [
     {
       // Firebase Auth Emulator (cần Java). Sẵn sàng cho E2E đăng nhập ở M1.
