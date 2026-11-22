@@ -46,6 +46,9 @@ export interface GameTopBarProps {
   status?: string;
 }
 
+/** Nút trên thanh: vùng chạm ≥ 44px dưới desktop (SCR-00 v2 §7). */
+const TOUCH_BUTTON = 'max-lg:min-h-11 max-lg:min-w-11';
+
 /** Đồng hồ đếm ngược ≤ mốc này (ms) → màu cảnh báo + nhấp nháy nhẹ. */
 const URGENT_MS = 10_000;
 
@@ -82,119 +85,139 @@ export function GameTopBar({
   return (
     <header
       data-testid="game-top-bar"
-      className="flex min-h-14 items-center gap-4 rounded-xl bg-surface/90 px-3 py-2 shadow-sm"
+      className="flex min-h-14 flex-wrap items-center gap-x-2 gap-y-1 rounded-xl bg-surface/90 px-2 py-1.5 shadow-sm lg:flex-nowrap lg:gap-4 lg:px-3 lg:py-2"
     >
-      <Button variant="ghost" size="sm" onClick={onExit} aria-keyshortcuts="Escape">
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={onExit}
+        aria-keyshortcuts="Escape"
+        className={TOUCH_BUTTON}
+      >
         <X aria-hidden />
-        {t('play.exit')}
-        <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+        <span className="max-tablet:sr-only">{t('play.exit')}</span>
+        <kbd aria-hidden className="hidden font-sans text-xs text-muted-foreground lg:inline">
           Esc
         </kbd>
       </Button>
-      <h1 className="text-lg font-semibold">{title}</h1>
+      <h1 className="min-w-0 flex-1 truncate text-lg font-semibold lg:flex-none">{title}</h1>
       {status && (
-        <span data-testid="game-status" className="text-sm text-muted-foreground">
+        <span
+          data-testid="game-status"
+          className="hidden text-sm text-muted-foreground tablet:inline"
+        >
           {status}
         </span>
       )}
-      <div className="ml-auto flex items-center gap-6 tabular-nums">
-        {combo >= 2 && (
-          <span
-            key={combo}
-            data-testid="game-combo"
-            className="inline-flex items-center gap-1 rounded-full bg-game px-3 py-0.5 text-sm font-semibold text-game-fg motion-safe:animate-pop"
-          >
-            <Zap className="size-3.5" aria-hidden />
-            {t('play.combo', { n: combo })}
-          </span>
-        )}
-        <span data-testid="game-score" className="relative">
-          <span className="sr-only">{scoreLabel ?? t('play.score')}: </span>
-          <span aria-hidden className="text-sm text-muted-foreground">
-            {scoreLabel ?? t('play.score')}{' '}
-          </span>
-          <span
-            key={score}
-            className="inline-block text-lg font-semibold text-game motion-safe:animate-pop"
-          >
-            {numberFormat.format(score)}
-          </span>
-          {gain > 0 && !scoreLabel && (
+      {/*
+       * Phone / tablet (SCR-00 v2 §5): dòng 1 = Thoát · tên · ⏸; dòng 2 = điểm, tim, đồng hồ, âm.
+       * Desktop (`lg:contents`): một hàng như SCR-08.
+       */}
+      <div className="contents lg:ml-auto lg:flex lg:items-center lg:gap-6 lg:tabular-nums">
+        <div className="order-last flex w-full flex-wrap items-center gap-x-4 tabular-nums lg:contents">
+          {combo >= 2 && (
             <span
-              key={`gain-${score}`}
-              aria-hidden
-              data-testid="game-gain"
-              className="pointer-events-none absolute -top-3 right-0 text-sm font-semibold text-positive opacity-0 motion-safe:animate-rise"
+              key={combo}
+              data-testid="game-combo"
+              className="inline-flex items-center gap-1 rounded-full bg-game px-3 py-0.5 text-sm font-semibold text-game-fg motion-safe:animate-pop"
             >
-              +{gain}
+              <Zap className="size-3.5" aria-hidden />
+              {t('play.combo', { n: combo })}
             </span>
           )}
-        </span>
-        {lives && <Lives {...lives} />}
-        {timeMs !== undefined && (
-          <span
-            role="timer"
-            data-testid="game-clock"
-            data-urgent={urgent}
-            aria-label={clock === 'down' ? t('play.timeLeft') : t('play.timeElapsed')}
-            className={cn(
-              'min-w-14 rounded-md bg-background px-2 text-right text-lg font-semibold',
-              urgent && 'text-caution motion-safe:animate-urgent',
+          <span data-testid="game-score" className="relative">
+            <span className="sr-only">{scoreLabel ?? t('play.score')}: </span>
+            <span aria-hidden className="text-sm text-muted-foreground">
+              {scoreLabel ?? t('play.score')}{' '}
+            </span>
+            <span
+              key={score}
+              className="inline-block text-lg font-semibold text-game motion-safe:animate-pop"
+            >
+              {numberFormat.format(score)}
+            </span>
+            {gain > 0 && !scoreLabel && (
+              <span
+                key={`gain-${score}`}
+                aria-hidden
+                data-testid="game-gain"
+                className="pointer-events-none absolute -top-3 right-0 text-sm font-semibold text-positive opacity-0 motion-safe:animate-rise"
+              >
+                +{gain}
+              </span>
             )}
-          >
-            {formatClock(timeMs, clock)}
           </span>
-        )}
-        {speech && (
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-pressed={speech.enabled && !speech.disabled}
-            disabled={speech.disabled}
-            aria-label={speech.enabled ? t('play.speechOn') : t('play.speechOff')}
-            title={
-              speech.disabled
-                ? t('play.noVoice')
-                : speech.enabled
-                  ? t('play.speechOn')
-                  : t('play.speechOff')
-            }
-            onClick={speech.onToggle}
-          >
-            {speech.enabled && !speech.disabled ? (
-              <Speech aria-hidden />
-            ) : (
-              <MessageSquareOff aria-hidden />
+          {lives && <Lives {...lives} />}
+          {timeMs !== undefined && (
+            <span
+              role="timer"
+              data-testid="game-clock"
+              data-urgent={urgent}
+              aria-label={clock === 'down' ? t('play.timeLeft') : t('play.timeElapsed')}
+              className={cn(
+                'min-w-14 rounded-md bg-background px-2 text-right text-lg font-semibold',
+                urgent && 'text-caution motion-safe:animate-urgent',
+              )}
+            >
+              {formatClock(timeMs, clock)}
+            </span>
+          )}
+          <div className="ml-auto flex items-center lg:contents">
+            {speech && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className={TOUCH_BUTTON}
+                aria-pressed={speech.enabled && !speech.disabled}
+                disabled={speech.disabled}
+                aria-label={speech.enabled ? t('play.speechOn') : t('play.speechOff')}
+                title={
+                  speech.disabled
+                    ? t('play.noVoice')
+                    : speech.enabled
+                      ? t('play.speechOn')
+                      : t('play.speechOff')
+                }
+                onClick={speech.onToggle}
+              >
+                {speech.enabled && !speech.disabled ? (
+                  <Speech aria-hidden />
+                ) : (
+                  <MessageSquareOff aria-hidden />
+                )}
+              </Button>
             )}
-          </Button>
-        )}
-        {music && (
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            data-testid="game-music"
-            aria-pressed={music.enabled && !music.disabled}
-            aria-keyshortcuts="M"
-            disabled={music.disabled}
-            aria-label={music.enabled ? t('play.musicOn') : t('play.musicOff')}
-            title={music.disabled ? t('play.musicUnavailable') : t('play.musicHint')}
-            onClick={music.onToggle}
-          >
-            {music.enabled && !music.disabled ? <Music aria-hidden /> : <Music2 aria-hidden />}
-          </Button>
-        )}
-        {sound && (
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-pressed={sound.enabled}
-            aria-label={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
-            title={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
-            onClick={sound.onToggle}
-          >
-            {sound.enabled ? <Volume2 aria-hidden /> : <VolumeX aria-hidden />}
-          </Button>
-        )}
+            {music && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className={TOUCH_BUTTON}
+                data-testid="game-music"
+                aria-pressed={music.enabled && !music.disabled}
+                aria-keyshortcuts="M"
+                disabled={music.disabled}
+                aria-label={music.enabled ? t('play.musicOn') : t('play.musicOff')}
+                title={music.disabled ? t('play.musicUnavailable') : t('play.musicHint')}
+                onClick={music.onToggle}
+              >
+                {music.enabled && !music.disabled ? <Music aria-hidden /> : <Music2 aria-hidden />}
+              </Button>
+            )}
+            {sound && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className={TOUCH_BUTTON}
+                aria-pressed={sound.enabled}
+                aria-label={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
+                title={sound.enabled ? t('play.soundOn') : t('play.soundOff')}
+                onClick={sound.onToggle}
+              >
+                {sound.enabled ? <Volume2 aria-hidden /> : <VolumeX aria-hidden />}
+              </Button>
+            )}
+          </div>
+        </div>
         {onPause && (
           <Button
             variant="ghost"
@@ -202,10 +225,11 @@ export function GameTopBar({
             data-testid="game-pause"
             aria-keyshortcuts="P"
             onClick={onPause}
+            className={TOUCH_BUTTON}
           >
             <Pause aria-hidden />
             <span className="sr-only">{t('play.pause')}</span>
-            <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
+            <kbd aria-hidden className="hidden font-sans text-xs text-muted-foreground lg:inline">
               P
             </kbd>
           </Button>

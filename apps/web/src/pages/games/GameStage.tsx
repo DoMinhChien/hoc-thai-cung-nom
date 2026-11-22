@@ -24,13 +24,13 @@ export function GameScene({ theme }: { theme: GameTheme }) {
       >
         <path fill="currentColor" d="M0 60 C 360 0, 1080 120, 1440 40 L 1440 400 L 0 400 Z" />
       </svg>
-      <span className="absolute top-6 left-6 opacity-80">
+      <span className="absolute top-6 left-6 opacity-80 max-tablet:hidden">
         <Emoji size="md">{a}</Emoji>
       </span>
-      <span className="absolute right-8 bottom-6 opacity-80">
+      <span className="absolute right-8 bottom-6 opacity-80 max-tablet:hidden">
         <Emoji size="md">{b}</Emoji>
       </span>
-      <span className="absolute bottom-10 left-10 opacity-80">
+      <span className="absolute bottom-10 left-10 opacity-80 max-tablet:hidden">
         <Emoji size="lg">{c}</Emoji>
       </span>
     </div>

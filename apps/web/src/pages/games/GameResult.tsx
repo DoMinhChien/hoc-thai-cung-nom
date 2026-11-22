@@ -110,7 +110,9 @@ export function GameResult({
         </Button>
       </header>
       <div className="mx-auto flex w-full max-w-[720px] flex-col gap-6 motion-safe:animate-enter">
-        <h1 className="text-4xl font-bold">{t('games.resultTitle', { game: gameName(gameId) })}</h1>
+        <h1 className="text-2xl font-bold tablet:text-[28px] lg:text-4xl">
+          {t('games.resultTitle', { game: gameName(gameId) })}
+        </h1>
         {stars > 0 && <Stars n={stars} />}
         <dl className="flex flex-wrap gap-10">
           <Stat
@@ -268,7 +270,7 @@ function ChangeGameDialog({
           <DialogTitle>{t('games.changeTitle')}</DialogTitle>
           <DialogDescription>{t('games.changeHint')}</DialogDescription>
         </DialogHeader>
-        <ul className="grid grid-cols-4 gap-3">
+        <ul className="grid grid-cols-2 gap-3 tablet:grid-cols-4">
           {GAME_ORDER.map((id, i) => {
             const reason = reasonOf(id);
             return (

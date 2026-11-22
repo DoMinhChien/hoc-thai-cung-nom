@@ -127,7 +127,7 @@ export function Thumbnail({
       aria-hidden
       data-testid={`game-thumb-${id}`}
       className={cn(
-        'relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-game select-none',
+        'relative flex aspect-video tablet:aspect-[16/10] items-center justify-center overflow-hidden bg-game select-none',
         locked && 'grayscale-[0.6]',
         className,
       )}

@@ -24,8 +24,8 @@ import {
   type GameSummary,
   type Lifeline,
 } from '@nom/core';
-import { Check, X } from 'lucide-react';
-import { useState, type ReactNode } from 'react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Check, X } from 'lucide-react';
+import { useRef, useState, type PointerEvent, type ReactNode } from 'react';
 import { Emoji } from '@/components/fun';
 import {
   ChoiceButton,
@@ -44,6 +44,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useRepositories, useRepositoryQuery } from '@/data';
 import { t, type MessageKey } from '@/i18n';
+import { useBreakpoint, useTouchControls } from '@/lib/useBreakpoint';
 import { cn } from '@/lib/utils';
 import type { TopBarExtra } from './boards';
 import { useArcadeRun } from './useArcadeRun';
@@ -104,6 +105,7 @@ const HOLE_ALT_KEYS = ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] as const;
 export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) {
   const run = useArcadeRun(whackAMole, source, seed);
   const { state, started, start, input } = run;
+  const touch = useTouchControls();
   const q = currentWhack(state);
   const moles = activeMoles(state);
   const fb = state.feedback;
@@ -122,7 +124,7 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
 
   const remaining = Math.max(0, WHACK_DURATION_MS - state.elapsedMs);
   const body = !started ? (
-    <CountIn onDone={start} hint={t('games.whackHint')} />
+    <CountIn onDone={start} hint={touch ? t('games.whackTouchHint') : t('games.whackHint')} />
   ) : (
     <div className="flex flex-col items-center gap-5">
       <Panel className="flex w-full max-w-[560px] flex-col gap-3">
@@ -137,7 +139,7 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
       <div
         role="group"
         aria-label={t('games.name.whack-a-mole')}
-        className="grid grid-cols-3 gap-6"
+        className="grid w-full max-w-[552px] grid-cols-3 gap-2 tablet:gap-4 lg:w-auto lg:max-w-none lg:gap-6"
       >
         {HOLE_KEYS.map((key, hole) => {
           const mole = moles.find((m) => m.hole === hole);
@@ -149,7 +151,7 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
               data-mole={mole ? mole.th : undefined}
               aria-keyshortcuts={key}
               onClick={() => input({ hit: hole })}
-              className="relative flex h-[112px] w-[168px] flex-col items-center justify-end rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="relative flex h-[112px] w-full min-w-[88px] flex-col items-center justify-end rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring lg:w-[168px]"
             >
               {mole && (
                 <span
@@ -159,8 +161,10 @@ export function WhackBoard({ source, seed, theme, children }: ArcadeBoardProps) 
                   <span
                     lang="th"
                     className={cn(
-                      'min-w-[140px] rounded-lg bg-surface px-3 py-2 text-center font-semibold shadow-md',
-                      [...mole.th].length > 8 ? 'text-2xl' : 'text-[32px]',
+                      'rounded-lg bg-surface px-2 py-1.5 text-center font-semibold shadow-md lg:min-w-[140px] lg:px-3 lg:py-2',
+                      [...mole.th].length > 8
+                        ? 'text-lg tablet:text-2xl'
+                        : 'text-[22px] tablet:text-[32px]',
                     )}
                   >
                     {mole.th}
@@ -247,8 +251,9 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
   const body = !started ? (
     <CountIn onDone={start} hint={t('games.showHint')} />
   ) : (
-    <div className="grid grid-cols-[140px_1fr_168px] items-start gap-5">
-      <Panel className="p-3">
+    <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[140px_1fr_168px] lg:gap-5">
+      {/* Phone / tablet: ẩn thang câu (đã có "Câu i/n"), trợ giúp thành hàng dưới câu hỏi. */}
+      <Panel className="p-3 max-lg:hidden">
         <h2 className="sr-only">{t('games.ladder')}</h2>
         <ol data-testid="show-ladder" className="flex flex-col-reverse gap-1 text-sm tabular-nums">
           {state.questions.map((step, i) => {
@@ -309,11 +314,16 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
           </div>
           <div className="flex flex-col items-center gap-1 text-center" data-testid="show-prompt">
             {q.prompt.th && (
-              <p lang="th" className={cn(q.type === 'E-05' ? 'text-th-md' : 'text-[56px]')}>
+              <p
+                lang="th"
+                className={cn(q.type === 'E-05' ? 'text-th-md' : 'text-[44px] tablet:text-[56px]')}
+              >
                 {q.prompt.th}
               </p>
             )}
-            {q.prompt.vi && <p className="text-[28px] font-medium">{q.prompt.vi}</p>}
+            {q.prompt.vi && (
+              <p className="text-2xl font-medium tablet:text-[28px]">{q.prompt.vi}</p>
+            )}
           </div>
           <div className="grid grid-cols-2 gap-3">
             {q.options.map((option, i) => {
@@ -366,7 +376,7 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
           )}
         </FeedbackStrip>
       </div>
-      <Panel className="flex flex-col gap-2 p-3">
+      <Panel className="flex flex-col gap-2 p-3 max-lg:flex-row max-lg:flex-wrap max-lg:items-center">
         <h2 className="text-sm font-semibold">{t('games.lifelines')}</h2>
         {(
           [
@@ -383,7 +393,7 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
               disabled={used || !answering}
               aria-keyshortcuts={key}
               onClick={() => lifeline(l)}
-              className={cn('justify-between', used && 'line-through')}
+              className={cn('justify-between max-lg:min-h-11', used && 'line-through')}
             >
               {label}
               <kbd aria-hidden className="font-sans text-xs text-muted-foreground">
@@ -415,8 +425,9 @@ export function GameshowBoard({ source, seed, children }: ArcadeBoardProps) {
 
 // ───────────────────────── F-17 Máy bay ─────────────────────────
 
-/** Bề rộng mây (px) — SCR-08 v2 §B.3. */
+/** Bề rộng mây (px) — SCR-08 v2 §B.3; phone nhỏ hơn để kịp lái (SCR-00 v2 §5). */
 const CLOUD_W = 180;
+const CLOUD_W_PHONE = 120;
 
 export function AirplaneBoard({ source, seed, theme, reduced, children }: ArcadeBoardProps) {
   const run = useArcadeRun(airplane, source, seed, { manual: reduced });
@@ -424,6 +435,15 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
   const q = currentFlight(state);
   const fb = state.feedback;
   const lanes = q.clouds.length;
+  const touch = useTouchControls();
+  const phone = useBreakpoint() === 'phone';
+  const cloudW = phone ? CLOUD_W_PHONE : CLOUD_W;
+  // Chạm nửa trên / dưới bầu trời để lái (chỉ cảm ứng — chuột trên desktop giữ như SCR-08).
+  const steer = (e: PointerEvent<HTMLDivElement>) => {
+    if (!started || e.pointerType === 'mouse') return;
+    const box = e.currentTarget.getBoundingClientRect();
+    input({ move: e.clientY - box.top < box.height / 2 ? -1 : 1 });
+  };
   useKeyShortcut(['ArrowUp', 'w'], () => input({ move: -1 }), started);
   useKeyShortcut(['ArrowDown', 's'], () => input({ move: 1 }), started);
   // Từng bước: mây đứng yên, "Bay" cho thời gian trôi đủ để mây chạm máy bay.
@@ -432,18 +452,28 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
   useKeyShortcut(['ArrowRight', 'Enter'], fly, started && reduced);
 
   const body = !started ? (
-    <CountIn onDone={start} hint={reduced ? t('games.planeStepHint') : t('games.planeHint')} />
+    <CountIn
+      onDone={start}
+      hint={
+        reduced
+          ? t('games.planeStepHint')
+          : touch
+            ? t('games.planeTouchHint')
+            : t('games.planeHint')
+      }
+    />
   ) : (
     <div className="flex flex-col items-center gap-4">
-      <Panel className="flex items-baseline gap-3 py-3">
+      <Panel className="flex flex-wrap items-baseline gap-x-3 py-3">
         <span className="text-muted-foreground">{t('games.planePrompt')}</span>
-        <span data-testid="plane-prompt" className="text-[28px] font-semibold">
+        <span data-testid="plane-prompt" className="text-2xl font-semibold tablet:text-[28px]">
           {q.vi}
         </span>
       </Panel>
       <div
         data-testid="plane-sky"
-        className="relative h-[420px] w-full max-w-[1040px] overflow-hidden rounded-xl"
+        onPointerDown={steer}
+        className="relative h-[min(420px,calc(100dvh-300px))] min-h-[300px] w-full max-w-[1040px] overflow-hidden rounded-xl select-none lg:h-[420px]"
       >
         {q.clouds.map((cloud, lane) => (
           <div
@@ -455,9 +485,12 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
             <span
               data-testid={`plane-cloud-${lane}`}
               lang="th"
-              className="absolute top-1/2 flex min-h-20 w-[180px] -translate-y-1/2 items-center justify-center rounded-[40px] bg-surface px-4 py-2 text-center text-[28px] leading-snug shadow-md"
+              className="absolute top-1/2 flex min-h-14 -translate-y-1/2 items-center justify-center rounded-[40px] bg-surface px-3 py-1.5 text-center text-[22px] leading-snug shadow-md tablet:min-h-20 tablet:px-4 tablet:py-2 tablet:text-[28px]"
               // cloudX = 1 → mây sát mép phải (vẫn thấy); chạm máy bay khi tới `PLANE_X`.
-              style={{ left: `calc(${state.cloudX * 100}% - ${state.cloudX * CLOUD_W}px)` }}
+              style={{
+                width: cloudW,
+                left: `calc(${state.cloudX * 100}% - ${state.cloudX * cloudW}px)`,
+              }}
             >
               {cloud}
             </span>
@@ -476,10 +509,28 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
           <Emoji size="lg">{CAST[theme].plane}</Emoji>
         </span>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex w-full flex-wrap items-center justify-center gap-4">
         <p className="text-sm text-hud">
-          {reduced ? t('games.planeStepHint') : t('games.planeHint')}
+          {reduced
+            ? t('games.planeStepHint')
+            : touch
+              ? t('games.planeTouchHint')
+              : t('games.planeHint')}
         </p>
+        {touch && (
+          <div role="group" aria-label={t('play.controls')} className="ml-auto flex gap-3">
+            <TouchButton testId="plane-up" label={t('play.up')} onPress={() => input({ move: -1 })}>
+              <ArrowUp />
+            </TouchButton>
+            <TouchButton
+              testId="plane-down"
+              label={t('play.down')}
+              onPress={() => input({ move: 1 })}
+            >
+              <ArrowDown />
+            </TouchButton>
+          </div>
+        )}
         {reduced && (
           <Button data-testid="plane-fly" onClick={fly} className="bg-game text-game-fg">
             {t('games.fly')}
@@ -518,6 +569,10 @@ export function AirplaneBoard({ source, seed, theme, reduced, children }: Arcade
 
 const MAZE_STEP_KEY = 'mazeStepMode';
 const CELL = 56;
+/** Ô mê cung trên phone: 9 ô × 34px + viền vừa iPhone SE 375px (SCR-00 v2 §5). */
+const CELL_PHONE = 34;
+/** Vuốt tối thiểu (px) để đi một bước. */
+const SWIPE_MIN = 30;
 const DIR_KEYS: Record<string, Direction> = {
   arrowup: 'up',
   w: 'up',
@@ -557,13 +612,37 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
     started,
   );
 
+  const touch = useTouchControls();
+  const breakpoint = useBreakpoint();
+  const cell = breakpoint === 'phone' ? CELL_PHONE : CELL;
+  // Dưới desktop: đáp án nằm trên / dưới mê cung thay vì hai bên.
+  const stacked = breakpoint !== 'desktop';
+  const swipeFrom = useRef<{ x: number; y: number } | null>(null);
+  const onSwipeStart = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse') swipeFrom.current = { x: e.clientX, y: e.clientY };
+  };
+  const onSwipeEnd = (e: PointerEvent<HTMLDivElement>) => {
+    const from = swipeFrom.current;
+    swipeFrom.current = null;
+    if (!from || !started) return;
+    const dx = e.clientX - from.x;
+    const dy = e.clientY - from.y;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < SWIPE_MIN) return;
+    input({
+      dir: Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : dy > 0 ? 'down' : 'up',
+    });
+  };
+
   const cast = CAST[theme];
   const { cols, rows, cells } = state.maze;
 
   const answerCard = (corner: number) => (
     <div
       data-testid={`maze-answer-${corner}`}
-      className="flex h-14 w-40 items-center gap-2 rounded-xl border-2 bg-surface px-3 shadow-sm"
+      className={cn(
+        'flex h-14 items-center gap-2 rounded-xl border-2 bg-surface px-3 shadow-sm',
+        stacked ? 'min-w-0 flex-1' : 'w-40',
+      )}
     >
       <span className="rounded bg-game px-1.5 text-sm font-bold text-game-fg">
         {CORNER_LABEL[corner]}
@@ -575,31 +654,39 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
   );
 
   const body = !started ? (
-    <CountIn onDone={start} hint={t('games.mazeHint')} />
+    <CountIn onDone={start} hint={touch ? t('games.mazeTouchHint') : t('games.mazeHint')} />
   ) : (
     <div className="flex flex-col items-center gap-4">
-      <Panel className="flex items-baseline gap-3 py-3">
+      <Panel className="flex flex-wrap items-baseline gap-x-3 py-3">
         <span className="text-muted-foreground">{t('games.mazePrompt')}</span>
-        <span data-testid="maze-prompt" className="text-[28px] font-semibold">
+        <span data-testid="maze-prompt" className="text-2xl font-semibold tablet:text-[28px]">
           {q.vi}
         </span>
       </Panel>
-      <div className="grid grid-cols-[auto_auto_auto] items-center gap-4">
-        <div className="flex h-full flex-col justify-between">
+      <div
+        className={cn(
+          'grid items-center gap-3',
+          stacked ? 'w-full max-w-[560px] grid-cols-1' : 'grid-cols-[auto_auto_auto] gap-4',
+        )}
+      >
+        <div className={cn('flex', stacked ? 'gap-3' : 'h-full flex-col justify-between')}>
           {answerCard(0)}
-          {answerCard(2)}
+          {answerCard(stacked ? 1 : 2)}
         </div>
-        <Panel className="p-3">
+        <Panel className="justify-self-center p-3">
           <div
+            onPointerDown={onSwipeStart}
+            onPointerUp={onSwipeEnd}
+            onPointerCancel={() => (swipeFrom.current = null)}
             role="img"
             aria-label={t('games.name.maze')}
             data-testid="maze-grid"
             data-player={`${state.player.x},${state.player.y}`}
             data-ghost={`${state.ghost.x},${state.ghost.y}`}
-            className="relative grid"
+            className="relative grid touch-none select-none"
             style={{
-              gridTemplateColumns: `repeat(${cols}, ${CELL}px)`,
-              gridTemplateRows: `repeat(${rows}, ${CELL}px)`,
+              gridTemplateColumns: `repeat(${cols}, ${cell}px)`,
+              gridTemplateRows: `repeat(${rows}, ${cell}px)`,
             }}
           >
             {cells.map((doors, i) => {
@@ -610,7 +697,10 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
               return (
                 <span
                   key={i}
-                  className="relative flex items-center justify-center border-4 border-game-theme"
+                  className={cn(
+                    'relative flex items-center justify-center border-game-theme',
+                    cell < CELL ? 'border-[3px]' : 'border-4',
+                  )}
                   style={{
                     borderTopColor: wall(DOOR.N),
                     borderRightColor: wall(DOOR.E),
@@ -624,20 +714,54 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
                 </span>
               );
             })}
-            <Token cell={state.player} testId="maze-player">
+            <Token cell={state.player} size={cell} testId="maze-player">
               {cast.player}
             </Token>
-            <Token cell={state.ghost} testId="maze-ghost">
+            <Token cell={state.ghost} size={cell} testId="maze-ghost">
               {cast.ghost}
             </Token>
           </div>
         </Panel>
-        <div className="flex h-full flex-col justify-between">
-          {answerCard(1)}
+        <div className={cn('flex', stacked ? 'gap-3' : 'h-full flex-col justify-between')}>
+          {answerCard(stacked ? 2 : 1)}
           {answerCard(3)}
         </div>
       </div>
-      <p className="text-sm text-hud">{t('games.mazeHint')}</p>
+      {touch && (
+        <div role="group" aria-label={t('play.controls')} className="grid grid-cols-3 gap-2">
+          <TouchButton
+            testId="maze-up"
+            label={t('play.up')}
+            onPress={() => input({ dir: 'up' })}
+            className="col-start-2"
+          >
+            <ArrowUp />
+          </TouchButton>
+          <TouchButton
+            testId="maze-left"
+            label={t('play.left')}
+            onPress={() => input({ dir: 'left' })}
+            className="col-start-1"
+          >
+            <ArrowLeft />
+          </TouchButton>
+          <TouchButton
+            testId="maze-down"
+            label={t('play.down')}
+            onPress={() => input({ dir: 'down' })}
+          >
+            <ArrowDown />
+          </TouchButton>
+          <TouchButton
+            testId="maze-right"
+            label={t('play.right')}
+            onPress={() => input({ dir: 'right' })}
+          >
+            <ArrowRight />
+          </TouchButton>
+        </div>
+      )}
+      <p className="text-sm text-hud">{touch ? t('games.mazeTouchHint') : t('games.mazeHint')}</p>
       <FeedbackStrip>
         {fb && (
           <FeedbackBar
@@ -668,12 +792,55 @@ export function MazeBoard({ source, seed, theme, reduced, children }: ArcadeBoar
   );
 }
 
+/** Nút điều khiển chạm lớn (≥ 56px) — Máy bay ▲▼, D-pad Mê cung (SCR-00 v2 §5). */
+function TouchButton({
+  testId,
+  label,
+  onPress,
+  className,
+  children,
+}: {
+  testId: string;
+  label: string;
+  onPress: () => void;
+  className?: string;
+  children: ReactNode;
+}) {
+  // Chạm: phản hồi ngay khi pointerdown (không chờ nhả tay) rồi bỏ qua click theo sau;
+  // chuột / bàn phím / trình đọc màn hình đi qua click.
+  const touched = useRef(false);
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      aria-label={label}
+      onPointerDown={(e) => {
+        if (e.pointerType === 'mouse') return;
+        touched.current = true;
+        onPress();
+      }}
+      onClick={() => {
+        if (touched.current) touched.current = false;
+        else onPress();
+      }}
+      className={cn(
+        'flex size-14 items-center justify-center rounded-xl border-2 border-game bg-surface text-game shadow-sm outline-none select-none focus-visible:ring-2 focus-visible:ring-ring active:bg-game active:text-game-fg [&_svg]:size-7',
+        className,
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
 function Token({
   cell,
+  size,
   testId,
   children,
 }: {
   cell: { x: number; y: number };
+  size: number;
   testId: string;
   children: string;
 }) {
@@ -682,9 +849,9 @@ function Token({
       data-testid={testId}
       aria-hidden
       className="absolute flex items-center justify-center motion-safe:transition-[left,top] motion-safe:duration-150"
-      style={{ left: cell.x * CELL, top: cell.y * CELL, width: CELL, height: CELL }}
+      style={{ left: cell.x * size, top: cell.y * size, width: size, height: size }}
     >
-      <Emoji size="sm" className="text-[32px]">
+      <Emoji size="sm" className={size < CELL ? 'text-2xl' : 'text-[32px]'}>
         {children}
       </Emoji>
     </span>
