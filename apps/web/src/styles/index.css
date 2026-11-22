@@ -37,6 +37,11 @@
   --radius: var(--nom-radius-md);
 }
 
+/* Breakpoint SCR-00 v2 §1: phone < 744px (class gốc) · `tablet:` 744px · `lg:` 1024px (desktop). */
+@theme {
+  --breakpoint-tablet: 744px;
+}
+
 /* Utility Tailwind sinh từ token, vd. `bg-mastery-known`, `text-th-lg`. */
 @theme inline {
   --color-background: var(--background);
@@ -248,6 +253,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Bỏ trễ chạm / zoom chạm 2 lần trên iOS (SCR-00 v2 §5); iOS không tự phóng chữ khi xoay. */
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--nom-font-vi);
@@ -436,4 +446,29 @@
 .hg-theme-nom .hg-button-space {
   flex: 0 0 50%;
   margin-inline: auto;
+}
+
+/*
+ * Thiết bị cảm ứng (SCR-00 v2 §6) — ngoài @layer để thắng utility:
+ * - ô nhập ≥ 16px để iOS Safari không tự phóng to khi focus;
+ * - ẩn gợi ý phím tắt (`<kbd>`), vô nghĩa khi không có bàn phím vật lý.
+ */
+@media (hover: none) and (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+  kbd {
+    display: none;
+  }
+}
+
+/* Phone (< 744px, SCR-00 v2 §4): chữ Thái hiển thị lớn thu nhỏ để một từ vừa một dòng (≥ 20px). */
+@media (max-width: 743.98px) {
+  :root {
+    --nom-text-th-md: 28px;
+    --nom-text-th-lg: 44px;
+    --nom-text-th-xl: 56px;
+  }
 }

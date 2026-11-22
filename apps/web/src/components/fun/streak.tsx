@@ -4,23 +4,37 @@ import { cn } from '@/lib/utils';
 import { useStudyStreak } from './hooks';
 import { Emoji } from './topic';
 
-/** Chip chuỗi ngày học ở sidebar (hướng B): "🔥 5 ngày"; hôm nay chưa học → icon xám + nhắc. */
-export function StreakBadge() {
+/**
+ * Chip chuỗi ngày học ở sidebar (hướng B): "🔥 5 ngày"; hôm nay chưa học → icon xám + nhắc.
+ * `compact` (thanh trên phone, rail tablet — SCR-00 v2): "🔥 5", chữ đầy đủ cho trình đọc màn hình.
+ */
+export function StreakBadge({ compact = false }: { compact?: boolean }) {
   const streak = useStudyStreak();
   if (!streak || streak.count === 0) return null;
+  const days = t('streak.days', { n: streak.count });
   return (
     <p
       data-testid="streak-badge"
       data-today={streak.today}
-      title={streak.today ? undefined : t('streak.keep')}
-      className="flex items-center gap-2 self-start rounded-full bg-surface px-3 py-1 text-sm font-semibold shadow-card"
+      title={streak.today ? (compact ? days : undefined) : t('streak.keep')}
+      className={cn(
+        'flex items-center self-start rounded-full bg-surface font-semibold shadow-card',
+        compact ? 'gap-1 px-2 py-0.5 text-sm' : 'gap-2 px-3 py-1 text-sm',
+      )}
     >
       <Emoji size="sm" className={cn('text-base', !streak.today && 'opacity-40 grayscale')}>
         🔥
       </Emoji>
-      <span className={streak.today ? 'text-streak' : 'text-muted-foreground'}>
-        {t('streak.days', { n: streak.count })}
-      </span>
+      {compact ? (
+        <span className={streak.today ? 'text-streak' : 'text-muted-foreground'}>
+          <span aria-hidden className="tabular-nums">
+            {streak.count}
+          </span>
+          <span className="sr-only">{days}</span>
+        </span>
+      ) : (
+        <span className={streak.today ? 'text-streak' : 'text-muted-foreground'}>{days}</span>
+      )}
     </p>
   );
 }
