@@ -115,3 +115,24 @@ describe('ThaiTextInput (G-06)', () => {
     expect(toggle).toHaveAccessibleName('Hiện bàn phím ảo');
   });
 });
+
+describe('ThaiTextInput trên thiết bị cảm ứng (SCR-00 v2 §6)', () => {
+  it('mặc định ẩn bàn phím ảo; bật thì dock đáy + inputmode="none"', async () => {
+    vi.stubGlobal('matchMedia', (q: string) => ({
+      matches: q.includes('pointer: coarse'),
+      media: q,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    }));
+    try {
+      render(<Field />);
+      expect(screen.queryByTestId('thai-keyboard')).toBeNull();
+      expect(input()).not.toHaveAttribute('inputmode');
+      await userEvent.click(screen.getByTestId('toggle-keyboard'));
+      expect(keyboard()).toHaveClass('fixed');
+      expect(input()).toHaveAttribute('inputmode', 'none');
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+});

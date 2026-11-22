@@ -4,6 +4,8 @@ import { useId, useLayoutEffect, useRef, useState, type KeyboardEvent } from 're
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { t } from '@/i18n';
+import { useCoarsePointer } from '@/lib/useBreakpoint';
+import { cn } from '@/lib/utils';
 import { ThaiKeyboard } from './ThaiKeyboard';
 
 /** Phím ra ký tự ASCII in được (không gồm khoảng trắng) — tức máy đang dùng bàn phím Latin. */
@@ -17,13 +19,16 @@ export interface ThaiTextInputProps {
   'aria-label'?: string;
   'aria-describedby'?: string;
   disabled?: boolean;
-  /** Hiện bàn phím ảo lúc đầu (người học ẩn/hiện được). */
+  /** Hiện bàn phím ảo lúc đầu (người học ẩn/hiện được); thiết bị cảm ứng luôn bắt đầu ẩn. */
   defaultKeyboardOpen?: boolean;
 }
 
 /**
  * Ô gõ chữ Thái (G-06): bàn phím ảo Kedmanee bên dưới, ẩn/hiện được. Máy chưa cài bàn phím Thái
  * (phím ra chữ Latin) → đổi theo vị trí Kedmanee; bàn phím Thái của hệ điều hành / IME giữ nguyên.
+ * Thiết bị cảm ứng (SCR-00 v2 §6): mặc định dùng bàn phím hệ thống (iOS đã cài tiếng Thái); bật bàn
+ * phím ảo thì nó nằm ở đáy màn hình và ô nhập dùng `inputmode="none"` để bàn phím hệ thống không mở
+ * chồng lên.
  */
 export function ThaiTextInput({
   value,
@@ -35,7 +40,9 @@ export function ThaiTextInput({
 }: ThaiTextInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const caret = useRef<number | null>(null);
-  const [open, setOpen] = useState(defaultKeyboardOpen);
+  const coarse = useCoarsePointer();
+  const [open, setOpen] = useState(defaultKeyboardOpen && !coarse);
+  const docked = coarse && open && !disabled;
   const keyboardId = useId();
 
   // Đặt lại con trỏ sau khi giá trị mới đã render.
@@ -92,6 +99,7 @@ export function ThaiTextInput({
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
+          inputMode={docked ? 'none' : undefined}
           data-testid="thai-input"
           className="h-12 text-th-sm md:text-th-sm"
           {...aria}
@@ -110,7 +118,19 @@ export function ThaiTextInput({
           <KeyboardIcon aria-hidden />
         </Button>
       </div>
-      {open && !disabled && <ThaiKeyboard id={keyboardId} onKey={insert} onBackspace={backspace} />}
+      {open && !disabled && (
+        <ThaiKeyboard
+          id={keyboardId}
+          onKey={insert}
+          onBackspace={backspace}
+          className={cn(
+            docked &&
+              'fixed inset-x-0 bottom-0 z-40 border-t bg-surface px-1 pt-1 pb-[max(0.25rem,env(safe-area-inset-bottom))] shadow-md',
+          )}
+        />
+      )}
+      {/* Chừa chỗ cho bàn phím dock để nội dung cuối trang không bị che. */}
+      {docked && <div aria-hidden className="h-64" />}
     </div>
   );
 }
