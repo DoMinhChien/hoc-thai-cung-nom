@@ -26,6 +26,7 @@
 > **🟢 TC.4 — Làm đầy đủ các bài còn lại** (mở 2026-11-23, owner; **xong 2026-11-23** — TC.4a–h, đã merge #40, #41, #43–#48): đưa `b01`–`b08`, `b11`, `b12` và các chuyên đề thiếu câu lên chuẩn TC.3 (hình, loại từ, ví dụ, ≥ 5 câu / bài học, hội thoại). Thứ tự `b11` → `b12` → `b08` … `b01` → `c03`, `c06`, `c07` … 8 PR nhỏ (TC.4a–h), tự merge (8.1). Chi tiết mục TC.
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-23)** — agent không tự làm, tick khi xong:
+> - [ ] **Repo đang public (2026-11-23):** owner chuyển public để GitHub Actions chạy miễn phí (repo private hết phút / lỗi thanh toán), cần cho xong M12.8. Repo có nội dung trích từ giáo trình Plern-Pin (1.563 từ, 748 câu, ghi số trang) → **quyết định sau M12:** giữ public, chuyển lại private (Actions tính phút; bản đã clone / fork không thu hồi được), hoặc tách nội dung ra nơi khác.
 > - [x] **PR M12.8 #42 — T12.8.6:** owner thử preview và duyệt (2026-11-23) → merge.
 > - [x] **PR M12.7 #38 — T12.7.7:** owner thử UI mobile trên **iPhone thật** ✅ (2026-11-22) → cho merge. **iPad:** theo dõi thêm trong CAT (báo agent nếu lỗi).
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
@@ -670,6 +671,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-23 | M12.8 / TC.4 | Owner chuyển repo **public** (Actions bị chặn do thanh toán) → CI chạy lại xanh; merge #42 (M12.8, owner cho phép); rebase #49 lên M12.8 (baseline `unit-*-1024-win32`) → **tự merge #49** (loại nội dung + test); production deploy `9ff12ba` | — | Quyết định public / private (Việc chờ owner) | #42, #49 → `main` |
 | 2026-11-23 | TC.4 (bổ sung) | `b01-l1` +7 câu ngôi thứ nhất + mẫu câu `g-b01-tua-eng` (Claude soạn, draft) → mọi bài học có ≥ 5 câu. E2E: `finishLesson` dùng chung (`practice-helpers`); practice / golive chỉ học bước Từ vựng (dừng ở Mẫu câu), luồng go-live 1 + 3 học trọn bài học 1; baseline win32 sau TC.4 | — | — | `content-b01-l1` → PR mới (tự merge 8.1) |
 | 2026-11-23 | M12.8 🟢 | T12.8.6: owner thử preview và duyệt → M12.8 xong (6/6), merge #42 (owner cho phép) | — | — | `m12.8-game-source` → #42 |
 | 2026-11-23 | M12.8 | **Tự merge #39** (docs M12.8 + TC.4, kèm sửa test giọng đọc WebKit Linux — loại tài liệu / test) và **#40, #41, #43–#48** (TC.4a–h — nội dung draft; TC.4 đã merge đủ). T12.8.2 core nguồn trò chơi theo nội dung ôn (`learned` · `recent` · `review` · `last-lesson` · `units:`/`lessons:` + `;new`, ưu tiên cần ôn / đến hạn, bỏ fallback lặng lẽ, đọc giá trị cũ `unit:<id>`) · T12.8.3 `/games` nút "Nội dung ôn" + bộ chọn (dialog / bottom sheet), tab kỹ năng đếm trò chơi được · T12.8.4 "Chơi ôn bài này", "Chơi ôn" trang bài, thẻ "Ôn bằng trò chơi", "Đổi nội dung"; kỷ lục theo trò (`all`) · T12.8.5 E2E `game-source.spec.ts` + bottom sheet ở `responsive.spec.ts`, axe, baseline. `E2E_PORT` cho Playwright | T12.8.6 | Owner xem preview + merge | `m12.8-game-source` → PR mới |
