@@ -272,6 +272,145 @@ b10-w115,b10,b10-l13,ประเภท,,loại,,,noun,,,,,,plernpin-b10#p36,tru
 b10-w116,b10,b10-l13,รูปทรง,,hình dáng; hình dạng,,,noun,,,,,,plernpin-b10#p36,true
 b10-w117,b10,b10-l13,ยี่ห้อ,,thương hiệu,,,noun,,ยี่ห้อนี้ดังมาก,Thương hiệu này nổi tiếng lắm.,,,plernpin-b10#p37,true
 b10-w118,b10,b10-l13,ไซส์,,cỡ; size,,,noun,,คุณใส่ไซส์อะไร,Bạn mặc cỡ gì?,,,plernpin-b10#p37,true
+b11-w01,b11,b11-l1,ชื่ออะไร,,tên (là) gì?,คุณชื่ออะไร = Bạn tên là gì?,,phrase,,คุณชื่ออะไรครับ,Bạn tên là gì?,,,claude-b11,true
+b11-w02,b11,b11-l1,นามสกุลอะไร,,họ (là) gì?,,,phrase,,แล้วคุณนามสกุลอะไรครับ,Thế họ của bạn là gì?,,,claude-b11,true
+b11-w03,b11,b11-l1,จังหวัด,,tỉnh,,จังหวัด,noun,,คุณเป็นคนจังหวัดอะไรครับ,Bạn là người tỉnh nào?,,,claude-b11,true
+b11-w04,b11,b11-l1,เป็นคน,,là người (quê ở …),เป็นคน + tỉnh / nước: nói quê quán,,phrase,,ฉันเป็นคนจังหวัดบั๊กนิญค่ะ,Tôi là người tỉnh Bắc Ninh.,,,claude-b11,true
+b11-w05,b11,b11-l1,อายุเท่าไร,,bao nhiêu tuổi?,,,phrase,,คุณอายุเท่าไรครับ,Bạn bao nhiêu tuổi?,,,claude-b11,true
+b11-w06,b11,b11-l1,ปี,,tuổi (khi nói tuổi); năm,nói tuổi: อายุ + số + ปี,,noun,,ฉันอายุยี่สิบปีค่ะ,Tôi 20 tuổi.,,,claude-b11,true
+b11-w07,b11,b11-l1,แล้วคุณล่ะ,,còn bạn (thì sao)?,ค่ะ/ครับ → แล้วคุณล่ะคะ / แล้วคุณล่ะครับ,,phrase,,ฉันนามสกุลเหงียนค่ะ แล้วคุณล่ะคะ,Tôi họ Nguyễn ạ. Còn bạn?,,,claude-b11,true
+b11-w08,b11,b11-l1,เหมือนกัน,,giống nhau; cũng vậy,,,adj,,เหมือนกันเลยครับ,Giống hệt nhau luôn.,,,claude-b11,true
+b11-w09,b11,b11-l2,ชอบ,,thích,,,verb,,ฉันชอบภาษาไทยมากค่ะ,Tôi thích tiếng Thái lắm.,,,claude-b11,true
+b11-w10,b11,b11-l2,สนใจ,,hứng thú; quan tâm,,,verb,,คุณสนใจเรียนภาษาไทยไหมคะ,Bạn có hứng thú học tiếng Thái không?,,,claude-b11,true
+b11-w11,b11,b11-l2,เรียน,,học,,,verb,,ฉันเรียนภาษาไทยมาสองปีแล้วค่ะ,Tôi học tiếng Thái được 2 năm rồi.,,,claude-b11,true
+b11-w12,b11,b11-l2,กำลัง,,đang,กำลัง + động từ (+ อยู่) = đang làm gì,,adv,,ตอนนี้ผมกำลังเรียนอยู่ครับ,Hiện tại tôi đang học.,,,claude-b11,true
+b11-w13,b11,b11-l2,พูดได้,,nói được,,,phrase,,พูดได้นิดหน่อยครับ,Nói được một chút ạ.,,,claude-b11,true
+b11-w14,b11,b11-l2,ธุระ,,việc (riêng); công chuyện,มีธุระ = có việc,,noun,,ผมมีธุระต้องไปก่อนครับ,Tôi có việc phải đi trước.,,,claude-b11,true
+b11-w15,b11,b11-l2,ไปก่อน,,đi trước,,,phrase,,ขอโทษครับ ผมต้องไปก่อน ลาก่อนครับ,"Xin lỗi, tôi phải đi trước. Tạm biệt bạn.",,,claude-b11,true
+b11-w16,b11,b11-l2,โอกาสหน้า,,dịp sau; lần sau,,,phrase,,โอกาสหน้าเจอกันใหม่นะคะ,Dịp sau gặp lại nhé!,,,claude-b11,true
+b11-w17,b11,b11-l2,เจอกันใหม่,,gặp lại (nhau),,,phrase,,โอเคค่ะ เจอกันใหม่นะคะ,Okie. Gặp lại nhé!,,,claude-b11,true
+b11-w18,b11,b11-l3,ไปไหน,,đi đâu,,,phrase,,พี่ฮวากำลังจะไปไหนครับ,Chị Hoa đang đi đâu đấy?,,,claude-b11,true
+b11-w19,b11,b11-l3,กำลังจะ,,sắp; đang định (làm gì),,,adv,,พี่กำลังจะไปสนามบินค่ะ,Chị đang đi sân bay.,,,claude-b11,true
+b11-w20,b11,b11-l3,กรุงเทพ,กรุงเทพฯ|กรุงเทพมหานคร,Bangkok (thủ đô Thái Lan),,,noun,,พี่ไปกรุงเทพค่ะ,Chị đi Bangkok.,,,claude-b11,true
+b11-w21,b11,b11-l3,เที่ยว,,đi du lịch; đi chơi,"ไปเที่ยว = đi chơi, đi du lịch",,verb,,พี่ไปเที่ยวใช่ไหมครับ,Chị đi du lịch phải không ạ?,,,claude-b11,true
+b11-w22,b11,b11-l3,ไม่ใช่,,không phải,,,phrase,,ไม่ใช่จ้ะ พี่ไปทำงานจ้ะ,Không. Chị đi công tác.,,,claude-b11,true
+b11-w23,b11,b11-l3,ไปทำงาน,,đi công tác (trong hội thoại); đi làm,cần GV xác nhận: 'đi công tác' có thể nói rõ hơn là ไปทำงานต่างจังหวัด / ไปติดต่องาน,,phrase,,พี่ไปทำงานจ้ะน้อง,Chị đi công tác em ạ.,,,claude-b11,true
+b11-w24,b11,b11-l3,นานเท่าไร,,bao lâu,,,phrase,,พี่ไปนานเท่าไรครับ,Chị đi bao lâu?,,,claude-b11,true
+b11-w25,b11,b11-l3,ประชุม,,họp; cuộc họp,,,verb,,ผมไปประชุมครับพี่,Em đi họp chị ạ.,,,claude-b11,true
+b11-w26,b11,b11-l3,จ้ะ,,từ đệm cuối câu (thân mật),"người lớn nói với người nhỏ, bạn bè thân; lịch sự hơn: ค่ะ / ครับ",,particle,,บ๊ายบายจ้ะน้อง,Bye em.,,,claude-b11,true
+b11-w27,b11,b11-l3,อาทิตย์หน้า,สัปดาห์หน้า,tuần sau,,,noun,,อาทิตย์หน้าเจอกันนะคะ,Tuần sau gặp em nhé.,,,claude-b11,true
+b11-w28,b11,b11-l4,ว่าง,,rảnh,,,adj,,พรุ่งนี้คุณว่างไหมครับ,Ngày mai bạn rảnh không?,,,claude-b11,true
+b11-w29,b11,b11-l4,ไม่ว่าง,,không rảnh; bận,,,phrase,,ขอโทษค่ะ พรุ่งนี้ฉันไม่ว่างค่ะ,"Mình xin lỗi, ngày mai mình không rảnh ạ.",,,claude-b11,true
+b11-w30,b11,b11-l4,พรุ่งนี้,,ngày mai,,,noun,,พรุ่งนี้ฉันไม่ว่างค่ะ,Ngày mai mình không rảnh ạ.,,,claude-b11,true
+b11-w31,b11,b11-l4,ห้องสมุด,,thư viện,,แห่ง,noun,,ไปห้องสมุดด้วยกันไหมครับ,Đi thư viện cùng nhau không ạ?,,,claude-b11,true
+b11-w32,b11,b11-l4,ด้วยกัน,,cùng nhau,,,adv,,ไปห้องสมุดด้วยกันไหมครับ,Đi thư viện cùng nhau không ạ?,,,claude-b11,true
+b11-w33,b11,b11-l4,นัด,,hẹn,นัดกับ … = hẹn với …,,verb,,ฉันนัดกับเพื่อนไปบางแสนแล้วค่ะ,Mình có hẹn với bạn đi Bang Xẻn rồi ạ.,,,claude-b11,true
+b11-w34,b11,b11-l4,วันอื่น,,ngày khác,,,noun,,วันอื่นก็ได้ครับ,Ngày khác cũng được ạ.,,,claude-b11,true
+b11-w35,b11,b11-l4,ก็ได้,,cũng được,,,phrase,,ไม่เป็นไรครับ วันอื่นก็ได้ครับ,"Không sao, ngày khác cũng được ạ.",,,claude-b11,true
+b11-w36,b11,b11-l5,วัด,,chùa,,แห่ง,noun,,เป็นวัดที่มีชื่อเสียงที่สุดในกรุงเทพค่ะ,Là ngôi chùa nổi tiếng nhất ở Bangkok ạ.,,,claude-b11,true
+b11-w37,b11,b11-l5,วัดพระแก้ว,,"chùa Phật Ngọc (Wat Phra Kaew, Bangkok)",,,noun,,นี่คือวัดพระแก้วค่ะ,Đây là chùa Phật Ngọc ạ.,,,claude-b11,true
+b11-w38,b11,b11-l5,นี่คือ,,đây là,,,phrase,,นี่คือวัดอะไรครับ,Đây là chùa gì vậy ạ?,,,claude-b11,true
+b11-w39,b11,b11-l5,สวย,,đẹp,,,adj,,สวยมากเลยครับ,Đẹp quá ạ.,,,claude-b11,true
+b11-w40,b11,b11-l5,มีชื่อเสียง,,nổi tiếng,,,adj,,วัดที่มีชื่อเสียงที่สุดในกรุงเทพ,ngôi chùa nổi tiếng nhất ở Bangkok,,,claude-b11,true
+b11-w41,b11,b11-l5,ที่สุด,,nhất,tính từ + ที่สุด = … nhất,,adv,,เป็นวัดที่มีชื่อเสียงที่สุดค่ะ,Là ngôi chùa nổi tiếng nhất ạ.,,,claude-b11,true
+b11-w42,b11,b11-l5,อย่างนั้นเหรอ,,thế à?,,,phrase,,อย่างนั้นเหรอครับ,Thế à?,,,claude-b11,true
+b11-w43,b11,b11-l5,พา,,dẫn; đưa (ai đi),,,verb,,พรุ่งนี้ช่วยพาผมไปวัดพระแก้วได้ไหมครับ,Ngày mai dẫn mình đi chùa Phật Ngọc được không?,,,claude-b11,true
+b11-w44,b11,b11-l5,ได้สิ,,được chứ,,,phrase,,ได้สิคะ,Được chứ.,,,claude-b11,true
+b11-w45,b11,b11-l5,ชวน,,rủ; mời,,,verb,,เราชวนพี่นามไปด้วยก็ได้ค่ะ,Chúng ta có thể rủ anh Nam đi cùng ạ.,,,claude-b11,true
+b11-w46,b11,b11-l6,ตั๋ว,,vé,,ใบ,noun,,คนไทยไม่ต้องซื้อตั๋วเข้าประตูใช่ไหมครับ,Người Thái không phải mua vé qua cổng đúng không ạ?,noto:1f3ab,,claude-b11,true
+b11-w47,b11,b11-l6,ไม่ต้อง,,không phải; không cần,,,phrase,,คนไทยไม่ต้องซื้อตั๋ว,Người Thái không phải mua vé.,,,claude-b11,true
+b11-w48,b11,b11-l6,ฟรี,,miễn phí,,,adj,,คนไทยเข้าฟรีค่ะ,Người Thái vào miễn phí ạ.,,,claude-b11,true
+b11-w49,b11,b11-l6,ตลาดน้ำ,,chợ nổi,,แห่ง,noun,,ถึงตลาดน้ำแล้วครับ,Đến chợ nổi rồi ạ.,,,claude-b11,true
+b11-w50,b11,b11-l6,ยังไม่เคย,,chưa (từng) bao giờ,ยังไม่เคย + động từ = chưa từng …,,phrase,,ฉันยังไม่เคยไปเลยค่ะ,Mình chưa đi bao giờ ạ.,,,claude-b11,true
+b11-w51,b11,b11-l6,ขับรถ,,lái xe,,,verb,,เราขับรถไปเองดีกว่าครับ,Chúng ta tự lái xe đi thì tốt hơn ạ.,,,claude-b11,true
+b11-w52,b11,b11-l6,เรียกรถ,,gọi xe (taxi / xe dịch vụ),trong hội thoại = 'đi xe ngoài'; cần GV xác nhận,,phrase,,เราจะขับรถไปเองหรือเรียกรถคะ,Chúng ta tự lái xe hay đi xe ngoài ạ?,,,claude-b11,true
+b11-w53,b11,b11-l6,คึกคัก,,đông vui; nhộn nhịp,,,adj,,ตลาดคึกคักมากเลยค่ะ,Chợ đông vui quá ạ.,,,claude-b11,true
+b11-w54,b11,b11-l6,ของใช้,,đồ dùng,,ชิ้น,noun,,ที่นี่มีทั้งอาหาร ของใช้ และของที่ระลึก,"Ở đây có đồ ăn, đồ dùng và đồ lưu niệm.",,,claude-b11,true
+b11-w55,b11,b11-l6,ของที่ระลึก,,đồ lưu niệm; quà lưu niệm,,ชิ้น,noun,,ของที่ระลึกให้นักท่องเที่ยวเลือกซื้อ,đồ lưu niệm cho khách du lịch chọn mua,,,claude-b11,true
+b11-w56,b11,b11-l6,หลากหลาย,,đa dạng,,,adj,,มีของที่ระลึกหลากหลายมากครับ,Có đồ lưu niệm rất đa dạng ạ.,,,claude-b11,true
+b11-w57,b11,b11-l7,ธนาคาร,,ngân hàng,,แห่ง,noun,,ผมจะไปธนาคารครับ,Tôi định đi ngân hàng.,noto:1f3e6,,claude-b11,true
+b11-w58,b11,b11-l7,ไปทางไหน,,đi lối nào; đi đường nào,,,phrase,,ผมจะไปธนาคาร ไปทางไหนครับ,"Tôi định đi ngân hàng, đi lối nào ạ?",,,claude-b11,true
+b11-w59,b11,b11-l7,มีอะไร,,gì thế?; có chuyện gì?,,,phrase,,มีอะไรคะ,Gì thế ạ?,,,claude-b11,true
+b11-w60,b11,b11-l7,ปากซอย,,đầu ngõ,,,noun,,ถึงปากซอยแล้วเลี้ยวซ้าย,Đến đầu ngõ rồi rẽ trái.,,,claude-b11,true
+b11-w61,b11,b11-l7,ข้าง,,cạnh; bên cạnh,,,prep,,ธนาคารอยู่ข้างร้านกาแฟค่ะ,Ngân hàng ở cạnh quán cà phê.,,,claude-b11,true
+b11-w62,b11,b11-l7,ร้านกาแฟ,,quán cà phê,,ร้าน,noun,,ธนาคารอยู่ข้างร้านกาแฟค่ะ,Ngân hàng ở cạnh quán cà phê.,,,claude-b11,true
+b11-w63,b11,b11-l7,เดิน,,đi bộ,,,verb,,ต้องเดินไกลไหมครับ,Phải đi bộ xa không ạ?,,,claude-b11,true
+b11-w64,b11,b11-l7,ไม่ไกล,,không xa,,,phrase,,ไม่ไกลค่ะ,Không xa.,,,claude-b11,true
+b11-w65,b11,b11-l7,ก็ถึง,,là đến; thì (sẽ) đến,,,phrase,,เดินประมาณห้านาทีก็ถึงค่ะ,Đi bộ khoảng 5 phút thì sẽ đến.,,,claude-b11,true
+b11-w66,b11,b11-l8,รถเมล์,,xe buýt,,คัน,noun,,รถเมล์สายอะไรไปอนุสาวรีย์ชัยสมรภูมิครับ,Xe buýt tuyến gì đi đến Đài Tưởng niệm Chiến thắng?,noto:1f68c,,claude-b11,true
+b11-w67,b11,b11-l8,สาย,,tuyến (xe buýt),"cũng nghĩa: muộn, trễ (กลัวว่าจะสาย — Bài 12); dây",,noun,,สายห้าสิบเก้าค่ะ,Tuyến 59 ạ.,,,claude-b11,true
+b11-w68,b11,b11-l8,รถแอร์,,xe (buýt) có điều hòa,,คัน,noun,,เป็นรถแอร์ค่ะ,Là xe điều hòa.,,,claude-b11,true
+b11-w69,b11,b11-l8,ขึ้น,,lên (xe),,,verb,,ขึ้นที่ไหนครับ,Lên ở đâu?,,,claude-b11,true
+b11-w70,b11,b11-l8,ป้าย,,trạm (xe buýt); biển,ป้ายรถเมล์ = trạm xe buýt,ป้าย,noun,,ขึ้นที่ป้ายหน้าเซเว่นค่ะ,Lên ở trạm trước 7-Eleven.,,,claude-b11,true
+b11-w71,b11,b11-l8,เซเว่น,,cửa hàng 7-Eleven,,,noun,,ขึ้นที่ป้ายหน้าเซเว่นค่ะ,Lên ở trạm trước 7-Eleven.,,,claude-b11,true
+b11-w72,b11,b11-l8,ลง,,xuống (xe),,,verb,,แล้วผมต้องลงที่ไหนครับ,Thế tôi phải xuống ở đâu?,,,claude-b11,true
+b11-w73,b11,b11-l8,ต้อง,,phải,,,verb,,ผมต้องลงที่ไหนครับ,Tôi phải xuống ở đâu?,,,claude-b11,true
+b11-w74,b11,b11-l8,อนุสาวรีย์ชัยสมรภูมิ,อนุสาวรีย์ชัย,Đài Tưởng niệm Chiến thắng (Bangkok),thường nói tắt: อนุสาวรีย์ชัย,,noun,,ลงที่ป้ายอนุสาวรีย์ชัยสมรภูมิค่ะ,Xuống ở trạm Đài Tưởng niệm Chiến thắng ạ.,,,claude-b11,true
+b11-w75,b11,b11-l8,สังเกต,,để ý; nhận ra,,,verb,,คนลงเยอะ สังเกตง่ายมากค่ะ,"Người xuống nhiều, dễ nhận ra lắm ạ.",,,claude-b11,true
+b11-w76,b11,b11-l8,ค่ารถ,,tiền xe; phí đi lại,,,noun,,ค่ารถเท่าไรครับ,Phí đi lại bao nhiêu ạ?,,,claude-b11,true
+b12-w01,b12,b12-l1,กี่โมง,,mấy giờ,,,phrase,,ตอนนี้กี่โมงแล้วครับ,Bây giờ mấy giờ rồi ạ?,,,claude-b12,true
+b12-w02,b12,b12-l1,ดีกว่า,,(làm …) thì hơn; tốt hơn,,,phrase,,ผมไปก่อนดีกว่าครับ,Tôi đi trước thì hơn.,,,claude-b12,true
+b12-w03,b12,b12-l1,กลัวว่า,,e là; sợ rằng,,,phrase,,กลัวว่าจะสายครับ,Tôi e là sẽ muộn.,,,claude-b12,true
+b12-w04,b12,b12-l1,งาน,,chương trình; sự kiện (trong hội thoại); công việc,,,noun,,งานเริ่มกี่โมงคะ,Chương trình bắt đầu lúc mấy giờ?,,,claude-b12,true
+b12-w05,b12,b12-l1,สิบโมงเช้า,,10 giờ sáng,,,phrase,,เริ่มสิบโมงเช้าครับ,Bắt đầu lúc 10h sáng ạ.,,,claude-b12,true
+b12-w06,b12,b12-l1,ช่วงบ่าย,,buổi chiều; khoảng chiều,,,noun,,แล้วงานช่วงบ่ายล่ะคะ,Còn chương trình buổi chiều thì sao?,,,claude-b12,true
+b12-w07,b12,b12-l1,หกโมงเย็น,,6 giờ chiều,,,phrase,,เริ่มหกโมงเย็นครับ,Bắt đầu 6h chiều ạ.,,,claude-b12,true
+b12-w08,b12,b12-l1,ไม่ค่อย,,không … lắm,ไม่ค่อย + động từ / tính từ,,adv,,ผมไม่ค่อยแน่ใจครับ,Tôi không chắc chắn lắm.,,,claude-b12,true
+b12-w09,b12,b12-l2,คุณผู้หญิง,,bà; quý bà (gọi khách nữ lịch sự),,,pron,,สวัสดีครับคุณผู้หญิง,Xin chào bà!,,,claude-b12,true
+b12-w10,b12,b12-l2,เตียง,,giường,,เตียง,noun,,ฉันต้องการห้องเตียงใหญ่หนึ่งห้องค่ะ,Tôi muốn 1 phòng giường đôi.,noto:1f6cf-fe0f,,claude-b12,true
+b12-w11,b12,b12-l2,ห้องเตียงใหญ่,,phòng giường đôi (1 giường lớn),cần GV xác nhận,ห้อง,noun,,ฉันต้องการห้องเตียงใหญ่หนึ่งห้องค่ะ,Tôi muốn 1 phòng giường đôi.,,,claude-b12,true
+b12-w12,b12,b12-l2,ห้องเตียงคู่,,phòng 2 giường,cần GV xác nhận: khách sạn Thái thường dùng เตียงคู่ = 2 giường đơn (twin); Bài 8 đang ghi เตียงคู่ = giường đôi,ห้อง,noun,,และห้องเตียงคู่หนึ่งห้องค่ะ,và 1 phòng 2 giường ạ.,,,claude-b12,true
+b12-w13,b12,b12-l2,ห้องละ,,mỗi phòng,danh từ + ละ = mỗi …,,phrase,,ราคาห้องละเท่าไรคะ,Giá mỗi phòng bao nhiêu ạ?,,,claude-b12,true
+b12-w14,b12,b12-l2,ต่อวัน,,mỗi ngày; /ngày,,,phrase,,ห้องละสองพันบาทต่อวันครับ,Mỗi phòng 2.000 baht/ngày ạ.,,,claude-b12,true
+b12-w15,b12,b12-l2,ชั้น,,tầng,,,noun,,ขอห้องที่อยู่ชั้นเดียวกันนะคะ,Tôi xin phòng cùng tầng với nhau ạ.,,,claude-b12,true
+b12-w16,b12,b12-l2,เดียวกัน,,cùng (một),,,adj,,ขอห้องที่ติดกันและอยู่ชั้นเดียวกันนะคะ,Tôi xin phòng liền nhau và cùng tầng với nhau ạ.,,,claude-b12,true
+b12-w17,b12,b12-l2,พัก,,ở (trọ); nghỉ (khách sạn),,,verb,,ฉันพักสองวันค่ะ,Tôi ở 2 ngày ạ.,,,claude-b12,true
+b12-w18,b12,b12-l2,กี่วัน,,mấy ngày,,,phrase,,คุณจะพักกี่วันครับ,Bà sẽ ở mấy ngày ạ?,,,claude-b12,true
+b12-w19,b12,b12-l3,เงินมัดจำ,,tiền đặt cọc,,,noun,,ขอพาสปอร์ตและเงินมัดจำหนึ่งพันบาทครับ,Xin hộ chiếu và tiền đặt cọc 1.000 baht ạ.,,,claude-b12,true
+b12-w20,b12,b12-l3,ชั้นล่าง,,tầng trệt; tầng dưới,,,noun,,ห้องอาหารอยู่ชั้นล่างครับ,Phòng ăn ở tầng trệt ạ.,,,claude-b12,true
+b12-w21,b12,b12-l3,ไวไฟ,,wifi,,,noun,,ไวไฟฟรีครับ,Wifi miễn phí ạ.,,,claude-b12,true
+b12-w22,b12,b12-l3,รหัสผ่าน,,mật khẩu; password,,,noun,,รหัสผ่านคือหนึ่งถึงเก้าครับ,Mật khẩu là từ 1 đến 9 ạ.,,,claude-b12,true
+b12-w23,b12,b12-l3,ถ้า,,nếu,,,conj,,ถ้าจะโทรหาพนักงานต้อนรับ ต้องกดเบอร์อะไรคะ,Nếu gọi nhân viên lễ tân thì bấm số nào ạ?,,,claude-b12,true
+b12-w24,b12,b12-l3,โทรหา,,gọi (điện) cho,,,verb,,จะโทรหาพนักงานต้อนรับ,muốn gọi nhân viên lễ tân,,,claude-b12,true
+b12-w25,b12,b12-l3,กด,,bấm; nhấn,,,verb,,กดเบอร์หนึ่งร้อยครับ,Bấm số 100 ạ.,,,claude-b12,true
+b12-w26,b12,b12-l3,ปลุก,,đánh thức; báo thức,,,verb,,ช่วยปลุกตอนหกโมงเช้าด้วยนะคะ,Giúp báo thức lúc 6h sáng nhé ạ.,,,claude-b12,true
+b12-w27,b12,b12-l3,ยก,,khiêng; mang (đồ nặng),,,verb,,ช่วยยกกระเป๋าขึ้นไปห้องให้หน่อยนะคะ,Chuyển hành lý lên phòng giúp tôi nhé ạ.,,,claude-b12,true
+b12-w28,b12,b12-l3,ทิป,,tiền bo; tiền tip,,,noun,,นี่ทิปสำหรับคุณค่ะ,Đây là tiền bo cho anh.,,,claude-b12,true
+b12-w29,b12,b12-l4,วันอาทิตย์นี้,,chủ nhật này,,,phrase,,วันอาทิตย์นี้คุณจะทำอะไรบ้างครับ,Chủ nhật này bạn định làm những gì?,,,claude-b12,true
+b12-w30,b12,b12-l4,บ้าง,,"những (gì, đâu…) — hỏi liệt kê",อะไรบ้าง = những gì; ที่ไหนบ้าง = những đâu,,particle,,คุณจะทำอะไรบ้างครับ,Bạn định làm những gì?,,,claude-b12,true
+b12-w31,b12,b12-l4,แน่ใจ,,chắc chắn,,,adj,,ฉันยังไม่แน่ใจค่ะ,Tôi vẫn chưa chắc chắn ạ.,,,claude-b12,true
+b12-w32,b12,b12-l4,อยาก,,muốn,อยาก + động từ,,verb,,อยากไปอยุธยาค่ะ,Tôi muốn đi Ayutthaya.,,,claude-b12,true
+b12-w33,b12,b12-l4,อยุธยา,,Ayutthaya (cố đô Thái Lan),,,noun,,อยุธยาสวยมากเลยครับ,Ayutthaya đẹp lắm luôn ạ.,,,claude-b12,true
+b12-w34,b12,b12-l4,อาจจะ,,có thể (là); có lẽ,,,adv,,อาจจะค่ะ,Có thể ạ.,,,claude-b12,true
+b12-w35,b12,b12-l4,หลายที่,,nhiều nơi,,,phrase,,ฉันอยากไปหลายที่มากเลยค่ะ,Tôi muốn đi nhiều nơi lắm luôn.,,,claude-b12,true
+b12-w36,b12,b12-l4,ยังไม่รู้,,chưa biết,,,phrase,,อาจจะไปค่ะ แต่ยังไม่รู้,Có thể đi ạ. Nhưng chưa biết.,,,claude-b12,true
+b12-w37,b12,b12-l4,เชียงใหม่,,Chiang Mai,,,noun,,แล้วเชียงใหม่ล่ะครับ,Còn Chiang Mai thì sao?,,,claude-b12,true
+b12-w38,b12,b12-l4,งั้น,,vậy thì,văn nói của ถ้าอย่างนั้น,,conj,,งั้นไปภูเก็ตกับกระบี่สิครับ,Vậy thì đi Phuket và Krabi ạ.,,,claude-b12,true
+b12-w39,b12,b12-l5,อากาศ,,thời tiết; không khí,,,noun,,วันนี้อากาศไม่ดีครับ,Hôm nay thời tiết tồi.,,,claude-b12,true
+b12-w40,b12,b12-l5,อากาศดี,,thời tiết đẹp,,,phrase,,ใช่ครับ อากาศดีมาก,"Vâng, thời tiết đẹp lắm.",,,claude-b12,true
+b12-w41,b12,b12-l5,โชคดี,,may mắn,,,adj,,แต่คุณโชคดีนะครับ,Nhưng bạn may mắn nhé.,,,claude-b12,true
+b12-w42,b12,b12-l5,จริงเหรอ,,thật hả?,,,phrase,,จริงเหรอคะ,Thật hả?,,,claude-b12,true
+b12-w43,b12,b12-l5,รถแท็กซี่,แท็กซี่,xe taxi,,คัน,noun,,รถแท็กซี่อยู่ที่ไหนคะ,Xe taxi ở đâu ạ?,noto:1f695,,claude-b12,true
+b12-w44,b12,b12-l5,หน้า,,(phía) trước,,,prep,,รถแท็กซี่อยู่หน้าโรงแรมครับ,Xe taxi ở trước khách sạn ạ.,,,claude-b12,true
+b12-w45,b12,b12-l5,โรงแรม,,khách sạn,,แห่ง,noun,,รถแท็กซี่อยู่หน้าโรงแรมครับ,Xe taxi ở trước khách sạn ạ.,noto:1f3e8,,claude-b12,true
+b12-w46,b12,b12-l5,สนุก,,vui; thú vị,,,adj,,เที่ยวให้สนุกนะครับ,Du lịch vui nhé!,,,claude-b12,true
+b12-w47,b12,b12-l6,จอง,,đặt (trước),,,verb,,ผมอยากจองห้องครับ,Tôi muốn đặt phòng.,,,claude-b12,true
+b12-w48,b12,b12-l6,ห้องเดี่ยว,,phòng đơn,,ห้อง,noun,,มีทั้งห้องเดี่ยวและห้องคู่ค่ะ,Có cả phòng đơn lẫn phòng đôi ạ.,,,claude-b12,true
+b12-w49,b12,b12-l6,ห้องคู่,,phòng đôi (cho 2 người),cần GV xác nhận,ห้อง,noun,,มีทั้งห้องเดี่ยวและห้องคู่ค่ะ,Có cả phòng đơn lẫn phòng đôi ạ.,,,claude-b12,true
+b12-w50,b12,b12-l6,ทั้ง,,cả (… lẫn …),ทั้ง A และ B = cả A lẫn B,,conj,,มีทั้งห้องเดี่ยวและห้องคู่ค่ะ,Có cả phòng đơn lẫn phòng đôi ạ.,,,claude-b12,true
+b12-w51,b12,b12-l6,ขอดู,,xin xem,,,phrase,,ผมขอดูห้องได้ไหมครับ,Tôi xem phòng được không ạ?,,,claude-b12,true
+b12-w52,b12,b12-l6,อื่น,,khác,,,adj,,มีห้องอื่นไหมครับ,Có phòng khác không ạ?,,,claude-b12,true
+b12-w53,b12,b12-l6,ใหญ่กว่า,,to hơn; lớn hơn,,,phrase,,มีห้องที่ใหญ่กว่านี้ไหมครับ,Có phòng to hơn phòng này không ạ?,,,claude-b12,true
+b12-w54,b12,b12-l6,กว่า,,hơn (so sánh),tính từ + กว่า = … hơn,,adv,,ห้องนี้ดีกว่าเยอะเลยครับ,Phòng này tốt hơn nhiều luôn ạ.,,,claude-b12,true
+b12-w55,b12,b12-l6,เอา,,lấy; chọn (lấy),,,verb,,งั้นผมเอาห้องนี้นะครับ,Vậy tôi lấy phòng này nhé.,,,claude-b12,true
+b12-w56,b12,b12-l7,คืน,,đêm,,,noun,,ผมจะพักสองคืนครับ,Tôi sẽ nghỉ 2 đêm.,,,claude-b12,true
+b12-w57,b12,b12-l7,ลดไม่ได้,,không giảm được,,,phrase,,ลดไม่ได้ค่ะ,Không giảm được ạ.,,,claude-b12,true
+b12-w58,b12,b12-l7,ราคา,,giá,,,noun,,แล้วห้องของผมราคาเท่าไรครับ,Vậy phòng của tôi giá bao nhiêu?,,,claude-b12,true
+b12-w59,b12,b12-l7,คืนละ,,mỗi đêm,danh từ + ละ = mỗi …,,phrase,,ค่าห้องคืนละห้าร้อยบาทค่ะ,Giá phòng mỗi đêm 500 baht ạ.,,,claude-b12,true
+b12-w60,b12,b12-l7,แอร์,,điều hòa (máy lạnh),,เครื่อง,noun,,ห้องมีแอร์ใช่ไหมครับ,Phòng có điều hòa phải không ạ?,,,claude-b12,true
+b12-w61,b12,b12-l7,ด้วย,,cũng; nữa; luôn,đặt cuối câu: มีด้วย = có luôn,,adv,,มีด้วยค่ะ,Có luôn ạ.,,,claude-b12,true
+b12-w62,b12,b12-l7,อาหารเช้า,,bữa sáng,,,noun,,ที่นี่มีอาหารเช้าไหมครับ,Ở đây có bữa sáng không?,,,claude-b12,true
+b12-w63,b12,b12-l7,ดีมากเลย,,tốt quá; tuyệt quá,,,phrase,,ดีมากเลยครับ,Tốt quá ạ.,,,claude-b12,true
 b09-w01,b09,b09-l1,ร้านอาหารไทย,,nhà hàng Thái,,ร้าน,noun,,,,,,plernpin-b09#p3,true
 b09-w02,b09,b09-l1,พนักงานเสิร์ฟ,เด็กเสิร์ฟ,nhân viên phục vụ,,คน,noun,,พนักงานเสิร์ฟเอาเมนูมาให้ครับ,Nhân viên phục vụ mang thực đơn đến.,,,plernpin-b09#p3,true
 b09-w03,b09,b09-l1,พ่อครัว,แม่ครัว|เชฟ,đầu bếp,พ่อครัว: nam; แม่ครัว: nữ,คน,noun,,พ่อครัวของร้านนี้เป็นคนไทยครับ,Đầu bếp của nhà hàng này là người Thái.,noto:1f9d1-200d-1f373,,plernpin-b09#p3,true

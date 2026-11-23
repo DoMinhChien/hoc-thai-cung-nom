@@ -93,7 +93,8 @@ test('Hội thoại (Bài 12, bài học 1): tra từ trong câu, rồi bài t�
 }) => {
   const b12 = await loadBundle(page, 'b12');
   await page.goto('/units/b12/b12-l1');
-  await expect(page.getByTestId('dialogue-lines')).toBeVisible();
+  // TC.4a: bài học có từ vựng (từ trong hội thoại) → bước Từ vựng trước, Hội thoại sau.
+  await expect(page.getByTestId('flashcard')).toBeVisible();
   await finishLesson(page, b12, 'b12-l1');
   await expect(page.getByTestId('lesson-finished')).toContainText('Xong Bài học 1');
 });
