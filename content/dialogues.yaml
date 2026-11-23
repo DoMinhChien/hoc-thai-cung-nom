@@ -294,3 +294,55 @@
     - { speaker: B, th: "ขอบคุณค่ะ", vi: "Cảm ơn anh." }
   source: claude-b10
   draft: true
+- id: d-b08-dat-phong
+  lesson_id: b08-l6
+  lines:
+    - { speaker: Khách, th: "สวัสดีครับ คืนนี้มีห้องว่างไหมครับ", vi: "Xin chào, tối nay còn phòng trống không ạ?" }
+    - { speaker: Lễ tân, th: "มีค่ะ คุณอยากได้ห้องแบบไหนคะ", vi: "Còn ạ. Anh muốn phòng loại nào ạ?" }
+    - { speaker: Khách, th: "ผมอยากได้ห้องเตียงเดี่ยวที่มีระเบียงครับ ค่าห้องคืนละเท่าไรครับ", vi: "Tôi muốn phòng giường đơn có ban công. Giá phòng mỗi đêm bao nhiêu ạ?" }
+    - { speaker: Lễ tân, th: "คืนละหนึ่งพันสองร้อยบาท รวมอาหารเช้าค่ะ จะพักกี่คืนคะ", vi: "1.200 baht một đêm, gồm bữa sáng ạ. Anh sẽ ở mấy đêm ạ?" }
+    - { speaker: Khách, th: "สองคืนครับ จ่ายด้วยบัตรเครดิตได้ไหมครับ", vi: "Hai đêm ạ. Trả bằng thẻ tín dụng được không ạ?" }
+    - { speaker: Lễ tân, th: "ได้ค่ะ ขอดูหนังสือเดินทางหน่อยค่ะ แล้วกรุณาเซ็นชื่อตรงนี้ค่ะ", vi: "Được ạ. Cho tôi xem hộ chiếu một chút, rồi làm ơn ký tên ở đây ạ." }
+    - { speaker: Khách, th: "นี่ครับ ห้องอาหารอยู่ชั้นไหนครับ", vi: "Đây ạ. Nhà hàng ở tầng mấy ạ?" }
+    - { speaker: Lễ tân, th: "ชั้นสองค่ะ นี่กุญแจห้องกับคูปองอาหารเช้าค่ะ ลิฟท์อยู่ตรงนั้นค่ะ", vi: "Ở tầng hai ạ. Đây là chìa khóa phòng và phiếu ăn sáng. Thang máy ở ngay chỗ đó ạ." }
+  source: claude-b08
+  draft: true
+- id: d-b08-tra-phong
+  lesson_id: b08-l8
+  lines:
+    - { speaker: Khách, th: "สวัสดีครับ ผมอยู่ห้องห้าศูนย์ห้าครับ", vi: "Xin chào, tôi ở phòng 505." }
+    - { speaker: Lễ tân, th: "สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ", vi: "Chào anh, tôi có thể giúp gì ạ?" }
+    - { speaker: Khách, th: "ผมอยากขอผ้าเช็ดตัวกับหมอนเพิ่มครับ แล้วกรุณาทำความสะอาดห้องให้ด้วยครับ", vi: "Tôi muốn xin thêm khăn tắm và gối. Và làm ơn dọn phòng giúp tôi." }
+    - { speaker: Lễ tân, th: "ได้ค่ะ เดี๋ยวพนักงานจะเอาขึ้นไปให้ค่ะ", vi: "Vâng ạ, nhân viên sẽ mang lên cho anh ngay ạ." }
+    - { speaker: Khách, th: "ผมจะเช็คเอาท์ครับ นี่กุญแจห้องครับ", vi: "(Sáng hôm sau) Tôi muốn trả phòng. Đây là chìa khóa phòng." }
+    - { speaker: Lễ tân, th: "นี่ใบเรียกเก็บเงินค่ะ ทั้งหมดสองพันสี่ร้อยบาทค่ะ", vi: "Đây là hóa đơn ạ. Tất cả 2.400 baht." }
+    - { speaker: Khách, th: "ผมจ่ายเป็นเงินสดครับ ขอใบเสร็จรับเงินด้วยครับ", vi: "Tôi trả tiền mặt. Cho tôi xin biên lai luôn." }
+    - { speaker: Lễ tân, th: "นี่เงินทอนกับใบเสร็จค่ะ ขอบคุณที่มาพักกับเราค่ะ", vi: "Đây là tiền thối và biên lai ạ. Cảm ơn anh đã nghỉ ở khách sạn chúng tôi." }
+  source: claude-b08
+  draft: true
+- id: d-b07-hoi-duong
+  lesson_id: b07-l8
+  lines:
+    - { speaker: Khách du lịch, th: "ขอโทษครับ ขอถามหน่อยครับ พิพิธภัณฑ์ไปทางไหนครับ", vi: "Xin lỗi, cho tôi hỏi chút ạ! Bảo tàng đi lối nào ạ?" }
+    - { speaker: Người đi đường, th: "ตรงไปแล้วเลี้ยวซ้ายที่ไฟจราจรค่ะ", vi: "Anh đi thẳng rồi rẽ trái ở đèn giao thông." }
+    - { speaker: Khách du lịch, th: "ไกลจากที่นี่แค่ไหนครับ", vi: "Cách đây bao xa ạ?" }
+    - { speaker: Người đi đường, th: "ไม่ไกลค่ะ ประมาณห้าร้อยเมตร เดินไปใช้เวลาประมาณสิบนาทีค่ะ", vi: "Không xa đâu, khoảng 500 mét, đi bộ mất khoảng 10 phút." }
+    - { speaker: Khách du lịch, th: "พิพิธภัณฑ์อยู่ทางซ้ายหรือทางขวาครับ", vi: "Bảo tàng ở bên trái hay bên phải ạ?" }
+    - { speaker: Người đi đường, th: "อยู่ทางขวามือ ตรงข้ามไปรษณีย์ค่ะ", vi: "Ở bên tay phải, đối diện bưu điện." }
+    - { speaker: Khách du lịch, th: "ขอบคุณมากครับ", vi: "Cảm ơn chị nhiều ạ." }
+    - { speaker: Người đi đường, th: "ไม่เป็นไรค่ะ", vi: "Không có gì." }
+  source: claude-b07
+  draft: true
+- id: d-b07-taxi
+  lesson_id: b07-l7
+  lines:
+    - { speaker: Khách, th: "ไปสนามบินไหมครับ", vi: "Anh có đi sân bay không ạ?" }
+    - { speaker: Tài xế, th: "ไปครับ ขึ้นรถเลยครับ", vi: "Có, mời anh lên xe." }
+    - { speaker: Khách, th: "จากที่นี่ถึงสนามบินไกลแค่ไหนครับ", vi: "Từ đây đến sân bay bao xa ạ?" }
+    - { speaker: Tài xế, th: "ประมาณสามสิบกิโลเมตร ใช้เวลาประมาณสี่สิบนาทีครับ", vi: "Khoảng 30 km, mất khoảng 40 phút." }
+    - { speaker: Khách, th: "ผมกำลังรีบครับ ไปทางด่วนได้ไหมครับ", vi: "Tôi đang vội, đi đường cao tốc được không ạ?" }
+    - { speaker: Tài xế, th: "ได้ครับ แต่ต้องจ่ายค่าทางด่วนเองนะครับ", vi: "Được, nhưng anh tự trả phí đường cao tốc nhé." }
+    - { speaker: Khách, th: "ถึงแล้วใช่ไหมครับ จอดตรงนี้เลยครับ ค่ารถเท่าไรครับ", vi: "Đến rồi phải không ạ? Dừng ngay đây nhé. Tiền xe bao nhiêu ạ?" }
+    - { speaker: Tài xế, th: "สามร้อยห้าสิบบาทครับ ขอบคุณครับ", vi: "350 baht. Cảm ơn anh." }
+  source: claude-b07
+  draft: true

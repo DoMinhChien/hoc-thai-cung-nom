@@ -53,23 +53,23 @@ b09-l8,b09,8,Gọi món và hương vị,g-b09-rot,true
 b09-l9,b09,9,"Nước uống, đồ ăn nhanh, tính tiền",g-b09-ya,true
 b09-l10,b09,10,Trả tiền và không biết làm (ไม่เป็น),g-b09-mai-pen|g-b09-kep-ngoen,true
 b08-l1,b08,1,Phòng nghỉ và phòng tắm,g-b08-yak|g-b08-yak-dai,true
-b08-l2,b08,2,"Phòng ăn, bể bơi và sảnh",,true
+b08-l2,b08,2,"Phòng ăn, bể bơi và sảnh",g-b08-yu-chan,true
 b08-l3,b08,3,"Đồ dùng cá nhân, chăn gối",g-b08-yak-kho,true
-b08-l4,b08,4,Nhân viên khách sạn và thẻ tín dụng,,true
-b08-l5,b08,5,"Tiền mặt, đổi phòng và dịch vụ",,true
-b08-l6,b08,6,"Loại phòng, giá phòng",,true
-b08-l7,b08,7,"Nhận, trả phòng và đăng ký",,true
+b08-l4,b08,4,Nhân viên khách sạn và thẻ tín dụng,g-b08-dai-mai,true
+b08-l5,b08,5,"Tiền mặt, đổi phòng và dịch vụ",g-b08-mi-wang,true
+b08-l6,b08,6,"Loại phòng, giá phòng",g-b08-khuen-la,true
+b08-l7,b08,7,"Nhận, trả phòng và đăng ký",g-b08-jong-wai,true
 b08-l8,b08,8,"Đặt cọc, rời đi, làm ơn",g-b08-karuna,true
-b07-l1,b07,1,Địa điểm trong thành phố (1),,true
-b07-l2,b07,2,Địa điểm trong thành phố (2),,true
-b07-l3,b07,3,Địa điểm trong thành phố (3),,true
-b07-l4,b07,4,Phương tiện giao thông (1),,true
-b07-l5,b07,5,Phương tiện giao thông (2) và hướng đi,,true
-b07-l6,b07,6,Trong thành phố và giao thông,,true
-b07-l7,b07,7,"Lên xe, xuống xe, vé và lịch trình",,true
+b07-l1,b07,1,Địa điểm trong thành phố (1),g-b07-kho-tham,true
+b07-l2,b07,2,Địa điểm trong thành phố (2),g-b07-sap-mai-wa,true
+b07-l3,b07,3,Địa điểm trong thành phố (3),g-b07-mai-sap-wa,true
+b07-l4,b07,4,Phương tiện giao thông (1),g-b07-pai-yangngai,true
+b07-l5,b07,5,Phương tiện giao thông (2) và hướng đi,g-b07-liao,true
+b07-l6,b07,6,Trong thành phố và giao thông,g-b07-tamnaeng,true
+b07-l7,b07,7,"Lên xe, xuống xe, vé và lịch trình",g-b07-khuen-long,true
 b07-l8,b07,8,"Vị trí, hỏi đường và chỉ đường",g-b07-kho-tham|g-b07-chuai-bok-thang|g-b07-sap-mai-wa|g-b07-mai-sap-wa,true
-b07-l9,b07,9,"Trong, ngoài, khoảng cách",,true
-b07-l10,b07,10,"Xa, đối diện, bao xa",g-b07-klai-chak|g-b07-chak-thueng,true
+b07-l9,b07,9,"Trong, ngoài, khoảng cách",g-b07-tamnaeng,true
+b07-l10,b07,10,"Xa, đối diện, bao xa",g-b07-klai-chak|g-b07-chak-thueng|g-b07-chai-wela,true
 b06-l1,b06,1,Các buổi trong ngày,,true
 b06-l2,b06,2,"Giờ, phút và cách nói giờ kiểu Thái",g-b06-ti|g-b06-mong-chao|g-b06-bai|g-b06-mong-yen|g-b06-thum,true
 b06-l3,b06,3,"Giờ phút, giờ quốc tế, giờ kém; bây giờ, chưa, xong",g-b06-nathi|g-b06-nalika|g-b06-ik,true
