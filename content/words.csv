@@ -135,25 +135,25 @@ b01-w68,b01,b01-l7,อยู่,,ở,,,verb,,แม่อยู่ที่บ�
 b01-w69,b01,b01-l7,ที่,,chỗ; ở (tại),,,noun,,ผมอยู่ที่ฮานอยครับ,Tôi sống ở Hà Nội.,,,plernpin-b01#p16,true
 b01-w70,b01,b01-l7,และ,,và,,,conj,,ฉันชอบชาและกาแฟค่ะ,Tôi thích trà và cà phê.,,,plernpin-b01#p16,true
 b01-w71,b01,b01-l7,ดี,,tốt,,,adj,,วันนี้อากาศดีครับ,Hôm nay thời tiết đẹp.,,,plernpin-b01#p16,true
-c01-w01,c01,c01-l1,ข้า,,ta; tớ,"cặp ข้า – เอ็ง: trong phim cổ trang = ta – ngươi; đời thường (nam, bạn thân) = tớ – cậu",,pron,,,,,,plernpin-c01#p1,true
+c01-w01,c01,c01-l1,ข้า,,ta; tớ,"cặp ข้า – เอ็ง: trong phim cổ trang = ta – ngươi; đời thường (nam, bạn thân) = tớ – cậu",,pron,,ข้าไม่กลัวเอ็งหรอก,Ta không sợ ngươi đâu.,,,plernpin-c01#p1,true
 c01-w02,c01,c01-l1,เอ็ง,,ngươi; cậu,đi cặp với ข้า,,pron,,,,,,plernpin-c01#p1,true
-c01-w03,c01,c01-l1,เค้า,,người ta; anh,"cặp เขา/เค้า – ตัว/ตัวเอง: người yêu, vợ chồng, bạn gái thân với nhau",,pron,,,,,,plernpin-c01#p1,true
+c01-w03,c01,c01-l1,เค้า,,người ta; anh,"cặp เขา/เค้า – ตัว/ตัวเอง: người yêu, vợ chồng, bạn gái thân với nhau",,pron,,เค้าคิดถึงตัวเองนะ,Anh nhớ em lắm nhé.,,,plernpin-c01#p1,true
 c01-w04,c01,c01-l1,ตัว,,đằng ấy; em; mình; cậu,đứng một mình có thể là ngôi 1 hoặc ngôi 2 tùy hoàn cảnh,,pron,,,,,,plernpin-c01#p1,true
-c01-w05,c01,c01-l1,ตัวเอง,,đằng ấy; em; bản thân mình,"ngôi 1, ngôi 2 và đại từ phản thân “tự mình”",,pron,,,,,,plernpin-c01#p1,true
-c01-w06,c01,c01-l1,อั๊ว,,tớ; tao,"cặp อั๊ว – ลื้อ: nam, ngang hàng, thân mật; người Thái gốc Hoa hay dùng",,pron,,,,,,plernpin-c01#p3,true
+c01-w05,c01,c01-l1,ตัวเอง,,đằng ấy; em; bản thân mình,"ngôi 1, ngôi 2 và đại từ phản thân “tự mình”",,pron,,ตัวเองหิวมั้ย เขาไปซื้อของกินให้นะ,"Đằng ấy đói không, người ta đi mua đồ ăn cho nhé.",,,plernpin-c01#p1,true
+c01-w06,c01,c01-l1,อั๊ว,,tớ; tao,"cặp อั๊ว – ลื้อ: nam, ngang hàng, thân mật; người Thái gốc Hoa hay dùng",,pron,,อั๊วไม่ว่าง ลื้อไปก่อนเลย,"Tớ bận, cậu đi trước đi.",,,plernpin-c01#p3,true
 c01-w07,c01,c01-l1,ลื้อ,,bạn; mày,đi cặp với อั๊ว,,pron,,,,,,plernpin-c01#p3,true
 c01-w08,c01,c01-l1,กัน,,tớ; tao,"cặp กัน – แก: nam, ngang hàng, thân mật; hiện nay rất hiếm",,pron,,,,,,plernpin-c01#p3,true
-c01-w09,c01,c01-l1,แก,,cậu; mày; ông; bà,cặp เรา – แก (tôi – ông / tôi – bà); cặp กัน – แก,,pron,,,,,,plernpin-c01#p2,true
-c01-w10,c01,c01-l2,อาตมา,,tôi (nhà sư tự xưng),,,pron,,,,,,plernpin-c01#p3,true
-c01-w11,c01,c01-l2,หลวงพ่อ,,thầy; sư (gọi nhà sư),"gọi nhà sư tùy tuổi: หลวงปู่, หลวงตา, หลวงพ่อ, หลวงลุง, หลวงน้า, หลวงพี่",,noun,,,,,,plernpin-c01#p3,true
+c01-w09,c01,c01-l1,แก,,cậu; mày; ông; bà,cặp เรา – แก (tôi – ông / tôi – bà); cặp กัน – แก,,pron,,แกจะไปไหน,Mày đi đâu đấy?,,,plernpin-c01#p2,true
+c01-w10,c01,c01-l2,อาตมา,,tôi (nhà sư tự xưng),,,pron,,อาตมาบวชมาห้าปีแล้ว,Tôi (nhà sư) đã xuất gia được năm năm.,,,plernpin-c01#p3,true
+c01-w11,c01,c01-l2,หลวงพ่อ,,thầy; sư (gọi nhà sư),"gọi nhà sư tùy tuổi: หลวงปู่, หลวงตา, หลวงพ่อ, หลวงลุง, หลวงน้า, หลวงพี่",,noun,,หลวงพ่อสบายดีไหมครับ,"Thưa thầy, thầy có khỏe không ạ?",,,plernpin-c01#p3,true
 c01-w12,c01,c01-l2,หลวงพี่,,sư huynh; thầy (nhà sư trẻ),,,noun,,,,,,plernpin-c01#p3,true
 c01-w13,c01,c01-l2,หลวงปู่,,sư ông; hòa thượng (nhà sư cao tuổi),,,noun,,,,,,plernpin-c01#p3,true
 c01-w14,c01,c01-l2,หลวงตา,,sư ông (nhà sư lớn tuổi),,,noun,,,,,,plernpin-c01#p3,true
-c01-w15,c01,c01-l2,แม่ชี,,ni cô; sư cô,,,noun,,,,,,plernpin-c01#p3,true
-c01-w16,c01,c01-l2,โยม,,phật tử; con,nhà sư gọi người thường; người thường tự xưng với nhà sư,,pron,,,,,,plernpin-c01#p3,true
+c01-w15,c01,c01-l2,แม่ชี,,ni cô; sư cô,,,noun,,แม่ชีอยู่ที่วัดนี้,Ni cô ở chùa này.,,,plernpin-c01#p3,true
+c01-w16,c01,c01-l2,โยม,,phật tử; con,nhà sư gọi người thường; người thường tự xưng với nhà sư,,pron,,โยมจะไปไหน,Phật tử đi đâu đấy? (nhà sư hỏi),,,plernpin-c01#p3,true
 c01-w17,c01,c01-l2,โยมพ่อ,,bố (của nhà sư),nhà sư gọi bố đẻ; bố tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
 c01-w18,c01,c01-l2,โยมแม่,,mẹ (của nhà sư),nhà sư gọi mẹ đẻ; mẹ tự xưng với con trai đã xuất gia,,noun,,,,,,plernpin-c01#p3,true
-c01-w19,c01,c01-l2,พระ,,nhà sư; sư,พระ + pháp danh (vd. พระสมชาย),,noun,,,,,,plernpin-c01#p3,true
+c01-w19,c01,c01-l2,พระ,,nhà sư; sư,พระ + pháp danh (vd. พระสมชาย),,noun,,พระสมชายกลับมาเยี่ยมบ้าน,Sư Somchai về thăm nhà.,,,plernpin-c01#p3,true
 b10-w01,b10,b10-l1,ถุงช็อปปิ้ง,,túi mua sắm,,ใบ,noun,,ขอถุงช็อปปิ้งหนึ่งใบ,Cho tôi xin một cái túi mua sắm.,noto:1f6cd-fe0f,,plernpin-b10#p3,true
 b10-w02,b10,b10-l1,นาฬิกา,,đồng hồ,,เรือน,noun,,,,noto:1f570-fe0f,,plernpin-b10#p3,true
 b10-w03,b10,b10-l1,เสื้อ,,áo,,ตัว,noun,,เสื้อตัวนี้สวยมาก,Cái áo này đẹp lắm.,noto:1f455,,plernpin-b10#p3,true
@@ -1065,68 +1065,68 @@ c15-w14,c15,c15-l2,มาตลอด,,suốt; luôn luôn,"มาตลอด: 
 c15-w15,c15,c15-l3,ไปๆ มาๆ,,đi đi về về,theo ví dụ của GV,,phrase,,ไปๆมาๆระหว่างไทยกับเวียดนาม,Đi đi về về giữa Thái Lan với Việt Nam,,,plernpin-c15#p4,true
 c15-w16,c15,c15-l3,อย่าไป,,đừng,dặn trước nhưng chưa xảy ra,,phrase,,อย่าไปเชื่อเขานะ,Đừng tin anh ấy nhé (dặn trước),,,plernpin-c15#p4,true
 c15-w17,c15,c15-l3,อย่ามา,,đừng,sự việc đang xảy ra,,phrase,,อย่ามาพูดแบบนี้นะ,Đừng nói kiểu này nhé (đang xảy ra),,,plernpin-c15#p4,true
-c14-w01,c14,c14-l1,สมน้ำหน้า,,đáng đời,,,phrase,,,,,,plernpin-c14#p1,true
+c14-w01,c14,c14-l1,สมน้ำหน้า,,đáng đời,,,phrase,,ไม่ฟังแม่ สมน้ำหน้า,"Không nghe lời mẹ, đáng đời.",,,plernpin-c14#p1,true
 c14-w02,c14,c14-l1,สมพรปาก,,mong được như bạn nói; mong ứng nghiệm như bạn nói,,,phrase,,,,,,plernpin-c14#p1,true
-c14-w03,c14,c14-l1,สมหวัง,,đạt được ý nguyện,ได้อย่างที่หวัง,,verb,,,,,,plernpin-c14#p1,true
-c14-w04,c14,c14-l1,สมควร,,xứng đáng; đáng; nên,,,adj,,,,,,plernpin-c14#p2,true
-c14-w05,c14,c14-l1,สมบูรณ์,,hoàn chỉnh; trọn vẹn; đầy đặn; hoàn hảo,,,adj,,,,,,plernpin-c14#p2,true
-c14-w06,c14,c14-l1,สมเหตุสมผล,,hợp lý; có lý,có lý do chính đáng; = มีเหตุผลที่ดี,,adj,,,,,,plernpin-c14#p3,true
+c14-w03,c14,c14-l1,สมหวัง,,đạt được ý nguyện,ได้อย่างที่หวัง,,verb,,ขอให้สมหวังนะ,Chúc bạn đạt được ý nguyện nhé.,,,plernpin-c14#p1,true
+c14-w04,c14,c14-l1,สมควร,,xứng đáng; đáng; nên,,,adj,,เขาสมควรได้รางวัลนี้,Anh ấy xứng đáng nhận giải thưởng này.,,,plernpin-c14#p2,true
+c14-w05,c14,c14-l1,สมบูรณ์,,hoàn chỉnh; trọn vẹn; đầy đặn; hoàn hảo,,,adj,,งานนี้ยังไม่สมบูรณ์,Việc này vẫn chưa hoàn chỉnh.,,,plernpin-c14#p2,true
+c14-w06,c14,c14-l1,สมเหตุสมผล,,hợp lý; có lý,có lý do chính đáng; = มีเหตุผลที่ดี,,adj,,ราคานี้สมเหตุสมผล,Giá này hợp lý.,,,plernpin-c14#p3,true
 c14-w07,c14,c14-l1,สมรู้ร่วมคิด,,âm mưu; hiệp lực,,,verb,,,,,,plernpin-c14#p3,true
-c14-w08,c14,c14-l1,สมส่วน,,cân đối; cân xứng,,,adj,,,,,,plernpin-c14#p4,true
-c13-w01,c13,c13-l1,ว่า,,nói; bảo; là; rằng,"nghĩa “là, rằng” được sử dụng theo sau động từ",,verb,,,,,,plernpin-c13#p1,true
+c14-w08,c14,c14-l1,สมส่วน,,cân đối; cân xứng,,,adj,,เธอมีรูปร่างสมส่วน,Cô ấy có vóc dáng cân đối.,,,plernpin-c14#p4,true
+c13-w01,c13,c13-l1,ว่า,,nói; bảo; là; rằng,"nghĩa “là, rằng” được sử dụng theo sau động từ",,verb,,เขาว่าพรุ่งนี้ฝนจะตก,Anh ấy bảo mai trời sẽ mưa.,,,plernpin-c13#p1,true
 c13-w02,c13,c13-l1,พูดว่า,,nói là; nói rằng,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w03,c13,c13-l1,บอกว่า,,bảo là; bảo rằng,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w04,c13,c13-l1,รู้ว่า,,biết là; biết rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w03,c13,c13-l1,บอกว่า,,bảo là; bảo rằng,,,phrase,,แม่บอกว่าให้กลับบ้านเร็วๆ,Mẹ bảo là về nhà sớm.,,,plernpin-c13#p2,true
+c13-w04,c13,c13-l1,รู้ว่า,,biết là; biết rằng,,,phrase,,ผมรู้ว่าคุณเหนื่อย,Tôi biết là bạn mệt.,,,plernpin-c13#p2,true
 c13-w05,c13,c13-l1,ได้ยินว่า,,nghe thấy là; nghe thấy rằng,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w06,c13,c13-l1,ฝันว่า,,mơ là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w07,c13,c13-l1,เข้าใจว่า,,hiểu là; hiểu rằng,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w06,c13,c13-l1,ฝันว่า,,mơ là,,,phrase,,เมื่อคืนผมฝันว่าได้ไปทะเล,Đêm qua tôi mơ là được đi biển.,,,plernpin-c13#p2,true
+c13-w07,c13,c13-l1,เข้าใจว่า,,hiểu là; hiểu rằng,,,phrase,,ผมเข้าใจว่าคุณยุ่งมาก,Tôi hiểu là bạn rất bận.,,,plernpin-c13#p2,true
 c13-w08,c13,c13-l1,สัญญาว่า,,hứa là; hứa rằng,,,phrase,,,,,,plernpin-c13#p2,true
 c13-w09,c13,c13-l1,ถามว่า,,hỏi là; hỏi rằng,,,phrase,,,,,,plernpin-c13#p2,true
 c13-w10,c13,c13-l1,ดูว่า,,xem là,,,phrase,,,,,,plernpin-c13#p2,true
 c13-w11,c13,c13-l1,แปลว่า,,dịch là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w12,c13,c13-l1,อ่านว่า,,đọc là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w13,c13,c13-l1,เรียกว่า,,gọi là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w14,c13,c13-l2,ถึงแม้ว่า,,mặc dù là,,,conj,,,,,,plernpin-c13#p2,true
-c13-w15,c13,c13-l2,เพื่อว่า,,để mà,,,conj,,,,,,plernpin-c13#p2,true
+c13-w12,c13,c13-l1,อ่านว่า,,đọc là,,,phrase,,คำนี้อ่านว่าอย่างไร,Từ này đọc là thế nào?,,,plernpin-c13#p2,true
+c13-w13,c13,c13-l1,เรียกว่า,,gọi là,,,phrase,,ผลไม้นี้เรียกว่าทุเรียน,Loại quả này gọi là sầu riêng.,,,plernpin-c13#p2,true
+c13-w14,c13,c13-l2,ถึงแม้ว่า,,mặc dù là,,,conj,,ถึงแม้ว่าจะยาก เขาก็ไม่ยอมแพ้,"Mặc dù là khó, anh ấy vẫn không bỏ cuộc.",,,plernpin-c13#p2,true
+c13-w15,c13,c13-l2,เพื่อว่า,,để mà,,,conj,,พ่อทำงานหนักเพื่อว่าลูกจะได้เรียนสูงๆ,Bố làm việc vất vả để mà con được học cao.,,,plernpin-c13#p2,true
 c13-w16,c13,c13-l2,จำได้ว่า,,nhớ được là,,,phrase,,,,,,plernpin-c13#p2,true
 c13-w17,c13,c13-l2,เชื่อว่า,,tin tưởng là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w18,c13,c13-l2,เห็นว่า,,thấy là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w18,c13,c13-l2,เห็นว่า,,thấy là,,,phrase,,ผมเห็นว่าร้านนี้ปิดแล้ว,Tôi thấy là quán này đóng cửa rồi.,,,plernpin-c13#p2,true
 c13-w19,c13,c13-l2,กลัวว่า,,sợ là,,,phrase,,,,,,plernpin-c13#p2,true
-c13-w20,c13,c13-l2,คิดว่า,,nghĩ là,,,phrase,,,,,,plernpin-c13#p2,true
+c13-w20,c13,c13-l2,คิดว่า,,nghĩ là,,,phrase,,ผมคิดว่าเขาจะมาสาย,Tôi nghĩ là anh ấy sẽ đến muộn.,,,plernpin-c13#p2,true
 c13-w21,c13,c13-l2,แน่ใจว่า,,chắc chắn là,,,phrase,,,,,,plernpin-c13#p3,true
 c13-w22,c13,c13-l2,เป็นห่วงว่า,,lo lắng là,,,phrase,,,,,,plernpin-c13#p3,true
-c13-w23,c13,c13-l2,รู้สึกว่า,,cảm thấy là,,,phrase,,,,,,plernpin-c13#p3,true
-c13-w24,c13,c13-l2,ทราบว่า,,biết là,,,phrase,,,,,,plernpin-c13#p3,true
-c13-w25,c13,c13-l2,สงสัยว่า,,nghi ngờ là,,,phrase,,,,,,plernpin-c13#p3,true
-c13-w26,c13,c13-l2,หวังว่า,,hy vọng là,,,phrase,,,,,,plernpin-c13#p3,true
-c13-w27,c13,c13-l3,ถูก,,rẻ; đúng; chính xác; đụng; chạm; tiếp xúc; bị,,,adj,,,,,,plernpin-c13#p3,true
+c13-w23,c13,c13-l2,รู้สึกว่า,,cảm thấy là,,,phrase,,ผมรู้สึกว่าวันนี้ร้อนมาก,Tôi cảm thấy là hôm nay rất nóng.,,,plernpin-c13#p3,true
+c13-w24,c13,c13-l2,ทราบว่า,,biết là,,,phrase,,ดิฉันทราบว่าคุณจะมาพรุ่งนี้,Tôi biết là ngày mai bạn sẽ đến.,,,plernpin-c13#p3,true
+c13-w25,c13,c13-l2,สงสัยว่า,,nghi ngờ là,,,phrase,,ผมสงสัยว่าเขาโกหก,Tôi nghi ngờ là anh ấy nói dối.,,,plernpin-c13#p3,true
+c13-w26,c13,c13-l2,หวังว่า,,hy vọng là,,,phrase,,หวังว่าจะได้พบกันอีก,Hy vọng là sẽ được gặp lại nhau.,,,plernpin-c13#p3,true
+c13-w27,c13,c13-l3,ถูก,,rẻ; đúng; chính xác; đụng; chạm; tiếp xúc; bị,,,adj,,เสื้อตัวนี้ถูกมาก,Cái áo này rẻ lắm.,,,plernpin-c13#p3,true
 c13-w28,c13,c13-l3,ถูกตัว,,tiếp xúc cơ thể; chạm vào người,,,verb,,,,,,plernpin-c13#p3,true
-c13-w29,c13,c13-l3,ถูกลอตเตอรี่,,trúng xổ số,,,verb,,,,,,plernpin-c13#p3,true
-c13-w30,c13,c13-l3,ถูกใจ,,đúng gu; hợp gu,,,verb,,,,,,plernpin-c13#p4,true
-c13-w31,c13,c13-l3,ถูกคอ,,hợp ý; ăn ý,,,verb,,,,,,plernpin-c13#p4,true
-c13-w32,c13,c13-l3,ถูกชะตา,,đúng định mệnh,,,verb,,,,,,plernpin-c13#p4,true
-c13-w33,c13,c13-l4,โดน,,bị,"được sử dụng y chang như ถูก, nhưng ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng",,verb,,,,,,plernpin-c13#p5,true
-c13-w34,c13,c13-l4,ได้รับ,,được; được nhận,thay thế cho ถูก trong trường hợp mang nghĩa tích cực,,verb,,,,,,plernpin-c13#p6,true
-c12-w01,c12,c12-l1,ที่,,ở; tại; nơi; chỗ; phần; suất; đất,còn dùng chỉ số thứ tự và làm đại từ quan hệ (mà),,prep,,,,,,plernpin-c12#p1,true
+c13-w29,c13,c13-l3,ถูกลอตเตอรี่,,trúng xổ số,,,verb,,ถ้าถูกลอตเตอรี่ ผมจะซื้อบ้าน,"Nếu trúng xổ số, tôi sẽ mua nhà.",,,plernpin-c13#p3,true
+c13-w30,c13,c13-l3,ถูกใจ,,đúng gu; hợp gu,,,verb,,ผมถูกใจร้านนี้มาก,Tôi rất ưng quán này.,,,plernpin-c13#p4,true
+c13-w31,c13,c13-l3,ถูกคอ,,hợp ý; ăn ý,,,verb,,เราเป็นเพื่อนที่ถูกคอกันมาก,Chúng tôi là bạn rất hợp ý nhau.,,,plernpin-c13#p4,true
+c13-w32,c13,c13-l3,ถูกชะตา,,đúng định mệnh,,,verb,,ผมถูกชะตากับเขาตั้งแต่ครั้งแรกที่เจอ,"Ngay lần đầu gặp, tôi đã thấy hợp duyên với anh ấy.",,,plernpin-c13#p4,true
+c13-w33,c13,c13-l4,โดน,,bị,"được sử dụng y chang như ถูก, nhưng ít phổ biến hơn và thường sử dụng trong văn nói không trang trọng",,verb,,ผมโดนหมากัด,Tôi bị chó cắn.,,,plernpin-c13#p5,true
+c13-w34,c13,c13-l4,ได้รับ,,được; được nhận,thay thế cho ถูก trong trường hợp mang nghĩa tích cực,,verb,,ผมได้รับจดหมายจากแม่,Tôi nhận được thư của mẹ.,,,plernpin-c13#p6,true
+c12-w01,c12,c12-l1,ที่,,ở; tại; nơi; chỗ; phần; suất; đất,còn dùng chỉ số thứ tự và làm đại từ quan hệ (mà),,prep,,เขาอยู่ที่บ้าน,Anh ấy ở tại nhà.,,,plernpin-c12#p1,true
 c12-w02,c12,c12-l1,ที่เขี่ยบุหรี่,,gạt tàn thuốc lá,,,noun,,,,,,plernpin-c12#p1,true
-c12-w03,c12,c12-l1,ที่นั่ง,,chỗ ngồi; ghế ngồi,,,noun,,,,,,plernpin-c12#p1,true
-c12-w04,c12,c12-l1,ที่เกิด,,nơi sinh,chỗ mình sinh ra,,noun,,,,,,plernpin-c12#p2,true
+c12-w03,c12,c12-l1,ที่นั่ง,,chỗ ngồi; ghế ngồi,,,noun,,ที่นั่งนี้ว่างไหม,Chỗ ngồi này có trống không?,,,plernpin-c12#p1,true
+c12-w04,c12,c12-l1,ที่เกิด,,nơi sinh,chỗ mình sinh ra,,noun,,ที่เกิดของผมคือฮานอย,Nơi sinh của tôi là Hà Nội.,,,plernpin-c12#p2,true
 c12-w05,c12,c12-l1,ที่เก็บของ,,nơi cất đồ; chỗ cất đồ,,,noun,,,,,,plernpin-c12#p2,true
-c12-w06,c12,c12-l1,ที่จอดรถ,,chỗ đậu xe,,,noun,,,,,,plernpin-c12#p2,true
+c12-w06,c12,c12-l1,ที่จอดรถ,,chỗ đậu xe,,,noun,,ที่จอดรถอยู่ข้างหลังตึก,Chỗ đậu xe ở phía sau tòa nhà.,,,plernpin-c12#p2,true
 c12-w07,c12,c12-l1,ที่ตั้ง,,vị trí; địa điểm,chỗ tọa lạc,,noun,,,,,,plernpin-c12#p2,true
-c12-w08,c12,c12-l1,ที่ทำงาน,,chỗ làm việc,"cơ quan, văn phòng",,noun,,,,,,plernpin-c12#p2,true
-c12-w09,c12,c12-l2,ที่เที่ยว,,chỗ vui chơi; địa điểm du lịch; địa điểm tham quan,,,noun,,,,,,plernpin-c12#p2,true
+c12-w08,c12,c12-l1,ที่ทำงาน,,chỗ làm việc,"cơ quan, văn phòng",,noun,,ที่ทำงานของผมอยู่ไกลจากบ้าน,Chỗ làm của tôi ở xa nhà.,,,plernpin-c12#p2,true
+c12-w09,c12,c12-l2,ที่เที่ยว,,chỗ vui chơi; địa điểm du lịch; địa điểm tham quan,,,noun,,เชียงใหม่มีที่เที่ยวเยอะ,Chiang Mai có nhiều địa điểm du lịch.,,,plernpin-c12#p2,true
 c12-w10,c12,c12-l2,ที่นอน,,chỗ nằm; nệm; đệm,,,noun,,,,,,plernpin-c12#p2,true
-c12-w11,c12,c12-l2,ที่ว่าง,,chỗ trống; chỗ bỏ không,,,noun,,,,,,plernpin-c12#p2,true
-c12-w12,c12,c12-l2,ที่อยู่,,địa chỉ,,,noun,,,,,,plernpin-c12#p2,true
+c12-w11,c12,c12-l2,ที่ว่าง,,chỗ trống; chỗ bỏ không,,,noun,,บนรถเมล์ไม่มีที่ว่างเลย,Trên xe buýt không còn chỗ trống.,,,plernpin-c12#p2,true
+c12-w12,c12,c12-l2,ที่อยู่,,địa chỉ,,,noun,,ขอที่อยู่ของคุณหน่อย,Cho tôi xin địa chỉ của bạn.,,,plernpin-c12#p2,true
 c12-w13,c12,c12-l2,ที่นา,,đồng ruộng,,,noun,,,,,,plernpin-c12#p2,true
 c12-w14,c12,c12-l2,ที่ประชุม,,hội nghị,,,noun,,,,,,plernpin-c12#p2,true
-c12-w15,c12,c12-l2,ที่พัก,,chỗ nghỉ ngơi; chỗ lưu trú,,,noun,,,,,,plernpin-c12#p2,true
-c12-w16,c12,c12-l2,ที่ดิน,,đất; đất đai,ที่ là biểu mẫu viết tắt của ที่ดิน,,noun,,,,,,plernpin-c12#p3,true
-c11-w01,c11,c11-l1,น่ากิน,,trông ngon,rất đáng để ăn,,adj,,,,,,plernpin-c11#p1,true
+c12-w15,c12,c12-l2,ที่พัก,,chỗ nghỉ ngơi; chỗ lưu trú,,,noun,,ที่พักนี้สะอาดและถูก,Chỗ lưu trú này sạch và rẻ.,,,plernpin-c12#p2,true
+c12-w16,c12,c12-l2,ที่ดิน,,đất; đất đai,ที่ là biểu mẫu viết tắt của ที่ดิน,,noun,,เขาซื้อที่ดินที่เชียงราย,Anh ấy mua đất ở Chiang Rai.,,,plernpin-c12#p3,true
+c11-w01,c11,c11-l1,น่ากิน,,trông ngon,rất đáng để ăn,,adj,,อาหารจานนี้น่ากินมาก,Món này trông ngon quá.,,,plernpin-c11#p1,true
 c11-w02,c11,c11-l1,น่าดื่ม,,trông ngon,rất đáng để uống,,adj,,,,,,plernpin-c11#p1,true
-c11-w03,c11,c11-l1,น่ารัก,,đáng yêu; dễ thương,,,adj,,,,,,plernpin-c11#p1,true
-c11-w04,c11,c11-l1,น่าอยู่,,đáng sống; đáng ở,,,adj,,,,,,plernpin-c11#p1,true
+c11-w03,c11,c11-l1,น่ารัก,,đáng yêu; dễ thương,,,adj,,แมวตัวนี้น่ารักมาก,Con mèo này dễ thương quá.,,,plernpin-c11#p1,true
+c11-w04,c11,c11-l1,น่าอยู่,,đáng sống; đáng ở,,,adj,,บ้านหลังนี้น่าอยู่,Ngôi nhà này đáng sống.,,,plernpin-c11#p1,true
 c11-w05,c11,c11-l1,น่าซื้อ,,đáng mua; nên mua,,,adj,,,,,,plernpin-c11#p1,true
 c11-w06,c11,c11-l1,น่าดู,,đáng xem; nên xem,,,adj,,,,,,plernpin-c11#p1,true
 c11-w07,c11,c11-l1,น่าอ่าน,,đáng đọc; nên đọc,,,adj,,,,,,plernpin-c11#p1,true
@@ -1137,83 +1137,83 @@ c11-w11,c11,c11-l1,น่าฟัง,,đáng nghe; hấp dẫn để nghe,"hay,
 c11-w12,c11,c11-l1,น่าเชื่อ,,đáng tin,,,adj,,,,,,plernpin-c11#p1,true
 c11-w13,c11,c11-l1,น่ากลัว,,đáng sợ,,,adj,,,,,,plernpin-c11#p1,true
 c11-w14,c11,c11-l1,น่ารำคาญ,,đáng ghét; khó chịu; trông phiền phức,,,adj,,,,,,plernpin-c11#p1,true
-c11-w15,c11,c11-l1,น่าสนใจ,,đáng quan tâm; trông thú vị; trông hấp dẫn,,,adj,,,,,,plernpin-c11#p1,true
-c11-w16,c11,c11-l1,น่าเบื่อ,,nhàm chán; trông nhàm chán,,,adj,,,,,,plernpin-c11#p1,true
+c11-w15,c11,c11-l1,น่าสนใจ,,đáng quan tâm; trông thú vị; trông hấp dẫn,,,adj,,หนังสือเล่มนี้น่าสนใจ,Quyển sách này thú vị.,,,plernpin-c11#p1,true
+c11-w16,c11,c11-l1,น่าเบื่อ,,nhàm chán; trông nhàm chán,,,adj,,หนังเรื่องนี้น่าเบื่อ,Bộ phim này nhàm chán.,,,plernpin-c11#p1,true
 c11-w17,c11,c11-l1,น่าสงสาร,,đáng thương; tội nghiệp,,,adj,,,,,,plernpin-c11#p1,true
 c11-w18,c11,c11-l1,น่าเสียใจ,,đáng buồn; đáng thương tiếc,,,adj,,,,,,plernpin-c11#p1,true
-c11-w19,c11,c11-l1,น่าเสียดาย,,đáng tiếc,tiếc nuối,,adj,,,,,,plernpin-c11#p1,true
+c11-w19,c11,c11-l1,น่าเสียดาย,,đáng tiếc,tiếc nuối,,adj,,น่าเสียดายที่คุณมาไม่ได้,Đáng tiếc là bạn không đến được.,,,plernpin-c11#p1,true
 c11-w20,c11,c11-l1,น่าสงสัย,,đáng nghi; đáng ngờ; đáng nghi ngờ,,,adj,,,,,,plernpin-c11#p1,true
-c11-w21,c11,c11-l2,น่านับถือ,,đáng kính trọng; đáng kính mến; đáng khâm phục,,,adj,,,,,,plernpin-c11#p2,true
-c11-w22,c11,c11-l2,น่าไว้ใจ,,đáng tin cậy; đáng tin tưởng,,,adj,,,,,,plernpin-c11#p2,true
+c11-w21,c11,c11-l2,น่านับถือ,,đáng kính trọng; đáng kính mến; đáng khâm phục,,,adj,,คุณครูท่านนี้น่านับถือ,Thầy giáo này đáng kính trọng.,,,plernpin-c11#p2,true
+c11-w22,c11,c11-l2,น่าไว้ใจ,,đáng tin cậy; đáng tin tưởng,,,adj,,เขาเป็นคนน่าไว้ใจ,Anh ấy là người đáng tin cậy.,,,plernpin-c11#p2,true
 c11-w23,c11,c11-l2,น่าใจหาย,,trông sửng sốt; đáng kinh hoàng; thót tim; hụt hẫng,,,adj,,,,,,plernpin-c11#p2,true
-c11-w24,c11,c11-l2,น่าเอ็นดู,,đáng yêu; dễ thương; trông cưng,"thường dùng cho trẻ nhỏ, con vật hoặc người có hành động ngây thơ",,adj,,,,,,plernpin-c11#p2,true
+c11-w24,c11,c11-l2,น่าเอ็นดู,,đáng yêu; dễ thương; trông cưng,"thường dùng cho trẻ nhỏ, con vật hoặc người có hành động ngây thơ",,adj,,เด็กคนนี้น่าเอ็นดู,Đứa bé này trông cưng quá.,,,plernpin-c11#p2,true
 c11-w25,c11,c11-l2,น่าชม,,đáng khen; đáng ca ngợi; đáng khen ngợi,,,adj,,,,,,plernpin-c11#p2,true
-c11-w26,c11,c11-l2,น่าทึ่ง,,trông ấn tượng; đáng kinh ngạc,"khi nói về điều gì đó vượt quá mong đợi, khiến người ta phải trầm trồ, thán phục",,adj,,,,,,plernpin-c11#p2,true
+c11-w26,c11,c11-l2,น่าทึ่ง,,trông ấn tượng; đáng kinh ngạc,"khi nói về điều gì đó vượt quá mong đợi, khiến người ta phải trầm trồ, thán phục",,adj,,ผลงานของเขาน่าทึ่งมาก,Thành quả của anh ấy thật đáng kinh ngạc.,,,plernpin-c11#p2,true
 c11-w27,c11,c11-l2,ไม่น่าเลย,,(đáng lẽ) không nên như vậy chút nào,,,phrase,,,,,,plernpin-c11#p2,true
-c11-w28,c11,c11-l2,ไม่น่าล่ะ,,thảo nào; hèn chi; bảo sao mà,,,phrase,,,,,,plernpin-c11#p2,true
+c11-w28,c11,c11-l2,ไม่น่าล่ะ,,thảo nào; hèn chi; bảo sao mà,,,phrase,,เมื่อคืนเขานอนดึก ไม่น่าล่ะถึงง่วง,"Đêm qua anh ấy thức khuya, thảo nào buồn ngủ.",,,plernpin-c11#p2,true
 c11-w29,c11,c11-l2,น่าจริงจัง,,đáng để nghiêm túc; trông nghiêm túc,,,adj,,,,,,plernpin-c11#p2,true
 c10-w01,c10,c10-l1,ขี้หมู,,phân lợn,,,noun,,,,,,plernpin-c10#p1,true
 c10-w02,c10,c10-l1,ขี้หมา,,phân chó,,,noun,,,,,,plernpin-c10#p1,true
-c10-w03,c10,c10-l1,ขี้ตา,,gỉ mắt,,,noun,,,,,,plernpin-c10#p1,true
+c10-w03,c10,c10-l1,ขี้ตา,,gỉ mắt,,,noun,,ตื่นนอนแล้วมีขี้ตา,Ngủ dậy có gỉ mắt.,,,plernpin-c10#p1,true
 c10-w04,c10,c10-l1,ขี้หู,,ráy tai,,,noun,,,,,,plernpin-c10#p1,true
 c10-w05,c10,c10-l1,ขี้เถ้า,,tro tàn; tro hỏa táng,,,noun,,,,,,plernpin-c10#p1,true
-c10-w06,c10,c10-l1,ขี้อาย,,hay xấu hổ; hay ngại ngùng,,,adj,,,,,,plernpin-c10#p1,true
-c10-w07,c10,c10-l1,ขี้ลืม,,hay quên; đãng trí,,,adj,,,,,,plernpin-c10#p1,true
+c10-w06,c10,c10-l1,ขี้อาย,,hay xấu hổ; hay ngại ngùng,,,adj,,น้องสาวผมขี้อายมาก,Em gái tôi rất hay xấu hổ.,,,plernpin-c10#p1,true
+c10-w07,c10,c10-l1,ขี้ลืม,,hay quên; đãng trí,,,adj,,ช่วงนี้ผมขี้ลืมมาก,Dạo này tôi rất hay quên.,,,plernpin-c10#p1,true
 c10-w08,c10,c10-l1,ขี้โกง,,hay gian lận; không trung thực,,,adj,,,,,,plernpin-c10#p1,true
 c10-w09,c10,c10-l1,ขี้ขอ,,hay xin xỏ; hay vòi vĩnh,,,adj,,,,,,plernpin-c10#p1,true
-c10-w10,c10,c10-l1,ขี้เหนียว,,keo kiệt; bủn xỉn; hà tiện,,,adj,,,,,,plernpin-c10#p1,true
-c10-w11,c10,c10-l1,ขี้บ่น,,hay càu nhàu; hay cằn nhằn; hay phàn nàn; hay lầm bầm; hay than phiền,lắm lời,,adj,,,,,,plernpin-c10#p1,true
+c10-w10,c10,c10-l1,ขี้เหนียว,,keo kiệt; bủn xỉn; hà tiện,,,adj,,เขาขี้เหนียว ไม่เคยเลี้ยงข้าวใคร,"Anh ấy keo kiệt, chưa bao giờ mời ai ăn.",,,plernpin-c10#p1,true
+c10-w11,c10,c10-l1,ขี้บ่น,,hay càu nhàu; hay cằn nhằn; hay phàn nàn; hay lầm bầm; hay than phiền,lắm lời,,adj,,แม่ผมขี้บ่น,Mẹ tôi hay cằn nhằn.,,,plernpin-c10#p1,true
 c10-w12,c10,c10-l1,ขี้เมา,,hay say xỉn; hay say rượu,,,adj,,,,,,plernpin-c10#p1,true
 c10-w13,c10,c10-l1,ขี้ยา,,nghiện thuốc; nghiện ma túy,,,adj,,,,,,plernpin-c10#p1,true
 c10-w14,c10,c10-l1,ขี้เหล้า,,nghiện rượu; sâu rượu,,,adj,,,,,,plernpin-c10#p1,true
-c10-w15,c10,c10-l1,ขี้หนาว,,dễ bị nhiễm lạnh,,,adj,,,,,,plernpin-c10#p1,true
+c10-w15,c10,c10-l1,ขี้หนาว,,dễ bị nhiễm lạnh,,,adj,,ผมเป็นคนขี้หนาว,Tôi là người dễ bị lạnh.,,,plernpin-c10#p1,true
 c10-w16,c10,c10-l1,ขี้ร้อน,,dễ nhạy cảm với thời tiết nóng,,,adj,,,,,,plernpin-c10#p1,true
 c10-w17,c10,c10-l1,ขี้สงสาร,,dễ thông cảm; hay thương hại,"hay thương người, dễ mủi lòng",,adj,,,,,,plernpin-c10#p1,true
 c10-w18,c10,c10-l1,ขี้โรค,,hay ốm; dễ bệnh,,,adj,,,,,,plernpin-c10#p1,true
 c10-w19,c10,c10-l1,ขี้สงสัย,,hay nghi ngờ; hay ngờ vực; đa nghi,hay tò mò,,adj,,,,,,plernpin-c10#p1,true
-c10-w20,c10,c10-l2,ขี้อิจฉา,,hay ghen tị; hay đố kỵ,,,adj,,,,,,plernpin-c10#p2,true
+c10-w20,c10,c10-l2,ขี้อิจฉา,,hay ghen tị; hay đố kỵ,,,adj,,อย่าขี้อิจฉาคนอื่น,Đừng ghen tị với người khác.,,,plernpin-c10#p2,true
 c10-w21,c10,c10-l2,ขี้ขลาด,,nhút nhát; nhát gan; hèn nhát,,,adj,,,,,,plernpin-c10#p2,true
-c10-w22,c10,c10-l2,ขี้เล่น,,hay đùa; hay nô đùa,,,adj,,,,,,plernpin-c10#p2,true
+c10-w22,c10,c10-l2,ขี้เล่น,,hay đùa; hay nô đùa,,,adj,,เด็กคนนี้ขี้เล่นมาก,Đứa bé này rất hay đùa.,,,plernpin-c10#p2,true
 c10-w23,c10,c10-l2,ขี้อ้อน,,hay nũng nịu; thích làm nũng,,,adj,,,,,,plernpin-c10#p2,true
-c10-w24,c10,c10-l2,ขี้หึง,,hay ghen; dễ ghen,,,adj,,,,,,plernpin-c10#p2,true
+c10-w24,c10,c10-l2,ขี้หึง,,hay ghen; dễ ghen,,,adj,,แฟนของเขาขี้หึงมาก,Người yêu anh ấy rất hay ghen.,,,plernpin-c10#p2,true
 c10-w25,c10,c10-l2,ขี้อวด,,hay khoe khoang; thích thể hiện,,,adj,,,,,,plernpin-c10#p2,true
-c10-w26,c10,c10-l2,ขี้โม้,,hay ba hoa; hay nói khoác; hay nói phét,,,adj,,,,,,plernpin-c10#p2,true
-c10-w27,c10,c10-l2,ขี้แย,,hay khóc nhè; hay mít ướt,,,adj,,,,,,plernpin-c10#p2,true
+c10-w26,c10,c10-l2,ขี้โม้,,hay ba hoa; hay nói khoác; hay nói phét,,,adj,,อย่าเชื่อเขา เขาขี้โม้,"Đừng tin anh ta, anh ta hay nói khoác.",,,plernpin-c10#p2,true
+c10-w27,c10,c10-l2,ขี้แย,,hay khóc nhè; hay mít ướt,,,adj,,ลูกของผมขี้แย,Con tôi hay khóc nhè.,,,plernpin-c10#p2,true
 c10-w28,c10,c10-l2,ขี้โกหก,,hay nói điêu; hay nói dối,,,adj,,,,,,plernpin-c10#p2,true
 c10-w29,c10,c10-l2,ขี้โกรธ,,hay nổi giận; dễ nổi giận,,,adj,,,,,,plernpin-c10#p2,true
 c10-w30,c10,c10-l2,ขี้โมโห,,hay nổi nóng; hay nóng tính; dễ cáu,,,adj,,,,,,plernpin-c10#p2,true
-c10-w31,c10,c10-l2,ขี้งอน,,hay hờn dỗi; hay giận hờn,,,adj,,,,,,plernpin-c10#p2,true
-c09-w01,c09,c09-l1,ใจกว้าง,,rộng rãi; hào phóng; rộng lượng,,,adj,,,,,,plernpin-c09#p1,true
+c10-w31,c10,c10-l2,ขี้งอน,,hay hờn dỗi; hay giận hờn,,,adj,,แฟนผมขี้งอน,Người yêu tôi hay hờn dỗi.,,,plernpin-c10#p2,true
+c09-w01,c09,c09-l1,ใจกว้าง,,rộng rãi; hào phóng; rộng lượng,,,adj,,เจ้านายของผมใจกว้างมาก,Sếp của tôi rất rộng lượng.,,,plernpin-c09#p1,true
 c09-w02,c09,c09-l1,ใจแคบ,,hẹp hòi; nhỏ nhen,,,adj,,,,,,plernpin-c09#p1,true
-c09-w03,c09,c09-l1,ใจร้อน,,nóng tính; thiếu kiên nhẫn,,,adj,,,,,,plernpin-c09#p1,true
-c09-w04,c09,c09-l1,ใจเย็น,,bình tĩnh,,,adj,,,,,,plernpin-c09#p1,true
-c09-w05,c09,c09-l1,ใจแข็ง,,cứng rắn; kiên định; không dễ dàng bị khuất phục,,,adj,,,,,,plernpin-c09#p1,true
+c09-w03,c09,c09-l1,ใจร้อน,,nóng tính; thiếu kiên nhẫn,,,adj,,เขาใจร้อน ชอบบีบแตร,"Anh ấy nóng tính, hay bấm còi.",,,plernpin-c09#p1,true
+c09-w04,c09,c09-l1,ใจเย็น,,bình tĩnh,,,adj,,ใจเย็นๆ นะ,Bình tĩnh nhé.,,,plernpin-c09#p1,true
+c09-w05,c09,c09-l1,ใจแข็ง,,cứng rắn; kiên định; không dễ dàng bị khuất phục,,,adj,,เธอใจแข็งมาก ไม่ร้องไห้เลย,"Cô ấy rất cứng rắn, không khóc chút nào.",,,plernpin-c09#p1,true
 c09-w06,c09,c09-l1,ใจอ่อน,,dễ mềm lòng; hay nhân nhượng,,,adj,,,,,,plernpin-c09#p1,true
 c09-w07,c09,c09-l1,ใจดำ,ใจร้าย,độc ác; tàn nhẫn,ใจดำ = ใจร้าย,,adj,,,,,,plernpin-c09#p1,true
 c09-w08,c09,c09-l1,ใจดี,,tốt bụng,,,adj,,,,,,plernpin-c09#p1,true
-c09-w09,c09,c09-l1,ใจลอย,,lơ đễnh; mất tập trung; tâm trí để đâu đâu; hồn bay phách lạc,,,adj,,,,,,plernpin-c09#p1,true
+c09-w09,c09,c09-l1,ใจลอย,,lơ đễnh; mất tập trung; tâm trí để đâu đâu; hồn bay phách lạc,,,adj,,วันนี้เขาใจลอยทั้งวัน,Hôm nay anh ấy lơ đễnh cả ngày.,,,plernpin-c09#p1,true
 c09-w10,c09,c09-l2,เบาใจ,,yên tâm; an tâm; nhẹ nhõm; nhẹ lòng,,,adj,,,,,,plernpin-c09#p1,true
-c09-w11,c09,c09-l2,หนักใจ,,nặng lòng; bận tâm; canh cánh trong lòng; cắn rứt,,,adj,,,,,,plernpin-c09#p1,true
+c09-w11,c09,c09-l2,หนักใจ,,nặng lòng; bận tâm; canh cánh trong lòng; cắn rứt,,,adj,,เรื่องนี้ทำให้ผมหนักใจ,Chuyện này làm tôi nặng lòng.,,,plernpin-c09#p1,true
 c09-w12,c09,c09-l2,ชื่นใจ,,sảng khoái; khoan khoái,,,adj,,,,,,plernpin-c09#p1,true
-c09-w13,c09,c09-l2,สบายใจ,,thoải mái trong lòng,,,adj,,,,,,plernpin-c09#p1,true
-c09-w14,c09,c09-l2,ภูมิใจ,,tự hào; hãnh diện,,,adj,,,,,,plernpin-c09#p1,true
+c09-w13,c09,c09-l2,สบายใจ,,thoải mái trong lòng,,,adj,,อยู่บ้านแล้วสบายใจ,Ở nhà thấy thoải mái trong lòng.,,,plernpin-c09#p1,true
+c09-w14,c09,c09-l2,ภูมิใจ,,tự hào; hãnh diện,,,adj,,พ่อแม่ภูมิใจในตัวลูก,Bố mẹ tự hào về con.,,,plernpin-c09#p1,true
 c09-w15,c09,c09-l2,นอกใจ,,phản bội; ngoại tình; không chung thủy,,,verb,,,,,,plernpin-c09#p1,true
-c09-w16,c09,c09-l2,พอใจ,,hài lòng; mãn nguyện; vừa ý,,,adj,,,,,,plernpin-c09#p1,true
+c09-w16,c09,c09-l2,พอใจ,,hài lòng; mãn nguyện; vừa ý,,,adj,,ลูกค้าพอใจกับบริการ,Khách hàng hài lòng với dịch vụ.,,,plernpin-c09#p1,true
 c09-w17,c09,c09-l2,ตกใจ,,giật mình; hoảng hốt; hoảng sợ,,,verb,,,,,,plernpin-c09#p1,true
-c09-w18,c09,c09-l2,มั่นใจ,,tự tin,,,adj,,,,,,plernpin-c09#p1,true
+c09-w18,c09,c09-l2,มั่นใจ,,tự tin,,,adj,,เขาพูดภาษาไทยอย่างมั่นใจ,Anh ấy nói tiếng Thái một cách tự tin.,,,plernpin-c09#p1,true
 c09-w19,c09,c09-l2,แน่ใจ,,chắc chắn,,,adj,,,,,,plernpin-c09#p1,true
 c09-w20,c09,c09-l2,เสียใจ,,buồn; đau lòng; hối tiếc; lấy làm tiếc; tổn thương,,,adj,,,,,,plernpin-c09#p1,true
-c09-w21,c09,c09-l3,เอาใจ,,lấy lòng; chiều lòng; nịnh,,,verb,,,,,,plernpin-c09#p2,true
-c09-w22,c09,c09-l3,ตัดสินใจ,,quyết định; đưa ra quyết định,,,verb,,,,,,plernpin-c09#p2,true
-c09-w23,c09,c09-l3,ตั้งใจ,,tập trung; quyết tâm; chăm chú,,,verb,,,,,,plernpin-c09#p2,true
+c09-w21,c09,c09-l3,เอาใจ,,lấy lòng; chiều lòng; nịnh,,,verb,,เขาชอบเอาใจแฟน,Anh ấy hay chiều lòng người yêu.,,,plernpin-c09#p2,true
+c09-w22,c09,c09-l3,ตัดสินใจ,,quyết định; đưa ra quyết định,,,verb,,ผมตัดสินใจเรียนภาษาไทย,Tôi quyết định học tiếng Thái.,,,plernpin-c09#p2,true
+c09-w23,c09,c09-l3,ตั้งใจ,,tập trung; quyết tâm; chăm chú,,,verb,,นักเรียนตั้งใจฟังครู,Học sinh chăm chú nghe cô giáo.,,,plernpin-c09#p2,true
 c09-w24,c09,c09-l3,สนใจ,,quan tâm; hứng thú,thích nên có ý định tìm hiểu,,verb,,,,,,plernpin-c09#p2,true
 c09-w25,c09,c09-l3,เกรงใจ,,e; e ngại rằng,"khép nép vì nể nang, không dám làm phiền",,verb,,,,,,plernpin-c09#p2,true
 c09-w26,c09,c09-l3,ตามใจ,,nuông chiều; chiều chuộng,,,verb,,,,,,plernpin-c09#p2,true
 c09-w27,c09,c09-l3,เจ็บใจ,,đau lòng,"mang sắc thái uất ức, tức nghẹn",,adj,,,,,,plernpin-c09#p2,true
 c09-w28,c09,c09-l3,กลุ้มใจ,,phiền lòng; phiền muộn; ưu phiền,lòng nặng trĩu vì lo lắng hoặc bận tâm đến một vấn đề gì đó,,adj,,,,,,plernpin-c09#p2,true
-c09-w29,c09,c09-l3,เปลี่ยนใจ,,đổi ý,,,verb,,,,,,plernpin-c09#p2,true
+c09-w29,c09,c09-l3,เปลี่ยนใจ,,đổi ý,,,verb,,ถ้าเปลี่ยนใจก็บอกนะ,Nếu đổi ý thì nói nhé.,,,plernpin-c09#p2,true
 c09-w30,c09,c09-l3,แปลกใจ,,ngạc nhiên; bất ngờ,,,adj,,,,,,plernpin-c09#p2,true
-c09-w31,c09,c09-l3,ไว้ใจ,,tin tưởng; tin cậy,,,verb,,,,,,plernpin-c09#p2,true
+c09-w31,c09,c09-l3,ไว้ใจ,,tin tưởng; tin cậy,,,verb,,ผมไว้ใจคุณ,Tôi tin bạn.,,,plernpin-c09#p2,true
 c09-w32,c09,c09-l3,หายใจ,,thở; hít thở,,,verb,,,,,,plernpin-c09#p2,true
 c07-w01,c07,c07-l1,ความ,,vụ án; vụ kiện; vụ việc; nội dung; thông tin,khi đứng một mình,,noun,,,,,,plernpin-c07#p1,true
 c07-w02,c07,c07-l1,สู้ความ,,tranh kiện,,,verb,,,,,,plernpin-c07#p1,true
@@ -1353,28 +1353,28 @@ c06-w63,c06,c06-l4,การอุตสาหกรรม,,ngành công nghiệ
 c06-w64,c06,c06-l4,การอาหาร,,ngành thực phẩm,,,noun,,,,,,plernpin-c06#p5,true
 c06-w65,c06,c06-l4,การช่าง,,kỹ thuật; các công việc kỹ thuật; nghề thợ; nghề thủ công; nghề cơ khí,,,noun,,,,,,plernpin-c06#p5,true
 c06-w66,c06,c06-l4,การธนาคาร,,ngành ngân hàng,,,noun,,,,,,plernpin-c06#p5,true
-c05-w01,c05,c05-l1,นี่,,đây,bộ 1 (gần nhất),,pron,,,,,,plernpin-c05#p1,true
-c05-w02,c05,c05-l1,นั่น,,đó,bộ 1,,pron,,,,,,plernpin-c05#p1,true
-c05-w03,c05,c05-l1,โน่น,,kia,bộ 1,,pron,,,,,,plernpin-c05#p1,true
-c05-w04,c05,c05-l1,นู่น,,kia kìa,bộ 1 (xa nhất),,pron,,,,,,plernpin-c05#p1,true
-c05-w05,c05,c05-l2,นี้,,này,bộ 2 (gần nhất),,pron,,,,,,plernpin-c05#p1,true
-c05-w06,c05,c05-l2,นั้น,,đấy,bộ 2,,pron,,,,,,plernpin-c05#p1,true
-c05-w07,c05,c05-l2,โน้น,,kìa,bộ 2,,pron,,,,,,plernpin-c05#p1,true
+c05-w01,c05,c05-l1,นี่,,đây,bộ 1 (gần nhất),,pron,,นี่คืออะไร,Đây là cái gì?,,,plernpin-c05#p1,true
+c05-w02,c05,c05-l1,นั่น,,đó,bộ 1,,pron,,นั่นคือบ้านของผม,Đó là nhà của tôi.,,,plernpin-c05#p1,true
+c05-w03,c05,c05-l1,โน่น,,kia,bộ 1,,pron,,โน่นคือโรงเรียน,Kia là trường học.,,,plernpin-c05#p1,true
+c05-w04,c05,c05-l1,นู่น,,kia kìa,bộ 1 (xa nhất),,pron,,นู่นไง รถเมล์มาแล้ว,"Kia kìa, xe buýt đến rồi.",,,plernpin-c05#p1,true
+c05-w05,c05,c05-l2,นี้,,này,bộ 2 (gần nhất),,pron,,เสื้อตัวนี้ราคาถูกมาก,Chiếc áo này giá rẻ lắm.,,,plernpin-c05#p1,true
+c05-w06,c05,c05-l2,นั้น,,đấy,bộ 2,,pron,,บ้านหลังนั้นสวยมาก,Ngôi nhà đấy đẹp lắm.,,,plernpin-c05#p1,true
+c05-w07,c05,c05-l2,โน้น,,kìa,bộ 2,,pron,,ตึกหลังโน้นสูงมาก,Tòa nhà kìa cao lắm.,,,plernpin-c05#p1,true
 c05-w08,c05,c05-l2,นู้น,,kia kìa,bộ 2 (xa nhất),,pron,,,,,,plernpin-c05#p1,true
-c05-w09,c05,c05-l2,เหล่า,,các (số nhiều),"thêm trước đại từ chỉ định để tạo thành số nhiều (เหล่านี้, เหล่านั้น)",,particle,,,,,,plernpin-c05#p4,true
-c05-w10,c05,c05-l2,นี่ยังไง,,đây này; đây nè; đây chứ gì,,,phrase,,,,,,plernpin-c05#p4,true
+c05-w09,c05,c05-l2,เหล่า,,các (số nhiều),"thêm trước đại từ chỉ định để tạo thành số nhiều (เหล่านี้, เหล่านั้น)",,particle,,นักเรียนเหล่านี้เรียนเก่ง,Các học sinh này học giỏi.,,,plernpin-c05#p4,true
+c05-w10,c05,c05-l2,นี่ยังไง,,đây này; đây nè; đây chứ gì,,,phrase,,นี่ยังไง อยู่บนโต๊ะ,"Đây này, ở trên bàn.",,,plernpin-c05#p4,true
 c05-w11,c05,c05-l2,นั่นนะสิ,,chính xác; chuẩn rồi,,,phrase,,,,,,plernpin-c05#p4,true
 c05-w12,c05,c05-l2,แต่นั่นแหละ,,nhưng mà đó,,,phrase,,,,,,plernpin-c05#p4,true
-c05-w13,c05,c05-l3,ของ,,của; món; thứ; đồ,"chỉ sở hữu; cũng có thể được dùng như danh từ, mang nghĩa “món, thứ, đồ”",,prep,,,,,,plernpin-c05#p4,true
-c05-w14,c05,c05-l3,เอง,,tự; chính,đại từ nhấn mạnh,,pron,,,,,,plernpin-c05#p5,true
-c05-w15,c05,c05-l3,เพื่อนคนนี้เอง,,chính người bạn này,,,phrase,,,,,,plernpin-c05#p6,true
-c05-w16,c05,c05-l3,วันนั้นเอง,,chính ngày hôm đó,,,phrase,,,,,,plernpin-c05#p6,true
-c05-w17,c05,c05-l3,เดี๋ยวนี้เอง,,ngay bây giờ; ngay lúc này thôi,,,phrase,,,,,,plernpin-c05#p6,true
-c04-w01,c04,c04-l1,บรรทุก,,chở,,,verb,,,,,,plernpin-c04#p1,true
-c04-w02,c04,c04-l1,โค่น,,đốn,,,verb,,,,,,plernpin-c04#p1,true
-c04-w03,c04,c04-l1,ตาก,,phơi,,,verb,,,,,,plernpin-c04#p1,true
-c04-w04,c04,c04-l1,ข้าว,,gạo; thóc,,,noun,,,,,,plernpin-c04#p1,true
-c04-w05,c04,c04-l1,สีน้ำเงิน,,màu xanh dương,,,noun,,,,,,plernpin-c04#p1,true
+c05-w13,c05,c05-l3,ของ,,của; món; thứ; đồ,"chỉ sở hữu; cũng có thể được dùng như danh từ, mang nghĩa “món, thứ, đồ”",,prep,,นี่คือกระเป๋าของฉัน,Đây là túi của tôi.,,,plernpin-c05#p4,true
+c05-w14,c05,c05-l3,เอง,,tự; chính,đại từ nhấn mạnh,,pron,,ผมทำเอง,Tôi tự làm.,,,plernpin-c05#p5,true
+c05-w15,c05,c05-l3,เพื่อนคนนี้เอง,,chính người bạn này,,,phrase,,เพื่อนคนนี้เองที่ช่วยผม,Chính người bạn này đã giúp tôi.,,,plernpin-c05#p6,true
+c05-w16,c05,c05-l3,วันนั้นเอง,,chính ngày hôm đó,,,phrase,,วันนั้นเองที่เราพบกัน,Chính ngày hôm đó chúng tôi gặp nhau.,,,plernpin-c05#p6,true
+c05-w17,c05,c05-l3,เดี๋ยวนี้เอง,,ngay bây giờ; ngay lúc này thôi,,,phrase,,เขาเพิ่งออกไปเดี๋ยวนี้เอง,Anh ấy vừa mới ra ngoài ngay lúc nãy thôi.,,,plernpin-c05#p6,true
+c04-w01,c04,c04-l1,บรรทุก,,chở,,,verb,,รถคันนี้บรรทุกข้าวสิบกระสอบ,Chiếc xe này chở mười bao gạo.,,,plernpin-c04#p1,true
+c04-w02,c04,c04-l1,โค่น,,đốn,,,verb,,เขาโค่นต้นไม้สองต้น,Anh ấy đốn hai cái cây.,,,plernpin-c04#p1,true
+c04-w03,c04,c04-l1,ตาก,,phơi,,,verb,,แม่ตากเสื้อห้าตัว,Mẹ phơi năm cái áo.,,,plernpin-c04#p1,true
+c04-w04,c04,c04-l1,ข้าว,,gạo; thóc,,,noun,,ผมซื้อข้าวหนึ่งกระสอบ,Tôi mua một bao gạo.,,,plernpin-c04#p1,true
+c04-w05,c04,c04-l1,สีน้ำเงิน,,màu xanh dương,,,noun,,ผมมีปากกาสีน้ำเงินสองด้าม,Tôi có hai cây bút màu xanh dương.,,,plernpin-c04#p1,true
 c03-w01,c03,c03-l1,สัตว์,,con vật; động vật,,ตัว,noun,,ฟาร์มนี้มีสัตว์ร้อยตัว,Trang trại này có 100 con vật.,,,plernpin-c03#p1,true
 c03-w02,c03,c03-l1,กางเกง,,quần,,ตัว,noun,,,,,,plernpin-c03#p1,true
 c03-w03,c03,c03-l1,โต๊ะ,,cái bàn,,ตัว,noun,,,,,,plernpin-c03#p1,true
@@ -1685,19 +1685,19 @@ c03-w307,c03,c03-l13,น้ำมัน,,dầu,,ลิตร,noun,,เติม�
 c03-w308,c03,c03-l13,ข้าวหลาม,,cơm lam,,กระบอก,noun,,ขอข้าวหลามสองกระบอก,Cho tôi 2 ống cơm lam.,,,plernpin-c03#p13,true
 c03-w309,c03,c03-l13,พลุ,,pháo hoa; pháo sáng,tài liệu ghi cách đọc “p’lú”,ลูก,noun,,คืนปีใหม่มีพลุหลายร้อยลูก,Đêm giao thừa có hàng trăm quả pháo hoa.,,,plernpin-c03#p13,true
 c03-w310,c03,c03-l13,ลูกศร,,mũi tên,,ดอก,noun,,,,,,plernpin-c03#p13,true
-c02-w01,c02,c02-l1,ไหม,มั้ย,không?,từ để hỏi cuối câu; มั้ย là cách viết theo văn nói,,particle,,,,,,plernpin-c02#p1,true
-c02-w02,c02,c02-l1,มะ,ม่ะ,không?,"Lưu ý 1: ม่ะ/มะ là cách nói ngắn gọn, thân mật của ไหม, dùng khi chát chít với nhau",,particle,,,,,,plernpin-c02#p1,true
-c02-w03,c02,c02-l1,หรือเปล่า,หรือไม่|รึเปล่า|ป่าว|ป่ะ,không?,Lưu ý 2: หรือไม่/หรือเปล่า/รึเปล่า/ป่าว/ป่ะ đôi khi được dùng thay thế cho ไหม/มั้ย,,phrase,,,,,,plernpin-c02#p2,true
-c02-w04,c02,c02-l1,ใช่ไหม,ใช่ป่ะ|ใช่ป่าว,phải không?,dự đoán được câu trả lời rồi nhưng cần sự khẳng định của người nghe; có thể dùng ใช่ป่ะ/ใช่ป่าว thay thế,,phrase,,,,,,plernpin-c02#p2,true
-c02-w05,c02,c02-l1,บ่อยไหม,,thường xuyên không?,,,phrase,,,,,,plernpin-c02#p2,true
-c02-w06,c02,c02-l2,หรือ,,chứ; à?; hay; hoặc,"cuối câu: chứ, à?; Lưu ý: หรือ = hay/hoặc (câu hỏi lựa chọn)",,particle,,,,,,plernpin-c02#p3,true
-c02-w07,c02,c02-l2,แล้วหรือยัง,หรือยัง|ยัง,chưa?,để hỏi điều gì đó đã xảy ra hay chưa,,phrase,,,,,,plernpin-c02#p4,true
-c02-w08,c02,c02-l2,เคย,,đã từng,เคย … หรือยัง / เคย … ไหม: đã từng … chưa?,,verb,,,,,,plernpin-c02#p4,true
-c02-w09,c02,c02-l3,ใคร,,ai?,"Lưu ý: ใคร còn giống như một đại từ không xác định (ai đó, không ai) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p4,true
-c02-w10,c02,c02-l3,อะไร,,cái gì?,"Lưu ý: อะไร còn giống như một đại từ không xác định (gì cũng…, không có gì) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p6,true
-c02-w11,c02,c02-l3,ที่ไหน,ไหน,ở đâu?; chỗ nào?; đâu?,"Lưu ý: ที่ไหน còn giống như một đại từ không xác định (ở đâu cũng…, chỗ nào đó) => mẫu câu không cần câu trả lời",,pron,,,,,,plernpin-c02#p7,true
-c02-w12,c02,c02-l4,เมื่อไหร่,เมื่อไร|เมื่อใด,khi nào?; bao giờ?,Lưu ý: còn giống như một đại từ không xác định (khi nào … cũng) => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p8,true
-c02-w13,c02,c02-l4,เท่าไหร่,เท่าไร,bao nhiêu?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p9,true
-c02-w14,c02,c02-l4,อย่างไร,ยังไง|เป็นยังไง|เป็นยังไงบ้าง,như thế nào?; bằng cách nào?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p9,true
+c02-w01,c02,c02-l1,ไหม,มั้ย,không?,từ để hỏi cuối câu; มั้ย là cách viết theo văn nói,,particle,,คุณชอบอาหารไทยไหม,Bạn thích món Thái không?,,,plernpin-c02#p1,true
+c02-w02,c02,c02-l1,มะ,ม่ะ,không?,"Lưu ý 1: ม่ะ/มะ là cách nói ngắn gọn, thân mật của ไหม, dùng khi chát chít với nhau",,particle,,ชอบมะ,Thích không?,,,plernpin-c02#p1,true
+c02-w03,c02,c02-l1,หรือเปล่า,หรือไม่|รึเปล่า|ป่าว|ป่ะ,không?,Lưu ý 2: หรือไม่/หรือเปล่า/รึเปล่า/ป่าว/ป่ะ đôi khi được dùng thay thế cho ไหม/มั้ย,,phrase,,อยากกินข้าวเหนียวมะม่วงหรือเปล่าคะ,Muốn ăn xôi xoài không ạ?,,,plernpin-c02#p2,true
+c02-w04,c02,c02-l1,ใช่ไหม,ใช่ป่ะ|ใช่ป่าว,phải không?,dự đoán được câu trả lời rồi nhưng cần sự khẳng định của người nghe; có thể dùng ใช่ป่ะ/ใช่ป่าว thay thế,,phrase,,คุณเป็นนักศึกษาใช่ไหม,Bạn là sinh viên phải không?,,,plernpin-c02#p2,true
+c02-w05,c02,c02-l1,บ่อยไหม,,thường xuyên không?,,,phrase,,คุณดูทีวีบ่อยไหม,Bạn xem tivi thường xuyên không?,,,plernpin-c02#p2,true
+c02-w06,c02,c02-l2,หรือ,,chứ; à?; hay; hoặc,"cuối câu: chứ, à?; Lưu ý: หรือ = hay/hoặc (câu hỏi lựa chọn)",,particle,,จริงหรือ,Thật à?,,,plernpin-c02#p3,true
+c02-w07,c02,c02-l2,แล้วหรือยัง,หรือยัง|ยัง,chưa?,để hỏi điều gì đó đã xảy ra hay chưa,,phrase,,คุณแต่งงานแล้วหรือยัง,Bạn kết hôn chưa?,,,plernpin-c02#p4,true
+c02-w08,c02,c02-l2,เคย,,đã từng,เคย … หรือยัง / เคย … ไหม: đã từng … chưa?,,verb,,คุณเคยไปเมืองไทยหรือยัง,Bạn đã từng đi Thái chưa?,,,plernpin-c02#p4,true
+c02-w09,c02,c02-l3,ใคร,,ai?,"Lưu ý: ใคร còn giống như một đại từ không xác định (ai đó, không ai) => mẫu câu không cần câu trả lời",,pron,,คุณอยู่กับใคร,Bạn ở với ai?,,,plernpin-c02#p4,true
+c02-w10,c02,c02-l3,อะไร,,cái gì?,"Lưu ý: อะไร còn giống như một đại từ không xác định (gì cũng…, không có gì) => mẫu câu không cần câu trả lời",,pron,,คุณอยากกินอะไร,Bạn muốn ăn gì?,,,plernpin-c02#p6,true
+c02-w11,c02,c02-l3,ที่ไหน,ไหน,ở đâu?; chỗ nào?; đâu?,"Lưu ý: ที่ไหน còn giống như một đại từ không xác định (ở đâu cũng…, chỗ nào đó) => mẫu câu không cần câu trả lời",,pron,,บ้านของคุณอยู่ที่ไหน,Nhà của bạn ở đâu?,,,plernpin-c02#p7,true
+c02-w12,c02,c02-l4,เมื่อไหร่,เมื่อไร|เมื่อใด,khi nào?; bao giờ?,Lưu ý: còn giống như một đại từ không xác định (khi nào … cũng) => mẫu câu không cần câu trả lời,,pron,,เครื่องบินจะลงจอดเมื่อไหร่,Máy bay sẽ hạ cánh khi nào?,,,plernpin-c02#p8,true
+c02-w13,c02,c02-l4,เท่าไหร่,เท่าไร,bao nhiêu?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,วันนี้วันที่เท่าไหร่,Ngày hôm nay là ngày bao nhiêu?,,,plernpin-c02#p9,true
+c02-w14,c02,c02-l4,อย่างไร,ยังไง|เป็นยังไง|เป็นยังไงบ้าง,như thế nào?; bằng cách nào?,Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,ไปสนามบินอย่างไร,Đi sân bay bằng cách nào?,,,plernpin-c02#p9,true
 c02-w15,c02,c02-l4,ทำไฉน,,làm sao?; làm thế nào?,"tài liệu xếp chung nhóm với อย่างไร, ยังไง, เป็นยังไง, เป็นยังไงบ้าง",,pron,,,,,,plernpin-c02#p9,true
-c02-w16,c02,c02-l4,กี่,,mấy?,đứng trước loại từ / đơn vị; Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,,,,,plernpin-c02#p10,true
+c02-w16,c02,c02-l4,กี่,,mấy?,đứng trước loại từ / đơn vị; Lưu ý: còn giống như một đại từ không xác định => mẫu câu không cần câu trả lời,,pron,,คุณพูดได้กี่ภาษา,Bạn nói được mấy ngôn ngữ?,,,plernpin-c02#p10,true
