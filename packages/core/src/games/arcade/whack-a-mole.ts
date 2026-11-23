@@ -3,6 +3,7 @@
  * các con vật thò lên mang chữ Thái — đập đúng từ để sang đề tiếp. 60 s; đúng liền → combo; đập
  * nhầm trừ điểm, mất combo, mục bị ghi "cần ôn". Lịch xuất hiện sinh sẵn theo seed.
  */
+import { sourceRng } from '../source';
 import { availability, assertAvailable, cycle, type GameItemRef } from '../game';
 import { createRng } from '../rng';
 import {
@@ -130,7 +131,7 @@ export const whackAMole: ArcadeGame<WhackRound, WhackInput, WhackState> = {
 
   generateRound(source, seed) {
     assertAvailable(this.id, this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const items = promptItems(source, true, false);
     return {
       questions: cycle(rng, items, QUESTIONS).map((target) => {
