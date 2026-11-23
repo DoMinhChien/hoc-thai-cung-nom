@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.9** (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.10** (2026-11-22: trò chơi chọn nội dung để ôn, xem 0.16) · v7.9 (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -204,6 +204,16 @@ Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1)
 - iOS: safe area, `dvh`, ô nhập ≥ 16px, bàn phím ảo Thái mặc định ẩn trên thiết bị cảm ứng (bật bằng nút), meta PWA cho iOS.
 - E2E thêm WebKit iPhone 15, iPad mini dọc, iPad Pro 11 ngang.
 - Spec: `docs/design/screens/SCR-00-responsive.md`. Milestone **M12.7** (làm trong giai đoạn CAT, trước công bố chính thức).
+
+### 0.16 Trò chơi: chọn nội dung để ôn (2026-11-22, v7.10 — phản hồi CAT)
+
+**Phản hồi:** người học muốn chọn nội dung khi chơi để **ôn lại bài đã học**. Hiện chỉ có "Từ đã học" hoặc một chuyên đề, và "Từ đã học" không đủ thì tự chuyển sang Bài 1 (gây khó hiểu).
+
+**Quyết định (sửa F-10 / 0.6):**
+- Khối **"Nội dung ôn"** trên `/games` mở bộ chọn: **Ôn nhanh** (Tất cả đã học · Học gần đây 7 ngày · Cần ôn + đến hạn · Bài vừa học) hoặc **chọn nhiều bài / bài học** theo lộ trình, lọc **chỉ mục đã học** (mặc định) hoặc gồm mục chưa học.
+- Không fallback lặng lẽ; < 6 mục thì nút chơi tắt kèm lý do. Trong nội dung đã chọn, mục cần ôn / đến hạn ra trước.
+- Lối vào "Chơi ôn" từ màn hoàn thành bài học, trang bài / chuyên đề, Tổng quan; màn kết quả thêm "Đổi nội dung".
+- F-12 giữ nguyên (không đổi FSRS). Spec: `docs/design/screens/SCR-08-source.md`. Milestone **M12.8**.
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1143,6 +1153,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.10 (2026-11-22):** Phản hồi CAT — **Trò chơi: chọn nội dung để ôn** (mục 0.16, sửa F-10): ôn nhanh / nhiều bài / bài học, chỉ mục đã học, bỏ fallback lặng lẽ; spec SCR-08 v3; milestone M12.8.
 - **v7.9 (2026-11-22):** Phản hồi CAT — **responsive iPhone & iPad** (mục 0.15, thay G-04 desktop-first); spec SCR-00 v2 responsive; milestone M12.7.
 - **v7.7 (2026-11-20):** Trò chơi mở rộng (mục 0.14): thêm F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; UI trò chơi tham khảo Wordwall (thumbnail minh họa, 3 theme, sao kết quả, "Đổi trò"); milestone **M9.6**; SCR-08 v2 thuộc M0.5c.
 - **v7.6 (2026-11-20):** Phản hồi người học (mục 0.13): âm đúng/sai toàn app, giọng đọc (chọn giọng + Azure TTS neural lên Phase 1), nới định hướng tối giản (M0.5c); milestone **M9.5**; thứ tự nhập tài liệu số lớn trước.
