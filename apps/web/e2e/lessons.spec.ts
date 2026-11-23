@@ -97,6 +97,13 @@ test('Hội thoại (Bài 12, bài học 1): tra từ trong câu, rồi bài t�
   await expect(page.getByTestId('flashcard')).toBeVisible();
   await finishLesson(page, b12, 'b12-l1');
   await expect(page.getByTestId('lesson-finished')).toContainText('Xong Bài học 1');
+
+  // "Chơi ôn bài này" (SCR-08 v3 §4) → Trò chơi với nội dung của bài học vừa xong.
+  await page.getByTestId('lesson-play').click();
+  await expect(page).toHaveURL(/\/games$/);
+  await expect(page.getByTestId('game-source')).toContainText(
+    'Bài 12 · Bài học 1 · gồm mục chưa học',
+  );
 });
 
 test('lộ trình 2 nhánh (plan 0.12 #1): Giáo trình trước Chuyên đề, nhãn "Bài n" / "Chuyên đề n"; Bài 2 (nội dung thật) mở được', async ({

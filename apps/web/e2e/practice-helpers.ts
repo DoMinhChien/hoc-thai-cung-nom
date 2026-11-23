@@ -198,3 +198,20 @@ export async function answerAll(page: Page, bundles: readonly Bundle[], done: Lo
       .toBe(true);
   }
 }
+
+/**
+ * Chọn nội dung ôn của Trò chơi (SCR-08 v3) qua `/games?source=` và đợi lựa chọn được lưu — vd.
+ * `units:b01;new` (mọi mục Bài 1, kể cả chưa học).
+ */
+export async function chooseGameSource(page: Page, key: string) {
+  await page.goto(`/games?source=${encodeURIComponent(key)}`);
+  await expect
+    .poll(
+      async () =>
+        (
+          await readStore<{ key: string; value: unknown }>(page, 'hoc-thai-nom-guest', 'settings')
+        ).find((s) => s.key === 'gameSource')?.value,
+    )
+    .toBe(key);
+  await expect(page).toHaveURL(/\/games$/);
+}

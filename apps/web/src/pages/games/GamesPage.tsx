@@ -46,8 +46,10 @@ export function GamesPage() {
   const skill = parseSkill(params.get('skill'));
   const picking = params.get('pick') === '1';
   const fromUrl = params.get('source');
+  const loaded = state.status === 'ready';
   useEffect(() => {
-    if (fromUrl === null) return;
+    // Đợi dữ liệu người dùng sẵn sàng rồi mới lưu, kẻo mất lựa chọn.
+    if (fromUrl === null || !loaded) return;
     const spec = parseSourceKey(fromUrl);
     const apply = spec ? choose(spec) : Promise.resolve();
     void apply.then(() =>
@@ -60,7 +62,7 @@ export function GamesPage() {
         { replace: true },
       ),
     );
-  }, [fromUrl, choose, setParams]);
+  }, [fromUrl, loaded, choose, setParams]);
   const setPicking = (open: boolean) =>
     setParams(
       (prev) => {

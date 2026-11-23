@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
-import { readStore } from './practice-helpers';
+import { chooseGameSource, readStore } from './practice-helpers';
 
 /**
  * 4 trò arcade (M9.6 T9.6.6, SCR-08 v2) trên content đã build, nguồn `b01`, seed cố định. Giảm
@@ -10,16 +10,7 @@ import { readStore } from './practice-helpers';
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await chooseGuest(page);
-  await page.goto('/games');
-  await page.getByTestId('game-source').selectOption('unit:b01');
-  await expect
-    .poll(
-      async () =>
-        (
-          await readStore<{ key: string; value: unknown }>(page, 'hoc-thai-nom-guest', 'settings')
-        ).find((s) => s.key === 'gameSource')?.value,
-    )
-    .toBe('unit:b01');
+  await chooseGameSource(page, 'units:b01;new');
 });
 
 async function expectNoSevereViolations(page: Page) {
