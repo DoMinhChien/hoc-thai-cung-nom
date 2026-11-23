@@ -1,6 +1,6 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { chooseGuest, countCards } from './helpers';
-import { answerAll, loadBundle, recordSpeech, type Bundle } from './practice-helpers';
+import { finishLesson, loadBundle, recordSpeech } from './practice-helpers';
 
 /**
  * Luồng học (M7 T7.7, SCR-04/05) trên nội dung thật đã build (TC.2a: không còn Bài 1 mẫu `u01`):
@@ -12,44 +12,6 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await chooseGuest(page);
 });
-
-/** Làm hết các bước của bài học đang mở tới màn hoàn thành (bài tập trả lời đúng hết). */
-async function finishLesson(page: Page, content: Bundle, lessonId: string) {
-  const finished = page.getByTestId('lesson-finished');
-  const words = content.words.filter((w) => w.lesson_id === lessonId).length;
-  const flashcard = page.getByTestId('flashcard');
-  const grammar = page.getByTestId('grammar-point').first();
-  const dialogue = page.getByTestId('dialogue-lines');
-  const question = page.getByTestId('question');
-  // Màn hoàn thành của bài học trước có thể còn hiện ngay sau khi chuyển bài.
-  await expect(finished).toBeHidden();
-  while (!(await finished.isVisible())) {
-    await expect(flashcard.or(grammar).or(dialogue).or(question).or(finished)).toBeVisible();
-    if (await flashcard.isVisible()) {
-      // Từ vựng: lật từng thẻ (Space), "Đã biết" (2).
-      for (let i = 0; i < words; i++) {
-        await expect(flashcard).toBeVisible();
-        await page.keyboard.press(' ');
-        await expect(page.getByTestId('flashcard-back')).toBeVisible();
-        await page.keyboard.press('2');
-      }
-      await expect(page.getByTestId('vocab-summary')).toContainText(`Đã xem ${words} từ`);
-      await page.keyboard.press('Enter');
-      await expect(page.getByTestId('vocab-summary')).toBeHidden();
-    } else if (await grammar.isVisible()) {
-      await page.getByTestId('step-next').click();
-      await expect(grammar).toBeHidden();
-    } else if (await dialogue.isVisible()) {
-      await dialogue.getByTestId('dialogue-word').first().click();
-      await expect(page.getByTestId('lookup-panel')).not.toContainText('Chạm vào một từ để tra');
-      // Focus đang ở nút từ vừa tra (Enter sẽ bấm lại nút đó) → bấm nút "Tiếp".
-      await page.getByTestId('step-next').click();
-      await expect(dialogue).toBeHidden();
-    } else if (await question.isVisible()) {
-      await answerAll(page, [content], finished);
-    }
-  }
-}
 
 test('luồng học: Bắt đầu → học trọn Chuyên đề 1 (Mẫu câu → Từ vựng → Bài tập) → xong chuyên đề', async ({
   page,

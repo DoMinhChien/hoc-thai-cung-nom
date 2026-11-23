@@ -5,7 +5,7 @@ b02-l3,b02,3,Hỏi thăm sức khỏe và ngôn ngữ,g-b02-mai,true
 b02-l4,b02,4,"Đến từ đâu, sống ở đâu",g-b02-ma-jak,true
 b02-l5,b02,5,Tạm biệt và công việc,g-b02-tham-ngan,true
 b02-l6,b02,6,"Ốm đau, vẫn như cũ và nghề nghiệp",g-b02-pen,true
-b01-l1,b01,1,Đại từ ngôi thứ nhất,,true
+b01-l1,b01,1,Đại từ ngôi thứ nhất,g-b01-tua-eng,true
 b01-l2,b01,2,Đại từ ngôi thứ hai,g-b01-riak,true
 b01-l3,b01,3,Người trong gia đình,g-b01-khong,true
 b01-l4,b01,4,Ngôi thứ ba và cách gọi khác,g-b01-phuak|g-b01-nai,true

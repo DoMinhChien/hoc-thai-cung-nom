@@ -123,6 +123,17 @@
     - { th: "คุณทราบไหมว่ากุญแจของเขาอยู่ที่ไหน", vi: "Bạn có biết chìa khóa của anh ấy ở đâu không?" }
   source: plernpin-b01#p22
   draft: true
+- id: g-b01-tua-eng
+  unit_id: b01
+  title_vi: "Xưng \"tôi\" theo người nói"
+  pattern: "ผม … ครับ (nam) · ฉัน / ดิฉัน … ค่ะ (nữ) · หนู … (trẻ / người nhỏ tuổi)"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nam xưng ผม, câu kết bằng ครับ; nữ xưng ฉัน (thân mật hơn) hoặc ดิฉัน (trang trọng), câu kết bằng ค่ะ. Trẻ em hoặc người nhỏ tuổi nói với người lớn xưng หนู. Số nhiều: พวกเรา (chúng tôi / chúng ta), พวกหนู (chúng con / chúng em)."
+  examples:
+    - { th: "ผมชื่อมินห์ครับ", vi: "Tôi tên là Minh. (nam)" }
+    - { th: "ดิฉันเป็นครูค่ะ", vi: "Tôi là giáo viên. (nữ, trang trọng)" }
+    - { th: "หนูสบายดีค่ะ", vi: "Con khỏe ạ." }
+  source: claude-b01
+  draft: true
 - id: g-b01-riak
   unit_id: b01
   title_vi: "Gọi người nghe bằng từ chỉ vai vế"

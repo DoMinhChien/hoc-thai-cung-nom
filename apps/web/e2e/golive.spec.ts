@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { chooseGuest } from './helpers';
-import { answerAll, loadBundle, readStore } from './practice-helpers';
+import { answerAll, finishLesson, loadBundle, readStore } from './practice-helpers';
 
 /**
  * Luồng E2E go-live (M12, plan 7.4 "Luồng E2E tối thiểu" viết lại theo bài học / bài tập v7):
@@ -11,11 +11,13 @@ const DB = 'hoc-thai-nom-guest';
 const T0 = new Date('2026-11-21T03:00:00Z');
 const DAY = 24 * 3600_000;
 
+/** Bước Từ vựng của Bài 1, bài học 1 → các từ vào SRS. */
 async function learnVocab(page: Page) {
   await page.goto('/units/b01/b01-l1');
   await page.getByTestId('vocab-mode-list').click();
   await page.getByTestId('step-next').click();
-  await expect(page.getByTestId('lesson-finished')).toBeVisible();
+  // Bước Từ vựng xong → từ vào SRS; dừng trước Mẫu câu / Bài tập.
+  await expect(page.getByTestId('grammar-point').first()).toBeVisible();
 }
 
 const cardCount = async (page: Page) => (await readStore(page, DB, 'cards')).length;
@@ -32,8 +34,12 @@ test.describe('học & tiến độ', () => {
     page,
   }) => {
     const b01 = await loadBundle(page, 'b01');
-    await learnVocab(page);
-    const words = await cardCount(page);
+    // Học trọn bài học 1 (Từ vựng → Mẫu câu → Bài tập) → Tổng quan đếm 1 bài học xong.
+    await page.goto('/units/b01/b01-l1');
+    await finishLesson(page, b01, 'b01-l1');
+    const words = (await readStore<{ itemType: string }>(page, DB, 'cards')).filter(
+      (c) => c.itemType === 'word',
+    ).length;
     expect(words).toBeGreaterThan(0);
 
     await page.goto('/practice');
@@ -118,7 +124,7 @@ test.describe('PWA', () => {
     await expect(page.getByTestId('flashcard')).toBeVisible();
     await page.getByTestId('vocab-mode-list').click();
     await page.getByTestId('step-next').click();
-    await expect(page.getByTestId('lesson-finished')).toBeVisible();
+    await expect(page.getByTestId('grammar-point').first()).toBeVisible();
     expect(await cardCount(page)).toBeGreaterThan(0);
     await page.goto('/words');
     await expect(page.getByTestId('words-list')).toBeVisible();

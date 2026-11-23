@@ -40,12 +40,13 @@ test.beforeEach(async ({ page }) => {
   await chooseGuest(page);
 });
 
-/** Học Bài 1, bài học 1 (chỉ có Từ vựng, dạng danh sách) → các từ vào SRS (thẻ mới). */
+/** Bước Từ vựng của Bài 1, bài học 1 (dạng danh sách) → chỉ các từ vào SRS (thẻ mới). */
 async function learnVocab(page: Page) {
   await page.goto('/units/b01/b01-l1');
   await page.getByTestId('vocab-mode-list').click();
   await page.getByTestId('step-next').click();
-  await expect(page.getByTestId('lesson-finished')).toBeVisible();
+  // Bước Từ vựng xong → từ vào SRS; dừng trước Mẫu câu / Bài tập.
+  await expect(page.getByTestId('grammar-point').first()).toBeVisible();
 }
 
 /** Chọn "Kiểu bài" và đợi cài đặt được lưu (trước khi rời trang). */
@@ -94,12 +95,16 @@ test('Bài tập hôm nay: bắt đầu bằng Enter, trả lời đúng hết b
   await expect(page.getByTestId('result-pct')).toHaveText('100%');
   await expect(page.getByTestId('practice-no-wrong')).toBeVisible();
 
-  // Mọi thẻ đã được chấm (lần đầu, Good). Bài học 1 chỉ có từ → thẻ từ Thái → Việt.
+  // Mọi thẻ đã được chấm (lần đầu, Good). Từ của bước Từ vựng → thẻ Thái → Việt; câu của bài học
+  // đã mở cũng được đưa vào phiên (thẻ câu).
   await expect
     .poll(async () => (await readStore<Card>(page, DB, 'cards')).every((c) => c.fsrs.reps === 1))
     .toBe(true);
   const cards = await readStore<Card>(page, DB, 'cards');
-  expect(cards.every((c) => c.itemType === 'word' && c.cardType === 'th-vi')).toBe(true);
+  expect(cards.filter((c) => c.itemType === 'word').every((c) => c.cardType === 'th-vi')).toBe(
+    true,
+  );
+  expect(cards.every((c) => c.itemType === 'word' || c.itemType === 'sentence')).toBe(true);
   const logs = await readStore<Log>(page, DB, 'reviewLogs');
   expect(new Set(logs.map((l) => l.rating))).toEqual(new Set(['good']));
 
