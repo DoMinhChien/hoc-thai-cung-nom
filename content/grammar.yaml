@@ -1686,6 +1686,39 @@
     - { th: "หนังสือสามเล่ม", vi: "3 quyển sách" }
   source: plernpin-c03#p1
   draft: true
+- id: g-c03-nee
+  unit_id: c03
+  title_vi: "Loại từ + นี้ / นั้น: cái này, cái kia"
+  pattern: "Danh từ + loại từ + นี้/นั้น/โน้น"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Khi chỉ một vật cụ thể, đặt loại từ giữa danh từ và นี้ (này) / นั้น (đó, kia) / โน้น (đằng kia): หนังสือเล่มนี้ = quyển sách này. Danh từ tự làm loại từ (ห้อง, คำ, เกาะ…) chỉ cần nói ห้องนี้, คำนี้, เกาะนี้."
+  examples:
+    - { th: "รถคันนี้", vi: "Chiếc xe này" }
+    - { th: "บ้านหลังนั้น", vi: "Ngôi nhà đó" }
+    - { th: "นาฬิกาเรือนนี้แพงมาก", vi: "Chiếc đồng hồ này rất đắt." }
+  source: claude-c03
+  draft: true
+- id: g-c03-kee
+  unit_id: c03
+  title_vi: "กี่ + loại từ: hỏi số lượng"
+  pattern: "Danh từ + กี่ + loại từ?"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi “mấy / bao nhiêu”: กี่ đứng trước loại từ (không đứng trước danh từ): คุณมีหนังสือกี่เล่ม = Bạn có mấy quyển sách? Trả lời bằng số + loại từ: สามเล่ม (3 quyển)."
+  examples:
+    - { th: "คุณมีรถกี่คัน", vi: "Bạn có mấy chiếc xe?" }
+    - { th: "ห้องนี้มีหน้าต่างกี่บาน", vi: "Phòng này có mấy cửa sổ?" }
+    - { th: "สามบานครับ", vi: "3 cái ạ." }
+  source: claude-c03
+  draft: true
+- id: g-c03-adj
+  unit_id: c03
+  title_vi: "Loại từ + tính từ: chỉ rõ cái nào"
+  pattern: "Danh từ + loại từ + tính từ / màu"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Để chỉ rõ một vật trong nhiều vật, đặt loại từ giữa danh từ và tính từ / màu: เสื้อตัวสีแดง = cái áo màu đỏ (trong số các áo), บ้านหลังใหญ่ = ngôi nhà to. Không có loại từ (เสื้อสีแดง) chỉ là miêu tả chung."
+  examples:
+    - { th: "เสื้อตัวสีแดง", vi: "Cái áo màu đỏ" }
+    - { th: "บ้านหลังใหญ่", vi: "Ngôi nhà to" }
+    - { th: "กระเป๋าใบเล็กเป็นของฉัน", vi: "Cái túi nhỏ là của tôi." }
+  source: claude-c03
+  draft: true
 - id: g-c02-mai
   unit_id: c02
   title_vi: "ไหม/มั้ย: Không?"
