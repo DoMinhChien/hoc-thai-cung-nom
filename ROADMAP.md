@@ -158,7 +158,8 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
 
   **Thứ tự** (theo lộ trình người học — đang ở Bài 9–10): **`b11` → `b12`** (bài sắp học) → **`b08` → `b01`** (ôn) → **`c03` → `c06` → `c07`** (thiếu câu nhiều nhất) → `c13` → `c09` → `c01` → các chuyên đề còn lại (chỉ ví dụ từ).
   **Cách làm:** mỗi PR 1–2 unit, nhánh `content-tc4-<unit>`, base `main`, **tự merge theo 8.1** (nội dung draft). Không chặn M12.8 — làm xen kẽ hoặc sau M12.8.
-  - [ ] TC.4a `b11`, `b12`
+  - [x] TC.4a `b11`, `b12`
+    - *Kết quả (2026-11-23, nhánh `content-tc4-b11-b12`):* đọc lại 42 trang PDF (chỉ có tiếng Việt) — 15 hội thoại / 126 câu khớp nguồn, không thấy lỗi rõ ràng nên không sửa. **Từ vựng rút từ hội thoại:** `b11` 0 → **76 từ** (8–11 / bài học), `b12` 0 → **63 từ** (8–10 / bài học); nghĩa theo lượt thoại, **139/139 có `example_th`/`example_vi`** = lượt thoại (rút gọn khi dài); `image` 6 từ (ตั๋ว 🎫, ธนาคาร 🏦, รถเมล์ 🚌, เตียง 🛏️, รถแท็กซี่ 🚕, โรงแรม 🏨 — hội thoại ít danh từ cụ thể, không có emoji đúng nghĩa cho chùa, chợ nổi, quán cà phê, thư viện, điều hòa… → để trống); `classifier` 20 từ (b11 12, b12 8); ưu tiên từ chưa có ở unit khác, chỉ lặp từ cốt lõi của bài (vd. จังหวัด, วัด, ธนาคาร, รถเมล์, โรงแรม). **Câu bù:** b11-l4 3 → 6, b11-l5 4 → 7 (`s-b11-071…076`, `claude-b11`, ผม/ฉัน + ครับ/ค่ะ, ≤ 9 thẻ, 1 thẻ nhiễu) → mọi bài học ≥ 5 câu. E2E `lessons.spec` (Hội thoại Bài 12): bài học 1 giờ có bước Từ vựng trước Hội thoại → sửa bước chờ đầu. **GV xác nhận:** toàn bộ tiếng Thái Claude soạn; 5 từ `note_vi` "cần GV xác nhận" (ไปทำงาน = đi công tác, เรียกรถ, ห้องเตียงใหญ่, ห้องเตียงคู่, ห้องคู่) — **เตียงคู่**: khách sạn Thái thường hiểu là 2 giường đơn (twin), Bài 8 đang ghi "giường đôi".
   - [ ] TC.4b `b08`, `b07`
   - [ ] TC.4c `b06`, `b05`
   - [ ] TC.4d `b04`, `b03`
@@ -660,6 +661,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-23 | TC.4a | **TC.4a** `b11`, `b12`: rà lại 42 trang PDF (không sửa hội thoại), thêm từ vựng rút từ hội thoại (b11 76, b12 63; 139 ví dụ, 6 hình, 20 loại từ), câu bù b11-l4/l5 (+6) → mọi bài học ≥ 5 câu; sửa E2E Hội thoại Bài 12 (bước Từ vựng đi trước). PR gồm cả commit docs của #39 (TC.4 chưa lên `main`) | TC.4b | GV duyệt tiếng Thái Claude soạn | `content-tc4-b11-b12` → PR |
 | 2026-11-23 | TC.4 mở | Owner: làm đầy đủ các bài còn lại theo chuẩn TC.3. Claude Desktop đếm hiện trạng: chỉ b09, b10 đạt; b11/b12 0 từ, c03 0 câu, c06/c07 3 câu, b01–b08 không hình/ví dụ, 78/158 bài học < 5 câu. Chia TC.4a–h | TC.4a–h (agent), M12.8 (agent) | — | — (docs chưa commit) |
 | 2026-11-22 | M12.8 mở | Phản hồi CAT: Trò chơi cần chọn nội dung để ôn bài đã học. Plan v7.10 §0.16 (sửa F-10), spec `SCR-08-source.md`, milestone M12.8 (T12.8.1 ✅) | T12.8.2–T12.8.6 (agent) | — | — (docs chưa commit) |
 | 2026-11-22 | M12.7 🟢 | T12.7.7: owner duyệt UI mobile trên iPhone thật → M12.7 xong (7/7), merge #38 (owner cho phép) → production có bản responsive. iPad theo dõi trong CAT. Dọn "Milestone đang mở": nội dung 27/27 file đã nhập (draft chờ GV duyệt), M12 → 🟢 CAT. CI #38 lần trước: `settings.spec` giọng đọc flaky trên WebKit, chạy lại xanh | — | Công bố chính thức: B1, B4–B7, B9, smoke test, GV duyệt nội dung | `m12.7-responsive` → #38 |
