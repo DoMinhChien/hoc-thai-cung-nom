@@ -398,3 +398,27 @@
     - { speaker: Nam, th: "เบอร์ผมศูนย์เก้าหก หกแปดศูนย์ เจ็ดหนึ่งห้าสี่ครับ เดี๋ยวผมโทรหานะครับ", vi: "Số của tôi là 096 680 7154. Lát nữa tôi gọi cho bạn nhé." }
   source: claude-b03
   draft: true
+- id: d-b02-gioi-thieu
+  lesson_id: b02-l6
+  lines:
+    - { speaker: Nam, th: "สวัสดีครับ ผมชื่อนาม คุณชื่ออะไรครับ", vi: "Xin chào, tôi tên là Nam. Bạn tên gì?" }
+    - { speaker: Malee, th: "สวัสดีค่ะ ฉันชื่อมาลี ยินดีที่ได้รู้จักค่ะ", vi: "Chào anh, tôi tên là Malee. Rất vui được làm quen." }
+    - { speaker: Nam, th: "ยินดีที่ได้รู้จักเช่นกันครับ คุณเป็นคนไทยใช่ไหมครับ", vi: "Tôi cũng rất vui được làm quen. Bạn là người Thái phải không?" }
+    - { speaker: Malee, th: "ใช่ค่ะ ฉันมาจากเชียงใหม่ แล้วคุณล่ะคะ มาจากไหนคะ", vi: "Đúng vậy, tôi đến từ Chiang Mai. Còn anh, anh đến từ đâu?" }
+    - { speaker: Nam, th: "ผมมาจากเวียดนามครับ ตอนนี้อยู่ที่ฮานอยครับ", vi: "Tôi đến từ Việt Nam, bây giờ sống ở Hà Nội." }
+    - { speaker: Malee, th: "คุณทำงานอะไรคะ", vi: "Anh làm nghề gì?" }
+    - { speaker: Nam, th: "ผมเป็นวิศวกรครับ ทำงานที่บริษัทสยามไฮเทค แล้วคุณล่ะครับ", vi: "Tôi là kỹ sư, làm việc ở công ty Siam High tech. Còn bạn?" }
+    - { speaker: Malee, th: "ฉันเป็นอาจารย์ที่มหาวิทยาลัยค่ะ ขอตัวก่อนนะคะ แล้วพบกันใหม่ค่ะ", vi: "Tôi là giảng viên ở trường đại học. Tôi xin phép đi trước nhé, hẹn gặp lại!" }
+  source: claude-b02
+  draft: true
+- id: d-b01-gia-dinh
+  lesson_id: b01-l3
+  lines:
+    - { speaker: Nam, th: "นี่คือครอบครัวของคุณใช่ไหมครับ", vi: "Đây là gia đình của bạn phải không?" }
+    - { speaker: Lan, th: "ใช่ค่ะ นี่คือคุณพ่อและคุณแม่ของฉันค่ะ", vi: "Đúng vậy. Đây là bố và mẹ của tôi." }
+    - { speaker: Nam, th: "แล้วคนนี้ล่ะครับ", vi: "Còn người này thì sao?" }
+    - { speaker: Lan, th: "คุณยายของฉันค่ะ ท่านอยู่กับพวกเราค่ะ", vi: "Bà ngoại của tôi. Bà sống với chúng tôi." }
+    - { speaker: Nam, th: "ท่านสบายดีไหมครับ", vi: "Bà có khỏe không?" }
+    - { speaker: Lan, th: "ท่านสบายดีค่ะ ขอบคุณนะคะ", vi: "Bà khỏe ạ, cảm ơn anh." }
+  source: claude-b01
+  draft: true

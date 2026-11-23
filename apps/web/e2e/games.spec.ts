@@ -99,9 +99,9 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
 test('Đoán loại từ trên Chuyên đề 3 (c03): chọn nguồn (được nhớ), trả lời bằng phím 1–4, hết tim → kết quả', async ({
   page,
 }) => {
-  // Bài 1 (không có loại từ) → trò bị khóa kèm lý do.
+  // Chuyên đề 1 (không có loại từ) → trò bị khóa kèm lý do. (Bài 1 có loại từ từ TC.4e.)
   await page.goto('/games');
-  await page.getByTestId('game-source').selectOption('unit:b01');
+  await page.getByTestId('game-source').selectOption('unit:c01');
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );
