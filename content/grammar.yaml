@@ -895,6 +895,39 @@
     - { th: "เดือนอายุน้อยที่สุดในห้องนี้", vi: "Đươn ít tuổi nhất trong phòng này" }
   source: plernpin-b04#p47
   draft: true
+- id: g-b04-ki
+  unit_id: b04
+  title_vi: "Hỏi số lượng (กี่ + loại từ)"
+  pattern: "(S) + มี + N + กี่ + loại từ"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi “mấy cái / mấy con…”: กี่ (mấy) đặt TRƯỚC loại từ và SAU danh từ, khác tiếng Việt. Trả lời: N + số + loại từ. Với thứ không đếm từng cái (tiền, tuổi, giá) dùng เท่าไร (bao nhiêu)."
+  examples:
+    - { th: "คุณมีรถยนต์กี่คันครับ", vi: "Bạn có mấy chiếc xe ô tô?" }
+    - { th: "บ้านคุณมีเด็กกี่คนคะ", vi: "Nhà bạn có mấy đứa trẻ?" }
+    - { th: "มีไข่กี่ฟองครับ", vi: "Có mấy quả trứng?" }
+  source: claude-b04
+  draft: true
+- id: g-b04-kho
+  unit_id: b04
+  title_vi: "Gọi món, mua theo số lượng (ขอ / เอา + N + số + loại từ)"
+  pattern: "ขอ / เอา + N + số + loại từ"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Gọi món, mua hàng: ขอ (xin) lịch sự, เอา (lấy) thân mật. Loại từ thường là vật đựng: แก้ว (cốc), ขวด (chai), จาน (đĩa). Số 1 có thể đặt sau loại từ: ข้าวผัดจานหนึ่ง."
+  examples:
+    - { th: "ขอน้ำส้มสองแก้วครับ", vi: "Cho tôi 2 cốc nước cam." }
+    - { th: "เอาเบียร์สามขวดค่ะ", vi: "Lấy 3 chai bia." }
+    - { th: "ขอข้าวผัดจานหนึ่งครับ", vi: "Cho tôi 1 đĩa cơm rang." }
+  source: claude-b04
+  draft: true
+- id: g-b04-ni
+  unit_id: b04
+  title_vi: "Cái này, cái kia (N + loại từ + นี้ / นั้น / ไหน)"
+  pattern: "N + loại từ + นี้ / นั้น / ไหน"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Chỉ một vật cụ thể: loại từ đứng giữa danh từ và นี้ (này), นั้น (kia), ไหน (nào). Khi đã rõ có thể bỏ danh từ: ด้ามนี้ (cái này)."
+  examples:
+    - { th: "ปากกาด้ามนี้ราคาเท่าไรครับ", vi: "Cây bút bi này giá bao nhiêu?" }
+    - { th: "ดินสอแท่งนั้นเป็นของฉันค่ะ", vi: "Cái bút chì kia là của tôi." }
+    - { th: "บริษัทแห่งนี้ใหญ่มากครับ", vi: "Công ty này rất lớn." }
+  source: claude-b04
+  draft: true
 - id: g-b03-et-yi
   unit_id: b03
   title_vi: Đọc số 1 ở hàng đơn vị (เอ็ด) và số 2 ở hàng chục (ยี่)
@@ -1021,6 +1054,70 @@
     - { th: "ฉันอายุยี่สิบปี", vi: "Tôi 20 tuổi" }
     - { th: "หนูอายุห้าขวบ", vi: "Em 5 tuổi" }
   source: plernpin-b03#p45-46
+  draft: true
+- id: g-b03-nap
+  unit_id: b03
+  title_vi: "Đếm từ … đến … (นับ … ถึง …)"
+  pattern: "นับ + (จาก) + số + ถึง + số"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Đếm theo thứ tự: นับ (đếm) + จาก (từ) số này + ถึง (đến) số kia; จาก có thể bỏ. Khi đếm đồ vật, số đứng sau danh từ và trước loại từ (xem Bài 4)."
+  examples:
+    - { th: "นับหนึ่งถึงสิบ", vi: "Đếm từ 1 đến 10." }
+    - { th: "นับจากศูนย์ถึงห้าค่ะ", vi: "Đếm từ 0 đến 5." }
+    - { th: "ลองนับเป็นภาษาไทยหน่อยครับ", vi: "Thử đếm bằng tiếng Thái xem." }
+  source: claude-b03
+  draft: true
+- id: g-b03-khit
+  unit_id: b03
+  title_vi: "Cộng, trừ, nhân, chia (… เท่ากับ …)"
+  pattern: "A + บวก / ลบ / คูณ / หาร + B + เท่ากับ + C"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Đọc phép tính: บวก (cộng), ลบ (trừ), คูณ (nhân), หาร (chia), เท่ากับ (bằng). Hỏi kết quả: … เท่ากับเท่าไร (bằng bao nhiêu)? Văn nói cũng dùng ได้: สองบวกสองได้สี่."
+  examples:
+    - { th: "สองบวกสามเท่ากับห้า", vi: "2 + 3 = 5" }
+    - { th: "สิบลบสี่เท่ากับหก", vi: "10 − 4 = 6" }
+    - { th: "สามคูณห้าเท่ากับสิบห้า", vi: "3 × 5 = 15" }
+    - { th: "ยี่สิบหารสี่เท่ากับห้า", vi: "20 : 4 = 5" }
+  source: claude-b03
+  draft: true
+- id: g-b03-luea
+  unit_id: b03
+  title_vi: "Còn lại, hết (เหลือ / หมด)"
+  pattern: "N + เหลือ + số + loại từ · N + หมดแล้ว"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. เหลือ (còn lại) + số lượng; หมดแล้ว (hết rồi). Hỏi: เหลือกี่ + loại từ? / เหลือเท่าไร?"
+  examples:
+    - { th: "ไข่เหลือสามฟองครับ", vi: "Còn 3 quả trứng." }
+    - { th: "น้ำส้มหมดแล้วค่ะ", vi: "Nước cam hết rồi." }
+    - { th: "เหลือเงินเท่าไรครับ", vi: "Còn bao nhiêu tiền?" }
+  source: claude-b03
+  draft: true
+- id: g-b03-praman
+  unit_id: b03
+  title_vi: "Khoảng chừng (ประมาณ + số)"
+  pattern: "ประมาณ + số + loại từ / đơn vị"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ประมาณ (khoảng) đặt trước số để nói con số ước chừng."
+  examples:
+    - { th: "ห้องเรียนมีนักเรียนประมาณสามสิบคนครับ", vi: "Lớp học có khoảng 30 học sinh." }
+    - { th: "ใช้เวลาประมาณสองชั่วโมงค่ะ", vi: "Mất khoảng 2 tiếng." }
+  source: claude-b03
+  draft: true
+- id: g-b03-ruam
+  unit_id: b03
+  title_vi: "Tổng cộng (รวม …)"
+  pattern: "รวม (ทั้งหมด) + số + บาท · รวมเป็นเงินเท่าไร"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Khi tính tiền: รวม (cộng lại) + ทั้งหมด (tất cả) + số tiền. Hỏi tổng: รวมเป็นเงินเท่าไร / ทั้งหมดเท่าไร."
+  examples:
+    - { th: "รวมทั้งหมดสามร้อยห้าสิบบาทครับ", vi: "Tổng cộng 350 bạt." }
+    - { th: "รวมเป็นเงินเท่าไรคะ", vi: "Tổng cộng bao nhiêu tiền?" }
+  source: claude-b03
+  draft: true
+- id: g-b03-koen-pai
+  unit_id: b03
+  title_vi: "Quá … (tính từ + เกินไป)"
+  pattern: "N + tính từ + เกินไป"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. เกินไป (quá mức) đặt sau tính từ để nói quá mức cần: ใหญ่เกินไป (to quá), เล็กเกินไป (nhỏ quá). Văn nói thường rút gọn thành ไป: แพงไป."
+  examples:
+    - { th: "เสื้อตัวนี้ใหญ่เกินไปครับ", vi: "Cái áo này to quá." }
+    - { th: "ห้องนี้เล็กเกินไปค่ะ", vi: "Phòng này nhỏ quá." }
+  source: claude-b03
   draft: true
 - id: g-c15-pai
   unit_id: c15

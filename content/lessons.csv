@@ -94,19 +94,19 @@ b05-l12,b05,12,Lễ hội và ngày lễ (2),g-b05-tetsakan,true
 b05-l13,b05,13,Ngày lễ (3); thời gian biểu,g-b05-nai-wan,true
 b05-l14,b05,14,"Lịch, quý, giờ hành chính",g-b05-chuang,true
 b04-l1,b04,1,"Loại từ (1): xà phòng, nhẫn, đồng hồ, nhà, bàn ghế",g-b04-laksananam|g-b04-nueng,true
-b04-l2,b04,2,"Loại từ (2): quần áo, ấm chén, trứng, xe ô tô, đũa",,true
-b04-l3,b04,3,"Loại từ (3): cây, sách, thuốc, đồ uống, xe lửa",,true
-b04-l4,b04,4,"Loại từ (4): công ty, bút, ngón tay, giấy, máy giặt",,true
+b04-l2,b04,2,"Loại từ (2): quần áo, ấm chén, trứng, xe ô tô, đũa",g-b04-ki,true
+b04-l3,b04,3,"Loại từ (3): cây, sách, thuốc, đồ uống, xe lửa",g-b04-kho,true
+b04-l4,b04,4,"Loại từ (4): công ty, bút, ngón tay, giấy, máy giặt",g-b04-ni,true
 b04-l5,b04,5,"So sánh bằng, hơn, nhất; lớp học",g-b04-thao-kap|g-b04-thao-kan|g-b04-kwa|g-b04-thi-sut,true
-b03-l1,b03,1,Số đếm từ 0 đến 10,,true
+b03-l1,b03,1,Số đếm từ 0 đến 10,g-b03-nap,true
 b03-l2,b03,2,"Số lớn: mười một, hai mươi, trăm, nghìn, triệu",g-b03-et-yi|g-b03-lak,true
 b03-l3,b03,3,"Đọc số nhà, phần trăm, điện thoại, thập phân, phân số",g-b03-doc-dau|g-b03-ban-lek-thi|g-b03-zero|g-b03-percent|g-b03-tho|g-b03-thot-sa-niyom|g-b03-thang-luang,true
 b03-l4,b03,4,"Số, đếm, số lượng; ít, nhiều, mấy, bao nhiêu",g-b03-set-suan|g-b03-thao|g-b03-ayu,true
-b03-l5,b03,5,"Có, không có; cộng, trừ, nhân, chia",,true
-b03-l6,b03,6,"Thiểu số, còn, hết, tất cả; thừa, thiếu, đủ",,true
-b03-l7,b03,7,"Phần trăm, khoảng, số hiệu; thêm, bớt, gấp",,true
-b03-l8,b03,8,"Đếm không xuể, mọi, một số; tiền, tuổi, tổng cộng",,true
-b03-l9,b03,9,"Tá, to, nhỏ, trọng lượng; số chẵn, số lẻ, số điện thoại",,true
+b03-l5,b03,5,"Có, không có; cộng, trừ, nhân, chia",g-b03-khit,true
+b03-l6,b03,6,"Thiểu số, còn, hết, tất cả; thừa, thiếu, đủ",g-b03-luea,true
+b03-l7,b03,7,"Phần trăm, khoảng, số hiệu; thêm, bớt, gấp",g-b03-praman,true
+b03-l8,b03,8,"Đếm không xuể, mọi, một số; tiền, tuổi, tổng cộng",g-b03-ruam,true
+b03-l9,b03,9,"Tá, to, nhỏ, trọng lượng; số chẵn, số lẻ, số điện thoại",g-b03-koen-pai,true
 c15-l1,c15,1,Cách dùng của ไป,g-c15-pai|g-c15-pai-laeo,true
 c15-l2,c15,2,Cách dùng của มา,g-c15-ma|g-c15-ma-da,true
 c15-l3,c15,3,Khác biệt giữa ไป và มา,g-c15-pai-ma|g-c15-ya,true
