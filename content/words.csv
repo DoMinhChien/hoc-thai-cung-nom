@@ -1218,103 +1218,103 @@ c09-w32,c09,c09-l3,หายใจ,,thở; hít thở,,,verb,,,,,,plernpin-c09#p
 c07-w01,c07,c07-l1,ความ,,vụ án; vụ kiện; vụ việc; nội dung; thông tin,khi đứng một mình,,noun,,,,,,plernpin-c07#p1,true
 c07-w02,c07,c07-l1,สู้ความ,,tranh kiện,,,verb,,,,,,plernpin-c07#p1,true
 c07-w03,c07,c07-l1,ชนะความ,,thắng kiện,,,verb,,,,,,plernpin-c07#p1,true
-c07-w04,c07,c07-l1,จำกัดความ,,định nghĩa,,,verb,,,,,,plernpin-c07#p1,true
+c07-w04,c07,c07-l1,จำกัดความ,,định nghĩa,,,verb,,ครูให้คำจำกัดความของคำนี้,Thầy giáo đưa ra định nghĩa của từ này.,,,plernpin-c07#p1,true
 c07-w05,c07,c07-l1,ย่อความ,,tóm tắt nội dung,,,verb,,,,,,plernpin-c07#p1,true
-c07-w06,c07,c07-l1,ความรัก,,tình yêu,,,noun,,,,,,plernpin-c07#p2,true
+c07-w06,c07,c07-l1,ความรัก,,tình yêu,,,noun,,ความรักทำให้คนมีความสุข,Tình yêu làm con người hạnh phúc.,,,plernpin-c07#p2,true
 c07-w07,c07,c07-l1,ความรู้,,kiến thức,,,noun,,,,,,plernpin-c07#p2,true
-c07-w08,c07,c07-l1,ความเกลียด,,lòng căm ghét,,,noun,,,,,,plernpin-c07#p2,true
+c07-w08,c07,c07-l1,ความเกลียด,,lòng căm ghét,,,noun,,ความเกลียดไม่ช่วยอะไร,Lòng căm ghét chẳng giúp được gì.,,,plernpin-c07#p2,true
 c07-w09,c07,c07-l1,ความคิด,,suy nghĩ; ý tưởng,,,noun,,,,,,plernpin-c07#p2,true
-c07-w10,c07,c07-l1,ความคิดถึง,,nỗi nhớ,,,noun,,,,,,plernpin-c07#p2,true
+c07-w10,c07,c07-l1,ความคิดถึง,,nỗi nhớ,,,noun,,ฝากความคิดถึงถึงครอบครัวด้วยนะ,Cho tôi gửi nỗi nhớ đến gia đình nhé.,,,plernpin-c07#p2,true
 c07-w11,c07,c07-l1,ความฝัน,,giấc mơ,,,noun,,,,,,plernpin-c07#p2,true
-c07-w12,c07,c07-l1,ความโกรธ,,cơn giận,,,noun,,,,,,plernpin-c07#p2,true
+c07-w12,c07,c07-l1,ความโกรธ,,cơn giận,,,noun,,เขาพูดด้วยความโกรธ,Anh ấy nói trong cơn giận.,,,plernpin-c07#p2,true
 c07-w13,c07,c07-l1,ความพยายาม,,sự cố gắng; sự nỗ lực,,,noun,,,,,,plernpin-c07#p2,true
 c07-w14,c07,c07-l2,ความสูง,,chiều cao,,,noun,,,,,,plernpin-c07#p3,true
-c07-w15,c07,c07-l2,ความจริง,,sự thật,,,noun,,,,,,plernpin-c07#p3,true
+c07-w15,c07,c07-l2,ความจริง,,sự thật,,,noun,,ความจริงคือเขาไม่ได้มา,Sự thật là anh ấy đã không đến.,,,plernpin-c07#p3,true
 c07-w16,c07,c07-l2,ความดี,,lòng tốt; điều tốt,,,noun,,,,,,plernpin-c07#p3,true
 c07-w17,c07,c07-l2,ความงาม,,vẻ đẹp,bên trong,,noun,,,,,,plernpin-c07#p3,true
 c07-w18,c07,c07-l2,ความสวย,,sự xinh đẹp; sắc đẹp,bên ngoài,,noun,,,,,,plernpin-c07#p3,true
 c07-w19,c07,c07-l2,ความหล่อ,,sự đẹp trai,,,noun,,,,,,plernpin-c07#p3,true
-c07-w20,c07,c07-l2,ความสุข,,hạnh phúc,,,noun,,,,,,plernpin-c07#p3,true
-c07-w21,c07,c07-l2,ความทุกข์,,nỗi khổ; sự đau khổ,,,noun,,,,,,plernpin-c07#p3,true
+c07-w20,c07,c07-l2,ความสุข,,hạnh phúc,,,noun,,ขอให้มีความสุขมากๆ นะ,Chúc bạn thật nhiều hạnh phúc nhé.,,,plernpin-c07#p3,true
+c07-w21,c07,c07-l2,ความทุกข์,,nỗi khổ; sự đau khổ,,,noun,,ทุกคนมีความทุกข์ของตัวเอง,Ai cũng có nỗi khổ của riêng mình.,,,plernpin-c07#p3,true
 c07-w22,c07,c07-l2,ความรวย,,sự giàu có,,,noun,,,,,,plernpin-c07#p3,true
-c07-w23,c07,c07-l2,ความจน,,sự nghèo khó,,,noun,,,,,,plernpin-c07#p3,true
+c07-w23,c07,c07-l2,ความจน,,sự nghèo khó,,,noun,,ความจนไม่ใช่เรื่องน่าอาย,Nghèo không phải là điều đáng xấu hổ.,,,plernpin-c07#p3,true
 c07-w24,c07,c07-l2,ความฉลาด,,sự thông minh; trí thông minh,,,noun,,,,,,plernpin-c07#p3,true
 c07-w25,c07,c07-l3,ความปรารถนา,,ước muốn; mong muốn; nguyện vọng,,,noun,,,,,,plernpin-c07#p3,true
 c07-w26,c07,c07-l3,ความภูมิใจ,,lòng tự hào,,,noun,,,,,,plernpin-c07#p3,true
-c07-w27,c07,c07-l3,ความดีใจ,,niềm vui; sự vui mừng,,,noun,,,,,,plernpin-c07#p3,true
+c07-w27,c07,c07-l3,ความดีใจ,,niềm vui; sự vui mừng,,,noun,,เธอร้องไห้ด้วยความดีใจ,Cô ấy khóc vì vui mừng.,,,plernpin-c07#p3,true
 c07-w28,c07,c07-l3,ความเสียใจ,,nỗi buồn; sự tiếc nuối,,,noun,,,,,,plernpin-c07#p3,true
 c07-w29,c07,c07-l3,ความยินดี,,niềm hân hoan; sự hân hoan,,,noun,,,,,,plernpin-c07#p3,true
-c07-w30,c07,c07-l3,ความสนุก,,sự thích thú,,,noun,,,,,,plernpin-c07#p3,true
+c07-w30,c07,c07-l3,ความสนุก,,sự thích thú,,,noun,,การเรียนต้องมีความสนุกด้วย,Việc học cũng cần có sự thích thú.,,,plernpin-c07#p3,true
 c07-w31,c07,c07-l3,ความประหม่า,,sự lúng túng; sự lo lắng; sự rụt rè,,,noun,,,,,,plernpin-c07#p3,true
 c07-w32,c07,c07-l3,ความขยัน,,sự siêng năng; sự chăm chỉ,,,noun,,,,,,plernpin-c07#p3,true
 c07-w33,c07,c07-l3,ความเกียจคร้าน,,sự lười biếng,,,noun,,,,,,plernpin-c07#p4,true
-c07-w34,c07,c07-l3,ความตั้งใจ,,sự quyết tâm; lòng quyết tâm,,,noun,,,,,,plernpin-c07#p4,true
+c07-w34,c07,c07-l3,ความตั้งใจ,,sự quyết tâm; lòng quyết tâm,,,noun,,ผมเรียนด้วยความตั้งใจ,Tôi học với sự quyết tâm.,,,plernpin-c07#p4,true
 c07-w35,c07,c07-l3,ความมักง่าย,,sự bất cẩn; sự qua loa; sự xuề xòa; sự tùy tiện,,,noun,,,,,,plernpin-c07#p4,true
 c07-w36,c07,c07-l3,ความสนใจ,,sự quan tâm; sự hứng thú,,,noun,,,,,,plernpin-c07#p4,true
-c07-w37,c07,c07-l3,ความรอบคอบ,,sự cẩn thận; sự thận trọng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w37,c07,c07-l3,ความรอบคอบ,,sự cẩn thận; sự thận trọng,,,noun,,งานนี้ต้องใช้ความรอบคอบ,Công việc này cần sự cẩn thận.,,,plernpin-c07#p4,true
 c07-w38,c07,c07-l3,ความอดทน,,lòng kiên nhẫn; sự nhẫn nại; sự chịu đựng,,,noun,,,,,,plernpin-c07#p4,true
 c07-w39,c07,c07-l3,ความสดชื่น,,sự tươi mới; sự sảng khoái,,,noun,,,,,,plernpin-c07#p4,true
 c07-w40,c07,c07-l3,ความอิสระ,,sự tự do,,,noun,,,,,,plernpin-c07#p4,true
 c07-w41,c07,c07-l3,ความพอดี,,sự vừa vặn; sự vừa đủ; sự vừa phải,,,noun,,,,,,plernpin-c07#p4,true
 c07-w42,c07,c07-l3,ความเหมาะสม,,sự phù hợp,,,noun,,,,,,plernpin-c07#p4,true
 c07-w43,c07,c07-l3,ความเครียด,,sự căng thẳng,,,noun,,,,,,plernpin-c07#p4,true
-c07-w44,c07,c07-l3,ความตื่นเต้น,,sự hồi hộp; sự phấn khích,,,noun,,,,,,plernpin-c07#p4,true
+c07-w44,c07,c07-l3,ความตื่นเต้น,,sự hồi hộp; sự phấn khích,,,noun,,เด็กๆ รอด้วยความตื่นเต้น,Bọn trẻ chờ đợi trong sự háo hức.,,,plernpin-c07#p4,true
 c07-w45,c07,c07-l4,ความประทับใจ,,sự ấn tượng,tài liệu ghi “ความประทับ”,,noun,,,,,,plernpin-c07#p4,true
-c07-w46,c07,c07-l4,ความรู้สึก,,cảm xúc; sự xúc động; sự cảm động,,,noun,,,,,,plernpin-c07#p4,true
+c07-w46,c07,c07-l4,ความรู้สึก,,cảm xúc; sự xúc động; sự cảm động,,,noun,,ผมเข้าใจความรู้สึกของคุณ,Tôi hiểu cảm xúc của bạn.,,,plernpin-c07#p4,true
 c07-w47,c07,c07-l4,ความหวัง,,niềm hy vọng; nguồn hy vọng,,,noun,,,,,,plernpin-c07#p4,true
 c07-w48,c07,c07-l4,ความยากจน,,sự nghèo khổ,,,noun,,,,,,plernpin-c07#p4,true
 c07-w49,c07,c07-l4,ความยุติธรรม,,sự công bằng,,,noun,,,,,,plernpin-c07#p4,true
 c07-w50,c07,c07-l4,ความยาว,,chiều dài,,,noun,,,,,,plernpin-c07#p4,true
-c07-w51,c07,c07-l4,ความกว้าง,,chiều rộng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w51,c07,c07-l4,ความกว้าง,,chiều rộng,,,noun,,ห้องนี้มีความกว้างสี่เมตร,Căn phòng này rộng 4 mét.,,,plernpin-c07#p4,true
 c07-w52,c07,c07-l4,ความเร็ว,,tốc độ,,,noun,,,,,,plernpin-c07#p4,true
-c07-w53,c07,c07-l4,ความเจริญ,,sự phát triển; sự thịnh vượng,,,noun,,,,,,plernpin-c07#p4,true
+c07-w53,c07,c07-l4,ความเจริญ,,sự phát triển; sự thịnh vượng,,,noun,,เมืองนี้มีความเจริญมาก,Thành phố này rất phát triển.,,,plernpin-c07#p4,true
 c07-w54,c07,c07-l4,ความเสื่อม,,sự suy giảm; sự xuống cấp; sự suy tàn,,,noun,,,,,,plernpin-c07#p4,true
 c07-w55,c07,c07-l4,ความเคยชิน,,sự quen thuộc,,,noun,,,,,,plernpin-c07#p5,true
 c07-w56,c07,c07-l4,ความสมหวัง,,sự viên mãn; sự mãn nguyện,,,noun,,,,,,plernpin-c07#p5,true
 c07-w57,c07,c07-l4,ความชั่ว,,sự ác độc; sự đồi bại; sự tàn ác,,,noun,,,,,,plernpin-c07#p5,true
 c07-w58,c07,c07-l4,ความเลว,,sự xấu xa,,,noun,,,,,,plernpin-c07#p5,true
 c07-w59,c07,c07-l4,ความหวาน,,sự ngọt ngào; vị ngọt; độ ngọt,,,noun,,,,,,plernpin-c07#p5,true
-c07-w60,c07,c07-l4,ความเค็ม,,vị mặn; độ mặn,,,noun,,,,,,plernpin-c07#p5,true
+c07-w60,c07,c07-l4,ความเค็ม,,vị mặn; độ mặn,,,noun,,ช่วยลดความเค็มของอาหารหน่อย,Làm ơn giảm bớt độ mặn của món ăn.,,,plernpin-c07#p5,true
 c07-w61,c07,c07-l4,ความร้อน,,độ nóng; sức nóng,,,noun,,,,,,plernpin-c07#p5,true
-c07-w62,c07,c07-l4,ความหนาว,,độ lạnh; cái rét,,,noun,,,,,,plernpin-c07#p5,true
+c07-w62,c07,c07-l4,ความหนาว,,độ lạnh; cái rét,,,noun,,ความหนาวทำให้คนไม่อยากออกจากบ้าน,Cái rét làm người ta không muốn ra khỏi nhà.,,,plernpin-c07#p5,true
 c07-w63,c07,c07-l4,ความเย็น,,độ mát,,,noun,,,,,,plernpin-c07#p5,true
 c07-w64,c07,c07-l4,ความไพเราะ,,sự du dương; sự êm ái,,,noun,,,,,,plernpin-c07#p5,true
-c07-w65,c07,c07-l4,ความดัง,,độ to; âm lượng; độ ồn ào; sự nổi tiếng,,,noun,,,,,,plernpin-c07#p5,true
+c07-w65,c07,c07-l4,ความดัง,,độ to; âm lượng; độ ồn ào; sự nổi tiếng,,,noun,,ช่วยลดความดังของเพลงหน่อย,Làm ơn giảm âm lượng nhạc.,,,plernpin-c07#p5,true
 c07-w66,c07,c07-l4,ความใหม่,,độ mới mẻ; sự mới mẻ,,,noun,,,,,,plernpin-c07#p5,true
 c07-w67,c07,c07-l4,ความหรูหรา,,sự sang trọng,,,noun,,,,,,plernpin-c07#p5,true
 c07-w68,c07,c07-l5,ความเมือง,,việc chính trị,những vấn đề liên quan đến quốc gia,,noun,,,,,,plernpin-c07#p5,true
-c07-w69,c07,c07-l5,ความแพ่ง,,dân sự,,,noun,,,,,,plernpin-c07#p5,true
-c07-w70,c07,c07-l5,ความอาญา,,hình sự,,,noun,,,,,,plernpin-c07#p5,true
-c07-w71,c07,c07-l5,ความไม่จริง,,không đúng sự thật,,,noun,,,,,,plernpin-c07#p6,true
-c07-w72,c07,c07-l5,ความไม่สะอาด,,sự bẩn thỉu; sự nhơ nhuốc; sự không sạch sẽ,,,noun,,,,,,plernpin-c07#p6,true
-c06-w01,c06,c06-l1,การกิน,,việc ăn,,,noun,,,,,,plernpin-c06#p1,true
+c07-w69,c07,c07-l5,ความแพ่ง,,dân sự,,,noun,,ทนายคนนี้ว่าความแพ่ง,Luật sư này lo các vụ dân sự.,,,plernpin-c07#p5,true
+c07-w70,c07,c07-l5,ความอาญา,,hình sự,,,noun,,คดีนี้เป็นความอาญา,Vụ này là vụ hình sự.,,,plernpin-c07#p5,true
+c07-w71,c07,c07-l5,ความไม่จริง,,không đúng sự thật,,,noun,,ข่าวนี้เป็นความไม่จริง,Tin này là điều không đúng sự thật.,,,plernpin-c07#p6,true
+c07-w72,c07,c07-l5,ความไม่สะอาด,,sự bẩn thỉu; sự nhơ nhuốc; sự không sạch sẽ,,,noun,,ความไม่สะอาดทำให้มีแมลง,Sự không sạch sẽ khiến có côn trùng.,,,plernpin-c07#p6,true
+c06-w01,c06,c06-l1,การกิน,,việc ăn,,,noun,,การกินเร็วไม่ดีต่อสุขภาพ,Việc ăn nhanh không tốt cho sức khỏe.,,,plernpin-c06#p1,true
 c06-w02,c06,c06-l1,การนอน,,việc ngủ,,,noun,,,,,,plernpin-c06#p1,true
 c06-w03,c06,c06-l1,การเดินทาง,,việc đi lại; chuyến đi,,,noun,,,,,,plernpin-c06#p1,true
 c06-w04,c06,c06-l1,การรัก,,việc yêu,một ai đó,,noun,,,,,,plernpin-c06#p1,true
-c06-w05,c06,c06-l1,การรู้,,việc biết,một điều gì,,noun,,,,,,plernpin-c06#p1,true
-c06-w06,c06,c06-l1,การเกลียด,,việc ghét,một ai đó,,noun,,,,,,plernpin-c06#p1,true
-c06-w07,c06,c06-l1,การคิด,,việc nghĩ,,,noun,,,,,,plernpin-c06#p1,true
+c06-w05,c06,c06-l1,การรู้,,việc biết,một điều gì,,noun,,การรู้ภาษาไทยช่วยให้หางานง่ายขึ้น,Việc biết tiếng Thái giúp tìm việc dễ hơn.,,,plernpin-c06#p1,true
+c06-w06,c06,c06-l1,การเกลียด,,việc ghét,một ai đó,,noun,,การเกลียดคนอื่นทำให้เราไม่มีความสุข,Việc ghét người khác làm ta không hạnh phúc.,,,plernpin-c06#p1,true
+c06-w07,c06,c06-l1,การคิด,,việc nghĩ,,,noun,,การคิดก่อนพูดเป็นสิ่งที่ดี,Việc nghĩ trước khi nói là điều tốt.,,,plernpin-c06#p1,true
 c06-w08,c06,c06-l1,การคิดถึง,,việc nhớ,,,noun,,,,,,plernpin-c06#p1,true
 c06-w09,c06,c06-l1,การฝัน,,việc mơ,,,noun,,,,,,plernpin-c06#p1,true
 c06-w10,c06,c06-l1,การโกรธ,,việc giận,,,noun,,,,,,plernpin-c06#p1,true
 c06-w11,c06,c06-l1,การพยายาม,,việc cố gắng,việc nỗ lực làm một cái gì đó,,noun,,,,,,plernpin-c06#p1,true
-c06-w12,c06,c06-l2,การบิน,,việc bay; hàng không,,,noun,,,,,,plernpin-c06#p2,true
+c06-w12,c06,c06-l2,การบิน,,việc bay; hàng không,,,noun,,การบินจากฮานอยไปกรุงเทพใช้เวลาสองชั่วโมง,Việc bay từ Hà Nội đến Bangkok mất 2 tiếng.,,,plernpin-c06#p2,true
 c06-w13,c06,c06-l2,การรบ,,việc chiến đấu; trận chiến,,,noun,,,,,,plernpin-c06#p2,true
 c06-w14,c06,c06-l2,การช่วยเหลือ,,việc giúp đỡ; sự giúp đỡ,,,noun,,,,,,plernpin-c06#p2,true
 c06-w15,c06,c06-l2,การตรวจ,,việc kiểm tra,,,noun,,,,,,plernpin-c06#p2,true
 c06-w16,c06,c06-l2,การจัดการ,,việc quản lý; sự quản lý; việc xử lý; việc giải quyết,,,noun,,,,,,plernpin-c06#p2,true
 c06-w17,c06,c06-l2,การใช้,,việc sử dụng,,,noun,,,,,,plernpin-c06#p2,true
 c06-w18,c06,c06-l2,การปราศรัย,,việc trình bày; việc diễn thuyết; việc phát biểu,,,noun,,,,,,plernpin-c06#p2,true
-c06-w19,c06,c06-l2,การเจรจา,,việc đàm phán; việc thương lượng,,,noun,,,,,,plernpin-c06#p2,true
+c06-w19,c06,c06-l2,การเจรจา,,việc đàm phán; việc thương lượng,,,noun,,การเจรจาครั้งนี้สำเร็จ,Cuộc đàm phán lần này thành công.,,,plernpin-c06#p2,true
 c06-w20,c06,c06-l2,การตกแต่ง,,việc trang trí; sự trang trí,,,noun,,,,,,plernpin-c06#p2,true
-c06-w21,c06,c06-l2,การพัฒนา,,việc phát triển; sự phát triển,,,noun,,,,,,plernpin-c06#p2,true
+c06-w21,c06,c06-l2,การพัฒนา,,việc phát triển; sự phát triển,,,noun,,การพัฒนาประเทศต้องใช้เวลา,Việc phát triển đất nước cần thời gian.,,,plernpin-c06#p2,true
 c06-w22,c06,c06-l2,การผลิต,,việc sản xuất; việc chế tạo,,,noun,,,,,,plernpin-c06#p2,true
 c06-w23,c06,c06-l2,การค้นคว้า,,việc nghiên cứu; việc tìm tòi học hỏi,,,noun,,,,,,plernpin-c06#p2,true
 c06-w24,c06,c06-l2,การท่องเที่ยว,,việc du lịch,,,noun,,,,,,plernpin-c06#p2,true
 c06-w25,c06,c06-l2,การดูแล,,việc chăm sóc,,,noun,,,,,,plernpin-c06#p2,true
-c06-w26,c06,c06-l2,การรักษา,,việc điều trị; việc chữa trị,,,noun,,,,,,plernpin-c06#p2,true
+c06-w26,c06,c06-l2,การรักษา,,việc điều trị; việc chữa trị,,,noun,,การรักษาที่โรงพยาบาลนี้ดีมาก,Việc điều trị ở bệnh viện này rất tốt.,,,plernpin-c06#p2,true
 c06-w27,c06,c06-l2,การฝึกฝน,,việc rèn luyện; việc luyện tập,,,noun,,,,,,plernpin-c06#p2,true
-c06-w28,c06,c06-l2,การค้าขาย,,việc buôn bán,,,noun,,,,,,plernpin-c06#p2,true
+c06-w28,c06,c06-l2,การค้าขาย,,việc buôn bán,,,noun,,ครอบครัวของผมทำการค้าขายที่ตลาด,Gia đình tôi buôn bán ở chợ.,,,plernpin-c06#p2,true
 c06-w29,c06,c06-l2,การก่อสร้าง,,việc xây dựng,,,noun,,,,,,plernpin-c06#p2,true
 c06-w30,c06,c06-l2,การปฏิรูป,,sự cải cách; sự cải tổ,,,noun,,,,,,plernpin-c06#p2,true
 c06-w31,c06,c06-l3,การปฏิบัติ,,việc thực hiện; việc thực hành; việc thi hành,,,noun,,,,,,plernpin-c06#p3,true
@@ -1323,31 +1323,31 @@ c06-w33,c06,c06-l3,การปฏิวัติ,,cuộc cách mạng,"ปฏ�
 c06-w34,c06,c06-l3,การดื่มน้ำ,,việc uống nước,,,noun,,,,,,plernpin-c06#p3,true
 c06-w35,c06,c06-l3,การเลี้ยงลูก,,việc nuôi con,,,noun,,,,,,plernpin-c06#p3,true
 c06-w36,c06,c06-l3,การทำอาหาร,,việc nấu ăn,,,noun,,,,,,plernpin-c06#p3,true
-c06-w37,c06,c06-l3,การร้องเพลง,,việc hát,,,noun,,,,,,plernpin-c06#p3,true
+c06-w37,c06,c06-l3,การร้องเพลง,,việc hát,,,noun,,การร้องเพลงช่วยคลายเครียด,Việc hát giúp giảm căng thẳng.,,,plernpin-c06#p3,true
 c06-w38,c06,c06-l3,การออกเสียง,,việc phát âm,,,noun,,,,,,plernpin-c06#p3,true
-c06-w39,c06,c06-l3,การสอน,,việc dạy; giảng dạy,,,noun,,,,,,plernpin-c06#p3,true
+c06-w39,c06,c06-l3,การสอน,,việc dạy; giảng dạy,,,noun,,การสอนเด็กต้องใจเย็น,Việc dạy trẻ em cần bình tĩnh.,,,plernpin-c06#p3,true
 c06-w40,c06,c06-l3,การพักผ่อน,,việc nghỉ ngơi; sự nghỉ ngơi,,,noun,,,,,,plernpin-c06#p3,true
-c06-w41,c06,c06-l3,การเล่น,,việc chơi,,,noun,,,,,,plernpin-c06#p3,true
-c06-w42,c06,c06-l3,การทำงาน,,việc làm; sự làm việc,,,noun,,,,,,plernpin-c06#p3,true
-c06-w43,c06,c06-l3,การพูด,,việc nói; kỹ năng nói,,,noun,,,,,,plernpin-c06#p3,true
+c06-w41,c06,c06-l3,การเล่น,,việc chơi,,,noun,,การเล่นเกมนานเกินไปไม่ดีต่อสายตา,Chơi game quá lâu không tốt cho mắt.,,,plernpin-c06#p3,true
+c06-w42,c06,c06-l3,การทำงาน,,việc làm; sự làm việc,,,noun,,การทำงานที่นี่สนุกมาก,Làm việc ở đây rất vui.,,,plernpin-c06#p3,true
+c06-w43,c06,c06-l3,การพูด,,việc nói; kỹ năng nói,,,noun,,การพูดภาษาไทยไม่ยากอย่างที่คิด,Việc nói tiếng Thái không khó như mình nghĩ.,,,plernpin-c06#p3,true
 c06-w44,c06,c06-l3,การขับรถ,,việc lái xe,,,noun,,,,,,plernpin-c06#p3,true
 c06-w45,c06,c06-l3,การแสดง,,việc biểu diễn; sự biểu diễn,,,noun,,,,,,plernpin-c06#p3,true
 c06-w46,c06,c06-l4,การ,,việc; chuyện; vấn đề,khi đứng một mình,,noun,,,,,,plernpin-c06#p3,true
 c06-w47,c06,c06-l4,กรรมการ,,hội đồng; ban giám khảo; ủy viên; thành viên trong ban quản trị,"ban giám khảo (chấm thi); ban quản trị (ban tổ chức, ban quản lý)",,noun,,,,,,plernpin-c06#p4,true
-c06-w48,c06,c06-l4,กิจการ,,công việc kinh doanh; doanh nghiệp; cơ sở làm ăn,,,noun,,,,,,plernpin-c06#p4,true
-c06-w49,c06,c06-l4,โครงการ,,dự án; đề án,,,noun,,,,,,plernpin-c06#p4,true
+c06-w48,c06,c06-l4,กิจการ,,công việc kinh doanh; doanh nghiệp; cơ sở làm ăn,,,noun,,เขาเป็นเจ้าของกิจการโรงแรม,Anh ấy là chủ doanh nghiệp khách sạn.,,,plernpin-c06#p4,true
+c06-w49,c06,c06-l4,โครงการ,,dự án; đề án,,,noun,,โครงการนี้จะเริ่มเดือนหน้า,Dự án này sẽ bắt đầu vào tháng sau.,,,plernpin-c06#p4,true
 c06-w50,c06,c06-l4,การบ้าน,,bài tập về nhà,,,noun,,,,,,plernpin-c06#p4,true
 c06-w51,c06,c06-l4,การเมือง,,chính trị,,,noun,,,,,,plernpin-c06#p4,true
 c06-w52,c06,c06-l4,การศึกษา,,giáo dục; nền giáo dục,,,noun,,,,,,plernpin-c06#p4,true
 c06-w53,c06,c06-l4,การไฟฟ้า,,điện lực; điện thế,,,noun,,,,,,plernpin-c06#p4,true
 c06-w54,c06,c06-l4,การรถไฟ,,đường sắt,,,noun,,,,,,plernpin-c06#p4,true
-c06-w55,c06,c06-l4,การตลาด,,marketing; ngành tiếp thị,,,noun,,,,,,plernpin-c06#p4,true
+c06-w55,c06,c06-l4,การตลาด,,marketing; ngành tiếp thị,,,noun,,ฉันเรียนการตลาดที่มหาวิทยาลัย,Tôi học marketing ở trường đại học.,,,plernpin-c06#p4,true
 c06-w56,c06,c06-l4,การกีฬา,,ngành thể thao,,,noun,,,,,,plernpin-c06#p4,true
 c06-w57,c06,c06-l4,การทหาร,,quân đội; lực lượng vũ trang,,,noun,,,,,,plernpin-c06#p4,true
-c06-w58,c06,c06-l4,การแพทย์,,y học; y khoa; ngành y,,,noun,,,,,,plernpin-c06#p4,true
+c06-w58,c06,c06-l4,การแพทย์,,y học; y khoa; ngành y,,,noun,,การแพทย์สมัยนี้ก้าวหน้ามาก,Y học ngày nay rất tiến bộ.,,,plernpin-c06#p4,true
 c06-w59,c06,c06-l4,การป่าไม้,,lâm nghiệp,"công việc trồng rừng, công việc quản lý rừng",,noun,,,,,,plernpin-c06#p5,true
 c06-w60,c06,c06-l4,การงาน,,công việc; nhiệm vụ,,,noun,,,,,,plernpin-c06#p5,true
-c06-w61,c06,c06-l4,การเงิน,,tài chính,,,noun,,,,,,plernpin-c06#p5,true
+c06-w61,c06,c06-l4,การเงิน,,tài chính,,,noun,,เขาทำงานด้านการเงิน,Anh ấy làm việc trong ngành tài chính.,,,plernpin-c06#p5,true
 c06-w62,c06,c06-l4,การพาณิชย์,,thương mại; ngành thương mại,,,noun,,,,,,plernpin-c06#p5,true
 c06-w63,c06,c06-l4,การอุตสาหกรรม,,ngành công nghiệp,,,noun,,,,,,plernpin-c06#p5,true
 c06-w64,c06,c06-l4,การอาหาร,,ngành thực phẩm,,,noun,,,,,,plernpin-c06#p5,true
