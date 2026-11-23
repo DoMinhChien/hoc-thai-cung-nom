@@ -372,3 +372,29 @@
     - { speaker: Tuấn, th: "ได้ครับ ผมจะไปตรงเวลา สุขสันต์วันเกิดล่วงหน้านะครับ", vi: "Được, tôi sẽ đến đúng giờ. Chúc mừng sinh nhật trước nhé." }
   source: claude-b05
   draft: true
+- id: d-b04-van-phong-pham
+  lesson_id: b04-l4
+  lines:
+    - { speaker: Khách, th: "สวัสดีค่ะ มีปากกาสีน้ำเงินไหมคะ", vi: "Xin chào, có bút bi màu xanh không?" }
+    - { speaker: Người bán, th: "มีครับ ด้ามละสิบห้าบาท จะเอากี่ด้ามครับ", vi: "Có. 15 bạt một cây. Chị lấy mấy cây?" }
+    - { speaker: Khách, th: "เอาสามด้ามค่ะ แล้วดินสอแท่งละเท่าไรคะ", vi: "Lấy 3 cây. Còn bút chì bao nhiêu một cái?" }
+    - { speaker: Người bán, th: "แท่งละห้าบาทครับ แต่แบบนี้ดีกว่า แท่งละแปดบาทครับ", vi: "5 bạt một cái. Nhưng loại này tốt hơn, 8 bạt một cái." }
+    - { speaker: Khách, th: "งั้นเอาแบบที่ดีกว่าสองแท่งค่ะ มียางลบไหมคะ", vi: "Vậy lấy 2 cái loại tốt hơn. Có tẩy không?" }
+    - { speaker: Người bán, th: "มีครับ อันนี้ถูกที่สุด อันละสามบาทครับ", vi: "Có. Cái này rẻ nhất, 3 bạt một cái." }
+    - { speaker: Khách, th: "เอาหนึ่งอันค่ะ ทั้งหมดเท่าไรคะ", vi: "Lấy 1 cái. Tất cả bao nhiêu?" }
+    - { speaker: Người bán, th: "ปากกาสามด้ามสี่สิบห้าบาท ดินสอสองแท่งสิบหกบาท ยางลบสามบาท รวมหกสิบสี่บาทครับ", vi: "3 bút bi 45 bạt, 2 bút chì 16 bạt, tẩy 3 bạt, tổng cộng 64 bạt." }
+  source: claude-b04
+  draft: true
+- id: d-b03-so-dien-thoai
+  lesson_id: b03-l9
+  lines:
+    - { speaker: Lan, th: "คุณเป็นนักศึกษาใหม่ใช่ไหมคะ อายุเท่าไรคะ", vi: "Bạn là sinh viên mới phải không? Bạn bao nhiêu tuổi?" }
+    - { speaker: Nam, th: "ใช่ครับ ผมอายุสิบเก้าปี แล้วคุณล่ะครับ", vi: "Đúng vậy, tôi 19 tuổi. Còn bạn?" }
+    - { speaker: Lan, th: "ฉันอายุยี่สิบเอ็ดปีค่ะ มากกว่าคุณสองปี", vi: "Tôi 21 tuổi, hơn bạn 2 tuổi." }
+    - { speaker: Nam, th: "ขอเบอร์โทรศัพท์ของคุณได้ไหมครับ", vi: "Cho tôi xin số điện thoại của bạn được không?" }
+    - { speaker: Lan, th: "ได้ค่ะ ศูนย์แปดหนึ่ง สองสามสี่ ห้าหกเจ็ดแปดค่ะ", vi: "Được. 081 234 5678." }
+    - { speaker: Nam, th: "ศูนย์แปดหนึ่ง สองสามสี่ ห้าหกเจ็ดแปด ถูกไหมครับ", vi: "081 234 5678, đúng không?" }
+    - { speaker: Lan, th: "ถูกต้องค่ะ แล้วเบอร์ของคุณล่ะคะ", vi: "Đúng rồi. Còn số của bạn?" }
+    - { speaker: Nam, th: "เบอร์ผมศูนย์เก้าหก หกแปดศูนย์ เจ็ดหนึ่งห้าสี่ครับ เดี๋ยวผมโทรหานะครับ", vi: "Số của tôi là 096 680 7154. Lát nữa tôi gọi cho bạn nhé." }
+  source: claude-b03
+  draft: true
