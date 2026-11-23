@@ -70,15 +70,15 @@ b07-l7,b07,7,"Lên xe, xuống xe, vé và lịch trình",g-b07-khuen-long,true
 b07-l8,b07,8,"Vị trí, hỏi đường và chỉ đường",g-b07-kho-tham|g-b07-chuai-bok-thang|g-b07-sap-mai-wa|g-b07-mai-sap-wa,true
 b07-l9,b07,9,"Trong, ngoài, khoảng cách",g-b07-tamnaeng,true
 b07-l10,b07,10,"Xa, đối diện, bao xa",g-b07-klai-chak|g-b07-chak-thueng|g-b07-chai-wela,true
-b06-l1,b06,1,Các buổi trong ngày,,true
+b06-l1,b06,1,Các buổi trong ngày,g-b06-ton,true
 b06-l2,b06,2,"Giờ, phút và cách nói giờ kiểu Thái",g-b06-ti|g-b06-mong-chao|g-b06-bai|g-b06-mong-yen|g-b06-thum,true
 b06-l3,b06,3,"Giờ phút, giờ quốc tế, giờ kém; bây giờ, chưa, xong",g-b06-nathi|g-b06-nalika|g-b06-ik,true
-b06-l4,b06,4,"Một lát, trước, sau, nhanh, chậm",,true
-b06-l5,b06,5,"Ngay lập tức, đến muộn, bắt đầu, kết thúc",,true
-b06-l6,b06,6,Khoảng thời gian và tần suất,,true
-b06-l7,b06,7,"Luôn luôn, đúng giờ, kịp giờ",,true
-b06-l8,b06,8,"Hẹn, quá giờ, mở cửa, đóng cửa",,true
-b06-l9,b06,9,"Mãi mãi, suốt; sân bay, ngân hàng",,true
+b06-l4,b06,4,"Một lát, trước, sau, nhanh, chậm",g-b06-tangtae,true
+b06-l5,b06,5,"Ngay lập tức, đến muộn, bắt đầu, kết thúc",g-b06-roem-loek,true
+b06-l6,b06,6,Khoảng thời gian và tần suất,g-b06-khrang,true
+b06-l7,b06,7,"Luôn luôn, đúng giờ, kịp giờ",g-b06-than,true
+b06-l8,b06,8,"Hẹn, quá giờ, mở cửa, đóng cửa",g-b06-nat,true
+b06-l9,b06,9,"Mãi mãi, suốt; sân bay, ngân hàng",g-b06-talot,true
 b05-l1,b05,1,Bảy ngày trong tuần,g-b05-wan-arai,true
 b05-l2,b05,2,"Hôm nay, ngày mai, hôm qua; ngày dương lịch và âm lịch",g-b05-wan-thi|g-b05-khuen-raem,true
 b05-l3,b05,3,Mười hai tháng trong năm,g-b05-duean-suffix|g-b05-duean-arai,true
@@ -86,13 +86,13 @@ b05-l4,b05,4,"Tháng âm lịch; tháng này, tháng sau, đầu tháng, cuối 
 b05-l5,b05,5,Mười hai con giáp,g-b05-pi-naksat,true
 b05-l6,b05,6,"Năm nay, năm sau; phật lịch và công lịch",g-b05-pi,true
 b05-l7,b05,7,"Các mùa; trùng với, khi nào, lâu",g-b05-rudu,true
-b05-l8,b05,8,"Mời, về, chắc là; cũ, mới, dài, ngắn",,true
-b05-l9,b05,9,"Học kỳ; quá khứ, hiện tại, tương lai; thời đại",,true
-b05-l10,b05,10,"Hiện đại, lạc hậu, thay đổi; ngày sinh",,true
-b05-l11,b05,11,"Ngày nghỉ, ngày làm việc, cuối tuần; lễ hội (1)",,true
-b05-l12,b05,12,Lễ hội và ngày lễ (2),,true
-b05-l13,b05,13,Ngày lễ (3); thời gian biểu,,true
-b05-l14,b05,14,"Lịch, quý, giờ hành chính",,true
+b05-l8,b05,8,"Mời, về, chắc là; cũ, mới, dài, ngắn",g-b05-khong,true
+b05-l9,b05,9,"Học kỳ; quá khứ, hiện tại, tương lai; thời đại",g-b05-langjak,true
+b05-l10,b05,10,"Hiện đại, lạc hậu, thay đổi; ngày sinh",g-b05-koed,true
+b05-l11,b05,11,"Ngày nghỉ, ngày làm việc, cuối tuần; lễ hội (1)",g-b05-wanyut,true
+b05-l12,b05,12,Lễ hội và ngày lễ (2),g-b05-tetsakan,true
+b05-l13,b05,13,Ngày lễ (3); thời gian biểu,g-b05-nai-wan,true
+b05-l14,b05,14,"Lịch, quý, giờ hành chính",g-b05-chuang,true
 b04-l1,b04,1,"Loại từ (1): xà phòng, nhẫn, đồng hồ, nhà, bàn ghế",g-b04-laksananam|g-b04-nueng,true
 b04-l2,b04,2,"Loại từ (2): quần áo, ấm chén, trứng, xe ô tô, đũa",,true
 b04-l3,b04,3,"Loại từ (3): cây, sách, thuốc, đồ uống, xe lửa",,true

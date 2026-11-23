@@ -346,3 +346,29 @@
     - { speaker: Tài xế, th: "สามร้อยห้าสิบบาทครับ ขอบคุณครับ", vi: "350 baht. Cảm ơn anh." }
   source: claude-b07
   draft: true
+- id: d-b06-hen-gio
+  lesson_id: b06-l8
+  lines:
+    - { speaker: Nam, th: "พรุ่งนี้ว่างไหมครับ ไปดูหนังด้วยกันไหมครับ", vi: "Ngày mai bạn rảnh không? Đi xem phim cùng nhau không?" }
+    - { speaker: Lan, th: "ไปค่ะ แต่ตอนเช้าฉันมีเรียนถึงเที่ยงนะคะ หนังฉายกี่โมงคะ", vi: "Đi chứ. Nhưng buổi sáng tôi có học đến trưa. Phim chiếu lúc mấy giờ?" }
+    - { speaker: Nam, th: "มีรอบบ่ายสองโมงกับรอบหกโมงเย็นครับ", vi: "Có suất 2 giờ chiều và suất 6 giờ chiều." }
+    - { speaker: Lan, th: "รอบบ่ายสองโมงดีกว่าค่ะ เรานัดเจอกันกี่โมงดีคะ", vi: "Suất 2 giờ chiều thì hơn. Mình hẹn gặp nhau lúc mấy giờ?" }
+    - { speaker: Nam, th: "นัดเจอกันหน้าโรงหนังบ่ายโมงครึ่งนะครับ", vi: "Hẹn gặp ở trước rạp phim lúc 1 rưỡi chiều nhé." }
+    - { speaker: Lan, th: "ได้ค่ะ ถ้าฉันมาสายจะโทรหาทันทีนะคะ", vi: "Được. Nếu tôi đến muộn tôi sẽ gọi ngay nhé." }
+    - { speaker: Nam, th: "ไม่เป็นไรครับ ผมจะรอ แต่อย่ามาช้านะครับ หนังเริ่มตรงเวลา", vi: "Không sao, tôi sẽ đợi. Nhưng đừng đến muộn nhé, phim bắt đầu đúng giờ." }
+    - { speaker: Lan, th: "ค่ะ แล้วเจอกันพรุ่งนี้นะคะ", vi: "Vâng, hẹn gặp ngày mai nhé." }
+  source: claude-b06
+  draft: true
+- id: d-b05-ngay-sinh
+  lesson_id: b05-l10
+  lines:
+    - { speaker: Mai, th: "คุณเกิดวันที่เท่าไหร่คะ", vi: "Anh sinh ngày bao nhiêu?" }
+    - { speaker: Tuấn, th: "ผมเกิดวันที่ยี่สิบห้ามีนาคมครับ แล้วคุณล่ะครับ", vi: "Tôi sinh ngày 25 tháng 3. Còn chị?" }
+    - { speaker: Mai, th: "ฉันเกิดวันที่สิบสองเดือนนี้ค่ะ อีกสามวันก็ถึงวันเกิดแล้ว", vi: "Tôi sinh ngày 12 tháng này. Ba ngày nữa là đến sinh nhật rồi." }
+    - { speaker: Tuấn, th: "จริงเหรอครับ วันที่สิบสองตรงกับวันอะไรครับ", vi: "Thật à? Ngày 12 rơi vào thứ mấy?" }
+    - { speaker: Mai, th: "ตรงกับวันเสาร์ค่ะ ฉันจะจัดงานวันเกิดที่บ้าน เชิญคุณมาด้วยนะคะ", vi: "Rơi vào thứ bảy. Tôi sẽ tổ chức sinh nhật ở nhà, mời anh đến nhé." }
+    - { speaker: Tuấn, th: "ขอบคุณครับ งานเริ่มกี่โมงครับ", vi: "Cảm ơn chị. Tiệc bắt đầu lúc mấy giờ?" }
+    - { speaker: Mai, th: "หกโมงเย็นค่ะ", vi: "6 giờ chiều." }
+    - { speaker: Tuấn, th: "ได้ครับ ผมจะไปตรงเวลา สุขสันต์วันเกิดล่วงหน้านะครับ", vi: "Được, tôi sẽ đến đúng giờ. Chúc mừng sinh nhật trước nhé." }
+  source: claude-b05
+  draft: true

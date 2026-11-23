@@ -588,6 +588,83 @@
     - { th: "อีกห้านาทีสิบหกนาฬิกา", vi: "4 giờ kém 5 phút chiều (kiểu quốc tế)" }
   source: plernpin-b06#p16-17
   draft: true
+- id: g-b06-ton
+  unit_id: b06
+  title_vi: "Làm gì vào buổi nào (ตอน + buổi)"
+  pattern: "S + V + ตอน + buổi (เช้า / บ่าย / เย็น / ดึก…)"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói việc làm vào buổi nào: ตอน (lúc) + tên buổi, đặt đầu hoặc cuối câu; ตอน có thể bỏ (ตอนเช้า = เช้า). Hỏi: … ตอนไหน (lúc nào)."
+  examples:
+    - { th: "ตอนเช้าผมดื่มกาแฟครับ", vi: "Buổi sáng tôi uống cà phê." }
+    - { th: "ฉันจะไปตอนบ่ายค่ะ", vi: "Tôi sẽ đi vào buổi chiều." }
+    - { th: "คุณจะไปตอนไหนคะ", vi: "Anh/chị sẽ đi lúc nào?" }
+  source: claude-b06
+  draft: true
+- id: g-b06-tangtae
+  unit_id: b06
+  title_vi: "Từ … đến … (ตั้งแต่ … ถึง …); trước, sau"
+  pattern: "ตั้งแต่ + thời điểm + ถึง + thời điểm · ก่อน / หลัง + V/N"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói khoảng thời gian từ lúc nào đến lúc nào. Hỏi: ตั้งแต่กี่โมงถึงกี่โมง. ก่อน + V = trước khi …, หลัง + V/N = sau (khi) …."
+  examples:
+    - { th: "ผมทำงานตั้งแต่เก้าโมงเช้าถึงห้าโมงเย็นครับ", vi: "Tôi làm việc từ 9 giờ sáng đến 5 giờ chiều." }
+    - { th: "คุณเรียนตั้งแต่กี่โมงถึงกี่โมงคะ", vi: "Bạn học từ mấy giờ đến mấy giờ?" }
+    - { th: "ก่อนนอนฉันอ่านหนังสือค่ะ", vi: "Trước khi ngủ tôi đọc sách." }
+  source: claude-b06
+  draft: true
+- id: g-b06-roem-loek
+  unit_id: b06
+  title_vi: "Bắt đầu / kết thúc lúc mấy giờ (เริ่ม / เลิก … กี่โมง)"
+  pattern: "(N) + เริ่ม / เลิก + V + กี่โมง · … + giờ"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi giờ bắt đầu: เริ่ม + V + กี่โมง; hỏi giờ tan / kết thúc: เลิก + เรียน / งาน + กี่โมง. Trả lời: thay กี่โมง bằng giờ (kiểu Thái hoặc นาฬิกา)."
+  examples:
+    - { th: "เริ่มเรียนกี่โมงครับ", vi: "Mấy giờ bắt đầu học ạ?" }
+    - { th: "ผมเลิกงานห้าโมงเย็นครับ", vi: "Tôi tan làm lúc 5 giờ chiều." }
+    - { th: "หนังเริ่มฉายสองทุ่มค่ะ", vi: "Phim bắt đầu chiếu lúc 8 giờ tối." }
+  source: claude-b06
+  draft: true
+- id: g-b06-khrang
+  unit_id: b06
+  title_vi: "Tần suất (บ่อยไหม / … ละ … ครั้ง)"
+  pattern: "S + V + บ่อยไหม · V + วันละ / อาทิตย์ละ / เดือนละ + số + ครั้ง"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi có hay làm không: V + บ่อยไหม. Trả lời bằng trạng từ tần suất (บ่อยๆ, บางครั้ง, นานๆครั้ง) hoặc số lần: đơn vị thời gian + ละ (mỗi) + số + ครั้ง (lần)."
+  examples:
+    - { th: "คุณดูหนังบ่อยไหมครับ", vi: "Bạn có hay xem phim không?" }
+    - { th: "บางครั้งค่ะ", vi: "Thỉnh thoảng thôi." }
+    - { th: "ผมออกกำลังกายอาทิตย์ละสามครั้งครับ", vi: "Tôi tập thể dục mỗi tuần 3 lần." }
+  source: claude-b06
+  draft: true
+- id: g-b06-than
+  unit_id: b06
+  title_vi: "Kịp / không kịp (ทัน / ไม่ทัน)"
+  pattern: "S + V + ทัน (+ N / เวลา) · S + V + ไม่ทัน"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ทัน đứng sau động từ: มาทัน = đến kịp, ไปไม่ทัน = đi không kịp; ทันเวลา = kịp giờ, ngược lại là มาสาย (đến muộn). Thói quen: มักจะ + V (thường hay), V + เสมอ (luôn luôn)."
+  examples:
+    - { th: "เรามาทันเวลาครับ", vi: "Chúng tôi đến kịp giờ." }
+    - { th: "ผมไปไม่ทันรถไฟเที่ยวสุดท้ายครับ", vi: "Tôi không kịp chuyến tàu cuối." }
+    - { th: "เขามาตรงเวลาเสมอค่ะ", vi: "Anh ấy luôn luôn đến đúng giờ." }
+  source: claude-b06
+  draft: true
+- id: g-b06-nat
+  unit_id: b06
+  title_vi: "Hẹn gặp (นัดเจอกัน …)"
+  pattern: "(S) + นัด + เจอกัน + (ที่ + nơi) + (ตอน) + giờ"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hẹn gặp ai ở đâu, lúc mấy giờ. Hỏi giờ hẹn: นัดเจอกันกี่โมง; hỏi nơi hẹn: นัดเจอกันที่ไหน. มีนัด = có hẹn; ผิดนัด = sai hẹn."
+  examples:
+    - { th: "เรานัดเจอกันกี่โมงคะ", vi: "Chúng ta hẹn gặp nhau lúc mấy giờ?" }
+    - { th: "นัดเจอกันหน้าโรงหนังหกโมงเย็นนะครับ", vi: "Hẹn gặp ở trước rạp phim lúc 6 giờ chiều nhé." }
+    - { th: "ผมมีนัดตอนสองทุ่มครับ", vi: "Tôi có hẹn lúc 8 giờ tối." }
+  source: claude-b06
+  draft: true
+- id: g-b06-talot
+  unit_id: b06
+  title_vi: "Suốt (ตลอด + khoảng thời gian)"
+  pattern: "V + ตลอด + (วัน / คืน / ยี่สิบสี่ชั่วโมง) · ตลอดเวลา · ตลอดไป"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ตลอด + khoảng thời gian = suốt cả khoảng đó: ตลอดวัน (suốt ngày), ตลอดคืน (suốt đêm). ตลอดเวลา = suốt, lúc nào cũng; ตลอดไป = mãi mãi."
+  examples:
+    - { th: "ร้านนี้เปิดตลอดยี่สิบสี่ชั่วโมงครับ", vi: "Cửa hàng này mở suốt 24 giờ." }
+    - { th: "เขายุ่งตลอดเวลาค่ะ", vi: "Anh ấy bận suốt." }
+    - { th: "ฝนตกตลอดคืนครับ", vi: "Mưa suốt đêm." }
+  source: claude-b06
+  draft: true
 - id: g-b05-wan-arai
   unit_id: b05
   title_vi: Hỏi và trả lời về thứ
@@ -682,6 +759,80 @@
     - { th: "ตอนนี้เราอยู่ในฤดูไหนคะ", vi: "Bây giờ chúng ta ở trong mùa nào ạ?" }
     - { th: "ตอนนี้เราอยู่ในฤดูร้อนค่ะ", vi: "Bây giờ chúng ta ở trong mùa hè ạ" }
   source: plernpin-b05#p38-39
+  draft: true
+- id: g-b05-khong
+  unit_id: b05
+  title_vi: "Chắc là (คง / คงจะ)"
+  pattern: "S + คง(จะ) + V / tính từ"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. คง (chắc là) đặt trước động từ để đoán điều có thể xảy ra; thường đi với จะ (คงจะ). Phủ định: คงไม่ + V (chắc là không)."
+  examples:
+    - { th: "พรุ่งนี้ฝนคงจะตกครับ", vi: "Ngày mai chắc là trời sẽ mưa." }
+    - { th: "เขาคงกลับบ้านแล้วค่ะ", vi: "Chắc là anh ấy về nhà rồi." }
+    - { th: "วันนี้เขาคงไม่มาครับ", vi: "Hôm nay chắc là anh ấy không đến." }
+  source: claude-b05
+  draft: true
+- id: g-b05-langjak
+  unit_id: b05
+  title_vi: "Sau khi … (หลังจาก …)"
+  pattern: "หลังจาก + V / sự kiện + (แล้ว) + S + V"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. หลังจาก (sau khi) mở đầu mệnh đề chỉ việc xảy ra trước; có thể thêm แล้ว. Ngược lại: ก่อน + V (trước khi). Nói về ngày trước: เมื่อก่อน / สมัยก่อน + S + V."
+  examples:
+    - { th: "หลังจากเรียนจบผมจะกลับบ้านครับ", vi: "Sau khi học xong tôi sẽ về nhà." }
+    - { th: "หลังจากกินข้าวเย็นแล้ว เราไปเดินเล่นกันค่ะ", vi: "Sau khi ăn tối, chúng tôi đi dạo." }
+    - { th: "เมื่อก่อนฉันอยู่ไซ่ง่อนค่ะ", vi: "Hồi trước tôi sống ở Sài Gòn." }
+  source: claude-b05
+  draft: true
+- id: g-b05-koed
+  unit_id: b05
+  title_vi: "Hỏi và trả lời ngày sinh (เกิด …)"
+  pattern: "S + เกิด + วันที่ + số + tên tháng (+ ปี + năm)"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi ngày sinh: คุณเกิดวันที่เท่าไหร่ / วันเกิดของคุณคือวันที่เท่าไหร่; hỏi năm sinh: คุณเกิดปีไหน. Trả lời: เกิด + วันที่ + số + tên tháng (+ ปี พ.ศ./ค.ศ. + năm)."
+  examples:
+    - { th: "คุณเกิดวันที่เท่าไหร่ครับ", vi: "Bạn sinh ngày bao nhiêu?" }
+    - { th: "ผมเกิดวันที่ห้ามีนาคมครับ", vi: "Tôi sinh ngày 5 tháng 3." }
+    - { th: "ฉันเกิดปีค.ศ. 1995 ค่ะ", vi: "Tôi sinh năm 1995." }
+  source: claude-b05
+  draft: true
+- id: g-b05-wanyut
+  unit_id: b05
+  title_vi: "Ngày nghỉ, ngày làm việc (… เป็นวันหยุด)"
+  pattern: "(ngày) + เป็น + วันหยุด / วันทำงาน"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Nói ngày nào là ngày nghỉ hay ngày làm việc: tên ngày + เป็น + วันหยุด / วันทำงาน. Khoảng ngày: วันจันทร์ถึงวันศุกร์ (thứ hai đến thứ sáu)."
+  examples:
+    - { th: "พรุ่งนี้เป็นวันหยุดครับ", vi: "Ngày mai là ngày nghỉ." }
+    - { th: "วันจันทร์ถึงวันศุกร์เป็นวันทำงานค่ะ", vi: "Thứ hai đến thứ sáu là ngày làm việc." }
+  source: claude-b05
+  draft: true
+- id: g-b05-tetsakan
+  unit_id: b05
+  title_vi: "Ngày lễ rơi vào ngày nào (… ตรงกับ …)"
+  pattern: "ngày lễ + ตรงกับ + วันที่ + số + tên tháng · … ตรงกับวันไหน / วันที่เท่าไหร่"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ตรงกับ (trùng với, rơi vào) dùng để nói ngày lễ rơi vào ngày nào trong lịch. Hỏi: … ตรงกับวันที่เท่าไหร่ / วันไหน."
+  examples:
+    - { th: "วันชาติของเวียดนามตรงกับวันที่สองกันยายนครับ", vi: "Quốc khánh Việt Nam là ngày 2 tháng 9." }
+    - { th: "วันสตรีโลกตรงกับวันที่แปดมีนาคมค่ะ", vi: "Ngày phụ nữ quốc tế là ngày 8 tháng 3." }
+    - { th: "เทศกาลวันไหว้พระจันทร์ปีนี้ตรงกับวันไหนครับ", vi: "Tết trung thu năm nay rơi vào ngày nào?" }
+  source: claude-b05
+  draft: true
+- id: g-b05-nai-wan
+  unit_id: b05
+  title_vi: "Làm gì vào dịp lễ (ใน + ngày lễ …)"
+  pattern: "ใน + วัน… / เทศกาล… + S + V"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Kể hoạt động trong một dịp lễ: ใน (vào) + tên ngày lễ đứng đầu câu, sau đó là chủ ngữ + động từ. Thói quen: thêm มักจะ (thường)."
+  examples:
+    - { th: "ในวันสงกรานต์คนไทยเล่นน้ำกันครับ", vi: "Vào Tết Songkran người Thái té nước với nhau." }
+    - { th: "ในวันแม่ลูกๆ มักจะให้ดอกมะลิแม่ค่ะ", vi: "Vào ngày của mẹ, con cái thường tặng hoa nhài cho mẹ." }
+  source: claude-b05
+  draft: true
+- id: g-b05-chuang
+  unit_id: b05
+  title_vi: "Khoảng thời gian (… คือ … ถึง …)"
+  pattern: "N + คือ + (ตั้งแต่) + thời điểm + ถึง + thời điểm"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Giải thích một khoảng thời gian (quý, học kỳ, giờ hành chính): N + คือ + … ถึง … (từ … đến …)."
+  examples:
+    - { th: "ไตรมาสแรกคือมกราคมถึงมีนาคมครับ", vi: "Quý một là từ tháng 1 đến tháng 3." }
+    - { th: "เวลาราชการคือแปดโมงครึ่งถึงบ่ายสี่โมงครึ่งค่ะ", vi: "Giờ hành chính là từ 8 rưỡi sáng đến 4 rưỡi chiều." }
+  source: claude-b05
   draft: true
 - id: g-b04-laksananam
   unit_id: b04
