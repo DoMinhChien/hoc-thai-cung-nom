@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 4173;
+// `E2E_PORT`: chạy song song nhiều bản (vd. nhiều worktree) không dùng chung preview.
+const PORT = Number(process.env.E2E_PORT ?? 4173);
 const AUTH_EMULATOR_PORT = 9099; // khớp firebase.json
 const VIEWPORTS = [
   { name: '1280', viewport: { width: 1280, height: 800 } },

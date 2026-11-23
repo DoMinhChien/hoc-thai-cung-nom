@@ -1,16 +1,17 @@
 import {
-  compareUnits,
+  bestGameResult,
   GAME_SKILLS,
   gameAvailability,
   gamesWithSkill,
-  LEARNED_SOURCE,
+  MIN_SOURCE_ITEMS,
+  parseSourceKey,
   SKILLS_BY_GAME,
-  unitSourceKey,
+  sourceSize,
   type AnyGameId,
   type GameSkill,
 } from '@nom/core';
-import { Check, Lock, Trophy } from 'lucide-react';
-import { useId, useRef } from 'react';
+import { Check, ChevronRight, Lock, Trophy } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import { Emoji } from '@/components/fun';
@@ -21,11 +22,12 @@ import {
   type GameTheme,
 } from '@/components/interactive';
 import { Skeleton } from '@/components/ui/skeleton';
-import { unitLabel } from '@/content/labels';
 import { useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { formatRecord, GAME_ORDER, gameName, lockReason, parseSkill } from './catalog';
+import { countLabel, sourceLabel } from './source-label';
+import { SourcePicker } from './SourcePicker';
 import { Thumbnail } from './Thumbnail';
 import { useGameSource } from './useGameSource';
 
@@ -33,13 +35,44 @@ const THEME_EMOJI: Record<GameTheme, string> = { sea: '🌊', space: '🚀', gar
 
 const SKILL_CYCLE: (GameSkill | null)[] = [null, ...GAME_SKILLS];
 
-/** `/games` — danh sách 8 trò (SCR-08 v2 §A, F-10, P-09, plan 0.14). */
+/**
+ * `/games` — danh sách 8 trò (SCR-08 v2 §A, F-10, P-09, plan 0.14) + "Nội dung ôn" (SCR-08 v3).
+ * `?source=` (lối vào "Chơi ôn") được lưu thành lựa chọn; `?pick=1` mở bộ chọn ("Đổi nội dung").
+ */
 export function GamesPage() {
   const { state, choose } = useGameSource();
   const navigate = useNavigate();
-  const selectId = useId();
   const [params, setParams] = useSearchParams();
   const skill = parseSkill(params.get('skill'));
+  const picking = params.get('pick') === '1';
+  const fromUrl = params.get('source');
+  const loaded = state.status === 'ready';
+  useEffect(() => {
+    // Đợi dữ liệu người dùng sẵn sàng rồi mới lưu, kẻo mất lựa chọn.
+    if (fromUrl === null || !loaded) return;
+    const spec = parseSourceKey(fromUrl);
+    const apply = spec ? choose(spec) : Promise.resolve();
+    void apply.then(() =>
+      setParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          next.delete('source');
+          return next;
+        },
+        { replace: true },
+      ),
+    );
+  }, [fromUrl, loaded, choose, setParams]);
+  const setPicking = (open: boolean) =>
+    setParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (open) next.set('pick', '1');
+        else next.delete('pick');
+        return next;
+      },
+      { replace: true },
+    );
   const { theme, setTheme } = useGameTheme();
   const records = useRepositoryQuery((r) => r.progress.listGameResults(), []);
   const reviewCount = useRepositoryQuery(
@@ -48,7 +81,7 @@ export function GamesPage() {
   );
   const cards = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const ready = state.status === 'ready' ? state : null;
+  const ready = state.status === 'ready' && fromUrl === null ? state : null;
   const shown = gamesWithSkill(skill, GAME_ORDER);
   const reasonOf = (id: AnyGameId) =>
     ready ? lockReason(gameAvailability(id, ready.source)) : null;
@@ -62,7 +95,17 @@ export function GamesPage() {
     navigate(`/games/${id}?source=${encodeURIComponent(ready.source.key)}`);
   };
   const setSkill = (next: GameSkill | null) =>
-    setParams(next ? { skill: next } : {}, { replace: true });
+    setParams(
+      (prev) => {
+        const p = new URLSearchParams(prev);
+        if (next) p.set('skill', next);
+        else p.delete('skill');
+        return p;
+      },
+      { replace: true },
+    );
+  const playable = (k: GameSkill | null) =>
+    gamesWithSkill(k, GAME_ORDER).filter((id) => !ready || !reasonOf(id)).length;
 
   useKeyShortcut(
     GAME_ORDER.map((_, i) => String(i + 1)),
@@ -70,18 +113,18 @@ export function GamesPage() {
       const id = GAME_ORDER[Number(e.key) - 1]!;
       if (shown.includes(id)) open(id);
     },
-    !!ready,
+    !!ready && !picking,
   );
   useKeyShortcut(
     's',
     () => setSkill(SKILL_CYCLE[(SKILL_CYCLE.indexOf(skill) + 1) % SKILL_CYCLE.length]!),
-    !!ready,
+    !!ready && !picking,
   );
   useKeyShortcut(
     't',
     () =>
       theme && void setTheme(GAME_THEMES[(GAME_THEMES.indexOf(theme) + 1) % GAME_THEMES.length]!),
-    !!theme,
+    !!theme && !picking,
   );
 
   const moveFocus = (from: number, delta: number) => {
@@ -96,7 +139,7 @@ export function GamesPage() {
         <p className="text-muted-foreground">{t('games.intro')}</p>
       </header>
 
-      {state.status === 'loading' && (
+      {!ready && state.status !== 'error' && (
         <ul
           className="grid grid-cols-1 gap-4 tablet:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           aria-label={t('games.loading')}
@@ -117,38 +160,48 @@ export function GamesPage() {
       {ready && (
         <>
           <div className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8">
-            <div className="flex flex-col gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3">
-              <label htmlFor={selectId} className="text-sm text-muted-foreground">
+            <div className="flex min-w-0 flex-col gap-1.5 lg:flex-row lg:items-center lg:gap-3">
+              <span className="text-sm text-muted-foreground" id="game-source-label">
                 {t('games.source')}
-              </label>
-              <select
-                id={selectId}
+              </span>
+              <button
+                type="button"
                 data-testid="game-source"
-                value={ready.fallback ? LEARNED_SOURCE : ready.choice}
-                onChange={(e) => void choose(e.target.value)}
-                className="h-11 w-full min-w-0 rounded-lg border border-border-strong bg-surface px-3 text-base outline-none focus-visible:ring-2 focus-visible:ring-ring lg:h-10 lg:w-auto lg:text-sm"
+                data-source={ready.source.key}
+                aria-describedby="game-source-label"
+                aria-haspopup="dialog"
+                onClick={() => setPicking(true)}
+                className="flex min-h-11 w-full min-w-0 items-center gap-2 rounded-lg border border-border-strong bg-surface px-3 text-left text-base font-medium outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring lg:h-10 lg:min-h-0 lg:w-auto lg:text-sm"
               >
-                <option value={LEARNED_SOURCE}>{t('games.learned', ready.learned)}</option>
-                {[...ready.bundles]
-                  .sort((a, b) => compareUnits(a.unit, b.unit))
-                  .map(({ unit }) => (
-                    <option key={unit.unit_id} value={unitSourceKey(unit.unit_id)}>
-                      {t('games.unitOption', { unit: unitLabel(unit), title: unit.title_vi })}
-                    </option>
-                  ))}
-              </select>
+                <span className="min-w-0 flex-1 truncate">
+                  {sourceLabel(ready.spec, ready.bundles)}
+                  <span data-testid="game-source-count">
+                    {t('games.sourceCountSuffix', { count: countLabel(ready.source) })}
+                  </span>
+                </span>
+                <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+              </button>
             </div>
             {theme && <ThemePicker theme={theme} onChange={(th) => void setTheme(th)} />}
           </div>
-          {ready.fallback && (
-            <p data-testid="game-fallback" className="text-sm text-muted-foreground">
-              {t('games.fallback', {
-                unit: unitLabel(
-                  ready.bundles.find((b) => b.unit.unit_id === ready.source.unitId)!.unit,
-                ),
-              })}
+          {sourceSize(ready.source) < MIN_SOURCE_ITEMS && (
+            <p
+              data-testid="game-source-short"
+              role="status"
+              className="text-sm text-muted-foreground"
+            >
+              {t('games.sourceShort', { min: MIN_SOURCE_ITEMS })}
             </p>
           )}
+          <SourcePicker
+            open={picking}
+            onOpenChange={setPicking}
+            spec={ready.spec}
+            bundles={ready.bundles}
+            learner={ready.learner}
+            counts={ready.counts}
+            onApply={(spec) => void choose(spec)}
+          />
 
           <div className="flex flex-col gap-1.5 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3">
             <span className="text-sm text-muted-foreground">{t('games.skillLabel')}</span>
@@ -172,7 +225,7 @@ export function GamesPage() {
                       : 'text-muted-foreground',
                   )}
                 >
-                  {t(`games.skill.${k ?? 'all'}`)} {gamesWithSkill(k, GAME_ORDER).length}
+                  {t(`games.skill.${k ?? 'all'}`)} {playable(k)}
                 </button>
               ))}
             </div>
@@ -190,7 +243,7 @@ export function GamesPage() {
             >
               {shown.map((id, i) => {
                 const reason = reasonOf(id);
-                const best = records?.find((r) => r.gameId === id && r.source === ready.source.key);
+                const best = records && bestGameResult(records, id);
                 const key = GAME_ORDER.indexOf(id) + 1;
                 return (
                   <li key={id} data-game={id}>

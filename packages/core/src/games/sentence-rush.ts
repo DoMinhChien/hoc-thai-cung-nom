@@ -13,8 +13,8 @@ import {
   type GameItemRef,
   type GameState,
 } from './game';
-import { createRng, type Rng } from './rng';
-import type { GameSentence, GameSource } from './source';
+import type { Rng } from './rng';
+import { type GameSentence, type GameSource, sourceRng } from './source';
 
 export const SENTENCE_RUSH_COUNT = 5;
 export const SENTENCE_RUSH_MS = 20_000;
@@ -77,7 +77,7 @@ export const sentenceRush: Game<SentenceRushRound, readonly string[], SentenceRu
 
   generateRound(source, seed) {
     assertAvailable('sentence-rush', this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const questions = rng
       .shuffle(playable(source))
       .slice(0, SENTENCE_RUSH_COUNT)

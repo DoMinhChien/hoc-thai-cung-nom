@@ -4,9 +4,10 @@
  * bắt → mất 1 tim, về chỗ cũ; hết 3 tim → kết thúc. Chế độ từng bước (reduced-motion): ma chỉ đi
  * khi người chơi đi (2 bước người → 1 bước ma), không có đồng hồ.
  */
+import { sourceRng } from '../source';
 import { availability, assertAvailable, cycle, type GameItemRef } from '../game';
 import { START_LIVES } from '../rapid';
-import { createRng, type Rng } from '../rng';
+import type { Rng } from '../rng';
 import {
   advance,
   arcadeAnswer,
@@ -229,7 +230,7 @@ export const maze: ArcadeGame<MazeRound, MazeInput, MazeState> = {
 
   generateRound(source, seed) {
     assertAvailable(this.id, this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const items = promptItems(source, true, false);
     return {
       maze: generateMaze(rng),

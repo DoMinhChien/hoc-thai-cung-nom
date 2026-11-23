@@ -4,8 +4,7 @@
  */
 import { availability, cycle } from './game';
 import { questionTimeMs, rapidGame, type RapidQuestion } from './rapid';
-import { createRng } from './rng';
-import type { GameSource } from './source';
+import { type GameSource, sourceRng } from './source';
 
 export const CLASSIFIER_MIN_WORDS = 8;
 export const CLASSIFIER_OPTIONS = 4;
@@ -30,7 +29,7 @@ export const classifierRush = rapidGame<ClassifierQuestion, string>({
   },
 
   generate(source, seed) {
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const words = playable(source);
     const classifiers = [...new Set(words.map((w) => w.classifier!))];
     return cycle(rng, words, QUESTIONS).map((w) => {

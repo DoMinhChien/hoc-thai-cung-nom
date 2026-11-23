@@ -1,4 +1,5 @@
 import {
+  GAME_RECORD_SOURCE,
   gameAvailability,
   resultStars,
   saveGameResult,
@@ -40,8 +41,6 @@ export interface GameResultProps {
   detail?: string | null;
   /** Nguồn hiện tại — dialog "Đổi trò" khóa trò không chơi được (giữ nguồn). */
   source?: GameSource;
-  /** Khóa nguồn để lưu kỷ lục (`learned` / `unit:<id>`). */
-  sourceKey: string;
   /** Đủ dữ liệu để chơi lại chỉ với mục sai (nút ẩn khi `false`). */
   canReplayMistakes: boolean;
   onExit: () => void;
@@ -49,6 +48,8 @@ export interface GameResultProps {
   onAgainMistakes: (items: GameItemRef[]) => void;
   /** "Đổi trò" (`G`): mở trò khác với cùng nguồn. */
   onPick?: (id: AnyGameId) => void;
+  /** "Đổi nội dung" (SCR-08 v3 §4): về `/games` và mở bộ chọn nội dung. */
+  onChangeSource?: () => void;
 }
 
 /**
@@ -60,12 +61,12 @@ export function GameResult({
   summary,
   detail,
   source,
-  sourceKey,
   canReplayMistakes,
   onExit,
   onAgain,
   onAgainMistakes,
   onPick,
+  onChangeSource,
 }: GameResultProps) {
   const [picking, setPicking] = useState(false);
   const repos = useRepositories();
@@ -77,8 +78,9 @@ export function GameResult({
   useEffect(() => {
     if (!repos || saved.current) return;
     saved.current = true;
-    void saveGameResult(repos.progress, summary, sourceKey, new Date()).then(setRecord);
-  }, [repos, summary, sourceKey]);
+    // Kỷ lục theo trò, không theo nội dung đã chọn (SCR-08 v3 §3).
+    void saveGameResult(repos.progress, summary, GAME_RECORD_SOURCE, new Date()).then(setRecord);
+  }, [repos, summary]);
 
   const toggle = (item: GameItemRef, on: boolean) => {
     setFlagged((prev) => {
@@ -214,6 +216,11 @@ export function GameResult({
               <kbd aria-hidden className="rounded bg-muted px-1.5 font-sans text-xs">
                 G
               </kbd>
+            </Button>
+          )}
+          {onChangeSource && (
+            <Button variant="outline" data-testid="result-change-source" onClick={onChangeSource}>
+              {t('games.changeSource')}
             </Button>
           )}
           <Button variant="ghost" data-testid="result-list" onClick={onExit}>

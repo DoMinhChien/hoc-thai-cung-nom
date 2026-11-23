@@ -12,8 +12,7 @@ import {
   type Game,
   type GameState,
 } from './game';
-import { createRng } from './rng';
-import type { GameSource, GameWord } from './source';
+import { type GameSource, type GameWord, sourceRng } from './source';
 
 export const MATCH_PAIRS = 6;
 export const MATCH_MISMATCH_MS = 800;
@@ -66,7 +65,7 @@ export const matchPairs: Game<MatchRound, number, MatchState> = {
 
   generateRound(source, seed) {
     assertAvailable('match', this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const words = pickWords(rng.shuffle(source.words)).slice(0, MATCH_PAIRS);
     const cards = words.flatMap((w): MatchCard[] => [
       { wordId: w.id, face: 'th', text: w.thai },

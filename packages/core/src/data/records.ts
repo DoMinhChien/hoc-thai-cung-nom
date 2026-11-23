@@ -93,7 +93,7 @@ export interface CanDoRecord {
 export interface GameResultRecord {
   id: string;
   gameId: AnyGameId;
-  /** `learned` hoặc `unit:<id>` (`GameSource.key`). */
+  /** `all` (`GAME_RECORD_SOURCE`, từ M12.8); bản ghi cũ: `learned` / `unit:<id>`. */
   source: string;
   best: GameStats;
   plays: number;

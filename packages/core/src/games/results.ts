@@ -48,6 +48,25 @@ const stats = ({ score, correct, total, maxCombo, durationMs }: GameStats): Game
   durationMs,
 });
 
+/**
+ * Kỷ lục tính theo **trò**, không theo nội dung đã chọn (SCR-08 v3 §3) — mọi lượt lưu vào khóa này.
+ * Bản ghi cũ theo nguồn (`learned`, `unit:<id>`) vẫn được tính trong `bestGameResult`.
+ */
+export const GAME_RECORD_SOURCE = 'all';
+
+/** Kỷ lục tốt nhất của một trò trên mọi bản ghi (gồm bản ghi cũ theo nguồn). */
+export function bestGameResult(
+  records: readonly GameResultRecord[],
+  gameId: AnyGameId,
+): GameResultRecord | undefined {
+  return records
+    .filter((r) => r.gameId === gameId)
+    .reduce<GameResultRecord | undefined>(
+      (best, r) => (!best || isBetterResult(gameId, r.best, best.best) ? r : best),
+      undefined,
+    );
+}
+
 /** Gọi khi lượt kết thúc tự nhiên — thoát giữa chừng không lưu (SCR-08 §B). */
 export async function saveGameResult(
   progress: Pick<

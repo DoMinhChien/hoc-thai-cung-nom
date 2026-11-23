@@ -1,4 +1,5 @@
 import {
+  sourceKey,
   canDoChecklist,
   lessonStatus,
   setCanDo,
@@ -6,7 +7,7 @@ import {
   unitStatus,
   type UnitBundle,
 } from '@nom/core';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Gamepad2 } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useKeyShortcut } from '@/components/interactive';
@@ -146,6 +147,21 @@ function Detail({ bundle }: { bundle: UnitBundle }) {
                 </kbd>
               </Button>
             )}
+            <Button
+              variant="outline"
+              className={cn('max-lg:min-h-11', !(status === 'completed' || current) && 'ml-auto')}
+              data-testid="unit-play"
+              onClick={() =>
+                navigate(
+                  `/games?source=${encodeURIComponent(
+                    sourceKey({ kind: 'units', ids: [unit.unit_id], includeNew: true }),
+                  )}`,
+                )
+              }
+            >
+              <Gamepad2 aria-hidden />
+              {t('games.playUnit')}
+            </Button>
           </div>
         </div>
         <TopicTile

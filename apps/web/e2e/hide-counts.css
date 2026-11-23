@@ -1,0 +1,6 @@
+/* Ảnh chụp Trò chơi / bộ chọn nội dung ôn: số đếm theo nội dung (đổi khi thêm content) không vào baseline. */
+[data-testid^='picker-count-'],
+[data-testid='game-source-count'],
+[data-testid='picker-total'] {
+  visibility: hidden;
+}

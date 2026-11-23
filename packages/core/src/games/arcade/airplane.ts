@@ -6,8 +6,7 @@
  */
 import { availability, assertAvailable, cycle, type GameItemRef } from '../game';
 import { START_LIVES } from '../rapid';
-import { createRng } from '../rng';
-import type { GameSource } from '../source';
+import { type GameSource, sourceRng } from '../source';
 import {
   advance,
   arcadeAnswer,
@@ -115,7 +114,7 @@ export const airplane: ArcadeGame<AirplaneRound, AirplaneInput, AirplaneState> =
 
   generateRound(source, seed) {
     assertAvailable(this.id, this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const all = items(source);
     return {
       questions: cycle(rng, all, QUESTIONS).map((target) => {

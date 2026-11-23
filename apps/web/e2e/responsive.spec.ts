@@ -1,8 +1,9 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import path from 'node:path';
 import { ROUTE_SAMPLES } from '../src/app/route-samples';
 import { chooseGuest } from './helpers';
-import { readStore } from './practice-helpers';
+import { chooseGameSource } from './practice-helpers';
 
 /**
  * M12.7 T12.7.6 — iPhone & iPad (SCR-00 v2, plan 0.15). Chỉ chạy ở project thiết bị WebKit
@@ -57,16 +58,7 @@ async function expectNoHorizontalScroll(page: Page) {
 
 /** Chọn nguồn Bài 1 cho trò chơi (nội dung đủ cho mọi trò). */
 async function useUnitB01(page: Page) {
-  await page.goto('/games');
-  await page.getByTestId('game-source').selectOption('unit:b01');
-  await expect
-    .poll(
-      async () =>
-        (
-          await readStore<{ key: string; value: unknown }>(page, 'hoc-thai-nom-guest', 'settings')
-        ).find((s) => s.key === 'gameSource')?.value,
-    )
-    .toBe('unit:b01');
+  await chooseGameSource(page, 'units:b01;new');
 }
 
 test('không cuộn ngang ở mọi route', async ({ page }) => {
@@ -120,15 +112,46 @@ for (const path of ['/', '/games', '/words', '/units/b01/b01-l1']) {
 }
 
 test('baseline: /units, /games', async ({ page }) => {
-  for (const [path, name] of [
+  for (const [route, name] of [
     ['/units', 'units'],
     ['/games', 'games'],
   ] as const) {
-    await page.goto(path);
+    await page.goto(route);
     await expect(page.getByTestId(`page-${name}`)).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
-    await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
+    await expect(page).toHaveScreenshot(`${name}.png`, {
+      fullPage: true,
+      stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+    });
   }
+});
+
+test('bộ chọn nội dung ôn: bottom sheet (phone / tablet), chọn bài + bật mục chưa học → áp dụng', async ({
+  page,
+}) => {
+  await page.goto('/games');
+  await page.getByTestId('game-source').tap();
+  const picker = page.getByTestId('source-picker');
+  await expect(picker).toBeVisible();
+  await picker.getByTestId('picker-clear').tap();
+  await picker.getByTestId('picker-unit-b02').tap();
+  await picker.getByTestId('picker-include-new').tap();
+  await expect(picker.getByTestId('picker-apply')).toBeEnabled();
+  // Nút áp dụng dính đáy, luôn trong màn hình.
+  await expect(picker.getByTestId('picker-apply')).toBeInViewport();
+  await page.waitForFunction(() =>
+    document.getAnimations().every((a) => a.playState !== 'running'),
+  );
+  await page.evaluate(() => document.fonts.ready);
+  await expectNoSevereViolations(page);
+  // Đầu danh sách; số đếm theo nội dung ẩn khỏi ảnh.
+  await picker.getByTestId('picker-quick-learned').scrollIntoViewIfNeeded();
+  await expect(page).toHaveScreenshot('source-picker.png', {
+    stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+  });
+  await picker.getByTestId('picker-apply').tap();
+  await expect(picker).toBeHidden();
+  await expect(page.getByTestId('game-source')).toContainText('Bài 2 · gồm mục chưa học');
 });
 
 test('Máy bay bằng chạm: ▲ ▼, chạm nửa bầu trời, Bay → hết ván', async ({ page }) => {

@@ -212,6 +212,28 @@ function Dashboard({ data }: { data: PracticeData }) {
           </ol>
         </section>
       )}
+      {started && data.needsReview.length > 0 && (
+        <section
+          aria-labelledby="home-review-game"
+          data-testid="home-review-game"
+          className="flex flex-wrap items-center justify-between gap-4 rounded-xl border bg-surface px-6 py-5 shadow-card"
+        >
+          <div className="flex items-center gap-3">
+            <Emoji size="sm">🎮</Emoji>
+            <div className="flex flex-col gap-1">
+              <h2 id="home-review-game" className="text-lg font-semibold">
+                {t('games.reviewCardTitle')}
+              </h2>
+              <p>{t('games.reviewCardBody', { n: data.needsReview.length })}</p>
+            </div>
+          </div>
+          <Button asChild variant="outline" className="max-lg:min-h-11">
+            <Link to="/games?source=review" data-testid="home-review-game-button">
+              {t('games.reviewCardCta')}
+            </Link>
+          </Button>
+        </section>
+      )}
       {started && (
         <Link
           to="/games"

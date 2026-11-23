@@ -7,8 +7,7 @@
 import { EXERCISES, type ExerciseType } from '../../exercises/exercises';
 import type { ExercisePool } from '../../exercises/pool';
 import { availability, assertAvailable, type GameItemRef } from '../game';
-import { createRng } from '../rng';
-import type { GameSource } from '../source';
+import { type GameSource, sourceRng } from '../source';
 import {
   advance,
   arcadeAnswer,
@@ -150,7 +149,7 @@ export const gameshow: ArcadeGame<GameshowRound, GameshowInput, GameshowState> =
 
   generateRound(source, seed) {
     assertAvailable(this.id, this.availability(source));
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const pool = sourcePool(source);
     const picked = rng.shuffle(candidates(source, pool)).slice(0, GAMESHOW_QUESTIONS);
     return {

@@ -4,8 +4,7 @@
  */
 import { availability, cycle, type GameItemRef } from './game';
 import { questionTimeMs, rapidGame, type RapidQuestion } from './rapid';
-import { createRng } from './rng';
-import type { GameSource } from './source';
+import { type GameSource, sourceRng } from './source';
 
 export const TRUE_FALSE_MIN_ITEMS = 6;
 /** Dãy câu (lặp lại khi chơi lâu hơn). */
@@ -53,7 +52,7 @@ export const trueFalse = rapidGame<TrueFalseQuestion, boolean>({
     ),
 
   generate(source, seed) {
-    const rng = createRng(seed);
+    const rng = sourceRng(seed, source);
     const all = entries(source);
     return cycle(rng, all, QUESTIONS).map((e) => {
       const isTrue = rng.next() < 0.5;

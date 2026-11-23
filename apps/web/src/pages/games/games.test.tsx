@@ -1,5 +1,6 @@
 import {
   MockAuthService,
+  newSrsState,
   type GameSummary,
   type Manifest,
   type UnitBundle,
@@ -51,7 +52,17 @@ function unitBundle(id: string, order: number, words: typeof WORDS, sentences = 
       can_do: [],
       draft: true,
     },
-    lessons: [],
+    lessons: [
+      {
+        lesson_id: `${id}-l1`,
+        unit_id: id,
+        order: 1,
+        title_vi: `Bài học ${order}`,
+        grammar_ids: [],
+        draft: true,
+        steps: ['vocab'],
+      },
+    ],
     words: words.map(([wid, thai, meaning, classifier]) => ({
       id: wid,
       unit_id: id,
@@ -115,6 +126,17 @@ function renderAt(path: string) {
 }
 
 const guestRepos = () => createDexieRepositories(new NomDatabase(GUEST_KEY));
+
+/** Bộ chọn nội dung: chỉ chọn `unitId`, gồm mục chưa học, rồi "Chơi với nội dung này". */
+async function pickUnit(unitId: string) {
+  await userEvent.click(await screen.findByTestId('game-source'));
+  const picker = await screen.findByTestId('source-picker');
+  await userEvent.click(within(picker).getByTestId('picker-clear'));
+  await userEvent.click(within(picker).getByTestId(`picker-unit-${unitId}`));
+  await userEvent.click(within(picker).getByTestId('picker-include-new'));
+  await userEvent.click(within(picker).getByTestId('picker-apply'));
+  await waitFor(() => expect(screen.queryByTestId('source-picker')).toBeNull());
+}
 /** Nghĩa đúng của mọi từ / câu Unit 1 — để biết nghĩa đề xuất đúng hay sai. */
 const meaningOf = new Map([
   ...WORDS.map(([, th, m]) => [th, m] as const),
@@ -129,9 +151,11 @@ afterEach(async () => {
 });
 
 describe('/games (SCR-08 §A)', () => {
-  it('chưa học gì → chơi với Bài 1 (unit đầu lộ trình); khóa trò thiếu dữ liệu kèm lý do; đổi nguồn được nhớ', async () => {
+  it('chưa học gì → Bài 1 gồm mục chưa học (ghi rõ, SCR-08 v3 §3); khóa trò thiếu dữ liệu kèm lý do; đổi nội dung được nhớ', async () => {
     renderAt('/games');
-    expect(await screen.findByTestId('game-fallback')).toHaveTextContent('Bài 1');
+    expect(await screen.findByTestId('game-source')).toHaveTextContent(
+      'Bài 1 · gồm mục chưa học · 8 từ · 6 câu',
+    );
     expect(screen.getByTestId('game-locked-classifier-rush')).toHaveTextContent(
       'Cần chuyên đề có loại từ',
     );
@@ -142,12 +166,12 @@ describe('/games (SCR-08 §A)', () => {
     );
     expect(screen.getByTestId('game-record-match')).toHaveTextContent('Chưa chơi');
 
-    fireEvent.change(screen.getByTestId('game-source'), { target: { value: 'unit:u03' } });
+    await pickUnit('u03');
     await waitFor(() => expect(screen.queryByTestId('game-locked-classifier-rush')).toBeNull());
     expect(screen.getByTestId('game-locked-sentence-rush')).toHaveTextContent(
       'Cần ít nhất 5 câu có thẻ từ (nguồn này có 0)',
     );
-    expect(await guestRepos().settings.get('gameSource', 'learned')).toBe('unit:u03');
+    expect(await guestRepos().settings.get('gameSource', null)).toBe('units:u03;new');
   });
 
   it('phím 1–4 mở trò (bỏ qua trò bị khóa); hiện số mục "cần ôn" từ trò chơi', async () => {
@@ -166,7 +190,54 @@ describe('/games (SCR-08 §A)', () => {
     expect(router.state.location.pathname).toBe('/games');
     fireEvent.keyDown(window, { key: '2' });
     await waitFor(() => expect(router.state.location.pathname).toBe('/games/true-false'));
-    expect(router.state.location.search).toBe('?source=unit%3Au01');
+    expect(router.state.location.search).toBe('?source=units%3Au01%3Bnew');
+  });
+});
+
+describe('Nội dung ôn (SCR-08 v3)', () => {
+  const card = (itemId: string, createdAt = '2026-11-01T00:00:00.000Z') => ({
+    id: `c-${itemId}`,
+    itemType: 'word' as const,
+    itemId,
+    cardType: 'th-vi' as const,
+    fsrs: { ...newSrsState(new Date('2026-11-01T00:00:00Z')), due: '2099-01-01T00:00:00.000Z' },
+    createdAt,
+    updatedAt: createdAt,
+  });
+
+  it('ôn nhanh: số mục trên chip, < 6 mờ + lý do; chỉ mục đã học chưa đủ → nút chơi tắt kèm lý do', async () => {
+    const repos = guestRepos();
+    for (const id of ['w1', 'w2', 'w3']) await repos.progress.putCard(card(id));
+    renderAt('/games');
+    expect(await screen.findByTestId('game-source')).toHaveTextContent('Bài 1 · gồm mục chưa học');
+    await userEvent.click(screen.getByTestId('game-source'));
+    const picker = await screen.findByTestId('source-picker');
+    expect(within(picker).getByTestId('picker-quick-learned')).toHaveTextContent('Tất cả đã học 3');
+    expect(within(picker).getByTestId('picker-quick-learned')).toHaveTextContent('Chưa đủ 6 mục');
+    expect(within(picker).getByTestId('picker-count-u01')).toHaveTextContent('3/8 từ · 0/6 câu');
+
+    await userEvent.click(within(picker).getByTestId('picker-only-learned'));
+    expect(within(picker).getByTestId('picker-total')).toHaveTextContent('3 từ · 0 câu');
+    expect(within(picker).getByTestId('picker-apply')).toBeDisabled();
+    expect(within(picker).getByTestId('picker-short')).toHaveTextContent('Cần ít nhất 6');
+
+    await userEvent.click(within(picker).getByTestId('picker-include-new'));
+    expect(within(picker).getByTestId('picker-total')).toHaveTextContent('8 từ · 6 câu');
+    expect(within(picker).getByTestId('picker-apply')).toBeEnabled();
+  });
+
+  it('?source= (lối vào "Chơi ôn") được lưu thành lựa chọn; nội dung < 6 mục → báo, không tự đổi', async () => {
+    const router = renderAt('/games?source=review');
+    expect(await screen.findByTestId('game-source')).toHaveTextContent('Cần ôn · 0 từ · 0 câu');
+    expect(router.state.location.search).toBe('');
+    expect(screen.getByTestId('game-source-short')).toBeInTheDocument();
+    expect(screen.getByTestId('game-card-match')).toHaveAttribute('aria-disabled', 'true');
+    expect(await guestRepos().settings.get('gameSource', null)).toBe('review');
+  });
+
+  it('?pick=1 mở bộ chọn (từ "Đổi nội dung")', async () => {
+    renderAt('/games?pick=1');
+    expect(await screen.findByTestId('source-picker')).toBeInTheDocument();
   });
 });
 
@@ -199,7 +270,8 @@ describe('/games/:id (SCR-08 §B–C)', () => {
     expect(await screen.findByTestId('result-new-record')).toBeInTheDocument();
     const repos = guestRepos();
     const [record] = await repos.progress.listGameResults();
-    expect(record).toMatchObject({ gameId: 'true-false', source: 'unit:u01', plays: 1 });
+    // Kỷ lục theo trò, không theo nội dung (SCR-08 v3 §3).
+    expect(record).toMatchObject({ gameId: 'true-false', source: 'all', plays: 1 });
     expect(record!.best.score).toBeGreaterThan(0);
     await waitFor(async () => expect(await repos.progress.listNeedsReview()).toHaveLength(3));
 
@@ -287,7 +359,6 @@ describe('GameResult — sao (M9.6)', () => {
             mistakes: [],
             ...summary,
           }}
-          sourceKey="learned"
           canReplayMistakes={false}
           onExit={() => {}}
           onAgain={() => {}}
@@ -371,7 +442,7 @@ describe('/games v2 — 8 trò (SCR-08 v2 §A)', () => {
 
   it('trò khóa: card aria-disabled + lý do; phím số báo lý do, không mở', async () => {
     const router = renderAt('/games');
-    fireEvent.change(await screen.findByTestId('game-source'), { target: { value: 'unit:u03' } });
+    await pickUnit('u03');
     await waitFor(() => expect(screen.queryByTestId('game-locked-classifier-rush')).toBeNull());
     // Unit 3 không có câu: Máy bay vẫn đủ 8 từ; Xếp câu tốc độ khóa.
     expect(screen.getByTestId('game-card-sentence-rush')).toHaveAttribute('aria-disabled', 'true');
@@ -527,7 +598,6 @@ describe('GameResult v2 — Đổi trò, dòng riêng trò (SCR-08 v2 §C)', () 
             mistakes: [],
           }}
           detail="Đập nhầm 2 lần"
-          sourceKey="learned"
           canReplayMistakes={false}
           onExit={() => {}}
           onAgain={() => {}}

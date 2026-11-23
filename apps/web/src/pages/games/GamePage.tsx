@@ -110,7 +110,6 @@ export function GamePage() {
           <GameResult
             gameId={id}
             summary={summary}
-            sourceKey={state.source.key}
             source={state.source}
             detail={detail}
             canReplayMistakes={
@@ -119,6 +118,7 @@ export function GamePage() {
             onExit={exit}
             onAgain={() => next(null)}
             onAgainMistakes={(items) => next(items)}
+            onChangeSource={() => navigate('/games?pick=1')}
             onPick={(g) =>
               navigate(`/games/${g}?source=${encodeURIComponent(state.source.key)}`, {
                 replace: true,

@@ -1,7 +1,8 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import path from 'node:path';
 import { chooseGuest, countCards } from './helpers';
-import { readStore } from './practice-helpers';
+import { chooseGameSource } from './practice-helpers';
 
 /**
  * Luồng Trò chơi (M7.5 T7.5.6, SCR-08) trên content mẫu đã build. Chọn nguồn rõ ràng (`b01`, `c03`)
@@ -25,19 +26,6 @@ async function meaningsOfUnit1(page: Page): Promise<Map<string, string>> {
   ]);
 }
 
-/** Chọn nguồn trò chơi và đợi cài đặt được lưu (trước khi rời trang). */
-async function chooseSource(page: Page, source: string) {
-  await page.getByTestId('game-source').selectOption(source);
-  await expect
-    .poll(
-      async () =>
-        (
-          await readStore<{ key: string; value: unknown }>(page, 'hoc-thai-nom-guest', 'settings')
-        ).find((s) => s.key === 'gameSource')?.value,
-    )
-    .toBe(source);
-}
-
 async function expectNoSevereViolations(page: Page) {
   const { violations } = await new AxeBuilder({ page }).analyze();
   const severe = violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
@@ -50,8 +38,7 @@ test('Đúng hay sai?: hết 3 tim → kết quả, kỷ lục lưu, bỏ "cần
   page,
 }) => {
   const meanings = await meaningsOfUnit1(page);
-  await page.goto('/games');
-  await chooseSource(page, 'unit:b01');
+  await chooseGameSource(page, 'units:b01;new');
   await page.goto('/games/true-false?seed=11');
   await expect(page.getByTestId('game-lives')).toHaveAttribute('data-lives', '3');
 
@@ -100,22 +87,21 @@ test('Đoán loại từ trên Chuyên đề 3 (c03): chọn nguồn (được n
   page,
 }) => {
   // Chuyên đề 1 (không có loại từ) → trò bị khóa kèm lý do. (Bài 1 có loại từ từ TC.4e.)
-  await page.goto('/games');
-  await page.getByTestId('game-source').selectOption('unit:c01');
+  await chooseGameSource(page, 'units:c01;new');
   await expect(page.getByTestId('game-locked-classifier-rush')).toContainText(
     'Cần chuyên đề có loại từ',
   );
-  await chooseSource(page, 'unit:c03');
+  await chooseGameSource(page, 'units:c03;new');
   await expect(page.getByTestId('game-locked-classifier-rush')).toBeHidden();
   await page.reload();
-  await expect(page.getByTestId('game-source')).toHaveValue('unit:c03');
+  await expect(page.getByTestId('game-source')).toContainText('Chuyên đề 3 · gồm mục chưa học');
 
   const res = await page.request.get('/content/unit-c03.json');
   const unit = (await res.json()) as { words: { thai: string; classifier?: string }[] };
   const classifierOf = new Map(unit.words.map((w) => [w.thai, w.classifier]));
 
   await page.keyboard.press('4');
-  await expect(page).toHaveURL(/\/games\/classifier-rush\?source=unit%3Ac03/);
+  await expect(page).toHaveURL(/\/games\/classifier-rush\?source=units%3Ac03%3Bnew/);
   // Đúng 1 câu rồi cố ý sai tới khi hết tim.
   let correct = true;
   while (!(await page.getByTestId('game-result').isVisible())) {
@@ -142,7 +128,10 @@ test('/games và màn Ghép cặp: baseline', async ({ page }) => {
   await page.goto('/games');
   await expect(page.getByTestId('game-card-match')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
-  await expect(page).toHaveScreenshot('games.png', { fullPage: true });
+  await expect(page).toHaveScreenshot('games.png', {
+    fullPage: true,
+    stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+  });
 
   await page.keyboard.press('1');
   await expect(page.getByTestId('match-card')).toHaveCount(12);

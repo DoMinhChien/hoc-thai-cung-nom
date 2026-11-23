@@ -1,4 +1,5 @@
 import {
+  sourceKey,
   completeLessonStep,
   resumeStep,
   unitStatus,
@@ -6,7 +7,7 @@ import {
   type LessonStep,
   type UnitBundle,
 } from '@nom/core';
-import { Check, TriangleAlert, X } from 'lucide-react';
+import { Check, Gamepad2, TriangleAlert, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useVoiceStatus } from '@/audio/useVoiceStatus';
@@ -311,17 +312,28 @@ function Finished({ bundle, lesson }: { bundle: UnitBundle; lesson: BuiltLesson 
           </ul>
         </div>
       )}
-      <Button
-        className="self-start"
-        data-testid="lesson-next"
-        aria-keyshortcuts="Enter"
-        onClick={go}
-      >
-        {nextLesson ? t('lesson.nextLesson') : t('lesson.backUnit')}
-        <kbd aria-hidden className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs">
-          ↵
-        </kbd>
-      </Button>
+      <div className="flex flex-wrap gap-3">
+        <Button data-testid="lesson-next" aria-keyshortcuts="Enter" onClick={go}>
+          {nextLesson ? t('lesson.nextLesson') : t('lesson.backUnit')}
+          <kbd aria-hidden className="rounded bg-primary-foreground/20 px-1.5 font-sans text-xs">
+            ↵
+          </kbd>
+        </Button>
+        <Button
+          variant="outline"
+          data-testid="lesson-play"
+          onClick={() =>
+            navigate(
+              `/games?source=${encodeURIComponent(
+                sourceKey({ kind: 'lessons', ids: [lesson.lesson_id], includeNew: true }),
+              )}`,
+            )
+          }
+        >
+          <Gamepad2 aria-hidden />
+          {t('games.playLesson')}
+        </Button>
+      </div>
     </div>
   );
 }

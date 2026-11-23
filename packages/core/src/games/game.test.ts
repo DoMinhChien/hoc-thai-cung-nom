@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bundle, CLASSIFIERS, GREETINGS } from './fixtures.test-utils';
+import { CLASSIFIERS, GREETINGS } from './fixtures.test-utils';
 import {
   applyAnswer,
   finish,
@@ -11,16 +11,50 @@ import {
 } from './game';
 import { createRng } from './rng';
 import {
+  countByScope,
+  defaultSourceSpec,
   gameSentences,
   gameWords,
-  LEARNED_SOURCE,
-  learnedSource,
-  MIN_LEARNED_ITEMS,
-  selectGameSource,
+  MIN_SOURCE_ITEMS,
+  parseSourceKey,
+  resolveGameSource,
+  sourceKey,
+  sourceRng,
   subsetSource,
   unitSource,
-  unitSourceKey,
+  type LearnerSnapshot,
 } from './source';
+
+const NOW = new Date('2026-11-23T10:00:00Z');
+const DAY = 86_400_000;
+const card = (
+  itemType: 'word' | 'sentence',
+  itemId: string,
+  createdDaysAgo = 30,
+  dueInDays = 3,
+) => ({
+  itemType,
+  itemId,
+  createdAt: new Date(NOW.getTime() - createdDaysAgo * DAY).toISOString(),
+  due: new Date(NOW.getTime() + dueInDays * DAY).toISOString(),
+});
+const learner = (over: Partial<LearnerSnapshot> = {}): LearnerSnapshot => ({
+  cards: [],
+  needsReview: [],
+  lastLessonId: null,
+  now: NOW,
+  ...over,
+});
+/** GREETINGS chia 2 bài học: 4 từ đầu + câu s1–s3 ở `u01-l1`, còn lại ở `u01-l2`. */
+const TWO_LESSONS = {
+  ...GREETINGS,
+  words: GREETINGS.words.map((w, i) => ({ ...w, lesson_id: i < 4 ? 'u01-l1' : 'u01-l2' })),
+  sentences: GREETINGS.sentences.map((x, i) => ({ ...x, lesson_id: i < 3 ? 'u01-l1' : 'u01-l2' })),
+};
+const ids = (src: { words: { id: string }[]; sentences: { id: string }[] }) => [
+  ...src.words.map((w) => w.id),
+  ...src.sentences.map((x) => x.id),
+];
 
 describe('createRng', () => {
   it('cùng seed → cùng dãy; khác seed → khác dãy', () => {
@@ -44,13 +78,14 @@ describe('createRng', () => {
   });
 });
 
-describe('nguồn câu hỏi (F-10 v7.2)', () => {
+describe('nguồn câu hỏi (F-10 v7.10, SCR-08 v3)', () => {
   it('bỏ từ thiếu nghĩa, câu thiếu đáp án; câu nhận cả th_alt', () => {
     expect(gameWords(GREETINGS).map((w) => w.id)).not.toContain('khrap');
     expect(gameWords(GREETINGS)).toHaveLength(8);
     expect(gameWords(CLASSIFIERS)[0]).toEqual({
       id: 'tukkata',
       unitId: 'u03',
+      lessonId: 'u03-l1',
       thai: 'ตุ๊กตา',
       meanings: ['búp bê'],
       classifier: 'ตัว',
@@ -62,6 +97,7 @@ describe('nguồn câu hỏi (F-10 v7.2)', () => {
       {
         id: 's1',
         unitId: 'u01',
+        lessonId: 'u01-l1',
         vi: 'Xin chào.',
         th: 'สวัสดีครับ',
         accepted: ['สวัสดีครับ', 'สวัสดีค่ะ'],
@@ -71,52 +107,152 @@ describe('nguồn câu hỏi (F-10 v7.2)', () => {
     expect(gameSentences(GREETINGS).map((s) => s.id)).not.toContain('s7');
   });
 
-  it('"Từ đã học" = mục có thẻ, trên mọi chuyên đề', () => {
-    const source = learnedSource(
-      [GREETINGS, CLASSIFIERS],
-      [
-        { itemType: 'word', itemId: 'sawatdee' },
-        { itemType: 'word', itemId: 'rot' },
-        { itemType: 'sentence', itemId: 's2' },
-        { itemType: 'word', itemId: 's1' },
-        { itemType: 'word', itemId: 'khrap' },
-      ],
-    );
-    expect(source.key).toBe(LEARNED_SOURCE);
-    expect(source.words.map((w) => w.id)).toEqual(['sawatdee', 'rot']);
-    expect(source.sentences.map((s) => s.id)).toEqual(['s2']);
-  });
-
-  it('đủ mục đã học → dùng mục đã học', () => {
-    const learned = gameWords(GREETINGS)
-      .slice(0, MIN_LEARNED_ITEMS)
-      .map((w) => ({ itemType: 'word' as const, itemId: w.id }));
-    const { source, fallback } = selectGameSource([CLASSIFIERS, GREETINGS], learned);
-    expect(fallback).toBe(false);
-    expect(source.key).toBe(LEARNED_SOURCE);
-    expect(source.words).toHaveLength(MIN_LEARNED_ITEMS);
-  });
-
-  it('chưa đủ mục đã học → chuyên đề đầu tiên theo order (fallback)', () => {
-    const learned = [{ itemType: 'word' as const, itemId: 'rot' }];
-    const { source, fallback } = selectGameSource([CLASSIFIERS, GREETINGS], learned);
-    expect(fallback).toBe(true);
-    expect(source).toMatchObject({ key: unitSourceKey('u01'), unitId: 'u01' });
-    expect(source.sentences).toHaveLength(6);
-  });
-
-  it('chọn một chuyên đề → từ/câu của chuyên đề đó, kể cả chưa học', () => {
-    const { source, fallback } = selectGameSource([GREETINGS, CLASSIFIERS], [], 'unit:u03');
-    expect(fallback).toBe(false);
-    expect(source.key).toBe('unit:u03');
-    expect(source.words).toHaveLength(9);
-    // Chuyên đề không còn (content đổi) → quay về "Từ đã học".
-    expect(selectGameSource([GREETINGS], [], 'unit:u99').source.key).toBe('unit:u01');
-    expect(selectGameSource([], [], LEARNED_SOURCE)).toEqual({
-      source: { key: LEARNED_SOURCE, words: [], sentences: [] },
-      fallback: false,
+  it('khóa nguồn: đọc / ghi, giá trị cũ unit:<id> → units:<id>;new, sai → null', () => {
+    for (const key of [
+      'learned',
+      'recent',
+      'review',
+      'last-lesson',
+      'units:b09,b10',
+      'lessons:b09-l1;new',
+    ]) {
+      expect(sourceKey(parseSourceKey(key)!)).toBe(key);
+    }
+    expect(parseSourceKey('units:b09,b10;new')).toEqual({
+      kind: 'units',
+      ids: ['b09', 'b10'],
+      includeNew: true,
     });
-    expect(bundle('u05', 5, []).words).toEqual([]);
+    expect(parseSourceKey('unit:u03')).toEqual({ kind: 'units', ids: ['u03'], includeNew: true });
+    expect(parseSourceKey('lesson:b09-l2')).toEqual({
+      kind: 'lessons',
+      ids: ['b09-l2'],
+      includeNew: true,
+    });
+    for (const bad of [null, '', 'abc', 'units:', 'units:;new', 'lessons']) {
+      expect(parseSourceKey(bad)).toBeNull();
+    }
+  });
+
+  it('Tất cả đã học = mục có thẻ, trên mọi bài, theo lộ trình', () => {
+    const src = resolveGameSource(
+      [CLASSIFIERS, GREETINGS],
+      { kind: 'learned' },
+      learner({
+        cards: [
+          card('word', 'rot'),
+          card('word', 'sawatdee'),
+          card('sentence', 's2'),
+          card('word', 'khrap'),
+        ],
+      }),
+    );
+    expect(src.key).toBe('learned');
+    expect(ids(src)).toEqual(['sawatdee', 'rot', 's2']);
+    expect(src.priority).toBeUndefined();
+  });
+
+  it('Học gần đây = thẻ tạo trong 7 ngày', () => {
+    const src = resolveGameSource(
+      [GREETINGS],
+      { kind: 'recent' },
+      learner({
+        cards: [card('word', 'sawatdee', 2), card('word', 'chue', 6.9), card('word', 'phom', 8)],
+      }),
+    );
+    expect(ids(src)).toEqual(['sawatdee', 'chue']);
+  });
+
+  it('Cần ôn = cờ "cần ôn" + thẻ đến hạn; cũng là mục ưu tiên', () => {
+    const l = learner({
+      cards: [card('word', 'sawatdee', 30, -1), card('word', 'chue'), card('sentence', 's1')],
+      needsReview: [{ itemType: 'sentence', itemId: 's2' }],
+    });
+    const src = resolveGameSource([GREETINGS], { kind: 'review' }, l);
+    expect(ids(src)).toEqual(['sawatdee', 's2']);
+    expect(src.priority).toEqual(['sawatdee', 's2']);
+    // Trong "Tất cả đã học", mục đến hạn được ưu tiên.
+    expect(resolveGameSource([GREETINGS], { kind: 'learned' }, l).priority).toEqual(['sawatdee']);
+  });
+
+  it('Bài vừa học = mọi mục của bài học hoàn thành gần nhất', () => {
+    const src = resolveGameSource(
+      [TWO_LESSONS],
+      { kind: 'last-lesson' },
+      learner({ lastLessonId: 'u01-l2' }),
+    );
+    expect(src.words.every((w) => w.lessonId === 'u01-l2')).toBe(true);
+    expect(src.words).toHaveLength(4);
+    expect(resolveGameSource([TWO_LESSONS], { kind: 'last-lesson' }, learner()).words).toEqual([]);
+  });
+
+  it('nhiều bài / bài học: mặc định chỉ mục đã học, ;new gồm cả mục chưa học', () => {
+    const l = learner({
+      cards: [card('word', 'sawatdee'), card('word', 'rot'), card('sentence', 's5')],
+    });
+    const units = resolveGameSource([GREETINGS, CLASSIFIERS], parseSourceKey('units:u01,u03')!, l);
+    expect(ids(units)).toEqual(['sawatdee', 'rot', 's5']);
+    const all = resolveGameSource([GREETINGS, CLASSIFIERS], parseSourceKey('units:u03;new')!, l);
+    expect(all.words).toHaveLength(9);
+    const lesson = resolveGameSource([TWO_LESSONS], parseSourceKey('lessons:u01-l1;new')!, l);
+    expect(lesson.words.map((w) => w.lessonId)).toEqual(['u01-l1', 'u01-l1', 'u01-l1', 'u01-l1']);
+    expect(lesson.sentences).toHaveLength(3);
+    expect(ids(resolveGameSource([TWO_LESSONS], parseSourceKey('lessons:u01-l1')!, l))).toEqual([
+      'sawatdee',
+    ]);
+    // Bài không còn (content đổi) → rỗng, không tự chuyển nguồn khác.
+    expect(ids(resolveGameSource([GREETINGS], parseSourceKey('units:u99;new')!, l))).toEqual([]);
+  });
+
+  it('mặc định: đủ mục đã học → Tất cả đã học; chưa → Bài vừa học; người mới → bài đầu tiên + chưa học', () => {
+    const six = gameWords(GREETINGS)
+      .slice(0, MIN_SOURCE_ITEMS)
+      .map((w) => card('word', w.id));
+    expect(defaultSourceSpec([CLASSIFIERS, GREETINGS], learner({ cards: six }))).toEqual({
+      kind: 'learned',
+    });
+    expect(
+      defaultSourceSpec([GREETINGS], learner({ cards: six.slice(1), lastLessonId: 'u01-l1' })),
+    ).toEqual({ kind: 'last-lesson' });
+    expect(defaultSourceSpec([CLASSIFIERS, GREETINGS], learner())).toEqual({
+      kind: 'units',
+      ids: ['u01'],
+      includeNew: true,
+    });
+    expect(defaultSourceSpec([], learner())).toEqual({ kind: 'learned' });
+  });
+
+  it('đếm theo bài và bài học: tổng / đã học', () => {
+    const counts = countByScope(
+      [TWO_LESSONS, CLASSIFIERS],
+      learner({ cards: [card('word', 'sawatdee'), card('sentence', 's5')] }),
+    );
+    expect(counts.get('u01')).toEqual({
+      words: 8,
+      sentences: 6,
+      learnedWords: 1,
+      learnedSentences: 1,
+    });
+    expect(counts.get('u01-l1')).toEqual({
+      words: 4,
+      sentences: 3,
+      learnedWords: 1,
+      learnedSentences: 0,
+    });
+    expect(counts.get('u03')?.words).toBe(9);
+  });
+
+  it('sourceRng: mục ưu tiên ra trước, mỗi nhóm vẫn xáo; không ưu tiên → như createRng', () => {
+    const words = gameWords(GREETINGS);
+    const rng = sourceRng(5, { priority: ['phom', 'chue'] });
+    const out = rng.shuffle(words).map((w) => w.id);
+    expect(out.slice(0, 2).sort()).toEqual(['chue', 'phom']);
+    expect([...out].sort()).toEqual(words.map((w) => w.id).sort());
+    // Đối tượng có `item.itemId` (câu hỏi của trò arcade) cũng được ưu tiên.
+    const prompts = words.map((w) => ({ item: { itemType: 'word', itemId: w.id } }));
+    expect(rng.shuffle(prompts)[0]!.item.itemId).toMatch(/^(phom|chue)$/);
+    expect(sourceRng(9, {}).shuffle(words)).toEqual(createRng(9).shuffle(words));
+    expect(rng.shuffle([3, 1, 2]).sort()).toEqual([1, 2, 3]);
   });
 });
 
@@ -127,7 +263,7 @@ describe('subsetSource ("Chơi với mục sai")', () => {
       { itemType: 'sentence', itemId: 's2' },
       { itemType: 'sentence', itemId: 'chue' },
     ]);
-    expect(sub.key).toBe('unit:u01');
+    expect(sub.key).toBe('units:u01;new');
     expect(sub.words.map((w) => w.id)).toEqual(['chue']);
     expect(sub.sentences.map((s) => s.id)).toEqual(['s2']);
   });
