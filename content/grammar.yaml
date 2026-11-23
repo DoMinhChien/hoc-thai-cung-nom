@@ -17,6 +17,62 @@
     - { th: "ฉันชอบดูหนัง เขาก็ชอบเช่นกัน", vi: "Tôi thích xem phim, anh ấy cũng thích như thế." }
   source: plernpin-b02#p17
   draft: true
+- id: g-b02-chue
+  unit_id: b02
+  title_vi: "Tên tôi là … (ชื่อ + tên)"
+  pattern: "S + ชื่อ + tên · S + ชื่ออะไร"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Giới thiệu tên: chủ ngữ + ชื่อ + tên, không cần thêm từ “là”. Hỏi tên: … ชื่ออะไร + ครับ/คะ; hỏi họ: … นามสกุลอะไร."
+  examples:
+    - { th: "ผมชื่อนามครับ", vi: "Tôi tên là Nam." }
+    - { th: "คุณชื่ออะไรคะ", vi: "Bạn tên gì?" }
+    - { th: "เพื่อนของฉันชื่อมินห์ค่ะ", vi: "Bạn của tôi tên là Minh." }
+  source: claude-b02
+  draft: true
+- id: g-b02-mai
+  unit_id: b02
+  title_vi: "Câu hỏi có/không (… ไหม) và chọn lựa (… หรือ …)"
+  pattern: "Câu + ไหม · A + หรือ + B"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ไหม đứng cuối câu để hỏi có/không. Trả lời có: lặp lại động từ / tính từ (สบายดี, ได้); trả lời không: thêm ไม่ trước động từ / tính từ (ไม่ค่อยสบาย, ไม่ได้). หรือ (hay) nối hai lựa chọn."
+  examples:
+    - { th: "คุณสบายดีไหมครับ", vi: "Bạn có khỏe không?" }
+    - { th: "สบายดีค่ะ", vi: "Tôi khỏe." }
+    - { th: "คุณพูดภาษาไทยได้ไหมคะ", vi: "Bạn nói được tiếng Thái không?" }
+    - { th: "คุณเป็นคนไทยหรือคนเวียดนามครับ", vi: "Bạn là người Thái hay người Việt?" }
+  source: claude-b02
+  draft: true
+- id: g-b02-ma-jak
+  unit_id: b02
+  title_vi: "Đến từ đâu, sống ở đâu (มาจาก … / อยู่ที่ …)"
+  pattern: "S + มาจาก + nơi chốn · S + อยู่ที่ + nơi chốn"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. มาจาก = đến từ (quê, nước); อยู่ที่ = sống ở, đang ở. Hỏi: มาจากไหน (đến từ đâu?), อยู่ที่ไหน (ở đâu?)."
+  examples:
+    - { th: "คุณมาจากไหนครับ", vi: "Bạn đến từ đâu?" }
+    - { th: "ฉันมาจากเวียดนามค่ะ", vi: "Tôi đến từ Việt Nam." }
+    - { th: "ผมอยู่ที่ฮานอยครับ", vi: "Tôi sống ở Hà Nội." }
+  source: claude-b02
+  draft: true
+- id: g-b02-tham-ngan
+  unit_id: b02
+  title_vi: "Làm việc ở … (ทำงานที่ …)"
+  pattern: "S + ทำงานที่ + nơi làm việc"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ทำงาน (làm việc) + ที่ (ở) + nơi chốn. Hỏi nơi làm: ทำงานที่ไหน (làm ở đâu?); hỏi nghề: ทำงานอะไร (làm nghề gì?)."
+  examples:
+    - { th: "คุณทำงานที่ไหนคะ", vi: "Bạn làm việc ở đâu?" }
+    - { th: "ผมทำงานที่บริษัทครับ", vi: "Tôi làm việc ở công ty." }
+    - { th: "เขาทำงานที่ประเทศไทยค่ะ", vi: "Anh ấy làm việc ở Thái Lan." }
+  source: claude-b02
+  draft: true
+- id: g-b02-pen
+  unit_id: b02
+  title_vi: "Là … (เป็น + nghề / quốc tịch)"
+  pattern: "S + เป็น + nghề nghiệp / คน + nước"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. เป็น (là) nối chủ ngữ với nghề nghiệp, quốc tịch: เป็นวิศวกร, เป็นคนไทย. คือ (Bài học 2) dùng khi giới thiệu: นี่คือ… Thêm เหรอ cuối câu để hỏi lại khi ngạc nhiên (… à?)."
+  examples:
+    - { th: "เขาเป็นวิศวกรครับ", vi: "Anh ấy là kỹ sư." }
+    - { th: "ฉันเป็นคนเวียดนามค่ะ", vi: "Tôi là người Việt Nam." }
+    - { th: "คุณเป็นครูเหรอคะ", vi: "Bạn là giáo viên à?" }
+  source: claude-b02
+  draft: true
 - id: g-b01-phuak
   unit_id: b01
   title_vi: พวก và ทั้งหลาย (số nhiều)
@@ -66,6 +122,50 @@
   examples:
     - { th: "คุณทราบไหมว่ากุญแจของเขาอยู่ที่ไหน", vi: "Bạn có biết chìa khóa của anh ấy ở đâu không?" }
   source: plernpin-b01#p22
+  draft: true
+- id: g-b01-riak
+  unit_id: b01
+  title_vi: "Gọi người nghe bằng từ chỉ vai vế"
+  pattern: "พี่ / น้อง / หลาน / ครู / อาจารย์ … (thay cho คุณ)"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Tiếng Thái hay dùng từ chỉ vai vế hoặc nghề làm ngôi 2 thay cho คุณ: người lớn tuổi hơn gọi là พี่, nhỏ tuổi hơn là น้อง, thầy cô là ครู / อาจารย์. Với bạn bè thân: เธอ (bạn nữ), นาย (bạn nam) — không dùng với người lớn."
+  examples:
+    - { th: "พี่อยู่ที่ไหนครับ", vi: "Anh/chị ở đâu ạ?" }
+    - { th: "ครูสบายดีไหมคะ", vi: "Cô có khỏe không ạ?" }
+    - { th: "นายจะไปไหน", vi: "Cậu định đi đâu?" }
+  source: claude-b01
+  draft: true
+- id: g-b01-khong
+  unit_id: b01
+  title_vi: "Của ai (N + ของ + người)"
+  pattern: "N + ของ + đại từ / người"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ของ (của) đứng giữa vật / người và chủ sở hữu, giống tiếng Việt. Trong văn nói thân mật, với người trong gia đình hay bỏ ของ: พ่อผม, แม่ฉัน."
+  examples:
+    - { th: "พ่อของผม", vi: "Bố của tôi" }
+    - { th: "แม่ของฉันเป็นครูค่ะ", vi: "Mẹ của tôi là giáo viên." }
+    - { th: "กุญแจของคุณอยู่ที่ไหนครับ", vi: "Chìa khóa của bạn ở đâu?" }
+  source: claude-b01
+  draft: true
+- id: g-b01-ja
+  unit_id: b01
+  title_vi: "Sẽ, định (จะ + V)"
+  pattern: "S + จะ + V"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. จะ đứng trước động từ để nói việc sắp làm hoặc định làm (sẽ, định). Câu hỏi lịch sự khi phục vụ: ท่าน / คุณ + จะ + V + อะไร (บ้าง)."
+  examples:
+    - { th: "ท่านจะสั่งอะไรบ้างคะ", vi: "Ngài định gọi những gì ạ?" }
+    - { th: "ผมจะสั่งข้าวผัดครับ", vi: "Tôi sẽ gọi cơm rang." }
+    - { th: "นายจะไปไหน", vi: "Cậu định đi đâu?" }
+  source: claude-b01
+  draft: true
+- id: g-b01-ko
+  unit_id: b01
+  title_vi: "Cũng (S + ก็ + V)"
+  pattern: "S + ก็ + V / เป็น …"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ก็ (cũng) đứng ngay sau chủ ngữ, trước động từ. Hai vế nối bằng และ (và) hoặc đặt liền nhau: … แม่ก็… (… mẹ cũng …). Xem thêm mẫu ก็ … เช่นกัน ở Bài 2."
+  examples:
+    - { th: "ผมก็เป็นคนเวียดนามครับ", vi: "Tôi cũng là người Việt Nam." }
+    - { th: "พ่อเป็นคนดี แม่ก็เป็นคนดี", vi: "Bố là người tốt, mẹ cũng là người tốt." }
+    - { th: "เงินหายแล้ว และบัตรเครดิตก็หายแล้ว", vi: "Tiền mất rồi, và thẻ tín dụng cũng mất rồi." }
+  source: claude-b01
   draft: true
 - id: g-c01-pairs
   unit_id: c01
