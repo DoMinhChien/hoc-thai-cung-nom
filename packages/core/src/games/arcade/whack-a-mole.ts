@@ -5,7 +5,7 @@
  */
 import { sourceRng } from '../source';
 import { availability, assertAvailable, cycle, type GameItemRef } from '../game';
-import { createRng } from '../rng';
+import type { createRng } from '../rng';
 import {
   advance,
   arcadeAnswer,

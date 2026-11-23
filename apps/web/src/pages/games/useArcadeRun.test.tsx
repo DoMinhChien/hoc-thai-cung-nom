@@ -24,6 +24,7 @@ const SOURCE: GameSource = {
   words: ['ก', 'ข', 'ค', 'ง', 'จ', 'ฉ', 'ช', 'ซ'].map((thai, i) => ({
     id: `w${i + 1}`,
     unitId: 'u1',
+    lessonId: 'u1-l1',
     thai,
     meanings: [`nghĩa ${i + 1}`],
   })),
