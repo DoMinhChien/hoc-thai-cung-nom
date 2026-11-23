@@ -327,6 +327,61 @@
     - { th: "ฉันอยากขอผ้าเช็ดตัวเพิ่ม", vi: "Tôi muốn xin thêm khăn tắm." }
   source: plernpin-b08#p26
   draft: true
+- id: g-b08-yu-chan
+  unit_id: b08
+  title_vi: "… ở tầng mấy? (อยู่ชั้นไหน)"
+  pattern: "Địa điểm + อยู่ชั้น + ไหน / số"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi một nơi trong khách sạn ở tầng mấy: อยู่ชั้นไหน (ở tầng nào). Trả lời: อยู่ชั้น + số (vd. ชั้นสอง) hoặc ชั้นที่ + số."
+  examples:
+    - { th: "ห้องอาหารอยู่ชั้นไหนครับ", vi: "Nhà hàng ở tầng mấy ạ?" }
+    - { th: "สระว่ายน้ำอยู่ชั้นห้าค่ะ", vi: "Bể bơi ở tầng năm ạ." }
+    - { th: "ห้องของคุณอยู่ชั้นแปดค่ะ", vi: "Phòng của anh/chị ở tầng tám ạ." }
+  source: claude-b08
+  draft: true
+- id: g-b08-dai-mai
+  unit_id: b08
+  title_vi: "… được không? (… ได้ไหม)"
+  pattern: "(Chủ ngữ) + Động từ + … + ได้ไหม"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Xin phép hoặc hỏi có thể làm gì không: đặt ได้ไหม ở cuối câu; ขอ + động từ + ได้ไหม = cho tôi … được không. Trả lời: ได้ (được) / ไม่ได้ (không được). Hỏi khách sạn có nhận thẻ không: รับบัตรเครดิตไหม."
+  examples:
+    - { th: "จ่ายด้วยบัตรเครดิตได้ไหมครับ", vi: "Trả bằng thẻ tín dụng được không ạ?" }
+    - { th: "ขอเปลี่ยนห้องได้ไหมคะ", vi: "Cho tôi đổi phòng được không ạ?" }
+    - { th: "ได้ค่ะ", vi: "Được ạ." }
+  source: claude-b08
+  draft: true
+- id: g-b08-mi-wang
+  unit_id: b08
+  title_vi: "Còn phòng trống không? (มีห้องว่างไหม)"
+  pattern: "(Thời gian) + มี + ห้อง (+ loại phòng) + ว่างไหม"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi khách sạn còn phòng trống không; có thể nói rõ loại phòng: มีห้องเตียงเดี่ยวว่างไหม. Trả lời: มีค่ะ / มีครับ (còn) hoặc ห้องเต็มแล้ว (hết phòng rồi)."
+  examples:
+    - { th: "คืนนี้มีห้องว่างไหมครับ", vi: "Tối nay còn phòng trống không ạ?" }
+    - { th: "มีห้องเตียงเดี่ยวว่างไหมคะ", vi: "Còn phòng giường đơn trống không ạ?" }
+    - { th: "ขอโทษค่ะ ห้องเต็มแล้วค่ะ", vi: "Xin lỗi, hết phòng rồi ạ." }
+  source: claude-b08
+  draft: true
+- id: g-b08-khuen-la
+  unit_id: b08
+  title_vi: "Giá phòng mỗi đêm (คืนละ …)"
+  pattern: "ค่าห้อง + คืนละ + เท่าไร / số tiền + บาท"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ละ = mỗi (như Bài 10): คืนละ = mỗi đêm. Hỏi: ค่าห้องคืนละเท่าไร (văn nói: เท่าไหร่). Trả lời: คืนละ + số + บาท."
+  examples:
+    - { th: "ค่าห้องคืนละเท่าไรครับ", vi: "Giá phòng mỗi đêm bao nhiêu ạ?" }
+    - { th: "คืนละหนึ่งพันห้าร้อยบาทค่ะ", vi: "1.500 baht mỗi đêm ạ." }
+    - { th: "ห้องพัดลมคืนละห้าร้อยบาทค่ะ", vi: "Phòng quạt 500 baht một đêm ạ." }
+  source: claude-b08
+  draft: true
+- id: g-b08-jong-wai
+  unit_id: b08
+  title_vi: "Đã đặt phòng trước (จองห้องไว้ …)"
+  pattern: "Chủ ngữ + จองห้องไว้ (แล้ว) + ในชื่อ + Tên"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ไว้ sau động từ = làm sẵn từ trước; แล้ว = rồi. Khi nhận phòng, nói tên người đặt: ในชื่อ + tên (đặt dưới tên …). Lễ tân hỏi: จองห้องไว้แล้วหรือยัง (đã đặt phòng trước chưa?)."
+  examples:
+    - { th: "ผมจองห้องไว้แล้วครับ", vi: "Tôi đã đặt phòng trước rồi." }
+    - { th: "ฉันจองห้องไว้ในชื่อเหงียนค่ะ", vi: "Tôi đã đặt phòng dưới tên Nguyễn." }
+    - { th: "คุณจองห้องไว้แล้วหรือยังคะ", vi: "Anh/chị đã đặt phòng trước chưa ạ?" }
+  source: claude-b08
+  draft: true
 - id: g-b07-klai-chak
   unit_id: b07
   title_vi: A cách B bao xa?
@@ -383,6 +438,61 @@
     - { th: "ไม่ทราบว่าสถานีรถไฟอยู่ที่ไหน", vi: "Không biết là nhà ga xe lửa ở chỗ nào?" }
     - { th: "ไม่รู้ว่าสถานีรถไฟไปทางไหน", vi: "Không biết là nhà ga xe lửa đi lối nào?" }
   source: plernpin-b07#p37-38
+  draft: true
+- id: g-b07-pai-yangngai
+  unit_id: b07
+  title_vi: "Đi … bằng cách nào / bằng gì?"
+  pattern: "ไป + Địa điểm + ยังไง · Chủ ngữ + นั่ง / ขี่ + Phương tiện + ไป + Địa điểm"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Hỏi cách đi: ไป + nơi + ยังไง (văn viết: อย่างไร). Nói đi bằng phương tiện gì: นั่ง (ngồi) + xe / tàu / máy bay, ขี่ (cưỡi, đạp) + xe đạp / xe máy, rồi ไป + nơi."
+  examples:
+    - { th: "ไปสนามบินยังไงครับ", vi: "Đi sân bay bằng cách nào ạ?" }
+    - { th: "ผมนั่งรถไฟใต้ดินไปทำงานครับ", vi: "Tôi đi tàu điện ngầm đi làm." }
+    - { th: "ฉันขี่จักรยานไปโรงเรียนค่ะ", vi: "Tôi đạp xe đến trường." }
+  source: claude-b07
+  draft: true
+- id: g-b07-liao
+  unit_id: b07
+  title_vi: "Chỉ đường: đi thẳng, rẽ trái / phải"
+  pattern: "ตรงไป + (khoảng cách) + แล้ว + เลี้ยวซ้าย / เลี้ยวขวา + ที่ + Địa điểm"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. แล้ว (rồi) nối các bước chỉ đường; ที่ + nơi = rẽ ở đâu (สี่แยก ngã tư, ไฟจราจร đèn giao thông). Kết thúc: ก็ถึง (là đến)."
+  examples:
+    - { th: "ตรงไปแล้วเลี้ยวซ้ายครับ", vi: "Đi thẳng rồi rẽ trái." }
+    - { th: "เลี้ยวขวาที่สี่แยกข้างหน้าค่ะ", vi: "Rẽ phải ở ngã tư phía trước." }
+    - { th: "ตรงไปประมาณร้อยเมตรก็ถึงครับ", vi: "Đi thẳng khoảng 100 mét là đến." }
+  source: claude-b07
+  draft: true
+- id: g-b07-khuen-long
+  unit_id: b07
+  title_vi: "Lên xe / xuống xe ở …"
+  pattern: "ขึ้น / ลง + Phương tiện + ที่ + Địa điểm"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ขึ้นรถ = lên xe, ลงรถ = xuống xe; có thể nói rõ loại xe (ขึ้นรถเมล์, ลงเรือ …). ที่ + nơi = ở đâu. Hỏi: ลงที่ไหน (xuống ở đâu?)."
+  examples:
+    - { th: "ขึ้นรถเมล์ที่ป้ายนี้ครับ", vi: "Lên xe buýt ở trạm này." }
+    - { th: "ฉันจะลงรถที่ถนนข้าวสารค่ะ", vi: "Tôi sẽ xuống xe ở phố Khaosan." }
+    - { th: "คุณจะลงที่ไหนครับ", vi: "Bạn sẽ xuống ở đâu?" }
+  source: claude-b07
+  draft: true
+- id: g-b07-tamnaeng
+  unit_id: b07
+  title_vi: "Vị trí: A ở trong / cạnh / đối diện B"
+  pattern: "A + อยู่ + ข้างใน / ข้างนอก / ติดกับ / ตรงข้าม / ตรงกลาง / ข้างหน้า / ข้างหลัง + B"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. Mô tả vị trí: อยู่ (ở) + từ chỉ vị trí + nơi làm mốc. ทางซ้าย / ทางขวา = bên trái / bên phải; ตรง + nơi = ngay tại …."
+  examples:
+    - { th: "ร้านอาหารอยู่ติดกับโรงแรมครับ", vi: "Nhà hàng ở sát cạnh khách sạn." }
+    - { th: "ไปรษณีย์อยู่ตรงข้ามโรงแรมค่ะ", vi: "Bưu điện ở đối diện khách sạn." }
+    - { th: "ที่จอดรถอยู่ข้างหลังโรงแรมครับ", vi: "Bãi đỗ xe ở đằng sau khách sạn." }
+  source: claude-b07
+  draft: true
+- id: g-b07-chai-wela
+  unit_id: b07
+  title_vi: "Mất bao lâu? (ใช้เวลานานเท่าไหร่)"
+  pattern: "(Đi từ A đến B) + ใช้เวลา + นานเท่าไหร่ / ประมาณ + thời gian"
+  explain_vi: "Claude soạn (không có trong tài liệu GV) — cần GV duyệt. ใช้เวลา = mất (thời gian). Hỏi: ใช้เวลานานเท่าไหร่ (mất bao lâu). Trả lời: ใช้เวลาประมาณ + số + นาที / ชั่วโมง."
+  examples:
+    - { th: "นั่งรถไฟไปเชียงใหม่ใช้เวลานานเท่าไหร่ครับ", vi: "Đi tàu đến Chiang Mai mất bao lâu?" }
+    - { th: "ใช้เวลาประมาณสิบชั่วโมงค่ะ", vi: "Mất khoảng 10 tiếng." }
+    - { th: "เดินไปใช้เวลาประมาณห้านาทีครับ", vi: "Đi bộ mất khoảng 5 phút." }
+  source: claude-b07
   draft: true
 - id: g-b06-ti
   unit_id: b06

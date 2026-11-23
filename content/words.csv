@@ -502,183 +502,183 @@ b09-w88,b09,b09-l10,ทอนเงิน,,thối tiền,,,verb,,,,,,plernpin-b0
 b09-w89,b09,b09-l10,เงินทอน,,tiền thối,,,noun,,นี่คือเงินทอนของคุณครับ,Đây là tiền thối của bạn ạ.,,,plernpin-b09#p29,true
 b09-w90,b09,b09-l10,พอกินได้,,tạm được,về đồ ăn,,phrase,,อาหารนี้ก็พอกินได้ครับ,Món này cũng tạm được.,,,plernpin-b09#p29,true
 b09-w91,b09,b09-l10,รสชาติ,,vị,,,noun,,คุณชอบกินอาหารรสชาติแบบไหนครับ,Bạn thích ăn thức ăn vị gì?,,,plernpin-b09#p29,true
-b08-w01,b08,b08-l1,ฝักบัว,,vòi hoa sen,,,noun,,,,,,plernpin-b08#p3,true
-b08-w02,b08,b08-l1,ลิฟท์,,thang máy,,,noun,,,,,,plernpin-b08#p3,true
-b08-w03,b08,b08-l1,อ่างอาบน้ำ,,bồn tắm,,,noun,,,,,,plernpin-b08#p3,true
-b08-w04,b08,b08-l1,ห้องพัก,,phòng nghỉ,,,noun,,,,,,plernpin-b08#p4,true
-b08-w05,b08,b08-l1,ห้องน้ำ,,phòng tắm; nhà vệ sinh,,,noun,,,,,,plernpin-b08#p4,true
-b08-w06,b08,b08-l1,เตียงเดี่ยว,,giường đơn,,,noun,,,,,,plernpin-b08#p4,true
-b08-w07,b08,b08-l1,เตียงคู่,,giường đôi,,,noun,,,,,,plernpin-b08#p5,true
-b08-w08,b08,b08-l1,หนังสือเดินทาง,พาสปอร์ต,hộ chiếu,,,noun,,,,,,plernpin-b08#p5,true
-b08-w09,b08,b08-l1,กุญแจห้อง,,chìa khóa phòng,,,noun,,,,,,plernpin-b08#p5,true
-b08-w10,b08,b08-l2,คูปองอาหารเช้า,,phiếu ăn sáng,,,noun,,,,,,plernpin-b08#p6,true
-b08-w11,b08,b08-l2,ห้องอาหาร,,phòng ăn; nhà hàng,,,noun,,,,,,plernpin-b08#p6,true
-b08-w12,b08,b08-l2,พนักงานเคาน์เตอร์,,nhân viên quầy (lễ tân),,,noun,,,,,,plernpin-b08#p6,true
-b08-w13,b08,b08-l2,สัมภาระ,กระเป๋าเดินทาง,hành lý; vali,,,noun,,,,,,plernpin-b08#p7,true
-b08-w14,b08,b08-l2,เงิน,,tiền,,,noun,,,,,,plernpin-b08#p7,true
-b08-w15,b08,b08-l2,สระว่ายน้ำ,,bể bơi,,,noun,,,,,,plernpin-b08#p7,true
-b08-w16,b08,b08-l2,ห้องเต้นรำ,,phòng khiêu vũ,,,noun,,,,,,plernpin-b08#p8,true
-b08-w17,b08,b08-l2,ห้องจัดเลี้ยง,,phòng tiệc,,,noun,,,,,,plernpin-b08#p8,true
+b08-w01,b08,b08-l1,ฝักบัว,,vòi hoa sen,,อัน,noun,,ฝักบัวในห้องน้ำเสียครับ,Vòi hoa sen trong phòng tắm bị hỏng.,noto:1f6bf,,plernpin-b08#p3,true
+b08-w02,b08,b08-l1,ลิฟท์,,thang máy,,,noun,,ลิฟท์อยู่ทางซ้ายค่ะ,Thang máy ở bên trái ạ.,noto:1f6d7,,plernpin-b08#p3,true
+b08-w03,b08,b08-l1,อ่างอาบน้ำ,,bồn tắm,,,noun,,,,noto:1f6c1,,plernpin-b08#p3,true
+b08-w04,b08,b08-l1,ห้องพัก,,phòng nghỉ,,ห้อง,noun,,ผมอยากจองห้องพักหนึ่งห้องครับ,Tôi muốn đặt một phòng nghỉ.,,,plernpin-b08#p4,true
+b08-w05,b08,b08-l1,ห้องน้ำ,,phòng tắm; nhà vệ sinh,,ห้อง,noun,,ห้องน้ำอยู่ที่ไหนครับ,Nhà vệ sinh ở đâu ạ?,noto:1f6bb,,plernpin-b08#p4,true
+b08-w06,b08,b08-l1,เตียงเดี่ยว,,giường đơn,,เตียง,noun,,ห้องนี้มีเตียงเดี่ยวสองเตียงค่ะ,Phòng này có hai giường đơn.,,,plernpin-b08#p4,true
+b08-w07,b08,b08-l1,เตียงคู่,,giường đôi,"cần GV xác nhận: hình p5 là 1 giường lớn (= giường đôi) như nghĩa GV ghi; nhưng ở khách sạn Thái เตียงคู่ / ห้องเตียงคู่ thường hiểu là 2 giường đơn (twin), giường đôi thường nói เตียงใหญ่ / ห้องเตียงใหญ่ (Bài 12 ghi ห้องเตียงคู่ = phòng 2 giường)",เตียง,noun,,,,,,plernpin-b08#p5,true
+b08-w08,b08,b08-l1,หนังสือเดินทาง,พาสปอร์ต,hộ chiếu,,เล่ม,noun,,ขอดูหนังสือเดินทางหน่อยค่ะ,Cho tôi xem hộ chiếu một chút ạ.,,,plernpin-b08#p5,true
+b08-w09,b08,b08-l1,กุญแจห้อง,,chìa khóa phòng,,ดอก,noun,,นี่กุญแจห้องของคุณค่ะ,Đây là chìa khóa phòng của anh/chị.,noto:1f511,,plernpin-b08#p5,true
+b08-w10,b08,b08-l2,คูปองอาหารเช้า,,phiếu ăn sáng,,ใบ,noun,,นี่คูปองอาหารเช้าของคุณค่ะ,Đây là phiếu ăn sáng của anh/chị.,,,plernpin-b08#p6,true
+b08-w11,b08,b08-l2,ห้องอาหาร,,phòng ăn; nhà hàng,,ห้อง,noun,,ห้องอาหารอยู่ชั้นสองค่ะ,Nhà hàng ở tầng hai ạ.,,,plernpin-b08#p6,true
+b08-w12,b08,b08-l2,พนักงานเคาน์เตอร์,,nhân viên quầy (lễ tân),,คน,noun,,,,noto:1f481,,plernpin-b08#p6,true
+b08-w13,b08,b08-l2,สัมภาระ,กระเป๋าเดินทาง,hành lý; vali,,ชิ้น,noun,,ฝากสัมภาระไว้ที่นี่ได้ไหมครับ,Tôi gửi hành lý ở đây được không ạ?,noto:1f9f3,,plernpin-b08#p7,true
+b08-w14,b08,b08-l2,เงิน,,tiền,,,noun,,,,noto:1f4b0,,plernpin-b08#p7,true
+b08-w15,b08,b08-l2,สระว่ายน้ำ,,bể bơi,,สระ,noun,,สระว่ายน้ำเปิดกี่โมงครับ,Bể bơi mở cửa lúc mấy giờ ạ?,,,plernpin-b08#p7,true
+b08-w16,b08,b08-l2,ห้องเต้นรำ,,phòng khiêu vũ,,ห้อง,noun,,,,,,plernpin-b08#p8,true
+b08-w17,b08,b08-l2,ห้องจัดเลี้ยง,,phòng tiệc,,ห้อง,noun,,,,,,plernpin-b08#p8,true
 b08-w18,b08,b08-l2,ห้องโถงกลาง,,sảnh chính,,,noun,,,,,,plernpin-b08#p8,true
-b08-w19,b08,b08-l3,แปรงสีฟัน,,bàn chải đánh răng,,,noun,,,,,,plernpin-b08#p9,true
-b08-w20,b08,b08-l3,ยาสีฟัน,,kem đánh răng,,,noun,,,,,,plernpin-b08#p9,true
-b08-w21,b08,b08-l3,กระดาษชำระ,,giấy vệ sinh,,,noun,,,,,,plernpin-b08#p9,true
-b08-w22,b08,b08-l3,ยาสระผม,แชมพู,dầu gội đầu,,,noun,,,,,,plernpin-b08#p10,true
-b08-w23,b08,b08-l3,สบู่,,xà phòng,,,noun,,,,,,plernpin-b08#p10,true
-b08-w24,b08,b08-l3,มีดโกน,,dao cạo,,,noun,,,,,,plernpin-b08#p10,true
-b08-w25,b08,b08-l3,หวี,,lược,,,noun,,,,,,plernpin-b08#p11,true
-b08-w26,b08,b08-l3,รองเท้าแตะ,,dép lê,,,noun,,,,,,plernpin-b08#p11,true
-b08-w27,b08,b08-l3,ผ้าเช็ดตัว,,khăn tắm,,,noun,,,,,,plernpin-b08#p11,true
-b08-w28,b08,b08-l3,หมอน,,gối,,,noun,,,,,,plernpin-b08#p12,true
-b08-w29,b08,b08-l3,ผ้าห่ม,,chăn,,,noun,,,,,,plernpin-b08#p12,true
-b08-w30,b08,b08-l3,ผ้าปูเตียง,,ga trải giường,,,noun,,,,,,plernpin-b08#p12,true
-b08-w31,b08,b08-l4,พนักงานบริการส่วนหน้า,,nhân viên phục vụ tiền sảnh,,,noun,,,,,,plernpin-b08#p13,true
-b08-w32,b08,b08-l4,พนักงานต้อนรับ,,nhân viên tiếp đón,,,noun,,,,,,plernpin-b08#p13,true
-b08-w33,b08,b08-l4,ผู้จัดการโรงแรม,,người quản lý khách sạn,,,noun,,,,,,plernpin-b08#p13,true
-b08-w34,b08,b08-l4,พนักงานยกกระเป๋า,,nhân viên khuân vác hành lý,,,noun,,,,,,plernpin-b08#p13,true
-b08-w35,b08,b08-l4,บริการถึงห้องพัก,,dịch vụ tận phòng; phục vụ đến tận phòng,,,noun,,,,,,plernpin-b08#p13,true
+b08-w19,b08,b08-l3,แปรงสีฟัน,,bàn chải đánh răng,,อัน,noun,,โรงแรมมีแปรงสีฟันให้ไหมครับ,Khách sạn có để sẵn bàn chải đánh răng không ạ?,noto:1faa5,,plernpin-b08#p9,true
+b08-w20,b08,b08-l3,ยาสีฟัน,,kem đánh răng,,หลอด,noun,,,,,,plernpin-b08#p9,true
+b08-w21,b08,b08-l3,กระดาษชำระ,,giấy vệ sinh,,ม้วน,noun,,,,noto:1f9fb,,plernpin-b08#p9,true
+b08-w22,b08,b08-l3,ยาสระผม,แชมพู,dầu gội đầu,,ขวด,noun,,,,noto:1f9f4,,plernpin-b08#p10,true
+b08-w23,b08,b08-l3,สบู่,,xà phòng,,ก้อน,noun,,ในห้องน้ำไม่มีสบู่ค่ะ,Trong phòng tắm không có xà phòng.,noto:1f9fc,,plernpin-b08#p10,true
+b08-w24,b08,b08-l3,มีดโกน,,dao cạo,,อัน,noun,,,,noto:1fa92,,plernpin-b08#p10,true
+b08-w25,b08,b08-l3,หวี,,lược,,อัน,noun,,,,,,plernpin-b08#p11,true
+b08-w26,b08,b08-l3,รองเท้าแตะ,,dép lê,,คู่,noun,,,,noto:1fa74,,plernpin-b08#p11,true
+b08-w27,b08,b08-l3,ผ้าเช็ดตัว,,khăn tắm,,ผืน,noun,,ฉันอยากขอผ้าเช็ดตัวเพิ่มอีกสองผืนค่ะ,Tôi muốn xin thêm hai cái khăn tắm.,,,plernpin-b08#p11,true
+b08-w28,b08,b08-l3,หมอน,,gối,,ใบ,noun,,ขอหมอนเพิ่มอีกหนึ่งใบครับ,Cho tôi xin thêm một cái gối.,,,plernpin-b08#p12,true
+b08-w29,b08,b08-l3,ผ้าห่ม,,chăn,,ผืน,noun,,,,,,plernpin-b08#p12,true
+b08-w30,b08,b08-l3,ผ้าปูเตียง,,ga trải giường,,ผืน,noun,,,,,,plernpin-b08#p12,true
+b08-w31,b08,b08-l4,พนักงานบริการส่วนหน้า,,nhân viên phục vụ tiền sảnh,,คน,noun,,,,,,plernpin-b08#p13,true
+b08-w32,b08,b08-l4,พนักงานต้อนรับ,,nhân viên tiếp đón,,คน,noun,,พนักงานต้อนรับพูดภาษาอังกฤษได้ค่ะ,Nhân viên tiếp đón nói được tiếng Anh.,,,plernpin-b08#p13,true
+b08-w33,b08,b08-l4,ผู้จัดการโรงแรม,,người quản lý khách sạn,,คน,noun,,,,,,plernpin-b08#p13,true
+b08-w34,b08,b08-l4,พนักงานยกกระเป๋า,,nhân viên khuân vác hành lý,,คน,noun,,พนักงานยกกระเป๋าจะยกกระเป๋าขึ้นไปที่ห้องให้ครับ,Nhân viên khuân vác sẽ mang vali lên phòng cho anh/chị.,,,plernpin-b08#p13,true
+b08-w35,b08,b08-l4,บริการถึงห้องพัก,,dịch vụ tận phòng; phục vụ đến tận phòng,,,noun,,ผมอยากสั่งอาหารจากบริการถึงห้องพักครับ,Tôi muốn gọi đồ ăn qua dịch vụ tận phòng.,,,plernpin-b08#p13,true
 b08-w36,b08,b08-l4,เคาน์เตอร์บริการส่วนหน้า,,quầy dịch vụ tiền sảnh,,,noun,,,,,,plernpin-b08#p14,true
-b08-w37,b08,b08-l4,บัตรเครดิต,,thẻ tín dụng,,,noun,,,,,,plernpin-b08#p14,true
+b08-w37,b08,b08-l4,บัตรเครดิต,,thẻ tín dụng,,ใบ,noun,,ผมจ่ายด้วยบัตรเครดิตได้ไหมครับ,Tôi trả bằng thẻ tín dụng được không ạ?,noto:1f4b3,,plernpin-b08#p14,true
 b08-w38,b08,b08-l4,รับบัตรเครดิตไหม,,nhận thẻ tín dụng không?,,,phrase,,,,,,plernpin-b08#p14,true
-b08-w39,b08,b08-l4,รับ,,nhận,,,verb,,,,,,plernpin-b08#p14,true
+b08-w39,b08,b08-l4,รับ,,nhận,,,verb,,โรงแรมนี้รับบัตรเครดิตค่ะ,Khách sạn này nhận thẻ tín dụng ạ.,,,plernpin-b08#p14,true
 b08-w40,b08,b08-l4,ไม่รับ,,không nhận,,,phrase,,,,,,plernpin-b08#p14,true
-b08-w41,b08,b08-l5,เงินสด,,tiền mặt,,,noun,,,,,,plernpin-b08#p15,true
+b08-w41,b08,b08-l5,เงินสด,,tiền mặt,,,noun,,ผมจะจ่ายเป็นเงินสดครับ,Tôi sẽ trả bằng tiền mặt.,noto:1f4b5,,plernpin-b08#p15,true
 b08-w42,b08,b08-l5,ขอใบเสร็จรับเงิน,,xin biên lai thu tiền,giấy xác nhận số tiền đã trả,,phrase,,,,,,plernpin-b08#p15,true
-b08-w43,b08,b08-l5,เงินทอน,,tiền thừa; tiền thối,,,noun,,,,,,plernpin-b08#p15,true
-b08-w44,b08,b08-l5,เปลี่ยนห้อง,,đổi phòng,,,verb,,,,,,plernpin-b08#p15,true
+b08-w43,b08,b08-l5,เงินทอน,,tiền thừa; tiền thối,,,noun,,นี่เงินทอนห้าสิบบาทค่ะ,Đây là 50 baht tiền thối ạ.,,,plernpin-b08#p15,true
+b08-w44,b08,b08-l5,เปลี่ยนห้อง,,đổi phòng,,,verb,,ห้องนี้เสียงดัง ขอเปลี่ยนห้องได้ไหมคะ,"Phòng này ồn, cho tôi đổi phòng được không ạ?",,,plernpin-b08#p15,true
 b08-w45,b08,b08-l5,แจ้ง,,thông báo,,,verb,,,,,,plernpin-b08#p15,true
-b08-w46,b08,b08-l5,ยกเลิก,,hủy bỏ,,,verb,,,,,,plernpin-b08#p16,true
-b08-w47,b08,b08-l5,ทำความสะอาดห้อง,,dọn phòng,,,verb,,,,,,plernpin-b08#p16,true
+b08-w46,b08,b08-l5,ยกเลิก,,hủy bỏ,,,verb,,ผมอยากยกเลิกการจองครับ,Tôi muốn hủy đặt phòng.,,,plernpin-b08#p16,true
+b08-w47,b08,b08-l5,ทำความสะอาดห้อง,,dọn phòng,,,verb,,กรุณาทำความสะอาดห้องให้ด้วยค่ะ,Làm ơn dọn phòng giúp tôi.,,,plernpin-b08#p16,true
 b08-w48,b08,b08-l5,บริการปลุกตอนเช้า,,dịch vụ đánh thức buổi sáng,,,noun,,,,,,plernpin-b08#p16,true
-b08-w49,b08,b08-l5,บริการซักรีด,,dịch vụ giặt là,,,noun,,,,,,plernpin-b08#p16,true
-b08-w50,b08,b08-l5,ห้องว่าง,,phòng trống,,,noun,,,,,,plernpin-b08#p16,true
-b08-w51,b08,b08-l6,ห้องเต็ม,,phòng đầy; hết phòng,,,phrase,,,,,,plernpin-b08#p17,true
+b08-w49,b08,b08-l5,บริการซักรีด,,dịch vụ giặt là,,,noun,,โรงแรมมีบริการซักรีดไหมคะ,Khách sạn có dịch vụ giặt là không ạ?,,,plernpin-b08#p16,true
+b08-w50,b08,b08-l5,ห้องว่าง,,phòng trống,,ห้อง,noun,,คืนนี้มีห้องว่างไหมครับ,Tối nay còn phòng trống không ạ?,,,plernpin-b08#p16,true
+b08-w51,b08,b08-l6,ห้องเต็ม,,phòng đầy; hết phòng,,,phrase,,ขอโทษค่ะ คืนนี้ห้องเต็มแล้วค่ะ,"Xin lỗi, tối nay hết phòng rồi ạ.",,,plernpin-b08#p17,true
 b08-w52,b08,b08-l6,คืนห้อง,,trả phòng,,,verb,,,,,,plernpin-b08#p17,true
-b08-w53,b08,b08-l6,ค่าห้อง,,giá phòng,,,noun,,,,,,plernpin-b08#p17,true
-b08-w54,b08,b08-l6,ระเบียง,,ban công,,,noun,,,,,,plernpin-b08#p17,true
+b08-w53,b08,b08-l6,ค่าห้อง,,giá phòng,,,noun,,ค่าห้องคืนละเท่าไรครับ,Giá phòng mỗi đêm bao nhiêu ạ?,,,plernpin-b08#p17,true
+b08-w54,b08,b08-l6,ระเบียง,,ban công,,,noun,,ห้องนี้มีระเบียงไหมคะ,Phòng này có ban công không ạ?,,,plernpin-b08#p17,true
 b08-w55,b08,b08-l6,วิว,ทิวทัศน์,view; phong cảnh; cảnh sắc,,,noun,,,,,,plernpin-b08#p17,true
-b08-w56,b08,b08-l6,ห้องพัดลม,,phòng dùng quạt,,,noun,,,,,,plernpin-b08#p18,true
-b08-w57,b08,b08-l6,ห้องปรับอากาศ,,phòng có điều hòa,,,noun,,,,,,plernpin-b08#p18,true
-b08-w58,b08,b08-l6,ห้องธรรมดา,,phòng thường,,,noun,,,,,,plernpin-b08#p18,true
-b08-w59,b08,b08-l6,ห้องพิเศษ,,phòng đặc biệt,,,noun,,,,,,plernpin-b08#p18,true
-b08-w60,b08,b08-l6,เช็คอิน,,check in; nhận phòng,,,verb,,,,,,plernpin-b08#p18,true
-b08-w61,b08,b08-l7,เช็คเอาท์,,check out; trả phòng,,,verb,,,,,,plernpin-b08#p19,true
+b08-w56,b08,b08-l6,ห้องพัดลม,,phòng dùng quạt,,ห้อง,noun,,,,,,plernpin-b08#p18,true
+b08-w57,b08,b08-l6,ห้องปรับอากาศ,,phòng có điều hòa,,ห้อง,noun,,ห้องปรับอากาศแพงกว่าห้องพัดลมค่ะ,Phòng điều hòa đắt hơn phòng quạt.,,,plernpin-b08#p18,true
+b08-w58,b08,b08-l6,ห้องธรรมดา,,phòng thường,,ห้อง,noun,,,,,,plernpin-b08#p18,true
+b08-w59,b08,b08-l6,ห้องพิเศษ,,phòng đặc biệt,,ห้อง,noun,,,,,,plernpin-b08#p18,true
+b08-w60,b08,b08-l6,เช็คอิน,,check in; nhận phòng,,,verb,,เช็คอินได้ตั้งแต่บ่ายสองโมงค่ะ,Có thể nhận phòng từ 2 giờ chiều ạ.,,,plernpin-b08#p18,true
+b08-w61,b08,b08-l7,เช็คเอาท์,,check out; trả phòng,,,verb,,พรุ่งนี้ผมจะเช็คเอาท์ตอนเก้าโมงเช้าครับ,Ngày mai tôi sẽ trả phòng lúc 9 giờ sáng.,,,plernpin-b08#p19,true
 b08-w62,b08,b08-l7,เต็มราคา,,giá đầy đủ; giá không giảm,nguyên giá,,phrase,,,,,,plernpin-b08#p19,true
 b08-w63,b08,b08-l7,ครึ่งราคา,,nửa giá,,,phrase,,,,,,plernpin-b08#p19,true
-b08-w64,b08,b08-l7,ติดกัน,,liền nhau,,,adj,,,,,,plernpin-b08#p19,true
+b08-w64,b08,b08-l7,ติดกัน,,liền nhau,,,adj,,เราอยากได้ห้องติดกันสองห้องครับ,Chúng tôi muốn hai phòng liền nhau.,,,plernpin-b08#p19,true
 b08-w65,b08,b08-l7,ชั้นเดียว,,cùng tầng,,,phrase,,,,,,plernpin-b08#p19,true
-b08-w66,b08,b08-l7,บัตรลงทะเบียน,,thẻ đăng ký,,,noun,,,,,,plernpin-b08#p20,true
-b08-w67,b08,b08-l7,ใบเรียกเก็บเงิน,,hóa đơn thu tiền,phiếu yêu cầu thanh toán,,noun,,,,,,plernpin-b08#p20,true
-b08-w68,b08,b08-l7,เซ็นชื่อ,ลงนาม,ký tên,,,verb,,,,,,plernpin-b08#p20,true
-b08-w69,b08,b08-l7,จองห้องไว้,,đặt phòng trước,,,phrase,,,,,,plernpin-b08#p20,true
-b08-w70,b08,b08-l7,ใบลงทะเบียน,,giấy đăng ký; đơn đăng ký,,,noun,,,,,,plernpin-b08#p20,true
-b08-w71,b08,b08-l8,ค่ามัดจำ,,tiền đặt cọc,,,noun,,,,,,plernpin-b08#p21,true
-b08-w72,b08,b08-l8,วันสุดท้าย,,ngày cuối cùng,,,noun,,,,,,plernpin-b08#p21,true
+b08-w66,b08,b08-l7,บัตรลงทะเบียน,,thẻ đăng ký,,ใบ,noun,,,,,,plernpin-b08#p20,true
+b08-w67,b08,b08-l7,ใบเรียกเก็บเงิน,,hóa đơn thu tiền,phiếu yêu cầu thanh toán,ใบ,noun,,,,noto:1f9fe,,plernpin-b08#p20,true
+b08-w68,b08,b08-l7,เซ็นชื่อ,ลงนาม,ký tên,,,verb,,กรุณาเซ็นชื่อตรงนี้ค่ะ,Làm ơn ký tên ở đây.,,,plernpin-b08#p20,true
+b08-w69,b08,b08-l7,จองห้องไว้,,đặt phòng trước,,,phrase,,ฉันจองห้องไว้แล้วค่ะ,Tôi đã đặt phòng trước rồi.,,,plernpin-b08#p20,true
+b08-w70,b08,b08-l7,ใบลงทะเบียน,,giấy đăng ký; đơn đăng ký,,ใบ,noun,,กรุณากรอกใบลงทะเบียนค่ะ,Làm ơn điền giấy đăng ký.,,,plernpin-b08#p20,true
+b08-w71,b08,b08-l8,ค่ามัดจำ,,tiền đặt cọc,,,noun,,ต้องจ่ายค่ามัดจำห้าร้อยบาทค่ะ,Phải trả tiền đặt cọc 500 baht.,,,plernpin-b08#p21,true
+b08-w72,b08,b08-l8,วันสุดท้าย,,ngày cuối cùng,,,noun,,วันนี้เป็นวันสุดท้ายที่เราพักที่นี่ครับ,Hôm nay là ngày cuối cùng chúng tôi ở đây.,,,plernpin-b08#p21,true
 b08-w73,b08,b08-l8,จาก,ออกจาก,rời; rời khỏi,,,verb,,,,,,plernpin-b08#p21,true
-b08-w74,b08,b08-l8,กรุณา,,làm ơn,,,adv,,,,,,plernpin-b08#p21,true
+b08-w74,b08,b08-l8,กรุณา,,làm ơn,,,adv,,กรุณารอสักครู่ค่ะ,Làm ơn chờ một chút.,,,plernpin-b08#p21,true
 b08-w75,b08,b08-l8,ตรงนั้น,,ngay chỗ đó,,,adv,,,,,,plernpin-b08#p21,true
-b08-w76,b08,b08-l8,แต่ละ,,từng,,,adj,,,,,,plernpin-b08#p22,true
-b08-w77,b08,b08-l8,ประเภท,,loại,,,noun,,,,,,plernpin-b08#p22,true
-b07-w01,b07,b07-l1,โรงแรม,,khách sạn,,,noun,,,,,,plernpin-b07#p3,true
-b07-w02,b07,b07-l1,สนามบิน,,sân bay,,,noun,,,,,,plernpin-b07#p3,true
-b07-w03,b07,b07-l1,ร้าน,,cửa hàng; quán,,,noun,,,,,,plernpin-b07#p3,true
-b07-w04,b07,b07-l1,ถนน,,đường; phố,,,noun,,,,,,plernpin-b07#p4,true
-b07-w05,b07,b07-l1,ซูเปอร์มาร์เก็ต,,siêu thị,,,noun,,,,,,plernpin-b07#p4,true
-b07-w06,b07,b07-l1,ปั๊มน้ำมัน,,trạm xăng,,,noun,,,,,,plernpin-b07#p4,true
-b07-w07,b07,b07-l1,ธนาคาร,,ngân hàng,,,noun,,,,,,plernpin-b07#p5,true
-b07-w08,b07,b07-l1,ศูนย์ประชุม,,trung tâm hội nghị,,,noun,,,,,,plernpin-b07#p5,true
-b07-w09,b07,b07-l1,สถานีรถไฟ,,nhà ga xe lửa; ga tàu hỏa,,,noun,,,,,,plernpin-b07#p5,true
-b07-w10,b07,b07-l2,พิพิธภัณฑ์,,bảo tàng,,,noun,,,,,,plernpin-b07#p6,true
-b07-w11,b07,b07-l2,เมือง,,thành phố,,,noun,,,,,,plernpin-b07#p6,true
-b07-w12,b07,b07-l2,ตึกสูง,,tòa nhà cao tầng,,,noun,,,,,,plernpin-b07#p6,true
+b08-w76,b08,b08-l8,แต่ละ,,từng,,,adj,,ห้องแต่ละประเภทราคาไม่เท่ากันค่ะ,Giá từng loại phòng không giống nhau.,,,plernpin-b08#p22,true
+b08-w77,b08,b08-l8,ประเภท,,loại,,,noun,,โรงแรมนี้มีห้องสามประเภทค่ะ,Khách sạn này có ba loại phòng.,,,plernpin-b08#p22,true
+b07-w01,b07,b07-l1,โรงแรม,,khách sạn,,แห่ง,noun,,ผมพักที่โรงแรมนี้ครับ,Tôi ở khách sạn này.,noto:1f3e8,,plernpin-b07#p3,true
+b07-w02,b07,b07-l1,สนามบิน,,sân bay,,แห่ง,noun,,ผมจะไปสนามบินครับ,Tôi sẽ đi sân bay.,,,plernpin-b07#p3,true
+b07-w03,b07,b07-l1,ร้าน,,cửa hàng; quán,,ร้าน,noun,,,,,,plernpin-b07#p3,true
+b07-w04,b07,b07-l1,ถนน,,đường; phố,,สาย,noun,,,,,,plernpin-b07#p4,true
+b07-w05,b07,b07-l1,ซูเปอร์มาร์เก็ต,,siêu thị,,แห่ง,noun,,,,,,plernpin-b07#p4,true
+b07-w06,b07,b07-l1,ปั๊มน้ำมัน,,trạm xăng,,แห่ง,noun,,ข้างหน้ามีปั๊มน้ำมันครับ,Phía trước có trạm xăng.,noto:26fd,,plernpin-b07#p4,true
+b07-w07,b07,b07-l1,ธนาคาร,,ngân hàng,,แห่ง,noun,,ธนาคารเปิดกี่โมงคะ,Ngân hàng mở cửa lúc mấy giờ ạ?,noto:1f3e6,,plernpin-b07#p5,true
+b07-w08,b07,b07-l1,ศูนย์ประชุม,,trung tâm hội nghị,,แห่ง,noun,,,,,,plernpin-b07#p5,true
+b07-w09,b07,b07-l1,สถานีรถไฟ,,nhà ga xe lửa; ga tàu hỏa,,แห่ง,noun,,สถานีรถไฟอยู่ที่ไหนคะ,Nhà ga xe lửa ở đâu ạ?,noto:1f689,,plernpin-b07#p5,true
+b07-w10,b07,b07-l2,พิพิธภัณฑ์,,bảo tàng,,แห่ง,noun,,พิพิธภัณฑ์ปิดวันจันทร์ค่ะ,Bảo tàng đóng cửa vào thứ Hai.,,,plernpin-b07#p6,true
+b07-w11,b07,b07-l2,เมือง,,thành phố,,เมือง,noun,,,,noto:1f3d9-fe0f,,plernpin-b07#p6,true
+b07-w12,b07,b07-l2,ตึกสูง,,tòa nhà cao tầng,,หลัง,noun,,,,noto:1f3e2,,plernpin-b07#p6,true
 b07-w13,b07,b07-l2,อพาร์ทเมนท์,,căn hộ,,,noun,,,,,,plernpin-b07#p7,true
-b07-w14,b07,b07-l2,พิพิธภัณฑ์ศิลปะ,,bảo tàng nghệ thuật,,,noun,,,,,,plernpin-b07#p7,true
-b07-w15,b07,b07-l2,สนามกีฬา,,sân vận động,,,noun,,,,,,plernpin-b07#p7,true
-b07-w16,b07,b07-l2,ไปรษณีย์,,bưu điện,,,noun,,,,,,plernpin-b07#p8,true
-b07-w17,b07,b07-l2,สถานีตำรวจ,,đồn cảnh sát,,,noun,,,,,,plernpin-b07#p8,true
-b07-w18,b07,b07-l2,ทางด่วน,,đường cao tốc,,,noun,,,,,,plernpin-b07#p8,true
-b07-w19,b07,b07-l3,เกสต์เฮาส์,,nhà nghỉ (guest house),,,noun,,,,,,plernpin-b07#p9,true
-b07-w20,b07,b07-l3,อนุสาวรีย์,,tượng đài,,,noun,,,,,,plernpin-b07#p9,true
-b07-w21,b07,b07-l3,วัด,,chùa,,,noun,,,,,,plernpin-b07#p9,true
-b07-w22,b07,b07-l3,ห้องยิม,ห้องฟิตเนส,phòng tập gym,,,noun,,,,,,plernpin-b07#p10,true
-b07-w23,b07,b07-l3,โรงหนัง,,rạp chiếu phim,,,noun,,,,,,plernpin-b07#p10,true
-b07-w24,b07,b07-l3,ศูนย์การค้า,ห้าง,trung tâm thương mại,,,noun,,,,,,plernpin-b07#p10,true
-b07-w25,b07,b07-l3,โบสถ์,,nhà thờ,,,noun,,,,,,plernpin-b07#p11,true
-b07-w26,b07,b07-l3,สะพาน,,cầu,,,noun,,,,,,plernpin-b07#p11,true
-b07-w27,b07,b07-l3,ทางม้าลาย,,vạch kẻ đường cho người đi bộ,,,noun,,,,,,plernpin-b07#p11,true
-b07-w28,b07,b07-l3,ไฟจราจร,,đèn giao thông,,,noun,,,,,,plernpin-b07#p12,true
-b07-w29,b07,b07-l4,รถยนต์,,ô tô,,,noun,,,,,,plernpin-b07#p12,true
-b07-w30,b07,b07-l4,แท็กซี่,,taxi,,,noun,,,,,,plernpin-b07#p12,true
-b07-w31,b07,b07-l4,เครื่องบิน,,máy bay,,,noun,,,,,,plernpin-b07#p13,true
-b07-w32,b07,b07-l4,รถบรรทุก,,xe tải,,,noun,,,,,,plernpin-b07#p13,true
-b07-w33,b07,b07-l4,รถขนขยะ,,xe chở rác,,,noun,,,,,,plernpin-b07#p13,true
-b07-w34,b07,b07-l4,รถตู้ส่งของ,,xe van giao hàng,,,noun,,,,,,plernpin-b07#p14,true
-b07-w35,b07,b07-l4,รถไฟความเร็วสูง,,tàu cao tốc,,,noun,,,,,,plernpin-b07#p14,true
-b07-w36,b07,b07-l4,รถมอเตอร์ไซค์,,xe máy,,,noun,,,,,,plernpin-b07#p14,true
-b07-w37,b07,b07-l4,รถสปอร์ต,,xe thể thao,,,noun,,,,,,plernpin-b07#p15,true
-b07-w38,b07,b07-l4,รถไฟใต้ดิน,,tàu điện ngầm,,,noun,,,,,,plernpin-b07#p15,true
-b07-w39,b07,b07-l4,รถเมล์,,xe buýt,,,noun,,,,,,plernpin-b07#p15,true
-b07-w40,b07,b07-l5,ป้ายรถเมล์,,trạm xe buýt,,,noun,,,,,,plernpin-b07#p16,true
-b07-w41,b07,b07-l5,เรือ,,thuyền; tàu thủy,,,noun,,,,,,plernpin-b07#p16,true
-b07-w42,b07,b07-l5,รถดับเพลิง,,xe cứu hỏa,,,noun,,,,,,plernpin-b07#p16,true
-b07-w43,b07,b07-l5,รถราง,,xe điện (tàu điện chạy trên đường),,,noun,,,,,,plernpin-b07#p17,true
-b07-w44,b07,b07-l5,รถสามล้อ,,xe ba bánh,,,noun,,,,,,plernpin-b07#p17,true
-b07-w45,b07,b07-l5,จักรยาน,,xe đạp,,,noun,,,,,,plernpin-b07#p17,true
-b07-w46,b07,b07-l5,รถม้า,,xe ngựa,,,noun,,,,,,plernpin-b07#p18,true
+b07-w14,b07,b07-l2,พิพิธภัณฑ์ศิลปะ,,bảo tàng nghệ thuật,,แห่ง,noun,,,,,,plernpin-b07#p7,true
+b07-w15,b07,b07-l2,สนามกีฬา,,sân vận động,,แห่ง,noun,,สนามกีฬานี้ใหญ่มากครับ,Sân vận động này rất lớn.,noto:1f3df-fe0f,,plernpin-b07#p7,true
+b07-w16,b07,b07-l2,ไปรษณีย์,,bưu điện,,แห่ง,noun,,ผมจะไปส่งจดหมายที่ไปรษณีย์ครับ,Tôi sẽ ra bưu điện gửi thư.,noto:1f3e4,,plernpin-b07#p8,true
+b07-w17,b07,b07-l2,สถานีตำรวจ,,đồn cảnh sát,,แห่ง,noun,,สถานีตำรวจอยู่ใกล้ที่นี่ไหมคะ,Đồn cảnh sát có gần đây không ạ?,,,plernpin-b07#p8,true
+b07-w18,b07,b07-l2,ทางด่วน,,đường cao tốc,,สาย,noun,,,,noto:1f6e3-fe0f,,plernpin-b07#p8,true
+b07-w19,b07,b07-l3,เกสต์เฮาส์,,nhà nghỉ (guest house),,แห่ง,noun,,,,,,plernpin-b07#p9,true
+b07-w20,b07,b07-l3,อนุสาวรีย์,,tượng đài,,แห่ง,noun,,,,,,plernpin-b07#p9,true
+b07-w21,b07,b07-l3,วัด,,chùa,,แห่ง,noun,,วัดนี้สวยมากค่ะ,Ngôi chùa này rất đẹp.,,,plernpin-b07#p9,true
+b07-w22,b07,b07-l3,ห้องยิม,ห้องฟิตเนส,phòng tập gym,,แห่ง,noun,,,,,,plernpin-b07#p10,true
+b07-w23,b07,b07-l3,โรงหนัง,,rạp chiếu phim,,โรง,noun,,โรงหนังอยู่ในศูนย์การค้าครับ,Rạp chiếu phim ở trong trung tâm thương mại.,noto:1f3a6,,plernpin-b07#p10,true
+b07-w24,b07,b07-l3,ศูนย์การค้า,ห้าง,trung tâm thương mại,,แห่ง,noun,,,,noto:1f3ec,,plernpin-b07#p10,true
+b07-w25,b07,b07-l3,โบสถ์,,nhà thờ,,แห่ง,noun,,,,noto:26ea,,plernpin-b07#p11,true
+b07-w26,b07,b07-l3,สะพาน,,cầu,,แห่ง,noun,,ข้ามสะพานแล้วเลี้ยวซ้ายค่ะ,Qua cầu rồi rẽ trái.,noto:1f309,,plernpin-b07#p11,true
+b07-w27,b07,b07-l3,ทางม้าลาย,,vạch kẻ đường cho người đi bộ,,,noun,,เดินข้ามถนนที่ทางม้าลายนะคะ,Hãy sang đường ở vạch kẻ cho người đi bộ nhé.,,,plernpin-b07#p11,true
+b07-w28,b07,b07-l3,ไฟจราจร,,đèn giao thông,,,noun,,ถึงไฟจราจรแล้วเลี้ยวขวาครับ,Đến đèn giao thông thì rẽ phải.,noto:1f6a6,,plernpin-b07#p12,true
+b07-w29,b07,b07-l4,รถยนต์,,ô tô,,คัน,noun,,,,noto:1f697,,plernpin-b07#p12,true
+b07-w30,b07,b07-l4,แท็กซี่,,taxi,,คัน,noun,,เรานั่งแท็กซี่ไปสนามบินกันไหมคะ,Chúng ta đi taxi ra sân bay nhé?,noto:1f695,,plernpin-b07#p12,true
+b07-w31,b07,b07-l4,เครื่องบิน,,máy bay,,ลำ,noun,,เครื่องบินออกกี่โมงคะ,Máy bay cất cánh lúc mấy giờ ạ?,noto:2708-fe0f,,plernpin-b07#p13,true
+b07-w32,b07,b07-l4,รถบรรทุก,,xe tải,,คัน,noun,,,,noto:1f69a,,plernpin-b07#p13,true
+b07-w33,b07,b07-l4,รถขนขยะ,,xe chở rác,,คัน,noun,,,,,,plernpin-b07#p13,true
+b07-w34,b07,b07-l4,รถตู้ส่งของ,,xe van giao hàng,"cần GV xác nhận: hình p14 là xe van chở khách (รถตู้), nghĩa ghi theo chữ (ส่งของ = giao hàng)",คัน,noun,,,,,,plernpin-b07#p14,true
+b07-w35,b07,b07-l4,รถไฟความเร็วสูง,,tàu cao tốc,,ขบวน,noun,,,,noto:1f684,,plernpin-b07#p14,true
+b07-w36,b07,b07-l4,รถมอเตอร์ไซค์,,xe máy,,คัน,noun,,น้องชายผมขี่รถมอเตอร์ไซค์ไปโรงเรียนครับ,Em trai tôi đi xe máy đến trường.,noto:1f6f5,,plernpin-b07#p14,true
+b07-w37,b07,b07-l4,รถสปอร์ต,,xe thể thao,,คัน,noun,,,,,,plernpin-b07#p15,true
+b07-w38,b07,b07-l4,รถไฟใต้ดิน,,tàu điện ngầm,,ขบวน,noun,,ผมนั่งรถไฟใต้ดินไปทำงานครับ,Tôi đi tàu điện ngầm đi làm.,noto:1f687,,plernpin-b07#p15,true
+b07-w39,b07,b07-l4,รถเมล์,,xe buýt,,คัน,noun,,รถเมล์สายนี้ไปสนามบินไหมคะ,Xe buýt tuyến này có đi sân bay không ạ?,noto:1f68c,,plernpin-b07#p15,true
+b07-w40,b07,b07-l5,ป้ายรถเมล์,,trạm xe buýt,,ป้าย,noun,,ป้ายรถเมล์อยู่หน้าธนาคารค่ะ,Trạm xe buýt ở trước ngân hàng.,noto:1f68f,,plernpin-b07#p16,true
+b07-w41,b07,b07-l5,เรือ,,thuyền; tàu thủy,,ลำ,noun,,,,noto:1f6a2,,plernpin-b07#p16,true
+b07-w42,b07,b07-l5,รถดับเพลิง,,xe cứu hỏa,,คัน,noun,,,,noto:1f692,,plernpin-b07#p16,true
+b07-w43,b07,b07-l5,รถราง,,xe điện (tàu điện chạy trên đường),cần GV xác nhận: hình p17 là xe buýt kiểu tàu điện cổ (xe tham quan); รถราง nghĩa gốc là tàu điện chạy trên ray trong phố (tram),คัน,noun,,,,noto:1f68b,,plernpin-b07#p17,true
+b07-w44,b07,b07-l5,รถสามล้อ,,xe ba bánh,,คัน,noun,,,,noto:1f6fa,,plernpin-b07#p17,true
+b07-w45,b07,b07-l5,จักรยาน,,xe đạp,,คัน,noun,,ฉันชอบขี่จักรยานค่ะ,Tôi thích đi xe đạp.,noto:1f6b2,,plernpin-b07#p17,true
+b07-w46,b07,b07-l5,รถม้า,,xe ngựa,,คัน,noun,,,,,,plernpin-b07#p18,true
 b07-w47,b07,b07-l5,อูเบอร์,,Uber,,,noun,,,,,,plernpin-b07#p18,true
-b07-w48,b07,b07-l5,แกร็บ,,Grab,,,noun,,,,,,plernpin-b07#p18,true
-b07-w49,b07,b07-l5,เลี้ยวซ้าย,,rẽ trái,,,verb,,,,,,plernpin-b07#p19,true
-b07-w50,b07,b07-l5,เลี้ยวขวา,,rẽ phải,,,verb,,,,,,plernpin-b07#p19,true
-b07-w51,b07,b07-l5,ตรงไป,,đi thẳng,,,verb,,,,,,plernpin-b07#p19,true
-b07-w52,b07,b07-l6,ใจกลางเมือง,,trung tâm thành phố,,,noun,,,,,,plernpin-b07#p20,true
-b07-w53,b07,b07-l6,นอกเมือง,,ngoại ô; ngoài thành phố,,,noun,,,,,,plernpin-b07#p20,true
+b07-w48,b07,b07-l5,แกร็บ,,Grab,,,noun,,เรียกแกร็บไปสนามบินดีกว่าครับ,Gọi Grab đi sân bay thì hơn.,,,plernpin-b07#p18,true
+b07-w49,b07,b07-l5,เลี้ยวซ้าย,,rẽ trái,,,verb,,ถึงสี่แยกแล้วเลี้ยวซ้ายครับ,Đến ngã tư thì rẽ trái.,,,plernpin-b07#p19,true
+b07-w50,b07,b07-l5,เลี้ยวขวา,,rẽ phải,,,verb,,เลี้ยวขวาที่ไฟจราจรค่ะ,Rẽ phải ở đèn giao thông.,,,plernpin-b07#p19,true
+b07-w51,b07,b07-l5,ตรงไป,,đi thẳng,,,verb,,ตรงไปประมาณร้อยเมตรครับ,Đi thẳng khoảng 100 mét.,,,plernpin-b07#p19,true
+b07-w52,b07,b07-l6,ใจกลางเมือง,,trung tâm thành phố,,,noun,,โรงแรมอยู่ใจกลางเมืองค่ะ,Khách sạn nằm ở trung tâm thành phố.,,,plernpin-b07#p20,true
+b07-w53,b07,b07-l6,นอกเมือง,,ngoại ô; ngoài thành phố,,,noun,,บ้านผมอยู่นอกเมืองครับ,Nhà tôi ở ngoại ô.,,,plernpin-b07#p20,true
 b07-w54,b07,b07-l6,ทางเดิน,,đường đi bộ,,,noun,,,,,,plernpin-b07#p20,true
-b07-w55,b07,b07-l6,เพื่อนบ้าน,,hàng xóm,,,noun,,,,,,plernpin-b07#p20,true
-b07-w56,b07,b07-l6,หัวมุมถนน,,góc đường; góc phố,,,noun,,,,,,plernpin-b07#p20,true
-b07-w57,b07,b07-l6,จราจร,,giao thông,,,noun,,,,,,plernpin-b07#p21,true
-b07-w58,b07,b07-l6,คนเดินถนน,,người đi đường,,,noun,,,,,,plernpin-b07#p21,true
-b07-w59,b07,b07-l6,คนขับ,,người lái,,,noun,,,,,,plernpin-b07#p21,true
-b07-w60,b07,b07-l6,ผู้โดยสาร,,hành khách,,,noun,,,,,,plernpin-b07#p21,true
+b07-w55,b07,b07-l6,เพื่อนบ้าน,,hàng xóm,,คน,noun,,,,,,plernpin-b07#p20,true
+b07-w56,b07,b07-l6,หัวมุมถนน,,góc đường; góc phố,,,noun,,ร้านกาแฟอยู่ตรงหัวมุมถนนค่ะ,Quán cà phê ở ngay góc phố.,,,plernpin-b07#p20,true
+b07-w57,b07,b07-l6,จราจร,,giao thông,,,noun,,จราจรในกรุงเทพติดมากครับ,Giao thông ở Bangkok tắc lắm.,,,plernpin-b07#p21,true
+b07-w58,b07,b07-l6,คนเดินถนน,,người đi đường,,คน,noun,,,,noto:1f6b6,,plernpin-b07#p21,true
+b07-w59,b07,b07-l6,คนขับ,,người lái,,คน,noun,,คนขับแท็กซี่ใจดีมากค่ะ,Người lái taxi rất tốt bụng.,,,plernpin-b07#p21,true
+b07-w60,b07,b07-l6,ผู้โดยสาร,,hành khách,,คน,noun,,รถเมล์คันนี้มีผู้โดยสารเยอะครับ,Xe buýt này có nhiều hành khách.,,,plernpin-b07#p21,true
 b07-w61,b07,b07-l6,นั่ง,,ngồi,,,verb,,,,,,plernpin-b07#p21,true
-b07-w62,b07,b07-l7,ขึ้นรถ,,lên xe,,,verb,,,,,,plernpin-b07#p22,true
-b07-w63,b07,b07-l7,ลงรถ,,xuống xe,,,verb,,,,,,plernpin-b07#p22,true
+b07-w62,b07,b07-l7,ขึ้นรถ,,lên xe,,,verb,,ขึ้นรถที่ป้ายนี้ครับ,Lên xe ở trạm này.,,,plernpin-b07#p22,true
+b07-w63,b07,b07-l7,ลงรถ,,xuống xe,,,verb,,ฉันจะลงรถที่ถนนข้าวสารค่ะ,Tôi sẽ xuống xe ở phố Khaosan.,,,plernpin-b07#p22,true
 b07-w64,b07,b07-l7,ขี่จักรยาน,,đi xe đạp; đạp xe đạp,,,verb,,,,,,plernpin-b07#p22,true
-b07-w65,b07,b07-l7,ช้าลง,,chậm xuống,,,verb,,,,,,plernpin-b07#p22,true
+b07-w65,b07,b07-l7,ช้าลง,,chậm xuống,,,verb,,ขับช้าลงหน่อยได้ไหมครับ,Lái chậm lại một chút được không ạ?,,,plernpin-b07#p22,true
 b07-w66,b07,b07-l7,ไปเร็วๆ,,đi nhanh nhanh,,,phrase,,,,,,plernpin-b07#p22,true
 b07-w67,b07,b07-l7,ตารางรถไฟ,,lịch trình tàu hỏa,,,noun,,,,,,plernpin-b07#p23,true
-b07-w68,b07,b07-l7,ช่องขายตั๋ว,,quầy bán vé,,,noun,,,,,,plernpin-b07#p23,true
-b07-w69,b07,b07-l7,เส้นทางรถเมล์,,tuyến đường xe bus,,,noun,,,,,,plernpin-b07#p23,true
-b07-w70,b07,b07-l7,เรียกแท็กซี่,,gọi taxi,,,verb,,,,,,plernpin-b07#p23,true
+b07-w68,b07,b07-l7,ช่องขายตั๋ว,,quầy bán vé,,ช่อง,noun,,ช่องขายตั๋วอยู่ทางซ้ายครับ,Quầy bán vé ở bên trái.,,,plernpin-b07#p23,true
+b07-w69,b07,b07-l7,เส้นทางรถเมล์,,tuyến đường xe bus,,สาย,noun,,,,,,plernpin-b07#p23,true
+b07-w70,b07,b07-l7,เรียกแท็กซี่,,gọi taxi,,,verb,,ช่วยเรียกแท็กซี่ให้หน่อยได้ไหมคะ,Gọi taxi giúp tôi được không ạ?,,,plernpin-b07#p23,true
 b07-w71,b07,b07-l7,ที่ไหน,,ở đâu?; chỗ nào?,,,pron,,,,,,plernpin-b07#p23,true
 b07-w72,b07,b07-l8,ที่นี่,,ở đây,,,pron,,,,,,plernpin-b07#p24,true
 b07-w73,b07,b07-l8,ที่นั่น,,ở đó,,,pron,,,,,,plernpin-b07#p24,true
 b07-w74,b07,b07-l8,ข้างบน,,bên trên,,,prep,,,,,,plernpin-b07#p24,true
 b07-w75,b07,b07-l8,ข้างล่าง,,bên dưới,,,prep,,,,,,plernpin-b07#p24,true
-b07-w76,b07,b07-l8,ข้างหน้า,,đằng trước,,,prep,,,,,,plernpin-b07#p24,true
-b07-w77,b07,b07-l8,ข้างหลัง,,đằng sau,,,prep,,,,,,plernpin-b07#p25,true
-b07-w78,b07,b07-l8,ถามทาง,,hỏi đường,,,verb,,,,,,plernpin-b07#p25,true
-b07-w79,b07,b07-l8,บอกทาง,,chỉ đường,,,verb,,,,,,plernpin-b07#p25,true
-b07-w80,b07,b07-l8,อยู่ทางซ้าย,,ở bên trái,,,phrase,,,,,,plernpin-b07#p25,true
+b07-w76,b07,b07-l8,ข้างหน้า,,đằng trước,,,prep,,ไปรษณีย์อยู่ข้างหน้าค่ะ,Bưu điện ở đằng trước.,,,plernpin-b07#p24,true
+b07-w77,b07,b07-l8,ข้างหลัง,,đằng sau,,,prep,,ที่จอดรถอยู่ข้างหลังโรงแรมครับ,Bãi đỗ xe ở đằng sau khách sạn.,,,plernpin-b07#p25,true
+b07-w78,b07,b07-l8,ถามทาง,,hỏi đường,,,verb,,ผมขอถามทางหน่อยครับ,Cho tôi hỏi đường một chút.,,,plernpin-b07#p25,true
+b07-w79,b07,b07-l8,บอกทาง,,chỉ đường,,,verb,,ช่วยบอกทางไปสถานีรถไฟหน่อยได้ไหมคะ,Chỉ giúp tôi đường đến ga tàu được không ạ?,,,plernpin-b07#p25,true
+b07-w80,b07,b07-l8,อยู่ทางซ้าย,,ở bên trái,,,phrase,,ธนาคารอยู่ทางซ้ายครับ,Ngân hàng ở bên trái.,,,plernpin-b07#p25,true
 b07-w81,b07,b07-l8,อยู่ทางขวา,,ở bên phải,,,phrase,,,,,,plernpin-b07#p25,true
-b07-w82,b07,b07-l9,อยู่ติดกับ,,ở sát với; ở cạnh với,,,phrase,,,,,,plernpin-b07#p26,true
+b07-w82,b07,b07-l9,อยู่ติดกับ,,ở sát với; ở cạnh với,,,phrase,,ร้านอาหารอยู่ติดกับโรงแรมค่ะ,Nhà hàng ở sát cạnh khách sạn.,,,plernpin-b07#p26,true
 b07-w83,b07,b07-l9,ตรงกลาง,,chính giữa,,,prep,,,,,,plernpin-b07#p26,true
-b07-w84,b07,b07-l9,ข้างใน,,bên trong,,,prep,,,,,,plernpin-b07#p26,true
+b07-w84,b07,b07-l9,ข้างใน,,bên trong,,,prep,,ข้างในศูนย์การค้ามีโรงหนังครับ,Bên trong trung tâm thương mại có rạp chiếu phim.,,,plernpin-b07#p26,true
 b07-w85,b07,b07-l9,ข้างนอก,,bên ngoài,,,prep,,,,,,plernpin-b07#p26,true
-b07-w86,b07,b07-l9,หลงทาง,,lạc đường,,,verb,,,,,,plernpin-b07#p26,true
+b07-w86,b07,b07-l9,หลงทาง,,lạc đường,,,verb,,ฉันหลงทางค่ะ ช่วยหน่อยได้ไหมคะ,"Tôi bị lạc đường, giúp tôi được không ạ?",,,plernpin-b07#p26,true
 b07-w87,b07,b07-l9,ระยะทาง,,khoảng cách; quãng đường,,,noun,,,,,,plernpin-b07#p27,true
-b07-w88,b07,b07-l9,กิโลเมตร,,ki lô mét; km,,,noun,,,,,,plernpin-b07#p27,true
+b07-w88,b07,b07-l9,กิโลเมตร,,ki lô mét; km,,,noun,,จากที่นี่ไปสนามบินประมาณสามสิบกิโลเมตรค่ะ,Từ đây đến sân bay khoảng 30 km.,,,plernpin-b07#p27,true
 b07-w89,b07,b07-l9,ไมล์,,dặm,"1 dặm = 1,609 km",,noun,,,,,,plernpin-b07#p27,true
 b07-w90,b07,b07-l9,เมตร,,mét; m,,,noun,,,,,,plernpin-b07#p27,true
-b07-w91,b07,b07-l9,ใกล้,,gần,,,adj,,,,,,plernpin-b07#p27,true
-b07-w92,b07,b07-l10,ไกล,,xa,,,adj,,,,,,plernpin-b07#p28,true
-b07-w93,b07,b07-l10,ตรงข้าม,,đối diện,,,prep,,,,,,plernpin-b07#p28,true
+b07-w91,b07,b07-l9,ใกล้,,gần,,,adj,,โรงแรมอยู่ใกล้สถานีรถไฟครับ,Khách sạn ở gần ga tàu.,,,plernpin-b07#p27,true
+b07-w92,b07,b07-l10,ไกล,,xa,,,adj,,บ้านคุณไกลจากที่นี่ไหมคะ,Nhà bạn có xa đây không?,,,plernpin-b07#p28,true
+b07-w93,b07,b07-l10,ตรงข้าม,,đối diện,,,prep,,เซเว่นอยู่ตรงข้ามโรงเรียนค่ะ,7-Eleven ở đối diện trường học.,,,plernpin-b07#p28,true
 b07-w94,b07,b07-l10,สถานที่,,địa điểm,,,noun,,,,,,plernpin-b07#p28,true
-b07-w95,b07,b07-l10,ผ่าน,,qua; đi qua,,,verb,,,,,,plernpin-b07#p28,true
-b07-w96,b07,b07-l10,นานเท่าไหร่,,bao nhiêu lâu,,,phrase,,,,,,plernpin-b07#p28,true
-b07-w97,b07,b07-l10,เดี๋ยวนี้,,ngay bây giờ; ngay lúc này,,,adv,,,,,,plernpin-b07#p29,true
+b07-w95,b07,b07-l10,ผ่าน,,qua; đi qua,,,verb,,รถเมล์สายนี้ผ่านสนามกีฬาไหมคะ,Xe buýt tuyến này có đi qua sân vận động không ạ?,,,plernpin-b07#p28,true
+b07-w96,b07,b07-l10,นานเท่าไหร่,,bao nhiêu lâu,,,phrase,,นั่งรถไฟไปเชียงใหม่ใช้เวลานานเท่าไหร่ครับ,Đi tàu đến Chiang Mai mất bao lâu?,,,plernpin-b07#p28,true
+b07-w97,b07,b07-l10,เดี๋ยวนี้,,ngay bây giờ; ngay lúc này,,,adv,,ผมต้องไปสนามบินเดี๋ยวนี้ครับ,Tôi phải đi sân bay ngay bây giờ.,,,plernpin-b07#p29,true
 b07-w98,b07,b07-l10,ยอมให้,,chấp nhận cho,,,verb,,,,,,plernpin-b07#p29,true
 b07-w99,b07,b07-l10,พิจารณา,,xem xét; cân nhắc,,,verb,,,,,,plernpin-b07#p29,true
-b07-w100,b07,b07-l10,ช่วย,,giúp,,,verb,,,,,,plernpin-b07#p29,true
+b07-w100,b07,b07-l10,ช่วย,,giúp,,,verb,,ช่วยผมหน่อยได้ไหมครับ,Giúp tôi một chút được không?,,,plernpin-b07#p29,true
 b07-w101,b07,b07-l10,กังวลใจ,,lo lắng; băn khoăn,,,adj,,,,,,plernpin-b07#p29,true
 b06-w01,b06,b06-l1,เช้า,ตอนเช้า,buổi sáng,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
 b06-w02,b06,b06-l1,เที่ยงวัน,ตอนเที่ยงวัน|เที่ยง,buổi trưa,(ตอน) có thể thêm phía trước; เที่ยงวัน / เที่ยง = 12 giờ trưa,,noun,,,,,,plernpin-b06#p3,true
