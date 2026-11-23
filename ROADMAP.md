@@ -21,12 +21,12 @@
 
 > **🟢 M12.7 — Responsive iPhone & iPad** (7/7 task, mở + xong 2026-11-22, phản hồi CAT, plan 0.15, spec `docs/design/screens/SCR-00-responsive.md`; nhánh `m12.7-responsive` → **PR #38**): phone = thanh tab dưới + sheet "Thêm", tablet = rail, desktop giữ nguyên; trang 1 cột, Sổ từ dạng thẻ, 8 trò bằng chạm, nhập liệu iOS, meta PWA iOS. **Owner duyệt UI mobile trên iPhone thật 2026-11-22**; iPad theo dõi thêm trong CAT.
 
-> **🔵 M12.8 — Trò chơi: chọn nội dung để ôn** (mở 2026-11-22, phản hồi CAT, plan 0.16): spec **`docs/design/screens/SCR-08-source.md`** (owner duyệt hướng 2026-11-22). T12.8.2–T12.8.5 xong (nhánh `m12.8-game-source` → **PR M12.8**, 5/6 task). PR UI → **owner xem link preview rồi merge** (không tự merge).
+> **🟢 M12.8 — Trò chơi: chọn nội dung để ôn** (6/6 task, mở 2026-11-22, xong 2026-11-23, phản hồi CAT, plan 0.16, spec `docs/design/screens/SCR-08-source.md`; PR #42): nút "Nội dung ôn" + bộ chọn (ôn nhanh / nhiều bài / bài học, chỉ mục đã học), "Chơi ôn" từ bài học / trang bài / Tổng quan, "Đổi nội dung", kỷ lục theo trò. **Owner thử preview và duyệt 2026-11-23.**
 
 > **🟢 TC.4 — Làm đầy đủ các bài còn lại** (mở 2026-11-23, owner; **xong 2026-11-23** — TC.4a–h, đã merge #40, #41, #43–#48): đưa `b01`–`b08`, `b11`, `b12` và các chuyên đề thiếu câu lên chuẩn TC.3 (hình, loại từ, ví dụ, ≥ 5 câu / bài học, hội thoại). Thứ tự `b11` → `b12` → `b08` … `b01` → `c03`, `c06`, `c07` … 8 PR nhỏ (TC.4a–h), tự merge (8.1). Chi tiết mục TC.
 
 > **⏳ Việc chờ owner (cập nhật 2026-11-23)** — agent không tự làm, tick khi xong:
-> - [ ] **PR M12.8 (`m12.8-game-source`) — T12.8.6:** thử link preview của PR: nút "Nội dung ôn" trên `/games` → bộ chọn (Ôn nhanh: Tất cả đã học / Học gần đây / Cần ôn / Bài vừa học; chọn nhiều bài / bài học; Chỉ mục đã học / Cả mục chưa học), "Chơi ôn bài này" ở màn hoàn thành bài học, "Chơi ôn" ở trang bài, thẻ "Ôn bằng trò chơi" ở Tổng quan, "Đổi nội dung" ở màn kết quả; xem baseline mới (`game-source.spec.ts-snapshots`, `source-picker-*`, `games-*`, `games-v2-*`, `unit-*` 1024) → merge. Không tự merge (8.1: giao diện).
+> - [x] **PR M12.8 #42 — T12.8.6:** owner thử preview và duyệt (2026-11-23) → merge.
 > - [x] **PR M12.7 #38 — T12.7.7:** owner thử UI mobile trên **iPhone thật** ✅ (2026-11-22) → cho merge. **iPad:** theo dõi thêm trong CAT (báo agent nếu lỗi).
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
 > - [x] ~~**Azure SWA hết chỗ preview:**~~ đã dọn 2026-11-21 (B2). deploy preview của #23 lỗi *"maximum number of staging environments"*. Merge/đóng PR cũ (preview tự xóa khi PR đóng) hoặc xóa environment cũ ở Azure Portal → Static Web App → Environments, rồi chạy lại CI.
@@ -104,6 +104,7 @@ M0.5b Design các màn còn lại: làm dần, mỗi màn xong TRƯỚC mileston
 | ~~M10.5~~ | → chuyển lên M7.5 (v7.2) | — | — |
 | M12 | Settings, export/import, PWA, E2E đủ, go-live | 🟢 CAT | M10 ✅; công bố chính thức cần owner B1, B4–B7, B9 + smoke test |
 | M12.7 | **Responsive iPhone & iPad** (phản hồi CAT, plan 0.15) | 🟢 | SCR-00 v2 ✅ — PR #38 |
+| M12.8 | **Trò chơi: chọn nội dung để ôn** (phản hồi CAT, plan 0.16) | 🟢 | SCR-08 v3 ✅ — PR #42 |
 
 Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không làm cho tới khi Phase 1 xong.**
 
@@ -648,7 +649,7 @@ Nhánh gợi ý `m12.7-responsive` (base `main`). Có thể chia 2 PR: (1) khung
 - [x] T12.7.6 E2E: project WebKit **iPhone 15**, **iPad mini dọc**, **iPad Pro 11 ngang**; test "không tràn ngang" mọi route, điều hướng tab + sheet, 1 ván Máy bay + Mê cung bằng chạm, axe; baseline ảnh phone/tablet. Giữ nguyên test desktop.
 - [x] T12.7.7 Owner thử iPhone + iPad thật qua link preview → merge. Agent ghi nhật ký, cập nhật baseline cần xem. — **Owner duyệt UI mobile trên iPhone thật 2026-11-22**, cho merge #38; iPad theo dõi thêm trong CAT.
 
-### M12.8 — Trò chơi: chọn nội dung để ôn 🔵 (mở 2026-11-22, phản hồi CAT; plan 0.16, spec SCR-08 v3)
+### M12.8 — Trò chơi: chọn nội dung để ôn 🟢 (mở 2026-11-22, xong 2026-11-23, phản hồi CAT; plan 0.16, spec SCR-08 v3)
 
 Nhánh gợi ý `m12.8-game-source` (base `main`).
 - [x] T12.8.1 Spec `docs/design/screens/SCR-08-source.md` (Claude Desktop) — owner duyệt hướng 2026-11-22.
@@ -656,7 +657,7 @@ Nhánh gợi ý `m12.8-game-source` (base `main`).
 - [x] T12.8.3 UI `/games`: nút "Nội dung ôn" + bộ chọn (dialog desktop / bottom sheet phone): chip Ôn nhanh, danh sách Giáo trình / Chuyên đề → bài học (checkbox, số đã học / tổng), lọc chỉ-mục-đã-học, chân tổng + "Chơi với nội dung này"; tab kỹ năng + thẻ trò đếm theo nội dung đã chọn.
 - [x] T12.8.4 Lối vào: "Chơi ôn bài này" ở màn hoàn thành bài học, "Chơi ôn" ở trang bài / chuyên đề, thẻ "Ôn bằng trò chơi" ở Tổng quan, "Đổi nội dung" ở màn kết quả; `?source=` theo spec §4.
 - [x] T12.8.5 E2E + axe + baseline (phone + desktop) theo spec §5.
-- [ ] T12.8.6 Owner xem link preview → merge. Agent ghi nhật ký.
+- [x] T12.8.6 Owner xem link preview → merge. Agent ghi nhật ký. — **Owner duyệt 2026-11-23**, merge #42.
 
 ### Sau M12
 Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6) đầu Phase 2. Không làm trước khi owner mở.
@@ -669,6 +670,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-23 | M12.8 🟢 | T12.8.6: owner thử preview và duyệt → M12.8 xong (6/6), merge #42 (owner cho phép) | — | — | `m12.8-game-source` → #42 |
 | 2026-11-23 | M12.8 | **Tự merge #39** (docs M12.8 + TC.4, kèm sửa test giọng đọc WebKit Linux — loại tài liệu / test) và **#40, #41, #43–#48** (TC.4a–h — nội dung draft; TC.4 đã merge đủ). T12.8.2 core nguồn trò chơi theo nội dung ôn (`learned` · `recent` · `review` · `last-lesson` · `units:`/`lessons:` + `;new`, ưu tiên cần ôn / đến hạn, bỏ fallback lặng lẽ, đọc giá trị cũ `unit:<id>`) · T12.8.3 `/games` nút "Nội dung ôn" + bộ chọn (dialog / bottom sheet), tab kỹ năng đếm trò chơi được · T12.8.4 "Chơi ôn bài này", "Chơi ôn" trang bài, thẻ "Ôn bằng trò chơi", "Đổi nội dung"; kỷ lục theo trò (`all`) · T12.8.5 E2E `game-source.spec.ts` + bottom sheet ở `responsive.spec.ts`, axe, baseline. `E2E_PORT` cho Playwright | T12.8.6 | Owner xem preview + merge | `m12.8-game-source` → PR mới |
 | 2026-11-23 | TC.4h | **TC.4h** `c13`, `c09`, `c01`: rà lại 12 trang PDF (không sửa; gộp thẻ s-c13-027, s-c13-029 → ≤ 9), câu +32 (c13 32 → 40, c09 13 → 27, c01 6 → 16 — `c01-l2` 0 → 7) → mọi bài học ≥ 7 câu; ví dụ từ 120 cho 10 chuyên đề (c13, c09, c01, c02, c04, c05, c10, c11, c12, c14). **TC.4 xong.** PR gồm cả #43, #44, #45, #46, #47 (merge sau #47); E2E không chạy local — CI chạy (`lessons.spec` học trọn c01 giờ có Bài tập ở l2) | — | GV duyệt tiếng Thái Claude soạn | `content-tc4-c13-c09-c01` → PR |
 | 2026-11-23 | TC.4g | **TC.4g** `c06`, `c07`: rà lại 11 trang PDF (không sửa; s-c07-003 gộp thẻ 13 → 9), câu c06 3 → 31, c07 3 → 37 (mọi bài học ≥ 7 câu theo mẫu การ / ความ, thẻ nhiễu đổi การ ↔ ความ), ví dụ 43; mẫu câu đã đủ. PR gồm cả #43, #44, #45, #46 (merge sau #46); E2E không chạy local — CI chạy | TC.4h | GV duyệt tiếng Thái Claude soạn | `content-tc4-c06-c07` → PR |
