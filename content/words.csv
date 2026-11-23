@@ -680,115 +680,115 @@ b07-w98,b07,b07-l10,ยอมให้,,chấp nhận cho,,,verb,,,,,,plernpin-b
 b07-w99,b07,b07-l10,พิจารณา,,xem xét; cân nhắc,,,verb,,,,,,plernpin-b07#p29,true
 b07-w100,b07,b07-l10,ช่วย,,giúp,,,verb,,ช่วยผมหน่อยได้ไหมครับ,Giúp tôi một chút được không?,,,plernpin-b07#p29,true
 b07-w101,b07,b07-l10,กังวลใจ,,lo lắng; băn khoăn,,,adj,,,,,,plernpin-b07#p29,true
-b06-w01,b06,b06-l1,เช้า,ตอนเช้า,buổi sáng,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w01,b06,b06-l1,เช้า,ตอนเช้า,buổi sáng,(ตอน) có thể thêm phía trước,,noun,,ผมดื่มกาแฟทุกเช้าครับ,Sáng nào tôi cũng uống cà phê.,,,plernpin-b06#p3,true
 b06-w02,b06,b06-l1,เที่ยงวัน,ตอนเที่ยงวัน|เที่ยง,buổi trưa,(ตอน) có thể thêm phía trước; เที่ยงวัน / เที่ยง = 12 giờ trưa,,noun,,,,,,plernpin-b06#p3,true
-b06-w03,b06,b06-l1,บ่าย,ตอนบ่าย,buổi chiều,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
-b06-w04,b06,b06-l1,เย็น,ตอนเย็น,buổi chiều tối; buổi chiều muộn,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
+b06-w03,b06,b06-l1,บ่าย,ตอนบ่าย,buổi chiều,(ตอน) có thể thêm phía trước,,noun,,ตอนบ่ายเรามีเรียนภาษาไทยค่ะ,Buổi chiều chúng tôi có giờ học tiếng Thái.,,,plernpin-b06#p3,true
+b06-w04,b06,b06-l1,เย็น,ตอนเย็น,buổi chiều tối; buổi chiều muộn,(ตอน) có thể thêm phía trước,,noun,,ตอนเย็นฉันชอบไปเดินเล่นที่สวนค่ะ,Buổi chiều tối tôi thích đi dạo ở công viên.,,,plernpin-b06#p3,true
 b06-w05,b06,b06-l1,ค่ำ,ตอนค่ำ,buổi tối,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p3,true
-b06-w06,b06,b06-l1,ดึก,ตอนดึก,đêm khuya,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
+b06-w06,b06,b06-l1,ดึก,ตอนดึก,đêm khuya,(ตอน) có thể thêm phía trước,,noun,,เมื่อคืนผมนอนดึกมากครับ,Tối qua tôi ngủ rất muộn.,,,plernpin-b06#p4,true
 b06-w07,b06,b06-l1,เที่ยงคืน,ตอนเที่ยงคืน,nửa đêm; giữa đêm,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
 b06-w08,b06,b06-l1,กลางวัน,ตอนกลางวัน,ban ngày,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
-b06-w09,b06,b06-l1,กลางคืน,ตอนกลางคืน,ban đêm,(ตอน) có thể thêm phía trước,,noun,,,,,,plernpin-b06#p4,true
-b06-w10,b06,b06-l1,เวลาพระอาทิตย์ขึ้น,รุ่ง|รุ่งเช้า,mặt trời mọc; bình minh; rạng đông,,,noun,,,,,,plernpin-b06#p4,true
-b06-w11,b06,b06-l1,เวลาพระอาทิตย์ตก,,mặt trời lặn; hoàng hôn,,,noun,,,,,,plernpin-b06#p5,true
-b06-w12,b06,b06-l2,ชั่วโมง,,tiếng đồng hồ,,,noun,,,,,,plernpin-b06#p5,true
-b06-w13,b06,b06-l2,โมง,,giờ,,,noun,,,,,,plernpin-b06#p5,true
-b06-w14,b06,b06-l2,นาที,,phút,,,noun,,,,,,plernpin-b06#p5,true
+b06-w09,b06,b06-l1,กลางคืน,ตอนกลางคืน,ban đêm,(ตอน) có thể thêm phía trước,,noun,,กลางคืนที่นี่เงียบมากค่ะ,Ban đêm ở đây rất yên tĩnh.,noto:1f303,,plernpin-b06#p4,true
+b06-w10,b06,b06-l1,เวลาพระอาทิตย์ขึ้น,รุ่ง|รุ่งเช้า,mặt trời mọc; bình minh; rạng đông,,,noun,,เราตื่นเช้าไปดูพระอาทิตย์ขึ้นที่ทะเลค่ะ,Chúng tôi dậy sớm đi xem mặt trời mọc ở biển.,noto:1f305,,plernpin-b06#p4,true
+b06-w11,b06,b06-l1,เวลาพระอาทิตย์ตก,,mặt trời lặn; hoàng hôn,,,noun,,,,noto:1f307,,plernpin-b06#p5,true
+b06-w12,b06,b06-l2,ชั่วโมง,,tiếng đồng hồ,,,noun,,จากฮานอยไปกรุงเทพฯ บินประมาณสองชั่วโมงครับ,Từ Hà Nội đi Bangkok bay khoảng hai tiếng.,,,plernpin-b06#p5,true
+b06-w13,b06,b06-l2,โมง,,giờ,,,noun,,ตอนนี้สิบโมงแล้วค่ะ,Bây giờ 10 giờ rồi.,,,plernpin-b06#p5,true
+b06-w14,b06,b06-l2,นาที,,phút,,,noun,,รออีกห้านาทีนะครับ,Đợi thêm 5 phút nữa nhé.,,,plernpin-b06#p5,true
 b06-w15,b06,b06-l2,วินาที,,giây,,,noun,,,,,,plernpin-b06#p5,true
-b06-w16,b06,b06-l2,ครึ่ง,,nửa; rưỡi,,,noun,,,,,,plernpin-b06#p6,true
+b06-w16,b06,b06-l2,ครึ่ง,,nửa; rưỡi,,,noun,,ผมตื่นนอนหกโมงครึ่งครับ,Tôi thức dậy lúc 6 rưỡi.,,,plernpin-b06#p6,true
 b06-w17,b06,b06-l2,ตอน,,lúc,,,noun,,,,,,plernpin-b06#p6,true
-b06-w18,b06,b06-l2,ตอนสาย,,buổi sáng muộn (9h–11h sáng),dùng trong văn nói,,noun,,,,,,plernpin-b06#p6,true
+b06-w18,b06,b06-l2,ตอนสาย,,buổi sáng muộn (9h–11h sáng),dùng trong văn nói,,noun,,วันอาทิตย์ฉันตื่นตอนสายค่ะ,Chủ nhật tôi dậy vào buổi sáng muộn.,,,plernpin-b06#p6,true
 b06-w19,b06,b06-l2,ยามสาย,,buổi sáng muộn (9h–11h sáng),dùng trong văn đọc viết,,noun,,,,,,plernpin-b06#p6,true
 b06-w20,b06,b06-l2,ยามหนึ่ง,,9 giờ tối,,,noun,,,,,,plernpin-b06#p18,true
 b06-w21,b06,b06-l2,สองยาม,,nửa đêm (24h),,,noun,,,,,,plernpin-b06#p18,true
 b06-w22,b06,b06-l2,สามยาม,,3 giờ sáng,,,noun,,,,,,plernpin-b06#p18,true
-b06-w23,b06,b06-l3,นาฬิกา,,đồng hồ; giờ,viết tắt: น.,,noun,,,,,,plernpin-b06#p6,true
-b06-w24,b06,b06-l3,ตอนนี้,,bây giờ,,,adv,,,,,,plernpin-b06#p23,true
-b06-w25,b06,b06-l3,หรือยัง,,chưa?,,,particle,,,,,,plernpin-b06#p23,true
+b06-w23,b06,b06-l3,นาฬิกา,,đồng hồ; giờ,viết tắt: น.,เรือน,noun,,ประชุมเริ่มเวลาสิบสี่นาฬิกาค่ะ,Cuộc họp bắt đầu lúc 14 giờ.,noto:1f570-fe0f,,plernpin-b06#p6,true
+b06-w24,b06,b06-l3,ตอนนี้,,bây giờ,,,adv,,ตอนนี้ผมอยู่ที่ทำงานครับ,Bây giờ tôi đang ở chỗ làm.,,,plernpin-b06#p23,true
+b06-w25,b06,b06-l3,หรือยัง,,chưa?,,,particle,,คุณกินข้าวเช้าหรือยังคะ,Anh/chị ăn sáng chưa?,,,plernpin-b06#p23,true
 b06-w26,b06,b06-l3,ยัง,,chưa (làm),,,adv,,,,,,plernpin-b06#p23,true
 b06-w27,b06,b06-l3,เสร็จ,,xong,,,verb,,,,,,plernpin-b06#p23,true
-b06-w28,b06,b06-l3,เคย,,từng; đã từng,,,adv,,,,,,plernpin-b06#p23,true
+b06-w28,b06,b06-l3,เคย,,từng; đã từng,,,adv,,คุณเคยไปเชียงใหม่ไหมครับ,Bạn đã từng đi Chiang Mai chưa?,,,plernpin-b06#p23,true
 b06-w29,b06,b06-l3,วันละ,,mỗi ngày,per day,,adv,,,,,,plernpin-b06#p24,true
-b06-w30,b06,b06-l3,เกือบ,,gần; suýt,thời gian,,adv,,,,,,plernpin-b06#p24,true
-b06-w31,b06,b06-l3,เพิ่ง,,mới; vừa mới,,,adv,,,,,,plernpin-b06#p24,true
+b06-w30,b06,b06-l3,เกือบ,,gần; suýt,thời gian,,adv,,ตอนนี้เกือบเที่ยงแล้วค่ะ,Bây giờ gần trưa rồi.,,,plernpin-b06#p24,true
+b06-w31,b06,b06-l3,เพิ่ง,,mới; vừa mới,,,adv,,ผมเพิ่งมาถึงเมื่อสิบนาทีที่แล้วครับ,Tôi vừa mới đến cách đây 10 phút.,,,plernpin-b06#p24,true
 b06-w32,b06,b06-l3,เดี๋ยวนี้,,lúc này; ngay bây giờ,,,adv,,,,,,plernpin-b06#p24,true
 b06-w33,b06,b06-l3,ขณะนี้,,lúc này,,,adv,,,,,,plernpin-b06#p24,true
-b06-w34,b06,b06-l4,สักครู่,,một lát,,,adv,,,,,,plernpin-b06#p25,true
-b06-w35,b06,b06-l4,รอ,,đợi,,,verb,,,,,,plernpin-b06#p25,true
-b06-w36,b06,b06-l4,ประมาณ,,khoảng,,,adv,,,,,,plernpin-b06#p25,true
-b06-w37,b06,b06-l4,ก่อน,,trước,,,adv,,,,,,plernpin-b06#p25,true
-b06-w38,b06,b06-l4,หลัง,,sau,,,adv,,,,,,plernpin-b06#p25,true
-b06-w39,b06,b06-l4,ตั้งแต่,,từ (thời gian),,,prep,,,,,,plernpin-b06#p26,true
+b06-w34,b06,b06-l4,สักครู่,,một lát,,,adv,,กรุณารอสักครู่นะคะ,Làm ơn đợi một lát nhé.,,,plernpin-b06#p25,true
+b06-w35,b06,b06-l4,รอ,,đợi,,,verb,,ฉันรอคุณอยู่ที่หน้าร้านค่ะ,Tôi đang đợi anh ở trước cửa hàng.,,,plernpin-b06#p25,true
+b06-w36,b06,b06-l4,ประมาณ,,khoảng,,,adv,,ผมจะถึงประมาณบ่ายสามโมงครับ,Tôi sẽ đến khoảng 3 giờ chiều.,,,plernpin-b06#p25,true
+b06-w37,b06,b06-l4,ก่อน,,trước,,,adv,,ก่อนนอนฉันอ่านหนังสือทุกคืนค่ะ,Trước khi ngủ tối nào tôi cũng đọc sách.,,,plernpin-b06#p25,true
+b06-w38,b06,b06-l4,หลัง,,sau,,,adv,,หลังอาหารเที่ยงเราไปดื่มกาแฟกันครับ,Sau bữa trưa chúng tôi đi uống cà phê.,,,plernpin-b06#p25,true
+b06-w39,b06,b06-l4,ตั้งแต่,,từ (thời gian),,,prep,,ร้านเปิดตั้งแต่เจ็ดโมงเช้าค่ะ,Cửa hàng mở cửa từ 7 giờ sáng.,,,plernpin-b06#p26,true
 b06-w40,b06,b06-l4,ช้า,,chậm,,,adj,,,,,,plernpin-b06#p26,true
 b06-w41,b06,b06-l4,เร็ว,,nhanh,,,adj,,,,,,plernpin-b06#p26,true
 b06-w42,b06,b06-l4,ไวๆ,,nhanh nhanh,,,adv,,,,,,plernpin-b06#p26,true
-b06-w43,b06,b06-l4,ด่วน,,gấp,,,adj,,,,,,plernpin-b06#p26,true
-b06-w44,b06,b06-l5,ทันที,,ngay lập tức,,,adv,,,,,,plernpin-b06#p27,true
+b06-w43,b06,b06-l4,ด่วน,,gấp,,,adj,,ผมมีธุระด่วนครับ,Tôi có việc gấp.,,,plernpin-b06#p26,true
+b06-w44,b06,b06-l5,ทันที,,ngay lập tức,,,adv,,พอได้ยินข่าว เขาก็ออกไปทันทีค่ะ,"Vừa nghe tin, anh ấy đi ra ngay lập tức.",,,plernpin-b06#p27,true
 b06-w45,b06,b06-l5,เลย,,luôn,,,adv,,,,,,plernpin-b06#p27,true
 b06-w46,b06,b06-l5,ถึง,,đến (thời gian),GV ghi: ถึง (เวลา),,prep,,,,,,plernpin-b06#p27,true
 b06-w47,b06,b06-l5,นะ,,nhé!,,,particle,,,,,,plernpin-b06#p27,true
 b06-w48,b06,b06-l5,มาช้า,,đến muộn; đến chậm,,,verb,,,,,,plernpin-b06#p27,true
-b06-w49,b06,b06-l5,มาสาย,,đến muộn (so với giờ hẹn),,,verb,,,,,,plernpin-b06#p28,true
+b06-w49,b06,b06-l5,มาสาย,,đến muộn (so với giờ hẹn),,,verb,,ขอโทษครับ ผมมาสายสิบนาที,"Xin lỗi, tôi đến muộn 10 phút.",,,plernpin-b06#p28,true
 b06-w50,b06,b06-l5,จะ,,định; sẽ,,,adv,,,,,,plernpin-b06#p28,true
-b06-w51,b06,b06-l5,ทุก,,mọi,,,adj,,,,,,plernpin-b06#p28,true
-b06-w52,b06,b06-l5,เริ่ม,,bắt đầu,,,verb,,,,,,plernpin-b06#p28,true
-b06-w53,b06,b06-l5,เลิก,,tan; kết thúc,,,verb,,,,,,plernpin-b06#p28,true
+b06-w51,b06,b06-l5,ทุก,,mọi,,,adj,,ฉันออกกำลังกายทุกเช้าค่ะ,Sáng nào tôi cũng tập thể dục.,,,plernpin-b06#p28,true
+b06-w52,b06,b06-l5,เริ่ม,,bắt đầu,,,verb,,หนังเริ่มฉายสองทุ่มครับ,Phim bắt đầu chiếu lúc 8 giờ tối.,,,plernpin-b06#p28,true
+b06-w53,b06,b06-l5,เลิก,,tan; kết thúc,,,verb,,ผมเลิกงานห้าโมงเย็นครับ,Tôi tan làm lúc 5 giờ chiều.,,,plernpin-b06#p28,true
 b06-w54,b06,b06-l6,ระยะ,ระยะเวลา,khoảng (thời gian); giai đoạn,GV ghi: ระยะ (เวลา),,noun,,,,,,plernpin-b06#p29,true
 b06-w55,b06,b06-l6,มืด,,tối; u tối,,,adj,,,,,,plernpin-b06#p29,true
-b06-w56,b06,b06-l6,เช้ามืด,,tờ mờ sáng; rạng sáng,,,noun,,,,,,plernpin-b06#p29,true
+b06-w56,b06,b06-l6,เช้ามืด,,tờ mờ sáng; rạng sáng,,,noun,,พ่อตื่นตั้งแต่เช้ามืดทุกวันครับ,Ngày nào bố cũng dậy từ lúc tờ mờ sáng.,,,plernpin-b06#p29,true
 b06-w57,b06,b06-l6,หัวค่ำ,,sẩm tối; đầu giờ tối,,,noun,,,,,,plernpin-b06#p29,true
-b06-w58,b06,b06-l6,ครั้ง,,lần,,,noun,,,,,,plernpin-b06#p29,true
-b06-w59,b06,b06-l6,ระหว่าง,,trong suốt khoảng (thời gian),GV ghi: ระหว่าง (เวลา),,prep,,,,,,plernpin-b06#p30,true
+b06-w58,b06,b06-l6,ครั้ง,,lần,,,noun,,ผมเคยไปภูเก็ตสองครั้งครับ,Tôi đã đi Phuket hai lần.,,,plernpin-b06#p29,true
+b06-w59,b06,b06-l6,ระหว่าง,,trong suốt khoảng (thời gian),GV ghi: ระหว่าง (เวลา),,prep,,ห้ามใช้โทรศัพท์ระหว่างเรียนค่ะ,Cấm dùng điện thoại trong giờ học.,,,plernpin-b06#p30,true
 b06-w60,b06,b06-l6,ทุกครั้ง,,mọi lúc; mỗi lúc,,,adv,,,,,,plernpin-b06#p30,true
-b06-w61,b06,b06-l6,บางครั้ง,,đôi khi; thỉnh thoảng,,,adv,,,,,,plernpin-b06#p30,true
-b06-w62,b06,b06-l6,นานๆครั้ง,,lâu lâu một lần,,,adv,,,,,,plernpin-b06#p30,true
-b06-w63,b06,b06-l6,บ่อย,,hay; thường xuyên,,,adv,,,,,,plernpin-b06#p30,true
+b06-w61,b06,b06-l6,บางครั้ง,,đôi khi; thỉnh thoảng,,,adv,,บางครั้งฉันก็กินข้าวคนเดียวค่ะ,Đôi khi tôi ăn cơm một mình.,,,plernpin-b06#p30,true
+b06-w62,b06,b06-l6,นานๆครั้ง,,lâu lâu một lần,,,adv,,ผมไปเที่ยวต่างประเทศนานๆครั้งครับ,Lâu lâu tôi mới đi du lịch nước ngoài một lần.,,,plernpin-b06#p30,true
+b06-w63,b06,b06-l6,บ่อย,,hay; thường xuyên,,,adv,,คุณมาที่นี่บ่อยไหมครับ,Bạn có hay đến đây không?,,,plernpin-b06#p30,true
 b06-w64,b06,b06-l7,บ่อยๆ,,hay; thường xuyên,nhấn mạnh,,adv,,,,,,plernpin-b06#p31,true
-b06-w65,b06,b06-l7,เสมอ,,luôn luôn,,,adv,,,,,,plernpin-b06#p31,true
+b06-w65,b06,b06-l7,เสมอ,,luôn luôn,,,adv,,เธอยิ้มเสมอค่ะ,Cô ấy luôn luôn mỉm cười.,,,plernpin-b06#p31,true
 b06-w66,b06,b06-l7,เสมอๆ,,luôn luôn,nhấn mạnh,,adv,,,,,,plernpin-b06#p31,true
-b06-w67,b06,b06-l7,มักจะ,,thường hay,,,adv,,,,,,plernpin-b06#p31,true
-b06-w68,b06,b06-l7,ตรงเวลา,,đúng giờ,,,adj,,,,,,plernpin-b06#p31,true
-b06-w69,b06,b06-l7,ทัน,ทันเวลา,kịp; kịp thời gian,,,verb,,,,,,plernpin-b06#p32,true
-b06-w70,b06,b06-l7,เสียเวลา,,tốn thì giờ; mất thời gian,,,verb,,,,,,plernpin-b06#p32,true
+b06-w67,b06,b06-l7,มักจะ,,thường hay,,,adv,,วันเสาร์ผมมักจะไปตลาดครับ,Thứ bảy tôi thường hay đi chợ.,,,plernpin-b06#p31,true
+b06-w68,b06,b06-l7,ตรงเวลา,,đúng giờ,,,adj,,รถไฟออกตรงเวลาครับ,Tàu hỏa khởi hành đúng giờ.,,,plernpin-b06#p31,true
+b06-w69,b06,b06-l7,ทัน,ทันเวลา,kịp; kịp thời gian,,,verb,,ถ้ารีบไปตอนนี้ยังทันค่ะ,Nếu đi gấp bây giờ thì vẫn còn kịp.,,,plernpin-b06#p32,true
+b06-w70,b06,b06-l7,เสียเวลา,,tốn thì giờ; mất thời gian,,,verb,,อย่าเสียเวลาเลยครับ,Đừng mất thời gian nữa.,,,plernpin-b06#p32,true
 b06-w71,b06,b06-l7,ได้เวลา,,đến giờ,thời gian phù hợp để làm gì đó,,phrase,,,,,,plernpin-b06#p32,true
 b06-w72,b06,b06-l7,ถึงเวลา,,đến giờ,,,phrase,,,,,,plernpin-b06#p32,true
-b06-w73,b06,b06-l7,หมดเวลา,,hết giờ,,,phrase,,,,,,plernpin-b06#p32,true
-b06-w74,b06,b06-l8,ไม่มีเวลา,,không có thời gian,,,phrase,,,,,,plernpin-b06#p33,true
-b06-w75,b06,b06-l8,เกินเวลา,,quá giờ,,,phrase,,,,,,plernpin-b06#p33,true
+b06-w73,b06,b06-l7,หมดเวลา,,hết giờ,,,phrase,,หมดเวลาสอบแล้วค่ะ,Hết giờ thi rồi.,,,plernpin-b06#p32,true
+b06-w74,b06,b06-l8,ไม่มีเวลา,,không có thời gian,,,phrase,,ช่วงนี้ผมไม่มีเวลาเลยครับ,Dạo này tôi chẳng có thời gian.,,,plernpin-b06#p33,true
+b06-w75,b06,b06-l8,เกินเวลา,,quá giờ,,,phrase,,ประชุมเกินเวลาไปสามสิบนาทีค่ะ,Cuộc họp quá giờ 30 phút.,,,plernpin-b06#p33,true
 b06-w76,b06,b06-l8,นอกเวลา,,ngoài giờ,,,phrase,,,,,,plernpin-b06#p33,true
-b06-w77,b06,b06-l8,นัด,,hẹn,,,verb,,,,,,plernpin-b06#p33,true
-b06-w78,b06,b06-l8,ผิดนัด,,sai hẹn,,,verb,,,,,,plernpin-b06#p33,true
+b06-w77,b06,b06-l8,นัด,,hẹn,,,verb,,เรานัดเจอกันที่ร้านกาแฟตอนสิบโมงค่ะ,Chúng tôi hẹn gặp nhau ở quán cà phê lúc 10 giờ.,,,plernpin-b06#p33,true
+b06-w78,b06,b06-l8,ผิดนัด,,sai hẹn,,,verb,,ขอโทษที่ผิดนัดนะครับ,Xin lỗi vì đã sai hẹn nhé.,,,plernpin-b06#p33,true
 b06-w79,b06,b06-l8,ผิดเวลา,,sai giờ,,,phrase,,,,,,plernpin-b06#p34,true
 b06-w80,b06,b06-l8,ฆ่าเวลา,,giết thời gian,,,verb,,,,,,plernpin-b06#p34,true
-b06-w81,b06,b06-l8,เปิด,,mở cửa (thời gian),GV ghi: เปิด (เวลา),,verb,,,,,,plernpin-b06#p34,true
-b06-w82,b06,b06-l8,ปิด,,đóng cửa (thời gian),GV ghi: ปิด (เวลา),,verb,,,,,,plernpin-b06#p34,true
-b06-w83,b06,b06-l8,ใช้เวลา,,dành bao nhiêu thời gian vào làm việc gì đó,,,verb,,,,,,plernpin-b06#p34,true
-b06-w84,b06,b06-l9,ตลอดไป,,mãi mãi,,,adv,,,,,,plernpin-b06#p35,true
-b06-w85,b06,b06-l9,ตลอดเวลา,,suốt,,,adv,,,,,,plernpin-b06#p35,true
-b06-w86,b06,b06-l9,สนามบิน,,sân bay,,,noun,,,,,,plernpin-b06#p35,true
-b06-w87,b06,b06-l9,ธนาคาร,,ngân hàng,,,noun,,,,,,plernpin-b06#p35,true
-b06-w88,b06,b06-l9,ฉาย,,chiếu,,,verb,,,,,,plernpin-b06#p35,true
-b05-w01,b05,b05-l1,วันจันทร์,,thứ hai,đọc: วัน-จัน,,noun,,,,,,plernpin-b05#p3,true
+b06-w81,b06,b06-l8,เปิด,,mở cửa (thời gian),GV ghi: เปิด (เวลา),,verb,,ไปรษณีย์เปิดแปดโมงครึ่งค่ะ,Bưu điện mở cửa lúc 8 rưỡi.,,,plernpin-b06#p34,true
+b06-w82,b06,b06-l8,ปิด,,đóng cửa (thời gian),GV ghi: ปิด (เวลา),,verb,,ห้างปิดสี่ทุ่มครับ,Trung tâm thương mại đóng cửa lúc 10 giờ tối.,,,plernpin-b06#p34,true
+b06-w83,b06,b06-l8,ใช้เวลา,,dành bao nhiêu thời gian vào làm việc gì đó,,,verb,,จากบ้านไปที่ทำงานใช้เวลาครึ่งชั่วโมงครับ,Từ nhà đến chỗ làm mất nửa tiếng.,,,plernpin-b06#p34,true
+b06-w84,b06,b06-l9,ตลอดไป,,mãi mãi,,,adv,,ฉันจะรักคุณตลอดไปค่ะ,Em sẽ yêu anh mãi mãi.,,,plernpin-b06#p35,true
+b06-w85,b06,b06-l9,ตลอดเวลา,,suốt,,,adv,,เขาเล่นโทรศัพท์ตลอดเวลาครับ,Anh ấy dùng điện thoại suốt.,,,plernpin-b06#p35,true
+b06-w86,b06,b06-l9,สนามบิน,,sân bay,,แห่ง,noun,,ผมต้องไปถึงสนามบินก่อนหกโมงเช้าครับ,Tôi phải đến sân bay trước 6 giờ sáng.,,,plernpin-b06#p35,true
+b06-w87,b06,b06-l9,ธนาคาร,,ngân hàng,,แห่ง,noun,,ธนาคารปิดบ่ายสี่โมงค่ะ,Ngân hàng đóng cửa lúc 4 giờ chiều.,noto:1f3e6,,plernpin-b06#p35,true
+b06-w88,b06,b06-l9,ฉาย,,chiếu,,,verb,,หนังเรื่องนี้ฉายรอบสุดท้ายสี่ทุ่มครับ,Phim này chiếu suất cuối lúc 10 giờ tối.,,,plernpin-b06#p35,true
+b05-w01,b05,b05-l1,วันจันทร์,,thứ hai,đọc: วัน-จัน,,noun,,วันจันทร์ผมเริ่มทำงานแปดโมงครับ,Thứ hai tôi bắt đầu làm việc lúc 8 giờ.,,,plernpin-b05#p3,true
 b05-w02,b05,b05-l1,วันอังคาร,,thứ ba,đọc: วัน-อัง-คาน,,noun,,,,,,plernpin-b05#p3,true
 b05-w03,b05,b05-l1,วันพุธ,,thứ tư,đọc: วัน-พุด,,noun,,,,,,plernpin-b05#p3,true
 b05-w04,b05,b05-l1,วันพฤหัสบดี,,thứ năm,đọc: วัน-พะ-รึ-หัด-สะ-บอ-ดี,,noun,,,,,,plernpin-b05#p3,true
-b05-w05,b05,b05-l1,วันศุกร์,,thứ sáu,đọc: วัน-สุก,,noun,,,,,,plernpin-b05#p3,true
+b05-w05,b05,b05-l1,วันศุกร์,,thứ sáu,đọc: วัน-สุก,,noun,,วันศุกร์นี้เราไปกินข้าวด้วยกันไหมคะ,Thứ sáu này mình đi ăn cơm cùng nhau không?,,,plernpin-b05#p3,true
 b05-w06,b05,b05-l1,วันเสาร์,,thứ bảy,đọc: วัน-เสา,,noun,,,,,,plernpin-b05#p4,true
-b05-w07,b05,b05-l1,วันอาทิตย์,,chủ nhật,đọc: วัน-อา-ทิด,,noun,,,,,,plernpin-b05#p4,true
-b05-w08,b05,b05-l1,สัปดาห์,อาทิตย์,tuần,สัปดาห์ = อาทิตย์,,noun,,,,,,plernpin-b05#p5,true
-b05-w09,b05,b05-l2,วันนี้,,hôm nay,,,noun,,,,,,plernpin-b05#p5,true
-b05-w10,b05,b05-l2,พรุ่งนี้,,ngày mai,,,noun,,,,,,plernpin-b05#p5,true
-b05-w11,b05,b05-l2,มะรืนนี้,,ngày kia,,,noun,,,,,,plernpin-b05#p5,true
+b05-w07,b05,b05-l1,วันอาทิตย์,,chủ nhật,đọc: วัน-อา-ทิด,,noun,,วันอาทิตย์ฉันไม่ทำงานค่ะ,Chủ nhật tôi không làm việc.,,,plernpin-b05#p4,true
+b05-w08,b05,b05-l1,สัปดาห์,อาทิตย์,tuần,สัปดาห์ = อาทิตย์,,noun,,สัปดาห์หน้าผมจะไปกรุงเทพฯครับ,Tuần sau tôi sẽ đi Bangkok.,,,plernpin-b05#p5,true
+b05-w09,b05,b05-l2,วันนี้,,hôm nay,,,noun,,วันนี้อากาศดีมากค่ะ,Hôm nay thời tiết rất đẹp.,,,plernpin-b05#p5,true
+b05-w10,b05,b05-l2,พรุ่งนี้,,ngày mai,,,noun,,พรุ่งนี้เจอกันนะครับ,Ngày mai gặp nhé.,,,plernpin-b05#p5,true
+b05-w11,b05,b05-l2,มะรืนนี้,,ngày kia,,,noun,,มะรืนนี้เป็นวันเกิดของแม่ค่ะ,Ngày kia là sinh nhật của mẹ.,,,plernpin-b05#p5,true
 b05-w12,b05,b05-l2,มะเรื่องนี้,,ngày thứ 3 (tính từ ngày hôm nay),,,noun,,,,,,plernpin-b05#p5,true
-b05-w13,b05,b05-l2,เมื่อวาน,,hôm qua,,,noun,,,,,,plernpin-b05#p6,true
+b05-w13,b05,b05-l2,เมื่อวาน,,hôm qua,,,noun,,เมื่อวานฉันไปตลาดค่ะ,Hôm qua tôi đi chợ.,,,plernpin-b05#p6,true
 b05-w14,b05,b05-l2,เมื่อวานซืน,,hôm kia,,,noun,,,,,,plernpin-b05#p6,true
 b05-w15,b05,b05-l2,สามวันก่อน,,ba ngày trước,,,noun,,,,,,plernpin-b05#p6,true
-b05-w16,b05,b05-l2,อีกสามวัน,,ba ngày nữa,,,noun,,,,,,plernpin-b05#p6,true
+b05-w16,b05,b05-l2,อีกสามวัน,,ba ngày nữa,,,noun,,อีกสามวันก็ถึงวันเกิดของฉันแล้วค่ะ,Ba ngày nữa là đến sinh nhật tôi rồi.,,,plernpin-b05#p6,true
 b05-w17,b05,b05-l2,สองสามวัน,,2-3 ngày,,,noun,,,,,,plernpin-b05#p6,true
-b05-w18,b05,b05-l3,มกราคม,,tháng 1,đọc: มะ-กะ-รา-คม; viết tắt: ม.ค.,,noun,,,,,,plernpin-b05#p13,true
-b05-w19,b05,b05-l3,กุมภาพันธ์,,tháng 2,đọc: กุม-พา-พัน; viết tắt: ก.พ.,,noun,,,,,,plernpin-b05#p13,true
+b05-w18,b05,b05-l3,มกราคม,,tháng 1,đọc: มะ-กะ-รา-คม; viết tắt: ม.ค.,,noun,,วันขึ้นปีใหม่สากลตรงกับวันที่หนึ่งมกราคมค่ะ,Tết dương lịch là ngày 1 tháng 1.,,,plernpin-b05#p13,true
+b05-w19,b05,b05-l3,กุมภาพันธ์,,tháng 2,đọc: กุม-พา-พัน; viết tắt: ก.พ.,,noun,,เดือนกุมภาพันธ์มียี่สิบแปดหรือยี่สิบเก้าวันครับ,Tháng 2 có 28 hoặc 29 ngày.,,,plernpin-b05#p13,true
 b05-w20,b05,b05-l3,มีนาคม,,tháng 3,đọc: มี-นา-คม; viết tắt: มี.ค.,,noun,,,,,,plernpin-b05#p13,true
-b05-w21,b05,b05-l3,เมษายน,,tháng 4,đọc: เม-สา-ยน; viết tắt: เม.ย.,,noun,,,,,,plernpin-b05#p13,true
+b05-w21,b05,b05-l3,เมษายน,,tháng 4,đọc: เม-สา-ยน; viết tắt: เม.ย.,,noun,,เดือนเมษายนที่เมืองไทยร้อนมากครับ,Tháng 4 ở Thái rất nóng.,,,plernpin-b05#p13,true
 b05-w22,b05,b05-l3,พฤษภาคม,,tháng 5,đọc: พรึด-สะ-พา-คม; viết tắt: พ.ค.,,noun,,,,,,plernpin-b05#p14,true
 b05-w23,b05,b05-l3,มิถุนายน,,tháng 6,đọc: มิ-ถุ-นา-ยน; viết tắt: มิ.ย.,,noun,,,,,,plernpin-b05#p14,true
 b05-w24,b05,b05-l3,กรกฎาคม,,tháng 7,đọc: กะ-ระ-กะ-ดา-คม; viết tắt: ก.ค.,,noun,,,,,,plernpin-b05#p14,true
@@ -796,121 +796,121 @@ b05-w25,b05,b05-l3,สิงหาคม,,tháng 8,đọc: สิง-หา-ค�
 b05-w26,b05,b05-l3,กันยายน,,tháng 9,đọc: กัน-ยา-ยน; viết tắt: ก.ย.,,noun,,,,,,plernpin-b05#p15,true
 b05-w27,b05,b05-l3,ตุลาคม,,tháng 10,đọc: ตุ-ลา-คม; viết tắt: ต.ค.,,noun,,,,,,plernpin-b05#p15,true
 b05-w28,b05,b05-l3,พฤศจิกายน,,tháng 11,đọc: พรึด-สะ-จิ-กา-ยน; viết tắt: พ.ย.,,noun,,,,,,plernpin-b05#p15,true
-b05-w29,b05,b05-l3,ธันวาคม,,tháng 12,đọc: ทัน-วา-คม; viết tắt: ธ.ค.,,noun,,,,,,plernpin-b05#p15,true
+b05-w29,b05,b05-l3,ธันวาคม,,tháng 12,đọc: ทัน-วา-คม; viết tắt: ธ.ค.,,noun,,เดือนธันวาคมมีสามสิบเอ็ดวันค่ะ,Tháng 12 có 31 ngày.,,,plernpin-b05#p15,true
 b05-w30,b05,b05-l4,เดือนอ้าย,,tháng 1 (âm lịch),tháng theo âm lịch (เดือนตามจันทรคติ),,noun,,,,,,plernpin-b05#p17,true
 b05-w31,b05,b05-l4,เดือนยี่,,tháng 2 (âm lịch),tháng theo âm lịch (เดือนตามจันทรคติ),,noun,,,,,,plernpin-b05#p17,true
 b05-w32,b05,b05-l4,เดือนนี้,,tháng này,,,noun,,,,,,plernpin-b05#p20,true
-b05-w33,b05,b05-l4,เดือนหน้า,,tháng sau,,,noun,,,,,,plernpin-b05#p20,true
+b05-w33,b05,b05-l4,เดือนหน้า,,tháng sau,,,noun,,เดือนหน้าผมจะย้ายบ้านครับ,Tháng sau tôi sẽ chuyển nhà.,,,plernpin-b05#p20,true
 b05-w34,b05,b05-l4,เดือนที่จะถึง,,tháng tới,,,noun,,,,,,plernpin-b05#p20,true
-b05-w35,b05,b05-l4,เดือนที่แล้ว,,tháng vừa rồi,,,noun,,,,,,plernpin-b05#p20,true
+b05-w35,b05,b05-l4,เดือนที่แล้ว,,tháng vừa rồi,,,noun,,เดือนที่แล้วฉันไปเที่ยวเชียงใหม่ค่ะ,Tháng vừa rồi tôi đi chơi Chiang Mai.,,,plernpin-b05#p20,true
 b05-w36,b05,b05-l4,เดือนก่อน,,tháng trước,,,noun,,,,,,plernpin-b05#p20,true
-b05-w37,b05,b05-l4,ต้นเดือน,,đầu tháng,,,noun,,,,,,plernpin-b05#p21,true
+b05-w37,b05,b05-l4,ต้นเดือน,,đầu tháng,,,noun,,บริษัทจ่ายเงินเดือนต้นเดือนครับ,Công ty trả lương vào đầu tháng.,,,plernpin-b05#p21,true
 b05-w38,b05,b05-l4,กลางเดือน,,giữa tháng,,,noun,,,,,,plernpin-b05#p21,true
 b05-w39,b05,b05-l4,ปลายเดือน,,cuối tháng,,,noun,,,,,,plernpin-b05#p21,true
-b05-w40,b05,b05-l4,สิ้นเดือน,,cuối tháng,,,noun,,,,,,plernpin-b05#p21,true
-b05-w41,b05,b05-l5,ปีชวด,,năm tý,,,noun,,,,,,plernpin-b05#p25,true
+b05-w40,b05,b05-l4,สิ้นเดือน,,cuối tháng,,,noun,,ต้องจ่ายค่าเช่าบ้านก่อนสิ้นเดือนค่ะ,Phải trả tiền thuê nhà trước cuối tháng.,,,plernpin-b05#p21,true
+b05-w41,b05,b05-l5,ปีชวด,,năm tý,,,noun,,ปีชวดเป็นปีแรกของสิบสองนักษัตรครับ,Năm tý là năm đầu tiên của 12 con giáp.,,,plernpin-b05#p25,true
 b05-w42,b05,b05-l5,ปีฉลู,,năm sửu,,,noun,,,,,,plernpin-b05#p25,true
 b05-w43,b05,b05-l5,ปีขาล,,năm dần,,,noun,,,,,,plernpin-b05#p25,true
-b05-w44,b05,b05-l5,ปีเถาะ,,năm mão (năm thỏ),,,noun,,,,,,plernpin-b05#p25,true
+b05-w44,b05,b05-l5,ปีเถาะ,,năm mão (năm thỏ),,,noun,,น้องสาวผมเกิดปีเถาะครับ,Em gái tôi sinh năm mão.,,,plernpin-b05#p25,true
 b05-w45,b05,b05-l5,ปีมะโรง,,năm thìn,,,noun,,,,,,plernpin-b05#p25,true
-b05-w46,b05,b05-l5,ปีมะเส็ง,,năm tỵ,,,noun,,,,,,plernpin-b05#p26,true
+b05-w46,b05,b05-l5,ปีมะเส็ง,,năm tỵ,,,noun,,ฉันเกิดปีมะเส็งค่ะ,Tôi sinh năm tỵ.,,,plernpin-b05#p26,true
 b05-w47,b05,b05-l5,ปีมะเมีย,,năm ngọ,,,noun,,,,,,plernpin-b05#p26,true
 b05-w48,b05,b05-l5,ปีมะแม,,năm mùi,,,noun,,,,,,plernpin-b05#p26,true
 b05-w49,b05,b05-l5,ปีวอก,,năm thân,,,noun,,,,,,plernpin-b05#p26,true
 b05-w50,b05,b05-l5,ปีระกา,,năm dậu,,,noun,,,,,,plernpin-b05#p26,true
 b05-w51,b05,b05-l5,ปีจอ,,năm tuất,,,noun,,,,,,plernpin-b05#p27,true
-b05-w52,b05,b05-l5,ปีกุน,,năm hợi,,,noun,,,,,,plernpin-b05#p27,true
-b05-w53,b05,b05-l5,ปีนักษัตร,,năm con giáp,,,noun,,,,,,plernpin-b05#p30,true
-b05-w54,b05,b05-l6,ปีนี้,,năm nay,,,noun,,,,,,plernpin-b05#p28,true
-b05-w55,b05,b05-l6,ปีหน้า,,năm sau,,,noun,,,,,,plernpin-b05#p28,true
+b05-w52,b05,b05-l5,ปีกุน,,năm hợi,,,noun,,ปีกุนเป็นปีสุดท้ายของสิบสองนักษัตรค่ะ,Năm hợi là năm cuối cùng của 12 con giáp.,,,plernpin-b05#p27,true
+b05-w53,b05,b05-l5,ปีนักษัตร,,năm con giáp,,,noun,,ปีนักษัตรมีทั้งหมดสิบสองปีค่ะ,Năm con giáp có tất cả 12 năm.,,,plernpin-b05#p30,true
+b05-w54,b05,b05-l6,ปีนี้,,năm nay,,,noun,,ปีนี้ผมอายุสามสิบปีครับ,Năm nay tôi 30 tuổi.,,,plernpin-b05#p28,true
+b05-w55,b05,b05-l6,ปีหน้า,,năm sau,,,noun,,ปีหน้าฉันจะไปเรียนที่เมืองไทยค่ะ,Năm sau tôi sẽ đi học ở Thái.,,,plernpin-b05#p28,true
 b05-w56,b05,b05-l6,ปีที่จะถึง,,năm tới,,,noun,,,,,,plernpin-b05#p28,true
 b05-w57,b05,b05-l6,ปีที่แล้ว,,năm vừa rồi,,,noun,,,,,,plernpin-b05#p28,true
-b05-w58,b05,b05-l6,ปีก่อน,,năm ngoái,,,noun,,,,,,plernpin-b05#p28,true
+b05-w58,b05,b05-l6,ปีก่อน,,năm ngoái,,,noun,,ปีก่อนผมทำงานที่ฮานอยครับ,Năm ngoái tôi làm việc ở Hà Nội.,,,plernpin-b05#p28,true
 b05-w59,b05,b05-l6,ต้นปี,,đầu năm,,,noun,,,,,,plernpin-b05#p29,true
 b05-w60,b05,b05-l6,กลางปี,,giữa năm,,,noun,,,,,,plernpin-b05#p29,true
 b05-w61,b05,b05-l6,ปลายปี,,cuối năm,,,noun,,,,,,plernpin-b05#p29,true
 b05-w62,b05,b05-l6,สิ้นปี,,cuối năm,,,noun,,,,,,plernpin-b05#p29,true
 b05-w63,b05,b05-l6,ปีสากล,,năm quốc tế,,,noun,,,,,,plernpin-b05#p29,true
-b05-w64,b05,b05-l6,ปีพุทธศักราช,,năm phật lịch,viết tắt: ปี พ.ศ.,,noun,,,,,,plernpin-b05#p30,true
+b05-w64,b05,b05-l6,ปีพุทธศักราช,,năm phật lịch,viết tắt: ปี พ.ศ.,,noun,,ปีพุทธศักราชมากกว่าปีคริสต์ศักราช 543 ปีค่ะ,Năm phật lịch nhiều hơn năm công lịch 543 năm.,,,plernpin-b05#p30,true
 b05-w65,b05,b05-l6,ปีคริสต์ศักราช,,năm công lịch,viết tắt: ปี ค.ศ.,,noun,,,,,,plernpin-b05#p30,true
-b05-w66,b05,b05-l7,ฤดูร้อน,หน้าร้อน,mùa hè,cũng nói: หน้าร้อน,,noun,,,,,,plernpin-b05#p36,true
-b05-w67,b05,b05-l7,ฤดูฝน,หน้าฝน,mùa mưa,cũng nói: หน้าฝน,,noun,,,,,,plernpin-b05#p36,true
-b05-w68,b05,b05-l7,ฤดูหนาว,หน้าหนาว,mùa đông,cũng nói: หน้าหนาว,,noun,,,,,,plernpin-b05#p36,true
+b05-w66,b05,b05-l7,ฤดูร้อน,หน้าร้อน,mùa hè,cũng nói: หน้าร้อน,,noun,,ฤดูร้อนของไทยเริ่มเดือนมีนาคมครับ,Mùa hè của Thái bắt đầu từ tháng 3.,,,plernpin-b05#p36,true
+b05-w67,b05,b05-l7,ฤดูฝน,หน้าฝน,mùa mưa,cũng nói: หน้าฝน,,noun,,หน้าฝนฝนตกเกือบทุกวันค่ะ,Mùa mưa trời mưa gần như mỗi ngày.,,,plernpin-b05#p36,true
+b05-w68,b05,b05-l7,ฤดูหนาว,หน้าหนาว,mùa đông,cũng nói: หน้าหนาว,,noun,,ฮานอยหนาวมากในฤดูหนาวครับ,Hà Nội rất lạnh vào mùa đông.,,,plernpin-b05#p36,true
 b05-w69,b05,b05-l7,ฤดูใบไม้ผลิ,,mùa xuân,,,noun,,,,,,plernpin-b05#p37,true
 b05-w70,b05,b05-l7,ฤดูใบไม้ร่วง,,mùa thu,,,noun,,,,,,plernpin-b05#p37,true
 b05-w71,b05,b05-l7,ฤดูแล้ง,หน้าแล้ง,mùa khô,cũng nói: หน้าแล้ง,,noun,,,,,,plernpin-b05#p37,true
-b05-w72,b05,b05-l7,ตรงกับ,,trùng với,,,verb,,,,,,plernpin-b05#p40,true
+b05-w72,b05,b05-l7,ตรงกับ,,trùng với,,,verb,,วันเกิดของฉันปีนี้ตรงกับวันเสาร์ค่ะ,Sinh nhật tôi năm nay rơi vào thứ bảy.,,,plernpin-b05#p40,true
 b05-w73,b05,b05-l7,โอกาส,,cơ hội; dịp,,,noun,,,,,,plernpin-b05#p40,true
 b05-w74,b05,b05-l7,เมื่อไร,,khi nào,,,adv,,,,,,plernpin-b05#p40,true
-b05-w75,b05,b05-l7,นาน,,lâu,,,adj,,,,,,plernpin-b05#p40,true
+b05-w75,b05,b05-l7,นาน,,lâu,,,adj,,คุณอยู่เมืองไทยนานไหมครับ,Bạn ở Thái lâu không?,,,plernpin-b05#p40,true
 b05-w76,b05,b05-l7,ไปเที่ยว,,đi chơi,,,verb,,,,,,plernpin-b05#p40,true
-b05-w77,b05,b05-l8,เชิญ,,mời,,,verb,,,,,,plernpin-b05#p41,true
-b05-w78,b05,b05-l8,กลับ,,về,,,verb,,,,,,plernpin-b05#p41,true
-b05-w79,b05,b05-l8,คง,,chắc là,,,adv,,,,,,plernpin-b05#p41,true
+b05-w77,b05,b05-l8,เชิญ,,mời,,,verb,,เชิญนั่งก่อนค่ะ,Mời ngồi ạ.,,,plernpin-b05#p41,true
+b05-w78,b05,b05-l8,กลับ,,về,,,verb,,วันศุกร์นี้ผมจะกลับบ้านครับ,Thứ sáu này tôi sẽ về nhà.,,,plernpin-b05#p41,true
+b05-w79,b05,b05-l8,คง,,chắc là,,,adv,,เขาคงกลับบ้านแล้วค่ะ,Chắc là anh ấy về nhà rồi.,,,plernpin-b05#p41,true
 b05-w80,b05,b05-l8,ยินดีต้อนรับ,,hân hạnh đón tiếp,,,phrase,,,,,,plernpin-b05#p41,true
 b05-w81,b05,b05-l8,และ,,và,,,conj,,,,,,plernpin-b05#p41,true
-b05-w82,b05,b05-l8,เก่า,,cũ; xưa,,,adj,,,,,,plernpin-b05#p42,true
+b05-w82,b05,b05-l8,เก่า,,cũ; xưa,,,adj,,ปฏิทินนี้เก่าแล้วค่ะ,Cuốn lịch này cũ rồi.,,,plernpin-b05#p42,true
 b05-w83,b05,b05-l8,ใหม่,,mới,,,adj,,,,,,plernpin-b05#p42,true
 b05-w84,b05,b05-l8,ยาว,,dài,,,adj,,,,,,plernpin-b05#p42,true
-b05-w85,b05,b05-l8,ไปส่ง,,đi tiễn,,,verb,,,,,,plernpin-b05#p42,true
+b05-w85,b05,b05-l8,ไปส่ง,,đi tiễn,,,verb,,พรุ่งนี้ใครจะไปส่งคุณคะ,Ngày mai ai sẽ đi tiễn bạn?,,,plernpin-b05#p42,true
 b05-w86,b05,b05-l8,สั้น,,ngắn,,,adj,,,,,,plernpin-b05#p42,true
-b05-w87,b05,b05-l9,ภาคเรียน,เทอม,học kỳ,cũng nói: เทอม,,noun,,,,,,plernpin-b05#p43,true
-b05-w88,b05,b05-l9,เมื่อก่อน,,lúc trước; hồi trước,,,noun,,,,,,plernpin-b05#p43,true
-b05-w89,b05,b05-l9,หลังจาก,,sau khi,,,conj,,,,,,plernpin-b05#p43,true
+b05-w87,b05,b05-l9,ภาคเรียน,เทอม,học kỳ,cũng nói: เทอม,,noun,,ภาคเรียนนี้เริ่มเดือนสิงหาคมครับ,Học kỳ này bắt đầu vào tháng 8.,,,plernpin-b05#p43,true
+b05-w88,b05,b05-l9,เมื่อก่อน,,lúc trước; hồi trước,,,noun,,เมื่อก่อนฉันอยู่ไซ่ง่อนค่ะ,Hồi trước tôi sống ở Sài Gòn.,,,plernpin-b05#p43,true
+b05-w89,b05,b05-l9,หลังจาก,,sau khi,,,conj,,หลังจากกินข้าวเย็นแล้ว เราไปเดินเล่นกันค่ะ,"Sau khi ăn tối, chúng tôi đi dạo.",,,plernpin-b05#p43,true
 b05-w90,b05,b05-l9,ปัจจุบัน,,hiện tại,,,noun,,,,,,plernpin-b05#p43,true
 b05-w91,b05,b05-l9,อดีต,,quá khứ,,,noun,,,,,,plernpin-b05#p44,true
-b05-w92,b05,b05-l9,อนาคต,,tương lai,,,noun,,,,,,plernpin-b05#p44,true
+b05-w92,b05,b05-l9,อนาคต,,tương lai,,,noun,,ไม่มีใครรู้อนาคตครับ,Không ai biết trước tương lai.,,,plernpin-b05#p44,true
 b05-w93,b05,b05-l9,ยุค,,thời; thời đại,,,noun,,,,,,plernpin-b05#p44,true
 b05-w94,b05,b05-l9,สมัย,,thời kỳ,,,noun,,,,,,plernpin-b05#p44,true
 b05-w95,b05,b05-l9,สมัยโบราณ,,thời kỳ cổ xưa,,,noun,,,,,,plernpin-b05#p44,true
 b05-w96,b05,b05-l9,สมัยก่อน,,thời trước,,,noun,,,,,,plernpin-b05#p45,true
 b05-w97,b05,b05-l9,สมัยใหม่,,thời đại mới,,,noun,,,,,,plernpin-b05#p45,true
-b05-w98,b05,b05-l10,ทันสมัย,,hiện đại; theo kịp thời đại,,,adj,,,,,,plernpin-b05#p45,true
+b05-w98,b05,b05-l10,ทันสมัย,,hiện đại; theo kịp thời đại,,,adj,,ห้างนี้ทันสมัยมากครับ,Trung tâm thương mại này rất hiện đại.,,,plernpin-b05#p45,true
 b05-w99,b05,b05-l10,ล้าสมัย,,lạc hậu; không kịp thời đại,,,adj,,,,,,plernpin-b05#p45,true
-b05-w100,b05,b05-l10,เปลี่ยน,,thay đổi,,,verb,,,,,,plernpin-b05#p45,true
+b05-w100,b05,b05-l10,เปลี่ยน,,thay đổi,,,verb,,ผมขอเปลี่ยนนัดเป็นวันพฤหัสบดีได้ไหมครับ,Tôi xin đổi hẹn sang thứ năm được không?,,,plernpin-b05#p45,true
 b05-w101,b05,b05-l10,เหมือนเดิม,,như cũ; như trước,,,adv,,,,,,plernpin-b05#p46,true
 b05-w102,b05,b05-l10,สัก,,khoảng,,,adv,,,,,,plernpin-b05#p46,true
-b05-w103,b05,b05-l10,เร็วๆนี้,,sắp tới,,,adv,,,,,,plernpin-b05#p46,true
+b05-w103,b05,b05-l10,เร็วๆนี้,,sắp tới,,,adv,,เร็วๆนี้ผมจะไปเยี่ยมคุณครับ,Sắp tới tôi sẽ đến thăm bạn.,,,plernpin-b05#p46,true
 b05-w104,b05,b05-l10,เรื่อยๆ,,"cứ (cứ làm đi, cứ đi đi)",,,adv,,,,,,plernpin-b05#p46,true
 b05-w105,b05,b05-l10,วันสำคัญ,,ngày quan trọng,,,noun,,,,,,plernpin-b05#p46,true
-b05-w106,b05,b05-l10,วันเกิด,,ngày sinh,,,noun,,,,,,plernpin-b05#p47,true
-b05-w107,b05,b05-l10,วันคล้ายวันเกิด,,ngày sinh nhật,,,noun,,,,,,plernpin-b05#p47,true
-b05-w108,b05,b05-l11,วันหยุด,,ngày nghỉ,,,noun,,,,,,plernpin-b05#p47,true
+b05-w106,b05,b05-l10,วันเกิด,,ngày sinh,,,noun,,วันเกิดของฉันคือวันที่ห้ามีนาคมค่ะ,Ngày sinh của tôi là ngày 5 tháng 3.,,,plernpin-b05#p47,true
+b05-w107,b05,b05-l10,วันคล้ายวันเกิด,,ngày sinh nhật,,,noun,,วันนี้เป็นวันคล้ายวันเกิดของคุณยายค่ะ,Hôm nay là sinh nhật của bà ngoại.,,,plernpin-b05#p47,true
+b05-w108,b05,b05-l11,วันหยุด,,ngày nghỉ,,,noun,,พรุ่งนี้เป็นวันหยุด ผมจะตื่นสายครับ,"Mai là ngày nghỉ, tôi sẽ dậy muộn.",,,plernpin-b05#p47,true
 b05-w109,b05,b05-l11,วันหยุดราชการ,,ngày nghỉ hành chính,,,noun,,,,,,plernpin-b05#p47,true
-b05-w110,b05,b05-l11,วันทำงาน,,ngày làm việc,,,noun,,,,,,plernpin-b05#p47,true
+b05-w110,b05,b05-l11,วันทำงาน,,ngày làm việc,,,noun,,วันทำงานผมตื่นหกโมงเช้าครับ,Ngày làm việc tôi dậy lúc 6 giờ sáng.,,,plernpin-b05#p47,true
 b05-w111,b05,b05-l11,วันธรรมดา,,ngày thường,,,noun,,,,,,plernpin-b05#p48,true
-b05-w112,b05,b05-l11,วันสุดสัปดาห์,,ngày cuối tuần,,,noun,,,,,,plernpin-b05#p48,true
+b05-w112,b05,b05-l11,วันสุดสัปดาห์,,ngày cuối tuần,,,noun,,วันสุดสัปดาห์นี้เราจะไปทะเลกันค่ะ,Cuối tuần này chúng tôi sẽ đi biển.,,,plernpin-b05#p48,true
 b05-w113,b05,b05-l11,วันเสาร์อาทิตย์,,thứ 7 chủ nhật,,,noun,,,,,,plernpin-b05#p48,true
-b05-w114,b05,b05-l11,วันพระจันทร์เต็มดวง,,ngày rằm,,,noun,,,,,,plernpin-b05#p48,true
-b05-w115,b05,b05-l11,วันเด็กสากล,,ngày quốc tế thiếu nhi,,,noun,,,,,,plernpin-b05#p48,true
+b05-w114,b05,b05-l11,วันพระจันทร์เต็มดวง,,ngày rằm,,,noun,,,,noto:1f315,,plernpin-b05#p48,true
+b05-w115,b05,b05-l11,วันเด็กสากล,,ngày quốc tế thiếu nhi,,,noun,,วันเด็กสากลตรงกับวันที่หนึ่งมิถุนายนค่ะ,Ngày quốc tế thiếu nhi là ngày 1 tháng 6.,,,plernpin-b05#p48,true
 b05-w116,b05,b05-l11,เทศกาลภาพยนตร์,,liên hoan phim,,,noun,,,,,,plernpin-b05#p49,true
 b05-w117,b05,b05-l11,เทศกาลมหาพรต,,mùa chay,,,noun,,,,,,plernpin-b05#p49,true
 b05-w118,b05,b05-l12,เทศกาลเช็งเม้ง,,lễ thanh minh,,,noun,,,,,,plernpin-b05#p49,true
-b05-w119,b05,b05-l12,เทศกาลวันไหว้พระจันทร์,เทศกาลกลางฤดูใบไม้ร่วง,tết trung thu,cũng nói: เทศกาลกลางฤดูใบไม้ร่วง,,noun,,,,,,plernpin-b05#p49,true
-b05-w120,b05,b05-l12,เทศกาลกินเจ,,lễ hội ăn chay,,,noun,,,,,,plernpin-b05#p49,true
-b05-w121,b05,b05-l12,วันสตรีโลก,,ngày phụ nữ quốc tế (thế giới),,,noun,,,,,,plernpin-b05#p50,true
+b05-w119,b05,b05-l12,เทศกาลวันไหว้พระจันทร์,เทศกาลกลางฤดูใบไม้ร่วง,tết trung thu,cũng nói: เทศกาลกลางฤดูใบไม้ร่วง,,noun,,เด็กๆ ชอบเทศกาลวันไหว้พระจันทร์มากค่ะ,Trẻ em rất thích tết trung thu.,,,plernpin-b05#p49,true
+b05-w120,b05,b05-l12,เทศกาลกินเจ,,lễ hội ăn chay,,,noun,,ช่วงเทศกาลกินเจ หลายคนไม่กินเนื้อสัตว์ค่ะ,"Trong lễ hội ăn chay, nhiều người không ăn thịt.",,,plernpin-b05#p49,true
+b05-w121,b05,b05-l12,วันสตรีโลก,,ngày phụ nữ quốc tế (thế giới),,,noun,,ในวันสตรีโลกผมซื้อดอกไม้ให้แม่ครับ,Vào ngày phụ nữ quốc tế tôi mua hoa tặng mẹ.,,,plernpin-b05#p50,true
 b05-w122,b05,b05-l12,วันมหาชัยของเวียดนาม,,ngày đại thắng của Việt Nam (30/4),,,noun,,,,,,plernpin-b05#p50,true
-b05-w123,b05,b05-l12,วันชาติ,,ngày quốc khánh,,,noun,,,,,,plernpin-b05#p50,true
+b05-w123,b05,b05-l12,วันชาติ,,ngày quốc khánh,,,noun,,วันชาติของไทยตรงกับวันที่ห้าธันวาคมครับ,Ngày quốc khánh của Thái là ngày 5 tháng 12.,,,plernpin-b05#p50,true
 b05-w124,b05,b05-l12,วันแรงงานแห่งชาติ,วันแรงงานสากล,ngày quốc tế lao động,cũng nói: วันแรงงานสากล,,noun,,,,,,plernpin-b05#p50,true
-b05-w125,b05,b05-l12,วันชาติของเวียดนาม,,ngày quốc khánh của Việt Nam (2/9),,,noun,,,,,,plernpin-b05#p50,true
-b05-w126,b05,b05-l12,วันปีใหม่,,ngày đầu năm (Tết),,,noun,,,,,,plernpin-b05#p51,true
+b05-w125,b05,b05-l12,วันชาติของเวียดนาม,,ngày quốc khánh của Việt Nam (2/9),,,noun,,วันชาติของเวียดนามเป็นวันหยุดราชการค่ะ,Quốc khánh Việt Nam là ngày nghỉ hành chính.,,,plernpin-b05#p50,true
+b05-w126,b05,b05-l12,วันปีใหม่,,ngày đầu năm (Tết),,,noun,,คุณจะไปเที่ยวที่ไหนในวันปีใหม่คะ,Dịp năm mới bạn sẽ đi chơi ở đâu?,,,plernpin-b05#p51,true
 b05-w127,b05,b05-l12,วันขึ้นปีใหม่สากล,,ngày đầu năm mới quốc tế (1/1); Tết dương lịch,,,noun,,,,,,plernpin-b05#p51,true
 b05-w128,b05,b05-l13,วันตรุษ,,ngày tết cổ truyền,,,noun,,,,,,plernpin-b05#p51,true
-b05-w129,b05,b05-l13,วันสงกรานต์,,ngày tết cổ truyền Thái; tết té nước của Thái,,,noun,,,,,,plernpin-b05#p51,true
-b05-w130,b05,b05-l13,วันลอยกระทง,,ngày Loy Krathong (lễ hội thả đèn hoa đăng của Thái),,,noun,,,,,,plernpin-b05#p51,true
+b05-w129,b05,b05-l13,วันสงกรานต์,,ngày tết cổ truyền Thái; tết té nước của Thái,,,noun,,วันสงกรานต์เป็นวันขึ้นปีใหม่ไทยค่ะ,Songkran là ngày Tết năm mới của Thái.,,,plernpin-b05#p51,true
+b05-w130,b05,b05-l13,วันลอยกระทง,,ngày Loy Krathong (lễ hội thả đèn hoa đăng của Thái),,,noun,,วันลอยกระทงตรงกับคืนวันเพ็ญเดือนสิบสองค่ะ,Ngày Loy Krathong rơi vào đêm rằm tháng 12 âm lịch.,,,plernpin-b05#p51,true
 b05-w131,b05,b05-l13,วันคริสต์มาส,,ngày giáng sinh; Noel,tài liệu viết วันคริสมาส,,noun,,,,,,plernpin-b05#p52,true
-b05-w132,b05,b05-l13,วันแม่,,ngày của mẹ,,,noun,,,,,,plernpin-b05#p52,true
+b05-w132,b05,b05-l13,วันแม่,,ngày của mẹ,,,noun,,ในวันแม่ลูกๆ มักจะให้ดอกมะลิแม่ค่ะ,"Vào ngày của mẹ, con cái thường tặng hoa nhài cho mẹ.",,,plernpin-b05#p52,true
 b05-w133,b05,b05-l13,วันพ่อ,,ngày của bố,,,noun,,,,,,plernpin-b05#p52,true
-b05-w134,b05,b05-l13,วันครู,,ngày nhà giáo,,,noun,,,,,,plernpin-b05#p52,true
-b05-w135,b05,b05-l13,ตารางเวลา,,thời gian biểu,,,noun,,,,,,plernpin-b05#p52,true
+b05-w134,b05,b05-l13,วันครู,,ngày nhà giáo,,,noun,,วันครูของไทยตรงกับวันที่สิบหกมกราคมครับ,Ngày nhà giáo của Thái là ngày 16 tháng 1.,,,plernpin-b05#p52,true
+b05-w135,b05,b05-l13,ตารางเวลา,,thời gian biểu,,,noun,,ขอดูตารางเวลารถไฟหน่อยครับ,Cho tôi xem lịch chạy tàu một chút.,,,plernpin-b05#p52,true
 b05-w136,b05,b05-l13,ตามสุริยคติ,,theo dương lịch,,,phrase,,,,,,plernpin-b05#p53,true
 b05-w137,b05,b05-l13,ตามจันทรคติ,,theo âm lịch,,,phrase,,,,,,plernpin-b05#p53,true
-b05-w138,b05,b05-l14,ไตรมาส,,quý,,,noun,,,,,,plernpin-b05#p53,true
-b05-w139,b05,b05-l14,ปฏิทิน,,lịch,,,noun,,,,,,plernpin-b05#p53,true
-b05-w140,b05,b05-l14,ปฏิทินจันทรคติ,ปฏิทินแบบจันทรคติ,lịch âm,,,noun,,,,,,plernpin-b05#p53,true
+b05-w138,b05,b05-l14,ไตรมาส,,quý,,,noun,,บริษัทของเราประชุมทุกไตรมาสค่ะ,Công ty chúng tôi họp mỗi quý.,,,plernpin-b05#p53,true
+b05-w139,b05,b05-l14,ปฏิทิน,,lịch,,,noun,,ฉันจดวันนัดไว้ในปฏิทินค่ะ,Tôi ghi ngày hẹn vào lịch.,noto:1f4c5,,plernpin-b05#p53,true
+b05-w140,b05,b05-l14,ปฏิทินจันทรคติ,ปฏิทินแบบจันทรคติ,lịch âm,,,noun,,คนเวียดนามยังใช้ปฏิทินจันทรคติค่ะ,Người Việt vẫn dùng lịch âm.,,,plernpin-b05#p53,true
 b05-w141,b05,b05-l14,ปฏิทินสุริยคติ,ปฏิทินแบบสุริยคติ,lịch dương,,,noun,,,,,,plernpin-b05#p54,true
 b05-w142,b05,b05-l14,ปฏิทินสากล,,lịch quốc tế,,,noun,,,,,,plernpin-b05#p54,true
-b05-w143,b05,b05-l14,เวลาราชการ,,giờ hành chính; thời gian hành chính,,,noun,,,,,,plernpin-b05#p54,true
+b05-w143,b05,b05-l14,เวลาราชการ,,giờ hành chính; thời gian hành chính,,,noun,,หน่วยงานราชการเปิดเฉพาะในเวลาราชการครับ,Cơ quan nhà nước chỉ mở cửa trong giờ hành chính.,,,plernpin-b05#p54,true
 b05-w144,b05,b05-l14,เวลาทำงานราชการ,,giờ làm việc hành chính,,,noun,,,,,,plernpin-b05#p54,true
 b05-w145,b05,b05-l14,วันสิริมงคล,,ngày an khang thịnh vượng,,,noun,,,,,,plernpin-b05#p54,true
 b04-w01,b04,b04-l1,สบู่,,bánh xà phòng,,ก้อน,noun,,สบู่ 2 ก้อน,2 cục bánh xà phòng,,,plernpin-b04#p6,true
