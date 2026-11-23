@@ -18,7 +18,11 @@ test.beforeEach(async ({ page }) => {
       'Microsoft Premwadee Online (Natural) - Thai (Thailand)',
       'Microsoft Niwat Online (Natural) - Thai (Thailand)',
     ].map((name) => ({ name, lang: 'th-TH', default: false, localService: false, voiceURI: name }));
-    synth.getVoices = () => voices as unknown as SpeechSynthesisVoice[];
+    const getVoices = () => voices as unknown as SpeechSynthesisVoice[];
+    // WebKit (Linux CI) bỏ qua phép gán lên đối tượng → ghi đè cả prototype.
+    for (const target of [Object.getPrototypeOf(synth) as object, synth]) {
+      Object.defineProperty(target, 'getVoices', { value: getVoices, configurable: true });
+    }
   });
   await recordTones(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
