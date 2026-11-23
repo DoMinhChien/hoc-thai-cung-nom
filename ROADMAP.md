@@ -21,6 +21,10 @@
 
 > **🟢 M12.7 — Responsive iPhone & iPad** (7/7 task, mở + xong 2026-11-22, phản hồi CAT, plan 0.15, spec `docs/design/screens/SCR-00-responsive.md`; nhánh `m12.7-responsive` → **PR #38**): phone = thanh tab dưới + sheet "Thêm", tablet = rail, desktop giữ nguyên; trang 1 cột, Sổ từ dạng thẻ, 8 trò bằng chạm, nhập liệu iOS, meta PWA iOS. **Owner duyệt UI mobile trên iPhone thật 2026-11-22**; iPad theo dõi thêm trong CAT.
 
+> **🔵 M12.8 — Trò chơi: chọn nội dung để ôn** (mở 2026-11-22, phản hồi CAT, plan 0.16): spec **`docs/design/screens/SCR-08-source.md`** (owner duyệt hướng 2026-11-22). Agent làm ngay; PR UI → owner xem link preview rồi merge (không tự merge).
+
+> **🔵 TC.4 — Làm đầy đủ các bài còn lại** (mở 2026-11-23, owner): đưa `b01`–`b08`, `b11`, `b12` và các chuyên đề thiếu câu lên chuẩn TC.3 (hình, loại từ, ví dụ, ≥ 5 câu / bài học, hội thoại). Thứ tự `b11` → `b12` → `b08` … `b01` → `c03`, `c06`, `c07` … 8 PR nhỏ (TC.4a–h), tự merge (8.1). Chi tiết mục TC.
+
 > **⏳ Việc chờ owner (cập nhật 2026-11-22)** — agent không tự làm, tick khi xong:
 > - [x] **PR M12.7 #38 — T12.7.7:** owner thử UI mobile trên **iPhone thật** ✅ (2026-11-22) → cho merge. **iPad:** theo dõi thêm trong CAT (báo agent nếu lỗi).
 > - [x] **Merge** #21, #22, #23 và **#24 (`m9.6-games` → `main`, 2026-11-21)** — M9.6 phần logic đã lên `main`. Còn 1 commit `docs(agents)` (PR luôn base `main`) trên `m9.6-games` → đi kèm PR kế tiếp.
@@ -123,6 +127,45 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
   7. `example_th` / `example_vi` cho ít nhất các từ khóa của mỗi bài học (≥ 3 từ / bài học).
   8. Toàn bộ giữ `draft: true`; `content:check` 0 lỗi; cập nhật `content/IMPORT-STATUS.md` (dòng b09, b10: những gì đã bổ sung, những gì cần GV xác nhận); baseline nếu đổi; tự merge theo 8.1 (loại nội dung).
   - *Kết quả (2026-11-21, nhánh `content-b09-b10`):* đọc lại 83 trang PDF. **b09:** 91 từ (40 có hình, 48 loại từ, 36 ví dụ), câu 29 → 77 (≥ 6 / bài học), mẫu câu 3 → 11 (rải từng bài học, 8 Claude soạn), 2 hội thoại 8 lượt; sửa nghĩa พุดดิ้ง, เหล้า, rút 2 câu > 9 thẻ. **b10:** 118 từ (43 có hình, 72 loại từ theo quy ước GV ở c03, 48 ví dụ), câu 20 → 80 (≥ 5 / bài học), mẫu câu 1 → 6 (5 Claude soạn), 4 hội thoại; bổ sung 5 nghĩa (กระโปรง, หมวก, เข็มขัด, ผักกาดฮ่องเต้, น้ำมันพืช). **Hình chưa đạt 70%** (b09 ~56%, b10 ~49% danh từ cụ thể): không có emoji đúng nghĩa (ผัดไทย, ส้มตำ, đu đủ, phần lớn rau, gia vị…) → để trống theo yêu cầu. **GV xác nhận:** toàn bộ tiếng Thái Claude soạn (108 câu, 6 hội thoại, 13 mẫu câu, ví dụ, loại từ), 12 từ ghi "cần GV xác nhận" (chi tiết `content/IMPORT-STATUS.md`); đồ uống / vài trái cây có nhiều loại từ → trò Đoán loại từ đôi khi có phương án nhiễu cũng đúng.
+
+- [ ] **TC.4 Làm đầy đủ các bài còn lại theo chuẩn TC.3** (owner 2026-11-23). 27/27 file đã nhập (draft) nhưng chỉ `b09`, `b10` đạt chuẩn TC.3. Hiện trạng trên `main` (Claude Desktop đếm 2026-11-23 — bài học < 5 câu / tổng bài học):
+
+  | Unit | Bài học | Từ | Hình | Loại từ | Ví dụ từ | Câu | Bài học < 5 câu | Việc chính |
+  |---|---|---|---|---|---|---|---|---|
+  | `b11` | 8 | **0** | 0 | 0 | 0 | 67 | 2 | Rút **từ vựng** từ hội thoại (8–12 từ / bài học), câu bù cho bài thiếu |
+  | `b12` | 7 | **0** | 0 | 0 | 0 | 59 | 0 | Rút **từ vựng** từ hội thoại (8–12 từ / bài học) |
+  | `b08` | 8 | 77 | 0 | 0 | 0 | 19 | 7 | hình, loại từ, ví dụ, câu, 1–2 hội thoại (đặt phòng – nhận phòng – yêu cầu dịch vụ) |
+  | `b07` | 10 | 101 | 0 | 0 | 0 | 24 | 8 | hình, loại từ, ví dụ, câu, 2 hội thoại (hỏi đường; đi taxi / xe buýt) |
+  | `b06` | 9 | 88 | 0 | 0 | 0 | 52 | 5 | ví dụ, câu, 1 hội thoại (hẹn giờ) |
+  | `b05` | 14 | 145 | 0 | 0 | 0 | 44 | 10 | ví dụ, câu, 1 hội thoại (ngày sinh / lịch hẹn) |
+  | `b04` | 5 | 45 | 0 | 38 | 38 | 19 | 4 | hình, câu (đếm + so sánh), 1 hội thoại |
+  | `b03` | 9 | 90 | 0 | 0 | 0 | 11 | 9 | ví dụ, câu (giá, số điện thoại, tuổi), 1 hội thoại |
+  | `b02` | 6 | 65 | 0 | 0 | 0 | 29 | 2 | hình, ví dụ, câu, 1 hội thoại (chào – giới thiệu) |
+  | `b01` | 7 | 71 | 0 | 0 | 0 | 11 | 6 | hình (người/gia đình), ví dụ, câu |
+  | `c03` | 13 | 310 | 0 | 310 | 0 | **0** | 13 | câu "danh từ + số + loại từ" ≥ 5 / bài học, ví dụ từ |
+  | `c06`, `c07` | 4, 5 | 66, 72 | — | — | 0 | **3, 3** | 4, 5 | câu ≥ 5 / bài học theo từng mẫu การ / ความ, ví dụ từ |
+  | `c01`, `c09`, `c13` | 2, 3, 4 | 19, 32, 34 | — | — | 0 | 6, 13, 32 | 1 mỗi unit | câu bù, ví dụ từ |
+  | `c02`, `c04`, `c05`, `c08`, `c10`–`c12`, `c14`, `c15` | | | | | | | 0 | chỉ thêm `example_th/vi` (≥ 3 / bài học) nếu thiếu — không cần thêm câu |
+
+  **Chuẩn (giống TC.3):**
+  1. Đọc lại PDF **từng trang**, đối chiếu từ / nghĩa / chính tả; nghĩa Claude ghi từ thẻ hình → kiểm lại theo hình, không chắc → `note_vi: "cần GV xác nhận"`.
+  2. Giáo trình: `image` Noto cho danh từ cụ thể có emoji đúng nghĩa (mục tiêu ≥ 70%, không dùng emoji gần đúng); `classifier` cho danh từ đếm được. Chuyên đề: không cần hình.
+  3. Mỗi bài học **≥ 5 câu** (`th_alt` ผม/ฉัน + ครับ/ค่ะ, `tokens` ≤ 9, 1 thẻ nhiễu), dùng đúng từ + mẫu câu của bài học đó; câu Claude soạn ghi `source: claude-<unit>`.
+  4. `example_th`/`example_vi` ≥ 3 từ khóa / bài học.
+  5. Giáo trình `b01`–`b08`: ≥ 1 hội thoại 6–8 lượt / unit (b07, b08: 2), gắn vào bài học liên quan. Mẫu câu rải đúng bài học; thiếu thì thêm mẫu thông dụng (ghi "Claude soạn" trong `explain_vi`).
+  6. `b11`, `b12`: thêm từ vựng rút từ hội thoại (nghĩa theo ngữ cảnh lượt thoại, `example_th` = câu trong hội thoại).
+  7. Giữ `draft: true`; `content:check` 0 lỗi; cập nhật dòng unit trong `content/IMPORT-STATUS.md` (đã bổ sung gì, cần GV xem gì); baseline nếu đổi.
+
+  **Thứ tự** (theo lộ trình người học — đang ở Bài 9–10): **`b11` → `b12`** (bài sắp học) → **`b08` → `b01`** (ôn) → **`c03` → `c06` → `c07`** (thiếu câu nhiều nhất) → `c13` → `c09` → `c01` → các chuyên đề còn lại (chỉ ví dụ từ).
+  **Cách làm:** mỗi PR 1–2 unit, nhánh `content-tc4-<unit>`, base `main`, **tự merge theo 8.1** (nội dung draft). Không chặn M12.8 — làm xen kẽ hoặc sau M12.8.
+  - [ ] TC.4a `b11`, `b12`
+  - [ ] TC.4b `b08`, `b07`
+  - [ ] TC.4c `b06`, `b05`
+  - [ ] TC.4d `b04`, `b03`
+  - [ ] TC.4e `b02`, `b01`
+  - [ ] TC.4f `c03`
+  - [ ] TC.4g `c06`, `c07`
+  - [ ] TC.4h `c13`, `c09`, `c01` + ví dụ từ cho các chuyên đề còn lại
 
 
 ### M0 — Khung dự án 🟢
@@ -596,6 +639,16 @@ Nhánh gợi ý `m12.7-responsive` (base `main`). Có thể chia 2 PR: (1) khung
 - [x] T12.7.6 E2E: project WebKit **iPhone 15**, **iPad mini dọc**, **iPad Pro 11 ngang**; test "không tràn ngang" mọi route, điều hướng tab + sheet, 1 ván Máy bay + Mê cung bằng chạm, axe; baseline ảnh phone/tablet. Giữ nguyên test desktop.
 - [x] T12.7.7 Owner thử iPhone + iPad thật qua link preview → merge. Agent ghi nhật ký, cập nhật baseline cần xem. — **Owner duyệt UI mobile trên iPhone thật 2026-11-22**, cho merge #38; iPad theo dõi thêm trong CAT.
 
+### M12.8 — Trò chơi: chọn nội dung để ôn 🔵 (mở 2026-11-22, phản hồi CAT; plan 0.16, spec SCR-08 v3)
+
+Nhánh gợi ý `m12.8-game-source` (base `main`).
+- [x] T12.8.1 Spec `docs/design/screens/SCR-08-source.md` (Claude Desktop) — owner duyệt hướng 2026-11-22.
+- [ ] T12.8.2 Core `packages/core/src/games/source.ts`: nguồn `learned` · `recent` (7 ngày) · `review` (cần ôn + FSRS đến hạn) · `last-lesson` · `units:…` / `lessons:…` nhiều mục, cờ `;new`; đếm mục; ưu tiên cần ôn/đến hạn; **bỏ fallback lặng lẽ** (< 6 → không chơi được + lý do); migrate setting cũ `learned` / `unit:<id>`. Vitest.
+- [ ] T12.8.3 UI `/games`: nút "Nội dung ôn" + bộ chọn (dialog desktop / bottom sheet phone): chip Ôn nhanh, danh sách Giáo trình / Chuyên đề → bài học (checkbox, số đã học / tổng), lọc chỉ-mục-đã-học, chân tổng + "Chơi với nội dung này"; tab kỹ năng + thẻ trò đếm theo nội dung đã chọn.
+- [ ] T12.8.4 Lối vào: "Chơi ôn bài này" ở màn hoàn thành bài học, "Chơi ôn" ở trang bài / chuyên đề, thẻ "Ôn bằng trò chơi" ở Tổng quan, "Đổi nội dung" ở màn kết quả; `?source=` theo spec §4.
+- [ ] T12.8.5 E2E + axe + baseline (phone + desktop) theo spec §5.
+- [ ] T12.8.6 Owner xem link preview → merge. Agent ghi nhật ký.
+
 ### Sau M12
 Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6) đầu Phase 2. Không làm trước khi owner mở.
 
@@ -607,6 +660,8 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-23 | TC.4 mở | Owner: làm đầy đủ các bài còn lại theo chuẩn TC.3. Claude Desktop đếm hiện trạng: chỉ b09, b10 đạt; b11/b12 0 từ, c03 0 câu, c06/c07 3 câu, b01–b08 không hình/ví dụ, 78/158 bài học < 5 câu. Chia TC.4a–h | TC.4a–h (agent), M12.8 (agent) | — | — (docs chưa commit) |
+| 2026-11-22 | M12.8 mở | Phản hồi CAT: Trò chơi cần chọn nội dung để ôn bài đã học. Plan v7.10 §0.16 (sửa F-10), spec `SCR-08-source.md`, milestone M12.8 (T12.8.1 ✅) | T12.8.2–T12.8.6 (agent) | — | — (docs chưa commit) |
 | 2026-11-22 | M12.7 🟢 | T12.7.7: owner duyệt UI mobile trên iPhone thật → M12.7 xong (7/7), merge #38 (owner cho phép) → production có bản responsive. iPad theo dõi trong CAT. Dọn "Milestone đang mở": nội dung 27/27 file đã nhập (draft chờ GV duyệt), M12 → 🟢 CAT. CI #38 lần trước: `settings.spec` giọng đọc flaky trên WebKit, chạy lại xanh | — | Công bố chính thức: B1, B4–B7, B9, smoke test, GV duyệt nội dung | `m12.7-responsive` → #38 |
 | 2026-11-22 | M12.7 | **Tự merge #37** (docs M12.7: plan v7.9, SCR-00 v2, 8.1 theo lệnh owner). T12.7.2 khung phone (thanh trên + tab dưới + sheet "Thêm") / tablet (rail 72px) / desktop giữ nguyên · T12.7.3 trang 1 cột, Sổ từ dạng thẻ + sheet lọc/chi tiết, chữ Thái thu nhỏ ở phone · T12.7.4 `/games` 1–2 cột, 8 trò bằng chạm (▲▼ Máy bay, D-pad + vuốt Mê cung, ô Đập chuột ≥ 88px) · T12.7.5 ô nhập ≥ 16px, bàn phím Thái ảo ẩn mặc định trên cảm ứng (dock đáy + `inputmode=none`), `visualViewport`, meta PWA iOS + icon 180 · T12.7.6 E2E WebKit iPhone 15 / iPad mini dọc / iPad Pro 11 ngang (27 test). Baseline desktop không đổi | T12.7.7 | Owner thử máy thật + merge | `m12.7-responsive` → #38 |
 | 2026-11-22 | M12.7 mở | Phản hồi CAT: UI vỡ trên iPhone (sidebar 240px ép nội dung). Plan v7.9 §0.15 (thay G-04 desktop-first), spec `SCR-00-responsive.md`, milestone M12.7 (T12.7.1 ✅) | T12.7.2–T12.7.7 (agent) | — | — (docs chưa commit) |
