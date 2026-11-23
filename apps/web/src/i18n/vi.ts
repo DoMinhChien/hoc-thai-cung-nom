@@ -215,7 +215,7 @@ export const vi = {
     intro: 'Chơi nhanh 1–3 phút với từ và câu bạn đã học.',
     source: 'Nội dung ôn:',
     sourceCount: '{words} từ · {sentences} câu',
-    sourceButton: '{label} · {count}',
+    sourceCountSuffix: ' · {count}',
     sourceNew: '{label} · gồm mục chưa học',
     sourceMore: '{list} và {n} mục khác',
     sourceShort: 'Cần ít nhất {min} từ hoặc câu — chọn thêm bài hoặc bật "Cả mục chưa học".',

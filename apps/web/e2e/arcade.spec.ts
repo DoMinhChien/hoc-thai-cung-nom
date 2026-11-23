@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import path from 'node:path';
 import { chooseGuest, countCards } from './helpers';
 import { chooseGameSource, readStore } from './practice-helpers';
 
@@ -43,7 +44,10 @@ test('/games v2: 8 trò, lọc kỹ năng, theme — baseline', async ({ page })
   await expect(page.getByTestId(/^game-card-/)).toHaveCount(8);
   await page.evaluate(() => document.fonts.ready);
   await expectNoSevereViolations(page);
-  await expect(page).toHaveScreenshot('games-v2.png', { fullPage: true });
+  await expect(page).toHaveScreenshot('games-v2.png', {
+    fullPage: true,
+    stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+  });
   await page.keyboard.press('s');
   await expect(page).toHaveURL(/\?skill=vocab/);
   await expect(page.getByTestId(/^game-card-/)).toHaveCount(6);

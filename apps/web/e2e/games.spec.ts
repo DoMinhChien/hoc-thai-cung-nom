@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import path from 'node:path';
 import { chooseGuest, countCards } from './helpers';
 import { chooseGameSource } from './practice-helpers';
 
@@ -127,7 +128,10 @@ test('/games và màn Ghép cặp: baseline', async ({ page }) => {
   await page.goto('/games');
   await expect(page.getByTestId('game-card-match')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
-  await expect(page).toHaveScreenshot('games.png', { fullPage: true });
+  await expect(page).toHaveScreenshot('games.png', {
+    fullPage: true,
+    stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+  });
 
   await page.keyboard.press('1');
   await expect(page.getByTestId('match-card')).toHaveCount(12);

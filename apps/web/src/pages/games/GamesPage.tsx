@@ -174,10 +174,10 @@ export function GamesPage() {
                 className="flex min-h-11 w-full min-w-0 items-center gap-2 rounded-lg border border-border-strong bg-surface px-3 text-left text-base font-medium outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring lg:h-10 lg:min-h-0 lg:w-auto lg:text-sm"
               >
                 <span className="min-w-0 flex-1 truncate">
-                  {t('games.sourceButton', {
-                    label: sourceLabel(ready.spec, ready.bundles),
-                    count: countLabel(ready.source),
-                  })}
+                  {sourceLabel(ready.spec, ready.bundles)}
+                  <span data-testid="game-source-count">
+                    {t('games.sourceCountSuffix', { count: countLabel(ready.source) })}
+                  </span>
                 </span>
                 <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
               </button>

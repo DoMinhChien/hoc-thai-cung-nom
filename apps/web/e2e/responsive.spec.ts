@@ -112,14 +112,17 @@ for (const path of ['/', '/games', '/words', '/units/b01/b01-l1']) {
 }
 
 test('baseline: /units, /games', async ({ page }) => {
-  for (const [path, name] of [
+  for (const [route, name] of [
     ['/units', 'units'],
     ['/games', 'games'],
   ] as const) {
-    await page.goto(path);
+    await page.goto(route);
     await expect(page.getByTestId(`page-${name}`)).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
-    await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
+    await expect(page).toHaveScreenshot(`${name}.png`, {
+      fullPage: true,
+      stylePath: path.join(import.meta.dirname, 'hide-counts.css'),
+    });
   }
 });
 
