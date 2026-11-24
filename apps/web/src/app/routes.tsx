@@ -4,6 +4,7 @@ import { AppLayout, BareLayout, DevLayout, FocusLayout } from '@/components/layo
 import { deleteInstructionsVi, privacyVi, termsVi, withSpeakingPrivacy } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
+import { ShadowingProbePage } from '@/pages/dev/ShadowingProbePage';
 import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
 import { TypographyPage } from '@/pages/dev/TypographyPage';
 import { GamePage } from '@/pages/games/GamePage';
@@ -68,6 +69,8 @@ export const routes: RouteObject[] = [
       { path: '/dev/typography', element: <TypographyPage /> },
       { path: '/dev/progress', element: <ProgressDemoPage /> },
       { path: '/dev/typing', element: <TypingDemoPage /> },
+      // M12.10 bước A: trang thử shadowing (SCR-11 §5), cùng cờ Luyện nói.
+      ...(SPEAKING ? [{ path: '/dev/shadowing', element: <ShadowingProbePage /> }] : []),
     ],
   },
   {
