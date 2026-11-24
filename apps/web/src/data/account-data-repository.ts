@@ -10,7 +10,14 @@ import {
   type WordNoteRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type IndexableType } from 'dexie';
-import { dbName, GUEST_KEY, NomDatabase, PROGRESS_TABLES, SCHEMA_VERSION } from './db';
+import {
+  dbName,
+  GUEST_KEY,
+  LOCAL_ONLY_TABLES,
+  NomDatabase,
+  PROGRESS_TABLES,
+  SCHEMA_VERSION,
+} from './db';
 
 const GUEST_CHOSEN = 'guestChosen';
 
@@ -165,11 +172,12 @@ export class AccountDataRepository {
     );
   }
 
-  /** Xoá tiến độ trên máy (giữ tài khoản / lựa chọn Guest) — Cài đặt › Dữ liệu. */
+  /** Xoá tiến độ trên máy (giữ tài khoản / lựa chọn Guest) — Cài đặt › Dữ liệu; gồm bản ghi giọng nói. */
   async clearProgress(userKey: string): Promise<void> {
+    const tables = [...PROGRESS_TABLES, ...LOCAL_ONLY_TABLES];
     await withDb(userKey, (db) =>
-      db.transaction('rw', [...PROGRESS_TABLES], async () => {
-        for (const name of PROGRESS_TABLES) await db.table(name).clear();
+      db.transaction('rw', tables, async () => {
+        for (const name of tables) await db.table(name).clear();
       }),
     );
   }

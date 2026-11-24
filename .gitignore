@@ -1,5 +1,7 @@
 node_modules/
 dist/
+# Bản build E2E có bật Luyện nói (M12.9).
+dist-speaking/
 *.tsbuildinfo
 .env
 .env.*
