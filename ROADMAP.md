@@ -25,6 +25,8 @@
 
 > **🟢 TC.4 — Làm đầy đủ các bài còn lại** (mở 2026-11-23, owner; **xong 2026-11-23** — TC.4a–h, đã merge #40, #41, #43–#48): đưa `b01`–`b08`, `b11`, `b12` và các chuyên đề thiếu câu lên chuẩn TC.3 (hình, loại từ, ví dụ, ≥ 5 câu / bài học, hội thoại). Thứ tự `b11` → `b12` → `b08` … `b01` → `c03`, `c06`, `c07` … 8 PR nhỏ (TC.4a–h), tự merge (8.1). Chi tiết mục TC.
 
+> **🔵 M12.9 — Luyện nói (Mức 1 + 2)** (mở 2026-11-24, phản hồi CAT, plan 0.17): spec **`docs/design/screens/SCR-10-speaking.md`** (owner duyệt hướng 2026-11-24). Agent làm ngay **sau cờ `VITE_ENABLE_SPEAKING` (tắt trên production — đang CAT)**; xong báo owner "M12.9 ready" + link preview; owner thử **iPhone thật** rồi merge (không tự merge), bật trên production khi owner quyết định. Mức 3 (Azure chấm điểm) để sau CAT.
+
 > **⏳ Việc chờ owner (cập nhật 2026-11-23)** — agent không tự làm, tick khi xong:
 > - [ ] **Repo đang public (2026-11-23):** owner chuyển public để GitHub Actions chạy miễn phí (repo private hết phút / lỗi thanh toán), cần cho xong M12.8. Repo có nội dung trích từ giáo trình Plern-Pin (1.563 từ, 748 câu, ghi số trang) → **quyết định sau M12:** giữ public, chuyển lại private (Actions tính phút; bản đã clone / fork không thu hồi được), hoặc tách nội dung ra nơi khác.
 > - [x] **PR M12.8 #42 — T12.8.6:** owner thử preview và duyệt (2026-11-23) → merge.
@@ -674,6 +676,21 @@ Nhánh gợi ý `m12.8-game-source` (base `main`).
 - [x] T12.8.5 E2E + axe + baseline (phone + desktop) theo spec §5.
 - [x] T12.8.6 Owner xem link preview → merge. Agent ghi nhật ký. — **Owner duyệt 2026-11-23**, merge #42.
 
+### M12.9 — Luyện nói (Mức 1 + 2) 🔵 (mở 2026-11-24, phản hồi CAT; plan 0.17, spec SCR-10)
+
+Nhánh gợi ý `m12.9-speaking` (base `main`). Có thể chia 2 PR: (1) core + phiên luyện nói, (2) lối vào trong bài học + Nhập vai + E2E.
+
+> ⚠️ **Giai đoạn CAT — M12.9 là bản phát triển (owner 2026-11-24):** production đang cho khách hàng nghiệm thu → **Luyện nói chưa được hiện trên production**. Làm sau cờ tính năng **`VITE_ENABLE_SPEAKING`** (mặc định `false`; build preview PR + `pnpm dev` = `true`; build production = `false`), giống cách làm `VITE_ENABLE_FACEBOOK_LOGIN`. Khi cờ tắt: không thẻ Luyện nói, không nút Nói theo / Nhập vai, không mục cài đặt / quyền riêng tư mới, không đổi baseline production. Code được merge vào `main` sau khi owner duyệt preview (tránh nhánh sống lâu), nhưng **chỉ bật trên production khi owner nói "phát hành Luyện nói"** (T12.9.8). **Khi T12.9.2–T12.9.6 xong: báo owner "M12.9 ready" + link preview**, không chờ hỏi.
+
+- [x] T12.9.1 Spec `docs/design/screens/SCR-10-speaking.md` (Claude Desktop) — owner duyệt hướng 2026-11-24.
+- [ ] T12.9.2 Core: `packages/core/src/speaking/match.ts` (chuẩn hóa Thái, so `th`/`th_alt`/`thai_alt`, căn theo `tokens`), chọn mục phiên (ưu tiên cần ôn), `SpeakingAttempt` + `SessionRecord` loại `speaking`, cờ "cần ôn" `origin: 'speaking'`. Vitest.
+- [ ] T12.9.3 Web: hook ghi âm (`getUserMedia` + `MediaRecorder`, `audio/mp4` | `audio/webm`, tự dừng 10 s, phát lại / xen kẽ), hook nhận dạng (`SpeechRecognition` th-TH, feature-detect, chạy song song hoặc bỏ qua), Dexie bảng `recordings` (bản mới nhất / mục, tối đa 200) + migration.
+- [ ] T12.9.4 UI: thẻ "Luyện nói" ở `/practice` + bộ chọn Nội dung ôn (M12.8), `/practice/speaking/session` (§3), màn kết quả + "Luyện lại"; hộp thoại quyền micro / đồng ý Mức 2 (§5); `/settings`: bật/tắt Nhận dạng giọng nói, "Xóa mọi bản ghi giọng nói"; `/progress` dòng Luyện nói; `/privacy` 2 đoạn mới.
+- [ ] T12.9.5 Bài học: nút "Nói theo" ở bước Từ vựng / Mẫu câu; "Nhập vai" ở bước Hội thoại (chọn vai, app phát vai kia, nghe lại cả đoạn).
+- [ ] T12.9.6 E2E + axe + baseline theo spec §8 (fake media Chromium, mock SpeechRecognition, WebKit iPhone 15 mock).
+- [ ] T12.9.7 Owner thử iPhone thật qua link preview (quyền micro, ghi / nghe lại, Mức 2 có chạy không) → merge vào `main` **với cờ tắt trên production**. Agent ghi kết quả thiết bị vào spec §7 + nhật ký.
+- [ ] T12.9.8 Phát hành: owner quyết định bật `VITE_ENABLE_SPEAKING` trên production (sau CAT hoặc khi owner muốn khách hàng thử) → agent đổi cấu hình build production, cập nhật baseline, ghi nhật ký.
+
 ### Sau M12
 Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6) đầu Phase 2. Không làm trước khi owner mở.
 
@@ -685,6 +702,8 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-24 | M12.9 (CAT) | Owner: đang CAT → M12.9 là bản phát triển: cờ `VITE_ENABLE_SPEAKING` tắt trên production, bật ở preview / dev; thêm T12.9.8 phát hành; agent báo owner khi ready | — | — | — (docs chưa commit) |
+| 2026-11-24 | M12.9 mở | Phản hồi CAT: người học muốn luyện nói. Owner chọn Mức 1 (ghi âm, nghe lại, tự đánh giá) + Mức 2 (nhận dạng giọng nói trình duyệt); Mức 3 Azure chấm điểm để sau CAT. Plan v7.11 §0.17, spec `SCR-10-speaking.md`, milestone M12.9 (T12.9.1 ✅) | T12.9.2–T12.9.7 (agent) | — | — (docs chưa commit) |
 | 2026-11-24 | TC.5 | **TC.5 xong:** b11, b12, c01–c15 → A2; E2E badge / mốc cấp độ; baseline home-empty; IMPORT-STATUS, plan §0.12. Tự merge #51 (docs mở TC.5) | — | — | `content-tc5-level` → PR (tự merge 8.1) |
 | 2026-11-24 | TC.5 mở | Owner: tài liệu không ghi "A1" trong tiêu đề → A2. Claude Desktop xem bìa 27 PDF: b01–b10 "Level A1"; b11, b12 (Đóng vai hội thoại) và c01–c15 không ghi → A2 (17 unit) | TC.5 (agent) | — | #51 |
 | 2026-11-23 | M12.8 / TC.4 | Owner chuyển repo **public** (Actions bị chặn do thanh toán) → CI chạy lại xanh; merge #42 (M12.8, owner cho phép); rebase #49 lên M12.8 (baseline `unit-*-1024-win32`) → **tự merge #49** (loại nội dung + test); production deploy `9ff12ba` | — | Quyết định public / private (Việc chờ owner) | #42, #49 → `main` |
