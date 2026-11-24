@@ -314,7 +314,7 @@ function AsrResult({ match }: { match: SpeechMatch | null }) {
               {match.heard}
             </span>
           </p>
-          <p lang="th" className="flex flex-wrap gap-x-1 text-th-md">
+          <p lang="th" className="flex flex-wrap justify-center gap-x-1 text-th-md">
             {match.tokens.map((token, i) => (
               <span
                 key={i}

@@ -185,7 +185,8 @@ function Report({
       canDos.filter((c) => c.unitId === u.unit.unit_id),
     ),
   );
-  const started = cards.length > 0 || lessons.length > 0 || attempts.length > 0;
+  const started =
+    cards.length > 0 || lessons.length > 0 || attempts.length > 0 || !!speaking?.length;
 
   const streak = studyStreak(
     [

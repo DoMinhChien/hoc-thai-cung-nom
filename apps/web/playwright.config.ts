@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 // `E2E_PORT`: chạy song song nhiều bản (vd. nhiều worktree) không dùng chung preview.
 const PORT = Number(process.env.E2E_PORT ?? 4173);
+/** Bản build bật Luyện nói (M12.9, `e2e/serve.ts`) — `speaking.spec.ts` dùng cổng này. */
+export const SPEAKING_PORT = PORT + 1;
 const AUTH_EMULATOR_PORT = 9099; // khớp firebase.json
 const VIEWPORTS = [
   { name: '1280', viewport: { width: 1280, height: 800 } },
@@ -9,7 +11,7 @@ const VIEWPORTS = [
 ];
 /** Thiết bị cảm ứng WebKit (M12.7, SCR-00 v2 §7) — chỉ chạy `responsive.spec.ts`. */
 const DEVICES = [
-  { name: 'webkit-iphone15', use: devices['iPhone 15'] },
+  { name: 'webkit-iphone15', use: devices['iPhone 15'], match: /(responsive|speaking)\.spec\.ts/ },
   {
     name: 'webkit-ipad-mini',
     use: {
@@ -52,7 +54,10 @@ export default defineConfig({
         testIgnore: RESPONSIVE_SPEC,
       })),
     ),
-    ...DEVICES.map((d) => ({ ...d, testMatch: RESPONSIVE_SPEC })),
+    ...DEVICES.map(({ match, ...d }: (typeof DEVICES)[number] & { match?: RegExp }) => ({
+      ...d,
+      testMatch: match ?? RESPONSIVE_SPEC,
+    })),
   ],
   webServer: [
     {
@@ -63,11 +68,12 @@ export default defineConfig({
       timeout: 120_000,
     },
     {
-      command: `pnpm build && pnpm preview --port ${PORT} --strictPort`,
+      // Bản như production (cờ Luyện nói tắt) + bản bật Luyện nói ở SPEAKING_PORT.
+      command: `pnpm build && node e2e/serve.ts ${PORT} ${SPEAKING_PORT}`,
       url: `http://localhost:${PORT}`,
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
-      env: { VITE_USE_AUTH_EMULATOR: 'true' },
+      timeout: 240_000,
+      env: { VITE_USE_AUTH_EMULATOR: 'true', VITE_ENABLE_SPEAKING: 'false' },
     },
   ],
 });
