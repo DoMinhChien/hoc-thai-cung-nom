@@ -212,6 +212,11 @@ test('Tổng quan khi đang học: Học tiếp Bài 1, Bài tập là nút chí
   await expect(page.getByTestId('streak-card')).toHaveAttribute('data-count', '4');
   await expect(page.getByTestId('home-sum-words')).toContainText('5/20');
   await expect(page.getByTestId('home-path-b01')).toHaveAttribute('aria-current', 'step');
+  // Mốc cấp độ (TC.5): Giáo trình A1 từ Bài 1, A2 từ Bài 11; Chuyên đề A2 từ CĐ 1.
+  await expect(page.getByTestId('home-path-level-b01')).toHaveText('A1');
+  await expect(page.getByTestId('home-path-level-b10')).toHaveText('');
+  await expect(page.getByTestId('home-path-level-b11')).toHaveText('A2');
+  await expect(page.getByTestId('home-path-level-c01')).toHaveText('A2');
   await page.evaluate(() => document.fonts.ready);
   await expectNoSevereViolations(page);
   await expect(page).toHaveScreenshot('home.png', { fullPage: true });

@@ -178,7 +178,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
   - [x] TC.4h `c13`, `c09`, `c01` + ví dụ từ cho các chuyên đề còn lại
     - *Kết quả (2026-11-23, nhánh `content-tc4-c13-c09-c01`):* đọc lại 12 trang PDF (scan) — c13, c09, c01 khớp nguồn, không sửa nội dung GV (gộp thẻ s-c13-027, s-c13-029 → ≤ 9; c01 “ไอ – ยู” vẫn chờ GV). **Câu +32** (`claude-<unit>`): c13 32 → **40** (l2 3 → 8, l1 5 → 8), c09 13 → **27** (8–10 / bài học), c01 6 → **16** (l1 9, **l2 0 → 7** xưng hô với nhà sư; câu thân mật không ครับ/ค่ะ) → mọi bài học của 3 chuyên đề ≥ 7 câu. **Ví dụ từ 120:** c13 22, c09 15, c01 10, c02 15, c04 5, c05 14, c10 12, c11 11, c12 10, c14 6 (≥ 3 / bài học; trừ `c13-l4` chỉ 2 từ, `c04-l2` và `c08` không có từ; c15 đã đủ). E2E `lessons.spec` học trọn c01: l2 có thêm bước Bài tập — đã kiểm bộ giải (không trùng `vi`, không câu điền chỗ trống trùng mẫu, không thẻ lặp); không đổi id cũ, không bỏ từ. **GV xác nhận:** toàn bộ tiếng Thái Claude soạn (32 câu, 120 ví dụ); cách nói với sư (นิมนต์, กราบ, ดิฉัน/หนู); สีกา (p3) chưa thêm; ถูกชะตา ví dụ dịch “hợp duyên”.
 
-- [ ] **TC.5 Cấp độ A1 / A2 theo tiêu đề tài liệu** (owner 2026-11-24): quy tắc owner — *tài liệu có ghi "A1" trong tiêu đề → A1; không ghi → **A2***. Claude Desktop đã xem trang bìa 27 PDF:
+- [x] **TC.5 Cấp độ A1 / A2 theo tiêu đề tài liệu** (owner 2026-11-24): quy tắc owner — *tài liệu có ghi "A1" trong tiêu đề → A1; không ghi → **A2***. Claude Desktop đã xem trang bìa 27 PDF:
 
   | Unit | Bìa / tiêu đề PDF | `level` hiện tại | `level` mới |
   |---|---|---|---|
@@ -190,6 +190,7 @@ Phase 2 (M13–M24) và Phase 3 (M25–M27): xem mục 10 của plan. **Không l
   2. Rà mọi nơi dùng `unit.level` (badge ở `/units`, trang bài; mốc "bắt đầu cấp độ" ở Tổng quan `HomePage` — `firstOfLevel`; Sổ từ / Tiến độ nếu có lọc theo cấp độ) → hiển thị đúng A1 / A2, không vỡ khi `b11`, `b12` (A2) nằm trong nhóm Giáo trình trước Chuyên đề. Nếu badge A2 ở giữa nhóm Giáo trình gây rối → giữ thứ tự, chỉ hiển thị badge (không tách nhóm).
   3. `content/IMPORT-STATUS.md`: tiêu đề mục Giáo trình ghi rõ "Bài 1–10 A1; Bài 11–12 (Đóng vai hội thoại) A2"; mục Chuyên đề ghi "A2". Plan §0.12 thêm 1 dòng quy tắc cấp độ.
   4. `content:check` 0 lỗi; unit test / E2E / baseline liên quan (`units-*`, `unit-*`, `home-*`) cập nhật. Nội dung + hiển thị nhỏ → **tự merge theo 8.1** nếu chỉ đổi dữ liệu + badge; nếu phải đổi bố cục `/units` hoặc Tổng quan → gửi owner link preview.
+  - *Kết quả (2026-11-24, nhánh `content-tc5-level`):* `units.csv` 17 unit → A2 (b11, b12, c01–c15), b01–b10 giữ A1. Badge `/units` và trang bài lấy từ dữ liệu — không đổi code; Tổng quan: mốc cấp độ tự hiện A1 ở Bài 1, **A2 ở Bài 11**, A2 ở Chuyên đề 1 (chỗ nhãn đã có sẵn → **không đổi bố cục**, chỉ thêm `data-testid`). Sổ từ / Tiến độ không lọc theo cấp độ. E2E mới: badge A1 / A2 (`lessons.spec`), mốc cấp độ (`m10.spec`); baseline `home-empty-chromium-1280-win32` (các ảnh khác lệch < 1 %, trong ngưỡng). IMPORT-STATUS + plan §0.12 mục 8. Tự merge 8.1 (dữ liệu + badge).
 
 
 ### M0 — Khung dự án 🟢
@@ -684,7 +685,8 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
-| 2026-11-24 | TC.5 mở | Owner: tài liệu không ghi "A1" trong tiêu đề → A2. Claude Desktop xem bìa 27 PDF: b01–b10 "Level A1"; b11, b12 (Đóng vai hội thoại) và c01–c15 không ghi → A2 (17 unit) | TC.5 (agent) | — | — (docs chưa commit) |
+| 2026-11-24 | TC.5 | **TC.5 xong:** b11, b12, c01–c15 → A2; E2E badge / mốc cấp độ; baseline home-empty; IMPORT-STATUS, plan §0.12. Tự merge #51 (docs mở TC.5) | — | — | `content-tc5-level` → PR (tự merge 8.1) |
+| 2026-11-24 | TC.5 mở | Owner: tài liệu không ghi "A1" trong tiêu đề → A2. Claude Desktop xem bìa 27 PDF: b01–b10 "Level A1"; b11, b12 (Đóng vai hội thoại) và c01–c15 không ghi → A2 (17 unit) | TC.5 (agent) | — | #51 |
 | 2026-11-23 | M12.8 / TC.4 | Owner chuyển repo **public** (Actions bị chặn do thanh toán) → CI chạy lại xanh; merge #42 (M12.8, owner cho phép); rebase #49 lên M12.8 (baseline `unit-*-1024-win32`) → **tự merge #49** (loại nội dung + test); production deploy `9ff12ba` | — | Quyết định public / private (Việc chờ owner) | #42, #49 → `main` |
 | 2026-11-23 | TC.4 (bổ sung) | `b01-l1` +7 câu ngôi thứ nhất + mẫu câu `g-b01-tua-eng` (Claude soạn, draft) → mọi bài học có ≥ 5 câu. E2E: `finishLesson` dùng chung (`practice-helpers`); practice / golive chỉ học bước Từ vựng (dừng ở Mẫu câu), luồng go-live 1 + 3 học trọn bài học 1; baseline win32 sau TC.4 | — | — | `content-b01-l1` → PR mới (tự merge 8.1) |
 | 2026-11-23 | M12.8 🟢 | T12.8.6: owner thử preview và duyệt → M12.8 xong (6/6), merge #42 (owner cho phép) | — | — | `m12.8-game-source` → #42 |

@@ -163,6 +163,7 @@ Owner đưa toàn bộ tài liệu vào `sources/` (27 PDF ~ 550 trang, **ảnh,
 5. Ảnh minh họa trong slide **không** trích xuất (bản quyền ảnh không rõ) → dùng Noto Emoji (V-05).
 6. Content mẫu cũ (`u01`, `u02`, `u03`, `u11`) **giữ** tới khi nội dung thật đủ thay; sau đó agent xóa và chuyển test/E2E sang unit thật (`u03` → `c03`, `u11` → `c11`).
 7. M4 (PDF pipeline tự động) **hạ ưu tiên** — chỉ cần khi giáo viên gửi tài liệu mới thường xuyên.
+8. **Cấp độ** (owner 2026-11-24, TC.5): tài liệu có ghi "A1" trong tiêu đề → `level` A1; không ghi → **A2**. Hiện: `b01`–`b10` A1; `b11`, `b12` (Đóng vai hội thoại) và `c01`–`c15` A2. Thứ tự lộ trình giữ nguyên (Giáo trình → Chuyên đề), chỉ đổi badge / mốc cấp độ.
 
 ### 0.13 Phản hồi người học (2026-11-20, v7.6)
 
