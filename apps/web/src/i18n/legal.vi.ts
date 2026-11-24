@@ -77,6 +77,25 @@ export const privacyVi: LegalDocument = {
   ],
 };
 
+/** Luyện nói (M12.9, SCR-10 §5): ghi âm trên máy + nhận dạng giọng nói của trình duyệt. */
+export const speakingPrivacy: LegalSection = {
+  id: 'giong-noi',
+  title: 'Luyện nói: ghi âm và nhận dạng giọng nói',
+  paragraphs: [
+    'Khi luyện nói, ứng dụng dùng micro để ghi giọng bạn. Bản ghi chỉ lưu trên trình duyệt của bạn (IndexedDB, tối đa 200 bản mới nhất), không gửi lên máy chủ và không có trong tệp xuất tiến độ. Bạn có thể xoá mọi bản ghi trong Cài đặt › Dữ liệu tiến độ; “Xoá tiến độ” cũng xoá bản ghi.',
+    'Nhận dạng giọng nói chỉ bật khi bạn đồng ý (có thể tắt trong Cài đặt › Luyện nói). Khi bật, giọng bạn được gửi tới dịch vụ nhận dạng của trình duyệt (Apple với Safari, Google với Chrome / Edge…) để chuyển thành chữ; việc xử lý theo chính sách của nhà cung cấp đó. Chúng tôi không nhận được giọng nói hay chữ nhận dạng.',
+  ],
+};
+
+/** Chính sách quyền riêng tư có mục Luyện nói (sau "Tiến độ học lưu ở đâu") — khi bật cờ M12.9. */
+export function withSpeakingPrivacy(doc: LegalDocument): LegalDocument {
+  const at = doc.sections.findIndex((s) => s.id === 'tien-do') + 1;
+  return {
+    ...doc,
+    sections: [...doc.sections.slice(0, at), speakingPrivacy, ...doc.sections.slice(at)],
+  };
+}
+
 export const termsVi: LegalDocument = {
   title: 'Điều khoản sử dụng',
   sections: [

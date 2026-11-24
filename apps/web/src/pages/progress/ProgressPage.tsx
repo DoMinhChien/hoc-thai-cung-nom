@@ -28,6 +28,7 @@ import {
   type PracticeFilter,
   type ReviewLogRecord,
   type SessionRecord,
+  type SpeakingAttemptRecord,
   type UnitBundle,
 } from '@nom/core';
 import { useMemo, useState, type ReactNode } from 'react';
@@ -44,7 +45,15 @@ import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { formatRecord, gameName } from '../games/catalog';
 import { SpeakButton } from '../units/parts';
+import { speakingEnabled } from '@/speaking/flag';
 import { BarChart } from './charts';
+
+/** Thứ Hai đầu tuần (giờ máy) — dòng "Luyện nói: n mục tuần này". */
+function startOfWeek(now: Date): Date {
+  const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return d;
+}
 
 const SHOW_TABLE_KEY = 'progressShowTable';
 const EPOCH = new Date(0);
@@ -61,7 +70,7 @@ export function ProgressPage() {
   const records = useRepositoryQuery(async (r) => {
     const now = new Date();
     const end = new Date(now.getTime() + 1);
-    const [cards, logs, attempts, sessions, lessons, games, flags, size, showTable] =
+    const [cards, logs, attempts, sessions, lessons, games, flags, size, showTable, speaking] =
       await Promise.all([
         r.progress.listCards(),
         r.reviews.logsBetween(EPOCH, end),
@@ -72,8 +81,21 @@ export function ProgressPage() {
         r.progress.listNeedsReview(),
         r.settings.get(PRACTICE_SESSION_SIZE_KEY, DEFAULT_PRACTICE_SESSION_SIZE),
         r.settings.get(SHOW_TABLE_KEY, false),
+        speakingEnabled() ? r.reviews.speakingAttemptsBetween(startOfWeek(now), end) : null,
       ]);
-    return { now, cards, logs, attempts, sessions, lessons, games, flags, size, showTable };
+    return {
+      now,
+      cards,
+      logs,
+      attempts,
+      sessions,
+      lessons,
+      games,
+      flags,
+      size,
+      showTable,
+      speaking,
+    };
   }, []);
   const unitIds = content.status === 'ready' ? content.data.map((b) => b.unit.unit_id) : [];
   const canDos = useRepositoryQuery(
@@ -123,6 +145,8 @@ interface Records {
   flags: NeedsReviewRecord[];
   size: number;
   showTable: boolean;
+  /** Lượt luyện nói tuần này; `null` khi tắt Luyện nói (M12.9). */
+  speaking: SpeakingAttemptRecord[] | null;
 }
 
 function Report({
@@ -138,6 +162,7 @@ function Report({
   flags,
   size,
   showTable,
+  speaking,
 }: Records & {
   bundles: UnitBundle[];
   canDos: CanDoRecord[];
@@ -240,6 +265,7 @@ function Report({
             goal={size}
             streak={streak}
             showTable={showTable}
+            speaking={speaking}
             onToggleTable={() => void repos?.settings.set(SHOW_TABLE_KEY, !showTable)}
           />
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
@@ -360,6 +386,7 @@ function Activity({
   goal,
   streak,
   showTable,
+  speaking,
   onToggleTable,
 }: {
   now: Date;
@@ -371,6 +398,7 @@ function Activity({
   goal: number;
   streak: ReturnType<typeof studyStreak>;
   showTable: boolean;
+  speaking: Records['speaking'];
   onToggleTable: () => void;
 }) {
   const days = activityByDay({ attempts, logs, cards }, now, 30, offset);
@@ -416,6 +444,11 @@ function Activity({
           {t('report.activityLine', { d: active.length, n: numberFormat.format(total) })} ·{' '}
           {duration(time)}
         </span>
+        {speaking && (
+          <span data-testid="report-speaking">
+            {t('speaking.progressLine', { n: new Set(speaking.map((s) => s.itemId)).size })}
+          </span>
+        )}
         <Button variant="ghost" size="sm" aria-pressed={showTable} onClick={onToggleTable}>
           {showTable ? t('report.hideTable') : t('report.showTable')}
         </Button>

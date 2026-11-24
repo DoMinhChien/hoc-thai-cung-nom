@@ -22,6 +22,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useRepositories, useRepositoryQuery } from '@/data';
 import { SHOW_PHONETIC_KEY, useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
+import { speakingEnabled } from '@/speaking/flag';
+import { recognitionSupported } from '@/speaking/recognition';
+import { useSpeakingSettings } from '@/speaking/settings';
 import { DataSettings } from './DataSettings';
 import { Card } from './SettingsCard';
 
@@ -46,6 +49,7 @@ export function SettingsPage() {
       <VoiceSettings />
       <PracticeSettings />
       <DisplaySettings />
+      {speakingEnabled() && <SpeakingSettings />}
       <DataSettings />
       <p className="text-sm text-muted-foreground">{t('settings.later')}</p>
     </section>
@@ -317,6 +321,33 @@ function DisplaySettings() {
         {t('settings.phonetic')}
       </label>
       <p className="text-sm text-muted-foreground">{t('settings.phoneticHint')}</p>
+    </Card>
+  );
+}
+
+/** Luyện nói (SCR-10 §4): bật / tắt nhận dạng giọng nói của trình duyệt — mặc định tắt tới khi đồng ý. */
+function SpeakingSettings() {
+  const speaking = useSpeakingSettings();
+  if (speaking.asr === undefined) {
+    return <Skeleton className="h-24" role="status" aria-label={t('speaking.settingsTitle')} />;
+  }
+  const supported = recognitionSupported();
+  return (
+    <Card title={t('speaking.settingsTitle')} testId="settings-speaking">
+      <label className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          data-testid="settings-speaking-asr"
+          checked={speaking.asr === true}
+          disabled={!supported}
+          onChange={(e) => void speaking.setAsr(e.target.checked)}
+          className="size-4 accent-primary"
+        />
+        {t('speaking.settingsAsr')}
+      </label>
+      <p className="text-sm text-muted-foreground">
+        {supported ? t('speaking.settingsAsrHint') : t('speaking.settingsAsrUnsupported')}
+      </p>
     </Card>
   );
 }

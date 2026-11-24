@@ -14,6 +14,7 @@ import { unitLabel } from '@/content/labels';
 import { useRepositories } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { speakingEnabled } from '@/speaking/flag';
 import { usePracticeData, usePracticeToday, type PracticeData } from './usePracticeData';
 
 /** `/practice` — Bài tập (SCR-06 §A). `?unit=` mở thẳng phiên luyện của unit. */
@@ -128,6 +129,23 @@ function Hub({ data }: { data: PracticeData }) {
           </>
         )}
       </div>
+
+      {speakingEnabled() && (
+        <div
+          className="flex flex-wrap items-center justify-between gap-3 rounded-lg border p-5"
+          data-testid="practice-speaking"
+        >
+          <div className="flex flex-col gap-1">
+            <h2 className="font-semibold">{t('speaking.cardTitle')}</h2>
+            <p className="text-sm text-muted-foreground">{t('speaking.cardLine')}</p>
+          </div>
+          <Button variant="outline" asChild>
+            <Link to="/practice/speaking" data-testid="practice-speaking-open">
+              {t('speaking.cardOpen')}
+            </Link>
+          </Button>
+        </div>
+      )}
 
       {started && (
         <div className="grid gap-4 md:grid-cols-2">
