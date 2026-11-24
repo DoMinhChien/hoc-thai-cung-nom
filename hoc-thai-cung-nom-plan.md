@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.10** (2026-11-22: trò chơi chọn nội dung để ôn, xem 0.16) · v7.9 (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.11** (2026-11-24: luyện nói Mức 1 + 2, xem 0.17) · v7.10 (2026-11-22: trò chơi chọn nội dung để ôn, xem 0.16) · v7.9 (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -215,6 +215,16 @@ Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1)
 - Không fallback lặng lẽ; < 6 mục thì nút chơi tắt kèm lý do. Trong nội dung đã chọn, mục cần ôn / đến hạn ra trước.
 - Lối vào "Chơi ôn" từ màn hoàn thành bài học, trang bài / chuyên đề, Tổng quan; màn kết quả thêm "Đổi nội dung".
 - F-12 giữ nguyên (không đổi FSRS). Spec: `docs/design/screens/SCR-08-source.md`. Milestone **M12.8**.
+
+### 0.17 Luyện nói — Mức 1 + Mức 2 (2026-11-24, v7.11 — phản hồi CAT)
+
+**Phản hồi:** người học muốn luyện nói trên app. Claude Desktop đánh giá 3 mức; owner chọn **Mức 1 + 2** cho M12.9:
+- **Mức 1 — Nghe, nói theo, nghe lại:** ghi âm trên máy (`MediaRecorder`), nghe xen kẽ với giọng mẫu, **tự đánh giá** Giống / Gần giống / Chưa giống. Không backend, không phí, bản ghi không rời máy.
+- **Mức 2 — Nhận dạng giọng nói của trình duyệt** (`SpeechRecognition`, `th-TH`) khi thiết bị hỗ trợ: hiện "Máy nghe được …" + tô thẻ khớp với câu mẫu. Chỉ tham khảo, **không chấm thanh điệu**; cần người học đồng ý (giọng gửi tới Apple / Google).
+- Lối vào: `/practice` → "Luyện nói" (dùng bộ chọn Nội dung ôn của M12.8), nút "Nói theo" trong bước Từ vựng / Mẫu câu, "Nhập vai" trong bước Hội thoại. Không đổi FSRS; "Chưa giống" → cờ "cần ôn".
+- **Mức 3 — Azure Pronunciation Assessment** (chấm điểm phát âm, th-TH): **chưa làm**. Cần backend cấp token (đổi ADR-01), S13, cập nhật quyền riêng tư, phí ~1–1,3 USD / giờ âm thanh sau 5 giờ miễn phí / tháng. Sau CAT: thử nghiệm với GV (~20 câu đọc đúng / cố ý sai) rồi mới quyết định.
+- Luyện phản xạ hội thoại với AI = Module S (Phase 2), không thuộc phạm vi này.
+- Spec: `docs/design/screens/SCR-10-speaking.md`. Milestone **M12.9**.
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1154,6 +1164,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.11 (2026-11-24):** Phản hồi CAT — **Luyện nói Mức 1 + 2** (mục 0.17): ghi âm / nghe lại / tự đánh giá + nhận dạng giọng nói của trình duyệt; Mức 3 Azure chấm điểm để sau CAT; spec SCR-10; milestone M12.9.
 - **v7.10 (2026-11-22):** Phản hồi CAT — **Trò chơi: chọn nội dung để ôn** (mục 0.16, sửa F-10): ôn nhanh / nhiều bài / bài học, chỉ mục đã học, bỏ fallback lặng lẽ; spec SCR-08 v3; milestone M12.8.
 - **v7.9 (2026-11-22):** Phản hồi CAT — **responsive iPhone & iPad** (mục 0.15, thay G-04 desktop-first); spec SCR-00 v2 responsive; milestone M12.7.
 - **v7.7 (2026-11-20):** Trò chơi mở rộng (mục 0.14): thêm F-15 Đập chuột, F-16 Đố vui truyền hình, F-17 Máy bay, F-18 Mê cung; UI trò chơi tham khảo Wordwall (thumbnail minh họa, 3 theme, sao kết quả, "Đổi trò"); milestone **M9.6**; SCR-08 v2 thuộc M0.5c.
