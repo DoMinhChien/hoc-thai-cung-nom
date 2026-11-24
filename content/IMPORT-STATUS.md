@@ -6,7 +6,7 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 
 **Thứ tự nhập (owner chốt 2026-11-20 — số lớn trước):** Giáo trình **Bài 12 → 11 → … → 3**, rồi Chuyên đề **15 → 14 → … → 2** (CĐ 11, 3 đã thay mẫu `u11`, `u03` — TC.2b). Đã xong trước đó: Bài 1, Bài 2, CĐ 1.
 
-## Giáo trình (kind `theme`) — “Tiếng Thái chuyên sâu cấp độ 1 (A1)”
+## Giáo trình (kind `theme`) — Bài 1–10 A1 (“Tiếng Thái chuyên sâu cấp độ 1 (Level A1)”); Bài 11–12 (Đóng vai hội thoại) A2
 
 | Bài | unit_id | File | Trang | Từ | Câu | Trạng thái |
 |---|---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Trạng thái: ⬜ chưa làm · 🟡 đã nhập (draft, chờ GV duyệt) · �
 | 11 | `b11` | `บทที่ 11 สวมบทสนทนา ตอนที่ 1_bản quyền.pdf` | 21 | 76 | 73 | 🟡 2026-11-21 · 8 bài học = 7 hội thoại nhập vai (BTTH 01 dài 20 lượt → chia 2 bài; tổng 72 lượt, chỉ có tiếng Việt → Claude dịch Thái, chờ GV duyệt), 67 câu luyện dịch (bỏ 5 lượt trùng/quá ngắn: สวัสดีค่ะ, โอเคค่ะ ×2, ขอบคุณมากครับ, ไม่เป็นไรค่ะ lặp lại; `tokens` để build tự tách). Tên riêng phiên âm cần GV xem: เหงียน, เจิ่น, บั๊กนิญ, ไฮฟอง, บางแสน, วัดพระแก้ว, อนุสาวรีย์ชัยสมรภูมิ **TC.4a (2026-11-23):** đọc lại 21 trang — 72 lượt thoại khớp PDF, không sửa. **76 từ** rút từ hội thoại (`b11-w01…w76`, `source` claude-b11; l1 8, l2 9, l3 10, l4 8, l5 10, l6 11, l7 9, l8 11), nghĩa theo lượt thoại, mọi từ có `example_th`/`example_vi` = lượt thoại (rút gọn khi dài); **image** 3 (ตั๋ว, ธนาคาร, รถเมล์ — chùa / chợ nổi / thư viện / quán cà phê không có emoji đúng nghĩa); **classifier** 12 (จังหวัด, แห่ง, ใบ, ชิ้น, ร้าน, คัน, ป้าย). Lặp từ unit khác chỉ với từ cốt lõi của bài (vd. จังหวัด, สนใจ, พรุ่งนี้, นัด, วัด, ตั๋ว, ธนาคาร, รถเมล์). **6 câu mới** `s-b11-071…076` (b11-l4 3 → 6, b11-l5 4 → 7). **Cần GV xem:** toàn bộ tiếng Thái Claude soạn; `note_vi` “cần GV xác nhận”: ไปทำงาน (= đi công tác?), เรียกรถ (= đi xe ngoài); สาย ở b11 = tuyến xe (nghĩa “muộn” ở b12 không tách thành từ riêng để tránh trùng chữ trong 1 bài). |
 | 12 | `b12` | `บทที่ 12 สวมบทสนทนา ตอนที่ 2_bản quyền.pdf` | 21 | 63 | 59 | 🟡 2026-11-20 · 7 bài học = 5 hội thoại nhập vai (70 lượt, chỉ có tiếng Việt → Claude dịch Thái), 59 câu luyện dịch (`tokens` để build tự tách) **TC.4a (2026-11-23):** đọc lại 21 trang — 70 lượt thoại khớp PDF, không sửa; mọi bài học đã ≥ 6 câu. **63 từ** rút từ hội thoại (`b12-w01…w63`, `source` claude-b12; l1 8, l2 10, l3 10, l4 10, l5 8, l6 9, l7 8), mọi từ có `example_th`/`example_vi` = lượt thoại; **image** 3 (เตียง, รถแท็กซี่, โรงแรม — điều hòa, wifi, chìa khóa phòng… không có / đã có ở b08); **classifier** 8 (เตียง, ห้อง, คัน, แห่ง, เครื่อง). Bỏ các từ đã có ở b08 (กุญแจห้อง, คูปองอาหารเช้า, ห้องว่าง, เช็คเอาท์, พาสปอร์ต…). **Cần GV xem:** toàn bộ tiếng Thái Claude soạn; `note_vi` “cần GV xác nhận”: ห้องเตียงใหญ่ (phòng giường đôi), ห้องเตียงคู่ (phòng 2 giường), ห้องคู่ (phòng đôi) — **เตียงคู่** trong khách sạn Thái thường = 2 giường đơn (twin), trong khi Bài 8 ghi เตียงคู่ = “giường đôi” → GV thống nhất. |
 
-## Chuyên đề (kind `grammar`)
+## Chuyên đề (kind `grammar`) — A2
 
 | CĐ | unit_id | File | Trang | Từ | Câu | Trạng thái |
 |---|---|---|---|---|---|---|

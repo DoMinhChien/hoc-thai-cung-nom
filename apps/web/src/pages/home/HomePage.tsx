@@ -425,7 +425,10 @@ function PathStrip({
                 }`;
                 return (
                   <li key={u.unit.unit_id} className="flex w-7 flex-col items-center gap-0.5">
-                    <span className="h-4 text-[10px] font-bold text-muted-foreground">
+                    <span
+                      className="h-4 text-[10px] font-bold text-muted-foreground"
+                      data-testid={`home-path-level-${u.unit.unit_id}`}
+                    >
                       {levelAt.get(u.unit.unit_id) ?? ''}
                     </span>
                     <Link

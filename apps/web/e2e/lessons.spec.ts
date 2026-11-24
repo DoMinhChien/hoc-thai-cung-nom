@@ -99,6 +99,27 @@ test('lộ trình 2 nhánh (plan 0.12 #1): Giáo trình trước Chuyên đề, 
   await expect(page.getByTestId('flashcard')).toBeVisible();
 });
 
+test('cấp độ (TC.5): Bài 1–10 A1, Bài 11–12 và Chuyên đề A2 — /units và trang bài', async ({
+  page,
+}) => {
+  await page.goto('/units');
+  for (const [unit, level] of [
+    ['b01', 'A1'],
+    ['b10', 'A1'],
+    ['b11', 'A2'],
+    ['b12', 'A2'],
+    ['c01', 'A2'],
+    ['c15', 'A2'],
+  ] as const) {
+    await expect(
+      page.getByTestId(`unit-row-${unit}`).getByText(level, { exact: true }),
+    ).toBeVisible();
+  }
+  await page.goto('/units/b11');
+  await expect(page.getByTestId('unit-vocab')).toBeVisible();
+  await expect(page.getByText('A2', { exact: true })).toBeVisible();
+});
+
 test('baseline: /units, /units/b01, bài học (thẻ từ vựng đầu)', async ({ page }) => {
   for (const [path, name, ready] of [
     ['/units', 'units.png', 'unit-path'],
