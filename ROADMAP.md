@@ -27,6 +27,8 @@
 
 > **🔵 M12.9 — Luyện nói (Mức 1 + 2)** (mở 2026-11-24, phản hồi CAT, plan 0.17): spec **`docs/design/screens/SCR-10-speaking.md`** (owner duyệt hướng 2026-11-24). Agent làm ngay **sau cờ `VITE_ENABLE_SPEAKING` (tắt trên production — đang CAT)**; xong báo owner "M12.9 ready" + link preview; owner thử **iPhone thật** rồi merge (không tự merge), bật trên production khi owner quyết định. Mức 3 (Azure chấm điểm) để sau CAT.
 
+> **🔵 M12.10 — Shadowing đoạn** (mở 2026-11-24, phản hồi CAT, plan 0.18): spec **`docs/design/screens/SCR-11-shadowing.md`** (owner duyệt 2026-11-24). Cùng cờ `VITE_ENABLE_SPEAKING` (tắt trên production — CAT). **Bước A** thử khả thi `/dev/shadowing` → owner thử iPhone → **bước B** làm thật. Bắt đầu sau khi PR M12.9 đã mở (làm trên nhánh tách từ `m12.9-speaking` nếu M12.9 chưa merge). Xong mỗi bước: báo owner + link preview.
+
 > **⏳ Việc chờ owner (cập nhật 2026-11-23)** — agent không tự làm, tick khi xong:
 > - [ ] **Repo đang public (2026-11-23):** owner chuyển public để GitHub Actions chạy miễn phí (repo private hết phút / lỗi thanh toán), cần cho xong M12.8. Repo có nội dung trích từ giáo trình Plern-Pin (1.563 từ, 748 câu, ghi số trang) → **quyết định sau M12:** giữ public, chuyển lại private (Actions tính phút; bản đã clone / fork không thu hồi được), hoặc tách nội dung ra nơi khác.
 > - [x] **PR M12.8 #42 — T12.8.6:** owner thử preview và duyệt (2026-11-23) → merge.
@@ -692,6 +694,18 @@ Nhánh gợi ý `m12.9-speaking` (base `main`). Có thể chia 2 PR: (1) core + 
 - [ ] T12.9.7 Owner thử iPhone thật qua link preview (quyền micro, ghi / nghe lại, Mức 2 có chạy không) → merge vào `main` **với cờ tắt trên production**. Agent ghi kết quả thiết bị vào spec §7 + nhật ký.
 - [ ] T12.9.8 Phát hành: owner quyết định bật `VITE_ENABLE_SPEAKING` trên production (sau CAT hoặc khi owner muốn khách hàng thử) → agent đổi cấu hình build production, cập nhật baseline, ghi nhật ký.
 
+### M12.10 — Shadowing đoạn 🔵 (mở 2026-11-24, phản hồi CAT; plan 0.18, spec SCR-11)
+
+Cùng cờ **`VITE_ENABLE_SPEAKING`** với M12.9 (tắt trên production — giai đoạn CAT). Nhánh `m12.10-shadowing`: tách từ `main` nếu M12.9 đã merge, nếu chưa thì tách từ `m12.9-speaking` và PR base `main` **sau khi** M12.9 merge (không PR xếp chồng — AGENTS §8).
+- [x] T12.10.1 Spec `docs/design/screens/SCR-11-shadowing.md` (Claude Desktop) — owner duyệt 2026-11-24.
+- [ ] **Bước A** — T12.10.2 Trang thử `/dev/shadowing` (spec §5): phát từng cụm bằng giọng máy + tô sáng, tốc độ, lặp cụm, khoảng dừng; bậc 5 vừa phát vừa ghi âm (echoCancellation bật / tắt), nghe lại xen kẽ; log thời gian cụm / `onboundary` / MIME / giọng mẫu có bị tắt khi micro mở. Báo owner "Shadowing bước A ready" + link preview + cách thử.
+- [ ] T12.10.3 Owner thử iPhone thật (có / không tai nghe, Safari + MH chính) → báo kết quả → agent điền spec §7, chỉnh spec nếu cần (vd. bậc 5 bắt buộc tai nghe). **Bước B chỉ mở sau mục này.**
+- [ ] **Bước B** — T12.10.4 Core `speaking/shadowing.ts`: tách cụm (lượt / `tokens`), chuỗi câu bài học, khoảng dừng, tiến trình 5 bậc + sao, cờ "cần ôn" `origin: 'shadowing'`, lưu tiến độ đoạn (Dexie, vào tệp xuất; bản ghi chỉ trên máy như M12.9). Vitest.
+- [ ] T12.10.5 UI: tab "Shadowing đoạn" ở `/practice/speaking` (bộ chọn Nội dung ôn), `/practice/speaking/shadow/:id` (spec §3–4), nút "Shadowing đoạn này" ở bước Hội thoại; ưu tiên file `audio` nếu có (`playbackRate`), không có → giọng máy theo cụm.
+- [ ] T12.10.6 E2E + axe + baseline (spec §8); cờ tắt → không thay đổi production.
+- [ ] T12.10.7 Owner thử iPhone qua link preview → merge vào `main` (cờ vẫn tắt trên production). Phát hành cùng Luyện nói ở **T12.9.8**.
+- [ ] **Bước C** — T12.10.8 *(owner / giáo viên, ngoài code)*: hỏi GV thu âm 31 hội thoại (ưu tiên Bài 9–12) + đồng ý cho dùng; quy ước file ở spec §6. Có file → agent nhập vào `audio` (PR nội dung, tự merge 8.1).
+
 ### Sau M12
 Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6) đầu Phase 2. Không làm trước khi owner mở.
 
@@ -703,6 +717,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-24 | M12.10 mở | Phản hồi CAT: shadowing. Owner duyệt đề xuất: Shadowing đoạn (thang 5 bậc, cụm, tốc độ, lặp cụm), cùng cờ Luyện nói. Plan v7.12 §0.18, spec `SCR-11-shadowing.md`, milestone M12.10 (T12.10.1 ✅); bước A thử iPhone trước bước B; bước C GV thu âm | T12.10.2 (agent) | — | — (docs chưa commit, đang ở nhánh `m12.9-speaking`) |
 | 2026-11-24 | M12.9 | T12.9.2–T12.9.6 xong sau cờ `VITE_ENABLE_SPEAKING` (production tắt, preview PR bật); tự merge #53 (docs M12.9) — hủy lượt deploy production (CAT) | T12.9.7 owner thử iPhone qua preview | — | `m12.9-speaking` → PR (không tự merge) |
 | 2026-11-24 | M12.9 (CAT) | Owner: đang CAT → M12.9 là bản phát triển: cờ `VITE_ENABLE_SPEAKING` tắt trên production, bật ở preview / dev; thêm T12.9.8 phát hành; agent báo owner khi ready | — | — | — (docs chưa commit) |
 | 2026-11-24 | M12.9 mở | Phản hồi CAT: người học muốn luyện nói. Owner chọn Mức 1 (ghi âm, nghe lại, tự đánh giá) + Mức 2 (nhận dạng giọng nói trình duyệt); Mức 3 Azure chấm điểm để sau CAT. Plan v7.11 §0.17, spec `SCR-10-speaking.md`, milestone M12.9 (T12.9.1 ✅) | T12.9.2–T12.9.7 (agent) | — | — (docs chưa commit) |
