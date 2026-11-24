@@ -34,13 +34,24 @@ export type GameSourceState =
  * chọn đã lưu. `override` (`?source=` của màn chơi) thắng lựa chọn đã lưu. Giá trị cũ của setting
  * (`learned`, `unit:<id>`) đọc được qua `parseSourceKey`.
  */
-export function useGameSource(override?: string | null): {
+export function useGameSource(
+  override?: string | null,
+  /** Luyện nói (SCR-10 §2) dùng lại bộ chọn với khóa cài đặt + mặc định riêng. */
+  settingKey: string = GAME_SOURCE_KEY,
+  fallback: (
+    bundles: readonly UnitBundle[],
+    learner: LearnerSnapshot,
+  ) => SourceSpec = defaultSourceSpec,
+): {
   state: GameSourceState;
   choose: (spec: SourceSpec) => Promise<void>;
 } {
   const repos = useRepositories();
   const content = useAllUnits();
-  const saved = useRepositoryQuery((r) => r.settings.get<string | null>(GAME_SOURCE_KEY, null), []);
+  const saved = useRepositoryQuery(
+    (r) => r.settings.get<string | null>(settingKey, null),
+    [settingKey],
+  );
   const progress = useRepositoryQuery(async (r) => {
     const [cards, flags, lessons] = await Promise.all([
       r.progress.listCards(),
@@ -67,9 +78,9 @@ export function useGameSource(override?: string | null): {
 
   const choose = useCallback(
     async (spec: SourceSpec) => {
-      await repos?.settings.set(GAME_SOURCE_KEY, sourceKey(spec));
+      await repos?.settings.set(settingKey, sourceKey(spec));
     },
-    [repos],
+    [repos, settingKey],
   );
 
   const bundles = content.status === 'ready' ? content.data : undefined;
@@ -77,8 +88,7 @@ export function useGameSource(override?: string | null): {
     if (content.status === 'error') return { status: 'error' };
     if (!bundles || saved === undefined || !progress) return { status: 'loading' };
     const learner: LearnerSnapshot = { ...progress, now: new Date() };
-    const spec =
-      parseSourceKey(override) ?? parseSourceKey(saved) ?? defaultSourceSpec(bundles, learner);
+    const spec = parseSourceKey(override) ?? parseSourceKey(saved) ?? fallback(bundles, learner);
     return {
       status: 'ready',
       bundles,
@@ -87,7 +97,7 @@ export function useGameSource(override?: string | null): {
       learner,
       counts: countByScope(bundles, learner),
     };
-  }, [content.status, bundles, saved, progress, override]);
+  }, [content.status, bundles, saved, progress, override, fallback]);
 
   return { state, choose };
 }

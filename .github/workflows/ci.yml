@@ -100,6 +100,9 @@ jobs:
           VITE_USE_AUTH_EMULATOR: 'false'
           # Phase 1: chỉ Google (Facebook → M12.5).
           VITE_ENABLE_FACEBOOK_LOGIN: 'false'
+          # M12.9 Luyện nói: preview PR bật để owner thử; production tắt (giai đoạn CAT) tới khi
+          # owner nói "phát hành Luyện nói" (T12.9.8).
+          VITE_ENABLE_SPEAKING: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
       - if: env.SWA_TOKEN != ''
         uses: Azure/static-web-apps-deploy@v1
         with:

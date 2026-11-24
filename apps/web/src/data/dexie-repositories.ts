@@ -1,5 +1,6 @@
 import {
   matchesFilter,
+  MAX_RECORDINGS,
   newId,
   type CanDoRecord,
   type CardFilter,
@@ -13,6 +14,8 @@ import {
   type NeedsReviewRecord,
   type WordNoteRecord,
   type ProgressRepository,
+  type RecordingRecord,
+  type RecordingRepository,
   type Repositories,
   type ReviewLogRecord,
   type SentenceLevelRecord,
@@ -20,6 +23,8 @@ import {
   type ReviewRepository,
   type SessionRepository,
   type SettingsRepository,
+  type SpeakingAttemptRecord,
+  type SessionRecord,
 } from '@nom/core';
 import type { NomDatabase } from './db';
 
@@ -178,6 +183,15 @@ class DexieReviewRepository implements ReviewRepository {
       .between(from.toISOString(), to.toISOString(), true, false)
       .toArray();
   }
+  async addSpeakingAttempt(attempt: SpeakingAttemptRecord) {
+    await this.db.speakingAttempts.put(attempt);
+  }
+  speakingAttemptsBetween(from: Date, to: Date) {
+    return this.db.speakingAttempts
+      .where('ts')
+      .between(from.toISOString(), to.toISOString(), true, false)
+      .toArray();
+  }
 }
 
 class DexieSettingsRepository implements SettingsRepository {
@@ -201,9 +215,13 @@ class DexieSessionRepository implements SessionRepository {
     await this.db.sessions.add(session);
     return session;
   }
-  async end(id: string, now: Date) {
+  async end(id: string, now: Date, speaking?: SessionRecord['speaking']) {
     const ts = now.toISOString();
-    await this.db.sessions.update(id, { endedAt: ts, updatedAt: ts });
+    await this.db.sessions.update(id, {
+      endedAt: ts,
+      updatedAt: ts,
+      ...(speaking && { speaking }),
+    });
   }
   listBetween(from: Date, to: Date) {
     return this.db.sessions
@@ -213,11 +231,38 @@ class DexieSessionRepository implements SessionRepository {
   }
 }
 
+/** Bản ghi giọng nói (SCR-10 §5): `key` duy nhất, giữ tối đa `MAX_RECORDINGS` bản mới nhất. */
+class DexieRecordingRepository implements RecordingRepository {
+  constructor(private readonly db: NomDatabase) {}
+
+  get(key: string) {
+    return this.db.recordings.where('key').equals(key).first();
+  }
+  async put(record: RecordingRecord) {
+    await this.db.transaction('rw', this.db.recordings, async () => {
+      await this.db.recordings.where('key').equals(record.key).delete();
+      await this.db.recordings.put(record);
+      const extra = (await this.db.recordings.count()) - MAX_RECORDINGS;
+      if (extra > 0) {
+        const old = await this.db.recordings.orderBy('createdAt').limit(extra).primaryKeys();
+        await this.db.recordings.bulkDelete(old);
+      }
+    });
+  }
+  count() {
+    return this.db.recordings.count();
+  }
+  async clear() {
+    await this.db.recordings.clear();
+  }
+}
+
 export function createDexieRepositories(db: NomDatabase): Repositories {
   return {
     progress: new DexieProgressRepository(db),
     reviews: new DexieReviewRepository(db),
     settings: new DexieSettingsRepository(db),
     sessions: new DexieSessionRepository(db),
+    recordings: new DexieRecordingRepository(db),
   };
 }

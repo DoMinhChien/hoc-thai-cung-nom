@@ -15,13 +15,17 @@ import type {
   ListeningStatRecord,
   NeedsReviewRecord,
   WordNoteRecord,
+  RecordingRecord,
   ReviewLogRecord,
   SentenceLevelRecord,
   SessionRecord,
+  SpeakingAttemptRecord,
 } from './records';
+import { MAX_RECORDINGS } from './records';
 import type {
   CardFilter,
   ProgressRepository,
+  RecordingRepository,
   Repositories,
   ReviewRepository,
   SessionRepository,
@@ -158,6 +162,7 @@ export class MemoryReviewRepository implements ReviewRepository {
   readonly logs: ReviewLogRecord[] = [];
   readonly listening: ListeningStatRecord[] = [];
   readonly attempts: ExerciseAttemptRecord[] = [];
+  readonly speaking: SpeakingAttemptRecord[] = [];
 
   async addLog(log: ReviewLogRecord) {
     this.logs.push(clone(log));
@@ -192,6 +197,15 @@ export class MemoryReviewRepository implements ReviewRepository {
       .sort(byField('ts'))
       .map(clone);
   }
+  async addSpeakingAttempt(attempt: SpeakingAttemptRecord) {
+    this.speaking.push(clone(attempt));
+  }
+  async speakingAttemptsBetween(from: Date, to: Date) {
+    return this.speaking
+      .filter((a) => inRange(a.ts, from, to))
+      .sort(byField('ts'))
+      .map(clone);
+  }
 }
 
 export class MemorySettingsRepository implements SettingsRepository {
@@ -220,10 +234,11 @@ export class MemorySessionRepository implements SessionRepository {
     this.sessions.set(session.id, session);
     return clone(session);
   }
-  async end(id: string, now: Date) {
+  async end(id: string, now: Date, speaking?: SessionRecord['speaking']) {
     const session = this.sessions.get(id);
     if (!session) return;
     session.endedAt = session.updatedAt = now.toISOString();
+    if (speaking) session.speaking = clone(speaking);
   }
   async listBetween(from: Date, to: Date) {
     return [...this.sessions.values()]
@@ -233,11 +248,36 @@ export class MemorySessionRepository implements SessionRepository {
   }
 }
 
+/** Bản ghi giọng nói giữ nguyên `ArrayBuffer` (không qua JSON). */
+export class MemoryRecordingRepository implements RecordingRepository {
+  readonly recordings = new Map<string, RecordingRecord>();
+
+  async get(key: string) {
+    const r = this.recordings.get(key);
+    return r && { ...r, audio: r.audio.slice(0) };
+  }
+  async put(record: RecordingRecord) {
+    this.recordings.delete(record.key);
+    this.recordings.set(record.key, { ...record, audio: record.audio.slice(0) });
+    const oldest = [...this.recordings.values()].sort(byField('createdAt'));
+    for (const r of oldest.slice(0, Math.max(0, oldest.length - MAX_RECORDINGS))) {
+      this.recordings.delete(r.key);
+    }
+  }
+  async count() {
+    return this.recordings.size;
+  }
+  async clear() {
+    this.recordings.clear();
+  }
+}
+
 export function createMemoryRepositories(): Repositories {
   return {
     progress: new MemoryProgressRepository(),
     reviews: new MemoryReviewRepository(),
     settings: new MemorySettingsRepository(),
     sessions: new MemorySessionRepository(),
+    recordings: new MemoryRecordingRepository(),
   };
 }

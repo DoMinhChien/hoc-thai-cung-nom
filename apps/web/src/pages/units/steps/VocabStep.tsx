@@ -9,6 +9,8 @@ import { useRepositories } from '@/data';
 import { useShowPhonetic } from '@/data/preferences';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { speakingEnabled } from '@/speaking/flag';
+import { SayAfter } from '@/speaking/SayAfter';
 import { SpeakButton } from '../parts';
 
 type Word = UnitBundle['words'][number];
@@ -159,6 +161,16 @@ function Cards({
           {w.thai}
         </p>
         <SpeakButton text={w.thai} />
+        {speakingEnabled() && (
+          <SayAfter
+            target={{
+              key: `word:${w.id}`,
+              text: w.thai,
+              accepted: [w.thai, ...w.thai_alt],
+              tokens: [w.thai],
+            }}
+          />
+        )}
         {revealed && (
           <div
             className="flex w-full flex-col gap-2 border-t pt-4 text-center"

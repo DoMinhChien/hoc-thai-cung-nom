@@ -4,7 +4,7 @@
 >
 > **Bộ tài liệu:** `AGENTS.md` (điểm vào cho agent) · `ROADMAP.md` (trạng thái milestone, task chi tiết) · `SETUP-OWNER.md` (việc owner làm tay) · file này (spec đầy đủ).
 >
-> **Trạng thái:** Draft **v7.11** (2026-11-24: luyện nói Mức 1 + 2, xem 0.17) · v7.10 (2026-11-22: trò chơi chọn nội dung để ôn, xem 0.16) · v7.9 (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
+> **Trạng thái:** Draft **v7.12** (2026-11-24: shadowing đoạn, xem 0.18) · v7.11 (2026-11-24: luyện nói Mức 1 + 2, xem 0.17) · v7.10 (2026-11-22: trò chơi chọn nội dung để ôn, xem 0.16) · v7.9 (2026-11-22: responsive iPhone & iPad, xem 0.15) · v7.7 (2026-11-20: thêm 4 trò chơi + UI tham khảo Wordwall, xem 0.14) · v7.6 (2026-11-20: phản hồi người học, xem 0.13) · v7.5 (2026-11-19: nội dung thật từ giáo viên, xem 0.12) · v7.4 (2026-11-18: font Thái → Sarabun) · v7.2 (2026-11-18: **ưu tiên Trò chơi trước Bài tập**, xem 0.6) · v7.1 (2026-11-17: đã nhận PDF mẫu, xem 0.11) — **đổi phạm vi theo phản hồi khách hàng: xem mục 0 trước tiên.** Trước đó (v6.5): ADR-01 & ADR-02 **đã duyệt** (Firebase Auth, Phase 1 không database). Còn chờ: PDF mẫu (Q#1), ADR-03 chọn database ở đầu Phase 2
 > **Owner:** John Do
 > **Cập nhật:** 2026-11-16
 
@@ -225,6 +225,16 @@ Người học dùng bản Bài học / Bài tập / Trò chơi và góp ý: (1)
 - **Mức 3 — Azure Pronunciation Assessment** (chấm điểm phát âm, th-TH): **chưa làm**. Cần backend cấp token (đổi ADR-01), S13, cập nhật quyền riêng tư, phí ~1–1,3 USD / giờ âm thanh sau 5 giờ miễn phí / tháng. Sau CAT: thử nghiệm với GV (~20 câu đọc đúng / cố ý sai) rồi mới quyết định.
 - Luyện phản xạ hội thoại với AI = Module S (Phase 2), không thuộc phạm vi này.
 - Spec: `docs/design/screens/SCR-10-speaking.md`. Milestone **M12.9**.
+
+### 0.18 Shadowing đoạn (2026-11-24, v7.12 — phản hồi CAT)
+
+**Phản hồi:** người học muốn luyện bằng kỹ thuật **shadowing** (nghe một đoạn liền mạch và nói đè theo, bắt chước ngữ điệu, nhịp). Owner duyệt đề xuất của Claude Desktop:
+- Chế độ **"Shadowing đoạn"** trong Luyện nói (cùng cờ `VITE_ENABLE_SPEAKING`, tắt trên production khi CAT): đơn vị = hội thoại (31 đoạn / 268 lượt, chọn được một vai) hoặc 5–8 câu liên tiếp của bài học, chia **cụm** theo lượt / `tokens`.
+- **Thang 5 bậc:** Nghe hiểu → Nghe theo chữ (karaoke theo cụm) → Nói theo có nghỉ → Shadowing có chữ → Shadowing không chữ (ghi âm, nghe lại xen kẽ theo cụm, tự đánh giá, cụm khó → "cần ôn"). Điều khiển: tốc độ, lặp cụm, khoảng dừng, ẩn/hiện chữ.
+- Không dùng nhận dạng Mức 2 trong shadowing (micro thu cả giọng mẫu). Khuyên đeo tai nghe.
+- **Rủi ro iOS:** phát giọng máy khi micro đang mở (loa thoại / bị tắt), sự kiện `onboundary` không ổn định → giọng máy **phát từng cụm**. Làm **bước A thử khả thi** (trang `/dev/shadowing`, owner thử iPhone) trước **bước B làm thật**.
+- **Bước C (ngoài code):** giáo viên thu âm hội thoại (ưu tiên Bài 9–12) → cột `audio`; app ưu tiên giọng người, không có thì giọng máy.
+- Spec: `docs/design/screens/SCR-11-shadowing.md`. Milestone **M12.10**.
 
 ### 0.10 Milestone Phase 1 sau thay đổi
 Xem mục 10 (đã cập nhật) và `ROADMAP.md`.
@@ -1164,6 +1174,7 @@ Mỗi milestone kết thúc khi đạt Definition of Done trong `AGENTS.md`. **T
 ---
 
 ## 12. Changelog
+- **v7.12 (2026-11-24):** Phản hồi CAT — **Shadowing đoạn** (mục 0.18): thang 5 bậc trên hội thoại / chuỗi câu, cùng cờ Luyện nói; bước A thử khả thi iPhone → bước B; GV thu âm (bước C); spec SCR-11; milestone M12.10.
 - **v7.11 (2026-11-24):** Phản hồi CAT — **Luyện nói Mức 1 + 2** (mục 0.17): ghi âm / nghe lại / tự đánh giá + nhận dạng giọng nói của trình duyệt; Mức 3 Azure chấm điểm để sau CAT; spec SCR-10; milestone M12.9.
 - **v7.10 (2026-11-22):** Phản hồi CAT — **Trò chơi: chọn nội dung để ôn** (mục 0.16, sửa F-10): ôn nhanh / nhiều bài / bài học, chỉ mục đã học, bỏ fallback lặng lẽ; spec SCR-08 v3; milestone M12.8.
 - **v7.9 (2026-11-22):** Phản hồi CAT — **responsive iPhone & iPad** (mục 0.15, thay G-04 desktop-first); spec SCR-00 v2 responsive; milestone M12.7.

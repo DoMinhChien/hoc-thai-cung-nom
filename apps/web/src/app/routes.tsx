@@ -1,7 +1,7 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { FirstVisitGate, RequireAuth } from '@/app/guards';
 import { AppLayout, BareLayout, DevLayout, FocusLayout } from '@/components/layout/AppLayout';
-import { deleteInstructionsVi, privacyVi, termsVi } from '@/i18n/legal.vi';
+import { deleteInstructionsVi, privacyVi, termsVi, withSpeakingPrivacy } from '@/i18n/legal.vi';
 import { AccountPage } from '@/pages/account/AccountPage';
 import { ProgressDemoPage } from '@/pages/dev/ProgressDemoPage';
 import { TypingDemoPage } from '@/pages/dev/TypingDemoPage';
@@ -11,6 +11,8 @@ import { GamesPage } from '@/pages/games/GamesPage';
 import { PracticePage } from '@/pages/practice/PracticePage';
 import { PracticeSessionPage } from '@/pages/practice/PracticeSessionPage';
 import { SettingsPage } from '@/pages/settings/SettingsPage';
+import { SpeakingPage } from '@/pages/speaking/SpeakingPage';
+import { SpeakingSessionPage } from '@/pages/speaking/SpeakingSessionPage';
 import { LessonPage } from '@/pages/units/LessonPage';
 import { UnitPage } from '@/pages/units/UnitPage';
 import { UnitsPage } from '@/pages/units/UnitsPage';
@@ -20,6 +22,10 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { HomePage } from '@/pages/home/HomePage';
 import { WordsPage } from '@/pages/words/WordsPage';
 import { ProgressPage } from '@/pages/progress/ProgressPage';
+import { speakingEnabled } from '@/speaking/flag';
+
+/** M12.9 Luyện nói — chỉ có route khi bật cờ (production tắt trong CAT). */
+const SPEAKING = speakingEnabled();
 
 /** URL cũ trước v7 (plan mục 0.2, 0.7) → màn mới tương ứng, để link/bookmark cũ không 404. */
 export const LEGACY_REDIRECTS: Record<string, string> = {
@@ -43,7 +49,12 @@ export const routes: RouteObject[] = [
   {
     element: <BareLayout />,
     children: [
-      { path: '/privacy', element: <LegalPage doc={privacyVi} testId="privacy" /> },
+      {
+        path: '/privacy',
+        element: (
+          <LegalPage doc={SPEAKING ? withSpeakingPrivacy(privacyVi) : privacyVi} testId="privacy" />
+        ),
+      },
       { path: '/terms', element: <LegalPage doc={termsVi} testId="terms" /> },
       {
         path: '/account/delete-instructions',
@@ -65,6 +76,9 @@ export const routes: RouteObject[] = [
       { path: '/games/:id', element: <GamePage /> },
       { path: '/units/:unitId/:lessonId', element: <LessonPage /> },
       { path: '/practice/session', element: <PracticeSessionPage /> },
+      ...(SPEAKING
+        ? [{ path: '/practice/speaking/session', element: <SpeakingSessionPage /> }]
+        : []),
     ],
   },
   {
@@ -89,6 +103,7 @@ export const routes: RouteObject[] = [
       { path: '/units', element: <UnitsPage /> },
       { path: '/units/:unitId', element: <UnitPage /> },
       { path: '/practice', element: <PracticePage /> },
+      ...(SPEAKING ? [{ path: '/practice/speaking', element: <SpeakingPage /> }] : []),
       { path: '/words', element: <WordsPage /> },
       { path: '/games', element: <GamesPage /> },
       { path: '/progress', element: <ProgressPage /> },

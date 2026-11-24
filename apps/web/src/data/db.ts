@@ -8,9 +8,11 @@ import {
   type ListeningStatRecord,
   type NeedsReviewRecord,
   type ReviewLogRecord,
+  type RecordingRecord,
   type SentenceLevelRecord,
   type SessionRecord,
   type SettingRecord,
+  type SpeakingAttemptRecord,
   type WordNoteRecord,
 } from '@nom/core';
 import Dexie, { type EntityTable, type Transaction } from 'dexie';
@@ -20,7 +22,7 @@ export const GUEST_KEY = 'guest';
 export const dbName = (userKey: string) => `hoc-thai-nom-${userKey}`;
 
 /** Phiên bản schema hiện tại — cũng ghi vào `meta.schemaVersion` (plan 7.3). */
-export const SCHEMA_VERSION = 6;
+export const SCHEMA_VERSION = 7;
 export const SCHEMA_VERSION_KEY = 'schemaVersion';
 
 export type KeyValueRecord = { key: string; value: unknown };
@@ -39,7 +41,14 @@ export const PROGRESS_TABLES = [
   'sentenceLevels',
   'exerciseAttempts',
   'wordNotes',
+  'speakingAttempts',
 ] as const;
+
+/**
+ * Store không vào tệp xuất / không chuyển khi Guest đăng nhập: bản ghi giọng nói chỉ ở máy này
+ * (SCR-10 §5) — "Xóa tiến độ" vẫn xóa.
+ */
+export const LOCAL_ONLY_TABLES = ['recordings'] as const;
 
 /** v1 (M1): khung store, bản ghi chỉ có vài trường. */
 const STORES_V1 = {
@@ -88,6 +97,13 @@ const STORES_V6 = {
   wordNotes: 'id, &[itemType+itemId]',
 };
 
+/** v7 (M12.9): lượt luyện nói (theo thời gian) + bản ghi giọng nói (một bản mỗi mục, SCR-10). */
+const STORES_V7 = {
+  ...STORES_V6,
+  speakingAttempts: 'id, ts',
+  recordings: 'id, &key, createdAt',
+};
+
 /** v1 → v2: thẻ cũ thiếu trường thì bổ sung mặc định (thẻ mới, loại Thai → Việt). */
 async function upgradeToV2(tx: Transaction) {
   const now = new Date();
@@ -123,6 +139,8 @@ export class NomDatabase extends Dexie {
   sentenceLevels!: EntityTable<SentenceLevelRecord, 'id'>;
   exerciseAttempts!: EntityTable<ExerciseAttemptRecord, 'id'>;
   wordNotes!: EntityTable<WordNoteRecord, 'id'>;
+  speakingAttempts!: EntityTable<SpeakingAttemptRecord, 'id'>;
+  recordings!: EntityTable<RecordingRecord, 'id'>;
   meta!: EntityTable<KeyValueRecord, 'key'>;
 
   constructor(userKey: string) {
@@ -145,6 +163,10 @@ export class NomDatabase extends Dexie {
     this.version(6)
       .stores(STORES_V6)
       .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 6 }));
+    // v6 → v7 chỉ thêm store rỗng.
+    this.version(7)
+      .stores(STORES_V7)
+      .upgrade((tx) => tx.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 7 }));
     this.on('populate', (tx) => {
       void tx.table('meta').add({ key: SCHEMA_VERSION_KEY, value: SCHEMA_VERSION });
     });

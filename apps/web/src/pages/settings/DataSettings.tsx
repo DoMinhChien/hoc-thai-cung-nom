@@ -1,5 +1,5 @@
 import { parseBackup, summarizeBackup, type BackupError, type ProgressBackup } from '@nom/core';
-import { Download, Trash2, Upload } from 'lucide-react';
+import { Download, MicOff, Trash2, Upload } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { useAuth } from '@/auth/useAuth';
@@ -14,9 +14,10 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { accountData, GUEST_KEY } from '@/data';
+import { accountData, GUEST_KEY, useRepositories, useRepositoryQuery } from '@/data';
 import { PROGRESS_TABLES, SCHEMA_VERSION } from '@/data/db';
 import { t } from '@/i18n';
+import { speakingEnabled } from '@/speaking/flag';
 import { Card } from './SettingsCard';
 
 const ERROR_KEY: Record<
@@ -124,6 +125,7 @@ export function DataSettings() {
           {t('settings.clear')}
         </Button>
       </div>
+      {speakingEnabled() && <ClearRecordings />}
 
       <AlertDialog open={!!pending} onOpenChange={(o) => !o && setPending(null)}>
         <AlertDialogContent data-testid="import-dialog">
@@ -169,5 +171,47 @@ export function DataSettings() {
         </AlertDialogContent>
       </AlertDialog>
     </Card>
+  );
+}
+
+/** "Xóa mọi bản ghi giọng nói" (SCR-10 §5) — bản ghi chỉ ở máy này, không vào tệp xuất. */
+function ClearRecordings() {
+  const repos = useRepositories();
+  const count = useRepositoryQuery((r) => r.recordings.count(), []);
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button
+        variant="ghost"
+        data-testid="settings-clear-recordings"
+        className="self-start text-destructive"
+        disabled={!count}
+        onClick={() => setOpen(true)}
+      >
+        <MicOff aria-hidden />
+        {t('speaking.clearRecordings')}
+      </Button>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogContent data-testid="clear-recordings-dialog">
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t('speaking.clearRecordingsTitle')}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {t('speaking.clearRecordingsBody', { n: count ?? 0 })}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t('words.cancel')}</AlertDialogCancel>
+            <AlertDialogAction
+              data-testid="clear-recordings-confirm"
+              onClick={() =>
+                void repos?.recordings.clear().then(() => toast(t('speaking.clearedRecordings')))
+              }
+            >
+              {t('speaking.clearRecordingsConfirm')}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }

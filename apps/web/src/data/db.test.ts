@@ -31,7 +31,7 @@ describe('NomDatabase schema (plan 7.3)', () => {
     const db = new NomDatabase('moi');
     await db.open();
     expect(db.verno).toBe(SCHEMA_VERSION);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 6 });
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toEqual({ key: SCHEMA_VERSION_KEY, value: 7 });
     db.close();
   });
 
@@ -40,8 +40,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
     const db = new NomDatabase('u1');
     await db.open();
 
-    expect(db.verno).toBe(6);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
+    expect(db.verno).toBe(7);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 7 });
     expect(await db.meta.get('guestChosen')).toMatchObject({ value: true });
 
     const [c1, c2] = await db.cards.bulkGet(['c1', 'c2']);
@@ -80,8 +80,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u2');
     await db.open();
-    expect(db.verno).toBe(6);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
+    expect(db.verno).toBe(7);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 7 });
     expect(await db.cards.get('c1')).toMatchObject({ itemId: 'di' });
 
     const lesson = {
@@ -116,8 +116,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u3');
     await db.open();
-    expect(db.verno).toBe(6);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
+    expect(db.verno).toBe(7);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 7 });
     expect(await db.lessons.get('l1')).toMatchObject({ lessonId: 'u01-l1' });
 
     const ts = '2026-03-01T00:00:00.000Z';
@@ -163,8 +163,8 @@ describe('NomDatabase schema (plan 7.3)', () => {
 
     const db = new NomDatabase('u4');
     await db.open();
-    expect(db.verno).toBe(6);
-    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 6 });
+    expect(db.verno).toBe(7);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 7 });
     expect(await db.needsReview.get('f1')).toMatchObject({ itemId: 'chue' });
 
     const ts = '2026-03-01T00:00:00.000Z';
@@ -183,6 +183,49 @@ describe('NomDatabase schema (plan 7.3)', () => {
       updatedAt: ts,
     });
     expect(await db.exerciseAttempts.where('ts').equals(ts).count()).toBe(1);
+    db.close();
+  });
+
+  it('nâng v6 (M10) → v7: giữ mẹo nhớ, thêm lượt luyện nói + bản ghi giọng nói (key duy nhất)', async () => {
+    const old = new Dexie(dbName('u6'));
+    old.version(6).stores({
+      cards: 'id, [itemType+itemId+cardType], itemType, fsrs.due, createdAt, updatedAt',
+      reviewLogs: 'id, cardId, review',
+      listeningStats: 'id, ts',
+      sessions: 'id, startedAt',
+      settings: 'key',
+      meta: 'key',
+      lessons: 'id, &lessonId, unitId, updatedAt',
+      canDos: 'id, &[unitId+canDo], unitId',
+      gameResults: 'id, &[gameId+source]',
+      needsReview: 'id, &[itemType+itemId]',
+      sentenceLevels: 'id, &sentenceId',
+      exerciseAttempts: 'id, ts',
+      wordNotes: 'id, &[itemType+itemId]',
+    });
+    await old.table('wordNotes').put({ id: 'n1', itemType: 'word', itemId: 'chue', mnemonic: 'x' });
+    await old.table('meta').put({ key: SCHEMA_VERSION_KEY, value: 6 });
+    old.close();
+
+    const db = new NomDatabase('u6');
+    await db.open();
+    expect(db.verno).toBe(7);
+    expect(await db.meta.get(SCHEMA_VERSION_KEY)).toMatchObject({ value: 7 });
+    expect(await db.wordNotes.get('n1')).toMatchObject({ mnemonic: 'x' });
+    const ts = '2026-11-24T00:00:00.000Z';
+    await db.speakingAttempts.add({
+      id: 'a',
+      itemType: 'word',
+      itemId: 'chue',
+      selfRating: 'good',
+      ts,
+      updatedAt: ts,
+    });
+    expect(await db.speakingAttempts.where('ts').equals(ts).count()).toBe(1);
+    const rec = { key: 'word:chue', audio: new ArrayBuffer(2), mimeType: 'audio/webm' };
+    const times = { durationMs: 1, createdAt: ts, updatedAt: ts };
+    await db.recordings.add({ id: 'r1', ...rec, ...times });
+    await expect(db.recordings.add({ id: 'r2', ...rec, ...times })).rejects.toThrow();
     db.close();
   });
 });

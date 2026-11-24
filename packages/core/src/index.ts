@@ -20,6 +20,7 @@ export * from './progress/progress';
 export * from './progress/report';
 export * from './progress/streak';
 export * from './schema';
+export * from './speaking';
 export * from './srs/srs';
 export * from './thai/kedmanee';
 export * from './thai/normalize';

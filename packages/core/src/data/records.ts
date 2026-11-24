@@ -56,7 +56,18 @@ export interface SessionRecord {
   module: string;
   startedAt: string;
   endedAt: string | null;
+  /** Phiên luyện nói (`module: 'speaking'`, SCR-10 §6): tóm tắt lúc kết thúc. */
+  speaking?: SpeakingSessionSummary;
   updatedAt: string;
+}
+
+/** Tóm tắt một phiên luyện nói: số mục theo 3 mức tự đánh giá, có dùng Mức 2 không. */
+export interface SpeakingSessionSummary {
+  items: number;
+  good: number;
+  close: number;
+  retry: number;
+  asr: boolean;
 }
 
 export interface SettingRecord {
@@ -106,8 +117,8 @@ export interface NeedsReviewRecord {
   id: string;
   itemType: ItemType;
   itemId: string;
-  /** Nơi sinh cờ: trò chơi (P-09) hoặc người học bật tay ở Sổ từ (SCR-07 Q5, M10). */
-  origin: 'game' | 'manual';
+  /** Nơi sinh cờ: trò chơi (P-09), người học bật tay ở Sổ từ (SCR-07 Q5, M10), luyện nói (SCR-10). */
+  origin: 'game' | 'manual' | 'speaking';
   flaggedAt: string;
   updatedAt: string;
 }
@@ -156,3 +167,32 @@ export interface ExerciseAttemptRecord {
   ts: string;
   updatedAt: string;
 }
+
+/** Một lượt luyện nói (SCR-10 §6): người học tự đánh giá; `asrRatio` khi có nhận dạng (Mức 2). */
+export interface SpeakingAttemptRecord {
+  id: string;
+  itemType: 'word' | 'sentence';
+  itemId: string;
+  selfRating: 'good' | 'close' | 'retry';
+  /** Tỉ lệ thẻ máy nghe được, 0–1 (`matchSpeech`). */
+  asrRatio?: number;
+  ts: string;
+  updatedAt: string;
+}
+
+/**
+ * Bản ghi giọng nói mới nhất của một mục (SCR-10 §5) — chỉ lưu trên máy, **không** vào tệp xuất
+ * tiến độ. `key`: `word:<id>`, `sentence:<id>`, hoặc khóa riêng của bước bài học.
+ */
+export interface RecordingRecord {
+  id: string;
+  key: string;
+  audio: ArrayBuffer;
+  mimeType: string;
+  durationMs: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/** Số bản ghi giữ tối đa — cũ nhất bị xóa trước (SCR-10 §5). */
+export const MAX_RECORDINGS = 200;
