@@ -13,9 +13,11 @@ import type {
   LessonProgressRecord,
   ListeningStatRecord,
   NeedsReviewRecord,
+  RecordingRecord,
   ReviewLogRecord,
   SentenceLevelRecord,
   SessionRecord,
+  SpeakingAttemptRecord,
   WordNoteRecord,
 } from './records';
 
@@ -77,6 +79,10 @@ export interface ReviewRepository {
   /** Lượt trả lời bài tập trong khoảng [from, to), cũ trước. */
   attemptsBetween(from: Date, to: Date): Promise<ExerciseAttemptRecord[]>;
   listeningStatsBetween(from: Date, to: Date): Promise<ListeningStatRecord[]>;
+  /** Luyện nói (SCR-10). */
+  addSpeakingAttempt(attempt: SpeakingAttemptRecord): Promise<void>;
+  /** Lượt luyện nói trong khoảng [from, to), cũ trước. */
+  speakingAttemptsBetween(from: Date, to: Date): Promise<SpeakingAttemptRecord[]>;
 }
 
 export interface SettingsRepository {
@@ -86,9 +92,19 @@ export interface SettingsRepository {
 
 export interface SessionRepository {
   start(module: string, now: Date): Promise<SessionRecord>;
-  end(id: string, now: Date): Promise<void>;
+  /** `speaking`: tóm tắt phiên luyện nói (SCR-10 §6). */
+  end(id: string, now: Date, speaking?: SessionRecord['speaking']): Promise<void>;
   /** Phiên bắt đầu trong khoảng [from, to), cũ trước. */
   listBetween(from: Date, to: Date): Promise<SessionRecord[]>;
+}
+
+/** Bản ghi giọng nói (SCR-10 §5): một bản mỗi `key`, tối đa `MAX_RECORDINGS`. */
+export interface RecordingRepository {
+  get(key: string): Promise<RecordingRecord | undefined>;
+  /** Ghi theo `key` (thay bản cũ); quá `MAX_RECORDINGS` → xóa bản cũ nhất. */
+  put(record: RecordingRecord): Promise<void>;
+  count(): Promise<number>;
+  clear(): Promise<void>;
 }
 
 export interface Repositories {
@@ -96,4 +112,5 @@ export interface Repositories {
   reviews: ReviewRepository;
   settings: SettingsRepository;
   sessions: SessionRepository;
+  recordings: RecordingRepository;
 }

@@ -6,8 +6,9 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { updateSentenceLevel } from '../exercises/ladder';
 import type { GameId, GameSummary } from '../games/game';
 import { saveGameResult, setNeedsReview } from '../games/results';
+import { saveSpeakingAttempt } from '../speaking/session';
 import { newSrsState, reviewSrs } from '../srs/srs';
-import type { CardRecord, LessonProgressRecord } from './records';
+import { MAX_RECORDINGS, type CardRecord, type LessonProgressRecord } from './records';
 import type { Repositories } from './repositories';
 import { completeLessonStep, introduceCard, recordReview, setCanDo } from './study';
 
@@ -418,6 +419,57 @@ export function describeRepositories(
       expect(list).toEqual([
         { ...s, endedAt: at(15).toISOString(), updatedAt: at(15).toISOString() },
       ]);
+    });
+
+    describe('Luyện nói (M12.9, SCR-10)', () => {
+      it('lượt luyện nói theo khoảng thời gian; "Chưa giống" → cờ "cần ôn" origin speaking', async () => {
+        const word = { itemType: 'word', itemId: 'khrap' } as const;
+        await saveSpeakingAttempt(repos, word, 'good', 1, at(1));
+        await saveSpeakingAttempt(repos, word, 'retry', null, at(2));
+        await saveSpeakingAttempt(repos, word, 'close', 0.5, at(DAY));
+        const list = await repos.reviews.speakingAttemptsBetween(at(0), at(DAY));
+        expect(list.map((a) => [a.selfRating, a.asrRatio])).toEqual([
+          ['good', 1],
+          ['retry', undefined],
+        ]);
+        expect(await repos.progress.listNeedsReview()).toMatchObject([
+          { itemType: 'word', itemId: 'khrap', origin: 'speaking' },
+        ]);
+        expect(await repos.progress.listCards()).toEqual([]);
+      });
+
+      it('SessionRepository.end lưu tóm tắt phiên luyện nói', async () => {
+        const s = await repos.sessions.start('speaking', at(0));
+        const summary = { items: 10, good: 6, close: 3, retry: 1, asr: true };
+        await repos.sessions.end(s.id, at(5), summary);
+        expect(await repos.sessions.listBetween(at(0), at(DAY))).toMatchObject([
+          { module: 'speaking', speaking: summary },
+        ]);
+      });
+
+      it('bản ghi: một bản mỗi key, giữ nguyên âm thanh, tối đa MAX_RECORDINGS (cũ nhất xóa trước)', async () => {
+        const rec = (key: string, i: number) => ({
+          id: `r${i}`,
+          key,
+          audio: new Uint8Array([i % 256, 1, 2]).buffer,
+          mimeType: 'audio/webm',
+          durationMs: 1000,
+          createdAt: at(i).toISOString(),
+          updatedAt: at(i).toISOString(),
+        });
+        await repos.recordings.put(rec('word:a', 0));
+        await repos.recordings.put(rec('word:a', 1));
+        expect(await repos.recordings.count()).toBe(1);
+        const got = await repos.recordings.get('word:a');
+        expect(got?.id).toBe('r1');
+        expect([...new Uint8Array(got!.audio)]).toEqual([1, 1, 2]);
+        for (let i = 2; i < MAX_RECORDINGS + 3; i++) await repos.recordings.put(rec(`k${i}`, i));
+        expect(await repos.recordings.count()).toBe(MAX_RECORDINGS);
+        expect(await repos.recordings.get('word:a')).toBeUndefined();
+        expect(await repos.recordings.get(`k${MAX_RECORDINGS + 2}`)).toBeDefined();
+        await repos.recordings.clear();
+        expect(await repos.recordings.count()).toBe(0);
+      });
     });
 
     it('introduceCard không tạo trùng; recordReview cập nhật lịch', async () => {
