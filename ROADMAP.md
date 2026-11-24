@@ -717,6 +717,7 @@ Phase 1 xong → Phase 2 (plan mục 10): M12.5 Đăng nhập Facebook (SETUP S6
 
 | Ngày | Milestone | Xong | Đang dở | Bị chặn | Nhánh / PR |
 |---|---|---|---|---|---|
+| 2026-11-24 | M12.9 / M12.10 | Owner yêu cầu merge + deploy: merge #54 (M12.9 Luyện nói, `4fe8da6`), deploy production xanh — cờ `VITE_ENABLE_SPEAKING=false` trên production (Luyện nói vẫn ẩn tới T12.9.8). Mở #55 (M12.10 bước A) base `main` | T12.9.7 / T12.10.3 owner thử iPhone | — | #54 merged · #55 |
 | 2026-11-24 | M12.10 | T12.10.2 bước A: trang thử `/dev/shadowing` (cờ `VITE_ENABLE_SPEAKING`) — cụm giọng máy + tô sáng, tốc độ, lặp cụm, khoảng dừng, Aa; bậc 5 ghi âm echoCancellation bật / tắt, nghe lại xen kẽ; log UA / standalone / MIME / `onboundary` / thời gian cụm. Docs M12.10 commit vào `m12.9-speaking` (#54) | T12.10.3 owner thử iPhone | PR chờ #54 merge (không PR xếp chồng) | `m12.10-shadowing` (chưa PR) |
 | 2026-11-24 | M12.10 mở | Phản hồi CAT: shadowing. Owner duyệt đề xuất: Shadowing đoạn (thang 5 bậc, cụm, tốc độ, lặp cụm), cùng cờ Luyện nói. Plan v7.12 §0.18, spec `SCR-11-shadowing.md`, milestone M12.10 (T12.10.1 ✅); bước A thử iPhone trước bước B; bước C GV thu âm | T12.10.2 (agent) | — | — (docs chưa commit, đang ở nhánh `m12.9-speaking`) |
 | 2026-11-24 | M12.9 | T12.9.2–T12.9.6 xong sau cờ `VITE_ENABLE_SPEAKING` (production tắt, preview PR bật); tự merge #53 (docs M12.9) — hủy lượt deploy production (CAT) | T12.9.7 owner thử iPhone qua preview | — | `m12.9-speaking` → PR (không tự merge) |
