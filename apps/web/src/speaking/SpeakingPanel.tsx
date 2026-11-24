@@ -127,7 +127,11 @@ export function SpeakingPanel({
   };
 
   const recording = recorder.status === 'recording';
-  const busy = recorder.status === 'requesting';
+  // Đợi cài đặt (đã xem hộp thoại micro / đồng ý Mức 2) tải xong mới cho ghi.
+  const busy =
+    recorder.status === 'requesting' ||
+    settings.micIntroSeen === undefined ||
+    settings.asr === undefined;
   const large = size === 'large';
   return (
     <div
