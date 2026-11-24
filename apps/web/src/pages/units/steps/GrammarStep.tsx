@@ -1,5 +1,7 @@
 import { useKeyShortcut } from '@/components/interactive';
 import { Button } from '@/components/ui/button';
+import { speakingEnabled } from '@/speaking/flag';
+import { SayAfter } from '@/speaking/SayAfter';
 import { SpeakButton } from '../parts';
 import type { StepProps } from './VocabStep';
 
@@ -17,8 +19,8 @@ export function GrammarStep({ bundle, lesson, nextLabel, onDone }: StepProps) {
           </p>
           <p>{g.explain_vi}</p>
           <ul className="flex flex-col gap-2">
-            {g.examples.map((ex) => (
-              <li key={ex.th} className="flex items-start gap-2">
+            {g.examples.map((ex, i) => (
+              <li key={ex.th} className="flex flex-wrap items-start gap-2">
                 <SpeakButton text={ex.th} />
                 <span className="flex flex-col">
                   <span lang="th" className="text-th-sm">
@@ -26,6 +28,17 @@ export function GrammarStep({ bundle, lesson, nextLabel, onDone }: StepProps) {
                   </span>
                   <span className="text-muted-foreground">{ex.vi}</span>
                 </span>
+                {speakingEnabled() && (
+                  <SayAfter
+                    className="basis-full items-start"
+                    target={{
+                      key: `grammar:${g.id}:${i}`,
+                      text: ex.th,
+                      accepted: [ex.th],
+                      tokens: [],
+                    }}
+                  />
+                )}
               </li>
             ))}
           </ul>

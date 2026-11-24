@@ -1,5 +1,5 @@
 import { introduceCard } from '@nom/core';
-import { Play } from 'lucide-react';
+import { Drama, Play } from 'lucide-react';
 import { useState } from 'react';
 import { useAudio } from '@/audio/useAudio';
 import { useKeyShortcut } from '@/components/interactive';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { useRepositories, useRepositoryQuery } from '@/data';
 import { t } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { speakingEnabled } from '@/speaking/flag';
+import { RolePlay } from '@/speaking/RolePlay';
 import { SpeakButton } from '../parts';
 import type { StepProps } from './VocabStep';
 
@@ -30,6 +32,7 @@ export function DialogueStep({ bundle, lesson, nextLabel, onDone }: StepProps) {
   const [selected, setSelected] = useState(0);
   const [playing, setPlaying] = useState<number | null>(null);
   const [lookup, setLookup] = useState<string | null>(null);
+  const [roleplay, setRoleplay] = useState(false);
   const word = lookup ? bundle.words.find((w) => w.thai === lookup) : undefined;
   const inWords = useRepositoryQuery(
     async (r) => (word ? !!(await r.progress.findCard('word', word.id, 'th-vi')) : false),
@@ -47,11 +50,25 @@ export function DialogueStep({ bundle, lesson, nextLabel, onDone }: StepProps) {
     setPlaying(null);
   };
 
-  useKeyShortcut('t', toggleTranslation);
-  useKeyShortcut('ArrowDown', () => setSelected((s) => Math.min(lines.length - 1, s + 1)));
-  useKeyShortcut('ArrowUp', () => setSelected((s) => Math.max(0, s - 1)));
-  useKeyShortcut('r', () => speakLine(selected));
-  useKeyShortcut('Enter', onDone);
+  useKeyShortcut('t', toggleTranslation, !roleplay);
+  useKeyShortcut(
+    'ArrowDown',
+    () => setSelected((s) => Math.min(lines.length - 1, s + 1)),
+    !roleplay,
+  );
+  useKeyShortcut('ArrowUp', () => setSelected((s) => Math.max(0, s - 1)), !roleplay);
+  useKeyShortcut('r', () => speakLine(selected), !roleplay);
+  useKeyShortcut('Enter', onDone, !roleplay);
+
+  if (roleplay) {
+    return (
+      <RolePlay
+        lines={lines}
+        recordingKey={`dialogue:${lesson.lesson_id}`}
+        onExit={() => setRoleplay(false)}
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -67,6 +84,17 @@ export function DialogueStep({ bundle, lesson, nextLabel, onDone }: StepProps) {
               <Play aria-hidden />
               {t('lesson.playAll')}
             </Button>
+            {speakingEnabled() && (
+              <Button
+                variant="outline"
+                size="sm"
+                data-testid="dialogue-roleplay"
+                onClick={() => setRoleplay(true)}
+              >
+                <Drama aria-hidden />
+                {t('speaking.roleplay')}
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="sm"
